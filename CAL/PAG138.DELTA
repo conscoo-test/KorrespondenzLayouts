@@ -1,0 +1,58 @@
+OBJECT Modification "Posted Purchase Invoice"(Page 138)
+{
+  OBJECT-PROPERTIES
+  {
+    Date=20180315D;
+    Time=120000T;
+    Modified=true;
+    Version List=NAVW111.00.00.19846,LBCOR1.00;
+  }
+  PROPERTIES
+  {
+    Target="Posted Purchase Invoice"(Page 138);
+    TargetPageType=Document;
+  }
+  CHANGES
+  {
+    { Insertion         ;InsertAfter=AddAfter:"&Invoice"(Action 53);
+                         ChangedElements=ActionCollection
+                         {
+                           { 5272722 ;1   ;ActionGroup;
+                                           Name=correspondence documents;
+                                           CaptionML=[DEU=Komfort Korrespondenzbelege;
+                                                      ENU=correspondence documents] }
+                           { 5272721 ;2   ;Action    ;
+                                           Name=Header Text;
+                                           CaptionML=[DEU=Kopf&text;
+                                                      ENU=Header Text];
+                                           Image=BeginningText;
+                                           OnAction=VAR
+                                                      Position@5077900 : 'Header,Footer,Longtext';
+                                                    BEGIN
+                                                    END;
+                                                     }
+                           { 5272720 ;2   ;Action    ;
+                                           Name=Footer Text;
+                                           CaptionML=[DEU=&Fuátext;
+                                                      ENU=Footer Text];
+                                           Image=EndingText;
+                                           OnAction=VAR
+                                                      Position@5077900 : 'Header,Footer,Longtext';
+                                                    BEGIN
+                                                    END;
+                                                     }
+                         }
+                          }
+    { PropertyModification;
+                         Property=Version List;
+                         OriginalValue=NAVW111.00.00.19846;
+                         ModifiedValue=NAVW111.00.00.19846,LBCOR1.00 }
+  }
+  CODE
+  {
+
+    BEGIN
+    END.
+  }
+}
+

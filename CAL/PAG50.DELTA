@@ -1,0 +1,118 @@
+OBJECT Modification "Purchase Order"(Page 50)
+{
+  OBJECT-PROPERTIES
+  {
+    Date=20180315D;
+    Time=120000T;
+    Modified=true;
+    Version List=NAVW111.00.00.20348,NAVDACH11.00.00.20348,LBCOR1.00;
+  }
+  PROPERTIES
+  {
+    Target="Purchase Order"(Page 50);
+    TargetPageType=Document;
+  }
+  CHANGES
+  {
+    { Insertion         ;InsertAfter=AddAfter:"O&rder"(Action 61);
+                         ChangedElements=ActionCollection
+                         {
+                           { 5272722 ;1   ;ActionGroup;
+                                           Name=correspondence documents;
+                                           CaptionML=[DEU=Komfort Korrespondenzbelege;
+                                                      ENU=correspondence documents] }
+                           { 5272723 ;2   ;Action    ;
+                                           Name=Tot&aling;
+                                           CaptionML=[DEU=&Summierung;
+                                                      ENU=Tot&aling];
+                                           Image=Totals }
+                           { 5272724 ;2   ;Action    ;
+                                           Name=Num&bering;
+                                           CaptionML=[DEU=&Nummerierung;
+                                                      ENU=Num&bering];
+                                           Image=NumberGroup }
+                           { 5272721 ;2   ;Action    ;
+                                           Name=Header Text;
+                                           CaptionML=[DEU=Kopf&text;
+                                                      ENU=Header Text];
+                                           Image=BeginningText;
+                                           OnAction=VAR
+                                                      "### LBIS Locals ###"@5077901 : Integer;
+                                                      Position@5077900 : 'Header,Footer,Longtext';
+                                                    BEGIN
+                                                    END;
+                                                     }
+                           { 5272720 ;2   ;Action    ;
+                                           Name=Footer Text;
+                                           CaptionML=[DEU=&Fuátext;
+                                                      ENU=Footer Text];
+                                           Image=EndingText;
+                                           OnAction=VAR
+                                                      "### LBIS Locals ###"@5077901 : Integer;
+                                                      Position@5077900 : 'Header,Footer,Longtext';
+                                                    BEGIN
+                                                    END;
+                                                     }
+                           { 5272728 ;2   ;Action    ;
+                                           Name=Invoice Header Text;
+                                           CaptionML=[DEU=Rechnungskopftext;
+                                                      ENU=Invoice Header Text];
+                                           Image=Import;
+                                           OnAction=VAR
+                                                      "### LBIS Locals ###"@5077900 : Integer;
+                                                      Position@5077902 : 'Header,Footer,Longtext';
+                                                      DocType@5077901 : 'Quote,Order,Invoice,"Credit Memo","Blanket Order","Return Order","Shipment/Receipt"';
+                                                    BEGIN
+                                                    END;
+                                                     }
+                           { 5272727 ;2   ;Action    ;
+                                           Name=Invoice Footer Text;
+                                           CaptionML=[DEU=Rechnungsfusstext;
+                                                      ENU=Invoice Footer Text];
+                                           Image=Export;
+                                           OnAction=VAR
+                                                      "### LBIS Locals ###"@5077900 : Integer;
+                                                      Position@5077902 : 'Header,Footer,Longtext';
+                                                      DocType@5077901 : 'Quote,Order,Invoice,"Credit Memo","Blanket Order","Return Order","Shipment/Receipt"';
+                                                    BEGIN
+                                                    END;
+                                                     }
+                           { 5272726 ;2   ;Action    ;
+                                           Name=Shipment Header Text;
+                                           CaptionML=[DEU=Lieferungskopftext;
+                                                      ENU=Shipment Header Text];
+                                           Image=Import;
+                                           OnAction=VAR
+                                                      "### LBIS Locals ###"@5077900 : Integer;
+                                                      Position@5077902 : 'Header,Footer,Longtext';
+                                                      DocType@5077901 : 'Quote,Order,Invoice,"Credit Memo","Blanket Order","Return Order","Shipment/Receipt"';
+                                                    BEGIN
+                                                    END;
+                                                     }
+                           { 5272725 ;2   ;Action    ;
+                                           Name=Shipment Footer Text;
+                                           CaptionML=[DEU=Lieferungsfusstext;
+                                                      ENU=Shipment Footer Text];
+                                           Image=Export;
+                                           OnAction=VAR
+                                                      "### LBIS Locals ###"@5077900 : Integer;
+                                                      Position@5077902 : 'Header,Footer,Longtext';
+                                                      DocType@5077901 : 'Quote,Order,Invoice,"Credit Memo","Blanket Order","Return Order","Shipment/Receipt"';
+                                                    BEGIN
+                                                    END;
+                                                     }
+                         }
+                          }
+    { PropertyModification;
+                         Property=Version List;
+                         OriginalValue=NAVW111.00.00.20348,NAVDACH11.00.00.20348;
+                         ModifiedValue=NAVW111.00.00.20348,NAVDACH11.00.00.20348,LBCOR1.00 }
+  }
+  CODE
+  {
+
+    BEGIN
+    END.
+  }
+}
+

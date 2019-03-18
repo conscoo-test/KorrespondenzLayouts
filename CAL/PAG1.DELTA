@@ -1,0 +1,119 @@
+OBJECT Modification "Company Information"(Page 1)
+{
+  OBJECT-PROPERTIES
+  {
+    Date=20180315D;
+    Time=120000T;
+    Modified=true;
+    Version List=NAVW111.00.00.19846,NAVDACH11.00.00.19846,NAVDE11.00.00.19846,LBCOR1.00;
+  }
+  PROPERTIES
+  {
+    Target="Company Information"(Page 1);
+    TargetPageType=Card;
+  }
+  CHANGES
+  {
+    { Insertion         ;InsertAfter=AddAfter:"Industrial Classification"(Control 76);
+                         ChangedElements=ControlCollection
+                         {
+                           { 5272720;2;Field     ;
+                                       Name=LeBit District Court;
+                                       SourceExpr="LeBit District Court";
+                                       ImplicitType=Text50 }
+
+                           { 5272734;2;Field     ;
+                                       Name=LeBit Trade Register Name;
+                                       SourceExpr="LeBit Trade Register Name";
+                                       ImplicitType=Text80 }
+
+                           { 5272735;2;Field     ;
+                                       Name=LeBit Commercial Register No.;
+                                       SourceExpr="LeBit Commercial Register No.";
+                                       ImplicitType=Text50 }
+
+                           { 5272721;2;Field     ;
+                                       Name=LeBit CEO1;
+                                       SourceExpr="LeBit CEO1";
+                                       ImplicitType=Text60 }
+
+                           { 5272722;2;Field     ;
+                                       Name=LeBit CEO2;
+                                       SourceExpr="LeBit CEO2";
+                                       ImplicitType=Text60 }
+
+                           { 5272723;2;Field     ;
+                                       Name=LeBit CEO3;
+                                       SourceExpr="LeBit CEO3";
+                                       ImplicitType=Text60 }
+
+                         }
+                          }
+    { Insertion         ;InsertAfter=AddAfter:BankAccountPostingGroup(Control 30);
+                         ChangedElements=ControlCollection
+                         {
+                           { 5272724;2;Field     ;
+                                       Name=LeBit Bank Name 2;
+                                       SourceExpr="LeBit Bank Name 2";
+                                       ImplicitType=Text50 }
+
+                           { 5272725;2;Field     ;
+                                       Name=LeBit Bank Branch No. 2;
+                                       SourceExpr="LeBit Bank Branch No. 2";
+                                       ImplicitType=Text20 }
+
+                           { 5272726;2;Field     ;
+                                       Name=LeBit Bank Account No. 2;
+                                       SourceExpr="LeBit Bank Account No. 2";
+                                       ImplicitType=Text30 }
+
+                           { 5272727;2;Field     ;
+                                       Name=LeBit IBAN 2;
+                                       SourceExpr="LeBit IBAN 2";
+                                       ImplicitType=Code50 }
+
+                           { 5272728;2;Field     ;
+                                       Name=LeBit SWIFT Code 2;
+                                       SourceExpr="LeBit SWIFT Code 2";
+                                       ImplicitType=Code20 }
+
+                           { 5272729;2;Field     ;
+                                       Name=LeBit Bank Name 3;
+                                       SourceExpr="LeBit Bank Name 3";
+                                       ImplicitType=Text50 }
+
+                           { 5272730;2;Field     ;
+                                       Name=LeBit Bank Branch No. 3;
+                                       SourceExpr="LeBit Bank Branch No. 3";
+                                       ImplicitType=Text20 }
+
+                           { 5272731;2;Field     ;
+                                       Name=LeBit Bank Account No. 3;
+                                       SourceExpr="LeBit Bank Account No. 3";
+                                       ImplicitType=Text30 }
+
+                           { 5272732;2;Field     ;
+                                       Name=LeBit IBAN 3;
+                                       SourceExpr="LeBit IBAN 3";
+                                       ImplicitType=Code50 }
+
+                           { 5272733;2;Field     ;
+                                       Name=LeBit SWIFT Code 3;
+                                       SourceExpr="LeBit SWIFT Code 3";
+                                       ImplicitType=Code20 }
+
+                         }
+                          }
+    { PropertyModification;
+                         Property=Version List;
+                         OriginalValue=NAVW111.00.00.19846,NAVDACH11.00.00.19846,NAVDE11.00.00.19846;
+                         ModifiedValue=NAVW111.00.00.19846,NAVDACH11.00.00.19846,NAVDE11.00.00.19846,LBCOR1.00 }
+  }
+  CODE
+  {
+
+    BEGIN
+    END.
+  }
+}
+

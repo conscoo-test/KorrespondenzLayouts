@@ -1,0 +1,137 @@
+OBJECT Page 5272720 LeBit PS Longtext Lines
+{
+  OBJECT-PROPERTIES
+  {
+    Date=20180315D;
+    Time=120000T;
+    Modified=true;
+    Version List=LBCOR1.00;
+  }
+  PROPERTIES
+  {
+    CaptionML=[DEU=EK/VK Langtext Zeilen;
+               ENU=PS Longtext Lines];
+    SourceTable="LeBit PS Longtext Line";
+    PageType=List;
+    AutoSplitKey=true;
+    ActionList=ACTIONS
+    {
+      { 5272726 ;0   ;ActionContainer;
+                      Name=ActionContainer5272726;
+                      ActionContainerType=ActionItems }
+      { 5272725 ;1   ;Action    ;
+                      Name=E&ditor;
+                      CaptionML=[DEU=B&earbeiten;
+                                 ENU=E&ditor];
+                      Promoted=true;
+                      Image=Edit;
+                      PromotedCategory=Process;
+                      OnAction=VAR
+                                 RecRef@5077901 : RecordRef;
+                                 LeBitCorrespDocMgt@5077900 : Codeunit "LeBit Corresp. Doc. Mgt";
+                               BEGIN
+                                 //RecRef.GETTABLE(Rec);
+                                 //LeBitCorrespDocMgt.EditorRef(RecRef,TRUE);
+                                 DBOpenMemo;
+
+                                 CurrPage.UPDATE(false);
+                               END;
+                                }
+    }
+  }
+  CONTROLS
+  {
+    { 5272724;0;Container ;
+                Name=Control5272724;
+                ContainerType=ContentArea }
+
+    { 5272723;1;Group     ;
+                Name=Control5272723;
+                GroupType=Repeater }
+
+    { 5272722;2;Field     ;
+                Name=No.;
+                SourceExpr="No.";
+                OnValidate=BEGIN
+                             NoOnAfterValidate;
+                           END;
+
+                ImplicitType=Code20 }
+
+    { 5272721;2;Field     ;
+                Name=Description;
+                SourceExpr=Description;
+                ImplicitType=Text120 }
+
+    { 5272720;2;Field     ;
+                Name=Type;
+                SourceExpr=Type;
+                ImplicitType=Option }
+
+  }
+  CODE
+  {
+    VAR
+      ExtTextHeadRec@5272730 : Record "Extended Text Header";
+      SalesHeaderRec@5272729 : Record "Sales Header";
+      PurchHeaderRec@5272728 : Record "Purchase Header";
+      TransferExtendedText@5272727 : Codeunit "Transfer Extended Text";
+      SourceRecRef@5272726 : RecordRef;
+      SourceFieldRef@5272725 : FieldRef;
+      SourceDocumentType@5272724 : 'Quote,Order,Invoice,"Credit Memo","Blanket Order","Return Order"';
+      Belegdatum@5272723 : Date;
+      LanguageCode@5272722 : Code[10];
+      SourceDocumentNo@5272721 : Code[20];
+      SourceTableID@5272720 : Integer;
+
+    LOCAL PROCEDURE NoOnAfterValidate@5272720();
+    VAR
+      LeBitCorrespDocMgt@5272720 : Codeunit "LeBit Corresp. Doc. Mgt";
+      LeBitLongtextMgt@1000000000 : Codeunit "LeBit Longtext Mgt.";
+    BEGIN
+      LanguageCode := '';
+      Belegdatum := 0D;
+      SourceRecRef.GETTABLE(Rec);
+      SourceTableID := SourceRecRef.NUMBER;
+      SourceFieldRef := SourceRecRef.FIELD(2);
+      SourceDocumentType := SourceFieldRef.VALUE;
+      SourceFieldRef := SourceRecRef.FIELD(3);
+      SourceDocumentNo := SourceFieldRef.VALUE;
+
+      if "Table ID" in [36,37] then begin
+        SalesHeaderRec.RESET;
+        SalesHeaderRec.SETRANGE("Document Type",SourceDocumentType);
+        SalesHeaderRec.SETRANGE("No.",SourceDocumentNo);
+        if SalesHeaderRec.FINDFIRST then begin
+          LanguageCode := SalesHeaderRec."Language Code";
+          Belegdatum := SalesHeaderRec."Document Date";
+        end;
+      end;
+
+      if "Table ID" in [38,39] then begin
+        PurchHeaderRec.RESET;
+        PurchHeaderRec.SETRANGE("Document Type",SourceDocumentType);
+        PurchHeaderRec.SETRANGE("No.",SourceDocumentNo);
+        if PurchHeaderRec.FINDFIRST then begin
+          LanguageCode := PurchHeaderRec."Language Code";
+          Belegdatum := PurchHeaderRec."Document Date";
+        end;
+      end;
+
+      ExtTextHeadRec.SETRANGE("Table Name",ExtTextHeadRec."Table Name"::"Standard Text");
+      ExtTextHeadRec.SETRANGE("No.","No.");
+
+      CurrPage.SAVERECORD;
+
+      if LeBitLongtextMgt.LongTextCheckIfAnyExtText(ExtTextHeadRec,LanguageCode,Belegdatum) then begin
+        LeBitLongtextMgt.InsertLongTextExtText(Rec,"Document Type");
+      end;
+
+      CurrPage.UPDATE(false);
+    END;
+
+    BEGIN
+    END.
+  }
+}
+

@@ -1,0 +1,412 @@
+OBJECT Modification "Sales Header"(Table 36)
+{
+  OBJECT-PROPERTIES
+  {
+    Date=20180315D;
+    Time=120000T;
+    Modified=true;
+    Version List=NAVW111.00.00.20348,NAVDACH11.00.00.20348,LBCOR1.00;
+  }
+  PROPERTIES
+  {
+    Target="Sales Header"(Table 36);
+  }
+  CHANGES
+  {
+    { Insertion         ;Documentation=BEGIN
+                                         LBCOR01 060218 MH   CODE       H17/0604 : LeBitTransferPSLongtextLineToTemp
+                                       END;
+                                        }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        TESTFIELD(Status,Status::Open);
+                                        BilltoCustomerNoChanged := xRec."Bill-to Customer No." <> "Bill-to Customer No.";
+                                        if BilltoCustomerNoChanged then
+                                        #4..57
+                                        "Invoice Disc. Code" := Cust."Invoice Disc. Code";
+                                        "Customer Disc. Group" := Cust."Customer Disc. Group";
+                                        "Language Code" := Cust."Language Code";
+                                        SetSalespersonCode(Cust."Salesperson Code","Salesperson Code");
+                                        "Combine Shipments" := Cust."Combine Shipments";
+                                        Reserve := Cust.Reserve;
+                                        if "Document Type" = "Document Type"::Order then
+                                        #65..97
+
+                                        if (xRec."Bill-to Customer No." <> '') and (xRec."Bill-to Customer No." <> "Bill-to Customer No.") then
+                                          RecallModifyAddressNotification(GetModifyBillToCustomerAddressNotificationId);
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..60
+                                        "Salesperson Code" := Cust."Salesperson Code";
+                                        #62..100
+                                      END;
+
+                         Target="Bill-to Customer No."(Field 4).OnValidate }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        ValidateSalesPersonOnSalesHeader(Rec,false,false);
+
+                                        ApprovalEntry.SETRANGE("Table ID",DATABASE::"Sales Header");
+                                        ApprovalEntry.SETRANGE("Document Type","Document Type");
+                                        ApprovalEntry.SETRANGE("Document No.","No.");
+                                        #6..12
+                                          DATABASE::Campaign,"Campaign No.",
+                                          DATABASE::"Responsibility Center","Responsibility Center",
+                                          DATABASE::"Customer Template","Bill-to Customer Template Code");
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #3..15
+                                      END;
+
+                         Target="Salesperson Code"(Field 43).OnValidate }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        if ("Sell-to Customer No." = '') and ("Document Type" <> "Document Type"::Quote) then
+                                          exit;
+
+                                        LookupContact("Sell-to Customer No.","Sell-to Contact No.",Contact);
+                                        if PAGE.RUNMODAL(0,Contact) = ACTION::LookupOK then
+                                          VALIDATE("Sell-to Contact No.",Contact."No.");
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        if "Sell-to Customer No." = '' then
+                                        #2..6
+                                      END;
+
+                         Target="Sell-to Contact"(Field 84).OnLookup }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        TESTFIELD(Status,Status::Open);
+
+                                        if "Sell-to Contact No." <> '' then
+                                          if Cont.GET("Sell-to Contact No.") then
+                                            Cont.CheckIfPrivacyBlockedGeneric;
+
+                                        if ("Sell-to Contact No." <> xRec."Sell-to Contact No.") and
+                                           (xRec."Sell-to Contact No." <> '')
+                                        #9..44
+                                        UpdateSellToCust("Sell-to Contact No.");
+                                        UpdateSellToCustTemplateCode;
+                                        UpdateShipToContact;
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        TESTFIELD(Status,Status::Open);
+                                        #6..47
+                                      END;
+
+                         Target="Sell-to Contact No."(Field 5052).OnValidate }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        TESTFIELD(Status,Status::Open);
+
+                                        if "Bill-to Contact No." <> '' then
+                                          if Cont.GET("Bill-to Contact No.") then
+                                            Cont.CheckIfPrivacyBlockedGeneric;
+
+                                        if ("Bill-to Contact No." <> xRec."Bill-to Contact No.") and
+                                           (xRec."Bill-to Contact No." <> '')
+                                        #9..27
+                                        end;
+
+                                        UpdateBillToCust("Bill-to Contact No.");
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        TESTFIELD(Status,Status::Open);
+                                        #6..30
+                                      END;
+
+                         Target="Bill-to Contact No."(Field 5053).OnValidate }
+    { PropertyDeletion  ;Target="Assigned User ID"(Field 9000);
+                         Property=DataClassification;
+                         OriginalValue=EndUserIdentifiableInformation }
+    { Insertion         ;Target=RecreateSalesLines(PROCEDURE 4);
+                         InsertAfter=ExtendedTextAdded(Variable 1002);
+                         ChangedElements=VariableCollection
+                         {
+                           "### LBCOR Locals ###"@5272720 : Integer;
+                           LeBitPSLongtextLine@5272721 : Record "LeBit PS Longtext Line";
+                           TempLeBitPSLongtextLine@5272722 : TEMPORARY Record "LeBit PS Longtext Line";
+                         }
+                          }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        if SalesLinesExist then begin
+                                          if GetHideValidationDialog or not GUIALLOWED then
+                                            Confirmed := true
+                                        #4..18
+                                              ItemChargeAssgntSales.SETRANGE("Document Type","Document Type");
+                                              ItemChargeAssgntSales.SETRANGE("Document No.","No.");
+                                              TransferItemChargeAssgntSalesToTemp(ItemChargeAssgntSales,TempItemChargeAssgntSales);
+                                              SalesLine.DELETEALL(true);
+                                              SalesLine.INIT;
+                                              SalesLine."Line No." := 0;
+                                        #25..69
+                                                  ATOLink.UpdateAsmFromSalesLineATOExist(SalesLine);
+                                                  TempATOLink.DELETE;
+                                                end;
+                                              until TempSalesLine.NEXT = 0;
+
+                                              ClearItemAssgntSalesFilter(TempItemChargeAssgntSales);
+                                        #76..84
+                                              Text017,ChangedFieldName);
+                                        end;
+                                        SalesLine.BlockDynamicTracking(false);
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..21
+                                              ///LBCOR01
+                                              LeBitPSLongtextLine.SETRANGE("Table ID",DATABASE::"Sales Line");
+                                              LeBitPSLongtextLine.SETRANGE("Document Type",SalesLine."Document Type");
+                                              LeBitPSLongtextLine.SETRANGE("Document No.",SalesLine."Document No.");
+                                              LeBitPSLongtextLine.SETRANGE(Position,LeBitPSLongtextLine.Position::Longtext);
+                                              LeBitTransferPSLongtextLineToTemp(LeBitPSLongtextLine,TempLeBitPSLongtextLine);
+                                              ///LBCOR01-
+                                        #22..72
+
+                                                ///LBCOR01
+                                                TempLeBitPSLongtextLine.SETRANGE("Table ID",DATABASE::"Sales Line");
+                                                TempLeBitPSLongtextLine.SETRANGE("Document Type",TempSalesLine."Document Type");
+                                                TempLeBitPSLongtextLine.SETRANGE("Document No.",TempSalesLine."Document No.");
+                                                TempLeBitPSLongtextLine.SETRANGE(Position,TempLeBitPSLongtextLine.Position::Longtext);
+                                                TempLeBitPSLongtextLine.SETRANGE("Document Line No.",TempSalesLine."Line No.");
+                                                if TempLeBitPSLongtextLine.FINDSET then repeat
+                                                  LeBitPSLongtextLine.INIT;
+                                                  LeBitPSLongtextLine := TempLeBitPSLongtextLine;
+                                                  LeBitPSLongtextLine."Document Line No." := SalesLine."Line No.";
+                                                  LeBitPSLongtextLine.INSERT;
+                                                until TempLeBitPSLongtextLine.NEXT = 0;
+                                                ///LBCOR01-
+                                        #73..87
+                                      END;
+
+                         Target=RecreateSalesLines(PROCEDURE 4) }
+    { PropertyDeletion  ;Target=ValidateShortcutDimCode(PROCEDURE 19);
+                         Property=Attributes;
+                         OriginalValue=[[External]]] }
+    { PropertyInsertion ;Target=ValidateShortcutDimCode(PROCEDURE 19);
+                         Property=Local;
+                         ModifiedValue=Yes }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        if OfficeMgt.GetContact(OfficeContact,CustomerNo) then begin
+                                          HideValidationDialog := true;
+                                          UpdateSellToCust(OfficeContact."No.");
+                                        #4..17
+                                            end;
+                                            "Sell-to Contact" := Cust.Contact;
+                                          end;
+                                        if "Sell-to Contact No." <> '' then
+                                          if OfficeContact.GET("Sell-to Contact No.") then
+                                            OfficeContact.CheckIfPrivacyBlockedGeneric;
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..20
+                                      END;
+
+                         Target=UpdateSellToCont(PROCEDURE 24) }
+    { Deletion          ;Target=UpdateBillToCont(PROCEDURE 27).Contact(Variable 1002);
+                         ChangedElements=VariableCollection
+                         {
+                           Contact@1002 : Record Contact;
+                         }
+                          }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        if Cust.GET(CustomerNo) then begin
+                                          if Cust."Primary Contact No." <> '' then
+                                            "Bill-to Contact No." := Cust."Primary Contact No."
+                                        #4..12
+                                          end;
+                                          "Bill-to Contact" := Cust.Contact;
+                                        end;
+                                        if "Bill-to Contact No." <> '' then
+                                          if Contact.GET("Bill-to Contact No.") then
+                                            Contact.CheckIfPrivacyBlockedGeneric;
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..15
+                                      END;
+
+                         Target=UpdateBillToCont(PROCEDURE 27) }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        SalesLine.SETRANGE("Document Type","Document Type");
+                                        SalesLine.SETRANGE("Document No.","No.");
+                                        SalesLine.SETRANGE("Drop Shipment",false);
+                                        SalesLine.SETRANGE(Type,SalesLine.Type::Item);
+                                        Result := true;
+                                        if SalesLine.FINDSET then
+                                          repeat
+                                        #8..17
+                                          Result := true;
+                                        if not Result then
+                                          ERROR(ShippingAdviceErr);
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..3
+                                        #5..20
+                                      END;
+
+                         Target=CheckShippingAdvice(PROCEDURE 55) }
+    { Deletion          ;Target=LookupContact(PROCEDURE 122).FilterByContactCompany(Variable 1004);
+                         ChangedElements=VariableCollection
+                         {
+                           FilterByContactCompany@1004 : Boolean;
+                         }
+                          }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        if ContactBusinessRelation.FindByRelation(ContactBusinessRelation."Link to Table"::Customer,CustomerNo) then
+                                          Contact.SETRANGE("Company No.",ContactBusinessRelation."Contact No.")
+                                        else
+                                          if "Document Type" = "Document Type"::Quote then
+                                            FilterByContactCompany := true
+                                          else
+                                            Contact.SETRANGE("Company No.",'');
+                                        if ContactNo <> '' then
+                                          if Contact.GET(ContactNo) then
+                                            if FilterByContactCompany then
+                                              Contact.SETRANGE("Company No.",Contact."Company No.");
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..3
+                                          Contact.SETRANGE("Company No.",'');
+                                        if ContactNo <> '' then
+                                          if Contact.GET(ContactNo) then ;
+                                      END;
+
+                         Target=LookupContact(PROCEDURE 122) }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        if IsCreditDocType then
+                                          exit;
+                                        if ("Bill-to Customer No." <> "Sell-to Customer No.") and Customer.GET("Bill-to Customer No.") then
+                                          if HasBillToAddress and HasDifferentBillToAddress(Customer) then
+                                            ShowModifyAddressNotification(GetModifyBillToCustomerAddressNotificationId,
+                                              ModifyCustomerAddressNotificationLbl,ModifyCustomerAddressNotificationMsg,
+                                              'CopyBillToCustomerAddressFieldsFromSalesDocument',"Bill-to Customer No.",
+                                              "Bill-to Name",FIELDNAME("Bill-to Customer No."));
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..6
+                                              UpdateAddressWithBilltoAddressTok,"Bill-to Customer No.","Bill-to Name",FIELDNAME("Bill-to Customer No."));
+                                      END;
+
+                         Target=ModifyBillToCustomerAddress(PROCEDURE 194) }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        if IsCreditDocType then
+                                          exit;
+                                        if Customer.GET("Sell-to Customer No.") and HasSellToAddress and HasDifferentSellToAddress(Customer) then
+                                          ShowModifyAddressNotification(GetModifyCustomerAddressNotificationId,
+                                            ModifyCustomerAddressNotificationLbl,ModifyCustomerAddressNotificationMsg,
+                                            'CopySellToCustomerAddressFieldsFromSalesDocument',"Sell-to Customer No.",
+                                            "Sell-to Customer Name",FIELDNAME("Sell-to Customer No."));
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..5
+                                            UpdateAddressWithSellToAddressFunctionTok,"Sell-to Customer No.","Sell-to Customer Name",FIELDNAME("Sell-to Customer No."));
+                                      END;
+
+                         Target=ModifyCustomerAddress(PROCEDURE 150) }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        if not MyNotifications.IsEnabled(NotificationID) then
+                                          exit;
+
+                                        ModifyCustomerAddressNotification.ID := NotificationID;
+                                        ModifyCustomerAddressNotification.MESSAGE := STRSUBSTNO(NotificationMsg,CustomerName);
+                                        ModifyCustomerAddressNotification.ADDACTION(NotificationLbl,CODEUNIT::"Document Notifications",NotificationFunctionTok);
+                                        ModifyCustomerAddressNotification.ADDACTION(
+                                          DontShowAgainActionLbl,CODEUNIT::"Document Notifications",'HideNotificationForCurrentUser');
+                                        ModifyCustomerAddressNotification.SCOPE := NOTIFICATIONSCOPE::LocalScope;
+                                        ModifyCustomerAddressNotification.SETDATA(FIELDNAME("Document Type"),FORMAT("Document Type"));
+                                        ModifyCustomerAddressNotification.SETDATA(FIELDNAME("No."),"No.");
+                                        ModifyCustomerAddressNotification.SETDATA(CustomerNumberFieldName,CustomerNumber);
+                                        NotificationLifecycleMgt.SendNotification(ModifyCustomerAddressNotification,RECORDID);
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..6
+                                        ModifyCustomerAddressNotification.ADDACTION(DontShowAgainActionLbl,CODEUNIT::"Document Notifications",DontShowAgainFunctionTok);
+                                        #9..13
+                                      END;
+
+                         Target=ShowModifyAddressNotification(PROCEDURE 157) }
+    { Deletion          ;Target=SetSalespersonCode(PROCEDURE 433);
+                         ChangedElements=PROCEDURECollection
+                         {
+                           LOCAL PROCEDURE SetSalespersonCode@433(SalesPersonCodeToCheck@1000 : Code[20];VAR SalesPersonCodeToAssign@1001 : Code[20]);
+                           BEGIN
+                             if SalesPersonCodeToCheck <> '' then
+                               if Salesperson.GET(SalesPersonCodeToCheck) then
+                                 if Salesperson.VerifySalesPersonPurchaserPrivacyBlocked(Salesperson) then
+                                   SalesPersonCodeToAssign := ''
+                                 else
+                                   SalesPersonCodeToAssign := SalesPersonCodeToCheck;
+                           END;
+
+                         }
+                          }
+    { Deletion          ;Target=ValidateSalesPersonOnSalesHeader(PROCEDURE 218);
+                         ChangedElements=PROCEDURECollection
+                         {
+                           PROCEDURE ValidateSalesPersonOnSalesHeader@218(SalesHeader2@1000 : Record "Sales Header";IsTransaction@1001 : Boolean;IsPostAction@1002 : Boolean);
+                           BEGIN
+                             if SalesHeader2."Salesperson Code" <> '' then
+                               if Salesperson.GET(SalesHeader2."Salesperson Code") then
+                                 if Salesperson.VerifySalesPersonPurchaserPrivacyBlocked(Salesperson) then begin
+                                   if IsTransaction then
+                                     ERROR(Salesperson.GetPrivacyBlockedTransactionText(Salesperson,IsPostAction,true));
+                                   if not IsTransaction then
+                                     ERROR(Salesperson.GetPrivacyBlockedGenericText(Salesperson,true));
+                                 end;
+                           END;
+
+                         }
+                          }
+    { Insertion         ;InsertAfter=OnAfterTransferExtendedTextForSalesLineRecreation(PROCEDURE 145);
+                         ChangedElements=PROCEDURECollection
+                         {
+                           LOCAL PROCEDURE "### LBCOR Functions ###"@5272722();
+                           BEGIN
+                           END;
+
+                           LOCAL PROCEDURE LeBitTransferPSLongtextLineToTemp@5272723(VAR LeBitPSLongtextLine@5272720 : Record "LeBit PS Longtext Line";VAR TempLeBitPSLongtextLine@5272721 : TEMPORARY Record "LeBit PS Longtext Line");
+                           BEGIN
+                             if LeBitPSLongtextLine.FINDSET then repeat
+                               TempLeBitPSLongtextLine.INIT;
+                               TempLeBitPSLongtextLine := LeBitPSLongtextLine;
+                               TempLeBitPSLongtextLine.INSERT;
+                             until LeBitPSLongtextLine.NEXT = 0;
+                             LeBitPSLongtextLine.DELETEALL;
+                           END;
+
+                         }
+                          }
+    { Deletion          ;Target=Salesperson(Variable 1932);
+                         ChangedElements=VariableCollection
+                         {
+                           Salesperson@1932 : Record "Salesperson/Purchaser";
+                         }
+                          }
+    { Insertion         ;InsertAfter=DontShowAgainActionLbl(Variable 1064);
+                         ChangedElements=VariableCollection
+                         {
+                           DontShowAgainFunctionTok@1075 : TextConst 'DEU=BenachrichtigungFÅrAktuellenBenutzerAusblenden;ENU=HideNotificationForCurrentUser';
+                           UpdateAddressWithSellToAddressFunctionTok@1079 : TextConst 'DEU=VerkaufAnDebitorAdressfelderAusVerkaufsbelegKopieren;ENU=CopySellToCustomerAddressFieldsFromSalesDocument';
+                           UpdateAddressWithBilltoAddressTok@1080 : TextConst 'DEU=RechnungAnDebitorAdressfelderAusVerkaufbelegKopieren;ENU=CopyBillToCustomerAddressFieldsFromSalesDocument';
+                         }
+                          }
+    { PropertyModification;
+                         Property=Version List;
+                         OriginalValue=NAVW111.00.00.21441,NAVDACH11.00.00.21441;
+                         ModifiedValue=NAVW111.00.00.20348,NAVDACH11.00.00.20348,LBCOR1.00 }
+  }
+  CODE
+  {
+
+    BEGIN
+    END.
+  }
+}
+

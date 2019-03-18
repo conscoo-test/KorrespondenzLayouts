@@ -1,0 +1,72 @@
+OBJECT Modification "Posted Purch. Invoice Subform"(Page 139)
+{
+  OBJECT-PROPERTIES
+  {
+    Date=20181018D;
+    Time=153255.253T;
+    Modified=true;
+    Version List=NAVW111.00.00.19846,NAVDACH11.00.00.19846,LBCOR1.00;
+  }
+  PROPERTIES
+  {
+    Target="Posted Purch. Invoice Subform"(Page 139);
+    TargetPageType=ListPart;
+  }
+  CHANGES
+  {
+    { Insertion         ;InsertAfter=AddAfter:DeferralSchedule(Action 13);
+                         ChangedElements=ActionCollection
+                         {
+                           { 5272721 ;2   ;Action    ;
+                                           Name=LeBit LongText;
+                                           CaptionML=[DEU=Langtext;
+                                                      ENU=Long text];
+                                           ApplicationArea=#Suite;
+                                           Image=Import }
+                         }
+                          }
+    { PropertyInsertion ;Target=Description(Control 6);
+                         Property=StyleExpr;
+                         ModifiedValue="LeBit Printoption StyleExpr" }
+    { Insertion         ;InsertAfter=AddFirst:Control1(Control 1);
+                         ChangedElements=ControlCollection
+                         {
+                           { 5272723;2;Field     ;
+                                       Name=LeBit Pos. No.;
+                                       SourceExpr="LeBit Pos. No.";
+                                       ImplicitType=Text30 }
+
+                           { 5272722;2;Field     ;
+                                       Name=LeBit Printoption;
+                                       SourceExpr="LeBit Printoption";
+                                       ImplicitType=Option }
+
+                         }
+                          }
+    { Insertion         ;InsertAfter=AddAfter:"Shortcut Dimension 2 Code"(Control 58);
+                         ChangedElements=ControlCollection
+                         {
+                           { 5272720;2;Field     ;
+                                       Name=LeBit Long Text;
+                                       SourceExpr="LeBit Long Text";
+                                       ImplicitType=Boolean }
+
+                         }
+                          }
+    { Insertion         ;Documentation=BEGIN
+                                         LBADD01    181018 BAN  PROPERTY   H17/0604 : IndentationColumnName und IndentationControls auf Value <>
+                                       END;
+                                        }
+    { PropertyModification;
+                         Property=Version List;
+                         OriginalValue=NAVW111.00.00.19846,NAVDACH11.00.00.19846;
+                         ModifiedValue=NAVW111.00.00.19846,NAVDACH11.00.00.19846,LBCOR1.00 }
+  }
+  CODE
+  {
+
+    BEGIN
+    END.
+  }
+}
+

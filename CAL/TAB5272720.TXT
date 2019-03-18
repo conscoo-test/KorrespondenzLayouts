@@ -1,0 +1,275 @@
+OBJECT Table 5272720 LeBit PS Longtext Line
+{
+  OBJECT-PROPERTIES
+  {
+    Date=20180403D;
+    Time=120000T;
+    Modified=true;
+    Version List=LBCOR1.00;
+  }
+  PROPERTIES
+  {
+    OnModify=BEGIN
+               if Description = '' then
+                 Type := Type::Text;
+             END;
+
+    CaptionML=[DEU=EK/VK Langtext Zeile;
+               ENU=Purch/Sales Longtext Line];
+    PasteIsValid=false;
+    LookupPageID="LeBit PS Longtext Lines";
+    DrillDownPageID="LeBit PS Longtext Lines";
+  }
+  FIELDS
+  {
+    { 1   ;   ;Table ID            ;Integer       ;TableRelation=AllObj."Object ID" WHERE ("Object Type"=CONST(Table));
+                                                   CaptionML=[DEU=Tabellen-ID;
+                                                              ENU=Table ID] }
+    { 2   ;   ;Document Type       ;Option        ;CaptionML=[DEU=Belegart;
+                                                              ENU=Document Type];
+                                                   OptionCaptionML=[DEU=Angebot,Auftrag/Bestellung,Rechnung,Gutschrift,Rahmenauftrag/Rahmenbestellung,Reklamation,Lieferschein;
+                                                                    ENU=Quote,Order,Invoice,Credit Memo,Blanket Order,Return Order,Shipment/Receipt];
+                                                   OptionString=Quote,Order,Invoice,"Credit Memo","Blanket Order","Return Order","Shipment/Receipt" }
+    { 3   ;   ;Document No.        ;Code20        ;TableRelation=IF ("Table ID"=CONST(36)) "Sales Header"."No." WHERE ("Document Type"=FIELD("Document Type"))
+                                                                 ELSE IF ("Table ID"=CONST(37)) "Sales Line"."Document No." WHERE ("Document Type"=FIELD("Document Type"))
+                                                                 ELSE IF ("Table ID"=CONST(38)) "Purchase Header"."No." WHERE ("Document Type"=FIELD("Document Type"))
+                                                                 ELSE IF ("Table ID"=CONST(39)) "Purchase Line"."Document No." WHERE ("Document Type"=FIELD("Document Type"));
+                                                   ValidateTableRelation=false;
+                                                   TestTableRelation=false;
+                                                   CaptionML=[DEU=Belegnr.;
+                                                              ENU=Document No.];
+                                                   NotBlank=true }
+    { 4   ;   ;Position            ;Option        ;CaptionML=[DEU=Position;
+                                                              ENU=Position];
+                                                   OptionCaptionML=[DEU=Kopf,Fuá,Langtext;
+                                                                    ENU=Header,Footer,Longtext];
+                                                   OptionString=Header,Footer,Longtext }
+    { 5   ;   ;Document Line No.   ;Integer       ;TableRelation=IF ("Table ID"=CONST(37)) "Sales Line"."Line No." WHERE ("Document Type"=FIELD("Document Type"),
+                                                                                                                          "Document No."=FIELD("Document No."))
+                                                                                                                          ELSE IF ("Table ID"=CONST(39)) "Purchase Line"."Line No." WHERE ("Document Type"=FIELD("Document Type"),
+                                                                                                                                                                                           "Document No."=FIELD("Document No."));
+                                                   CaptionML=[DEU=Beleg Zeilennr.;
+                                                              ENU=Document Line No.] }
+    { 6   ;   ;Line No.            ;Integer       ;CaptionML=[DEU=Zeilennr.;
+                                                              ENU=Line No.] }
+    { 10  ;   ;Type                ;Option        ;OnValidate=BEGIN
+                                                                case Type of
+                                                                  Type::Text,
+                                                                  Type::"Text + Line break":
+                                                                    if xRec.Type = xRec.Type::"New Page" then begin
+                                                                      "No." := '';
+                                                                      Description := '';
+                                                                    end;
+                                                                  Type::"New Page":
+                                                                    begin
+                                                                      "No." := '';
+                                                                      Description := Text001;
+                                                                    end;
+                                                                end;
+                                                              END;
+
+                                                   CaptionML=[DEU=Art;
+                                                              ENU=Type];
+                                                   OptionCaptionML=[DEU=Text,Neue Seite, Text + Zeilenumbruch;
+                                                                    ENU=Text,New Page,Text + Line break];
+                                                   OptionString=Text,"New Page","Text + Line break" }
+    { 11  ;   ;No.                 ;Code20        ;TableRelation=IF (Type=CONST(Text)) "Standard Text";
+                                                   OnValidate=BEGIN
+                                                                case Type of
+                                                                  Type::Text,
+                                                                  Type::"Text + Line break":
+                                                                    begin
+                                                                      StandardTextRec.GET("No.");
+                                                                      Description := StandardTextRec.Description;
+                                                                    end;
+                                                                end;
+                                                              END;
+
+                                                   CaptionML=[DEU=Nr.;
+                                                              ENU=No.] }
+    { 12  ;   ;Description         ;Text120       ;OnValidate=BEGIN
+                                                                if Type = Type::"New Page" then
+                                                                  ERROR(Text002);
+                                                                if Description = '' then
+                                                                  Type := Type::Text;
+                                                              END;
+
+                                                   CaptionML=[DEU=Beschreibung;
+                                                              ENU=Description] }
+    { 13  ;   ;Text                ;BLOB          ;CaptionML=[DEU=Text;
+                                                              ENU=Text] }
+  }
+  KEYS
+  {
+    {    ;"Table ID","Document Type","Document No.",Position,"Document Line No.","Line No.";
+                                                   Clustered=true }
+  }
+  FIELDGROUPS
+  {
+  }
+  CODE
+  {
+    VAR
+      StandardTextRec@5272720 : Record "Standard Text";
+      Text001@5272723 : TextConst 'DEU=--- Seitenwechsel ---;ENU=--- New Page ---';
+      Text002@5272722 : TextConst 'DEU=Sie k”nnen diesen Text nicht „ndern.;ENU=You can not change this text.';
+      Text003@5272721 : TextConst 'DEU=Sie k”nnen einen %1 nicht umbenennen.;ENU=You cannot rename a %1.';
+
+    PROCEDURE DBOpenMemo@5272720();
+    VAR
+      TempPSLongtextLine@5272720 : TEMPORARY Record "LeBit PS Longtext Line";
+      RecRef@5272721 : RecordRef;
+      i@5272722 : Integer;
+      PSLongtextLine@5272723 : Record "LeBit PS Longtext Line";
+      text@5272724 : Text;
+      DBTextEdit@5272725 : Page DBTextEdit;
+      c@5272726 : Integer;
+      tempMemo@5272727 : TEMPORARY Record "LeBit PS Longtext Line";
+      delimiter@5272728 : Text;
+      LineNo@5272729 : Integer;
+      filled@5272730 : Boolean;
+    BEGIN
+      if "Document No." = '' then begin
+        PSLongtextLine.SETFILTER("Table ID",Rec.GETFILTER("Table ID"));
+        PSLongtextLine.SETFILTER("Document Type",Rec.GETFILTER("Document Type"));
+        PSLongtextLine.SETFILTER("Document No.",Rec.GETFILTER("Document No."));
+        PSLongtextLine.SETFILTER(Position,Rec.GETFILTER(Position));
+        PSLongtextLine.SETFILTER("Document Line No.",Rec.GETFILTER("Document Line No."));
+      end else begin
+        PSLongtextLine.SETRANGE("Table ID","Table ID");
+        PSLongtextLine.SETRANGE("Document Type","Document Type");
+        PSLongtextLine.SETRANGE("Document No.","Document No.");
+        PSLongtextLine.SETRANGE(Position,Position);
+        PSLongtextLine.SETRANGE("Document Line No.","Document Line No.");
+      end;
+
+      delimiter[1] := 13;
+      delimiter[2] := 10;
+
+      if PSLongtextLine.FINDSET then repeat
+        case PSLongtextLine.Type of
+          PSLongtextLine.Type::"Text + Line break": text += (PSLongtextLine.Description + delimiter);
+        else
+          text += PSLongtextLine.Description;
+        end;
+      until PSLongtextLine.NEXT = 0;
+
+      DBTextEdit.SetText(text);
+
+      if DBTextEdit.RUNMODAL = ACTION::OK then begin
+        PSLongtextLine.DELETEALL;
+        text := DBTextEdit.GetText;
+        for i := 1 to STRLEN(text) do begin
+          c := text[i];
+        end;
+        CLEAR(delimiter);
+        SplitText(text,delimiter,tempMemo,120);
+        if tempMemo.FINDSET then repeat
+          if tempMemo.Description <> '' then
+            filled := true;
+
+        until tempMemo.NEXT = 0;
+        if filled then begin
+          if tempMemo.FINDSET then repeat
+            LineNo += 10000;
+            PSLongtextLine.INIT;
+            {
+            PSLongtextLine."Table ID" := "Table ID";
+            PSLongtextLine."Document Type" := "Document Type";
+            PSLongtextLine."Document No." := "Document No.";
+            PSLongtextLine.Position := Position;
+            PSLongtextLine."Document Line No." := "Document Line No.";
+            }
+            EVALUATE(PSLongtextLine."Table ID", Rec.GETFILTER("Table ID"));
+            EVALUATE(PSLongtextLine."Document Type", Rec.GETFILTER("Document Type"));
+            PSLongtextLine."Document No." := Rec.GETFILTER("Document No.");
+            EVALUATE(PSLongtextLine.Position, GETFILTER(Position));
+            EVALUATE(PSLongtextLine."Document Line No.", Rec.GETFILTER("Document Line No."));
+
+            PSLongtextLine.Description := tempMemo.Description;
+            PSLongtextLine."Line No." := LineNo;
+            PSLongtextLine.Type := tempMemo.Type;
+            PSLongtextLine.INSERT;
+          until tempMemo.NEXT = 0;
+          if PSLongtextLine.Type <> PSLongtextLine.Type::"New Page" then begin
+            PSLongtextLine.Type := PSLongtextLine.Type::Text;
+            PSLongtextLine.MODIFY;
+          end;
+        end;
+      end;
+    END;
+
+    LOCAL PROCEDURE SplitText@5272721(Text@5272723 : Text;Delimiter@5272722 : Text;VAR SplitBuffer@5272721 : Record "LeBit PS Longtext Line";maxlen@5272720 : Integer);
+    VAR
+      SplitString@5272736 : DotNet "'mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'.System.String";
+      NewString@5272735 : DotNet "'mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'.System.String";
+      SplitArray@5272734 : DotNet "'mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'.System.Array";
+      DelimiterArray@5272733 : DotNet "'mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'.System.Array";
+      TrimArray@5272732 : DotNet "'mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'.System.Array";
+      i@5272731 : Integer;
+      Char@5272730 : Char;
+      ende@5272729 : Boolean;
+      newstring1@5272728 : Text;
+      LineNo@5272727 : Integer;
+      l@5272726 : Integer;
+      NewLen@5272725 : Integer;
+      TestString@5272724 : Text;
+    BEGIN
+      SplitString := Text;
+      Char := Delimiter[1];
+      DelimiterArray := DelimiterArray.CreateInstance(GETDOTNETTYPE(Char),4);
+
+      DelimiterArray.SetValue(Char,0);
+      Char := 13;
+      DelimiterArray.SetValue(Char,3);
+
+      TrimArray := TrimArray.CreateInstance(GETDOTNETTYPE(Char),4);
+      Char := ' ';
+      TrimArray.SetValue(Char,0);
+      Char := '"';
+      TrimArray.SetValue(Char,1);
+      Char := 10;
+      TrimArray.SetValue(Char,2);
+      Char := 13;
+      TrimArray.SetValue(Char,3);
+
+      //SplitArray := SplitArray.CreateInstance(getdotnettype(text),0);
+      SplitArray := SplitString.Split(DelimiterArray);
+      for i := 0 to SplitArray.Length - 1 do begin
+        //SplitBuffer.Code := FORMAT(i);
+        NewString := SplitArray.GetValue(i);
+        NewString := NewString.Trim(TrimArray);
+        ende := false;
+        repeat
+          LineNo += 1;
+          SplitBuffer.INIT;
+          SplitBuffer."Line No." := LineNo;
+          l := STRLEN(NewString);
+          if STRLEN(NewString) > maxlen then begin
+            NewLen := maxlen;
+            TestString := NewString;
+            while (not (TestString[NewLen] in[' ','.','!','?',';',',',':','"'])) and (NewLen <> 1)  do begin
+              NewLen -= 1;
+            end;
+            if NewLen = 1 then
+              NewLen := maxlen;
+            newstring1 := COPYSTR(NewString,1,NewLen);
+            SplitBuffer.Description := newstring1;
+            NewString := COPYSTR(NewString,NewLen + 1);
+
+          end else begin
+            SplitBuffer.Description := NewString;
+            SplitBuffer.Type := SplitBuffer.Type::"Text + Line break";
+            ende := true;
+
+          end;
+          SplitBuffer.INSERT;
+        until ende;
+      end;
+    END;
+
+    BEGIN
+    END.
+  }
+}
+

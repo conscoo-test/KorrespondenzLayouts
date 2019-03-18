@@ -1,0 +1,27 @@
+{
+  "id": "ae7eef02-bb60-436c-856d-d815600787b0",
+  "name": "LIS365 Correspondence Layouts",
+  "publisher": "LBT LeBit Software and Consult GmbH",
+  "brief": "",
+  "description": "",
+  "version": "0.0.0.1",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "capabilities": [],
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "13.0.0.0",
+  "application": "13.0.0.0",
+  "idRange": {
+    "from": 5272720,
+    "to": 5272810
+  },
+  "runtime": "2.3"
+  , "features": [
+      "TranslationFile"
+  ]
+  , "target": "Internal"
+}

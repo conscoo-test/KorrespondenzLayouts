@@ -1,0 +1,53 @@
+OBJECT Table 5272726 Lebit Source Setup
+{
+  OBJECT-PROPERTIES
+  {
+    Date=20190102D;
+    Time=085041.533T;
+    Modified=true;
+    Version List=LBCOR1.00;
+  }
+  PROPERTIES
+  {
+    CaptionML=[DEU=Herkunft Einrichtung;
+               ENU=Lebit Source Setup];
+  }
+  FIELDS
+  {
+    { 1   ;   ;Type                ;Option        ;DataClassification=ToBeClassified;
+                                                   CaptionML=[DEU=Art;
+                                                              ENU=Type];
+                                                   OptionCaptionML=[DEU=Verkauf,Einkauf;
+                                                                    ENU=Sales,Purchase];
+                                                   OptionString=Sales,Purchase }
+    { 2   ;   ;Report Type         ;Option        ;DataClassification=ToBeClassified;
+                                                   CaptionML=[DEU=Bericht Art;
+                                                              ENU=Report Type];
+                                                   OptionCaptionML=[DEU=Allgemein,Verkauf - Angebot,Verkauf - Auftrag,Verkauf - Proformarechnung,Verkauf Rahmenauftrag,Einkauf - Anfrage,Einkauf - Bestellung,Einkauf Rahmenbestellung;
+                                                                    ENU=General,Sales Quote,Sales Order,Sales Pro Forma Inv,Blanket Sales Order,Purchase Quote,Purchase Order,Blanket Purchase Order];
+                                                   OptionString=General,"Sales Quote","Sales Order","Sales Pro Forma Inv","Blanket Sales Order","Purchase Quote","Purchase Order","Blanket Purchase Order" }
+    { 3   ;   ;Source Type         ;Option        ;DataClassification=ToBeClassified;
+                                                   CaptionML=[DEU=Herkunft Art;
+                                                              ENU=Source Type];
+                                                   OptionCaptionML=[DEU=Standard,Rech. an Debitor,Verk. an Debitor,Zahlung an Kreditor,Eink. von Kreditor;
+                                                                    ENU=Default,Bill-to Customer,Sell-to Customer,Pay-to Vendor,Buy-from Vendor];
+                                                   OptionString=Default,"Bill-to Customer","Sell-to Customer","Pay-to Vendor","Buy-from Vendor" }
+  }
+  KEYS
+  {
+    {    ;Type,"Report Type"                      ;Clustered=true }
+  }
+  FIELDGROUPS
+  {
+  }
+  CODE
+  {
+
+    BEGIN
+    {
+      LBIS00     211218 MH   ERSTELLT   H19/0780
+    }
+    END.
+  }
+}
+

@@ -1,0 +1,54 @@
+OBJECT Page 5272721 LeBit Posted PS Longtext Lines
+{
+  OBJECT-PROPERTIES
+  {
+    Date=20180315D;
+    Time=120000T;
+    Modified=true;
+    Version List=LBCOR1.00;
+  }
+  PROPERTIES
+  {
+    CaptionML=[DEU=Gebuchte EK/VK Langtext Zeilen;
+               ENU=Posted PS Longtext Lines];
+    InsertAllowed=false;
+    DeleteAllowed=false;
+    ModifyAllowed=false;
+    SourceTable="LeBit Posted PS Longtext Line";
+    PageType=List;
+  }
+  CONTROLS
+  {
+    { 5272724;0;Container ;
+                Name=Control5272724;
+                ContainerType=ContentArea }
+
+    { 5272723;1;Group     ;
+                Name=Control5272723;
+                Editable=FALSE;
+                GroupType=Repeater }
+
+    { 5272722;2;Field     ;
+                Name=No.;
+                SourceExpr="No.";
+                ImplicitType=Code20 }
+
+    { 5272721;2;Field     ;
+                Name=Description;
+                SourceExpr=Description;
+                ImplicitType=Text120 }
+
+    { 5272720;2;Field     ;
+                Name=Type;
+                SourceExpr=Type;
+                ImplicitType=Option }
+
+  }
+  CODE
+  {
+
+    BEGIN
+    END.
+  }
+}
+

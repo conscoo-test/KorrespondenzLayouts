@@ -1,0 +1,340 @@
+OBJECT Modification "Sales Line"(Table 37)
+{
+  OBJECT-PROPERTIES
+  {
+    Date=20180628D;
+    Time=093703.230T;
+    Modified=true;
+    Version List=NAVW111.00,LBCOR1.00;
+  }
+  PROPERTIES
+  {
+    Target="Sales Line"(Table 37);
+  }
+  CHANGES
+  {
+    { Insertion         ;Documentation=BEGIN
+                                         LBCOR01   140518 MH   CODE       H17/0604 : Proforma mit MwSt Klauseln
+                                       END;
+                                        }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        if Type = Type::" " then
+                                          exit;
+
+                                        case Type of
+                                          Type::Item:
+                                            begin
+                                        #7..46
+                                                end;
+                                            end;
+                                          else
+                                            if ("No." = '') or (CurrFieldNo = FIELDNO(Description)) then
+                                              if FindRecordMgt.FindRecordByDescription(ReturnValue,Type,Description) = 1 then begin
+                                                CurrFieldNo := FIELDNO("No.");
+                                                VALIDATE("No.",COPYSTR(ReturnValue,1,MAXSTRLEN("No.")));
+                                        #54..57
+                                             ["Document Type"::Order,"Document Type"::Invoice,"Document Type"::Quote,"Document Type"::"Credit Memo"]
+                                          then
+                                            ERROR(STRSUBSTNO(CannotFindDescErr,Type,Description));
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..3
+                                        if (Type = Type::"G/L Account") and (not ApplicationAreaSetup.IsFoundationEnabled) then
+                                          exit;
+
+                                        #4..49
+                                            if "No." = '' then
+                                        #51..60
+                                      END;
+
+                         Target=Description(Field 11).OnValidate }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        TESTFIELD("Quantity Shipped",0);
+                                        if "Blanket Order Line No." <> 0 then begin
+                                          SalesLine2.GET("Document Type"::"Blanket Order","Blanket Order No.","Blanket Order Line No.");
+                                          SalesLine2.TESTFIELD(Type,Type);
+                                          SalesLine2.TESTFIELD("No.","No.");
+                                          SalesLine2.TESTFIELD("Bill-to Customer No.","Bill-to Customer No.");
+                                          SalesLine2.TESTFIELD("Sell-to Customer No.","Sell-to Customer No.");
+                                          if "Drop Shipment" then begin
+                                            SalesLine2.TESTFIELD("Variant Code","Variant Code");
+                                            SalesLine2.TESTFIELD("Location Code","Location Code");
+                                            SalesLine2.TESTFIELD("Unit of Measure Code","Unit of Measure Code");
+                                          end else begin
+                                            VALIDATE("Variant Code",SalesLine2."Variant Code");
+                                            VALIDATE("Location Code",SalesLine2."Location Code");
+                                            VALIDATE("Unit of Measure Code",SalesLine2."Unit of Measure Code");
+                                          end;
+                                          VALIDATE("Unit Price",SalesLine2."Unit Price");
+                                          VALIDATE("Line Discount %",SalesLine2."Line Discount %");
+                                        end;
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..7
+                                          VALIDATE("Variant Code",SalesLine2."Variant Code");
+                                          VALIDATE("Location Code",SalesLine2."Location Code");
+                                          VALIDATE("Unit of Measure Code",SalesLine2."Unit of Measure Code");
+                                        #17..19
+                                      END;
+
+                         Target="Blanket Order Line No."(Field 98).OnValidate }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        GetSalesHeader;
+                                        "Sell-to Customer No." := SalesHeader."Sell-to Customer No.";
+                                        ReturnedCrossRef.INIT;
+                                        if "Cross-Reference No." <> '' then begin
+                                          DistIntegration.ICRLookupSalesItem(Rec,ReturnedCrossRef,CurrFieldNo <> 0);
+                                          if "No." <> ReturnedCrossRef."Item No." then
+                                            VALIDATE("No.",ReturnedCrossRef."Item No.");
+                                          if ReturnedCrossRef."Variant Code" <> '' then
+                                        #9..21
+
+                                        UpdateUnitPrice(FIELDNO("Cross-Reference No."));
+                                        UpdateICPartner;
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..4
+                                          DistIntegration.ICRLookupSalesItem(Rec,ReturnedCrossRef);
+                                        #6..24
+                                      END;
+
+                         Target="Cross-Reference No."(Field 5705).OnValidate }
+    { Insertion         ;InsertAfter="Price description"(Field 7004);
+                         ChangedElements=FieldCollection
+                         {
+                           { 5272720;;LeBit Long Text     ;Boolean       ;FieldClass=FlowField;
+                                                                          CalcFormula=Exist("LeBit PS Longtext Line" WHERE ("Table ID"=CONST(37),
+                                                                                                                            "Document Type"=FIELD("Document Type"),
+                                                                                                                            "Document No."=FIELD("Document No."),
+                                                                                                                            Position=CONST(Longtext),
+                                                                                                                            "Document Line No."=FIELD("Line No.")));
+                                                                          CaptionML=[DEU=Langtext;
+                                                                                     ENU=Long Text];
+                                                                          Editable=false }
+                           { 5272721;;LeBit Printoption   ;Option        ;OnValidate=VAR
+                                                                                       Printoption@5272720 : 'Standard,Title,,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total"';
+                                                                                       LeBitCorrespDocMgt@5272721 : Codeunit "LeBit Corresp. Doc. Mgt";
+                                                                                     BEGIN
+                                                                                       if (("LeBit Printoption" = "LeBit Printoption"::Alternative) or
+                                                                                         ("LeBit Printoption" = "LeBit Printoption"::Optional)) and
+                                                                                         ("No." <> '')
+                                                                                       then begin
+                                                                                         VALIDATE(Quantity,0);
+                                                                                         VALIDATE("Unit Price");
+                                                                                       end;
+
+                                                                                       if "LeBit Printoption" = "LeBit Printoption"::"New Page" then begin
+                                                                                         if "No." <> '' then
+                                                                                           ERROR(Text5272722);
+                                                                                         Printoption := "LeBit Printoption";
+                                                                                         VALIDATE(Type,Type::" ");
+                                                                                         Description := Text5272723;
+                                                                                         "LeBit Printoption" := Printoption;
+                                                                                       end;
+
+                                                                                       if "LeBit Printoption" in ["LeBit Printoption"::"Begin Total",
+                                                                                                                  "LeBit Printoption"::"End Total",
+                                                                                                                  "LeBit Printoption"::Title]
+                                                                                       then begin
+                                                                                         Printoption := "LeBit Printoption";
+                                                                                         VALIDATE(Type,Type::" ");
+                                                                                         "LeBit Printoption" := Printoption;
+                                                                                       end;
+
+                                                                                       "LeBit Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr("LeBit Printoption");
+                                                                                     END;
+
+                                                                          CaptionML=[DEU=Druckauswahl;
+                                                                                     ENU=Printoption];
+                                                                          OptionCaptionML=[DEU=Normal,šberschrift,,Preis unsichtbar,Zeile unsichtbar,Alternativposition,Bedarfsposition,Seitenwechsel,Von Summe,Bis Summe;
+                                                                                           ENU=Standard,Title,,Price Invisible,Line Invisible,Alternative,Optional,New Page,Begin Total,End Total];
+                                                                          OptionString=Standard,Title,,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total" }
+                           { 5272722;;LeBit Summation     ;Text250       ;TableRelation="Sales Line"."Line No." WHERE ("Document Type"=FIELD("Document Type"),
+                                                                                                                       "Document No."=FIELD("Document No."));
+                                                                          OnValidate=BEGIN
+                                                                                       if Type <> 9 then
+                                                                                         FIELDERROR(Type);
+                                                                                       CALCFIELDS("LeBit Balance");
+                                                                                     END;
+
+                                                                          ValidateTableRelation=false;
+                                                                          TestTableRelation=false;
+                                                                          CaptionML=[DEU=Zusammenz„hlung;
+                                                                                     ENU=Summation] }
+                           { 5272723;;LeBit Balance       ;Decimal       ;FieldClass=FlowField;
+                                                                          CalcFormula=Sum("Sales Line"."Line Amount" WHERE ("Document Type"=FIELD("Document Type"),
+                                                                                                                            "Document No."=FIELD("Document No."),
+                                                                                                                            "Line No."=FIELD(FILTER("LeBit Summation"))));
+                                                                          TableRelation="Sales Line"."Line No." WHERE ("Document Type"=FIELD("Document Type"),
+                                                                                                                       "Document No."=FIELD("Document No."));
+                                                                          CaptionML=[DEU=Saldo;
+                                                                                     ENU=Balance];
+                                                                          Editable=false;
+                                                                          AutoFormatType=1 }
+                           { 5272724;;LeBit Pos. No.      ;Text30        ;CaptionML=[DEU=Positionsnummer;
+                                                                                     ENU=Pos.No.] }
+                           { 5272725;;LeBit Indentation   ;Integer       ;CaptionML=[DEU=Einrckung;
+                                                                                     ENU=Indentation];
+                                                                          MinValue=0 }
+                           { 5272726;;LeBit Source Document Line No.;Integer;
+                                                                          CaptionML=[DEU=Herkunft Belegzeilennummer;
+                                                                                     ENU=Source Document Line No.] }
+                           { 5272727;;LeBit Printoption StyleExpr;Text30 ;DataClassification=ToBeClassified }
+                         }
+                          }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        Res.GET("No.");
+                                        Res.CheckResourcePrivacyBlocked(false);
+                                        Res.TESTFIELD(Blocked,false);
+                                        Res.TESTFIELD("Gen. Prod. Posting Group");
+                                        Description := Res.Name;
+                                        #6..12
+                                        FindResUnitCost;
+                                        InitDeferralCode;
+                                        OnAfterAssignResourceValues(Rec,Res);
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        Res.GET("No.");
+                                        #3..15
+                                      END;
+
+                         Target=CopyFromResource(PROCEDURE 146) }
+    { PropertyDeletion  ;Target=GetCaptionClass(PROCEDURE 34);
+                         Property=Attributes;
+                         OriginalValue=[[External]]] }
+    { PropertyInsertion ;Target=GetCaptionClass(PROCEDURE 34);
+                         Property=Local;
+                         ModifiedValue=Yes }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        LineWasModified := false;
+                                        if QtyType = QtyType::Shipping then
+                                          exit;
+                                        #4..136
+                                              end;
+                                            until NEXT = 0;
+                                        end;
+
+                                        OnAfterUpdateVATOnLines(SalesHeader,SalesLine,VATAmountLine,QtyType);
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..139
+                                      END;
+
+                         Target=UpdateVATOnLines(PROCEDURE 36) }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        Currency.Initialize(SalesHeader."Currency Code");
+
+                                        VATAmountLine.DELETEALL;
+                                        #4..15
+                                                  "VAT %" := 0;
+                                                if not VATAmountLine.GET(
+                                                     "VAT Identifier","VAT Calculation Type","Tax Group Code",false,"Line Amount" >= 0)
+                                                then
+                                                  VATAmountLine.InsertNewLine(
+                                                    "VAT Identifier","VAT Calculation Type","Tax Group Code",false,"VAT %","Line Amount" >= 0,false);
+
+                                                case QtyType of
+                                                  QtyType::General:
+                                        #25..97
+                                            VATAmountLine."Calculated VAT Amount" += TotalVATAmount;
+                                            VATAmountLine.MODIFY;
+                                          end;
+
+                                        OnAfterCalcVATAmountLines(SalesHeader,SalesLine,VATAmountLine,QtyType);
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..18
+                                                ///LBCOR01
+                                                //THEN
+                                                then begin
+                                                ///LBCOR01-
+                                                  VATAmountLine.InsertNewLine(
+                                                    "VAT Identifier","VAT Calculation Type","Tax Group Code",false,"VAT %","Line Amount" >= 0,false);
+                                                ///LBCOR01
+                                                  VATAmountLine."VAT Clause Code" := "VAT Clause Code";
+                                                end;
+                                                ///LBCOR01-
+                                        #22..100
+                                      END;
+
+                         Target=CalcVATAmountLines(PROCEDURE 35) }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        if "Line Discount %" = 100 then
+                                          exit(0);
+
+                                        GetSalesHeader;
+                                        if "Prepmt Amt to Deduct" = 0 then
+                                          LineAmount := ROUND(QtyToHandle * "Unit Price",Currency."Amount Rounding Precision")
+                                        else begin
+                                          LineAmount := ROUND(Quantity * "Unit Price",Currency."Amount Rounding Precision");
+                                          LineAmount := ROUND(QtyToHandle * LineAmount / Quantity,Currency."Amount Rounding Precision");
+                                        end;
+                                        LineDiscAmount :=
+                                          ROUND(
+                                            LineAmount * "Line Discount %" / 100,Currency."Amount Rounding Precision");
+                                        exit(LineAmount - LineDiscAmount);
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..4
+                                        LineAmount := ROUND(QtyToHandle * "Unit Price",Currency."Amount Rounding Precision");
+                                        #11..14
+                                      END;
+
+                         Target=GetLineAmountToHandle(PROCEDURE 117) }
+    { Deletion          ;Target=OnAfterCalcVATAmountLines(PROCEDURE 170);
+                         ChangedElements=PROCEDURECollection
+                         {
+                           [Integration]
+                           LOCAL PROCEDURE OnAfterCalcVATAmountLines@170(VAR SalesHeader@1003 : Record "Sales Header";VAR SalesLine@1002 : Record "Sales Line";VAR VATAmountLine@1001 : Record "VAT Amount Line";QtyType@1000 : 'General,Invoicing,Shipping');
+                           BEGIN
+                           END;
+
+                         }
+                          }
+    { Deletion          ;Target=OnAfterUpdateVATOnLines(PROCEDURE 162);
+                         ChangedElements=PROCEDURECollection
+                         {
+                           [Integration]
+                           LOCAL PROCEDURE OnAfterUpdateVATOnLines@162(VAR SalesHeader@1002 : Record "Sales Header";VAR SalesLine@1001 : Record "Sales Line";VAR VATAmountLine@1000 : Record "VAT Amount Line";QtyType@1003 : 'General,Invoicing,Shipping');
+                           BEGIN
+                           END;
+
+                         }
+                          }
+    { PropertyDeletion  ;Target=OnAfterCreateDimTableIDs(PROCEDURE 164).TableID(Parameter 1003);
+                         Property=AsVar;
+                         OriginalValue=Yes }
+    { PropertyDeletion  ;Target=OnAfterCreateDimTableIDs(PROCEDURE 164).No(Parameter 1002);
+                         Property=AsVar;
+                         OriginalValue=Yes }
+    { Insertion         ;InsertAfter=CommentLbl(Variable 1046);
+                         ChangedElements=VariableCollection
+                         {
+                           Text5272720@5272720 : TextConst 'DEU=Bei Art "%1" kann bei Druckauswahl nur "Summe" und "Zeile unsichtbar" genutzt werden.;ENU=If type is %1 then you only can use printoption "Total" and "Line Invisible".';
+                           Text5272721@5272721 : TextConst 'DEU=Bei Art "%1" kann bei Druckauswahl nur "šberschrift" und "Zeile unsichtbar" genutzt werden.;ENU=If type is %1 then you only can use printoption "Title" and "Line Invisible".';
+                           Text5272722@5272722 : TextConst 'DEU=Seitenwechsel k”nnen nur in leeren Zeilen vereinbart werden.;ENU=New Pages can only be set in blank lines.';
+                           Text5272723@5272723 : TextConst 'DEU=--- Seitenwechsel ---;ENU=--- New Page ---;DEC=--- Seitenwechsel ---';
+                           Text5272724@5272724 : TextConst 'DEU=Von Summe;ENU=Begin Total';
+                           Text5272725@5272725 : TextConst 'DEU=Bis Summe;ENU=End Total';
+                         }
+                          }
+    { PropertyModification;
+                         Property=Version List;
+                         OriginalValue=NAVW111.00.00.21441;
+                         ModifiedValue=NAVW111.00,LBCOR1.00 }
+  }
+  CODE
+  {
+
+    BEGIN
+    END.
+  }
+}
+

@@ -1,0 +1,45 @@
+OBJECT Modification "Item Attributes"(Page 7500)
+{
+  OBJECT-PROPERTIES
+  {
+    Date=20180315D;
+    Time=120000T;
+    Modified=true;
+    Version List=NAVW111.00.00.19846,LBCOR1.00;
+  }
+  PROPERTIES
+  {
+    Target="Item Attributes"(Page 7500);
+    TargetPageType=List;
+  }
+  CHANGES
+  {
+    { Insertion         ;InsertAfter=AddAfter:ItemAttributeValues(Action 20);
+                         ChangedElements=ActionCollection
+                         {
+                           { 5272721 ;1   ;ActionGroup;
+                                           Name=correspondence documents;
+                                           CaptionML=[DEU=Komfort Korrespondenzbelege;
+                                                      ENU=correspondence documents] }
+                           { 5272720 ;2   ;Action    ;
+                                           Name=Report - Attribute Setup;
+                                           CaptionML=[DEU=Bericht - Attribute Einrichtung;
+                                                      ENU=Report - Attribute Setup];
+                                           RunObject=Page "LeBit Report - Attribute Setup";
+                                           RunPageView=SORTING("Report-Type","Report-ID",Position,Priority);
+                                           Image=Setup }
+                         }
+                          }
+    { PropertyModification;
+                         Property=Version List;
+                         OriginalValue=NAVW111.00.00.19846;
+                         ModifiedValue=NAVW111.00.00.19846,LBCOR1.00 }
+  }
+  CODE
+  {
+
+    BEGIN
+    END.
+  }
+}
+

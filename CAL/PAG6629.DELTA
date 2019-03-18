@@ -1,0 +1,58 @@
+OBJECT Modification "Sales Return List Archive"(Page 6629)
+{
+  OBJECT-PROPERTIES
+  {
+    Date=20180315D;
+    Time=120000T;
+    Modified=true;
+    Version List=NAVW111.00.00.19846,LBCOR1.00;
+  }
+  PROPERTIES
+  {
+    Target="Sales Return List Archive"(Page 6629);
+    TargetPageType=List;
+  }
+  CHANGES
+  {
+    { Insertion         ;InsertAfter=AddAfter:"<Action1102601000>"(Action 7);
+                         ChangedElements=ActionCollection
+                         {
+                           { 5272722 ;1   ;ActionGroup;
+                                           Name=correspondence documents;
+                                           CaptionML=[DEU=Komfort Korrespondenzbelege;
+                                                      ENU=correspondence documents] }
+                           { 5272720 ;2   ;Action    ;
+                                           Name=Header Text;
+                                           CaptionML=[DEU=Kopf&text;
+                                                      ENU=Header Text];
+                                           Image=BeginningText;
+                                           OnAction=VAR
+                                                      Position@5077900 : 'Header,Footer,Longtext';
+                                                    BEGIN
+                                                    END;
+                                                     }
+                           { 5272721 ;2   ;Action    ;
+                                           Name=&Footer Text;
+                                           CaptionML=[DEU=&Fuátext;
+                                                      ENU=&Footer Text];
+                                           Image=EndingText;
+                                           OnAction=VAR
+                                                      Position@5077900 : 'Header,Footer,Longtext';
+                                                    BEGIN
+                                                    END;
+                                                     }
+                         }
+                          }
+    { PropertyModification;
+                         Property=Version List;
+                         OriginalValue=NAVW111.00.00.19846;
+                         ModifiedValue=NAVW111.00.00.19846,LBCOR1.00 }
+  }
+  CODE
+  {
+
+    BEGIN
+    END.
+  }
+}
+

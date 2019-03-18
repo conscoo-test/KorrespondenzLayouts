@@ -1,0 +1,39 @@
+OBJECT Modification "Purchases & Payables Setup"(Table 312)
+{
+  OBJECT-PROPERTIES
+  {
+    Date=20180315D;
+    Time=120000T;
+    Modified=true;
+    Version List=NAVW111.00,NAVDACH11.00,LBCOR1.00;
+  }
+  PROPERTIES
+  {
+    Target="Purchases & Payables Setup"(Table 312);
+  }
+  CHANGES
+  {
+    { Insertion         ;InsertAfter="Default Del. Rem. Date Field"(Field 5005272);
+                         ChangedElements=FieldCollection
+                         {
+                           { 5272720;;Logo Position on Documents;Option  ;CaptionML=[DEU=Logoposition auf Belegen;
+                                                                                     ENU=Logo Position on Documents];
+                                                                          OptionCaptionML=[DEU=Kein Logo,Links,Mitte,Rechts;
+                                                                                           ENU=No Logo,Left,Center,Right];
+                                                                          OptionString="No Logo",Left,Center,Right;
+                                                                          Description=LBCOR }
+                         }
+                          }
+    { PropertyModification;
+                         Property=Version List;
+                         OriginalValue=NAVW111.00,NAVDACH11.00;
+                         ModifiedValue=NAVW111.00,NAVDACH11.00,LBCOR1.00 }
+  }
+  CODE
+  {
+
+    BEGIN
+    END.
+  }
+}
+

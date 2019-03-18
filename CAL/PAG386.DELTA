@@ -1,0 +1,54 @@
+OBJECT Modification "Extended Text"(Page 386)
+{
+  OBJECT-PROPERTIES
+  {
+    Date=20180628D;
+    Time=112938.687T;
+    Modified=true;
+    Version List=NAVW111.00.00.19846,NAVDACH11.00.00.19846,LBCOR1.00;
+  }
+  PROPERTIES
+  {
+    Target="Extended Text"(Page 386);
+    TargetPageType=ListPlus;
+  }
+  CHANGES
+  {
+    { Insertion         ;InsertAfter=AddAfter:"Ending Date"(Control 6);
+                         ChangedElements=ControlCollection
+                         {
+                           { 5272721;2;Field     ;
+                                       Name=LeBit Textchoice;
+                                       SourceExpr="LeBit Textchoice";
+                                       ImplicitType=Option }
+
+                         }
+                          }
+    { Insertion         ;InsertAfter=AddAfter:Control25(Control 25);
+                         ChangedElements=ControlCollection
+                         {
+                           { 5272720;1;Part      ;
+                                       Name=LeBit LongTextSUB;
+                                       CaptionML=[DEU=Langtext;
+                                                  ENU=long text];
+                                       SubPageLink=Table_ID=FIELD("Table Name"),
+                                                   "No."=FIELD("No."),
+                                                   "Language Code"=FIELD("Language Code"),
+                                                   "Text No."=FIELD("Text No.");
+                                       PagePartID="LeBit Ext. Text Lines Long" }
+
+                         }
+                          }
+    { PropertyModification;
+                         Property=Version List;
+                         OriginalValue=NAVW111.00.00.19846,NAVDACH11.00.00.19846;
+                         ModifiedValue=NAVW111.00.00.19846,NAVDACH11.00.00.19846,LBCOR1.00 }
+  }
+  CODE
+  {
+
+    BEGIN
+    END.
+  }
+}
+

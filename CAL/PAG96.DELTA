@@ -1,0 +1,121 @@
+OBJECT Modification "Sales Cr. Memo Subform"(Page 96)
+{
+  OBJECT-PROPERTIES
+  {
+    Date=20181018D;
+    Time=152654.487T;
+    Modified=true;
+    Version List=NAVW111.00.00.20348,LBCOR1.00;
+  }
+  PROPERTIES
+  {
+    Target="Sales Cr. Memo Subform"(Page 96);
+    TargetPageType=ListPart;
+  }
+  CHANGES
+  {
+    { Insertion         ;InsertAfter=AddAfter:ItemTrackingLines(Action 1905987604);
+                         ChangedElements=ActionCollection
+                         {
+                           { 5272722 ;2   ;Action    ;
+                                           Name=LeBit LongText;
+                                           CaptionML=[DEU=Langtext;
+                                                      ENU=Long text];
+                                           ApplicationArea=#Suite;
+                                           Image=Import }
+                         }
+                          }
+    { PropertyInsertion ;Target=Description(Control 6);
+                         Property=StyleExpr;
+                         ModifiedValue="LeBit Printoption StyleExpr" }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        CurrPage.SAVERECORD;
+                                        AmountWithDiscountAllowed := DocumentTotals.CalcTotalSalesAmountOnlyDiscountAllowed(Rec);
+                                        InvoiceDiscountAmount := ROUND(AmountWithDiscountAllowed * InvoiceDiscountPct / 100,Currency."Amount Rounding Precision");
+                                        ValidateInvoiceDiscountAmount;
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        RedistributeTotalsOnAfterValidate;
+                                      END;
+
+                         Target="Allow Invoice Disc."(Control 54).OnValidate }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        InvoiceDiscountAmount := ROUND(AmountWithDiscountAllowed * InvoiceDiscountPct / 100,Currency."Amount Rounding Precision");
+                                        ValidateInvoiceDiscountAmount;
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        InvoiceDiscountAmount := ROUND(TotalSalesLine."Line Amount" * InvoiceDiscountPct / 100,Currency."Amount Rounding Precision");
+                                        ValidateInvoiceDiscountAmount;
+                                      END;
+
+                         Target="Invoice Disc. Pct."(Control 31).OnValidate }
+    { Insertion         ;InsertAfter=AddFirst:Control1(Control 1);
+                         ChangedElements=ControlCollection
+                         {
+                           { 5272721;2;Field     ;
+                                       Name=LeBit Pos. No.;
+                                       SourceExpr="LeBit Pos. No.";
+                                       ImplicitType=Text30 }
+
+                           { 5272723;2;Field     ;
+                                       Name=LeBit Printoption;
+                                       SourceExpr="LeBit Printoption";
+                                       ImplicitType=Option }
+
+                         }
+                          }
+    { Insertion         ;InsertAfter=AddAfter:"ShortcutDimCode[8]"(Control 310);
+                         ChangedElements=ControlCollection
+                         {
+                           { 5272720;2;Field     ;
+                                       Name=LeBit Long Text;
+                                       SourceExpr="LeBit Long Text";
+                                       ImplicitType=Boolean }
+
+                         }
+                          }
+    { Insertion         ;Documentation=BEGIN
+                                         LBADD01    181018 BAN  PROPERTY   H17/0604 : IndentationColumnName und IndentationControls auf Value <>
+                                       END;
+                                        }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        GetTotalSalesHeader;
+                                        TotalSalesHeader.CALCFIELDS("Recalculate Invoice Disc.");
+
+                                        #4..6
+                                          CODEUNIT.RUN(CODEUNIT::"Sales - Calc Discount By Type",Rec);
+
+                                        DocumentTotals.CalculateSalesTotals(TotalSalesLine,VATAmount,Rec);
+                                        AmountWithDiscountAllowed := DocumentTotals.CalcTotalSalesAmountOnlyDiscountAllowed(Rec);
+                                        InvoiceDiscountAmount := TotalSalesLine."Inv. Discount Amount";
+                                        InvoiceDiscountPct := SalesCalcDiscountByType.GetCustInvoiceDiscountPct(Rec);
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..9
+                                        InvoiceDiscountAmount := TotalSalesLine."Inv. Discount Amount";
+                                        InvoiceDiscountPct := SalesCalcDiscountByType.GetCustInvoiceDiscountPct(Rec);
+                                      END;
+
+                         Target=CalculateTotals(PROCEDURE 8) }
+    { Deletion          ;Target=AmountWithDiscountAllowed(Variable 1012);
+                         ChangedElements=VariableCollection
+                         {
+                           AmountWithDiscountAllowed@1012 : Decimal;
+                         }
+                          }
+    { PropertyModification;
+                         Property=Version List;
+                         OriginalValue=NAVW111.00.00.20783;
+                         ModifiedValue=NAVW111.00.00.20348,LBCOR1.00 }
+  }
+  CODE
+  {
+
+    BEGIN
+    END.
+  }
+}
+

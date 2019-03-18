@@ -1,0 +1,60 @@
+OBJECT Modification "Blanket Purch. Order Archives"(Page 35581)
+{
+  OBJECT-PROPERTIES
+  {
+    Date=20180315D;
+    Time=120000T;
+    Modified=true;
+    Version List=NAVDACH11.00,LBCOR1.00;
+  }
+  PROPERTIES
+  {
+    Target="Blanket Purch. Order Archives"(Page 35581);
+    TargetPageType=List;
+  }
+  CHANGES
+  {
+    { Insertion         ;InsertAfter=AddAfter:Comments(Action 1901625904);
+                         ChangedElements=ActionCollection
+                         {
+                           { 5272721 ;1   ;ActionGroup;
+                                           Name=correspondence documents;
+                                           CaptionML=[DEU=Komfort Korrespondenzbelege;
+                                                      ENU=correspondence documents] }
+                           { 5272722 ;2   ;Action    ;
+                                           Name=Header Text;
+                                           CaptionML=[DEU=Kopf&text;
+                                                      ENU=Header Text];
+                                           Image=BeginningText;
+                                           OnAction=VAR
+                                                      "### LBIS Locals ###"@5077901 : Integer;
+                                                      Position@5077900 : 'Header,Footer,Longtext';
+                                                    BEGIN
+                                                    END;
+                                                     }
+                           { 5272720 ;2   ;Action    ;
+                                           Name=Footer Text;
+                                           CaptionML=[DEU=&Fuátext;
+                                                      ENU=Footer Text];
+                                           Image=EndingText;
+                                           OnAction=VAR
+                                                      "### LBIS Locals ###"@5077901 : Integer;
+                                                      Position@5077900 : 'Header,Footer,Longtext';
+                                                    BEGIN
+                                                    END;
+                                                     }
+                         }
+                          }
+    { PropertyModification;
+                         Property=Version List;
+                         OriginalValue=NAVDACH11.00;
+                         ModifiedValue=NAVDACH11.00,LBCOR1.00 }
+  }
+  CODE
+  {
+
+    BEGIN
+    END.
+  }
+}
+

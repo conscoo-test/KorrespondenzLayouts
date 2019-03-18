@@ -1,0 +1,70 @@
+OBJECT Modification "Purchase Quote"(Page 49)
+{
+  OBJECT-PROPERTIES
+  {
+    Date=20180315D;
+    Time=120000T;
+    Modified=true;
+    Version List=NAVW111.00.00.20348,LBCOR1.00;
+  }
+  PROPERTIES
+  {
+    Target="Purchase Quote"(Page 49);
+    TargetPageType=Document;
+  }
+  CHANGES
+  {
+    { Insertion         ;InsertAfter=AddAfter:"&Quote"(Action 59);
+                         ChangedElements=ActionCollection
+                         {
+                           { 5272722 ;1   ;ActionGroup;
+                                           Name=correspondence documents;
+                                           CaptionML=[DEU=Komfort Korrespondenzbelege;
+                                                      ENU=correspondence documents] }
+                           { 5272723 ;2   ;Action    ;
+                                           Name=Tot&aling;
+                                           CaptionML=[DEU=&Summierung;
+                                                      ENU=Tot&aling];
+                                           Image=Totals }
+                           { 5272724 ;2   ;Action    ;
+                                           Name=Num&bering;
+                                           CaptionML=[DEU=&Nummerierung;
+                                                      ENU=Num&bering];
+                                           Image=NumberGroup }
+                           { 5272721 ;2   ;Action    ;
+                                           Name=Header Text;
+                                           CaptionML=[DEU=Kopf&text;
+                                                      ENU=Header Text];
+                                           Image=BeginningText;
+                                           OnAction=VAR
+                                                      "### LBIS Locals ###"@5077901 : Integer;
+                                                      Position@5077900 : 'Header,Footer,Longtext';
+                                                    BEGIN
+                                                    END;
+                                                     }
+                           { 5272720 ;2   ;Action    ;
+                                           Name=Footer Text;
+                                           CaptionML=[DEU=&Fuátext;
+                                                      ENU=Footer Text];
+                                           Image=EndingText;
+                                           OnAction=VAR
+                                                      "### LBIS Locals ###"@5077901 : Integer;
+                                                      Position@5077900 : 'Header,Footer,Longtext';
+                                                    BEGIN
+                                                    END;
+                                                     }
+                         }
+                          }
+    { PropertyModification;
+                         Property=Version List;
+                         OriginalValue=NAVW111.00.00.20348;
+                         ModifiedValue=NAVW111.00.00.20348,LBCOR1.00 }
+  }
+  CODE
+  {
+
+    BEGIN
+    END.
+  }
+}
+

@@ -1,0 +1,210 @@
+OBJECT Page 5272727 Lebit Source Setup
+{
+  OBJECT-PROPERTIES
+  {
+    Date=20190102D;
+    Time=102625.187T;
+    Modified=true;
+    Version List=LBCOR1.00;
+  }
+  PROPERTIES
+  {
+    CaptionML=[DEU=Herkunft Einrichtung;
+               ENU=Lebit Source Setup];
+    SourceTable="Lebit Source Setup";
+    PageType=List;
+    OnOpenPage=BEGIN
+                 FILTERGROUP := 3;
+                 case GETFILTER(Type) of
+                   FORMAT(Type::Sales):
+                     begin
+                       SalesVisible := true;
+                       if ISEMPTY then begin
+                         Type := Type::Sales;
+                         "Report Type" := "Report Type"::General;
+                         "Source Type" := "Source Type"::Default;
+                         INSERT;
+                       end;
+                     end;
+                   FORMAT(Type::Purchase):
+                     begin
+                       PurchVisible := true;
+                       if ISEMPTY then begin
+                         Type := Type::Purchase;
+                         "Report Type" := "Report Type"::General;
+                         "Source Type" := "Source Type"::Default;
+                         INSERT;
+                       end;
+                     end;
+                 end;
+                 FILTERGROUP := 0;
+               END;
+
+    OnAfterGetRecord=BEGIN
+                       SetReportVar;
+                       SetSourceVar;
+                     END;
+
+    OnNewRecord=BEGIN
+                  SetReportVar;
+                  SetSourceVar;
+                END;
+
+  }
+  CONTROLS
+  {
+    { 5077900;0;Container ;
+                Name=Control5077900;
+                ContainerType=ContentArea }
+
+    { 5077901;1;Group     ;
+                Name=Group Sales;
+                Visible=SalesVisible;
+                GroupType=Repeater }
+
+    { 5077902;2;Field     ;
+                Name=SalesReportType;
+                CaptionML=[DEU=Bericht Art;
+                           ENU=Report Type];
+                OptionCaptionML=[DEU=Allgemein,Verkauf - Angebot,Verkauf - Auftrag,Verkauf - Proformarechnung,Verkauf Rahmenauftrag;
+                                 ENU=General,Sales Quote,Sales Order,Sales Pro Forma Inv,Blanket Sales Order];
+                SourceExpr=SalesReportType;
+                OnValidate=BEGIN
+                             SetReportType;
+                           END;
+
+                ImplicitType=Option }
+
+    { 5077905;2;Field     ;
+                Name=SalesSourceType;
+                CaptionML=[DEU=Herkunft Art;
+                           ENU=Source Type];
+                OptionCaptionML=[DEU=Standard,Rech. an Debitor,Verk. an Debitor;
+                                 ENU=Default,Bill-to Customer,Sell-to Customer];
+                SourceExpr=SalesSourceType;
+                OnValidate=BEGIN
+                             SetSourceType;
+                           END;
+
+                ImplicitType=Option }
+
+    { 5077904;1;Group     ;
+                Name=Group Purch;
+                Visible=PurchVisible;
+                GroupType=Repeater }
+
+    { 5077903;2;Field     ;
+                Name=PurchReportType;
+                CaptionML=[DEU=Bericht Art;
+                           ENU=Report Type];
+                OptionCaptionML=[DEU=Allgemein,Einkauf - Anfrage,Einkauf - Bestellung,Einkauf Rahmenbestellung;
+                                 ENU=General,Purchase Quote,Purchase Order,Blanket Purchase Order];
+                SourceExpr=PurchReportType;
+                OnValidate=BEGIN
+                             SetReportType;
+                           END;
+
+                ImplicitType=Option }
+
+    { 5077906;2;Field     ;
+                Name=PurchSourceType;
+                CaptionML=[DEU=Herkunft Art;
+                           ENU=Source Type];
+                OptionCaptionML=[DEU=Standard,Zahlung an Kreditor,Eink. von Kreditor;
+                                 ENU=Default,Pay-to Vendor,Buy-from Vendor];
+                SourceExpr=PurchSourceType;
+                OnValidate=BEGIN
+                             SetSourceType;
+                           END;
+
+                ImplicitType=Option }
+
+  }
+  CODE
+  {
+    VAR
+      SalesReportType@5077900 : 'General,"Sales Quote","Sales Order","Sales Pro Forma Inv","Blanket Sales Order"';
+      PurchReportType@5077901 : 'General,"Purchase Quote","Purchase Order","Blanket Purchase Order"';
+      SalesSourceType@5077902 : 'Default,"Bill-to Customer","Sell-to Customer"';
+      PurchSourceType@5077903 : 'Default,"Pay-to Vendor","Buy-from Vendor"';
+      SalesVisible@5077904 : Boolean;
+      PurchVisible@5077905 : Boolean;
+
+    LOCAL PROCEDURE SetReportType@5077908();
+    BEGIN
+      case Type of
+        Type::Sales:
+          case SalesReportType of
+            SalesReportType::"Sales Quote": "Report Type" := "Report Type"::"Sales Quote";
+            SalesReportType::"Sales Order": "Report Type" := "Report Type"::"Sales Order";
+            SalesReportType::"Sales Pro Forma Inv": "Report Type" := "Report Type"::"Sales Pro Forma Inv";
+            SalesReportType::"Blanket Sales Order": "Report Type" := "Report Type"::"Blanket Sales Order";
+          end;
+        Type::Purchase:
+          case PurchReportType of
+            PurchReportType::"Purchase Quote": "Report Type" := "Report Type"::"Purchase Quote";
+            PurchReportType::"Purchase Order": "Report Type" := "Report Type"::"Purchase Order";
+            PurchReportType::"Blanket Purchase Order": "Report Type" := "Report Type"::"Blanket Purchase Order";
+          end;
+      end;
+    END;
+
+    LOCAL PROCEDURE SetSourceType@5077911();
+    BEGIN
+      case Type of
+        Type::Sales:
+          case SalesSourceType of
+            SalesSourceType::Default: "Source Type" := "Source Type"::Default;
+            SalesSourceType::"Bill-to Customer": "Source Type" := "Source Type"::"Bill-to Customer";
+            SalesSourceType::"Sell-to Customer": "Source Type" := "Source Type"::"Sell-to Customer";
+          end;
+        Type::Purchase:
+          case PurchSourceType of
+            PurchSourceType::Default: "Source Type" := "Source Type"::Default;
+            PurchSourceType::"Buy-from Vendor": "Source Type" := "Source Type"::"Buy-from Vendor";
+            PurchSourceType::"Pay-to Vendor": "Source Type" := "Source Type"::"Pay-to Vendor";
+          end;
+      end;
+    END;
+
+    LOCAL PROCEDURE SetReportVar@5077900();
+    BEGIN
+      case "Report Type" of
+        "Report Type"::General:
+          begin
+            SalesReportType := SalesReportType::General;
+            PurchReportType := PurchReportType::General;
+          end;
+        "Report Type"::"Sales Quote": SalesReportType := SalesReportType::"Sales Quote";
+        "Report Type"::"Sales Order": SalesReportType := SalesReportType::"Sales Order";
+        "Report Type"::"Sales Pro Forma Inv": SalesReportType := SalesReportType::"Sales Pro Forma Inv";
+        "Report Type"::"Blanket Sales Order": SalesReportType := SalesReportType::"Blanket Sales Order";
+        "Report Type"::"Purchase Quote": PurchReportType := PurchReportType::"Purchase Quote";
+        "Report Type"::"Purchase Order": PurchReportType := PurchReportType::"Purchase Order";
+        "Report Type"::"Blanket Purchase Order": PurchReportType := PurchReportType::"Blanket Purchase Order";
+      end;
+    END;
+
+    LOCAL PROCEDURE SetSourceVar@5077901();
+    BEGIN
+      case "Source Type" of
+        "Source Type"::Default:
+          begin
+            SalesSourceType := SalesSourceType::Default;
+            PurchSourceType := PurchSourceType::Default;
+          end;
+        "Source Type"::"Bill-to Customer": SalesSourceType := SalesSourceType::"Bill-to Customer";
+        "Source Type"::"Sell-to Customer": SalesSourceType := SalesSourceType::"Sell-to Customer";
+        "Source Type"::"Buy-from Vendor": PurchSourceType := PurchSourceType::"Buy-from Vendor";
+        "Source Type"::"Pay-to Vendor": PurchSourceType := PurchSourceType::"Pay-to Vendor";
+      end;
+    END;
+
+    BEGIN
+    {
+      LBIS00     211218 MH   ERSTELLT   H19/0780
+    }
+    END.
+  }
+}
+

@@ -1,0 +1,67 @@
+OBJECT Table 5272721 LeBit Posted PS Longtext Line
+{
+  OBJECT-PROPERTIES
+  {
+    Date=20180315D;
+    Time=120000T;
+    Modified=true;
+    Version List=LBCOR1.00;
+  }
+  PROPERTIES
+  {
+    CaptionML=[DEU=Geb. EK/VK Langtext Zeile;
+               ENU=Posted Purch/Sales Longtext Line];
+    PasteIsValid=false;
+    LookupPageID="LeBit Posted PS Longtext Lines";
+    DrillDownPageID="LeBit Posted PS Longtext Lines";
+  }
+  FIELDS
+  {
+    { 1   ;   ;Table ID            ;Integer       ;TableRelation=AllObj."Object ID" WHERE ("Object Type"=CONST(Table));
+                                                   CaptionML=[DEU=Tabellen-ID;
+                                                              ENU=Table ID] }
+    { 3   ;   ;Document No.        ;Code20        ;ValidateTableRelation=false;
+                                                   TestTableRelation=false;
+                                                   CaptionML=[DEU=Belegnr.;
+                                                              ENU=Document No.];
+                                                   NotBlank=true }
+    { 4   ;   ;Position            ;Option        ;CaptionML=[DEU=Position;
+                                                              ENU=Position];
+                                                   OptionCaptionML=[DEU=Kopf,Fuá,Langtext;
+                                                                    ENU=Header,Footer,Longtext];
+                                                   OptionString=Header,Footer,Longtext }
+    { 5   ;   ;Document Line No.   ;Integer       ;ValidateTableRelation=false;
+                                                   TestTableRelation=false;
+                                                   CaptionML=[DEU=Beleg Zeilennr.;
+                                                              ENU=Document Line No.] }
+    { 6   ;   ;Line No.            ;Integer       ;CaptionML=[DEU=Zeilennr.;
+                                                              ENU=Line No.] }
+    { 10  ;   ;Type                ;Option        ;CaptionML=[DEU=Art;
+                                                              ENU=Type];
+                                                   OptionCaptionML=[DEU=Text,Neue Seite, Text + Zeilenumbruch;
+                                                                    ENU=Text,New Page,Text + Line break];
+                                                   OptionString=Text,"New Page","Text + Line break" }
+    { 11  ;   ;No.                 ;Code20        ;TableRelation=IF (Type=CONST(Text)) "Standard Text";
+                                                   CaptionML=[DEU=Nr.;
+                                                              ENU=No.] }
+    { 12  ;   ;Description         ;Text120       ;CaptionML=[DEU=Beschreibung;
+                                                              ENU=Description] }
+    { 13  ;   ;Text                ;BLOB          ;CaptionML=[DEU=Text;
+                                                              ENU=Text] }
+  }
+  KEYS
+  {
+    {    ;"Table ID","Document No.",Position,"Document Line No.","Line No.";
+                                                   Clustered=true }
+  }
+  FIELDGROUPS
+  {
+  }
+  CODE
+  {
+
+    BEGIN
+    END.
+  }
+}
+

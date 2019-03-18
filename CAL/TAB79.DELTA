@@ -1,0 +1,74 @@
+OBJECT Modification "Company Information"(Table 79)
+{
+  OBJECT-PROPERTIES
+  {
+    Date=20180315D;
+    Time=120000T;
+    Modified=true;
+    Version List=NAVW111.00,NAVDACH11.00,LBCOR1.00;
+  }
+  PROPERTIES
+  {
+    Target="Company Information"(Table 79);
+  }
+  CHANGES
+  {
+    { Insertion         ;InsertAfter="Tax Office Number"(Field 11103);
+                         ChangedElements=FieldCollection
+                         {
+                           { 5272720;;LeBit CEO1          ;Text60        ;CaptionML=[DEU=GeschÑftsfÅhrer1;
+                                                                                     ENU=CEO1] }
+                           { 5272721;;LeBit CEO2          ;Text60        ;CaptionML=[DEU=GeschÑftsfÅhrer2;
+                                                                                     ENU=CEO2] }
+                           { 5272722;;LeBit CEO3          ;Text60        ;CaptionML=[DEU=GeschÑftsfÅhrer3;
+                                                                                     ENU=CEO3] }
+                           { 5272723;;LeBit Commercial Register No.;Text50;
+                                                                          CaptionML=[DEU=Handelsregister-Nr.;
+                                                                                     ENU=Commercial Register] }
+                           { 5272724;;LeBit Trade Register Name;Text80   ;CaptionML=[DEU=Handelsregister Name;
+                                                                                     ENU=Trade Register Name] }
+                           { 5272725;;LeBit Bank Name 2   ;Text50        ;CaptionML=[DEU=Bankname 2;
+                                                                                     ENU=Bank Name 2] }
+                           { 5272726;;LeBit Bank Branch No. 2;Text20     ;CaptionML=[DEU=BLZ 2;
+                                                                                     ENU=Bank Branch No. 2] }
+                           { 5272727;;LeBit Bank Account No. 2;Text30    ;CaptionML=[DEU=Bankkontonummer 2;
+                                                                                     ENU=Bank Account No. 2] }
+                           { 5272728;;LeBit IBAN 2        ;Code50        ;OnValidate=BEGIN
+                                                                                       CheckIBAN(IBAN);
+                                                                                     END;
+
+                                                                          CaptionML=[DEU=IBAN 2;
+                                                                                     ENU=IBAN 2] }
+                           { 5272729;;LeBit SWIFT Code 2  ;Code20        ;CaptionML=[DEU=SWIFT-Code 2;
+                                                                                     ENU=SWIFT Code 2] }
+                           { 5272730;;LeBit Bank Name 3   ;Text50        ;CaptionML=[DEU=Bankname 3;
+                                                                                     ENU=Bank Name 3] }
+                           { 5272731;;LeBit Bank Branch No. 3;Text20     ;CaptionML=[DEU=BLZ 3;
+                                                                                     ENU=Bank Branch No. 3] }
+                           { 5272732;;LeBit Bank Account No. 3;Text30    ;CaptionML=[DEU=Bankkontonummer 3;
+                                                                                     ENU=Bank Account No. 3] }
+                           { 5272733;;LeBit IBAN 3        ;Code50        ;OnValidate=BEGIN
+                                                                                       CheckIBAN(IBAN);
+                                                                                     END;
+
+                                                                          CaptionML=[DEU=IBAN 3;
+                                                                                     ENU=IBAN 3] }
+                           { 5272734;;LeBit SWIFT Code 3  ;Code20        ;CaptionML=[DEU=SWIFT-Code 3;
+                                                                                     ENU=SWIFT Code 3] }
+                           { 5272735;;LeBit District Court;Text50        ;CaptionML=[DEU=Amtsgericht;
+                                                                                     ENU=District Court] }
+                         }
+                          }
+    { PropertyModification;
+                         Property=Version List;
+                         OriginalValue=NAVW111.00,NAVDACH11.00;
+                         ModifiedValue=NAVW111.00,NAVDACH11.00,LBCOR1.00 }
+  }
+  CODE
+  {
+
+    BEGIN
+    END.
+  }
+}
+

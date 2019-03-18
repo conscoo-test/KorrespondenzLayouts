@@ -1,0 +1,356 @@
+OBJECT Modification "Copy Document Mgt."(Codeunit 6620)
+{
+  OBJECT-PROPERTIES
+  {
+    Date=20180625D;
+    Time=144721.290T;
+    Modified=true;
+    Version List=NAVW111.00,NAVDACH11.00,LBCOR1.00;
+  }
+  PROPERTIES
+  {
+    Target="Copy Document Mgt."(Codeunit 6620);
+  }
+  CHANGES
+  {
+    { Insertion         ;Documentation=BEGIN
+                                         LBCOR01    060218 MH   CODE       H17/0604 : Events
+                                         LBCOR02    090418 MH   CODE       H17/0604 : Line No merken im Buffer fÅr spÑtere Auswertung
+                                       END;
+                                        }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        MissingExCostRevLink := false;
+                                        InitCurrency(ToSalesHeader."Currency Code");
+                                        OpenWindow;
+                                        #4..23
+                                                InsertDocNoLine := true;
+                                              end;
+
+                                              SplitLine := true;
+                                              FilterPstdDocLnItemLedgEntries(ItemLedgEntry);
+                                              if not SplitPstdSalesLinesPerILE(
+                                        #30..83
+                                            until NEXT = 0;
+
+                                        Window.CLOSE;
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..26
+                                              ///LBCOR02
+                                              FromSalesLine."LeBit Source Document Line No." := "Line No.";
+                                              ///LBCOR02-
+
+                                        #27..86
+                                      END;
+
+                         Target=CopySalesShptLinesToDoc(PROCEDURE 39) }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        MissingExCostRevLink := false;
+                                        InitCurrency(ToSalesHeader."Currency Code");
+                                        FromSalesLineBuf.RESET;
+                                        #4..31
+                                              FromSalesLine."Shipment Line No." := 0;
+                                              FromSalesLine."Return Receipt No." := '';
+                                              FromSalesLine."Return Receipt Line No." := "Line No.";
+
+                                              SplitLine := true;
+                                              GetItemLedgEntries(ItemLedgEntryBuf,true);
+                                        #38..143
+                                          end;
+                                        end;
+                                        Window.CLOSE;
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..34
+                                              ///LBCOR02
+                                              FromSalesLine."LeBit Source Document Line No." := "Line No.";
+                                              ///LBCOR02-
+                                        #35..146
+                                      END;
+
+                         Target=CopySalesInvLinesToDoc(PROCEDURE 34) }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        MissingExCostRevLink := false;
+                                        InitCurrency(ToSalesHeader."Currency Code");
+                                        FromSalesLineBuf.RESET;
+                                        #4..26
+                                              FromSalesLine."Shipment Line No." := 0;
+                                              FromSalesLine."Return Receipt No." := '';
+                                              FromSalesLine."Return Receipt Line No." := "Line No.";
+
+                                              SplitLine := true;
+                                              GetItemLedgEntries(ItemLedgEntryBuf,true);
+                                        #33..120
+                                        end;
+
+                                        Window.CLOSE;
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..29
+                                              ///LBCOR02
+                                              FromSalesLine."LeBit Source Document Line No." := "Line No.";
+                                              ///LBCOR02-
+                                        #30..123
+                                      END;
+
+                         Target=CopySalesCrMemoLinesToDoc(PROCEDURE 31) }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        MissingExCostRevLink := false;
+                                        InitCurrency(ToSalesHeader."Currency Code");
+                                        OpenWindow;
+                                        #4..22
+                                                InsertDocNoLine := true;
+                                              end;
+
+                                              SplitLine := true;
+                                              FilterPstdDocLnItemLedgEntries(ItemLedgEntry);
+                                              if not SplitPstdSalesLinesPerILE(
+                                        #29..75
+                                            until NEXT = 0;
+
+                                        Window.CLOSE;
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..25
+                                              ///LBCOR02
+                                              FromSalesLine."LeBit Source Document Line No." := "Line No.";
+                                              ///LBCOR02-
+
+                                        #26..78
+                                      END;
+
+                         Target=CopySalesReturnRcptLinesToDoc(PROCEDURE 40) }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        MissingExCostRevLink := false;
+                                        InitCurrency(ToPurchHeader."Currency Code");
+                                        OpenWindow;
+                                        #4..24
+                                                InsertDocNoLine := true;
+                                              end;
+
+                                              SplitLine := true;
+                                              FilterPstdDocLnItemLedgEntries(ItemLedgEntry);
+                                              if not SplitPstdPurchLinesPerILE(
+                                        #31..77
+                                            until NEXT = 0;
+
+                                        Window.CLOSE;
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..27
+                                              ///LBCOR02
+                                              FromPurchLine."Source Document Line No." := "Line No.";
+                                              ///LBCOR02-
+
+                                        #28..80
+                                      END;
+
+                         Target=CopyPurchRcptLinesToDoc(PROCEDURE 53) }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        MissingExCostRevLink := false;
+                                        InitCurrency(ToPurchHeader."Currency Code");
+                                        FromPurchLineBuf.RESET;
+                                        #4..25
+                                              FromPurchLine."Receipt Line No." := 0;
+                                              FromPurchLine."Return Shipment No." := '';
+                                              FromPurchLine."Return Shipment Line No." := "Line No.";
+
+                                              SplitLine := true;
+                                              GetItemLedgEntries(ItemLedgEntryBuf,true);
+                                        #32..119
+                                        end;
+
+                                        Window.CLOSE;
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..28
+                                              ///LBCOR02
+                                              FromPurchLine."Source Document Line No." := "Line No.";
+                                              ///LBCOR02-
+                                        #29..122
+                                      END;
+
+                         Target=CopyPurchInvLinesToDoc(PROCEDURE 52) }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        MissingExCostRevLink := false;
+                                        InitCurrency(ToPurchHeader."Currency Code");
+                                        FromPurchLineBuf.RESET;
+                                        #4..27
+                                              FromPurchLine."Receipt Line No." := 0;
+                                              FromPurchLine."Return Shipment No." := '';
+                                              FromPurchLine."Return Shipment Line No." := "Line No.";
+
+                                              SplitLine := true;
+                                              GetItemLedgEntries(ItemLedgEntryBuf,true);
+                                        #34..121
+                                        end;
+
+                                        Window.CLOSE;
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..30
+                                              ///LBCOR02
+                                              FromPurchLine."Source Document Line No." := "Line No.";
+                                              ///LBCOR02-
+                                        #31..124
+                                      END;
+
+                         Target=CopyPurchCrMemoLinesToDoc(PROCEDURE 51) }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        MissingExCostRevLink := false;
+                                        InitCurrency(ToPurchHeader."Currency Code");
+                                        OpenWindow;
+                                        #4..26
+                                                InsertDocNoLine := true;
+                                              end;
+
+                                              SplitLine := true;
+                                              FilterPstdDocLnItemLedgEntries(ItemLedgEntry);
+                                              if not SplitPstdPurchLinesPerILE(
+                                        #33..78
+                                            until NEXT = 0;
+
+                                        Window.CLOSE;
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..29
+                                              ///LBCOR02
+                                              FromPurchLine."Source Document Line No." := "Line No.";
+                                              ///LBCOR02-
+
+                                        #30..81
+                                      END;
+
+                         Target=CopyPurchReturnShptLinesToDoc(PROCEDURE 50) }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        CopyThisLine := true;
+                                        if ((ToSalesHeader."Language Code" <> FromArchSalesHeader."Language Code") or RecalculateLines) and
+                                           (FromArchSalesLine."Attached to Line No." <> 0)
+                                        #4..178
+                                          ToSalesLine.INSERT
+                                        else
+                                          LinesNotCopied := LinesNotCopied + 1;
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..181
+                                        ///LBCOR01
+                                        OnAfterInsertSalesArchiveLine(ToSalesHeader,ToSalesLine,FromArchSalesHeader,FromArchSalesLine,CopyThisLine);
+                                        ///LBCOR01-
+                                      END;
+
+                         Target=CopyArchSalesLine(PROCEDURE 1140007) }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        CopyThisLine := true;
+                                        if ((ToPurchHeader."Language Code" <> FromArchPurchHeader."Language Code") or RecalculateLines) and
+                                           (FromArchPurchLine."Attached to Line No." <> 0)
+                                        #4..168
+                                          ToPurchLine.INSERT
+                                        else
+                                          LinesNotCopied := LinesNotCopied + 1;
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..171
+
+                                        ///LBCOR01
+                                        OnAfterInsertPurchArchiveLine(ToPurchHeader,ToPurchLine,FromArchPurchHeader,FromArchPurchLine,CopyThisLine);
+                                        ///LBCOR01-
+                                      END;
+
+                         Target=CopyArchPurchLine(PROCEDURE 1140009) }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        with ToSalesHeader do begin
+                                          "No. Series" := OldSalesHeader."No. Series";
+                                          "Posting Description" := OldSalesHeader."Posting Description";
+                                        #4..12
+                                          "Prepmt. Cr. Memo No. Series" := OldSalesHeader."Prepmt. Cr. Memo No. Series";
+                                          "Prepmt. Cr. Memo No." := OldSalesHeader."Prepmt. Cr. Memo No.";
+                                          "Prepmt. Posting Description" := OldSalesHeader."Prepmt. Posting Description";
+                                          SetSalespersonPurchaserCode("Salesperson Code");
+                                        end
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..15
+                                        end
+                                      END;
+
+                         Target=CopyFieldsFromOldSalesHeader(PROCEDURE 111) }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        with ToPurchHeader do begin
+                                          "No. Series" := OldPurchHeader."No. Series";
+                                          "Posting Description" := OldPurchHeader."Posting Description";
+                                        #4..12
+                                          "Prepmt. Cr. Memo No. Series" := OldPurchHeader."Prepmt. Cr. Memo No. Series";
+                                          "Prepmt. Cr. Memo No." := OldPurchHeader."Prepmt. Cr. Memo No.";
+                                          "Prepmt. Posting Description" := OldPurchHeader."Prepmt. Posting Description";
+                                          SetSalespersonPurchaserCode("Purchaser Code");
+                                        end;
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..15
+                                        end;
+                                      END;
+
+                         Target=CopyFieldsFromOldPurchHeader(PROCEDURE 119) }
+    { Deletion          ;Target=SetSalespersonPurchaserCode(PROCEDURE 218);
+                         ChangedElements=PROCEDURECollection
+                         {
+                           LOCAL PROCEDURE SetSalespersonPurchaserCode@218(VAR SalespersonPurchaserCode@1000 : Code[20]);
+                           BEGIN
+                             if SalespersonPurchaserCode <> '' then
+                               if SalespersonPurchaser.GET(SalespersonPurchaserCode) then
+                                 if SalespersonPurchaser.VerifySalesPersonPurchaserPrivacyBlocked(SalespersonPurchaser) then
+                                   SalespersonPurchaserCode := ''
+                           END;
+
+                         }
+                          }
+    { Insertion         ;InsertAfter=OnAfterInsertToPurchLine(PROCEDURE 1016);
+                         ChangedElements=PROCEDURECollection
+                         {
+                           LOCAL PROCEDURE "### LBCOR Functions ###"@5272720();
+                           BEGIN
+                           END;
+
+                           [Integration]
+                           LOCAL PROCEDURE OnAfterInsertSalesArchiveLine@5272724(VAR ToSalesHeader@5272724 : Record "Sales Header";VAR ToSalesLine@5272723 : Record "Sales Line";VAR FromSalesHeaderArchive@5272722 : Record "Sales Header Archive";VAR FromSalesLineArchive@5272721 : Record "Sales Line Archive";VAR CopyThisLine@5272720 : Boolean);
+                           BEGIN
+                           END;
+
+                           [Integration]
+                           LOCAL PROCEDURE OnAfterInsertPurchArchiveLine@5272721(VAR ToPurchHeader@5272727 : Record "Purchase Header";VAR ToPurchLine@5272726 : Record "Purchase Line";VAR FromPurchaseHeaderArchive@5272725 : Record "Purchase Header Archive";VAR FromPurchaseLineArchive@5272724 : Record "Purchase Line Archive";VAR CopyThisLine@5272723 : Boolean);
+                           BEGIN
+                           END;
+
+                         }
+                          }
+    { Deletion          ;Target=SalespersonPurchaser(Variable 1972);
+                         ChangedElements=VariableCollection
+                         {
+                           SalespersonPurchaser@1972 : Record "Salesperson/Purchaser";
+                         }
+                          }
+    { PropertyModification;
+                         Property=Version List;
+                         OriginalValue=NAVW111.00.00.21441,NAVDACH11.00.00.21441;
+                         ModifiedValue=NAVW111.00,NAVDACH11.00,LBCOR1.00 }
+  }
+  CODE
+  {
+
+    BEGIN
+    END.
+  }
+}
+

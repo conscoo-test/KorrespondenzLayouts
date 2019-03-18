@@ -1,0 +1,42 @@
+OBJECT Modification "Sales & Receivables Setup"(Page 459)
+{
+  OBJECT-PROPERTIES
+  {
+    Date=20190102D;
+    Time=103807.717T;
+    Modified=true;
+    Version List=NAVW111.00,NAVDACH11.00,LBCOR1.00;
+  }
+  PROPERTIES
+  {
+    Target="Sales & Receivables Setup"(Page 459);
+    TargetPageType=Card;
+  }
+  CHANGES
+  {
+    { Insertion         ;InsertAfter=AddAfter:"Customer Disc. Groups"(Action 54);
+                         ChangedElements=ActionCollection
+                         {
+                           { 5272720 ;1   ;Action    ;
+                                           Name=Lebit Source Setup;
+                                           CaptionML=[DEU=Herkunft Einrichtung;
+                                                      ENU=Source Setup];
+                                           RunObject=Page "Lebit Source Setup";
+                                           RunPageView=SORTING(Type,"Report Type")
+                                                       WHERE(Type=FILTER(Sales));
+                                           Image=Print }
+                         }
+                          }
+    { PropertyModification;
+                         Property=Version List;
+                         OriginalValue=NAVW111.00,NAVDACH11.00;
+                         ModifiedValue=NAVW111.00,NAVDACH11.00,LBCOR1.00 }
+  }
+  CODE
+  {
+
+    BEGIN
+    END.
+  }
+}
+

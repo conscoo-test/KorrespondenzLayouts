@@ -1,0 +1,407 @@
+OBJECT Modification "Purchase Header"(Table 38)
+{
+  OBJECT-PROPERTIES
+  {
+    Date=20180315D;
+    Time=120000T;
+    Modified=true;
+    Version List=NAVW111.00.00.20348,NAVDACH11.00.00.20348,LBCOR1.00;
+  }
+  PROPERTIES
+  {
+    Target="Purchase Header"(Table 38);
+  }
+  CHANGES
+  {
+    { Insertion         ;Documentation=BEGIN
+                                         LBCOR01 120318 MH   CODE       H17/0604 : Events + Code
+                                       END;
+                                        }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        TESTFIELD(Status,Status::Open);
+                                        if (xRec."Pay-to Vendor No." <> "Pay-to Vendor No.") and
+                                           (xRec."Pay-to Vendor No." <> '')
+                                        #4..52
+                                        "Currency Code" := Vend."Currency Code";
+                                        "Invoice Disc. Code" := Vend."Invoice Disc. Code";
+                                        "Language Code" := Vend."Language Code";
+                                        SetPurchaserCode(Vend."Purchaser Code","Purchaser Code");
+                                        VALIDATE("Payment Terms Code");
+                                        VALIDATE("Prepmt. Payment Terms Code");
+                                        VALIDATE("Payment Method Code");
+                                        #60..87
+
+                                        if (xRec."Pay-to Vendor No." <> '') and (xRec."Pay-to Vendor No." <> "Pay-to Vendor No.") then
+                                          RecallModifyAddressNotification(GetModifyPayToVendorAddressNotificationId);
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..55
+                                        "Purchaser Code" := Vend."Purchaser Code";
+                                        #57..90
+                                      END;
+
+                         Target="Pay-to Vendor No."(Field 4).OnValidate }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        ValidatePurchaserOnPurchHeader(Rec,false,false);
+
+                                        ApprovalEntry.SETRANGE("Table ID",DATABASE::"Purchase Header");
+                                        ApprovalEntry.SETRANGE("Document Type","Document Type");
+                                        ApprovalEntry.SETRANGE("Document No.","No.");
+                                        #6..11
+                                          DATABASE::Vendor,"Pay-to Vendor No.",
+                                          DATABASE::Campaign,"Campaign No.",
+                                          DATABASE::"Responsibility Center","Responsibility Center");
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #3..14
+                                      END;
+
+                         Target="Purchaser Code"(Field 43).OnValidate }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        TESTFIELD(Status,Status::Open);
+
+                                        if "Buy-from Contact No." <> '' then
+                                          if Cont.GET("Buy-from Contact No.") then
+                                            Cont.CheckIfPrivacyBlockedGeneric;
+
+                                        if ("Buy-from Contact No." <> xRec."Buy-from Contact No.") and
+                                           (xRec."Buy-from Contact No." <> '')
+                                        #9..27
+                                        end;
+
+                                        UpdateBuyFromVend("Buy-from Contact No.");
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        TESTFIELD(Status,Status::Open);
+                                        #6..30
+                                      END;
+
+                         Target="Buy-from Contact No."(Field 5052).OnValidate }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        TESTFIELD(Status,Status::Open);
+
+                                        if "Pay-to Contact No." <> '' then
+                                          if Cont.GET("Pay-to Contact No.") then
+                                            Cont.CheckIfPrivacyBlockedGeneric;
+
+                                        if ("Pay-to Contact No." <> xRec."Pay-to Contact No.") and
+                                           (xRec."Pay-to Contact No." <> '')
+                                        #9..27
+                                        end;
+
+                                        UpdatePayToVend("Pay-to Contact No.");
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        TESTFIELD(Status,Status::Open);
+                                        #6..30
+                                      END;
+
+                         Target="Pay-to Contact No."(Field 5053).OnValidate }
+    { PropertyDeletion  ;Target="Assigned User ID"(Field 9000);
+                         Property=DataClassification;
+                         OriginalValue=EndUserIdentifiableInformation }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        InitInsert;
+
+                                        if GETFILTER("Buy-from Vendor No.") <> '' then
+                                          if GETRANGEMIN("Buy-from Vendor No.") = GETRANGEMAX("Buy-from Vendor No.") then
+                                            VALIDATE("Buy-from Vendor No.",GETRANGEMIN("Buy-from Vendor No."));
+
+                                        if "Purchaser Code" = '' then
+                                          SetDefaultPurchaser;
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        if not SkipInitialization then
+                                          InitInsert;
+                                        #2..8
+                                      END;
+
+                         Target=OnInsert }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        if "No." = '' then begin
+                                          TestNoSeries;
+                                          NoSeriesMgt.InitSeries(GetNoSeriesCode,xRec."No. Series","Posting Date","No.","No. Series");
+                                        end;
+
+                                        if not SkipInitialization then
+                                          InitRecord;
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..5
+                                        InitRecord;
+                                      END;
+
+                         Target=InitInsert(PROCEDURE 41) }
+    { Insertion         ;Target=RecreatePurchLines(PROCEDURE 4);
+                         InsertAfter=ExtendedTextAdded(Variable 1002);
+                         ChangedElements=VariableCollection
+                         {
+                           "### LBCOR Locals ###"@5272722 : Integer;
+                           LeBitPSLongtextLine@5272721 : Record "LeBit PS Longtext Line";
+                           TempLeBitPSLongtextLine@5272720 : TEMPORARY Record "LeBit PS Longtext Line";
+                         }
+                          }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        if PurchLinesExist then begin
+                                          if HideValidationDialog then
+                                            Confirmed := true
+                                        #4..53
+                                                until ItemChargeAssgntPurch.NEXT = 0;
+                                                ItemChargeAssgntPurch.DELETEALL;
+                                              end;
+
+                                              PurchLine.DELETEALL(true);
+
+                                        #60..104
+                                                    TempInteger.Number := PurchLine."Line No.";
+                                                    TempInteger.INSERT;
+                                                  end;
+                                                end else
+                                                  if not ExtendedTextAdded then begin
+                                                    TransferExtendedText.PurchCheckIfAnyExtText(PurchLine,true);
+                                        #111..141
+                                            ERROR(
+                                              Text018,ChangedFieldName);
+                                        end;
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..56
+                                              ///LBCOR01
+                                              LeBitPSLongtextLine.SETRANGE("Table ID",DATABASE::"Purchase Line");
+                                              LeBitPSLongtextLine.SETRANGE("Document Type",PurchLine."Document Type");
+                                              LeBitPSLongtextLine.SETRANGE("Document No.",PurchLine."Document No.");
+                                              LeBitPSLongtextLine.SETRANGE(Position,LeBitPSLongtextLine.Position::Longtext);
+                                              LeBitTransferPSLongtextLineToTemp(LeBitPSLongtextLine,TempLeBitPSLongtextLine);
+                                              ///LBCOR01-
+                                        #57..107
+                                                  ///LBCOR01
+                                                  TempLeBitPSLongtextLine.SETRANGE("Table ID",DATABASE::"Purchase Line");
+                                                  TempLeBitPSLongtextLine.SETRANGE("Document Type",TempPurchLine."Document Type");
+                                                  TempLeBitPSLongtextLine.SETRANGE("Document No.",TempPurchLine."Document No.");
+                                                  TempLeBitPSLongtextLine.SETRANGE(Position,TempLeBitPSLongtextLine.Position::Longtext);
+                                                  TempLeBitPSLongtextLine.SETRANGE("Document Line No.",TempPurchLine."Line No.");
+                                                  if TempLeBitPSLongtextLine.FINDSET then repeat
+                                                    LeBitPSLongtextLine.INIT;
+                                                    LeBitPSLongtextLine := TempLeBitPSLongtextLine;
+                                                    LeBitPSLongtextLine."Document Line No." := PurchLine."Line No.";
+                                                    LeBitPSLongtextLine.INSERT;
+                                                  until TempLeBitPSLongtextLine.NEXT = 0;
+                                                  OnAfterCreatePurchLine(PurchLine,TempPurchLine);
+                                                  ///LBCOR01-
+                                        #108..144
+                                      END;
+
+                         Target=RecreatePurchLines(PROCEDURE 4) }
+    { PropertyDeletion  ;Target=ValidateShortcutDimCode(PROCEDURE 19);
+                         Property=Attributes;
+                         OriginalValue=[[External]]] }
+    { PropertyInsertion ;Target=ValidateShortcutDimCode(PROCEDURE 19);
+                         Property=Local;
+                         ModifiedValue=Yes }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        if OfficeMgt.GetContact(OfficeContact,VendorNo) then begin
+                                          SetHideValidationDialog(true);
+                                          UpdateBuyFromVend(OfficeContact."No.");
+                                        #4..9
+                                              "Buy-from Contact No." := ContBusRel.GetContactNo(ContBusRel."Link to Table"::Vendor,"Buy-from Vendor No.");
+                                            "Buy-from Contact" := Vend.Contact;
+                                          end;
+
+                                        if "Buy-from Contact No." <> '' then
+                                          if OfficeContact.GET("Buy-from Contact No.") then
+                                            OfficeContact.CheckIfPrivacyBlockedGeneric;
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..12
+                                      END;
+
+                         Target=UpdateBuyFromCont(PROCEDURE 24) }
+    { Deletion          ;Target=UpdatePayToCont(PROCEDURE 27).Contact(Variable 1002);
+                         ChangedElements=VariableCollection
+                         {
+                           Contact@1002 : Record Contact;
+                         }
+                          }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        if Vend.GET(VendorNo) then begin
+                                          if Vend."Primary Contact No." <> '' then
+                                            "Pay-to Contact No." := Vend."Primary Contact No."
+                                          else
+                                            "Pay-to Contact No." := ContBusRel.GetContactNo(ContBusRel."Link to Table"::Vendor,"Pay-to Vendor No.");
+                                          "Pay-to Contact" := Vend.Contact;
+                                        end;
+
+                                        if "Pay-to Contact No." <> '' then
+                                          if Contact.GET("Pay-to Contact No.") then
+                                            Contact.CheckIfPrivacyBlockedGeneric;
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..7
+                                      END;
+
+                         Target=UpdatePayToCont(PROCEDURE 27) }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        CheckMixedDropShipment;
+
+                                        DocumentSendingProfile.TrySendToPrinterVendor(
+                                          DummyReportSelections.Usage::"P.Order",Rec,FIELDNO("Buy-from Vendor No."),ShowRequestForm);
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..3
+                                          DummyReportSelections.Usage::"P.Order",Rec,"Buy-from Vendor No.",ShowRequestForm);
+                                      END;
+
+                         Target=PrintRecords(PROCEDURE 74) }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        if IsCreditDocType then
+                                          exit;
+                                        if ("Pay-to Vendor No." <> "Buy-from Vendor No.") and Vendor.GET("Pay-to Vendor No.") then
+                                          if HasPayToAddress and HasDifferentPayToAddress(Vendor) then
+                                            ShowModifyAddressNotification(GetModifyPayToVendorAddressNotificationId,
+                                              ModifyVendorAddressNotificationLbl,ModifyVendorAddressNotificationMsg,
+                                              'CopyPayToVendorAddressFieldsFromSalesDocument',"Pay-to Vendor No.",
+                                              "Pay-to Name",FIELDNAME("Pay-to Vendor No."));
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..6
+                                              UpdateAddressWithPayToAddressTok,"Pay-to Vendor No.","Pay-to Name",FIELDNAME("Pay-to Vendor No."));
+                                      END;
+
+                         Target=ModifyPayToVendorAddress(PROCEDURE 194) }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        if IsCreditDocType then
+                                          exit;
+                                        if Vendor.GET("Buy-from Vendor No.") and HasBuyFromAddress and HasDifferentBuyFromAddress(Vendor) then
+                                          ShowModifyAddressNotification(GetModifyVendorAddressNotificationId,
+                                            ModifyVendorAddressNotificationLbl,ModifyVendorAddressNotificationMsg,
+                                            'CopyBuyFromVendorAddressFieldsFromSalesDocument',"Buy-from Vendor No.",
+                                            "Buy-from Vendor Name",FIELDNAME("Buy-from Vendor No."));
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..5
+                                            UpdateAddressWithBuyFromAddressFunctionTok,"Buy-from Vendor No.","Buy-from Vendor Name",FIELDNAME("Buy-from Vendor No."));
+                                      END;
+
+                         Target=ModifyVendorAddress(PROCEDURE 150) }
+    { CodeModification  ;OriginalCode=BEGIN
+                                        if not MyNotifications.IsEnabled(NotificationID) then
+                                          exit;
+
+                                        ModifyVendorAddressNotification.ID := NotificationID;
+                                        ModifyVendorAddressNotification.MESSAGE := STRSUBSTNO(NotificationMsg,VendorName);
+                                        ModifyVendorAddressNotification.ADDACTION(NotificationLbl,CODEUNIT::"Document Notifications",NotificationFunctionTok);
+                                        ModifyVendorAddressNotification.ADDACTION(
+                                          DontShowAgainActionLbl,CODEUNIT::"Document Notifications",'HidePurchaseNotificationForCurrentUser');
+                                        ModifyVendorAddressNotification.SCOPE := NOTIFICATIONSCOPE::LocalScope;
+                                        ModifyVendorAddressNotification.SETDATA(FIELDNAME("Document Type"),FORMAT("Document Type"));
+                                        ModifyVendorAddressNotification.SETDATA(FIELDNAME("No."),"No.");
+                                        ModifyVendorAddressNotification.SETDATA(VendorNumberFieldName,VendorNumber);
+                                        NotificationLifecycleMgt.SendNotification(ModifyVendorAddressNotification,RECORDID);
+                                      END;
+
+                         ModifiedCode=BEGIN
+                                        #1..6
+                                        ModifyVendorAddressNotification.ADDACTION(DontShowAgainActionLbl,CODEUNIT::"Document Notifications",DontShowAgainFunctionTok);
+                                        #9..13
+                                      END;
+
+                         Target=ShowModifyAddressNotification(PROCEDURE 157) }
+    { Deletion          ;Target=SetPurchaserCode(PROCEDURE 933);
+                         ChangedElements=PROCEDURECollection
+                         {
+                           LOCAL PROCEDURE SetPurchaserCode@933(PurchaserCodeToCheck@1000 : Code[20];VAR PurchaserCodeToAssign@1001 : Code[20]);
+                           BEGIN
+                             if PurchaserCodeToCheck <> '' then
+                               if SalespersonPurchaser.GET(PurchaserCodeToCheck) then
+                                 if SalespersonPurchaser.VerifySalesPersonPurchaserPrivacyBlocked(SalespersonPurchaser) then
+                                   PurchaserCodeToAssign := ''
+                                 else
+                                   PurchaserCodeToAssign := PurchaserCodeToCheck;
+                           END;
+
+                         }
+                          }
+    { Deletion          ;Target=ValidatePurchaserOnPurchHeader(PROCEDURE 912);
+                         ChangedElements=PROCEDURECollection
+                         {
+                           PROCEDURE ValidatePurchaserOnPurchHeader@912(PurchaseHeader2@1000 : Record "Purchase Header";IsTransaction@1001 : Boolean;IsPostAction@1002 : Boolean);
+                           BEGIN
+                             if PurchaseHeader2."Purchaser Code" <> '' then
+                               if SalespersonPurchaser.GET(PurchaseHeader2."Purchaser Code") then
+                                 if SalespersonPurchaser.VerifySalesPersonPurchaserPrivacyBlocked(SalespersonPurchaser) then begin
+                                   if IsTransaction then
+                                     ERROR(SalespersonPurchaser.GetPrivacyBlockedTransactionText(SalespersonPurchaser,IsPostAction,false));
+                                   if not IsTransaction then
+                                     ERROR(SalespersonPurchaser.GetPrivacyBlockedGenericText(SalespersonPurchaser,false));
+                                 end;
+                           END;
+
+                         }
+                          }
+    { Insertion         ;InsertAfter=OnValidatePurchaseHeaderPayToVendorNo(PROCEDURE 1215);
+                         ChangedElements=PROCEDURECollection
+                         {
+                           LOCAL PROCEDURE "### LBCOR Events ###"@5272720();
+                           BEGIN
+                           END;
+
+                           [Integration]
+                           LOCAL PROCEDURE OnAfterCreatePurchLine@5272721(VAR PurchaseLine@1000 : Record "Purchase Line";VAR TempPurchaseLine@1001 : TEMPORARY Record "Purchase Line");
+                           BEGIN
+                           END;
+
+                           LOCAL PROCEDURE "### LBCOR Functions ###"@5272722();
+                           BEGIN
+                           END;
+
+                           LOCAL PROCEDURE LeBitTransferPSLongtextLineToTemp@5272723(VAR LeBitPSLongtextLine@5272720 : Record "LeBit PS Longtext Line";VAR TempLeBitPSLongtextLine@5272721 : TEMPORARY Record "LeBit PS Longtext Line");
+                           BEGIN
+                             if LeBitPSLongtextLine.FINDSET then repeat
+                               TempLeBitPSLongtextLine.INIT;
+                               TempLeBitPSLongtextLine := LeBitPSLongtextLine;
+                               TempLeBitPSLongtextLine.INSERT;
+                             until LeBitPSLongtextLine.NEXT = 0;
+                             LeBitPSLongtextLine.DELETEALL;
+                           END;
+
+                         }
+                          }
+    { Deletion          ;Target=SalespersonPurchaser(Variable 1932);
+                         ChangedElements=VariableCollection
+                         {
+                           SalespersonPurchaser@1932 : Record "Salesperson/Purchaser";
+                         }
+                          }
+    { Insertion         ;InsertAfter=DontShowAgainActionLbl(Variable 1064);
+                         ChangedElements=VariableCollection
+                         {
+                           DontShowAgainFunctionTok@1104 : TextConst 'DEU=EinkaufsbenachrichtungFÅrAktuellenBenutzerAusblenden;ENU=HidePurchaseNotificationForCurrentUser';
+                           UpdateAddressWithBuyFromAddressFunctionTok@1105 : TextConst 'DEU=EinkaufVonKreditorAdressfelderAusVerkaufsbelegKopieren;ENU=CopyBuyFromVendorAddressFieldsFromSalesDocument';
+                           UpdateAddressWithPayToAddressTok@1100 : TextConst 'DEU=ZahlungAnKreditorAdressfelderAusVerkaufsbelegKopieren;ENU=CopyPayToVendorAddressFieldsFromSalesDocument';
+                         }
+                          }
+    { PropertyModification;
+                         Property=Version List;
+                         OriginalValue=NAVW111.00.00.21441,NAVDACH11.00.00.21441;
+                         ModifiedValue=NAVW111.00.00.20348,NAVDACH11.00.00.20348,LBCOR1.00 }
+  }
+  CODE
+  {
+
+    BEGIN
+    END.
+  }
+}
+

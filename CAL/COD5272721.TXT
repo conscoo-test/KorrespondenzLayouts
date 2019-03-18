@@ -1,0 +1,2462 @@
+OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
+{
+  OBJECT-PROPERTIES
+  {
+    Date=20181219D;
+    Time=131154.810T;
+    Modified=true;
+    Version List=LBCOR1.00;
+  }
+  PROPERTIES
+  {
+    OnRun=BEGIN
+          END;
+
+  }
+  CODE
+  {
+    VAR
+      LeBitCorrespDocMgt@5272720 : Codeunit "LeBit Corresp. Doc. Mgt";
+      Text5272721@5272721 : TextConst 'DEU=%1 muss 0 sein bei %2 %3.;ENU=%1 must be 0 for Printoption Alternate and Optional.';
+      LeBitCorrespDocSingleInst@5272722 : Codeunit "LeBit Corresp. Doc. SingleInst";
+      LeBitLongtextMgt@5272724 : Codeunit "LeBit Longtext Mgt.";
+      FieldNo@5272723 : Integer;
+
+    [EventSubscriber(Table,36,OnAfterDeleteEvent)]
+    LOCAL PROCEDURE "Table Sales Header - OnAfterDeleteEvent"@5272883(VAR Rec@5272720 : Record "Sales Header";RunTrigger@5272721 : Boolean);
+    VAR
+      SourceRecRef@5272722 : RecordRef;
+    BEGIN
+      if RunTrigger or
+        (not RunTrigger and not Rec.ISTEMPORARY)
+      then begin
+        SourceRecRef.GETTABLE(Rec);
+        LeBitLongtextMgt.DelLongtext(SourceRecRef);
+      end;
+    END;
+
+    [EventSubscriber(Table,36,OnAfterCreateSalesLine)]
+    LOCAL PROCEDURE "Table Sales Header - OnAfterCreateSalesLine"@5272882(VAR SalesLine@5272720 : Record "Sales Line";VAR TempSalesLine@5272721 : TEMPORARY Record "Sales Line");
+    BEGIN
+      LeBitLongtextMgt.CopyFieldInfoAfterCreateSalesLine(SalesLine,TempSalesLine,true);
+    END;
+
+    [EventSubscriber(Table,37,OnAfterDeleteEvent)]
+    LOCAL PROCEDURE "Table Sales Line - OnAfterDeleteEvent"@5272919(VAR Rec@5272720 : Record "Sales Line";RunTrigger@5272721 : Boolean);
+    VAR
+      SourceRecRef@5272722 : RecordRef;
+    BEGIN
+      if RunTrigger or
+        (not RunTrigger and not Rec.ISTEMPORARY)
+      then begin
+        SourceRecRef.GETTABLE(Rec);
+        LeBitLongtextMgt.DelLongtext(SourceRecRef);
+      end;
+    END;
+
+    [EventSubscriber(Table,37,OnAfterValidateEvent,Type)]
+    LOCAL PROCEDURE "Table Sales Line - OnAfterValidateEvent - Type"@5272848(VAR Rec@5272720 : Record "Sales Line";VAR xRec@5272721 : Record "Sales Line";CurrFieldNo@5272722 : Integer);
+    BEGIN
+      if Rec.Type <> Rec.Type::" " then begin
+        if Rec."LeBit Printoption" in [Rec."LeBit Printoption"::"Begin Total",
+                                       Rec."LeBit Printoption"::"End Total",
+                                       Rec."LeBit Printoption"::Title,
+                                       Rec."LeBit Printoption"::"New Page"]
+        then
+          Rec.VALIDATE("LeBit Printoption",Rec."LeBit Printoption"::Standard);
+      end else
+        if Rec."LeBit Printoption" <> Rec."LeBit Printoption"::"New Page" then
+          Rec.VALIDATE("LeBit Printoption",Rec."LeBit Printoption"::Standard);
+    END;
+
+    [EventSubscriber(Table,37,OnAfterValidateEvent,Quantity)]
+    LOCAL PROCEDURE "Table Sales Line - OnAfterValidateEvent - Quantity"@5272875(VAR Rec@5272720 : Record "Sales Line";VAR xRec@5272721 : Record "Sales Line";CurrFieldNo@5272722 : Integer);
+    BEGIN
+      if (Rec.Type <> Rec.Type::" ") and
+        (Rec.Quantity <> 0)
+      then
+        if (Rec."LeBit Printoption" = Rec."LeBit Printoption"::Alternative) or
+          (Rec."LeBit Printoption" = Rec."LeBit Printoption"::Optional)
+        then
+          ERROR(Text5272721,Rec.FIELDCAPTION(Quantity),Rec.FIELDCAPTION("LeBit Printoption"),Rec."LeBit Printoption");
+    END;
+
+    [EventSubscriber(Table,37,OnValidateTypeOnCopyFromTempSalesLine)]
+    LOCAL PROCEDURE "Table Sales Line - OnValidateTypeOnCopyFromTempSalesLine"@5272956(VAR SalesLine@5272720 : Record "Sales Line";VAR TempSalesLine@5272721 : TEMPORARY Record "Sales Line");
+    BEGIN
+      SalesLine."LeBit Printoption" := TempSalesLine."LeBit Printoption";
+    END;
+
+    [EventSubscriber(Table,37,OnValidateNoOnCopyFromTempSalesLine)]
+    LOCAL PROCEDURE "Table Sales Line - OnValidateNoOnCopyFromTempSalesLine"@5272955(VAR SalesLine@5272720 : Record "Sales Line";VAR TempSalesLine@5272721 : TEMPORARY Record "Sales Line");
+    BEGIN
+      SalesLine."LeBit Printoption" := TempSalesLine."LeBit Printoption";
+      SalesLine."LeBit Pos. No." := TempSalesLine."LeBit Pos. No.";
+    END;
+
+    [EventSubscriber(Table,38,OnAfterDeleteEvent)]
+    LOCAL PROCEDURE "Table Purchase Header - OnAfterDeleteEvent"@5272927(VAR Rec@5272720 : Record "Purchase Header";RunTrigger@5272721 : Boolean);
+    VAR
+      SourceRecRef@5272722 : RecordRef;
+    BEGIN
+      if RunTrigger or
+        (not RunTrigger and not Rec.ISTEMPORARY)
+      then begin
+        SourceRecRef.GETTABLE(Rec);
+        LeBitLongtextMgt.DelLongtext(SourceRecRef);
+      end;
+    END;
+
+    [EventSubscriber(Table,38,OnAfterCreatePurchLine)]
+    LOCAL PROCEDURE "Table Purchase Header - OnAfterCreatePurchLine"@5272932(VAR PurchaseLine@5272720 : Record "Purchase Line";VAR TempPurchaseLine@5272721 : TEMPORARY Record "Purchase Line");
+    BEGIN
+      LeBitLongtextMgt.CopyFieldInfoAfterCreatePurchLine(PurchaseLine,TempPurchaseLine,true);
+    END;
+
+    [EventSubscriber(Table,39,OnAfterDeleteEvent)]
+    LOCAL PROCEDURE "Table Purchase Line - OnAfterDeleteEvent"@5272928(VAR Rec@5272720 : Record "Purchase Line";RunTrigger@5272721 : Boolean);
+    VAR
+      SourceRecRef@5272722 : RecordRef;
+    BEGIN
+      if RunTrigger or
+        (not RunTrigger and not Rec.ISTEMPORARY)
+      then begin
+        SourceRecRef.GETTABLE(Rec);
+        LeBitLongtextMgt.DelLongtext(SourceRecRef);
+      end;
+    END;
+
+    [EventSubscriber(Table,39,OnAfterValidateEvent,Type)]
+    LOCAL PROCEDURE "Table Purchase Line - OnAfterValidateEvent - Type"@5272849(VAR Rec@5272720 : Record "Purchase Line";VAR xRec@5272721 : Record "Purchase Line";CurrFieldNo@5272722 : Integer);
+    BEGIN
+      if Rec.Type <> Rec.Type::" " then begin
+        if Rec."LeBit Printoption" in [Rec."LeBit Printoption"::"Begin Total",
+                                       Rec."LeBit Printoption"::"End Total",
+                                       Rec."LeBit Printoption"::Title,
+                                       Rec."LeBit Printoption"::"New Page"]
+        then
+          Rec.VALIDATE("LeBit Printoption",Rec."LeBit Printoption"::Standard);
+      end else
+        if Rec."LeBit Printoption" <> Rec."LeBit Printoption"::"New Page" then
+          Rec.VALIDATE("LeBit Printoption",Rec."LeBit Printoption"::Standard);
+    END;
+
+    [EventSubscriber(Table,39,OnAfterValidateEvent,"No.")]
+    LOCAL PROCEDURE "Table Purchase Line - OnAfterValidateEvent - No."@5272929(VAR Rec@5272720 : Record "Purchase Line";VAR xRec@5272721 : Record "Purchase Line";CurrFieldNo@5272722 : Integer);
+    BEGIN
+      Rec.VALIDATE("LeBit Printoption",xRec."LeBit Printoption");
+      Rec."LeBit Pos. No." := xRec."LeBit Pos. No.";
+    END;
+
+    [EventSubscriber(Table,39,OnValidateTypeOnCopyFromTempPurchLine)]
+    LOCAL PROCEDURE "Table Purchase Line - OnValidateTypeOnCopyFromTempPurchLine"@5272958(VAR PurchLine@5272720 : Record "Purchase Line";TempPurchaseLine@5272721 : TEMPORARY Record "Purchase Line");
+    BEGIN
+      PurchLine."LeBit Printoption" := TempPurchaseLine."LeBit Printoption";
+    END;
+
+    [EventSubscriber(Table,39,OnValidateNoOnCopyFromTempPurchLine)]
+    LOCAL PROCEDURE "Table Purchase Line - OnValidateNoOnCopyFromTempPurchLine"@5272959(VAR PurchLine@5272720 : Record "Purchase Line";TempPurchaseLine@5272721 : TEMPORARY Record "Purchase Line");
+    BEGIN
+      PurchLine."LeBit Printoption" := TempPurchaseLine."LeBit Printoption";
+      PurchLine."LeBit Pos. No." := TempPurchaseLine."LeBit Pos. No.";
+    END;
+
+    [EventSubscriber(Table,279,OnAfterRenameEvent)]
+    LOCAL PROCEDURE "Table Extended Text Header - OnAfterRenameEvent"@5272973(VAR Rec@5272720 : Record "Extended Text Header";VAR xRec@5272721 : Record "Extended Text Header";RunTrigger@5272722 : Boolean);
+    VAR
+      ExtTextLineLongOld@5272724 : Record "LeBit Extended Text Line Long";
+      ExtTextLineLongNew@5272723 : Record "LeBit Extended Text Line Long";
+    BEGIN
+      ///LBCOR01
+      ExtTextLineLongOld.SETRANGE(Table_ID,Rec."Table Name");
+      ExtTextLineLongOld.SETRANGE("No.",Rec."No.");
+      ExtTextLineLongOld.SETRANGE("Language Code",xRec."Language Code");
+      ExtTextLineLongOld.SETRANGE("Text No.",xRec."Text No.");
+      if ExtTextLineLongOld.FINDSET then
+        repeat
+          ExtTextLineLongNew := ExtTextLineLongOld;
+          ExtTextLineLongNew."Text No." := Rec."Text No.";
+          ExtTextLineLongNew."Language Code" := Rec."Language Code";
+          ExtTextLineLongNew.INSERT;
+        until ExtTextLineLongOld.NEXT = 0;
+
+      ExtTextLineLongOld.DELETEALL;
+      ///LBCOR01-
+    END;
+
+    [EventSubscriber(Table,111,OnBeforeInsertInvLineFromShptLine)]
+    LOCAL PROCEDURE "Table Sales Shipment Line - OnBeforeInsertInvLineFromShptLine"@5272881(VAR SalesShptLine@5272720 : Record "Sales Shipment Line";VAR SalesLine@5272721 : Record "Sales Line");
+    BEGIN
+      LeBitLongtextMgt.CopyLongTextForGetShipmentLines(SalesShptLine,SalesLine);
+    END;
+
+    [EventSubscriber(Table,110,OnAfterInsertEvent)]
+    LOCAL PROCEDURE "Table Sales Shipment Header - OnAfterInsertEvent"@5272913(VAR Rec@5272720 : Record "Sales Shipment Header";RunTrigger@5272721 : Boolean);
+    VAR
+      SalesShipmentLine@5272722 : Record "Sales Shipment Line";
+    BEGIN
+      if RunTrigger then begin
+        LeBitCorrespDocSingleInst.CopyLongTextForPostCombineSalesOrderShipment(Rec,SalesShipmentLine,1,0);
+      end;
+    END;
+
+    [EventSubscriber(Table,111,OnAfterInsertEvent)]
+    LOCAL PROCEDURE "Table Sales Shipment Line - OnAfterInsertEvent"@5272914(VAR Rec@5272720 : Record "Sales Shipment Line";RunTrigger@5272721 : Boolean);
+    VAR
+      SalesShipmentHeader@5272722 : Record "Sales Shipment Header";
+    BEGIN
+      if not RunTrigger then begin
+        LeBitCorrespDocSingleInst.CopyLongTextForPostCombineSalesOrderShipment(SalesShipmentHeader,Rec,1,1);
+      end;
+    END;
+
+    [EventSubscriber(Table,111,OnBeforeInsertInvLineFromShptLine)]
+    LOCAL PROCEDURE "Table Purch. Rcpt. Line - OnBeforeInsertInvLineFromRcptLine"@5272933(VAR PurchRcptLine@5272720 : Record "Purch. Rcpt. Line";VAR PurchaseLine@5272721 : Record "Purchase Line");
+    BEGIN
+      LeBitLongtextMgt.CopyLongTextForGetPurchRcptLines(PurchRcptLine,PurchaseLine);
+    END;
+
+    [EventSubscriber(Table,120,OnAfterInsertEvent)]
+    LOCAL PROCEDURE "Table Purch. Rcpt. Header - OnAfterInsertEvent"@5272886(VAR Rec@5272720 : Record "Purch. Rcpt. Header";RunTrigger@5272721 : Boolean);
+    VAR
+      PurchRcptLine@5272722 : Record "Purch. Rcpt. Line";
+    BEGIN
+      if not RunTrigger then begin
+        LeBitCorrespDocSingleInst.CopyLongTextForPostDropOrderShipment(Rec,PurchRcptLine,1,0);
+      end;
+    END;
+
+    [EventSubscriber(Table,121,OnAfterInsertEvent)]
+    LOCAL PROCEDURE "Table Purch. Rcpt. Line - OnAfterInsertEvent"@5272887(VAR Rec@5272720 : Record "Purch. Rcpt. Line";RunTrigger@5272721 : Boolean);
+    VAR
+      PurchRcptHeader@5272722 : Record "Purch. Rcpt. Header";
+    BEGIN
+      if not RunTrigger then begin
+        LeBitCorrespDocSingleInst.CopyLongTextForPostDropOrderShipment(PurchRcptHeader,Rec,1,1);
+      end;
+    END;
+
+    [EventSubscriber(Table,5107,OnAfterDeleteEvent)]
+    LOCAL PROCEDURE "Table Sales Header Archive - OnAfterDeleteEvent"@5272920(VAR Rec@5272720 : Record "Sales Header Archive";RunTrigger@5272721 : Boolean);
+    VAR
+      SourceRecRef@5272722 : RecordRef;
+    BEGIN
+      if RunTrigger or
+        (not RunTrigger and not Rec.ISTEMPORARY)
+      then begin
+        SourceRecRef.GETTABLE(Rec);
+        LeBitLongtextMgt.DelLongtext(SourceRecRef);
+      end;
+    END;
+
+    [EventSubscriber(Table,5108,OnAfterDeleteEvent)]
+    LOCAL PROCEDURE OnAfterDeleteEvent_Table5108@5272922(VAR Rec@5272720 : Record "Sales Line Archive";RunTrigger@5272721 : Boolean);
+    VAR
+      SourceRecRef@5272722 : RecordRef;
+    BEGIN
+      if RunTrigger or
+        (not RunTrigger and not Rec.ISTEMPORARY)
+      then begin
+        SourceRecRef.GETTABLE(Rec);
+        LeBitLongtextMgt.DelLongtext(SourceRecRef);
+      end;
+    END;
+
+    [EventSubscriber(Table,5109,OnAfterDeleteEvent)]
+    LOCAL PROCEDURE OnAfterDeleteEvent_Table5109@5272931(VAR Rec@5272720 : Record "Purchase Header Archive";RunTrigger@5272721 : Boolean);
+    VAR
+      SourceRecRef@5272722 : RecordRef;
+    BEGIN
+      if RunTrigger or
+        (not RunTrigger and not Rec.ISTEMPORARY)
+      then begin
+        SourceRecRef.GETTABLE(Rec);
+        LeBitLongtextMgt.DelLongtext(SourceRecRef);
+      end;
+    END;
+
+    [EventSubscriber(Table,5110,OnAfterDeleteEvent)]
+    LOCAL PROCEDURE OnAfterDeleteEvent_Table5110@5272930(VAR Rec@5272720 : Record "Purchase Line Archive";RunTrigger@5272721 : Boolean);
+    VAR
+      SourceRecRef@5272722 : RecordRef;
+    BEGIN
+      if RunTrigger or
+        (not RunTrigger and not Rec.ISTEMPORARY)
+      then begin
+        SourceRecRef.GETTABLE(Rec);
+        LeBitLongtextMgt.DelLongtext(SourceRecRef);
+      end;
+    END;
+
+    [EventSubscriber(Page,41,OnAfterActionEvent,Action5272722)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page41_ActionKopftext@5272720(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,41,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page41_ActionFuátext"@5272721(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,41,OnAfterActionEvent,Action5272723)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page41_Nummerierung@5272850(VAR Rec@5272720 : Record "Sales Header");
+    BEGIN
+      LeBitCorrespDocMgt.SalesLinePosNumber(Rec);
+    END;
+
+    [EventSubscriber(Page,41,OnAfterActionEvent,Action5272724)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page41_Summierung@5272851(VAR Rec@5272720 : Record "Sales Header");
+    BEGIN
+      LeBitCorrespDocMgt.SalesLineIndentTotaling(Rec);
+    END;
+
+    [EventSubscriber(Page,42,OnAfterActionEvent,Action5272726)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page42_ActionKopftext@5272722(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,42,OnAfterActionEvent,Action5272725)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page42_ActionFuátext"@5272723(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,42,OnAfterActionEvent,Action5272724)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page42_ActionRechnungskopftext@5272724(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SalesHeaderLRec@5272724 : Record "Sales Header";
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+      DocType@5272721 : 'Quote,Order,Invoice,"Credit Memo","Blanket Order","Return Order","Shipment/Receipt"';
+    BEGIN
+      SalesHeaderLRec.TRANSFERFIELDS(Rec);
+      SalesHeaderLRec."Document Type" := SalesHeaderLRec."Document Type"::Invoice;
+      SourceRecRef.GETTABLE(SalesHeaderLRec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,42,OnAfterActionEvent,Action5272723)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page42_ActionRechnungsfuátext"@5272725(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SalesHeaderLRec@5272724 : Record "Sales Header";
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+      DocType@5272721 : 'Quote,Order,Invoice,"Credit Memo","Blanket Order","Return Order","Shipment/Receipt"';
+    BEGIN
+      SalesHeaderLRec.TRANSFERFIELDS(Rec);
+      SalesHeaderLRec."Document Type" := SalesHeaderLRec."Document Type"::Invoice;
+      SourceRecRef.GETTABLE(SalesHeaderLRec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,42,OnAfterActionEvent,Action5272722)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page42_ActionLieferungskopftext@5272726(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SalesHeaderLRec@5272724 : Record "Sales Header";
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+      DocType@5272721 : 'Quote,Order,Invoice,"Credit Memo","Blanket Order","Return Order","Shipment/Receipt"';
+    BEGIN
+      SalesHeaderLRec.TRANSFERFIELDS(Rec);
+      SalesHeaderLRec."Document Type" := DocType::"Shipment/Receipt";
+      SourceRecRef.GETTABLE(SalesHeaderLRec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,42,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page42_ActionLieferungsfuátext"@5272727(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SalesHeaderLRec@5272724 : Record "Sales Header";
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+      DocType@5272721 : 'Quote,Order,Invoice,"Credit Memo","Blanket Order","Return Order","Shipment/Receipt"';
+    BEGIN
+      SalesHeaderLRec.TRANSFERFIELDS(Rec);
+      SalesHeaderLRec."Document Type" := DocType::"Shipment/Receipt";
+      SourceRecRef.GETTABLE(SalesHeaderLRec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,42,OnAfterActionEvent,Action5272727)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page42_Nummerierung@5272853(VAR Rec@5272720 : Record "Sales Header");
+    BEGIN
+      LeBitCorrespDocMgt.SalesLinePosNumber(Rec);
+    END;
+
+    [EventSubscriber(Page,42,OnAfterActionEvent,Action5272728)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page42_Summierung@5272852(VAR Rec@5272720 : Record "Sales Header");
+    BEGIN
+      LeBitCorrespDocMgt.SalesLineIndentTotaling(Rec);
+    END;
+
+    [EventSubscriber(Page,43,OnAfterActionEvent,Action5272722)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page43_ActionKopftext@5272729(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,43,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page43_ActionFuátext"@5272728(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,43,OnAfterActionEvent,Action5272723)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page43_Nummerierung@5272855(VAR Rec@5272720 : Record "Sales Header");
+    BEGIN
+      LeBitCorrespDocMgt.SalesLinePosNumber(Rec);
+    END;
+
+    [EventSubscriber(Page,43,OnAfterActionEvent,Action5272724)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page43_Summierung@5272854(VAR Rec@5272720 : Record "Sales Header");
+    BEGIN
+      LeBitCorrespDocMgt.SalesLineIndentTotaling(Rec);
+    END;
+
+    [EventSubscriber(Page,44,OnAfterActionEvent,Action5272722)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page44_ActionKopftext@5272731(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,44,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page44_ActionFuátext"@5272730(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,44,OnAfterActionEvent,Action5272723)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page44_Nummerierung@5272857(VAR Rec@5272720 : Record "Sales Header");
+    BEGIN
+      LeBitCorrespDocMgt.SalesLinePosNumber(Rec);
+    END;
+
+    [EventSubscriber(Page,44,OnAfterActionEvent,Action5272724)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page44_Summierung@5272856(VAR Rec@5272720 : Record "Sales Header");
+    BEGIN
+      LeBitCorrespDocMgt.SalesLineIndentTotaling(Rec);
+    END;
+
+    [EventSubscriber(Page,46,OnAfterGetRecordEvent)]
+    LOCAL PROCEDURE OnAfterGetRecordEvent_Page46@5272934(VAR Rec@5272720 : Record "Sales Line");
+    BEGIN
+      Rec."LeBit Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."LeBit Printoption");
+    END;
+
+    [EventSubscriber(Page,46,OnAfterActionEvent,"LeBit LongText")]
+    LOCAL PROCEDURE OnAfterActionEvent_Page46_ActionLangtext@5272732(VAR Rec@5272720 : Record "Sales Line");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Longtext);
+    END;
+
+    [EventSubscriber(Page,47,OnAfterGetRecordEvent)]
+    LOCAL PROCEDURE OnAfterGetRecordEvent_Page47@5272935(VAR Rec@5272720 : Record "Sales Line");
+    BEGIN
+      Rec."LeBit Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."LeBit Printoption");
+    END;
+
+    [EventSubscriber(Page,49,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page49_ActionKopftext@5272782(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,49,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page49_ActionFuátext"@5272781(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,49,OnAfterActionEvent,Action5272724)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page49_Nummerierung@5272868(VAR Rec@5272720 : Record "Purchase Header");
+    BEGIN
+      LeBitCorrespDocMgt.PurchLinePosNumber(Rec);
+    END;
+
+    [EventSubscriber(Page,49,OnAfterActionEvent,Action5272723)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page49_Summierung@5272864(VAR Rec@5272720 : Record "Purchase Header");
+    BEGIN
+      LeBitCorrespDocMgt.PurchLineIndentTotaling(Rec);
+    END;
+
+    [EventSubscriber(Page,50,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page50_ActionKopftext@5272784(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,50,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page50_ActionFuátext"@5272783(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,50,OnAfterActionEvent,Action5272728)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page50_ActionRechnungsKopftext@5272790(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      PurchaseHeaderRec@5272722 : Record "Purchase Header";
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+      DocType@5272723 : 'Quote,Order,Invoice,"Credit Memo","Blanket Order","Return Order"';
+    BEGIN
+      PurchaseHeaderRec.TRANSFERFIELDS(Rec);
+      PurchaseHeaderRec."Document Type" := DocType::Invoice;
+      SourceRecRef.GETTABLE(PurchaseHeaderRec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,50,OnAfterActionEvent,Action5272727)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page50_ActionRechnungeFuátext"@5272789(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      PurchaseHeaderRec@5272724 : Record "Purchase Header";
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+      DocType@5272721 : 'Quote,Order,Invoice,"Credit Memo","Blanket Order","Return Order"';
+    BEGIN
+      PurchaseHeaderRec.TRANSFERFIELDS(Rec);
+      PurchaseHeaderRec."Document Type" := DocType::Invoice;
+      SourceRecRef.GETTABLE(PurchaseHeaderRec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,50,OnAfterActionEvent,Action5272726)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page50_ActionLieferungsKopftext@5272792(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      PurchaseHeaderRec@5272724 : Record "Purchase Header";
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+      DocType@5272721 : 'Quote,Order,Invoice,"Credit Memo","Blanket Order","Return Order"';
+    BEGIN
+      PurchaseHeaderRec.TRANSFERFIELDS(Rec);
+      PurchaseHeaderRec."Document Type" := DocType::"Return Order";
+      SourceRecRef.GETTABLE(PurchaseHeaderRec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,50,OnAfterActionEvent,Action5272725)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page50_ActionLieferungFuátext"@5272791(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      PurchaseHeaderRec@5272724 : Record "Purchase Header";
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+      DocType@5272721 : 'Quote,Order,Invoice,"Credit Memo","Blanket Order","Return Order"';
+    BEGIN
+      PurchaseHeaderRec.TRANSFERFIELDS(Rec);
+      PurchaseHeaderRec."Document Type" := DocType::"Return Order";
+      SourceRecRef.GETTABLE(PurchaseHeaderRec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,50,OnAfterActionEvent,Action5272724)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page50_Nummerierung@5272870(VAR Rec@5272720 : Record "Purchase Header");
+    BEGIN
+      LeBitCorrespDocMgt.PurchLinePosNumber(Rec);
+    END;
+
+    [EventSubscriber(Page,50,OnAfterActionEvent,Action5272723)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page50_Summierung@5272869(VAR Rec@5272720 : Record "Purchase Header");
+    BEGIN
+      LeBitCorrespDocMgt.PurchLineIndentTotaling(Rec);
+    END;
+
+    [EventSubscriber(Page,51,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page51_ActionKopftext@5272786(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,51,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page51_ActionFuátext"@5272785(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,51,OnAfterActionEvent,Action5272724)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page51_Nummerierung@5272872(VAR Rec@5272720 : Record "Purchase Header");
+    BEGIN
+      LeBitCorrespDocMgt.PurchLinePosNumber(Rec);
+    END;
+
+    [EventSubscriber(Page,51,OnAfterActionEvent,Action5272723)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page51_Summierung@5272871(VAR Rec@5272720 : Record "Purchase Header");
+    BEGIN
+      LeBitCorrespDocMgt.PurchLineIndentTotaling(Rec);
+    END;
+
+    [EventSubscriber(Page,52,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page52_ActionKopftext@5272788(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,52,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page52_ActionFuátext"@5272787(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,52,OnAfterActionEvent,Action5272724)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page52_Nummerierung@5272874(VAR Rec@5272720 : Record "Purchase Header");
+    BEGIN
+      LeBitCorrespDocMgt.PurchLinePosNumber(Rec);
+    END;
+
+    [EventSubscriber(Page,52,OnAfterActionEvent,Action5272723)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page52_Summierung@5272873(VAR Rec@5272720 : Record "Purchase Header");
+    BEGIN
+      LeBitCorrespDocMgt.PurchLineIndentTotaling(Rec);
+    END;
+
+    [EventSubscriber(Page,54,OnAfterGetRecordEvent)]
+    LOCAL PROCEDURE OnAfterGetRecordEvent_Page54@5272936(VAR Rec@5272720 : Record "Purchase Line");
+    BEGIN
+      Rec."LeBit Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."LeBit Printoption");
+    END;
+
+    [EventSubscriber(Page,54,OnAfterActionEvent,"LeBit LongText")]
+    LOCAL PROCEDURE OnAfterActionEvent_Page54_ActionLangtext@5272793(VAR Rec@5272720 : Record "Purchase Line");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Longtext);
+    END;
+
+    [EventSubscriber(Page,55,OnAfterGetRecordEvent)]
+    LOCAL PROCEDURE OnAfterGetRecordEvent_Page55@5272937(VAR Rec@5272720 : Record "Purchase Line");
+    BEGIN
+      Rec."LeBit Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."LeBit Printoption");
+    END;
+
+    [EventSubscriber(Page,55,OnAfterActionEvent,"LeBit LongText")]
+    LOCAL PROCEDURE OnAfterActionEvent_Page55_ActionLangtext@5272794(VAR Rec@5272720 : Record "Purchase Line");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Longtext);
+    END;
+
+    [EventSubscriber(Page,95,OnAfterGetRecordEvent)]
+    LOCAL PROCEDURE OnAfterGetRecordEvent_Page95@5272938(VAR Rec@5272720 : Record "Sales Line");
+    BEGIN
+      Rec."LeBit Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."LeBit Printoption");
+    END;
+
+    [EventSubscriber(Page,95,OnAfterActionEvent,"LeBit LongText")]
+    LOCAL PROCEDURE OnAfterActionEvent_Page95_ActionLangtext@5272733(VAR Rec@5272720 : Record "Sales Line");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Longtext);
+    END;
+
+    [EventSubscriber(Page,96,OnAfterGetRecordEvent)]
+    LOCAL PROCEDURE OnAfterGetRecordEvent_Page96@5272939(VAR Rec@5272720 : Record "Sales Line");
+    BEGIN
+      Rec."LeBit Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."LeBit Printoption");
+    END;
+
+    [EventSubscriber(Page,96,OnAfterActionEvent,"LeBit LongText")]
+    LOCAL PROCEDURE OnAfterActionEvent_Page96_ActionLangtext@5272737(VAR Rec@5272720 : Record "Sales Line");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Longtext);
+    END;
+
+    [EventSubscriber(Page,97,OnAfterGetRecordEvent)]
+    LOCAL PROCEDURE OnAfterGetRecordEvent_Page97@5272940(VAR Rec@5272720 : Record "Purchase Line");
+    BEGIN
+      Rec."LeBit Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."LeBit Printoption");
+    END;
+
+    [EventSubscriber(Page,97,OnAfterActionEvent,"LeBit LongText")]
+    LOCAL PROCEDURE OnAfterActionEvent_Page97_ActionLangtext@5272795(VAR Rec@5272720 : Record "Purchase Line");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Longtext);
+    END;
+
+    [EventSubscriber(Page,98,OnAfterGetRecordEvent)]
+    LOCAL PROCEDURE OnAfterGetRecordEvent_Page98@5272941(VAR Rec@5272720 : Record "Purchase Line");
+    BEGIN
+      Rec."LeBit Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."LeBit Printoption");
+    END;
+
+    [EventSubscriber(Page,98,OnAfterActionEvent,"LeBit LongText")]
+    LOCAL PROCEDURE OnAfterActionEvent_Page98_ActionLangtext@5272796(VAR Rec@5272720 : Record "Purchase Line");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Longtext);
+    END;
+
+    [EventSubscriber(Page,130,OnAfterActionEvent,Action5272722)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page130_ActionKopftext@5272740(VAR Rec@5272720 : Record "Sales Shipment Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,130,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page130_ActionFuátext"@5272739(VAR Rec@5272720 : Record "Sales Shipment Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,131,OnAfterGetRecordEvent)]
+    LOCAL PROCEDURE OnAfterGetRecordEvent_Page131@5272942(VAR Rec@5272720 : Record "Sales Shipment Line");
+    BEGIN
+      Rec."LeBit Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."LeBit Printoption");
+    END;
+
+    [EventSubscriber(Page,131,OnAfterActionEvent,"LeBit LongText")]
+    LOCAL PROCEDURE OnAfterActionEvent_Page131_ActionLangtext@5272738(VAR Rec@5272720 : Record "Sales Shipment Line");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Longtext);
+    END;
+
+    [EventSubscriber(Page,132,OnAfterActionEvent,Action5272722)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page132_ActionKopftext@5272743(VAR Rec@5272720 : Record "Sales Invoice Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,132,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page132_ActionFuátext"@5272742(VAR Rec@5272720 : Record "Sales Invoice Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,133,OnAfterGetRecordEvent)]
+    LOCAL PROCEDURE OnAfterGetRecordEvent_Page133@5272943(VAR Rec@5272720 : Record "Sales Invoice Line");
+    BEGIN
+      Rec."LeBit Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."LeBit Printoption");
+    END;
+
+    [EventSubscriber(Page,133,OnAfterActionEvent,"LeBit LongText")]
+    LOCAL PROCEDURE OnAfterActionEvent_Page133_ActionLangtext@5272741(VAR Rec@5272720 : Record "Sales Invoice Line");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Longtext);
+    END;
+
+    [EventSubscriber(Page,134,OnAfterActionEvent,Action5272722)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page134_ActionKopftext@5272746(VAR Rec@5272720 : Record "Sales Cr.Memo Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,134,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page134_ActionFuátext"@5272745(VAR Rec@5272720 : Record "Sales Cr.Memo Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,135,OnAfterGetRecordEvent)]
+    LOCAL PROCEDURE OnAfterGetRecordEvent_Page135@5272944(VAR Rec@5272720 : Record "Sales Cr.Memo Line");
+    BEGIN
+      Rec."LeBit Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."LeBit Printoption");
+    END;
+
+    [EventSubscriber(Page,135,OnAfterActionEvent,"LeBit LongText")]
+    LOCAL PROCEDURE OnAfterActionEvent_Page135_ActionLangtext@5272744(VAR Rec@5272720 : Record "Sales Cr.Memo Line");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Longtext);
+    END;
+
+    [EventSubscriber(Page,136,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page136_ActionKopftext@5272799(VAR Rec@5272720 : Record "Purch. Rcpt. Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,136,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page136_ActionFuátext"@5272798(VAR Rec@5272720 : Record "Purch. Rcpt. Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,137,OnAfterGetRecordEvent)]
+    LOCAL PROCEDURE OnAfterGetRecordEvent_Page137@5272945(VAR Rec@5272720 : Record "Purch. Rcpt. Line");
+    BEGIN
+      Rec."LeBit Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."LeBit Printoption");
+    END;
+
+    [EventSubscriber(Page,137,OnAfterActionEvent,"LeBit LongText")]
+    LOCAL PROCEDURE OnAfterActionEvent_Page137_ActionLangtext@5272797(VAR Rec@5272720 : Record "Purch. Rcpt. Line");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Longtext);
+    END;
+
+    [EventSubscriber(Page,138,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page138_ActionKopftext@5272802(VAR Rec@5272720 : Record "Purch. Inv. Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,138,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page138_ActionFuátext"@5272801(VAR Rec@5272720 : Record "Purch. Inv. Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,139,OnAfterGetRecordEvent)]
+    LOCAL PROCEDURE OnAfterGetRecordEvent_Page139@5272946(VAR Rec@5272720 : Record "Purch. Inv. Line");
+    BEGIN
+      Rec."LeBit Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."LeBit Printoption");
+    END;
+
+    [EventSubscriber(Page,139,OnAfterActionEvent,"LeBit LongText")]
+    LOCAL PROCEDURE OnAfterActionEvent_Page139_ActionLangtext@5272800(VAR Rec@5272720 : Record "Purch. Inv. Line");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Longtext);
+    END;
+
+    [EventSubscriber(Page,140,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page140_ActionKopftext@5272805(VAR Rec@5272720 : Record "Purch. Cr. Memo Hdr.");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,140,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page140_ActionFuátext"@5272804(VAR Rec@5272720 : Record "Purch. Cr. Memo Hdr.");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,141,OnAfterGetRecordEvent)]
+    LOCAL PROCEDURE OnAfterGetRecordEvent_Page141@5272947(VAR Rec@5272720 : Record "Purch. Cr. Memo Line");
+    BEGIN
+      Rec."LeBit Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."LeBit Printoption");
+    END;
+
+    [EventSubscriber(Page,141,OnAfterActionEvent,"LeBit LongText")]
+    LOCAL PROCEDURE OnAfterActionEvent_Page141_ActionLangtext@5272803(VAR Rec@5272720 : Record "Purch. Cr. Memo Line");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Longtext);
+    END;
+
+    [EventSubscriber(Page,142,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page142_ActionKopftext@5272769(VAR Rec@5272720 : Record "Sales Shipment Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,142,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page142_ActionFuátext"@5272768(VAR Rec@5272720 : Record "Sales Shipment Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,143,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page143_ActionKopftext@5272771(VAR Rec@5272720 : Record "Sales Invoice Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,143,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page143_ActionFuátext"@5272770(VAR Rec@5272720 : Record "Sales Invoice Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,144,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page144_ActionKopftext@5272773(VAR Rec@5272720 : Record "Sales Cr.Memo Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,144,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page144_ActionFuátext"@5272772(VAR Rec@5272720 : Record "Sales Cr.Memo Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,145,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page145_ActionKopftext@5272807(VAR Rec@5272720 : Record "Purch. Rcpt. Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,145,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page145_ActionFuátext"@5272806(VAR Rec@5272720 : Record "Purch. Rcpt. Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,146,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page146_ActionKopftext@5272809(VAR Rec@5272720 : Record "Purch. Inv. Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,146,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page146_ActionFuátext"@5272808(VAR Rec@5272720 : Record "Purch. Inv. Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,147,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page147_ActionKopftext@5272811(VAR Rec@5272720 : Record "Purch. Cr. Memo Hdr.");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,147,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page147_ActionFuátext"@5272810(VAR Rec@5272720 : Record "Purch. Cr. Memo Hdr.");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,507,OnAfterActionEvent,Action5272722)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page507_ActionKopftext@5272735(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,507,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page507_ActionFuátext"@5272734(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,507,OnAfterActionEvent,Action5272724)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page507_Nummerierung@5272859(VAR Rec@5272720 : Record "Sales Header");
+    BEGIN
+      LeBitCorrespDocMgt.SalesLinePosNumber(Rec);
+    END;
+
+    [EventSubscriber(Page,507,OnAfterActionEvent,Action5272723)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page507_Summierung@5272858(VAR Rec@5272720 : Record "Sales Header");
+    BEGIN
+      LeBitCorrespDocMgt.SalesLineIndentTotaling(Rec);
+    END;
+
+    [EventSubscriber(Page,508,OnAfterGetRecordEvent)]
+    LOCAL PROCEDURE OnAfterGetRecordEvent_Page508@5272948(VAR Rec@5272720 : Record "Sales Line");
+    BEGIN
+      Rec."LeBit Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."LeBit Printoption");
+    END;
+
+    [EventSubscriber(Page,508,OnAfterActionEvent,"LeBit LongText")]
+    LOCAL PROCEDURE OnAfterActionEvent_Page508_ActionLangtext@5272736(VAR Rec@5272720 : Record "Sales Line");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Longtext);
+    END;
+
+    [EventSubscriber(Page,509,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page509_ActionKopftext@5272814(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,509,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page509_ActionFuátext"@5272813(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,509,OnAfterActionEvent,Action5272724)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page509_Nummerierung@5272878(VAR Rec@5272720 : Record "Purchase Header");
+    BEGIN
+      LeBitCorrespDocMgt.PurchLinePosNumber(Rec);
+    END;
+
+    [EventSubscriber(Page,509,OnAfterActionEvent,Action5272723)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page509_Summierung@5272877(VAR Rec@5272720 : Record "Purchase Header");
+    BEGIN
+      LeBitCorrespDocMgt.PurchLineIndentTotaling(Rec);
+    END;
+
+    [EventSubscriber(Page,510,OnAfterGetRecordEvent)]
+    LOCAL PROCEDURE OnAfterGetRecordEvent_Page510@5272949(VAR Rec@5272720 : Record "Purchase Line");
+    BEGIN
+      Rec."LeBit Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."LeBit Printoption");
+    END;
+
+    [EventSubscriber(Page,510,OnAfterActionEvent,"LeBit LongText")]
+    LOCAL PROCEDURE OnAfterActionEvent_Page510_ActionLangtext@5272812(VAR Rec@5272720 : Record "Purchase Line");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Longtext);
+    END;
+
+    [EventSubscriber(Page,5159,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page5159_ActionKopftext@5272966(VAR Rec@5272720 : Record "Sales Header Archive");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,5159,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page5159_ActionFuátext"@5272965(VAR Rec@5272720 : Record "Sales Header Archive");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,5160,OnAfterGetRecordEvent)]
+    LOCAL PROCEDURE OnAfterGetRecordEvent_Page5160@5272876(VAR Rec@5272720 : Record "Sales Line Archive");
+    BEGIN
+      Rec."LeBit Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."LeBit Printoption");
+    END;
+
+    [EventSubscriber(Page,5160,OnAfterActionEvent,"LeBit LongText")]
+    LOCAL PROCEDURE OnAfterActionEvent_Page5160_ActionLangtext@5272961(VAR Rec@5272720 : Record "Sales Line Archive");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Longtext);
+    END;
+
+    [EventSubscriber(Page,5162,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page5162_ActionKopftext@5272968(VAR Rec@5272720 : Record "Sales Header Archive");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,5162,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page5162_ActionFuátext"@5272967(VAR Rec@5272720 : Record "Sales Header Archive");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,5163,OnAfterGetRecordEvent)]
+    LOCAL PROCEDURE OnAfterGetRecordEvent_Page5163@5272954(VAR Rec@5272720 : Record "Sales Line Archive");
+    BEGIN
+      Rec."LeBit Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."LeBit Printoption");
+    END;
+
+    [EventSubscriber(Page,5163,OnAfterActionEvent,"LeBit LongText")]
+    LOCAL PROCEDURE OnAfterActionEvent_Page5163_ActionLangtext@5272962(VAR Rec@5272720 : Record "Sales Line Archive");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Longtext);
+    END;
+
+    [EventSubscriber(Page,5164,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page5164_ActionKopftext@5272970(VAR Rec@5272720 : Record "Purchase Header Archive");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,5164,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page5164_ActionFuátext"@5272969(VAR Rec@5272720 : Record "Purchase Header Archive");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,5165,OnAfterGetRecordEvent)]
+    LOCAL PROCEDURE OnAfterGetRecordEvent_Page5165@5272957(VAR Rec@5272720 : Record "Purchase Line Archive");
+    BEGIN
+      Rec."LeBit Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."LeBit Printoption");
+    END;
+
+    [EventSubscriber(Page,5165,OnAfterActionEvent,"LeBit LongText")]
+    LOCAL PROCEDURE OnAfterActionEvent_Page5165_ActionLangtext@5272963(VAR Rec@5272720 : Record "Purchase Line Archive");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Longtext);
+    END;
+
+    [EventSubscriber(Page,5167,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page5167_ActionKopftext@5272972(VAR Rec@5272720 : Record "Purchase Header Archive");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,5167,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page5167_ActionFuátext"@5272971(VAR Rec@5272720 : Record "Purchase Header Archive");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,5168,OnAfterGetRecordEvent)]
+    LOCAL PROCEDURE OnAfterGetRecordEvent_Page5168@5272960(VAR Rec@5272720 : Record "Purchase Line Archive");
+    BEGIN
+      Rec."LeBit Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."LeBit Printoption");
+    END;
+
+    [EventSubscriber(Page,5168,OnAfterActionEvent,"LeBit LongText")]
+    LOCAL PROCEDURE OnAfterActionEvent_Page5168_ActionLangtext@5272964(VAR Rec@5272720 : Record "Purchase Line Archive");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Longtext);
+    END;
+
+    [EventSubscriber(Page,6627,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page6627_ActionKopftext@5272764(VAR Rec@5272720 : Record "Sales Header Archive");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,6627,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page6627_ActionFuátext"@5272763(VAR Rec@5272720 : Record "Sales Header Archive");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,6628,OnAfterActionEvent,"LeBit LongText")]
+    LOCAL PROCEDURE OnAfterActionEvent_Page6628_ActionLangtext@5272765(VAR Rec@5272720 : Record "Sales Line Archive");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Longtext);
+    END;
+
+    [EventSubscriber(Page,6629,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page6629_ActionKopftext@5272767(VAR Rec@5272720 : Record "Sales Header Archive");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,6629,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page6629_ActionFuátext"@5272766(VAR Rec@5272720 : Record "Sales Header Archive");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,6630,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page6630_ActionKopftext@5272861(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,6630,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page6630_ActionFuátext"@5272860(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,6630,OnAfterActionEvent,Action5272724)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page6630_Nummerierung@5272863(VAR Rec@5272720 : Record "Sales Header");
+    BEGIN
+      LeBitCorrespDocMgt.SalesLinePosNumber(Rec);
+    END;
+
+    [EventSubscriber(Page,6630,OnAfterActionEvent,Action5272723)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page6630_Summierung@5272862(VAR Rec@5272720 : Record "Sales Header");
+    BEGIN
+      LeBitCorrespDocMgt.SalesLineIndentTotaling(Rec);
+    END;
+
+    [EventSubscriber(Page,6631,OnAfterGetRecordEvent)]
+    LOCAL PROCEDURE OnAfterGetRecordEvent_Page6631@5272950(VAR Rec@5272720 : Record "Sales Line");
+    BEGIN
+      Rec."LeBit Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."LeBit Printoption");
+    END;
+
+    [EventSubscriber(Page,6631,OnAfterActionEvent,"LeBit LongText")]
+    LOCAL PROCEDURE OnAfterActionEvent_Page6631_ActionLangtext@5272865(VAR Rec@5272720 : Record "Sales Line");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Longtext);
+    END;
+
+    [EventSubscriber(Page,6633,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page6633_ActionKopftext@5272867(VAR Rec@5272720 : Record "Sales Line");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,6633,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page6633_ActionFuátext"@5272866(VAR Rec@5272720 : Record "Sales Line");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,6640,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page6640_ActionKopftext@5272817(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,6640,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page6640_ActionFuátext"@5272816(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,6640,OnAfterActionEvent,Action5272722)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page6640_Nummerierung@5272880(VAR Rec@5272720 : Record "Purchase Header");
+    BEGIN
+      LeBitCorrespDocMgt.PurchLinePosNumber(Rec);
+    END;
+
+    [EventSubscriber(Page,6640,OnAfterActionEvent,Action5272725)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page6640_Summierung@5272879(VAR Rec@5272720 : Record "Purchase Header");
+    BEGIN
+      LeBitCorrespDocMgt.PurchLineIndentTotaling(Rec);
+    END;
+
+    [EventSubscriber(Page,6641,OnAfterGetRecordEvent)]
+    LOCAL PROCEDURE OnAfterGetRecordEvent_Page6641@5272951(VAR Rec@5272720 : Record "Purchase Line");
+    BEGIN
+      Rec."LeBit Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."LeBit Printoption");
+    END;
+
+    [EventSubscriber(Page,6641,OnAfterActionEvent,"LeBit LongText")]
+    LOCAL PROCEDURE OnAfterActionEvent_Page6641_ActionLangtext@5272815(VAR Rec@5272720 : Record "Purchase Line");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Longtext);
+    END;
+
+    [EventSubscriber(Page,6643,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page6643_ActionKopftext@5272819(VAR Rec@5272720 : Record "Purchase Line");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,6643,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page6643_ActionFuátext"@5272818(VAR Rec@5272720 : Record "Purchase Line");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,6644,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page6644_ActionKopftext@5272821(VAR Rec@5272720 : Record "Purchase Header Archive");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,6644,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page6644_ActionFuátext"@5272820(VAR Rec@5272720 : Record "Purchase Header Archive");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,6645,OnAfterActionEvent,"LeBit LongText")]
+    LOCAL PROCEDURE OnAfterActionEvent_Page6645_ActionLangtext@5272822(VAR Rec@5272720 : Record "Purchase Line Archive");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Longtext);
+    END;
+
+    [EventSubscriber(Page,6646,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page6646_ActionKopftext@5272824(VAR Rec@5272720 : Record "Purchase Header Archive");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,6646,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page6646_ActionFuátext"@5272823(VAR Rec@5272720 : Record "Purchase Header Archive");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,6650,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page6650_ActionKopftext@5272827(VAR Rec@5272720 : Record "Return Shipment Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,6650,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page6650_ActionFuátext"@5272826(VAR Rec@5272720 : Record "Return Shipment Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,6651,OnAfterGetRecordEvent)]
+    LOCAL PROCEDURE OnAfterGetRecordEvent_Page6651@5272952(VAR Rec@5272720 : Record "Return Shipment Line");
+    BEGIN
+      Rec."LeBit Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."LeBit Printoption");
+    END;
+
+    [EventSubscriber(Page,6651,OnAfterActionEvent,"LeBit LongText")]
+    LOCAL PROCEDURE OnAfterActionEvent_Page6651_ActionLangtext@5272825(VAR Rec@5272720 : Record "Return Shipment Line");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Longtext);
+    END;
+
+    [EventSubscriber(Page,6652,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page6652_ActionKopftext@5272829(VAR Rec@5272720 : Record "Return Shipment Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,6652,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page6652_ActionFuátext"@5272828(VAR Rec@5272720 : Record "Return Shipment Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,6660,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page6660_ActionKopftext@5272780(VAR Rec@5272720 : Record "Return Receipt Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,6660,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page6660_ActionFuátext"@5272779(VAR Rec@5272720 : Record "Return Receipt Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,6661,OnAfterGetRecordEvent)]
+    LOCAL PROCEDURE OnAfterGetRecordEvent_Page6661@5272953(VAR Rec@5272720 : Record "Return Receipt Line");
+    BEGIN
+      Rec."LeBit Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."LeBit Printoption");
+    END;
+
+    [EventSubscriber(Page,6661,OnAfterActionEvent,"LeBit LongText")]
+    LOCAL PROCEDURE OnAfterActionEvent_Page6661_ActionLangtext@5272778(VAR Rec@5272720 : Record "Return Receipt Line");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Longtext);
+    END;
+
+    [EventSubscriber(Page,6662,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page6662_ActionKopftext@5272777(VAR Rec@5272720 : Record "Return Receipt Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,6662,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page6662_ActionFuátext"@5272776(VAR Rec@5272720 : Record "Return Receipt Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,9300,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page9300_ActionKopftext@5272748(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,9300,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9300_ActionFuátext"@5272747(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,9301,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page9301_ActionKopftext@5272750(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,9301,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9301_ActionFuátext"@5272749(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,9302,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page9302_ActionKopftext@5272752(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,9302,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9302_ActionFuátext"@5272751(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,9303,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page9303_ActionKopftext@5272754(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,9303,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9303_ActionFuátext"@5272753(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,9304,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page9304_ActionKopftext@5272756(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,9304,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9304_ActionFuátext"@5272755(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,9305,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page9305_ActionKopftext@5272758(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,9305,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9305_ActionFuátext"@5272757(VAR Rec@5272720 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,9306,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page9306_ActionKopftext@5272831(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,9306,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9306_ActionFuátext"@5272830(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,9307,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page9307_ActionKopftext@5272833(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,9307,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9307_ActionFuátext"@5272832(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,9308,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page9308_ActionKopftext@5272835(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,9308,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9308_ActionFuátext"@5272834(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,9309,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page9309_ActionKopftext@5272837(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,9309,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9309_ActionFuátext"@5272836(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,9310,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page9310_ActionKopftext@5272839(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,9310,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9310_ActionFuátext"@5272838(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,9311,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page9311_ActionKopftext@5272841(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,9311,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9311_ActionFuátext"@5272840(VAR Rec@5272720 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,9346,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page9346_ActionKopftext@5272843(VAR Rec@5272720 : Record "Purchase Header Archive");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,9346,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9346_ActionFuátext"@5272842(VAR Rec@5272720 : Record "Purchase Header Archive");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,9347,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page9347_ActionKopftext@5272845(VAR Rec@5272720 : Record "Purchase Header Archive");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,9347,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9347_ActionFuátext"@5272844(VAR Rec@5272720 : Record "Purchase Header Archive");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,9348,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page9348_ActionKopftext@5272760(VAR Rec@5272720 : Record "Sales Header Archive");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,9348,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9348_ActionFuátext"@5272759(VAR Rec@5272720 : Record "Sales Header Archive");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,9349,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page9349_ActionKopftext@5272762(VAR Rec@5272720 : Record "Sales Header Archive");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,9349,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9349_ActionFuátext"@5272761(VAR Rec@5272720 : Record "Sales Header Archive");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,35580,OnAfterActionEvent,Action5272721)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page35580_ActionKopftext@5272775(VAR Rec@5272720 : Record "Sales Header Archive");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,35580,OnAfterActionEvent,Action5272722)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page35580_ActionFuátext"@5272774(VAR Rec@5272720 : Record "Sales Header Archive");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Page,35581,OnAfterActionEvent,Action5272722)]
+    LOCAL PROCEDURE OnAfterActionEvent_Page35581_ActionKopftext@5272847(VAR Rec@5272720 : Record "Purchase Header Archive");
+    VAR
+      SourceRecRef@5272721 : RecordRef;
+      Position@5272724 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Header);
+    END;
+
+    [EventSubscriber(Page,35581,OnAfterActionEvent,Action5272720)]
+    LOCAL PROCEDURE "OnAfterActionEvent_Page35581_ActionFuátext"@5272846(VAR Rec@5272720 : Record "Purchase Header Archive");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      Position@5272722 : 'Header,Footer,Longtext';
+    BEGIN
+      SourceRecRef.GETTABLE(Rec);
+      LeBitLongtextMgt.ShowLongtextLines(SourceRecRef,Position::Footer);
+    END;
+
+    [EventSubscriber(Codeunit,80,OnBeforePostSalesDoc)]
+    LOCAL PROCEDURE OnBeforePostSalesDoc_Codeunit80@5272884(VAR SalesHeader@5272720 : Record "Sales Header");
+    VAR
+      PurchRcptHeader@5272721 : Record "Purch. Rcpt. Header";
+      PurchRcptLine@5272722 : Record "Purch. Rcpt. Line";
+    BEGIN
+      LeBitCorrespDocSingleInst.CopyLongTextForPostDropOrderShipment(PurchRcptHeader,PurchRcptLine,0,0);
+    END;
+
+    [EventSubscriber(Codeunit,80,OnAfterPostSalesDoc)]
+    LOCAL PROCEDURE OnAfterPostSalesDoc_Codeunit80@5272885(VAR SalesHeader@5272720 : Record "Sales Header";VAR GenJnlPostLine@5272721 : Codeunit "Gen. Jnl.-Post Line";SalesShptHdrNo@5272722 : Code[20];RetRcpHdrNo@5272723 : Code[20];SalesInvHdrNo@5272724 : Code[20];SalesCrMemoHdrNo@5272725 : Code[20]);
+    VAR
+      PurchRcptHeader@5272727 : Record "Purch. Rcpt. Header";
+      PurchRcptLine@5272726 : Record "Purch. Rcpt. Line";
+    BEGIN
+      LeBitCorrespDocSingleInst.CopyLongTextForPostDropOrderShipment(PurchRcptHeader,PurchRcptLine,2,0);
+    END;
+
+    [EventSubscriber(Codeunit,80,OnBeforeSalesInvLineInsert)]
+    LOCAL PROCEDURE OnBeforeSalesInvLineInsert_Codeunit80@5272888(VAR SalesInvLine@5272720 : Record "Sales Invoice Line";SalesInvHeader@5272721 : Record "Sales Invoice Header";SalesLine@5272722 : Record "Sales Line");
+    VAR
+      SourceRecRef@5272724 : RecordRef;
+      TargetRecRef@5272723 : RecordRef;
+    BEGIN
+      SourceRecRef.GETTABLE(SalesLine);
+      TargetRecRef.GETTABLE(SalesInvLine);
+      LeBitLongtextMgt.CopyLongtext(SourceRecRef,TargetRecRef);
+    END;
+
+    [EventSubscriber(Codeunit,80,OnBeforeSalesCrMemoLineInsert)]
+    LOCAL PROCEDURE OnBeforeSalesCrMemoLineInsert_Codeunit80@5272889(VAR SalesCrMemoLine@5272720 : Record "Sales Cr.Memo Line";SalesCrMemoHeader@5272721 : Record "Sales Cr.Memo Header";SalesLine@5272722 : Record "Sales Line");
+    VAR
+      SourceRecRef@5272724 : RecordRef;
+      TargetRecRef@5272723 : RecordRef;
+    BEGIN
+      SourceRecRef.GETTABLE(SalesLine);
+      TargetRecRef.GETTABLE(SalesCrMemoLine);
+      LeBitLongtextMgt.CopyLongtext(SourceRecRef,TargetRecRef);
+    END;
+
+    [EventSubscriber(Codeunit,80,OnBeforeSalesShptHeaderInsert)]
+    LOCAL PROCEDURE OnBeforeSalesShptHeaderInsert_Codeunit80@5272891(VAR SalesShptHeader@5272720 : Record "Sales Shipment Header";SalesHeader@5272721 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      TargetRecRef@5272722 : RecordRef;
+    BEGIN
+      SourceRecRef.GETTABLE(SalesHeader);
+      TargetRecRef.GETTABLE(SalesShptHeader);
+      LeBitLongtextMgt.CopyLongtext(SourceRecRef,TargetRecRef);
+    END;
+
+    [EventSubscriber(Codeunit,80,OnBeforeReturnRcptHeaderInsert)]
+    LOCAL PROCEDURE OnBeforeReturnRcptHeaderInsert_Codeunit80@5272893(VAR ReturnRcptHeader@5272720 : Record "Return Receipt Header";SalesHeader@5272721 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      TargetRecRef@5272722 : RecordRef;
+    BEGIN
+      SourceRecRef.GETTABLE(SalesHeader);
+      TargetRecRef.GETTABLE(ReturnRcptHeader);
+      LeBitLongtextMgt.CopyLongtext(SourceRecRef,TargetRecRef);
+    END;
+
+    [EventSubscriber(Codeunit,80,OnBeforeSalesInvHeaderInsert)]
+    LOCAL PROCEDURE OnBeforeSalesInvHeaderInsert_Codeunit80@5272894(VAR SalesInvHeader@5272720 : Record "Sales Invoice Header";SalesHeader@5272721 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      TargetRecRef@5272722 : RecordRef;
+    BEGIN
+      SourceRecRef.GETTABLE(SalesHeader);
+      TargetRecRef.GETTABLE(SalesInvHeader);
+      LeBitLongtextMgt.CopyLongtext(SourceRecRef,TargetRecRef);
+    END;
+
+    [EventSubscriber(Codeunit,80,OnBeforeSalesCrMemoHeaderInsert)]
+    LOCAL PROCEDURE OnBeforeSalesCrMemoHeaderInsert_Codeunit80@5272895(VAR SalesCrMemoHeader@5272720 : Record "Sales Cr.Memo Header";SalesHeader@5272721 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      TargetRecRef@5272722 : RecordRef;
+    BEGIN
+      SourceRecRef.GETTABLE(SalesHeader);
+      TargetRecRef.GETTABLE(SalesCrMemoHeader);
+      LeBitLongtextMgt.CopyLongtext(SourceRecRef,TargetRecRef);
+    END;
+
+    [EventSubscriber(Codeunit,80,OnBeforeSalesShptLineInsert)]
+    LOCAL PROCEDURE OnBeforeSalesShptLineInsert_Codeunit80@5272896(VAR SalesShptLine@5272720 : Record "Sales Shipment Line";SalesShptHeader@5272721 : Record "Sales Shipment Header";SalesLine@5272722 : Record "Sales Line");
+    VAR
+      SourceRecRef@5272724 : RecordRef;
+      TargetRecRef@5272723 : RecordRef;
+    BEGIN
+      SourceRecRef.GETTABLE(SalesLine);
+      TargetRecRef.GETTABLE(SalesShptLine);
+      LeBitLongtextMgt.CopyLongtext(SourceRecRef,TargetRecRef);
+    END;
+
+    [EventSubscriber(Codeunit,80,OnBeforeReturnRcptLineInsert)]
+    LOCAL PROCEDURE OnBeforeReturnRcptLineInsert_Codeunit80@5272897(VAR ReturnRcptLine@5272720 : Record "Return Receipt Line";ReturnRcptHeader@5272721 : Record "Return Receipt Header";SalesLine@5272722 : Record "Sales Line");
+    VAR
+      SourceRecRef@5272724 : RecordRef;
+      TargetRecRef@5272723 : RecordRef;
+    BEGIN
+      SourceRecRef.GETTABLE(SalesLine);
+      TargetRecRef.GETTABLE(ReturnRcptLine);
+      LeBitLongtextMgt.CopyLongtext(SourceRecRef,TargetRecRef);
+    END;
+
+    [EventSubscriber(Codeunit,86,OnAfterOnRun)]
+    LOCAL PROCEDURE OnAfterOnRun_Codeunit86@5272890(VAR SalesHeader@5272720 : Record "Sales Header";VAR SalesOrderHeader@5272721 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      TargetRecRef@5272722 : RecordRef;
+    BEGIN
+      SourceRecRef.GETTABLE(SalesHeader);
+      TargetRecRef.GETTABLE(SalesOrderHeader);
+      LeBitLongtextMgt.CopyLongtext(SourceRecRef,TargetRecRef);
+    END;
+
+    [EventSubscriber(Codeunit,86,OnBeforeInsertSalesOrderLine)]
+    LOCAL PROCEDURE OnBeforeInsertSalesOrderLine_Codeunit86@5272892(VAR SalesOrderLine@5272720 : Record "Sales Line";SalesOrderHeader@5272721 : Record "Sales Header";SalesQuoteLine@5272722 : Record "Sales Line";SalesQuoteHeader@5272723 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272725 : RecordRef;
+      TargetRecRef@5272724 : RecordRef;
+    BEGIN
+      SourceRecRef.GETTABLE(SalesQuoteLine);
+      TargetRecRef.GETTABLE(SalesOrderLine);
+      LeBitLongtextMgt.CopyLongtext(SourceRecRef,TargetRecRef);
+    END;
+
+    [EventSubscriber(Codeunit,87,OnBeforeInsertSalesOrderHeader)]
+    LOCAL PROCEDURE OnBeforeInsertSalesOrderHeader_Codeunit87@5272898(VAR SalesOrderHeader@5272720 : Record "Sales Header";BlanketOrderSalesHeader@5272721 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      TargetRecRef@5272722 : RecordRef;
+    BEGIN
+      SourceRecRef.GETTABLE(BlanketOrderSalesHeader);
+      TargetRecRef.GETTABLE(SalesOrderHeader);
+      LeBitLongtextMgt.CopyLongtext(SourceRecRef,TargetRecRef);
+    END;
+
+    [EventSubscriber(Codeunit,87,OnBeforeInsertSalesOrderLine)]
+    LOCAL PROCEDURE OnBeforeInsertSalesOrderLine_Codeunit87@5272899(VAR SalesOrderLine@5272720 : Record "Sales Line";SalesOrderHeader@5272721 : Record "Sales Header";BlanketOrderSalesLine@5272722 : Record "Sales Line";BlanketOrderSalesHeader@5272723 : Record "Sales Header");
+    VAR
+      SourceRecRef@5272725 : RecordRef;
+      TargetRecRef@5272724 : RecordRef;
+    BEGIN
+      SourceRecRef.GETTABLE(BlanketOrderSalesLine);
+      TargetRecRef.GETTABLE(SalesOrderLine);
+      LeBitLongtextMgt.CopyLongtext(SourceRecRef,TargetRecRef);
+    END;
+
+    [EventSubscriber(Codeunit,90,OnBeforePostPurchaseDoc)]
+    LOCAL PROCEDURE OnBeforePostPurchaseDoc_Codeunit90@5272911(VAR PurchaseHeader@5272720 : Record "Purchase Header");
+    VAR
+      SalesShipmentHeader@5272721 : Record "Sales Shipment Header";
+      SalesShipmentLine@5272722 : Record "Sales Shipment Line";
+    BEGIN
+      LeBitCorrespDocSingleInst.CopyLongTextForPostCombineSalesOrderShipment(SalesShipmentHeader,SalesShipmentLine,0,0);
+    END;
+
+    [EventSubscriber(Codeunit,90,OnAfterPostPurchaseDoc)]
+    LOCAL PROCEDURE OnAfterPostPurchaseDoc_Codeunit90@5272912(VAR PurchaseHeader@5272720 : Record "Purchase Header";VAR GenJnlPostLine@5272721 : Codeunit "Gen. Jnl.-Post Line";PurchRcpHdrNo@5272722 : Code[20];RetShptHdrNo@5272723 : Code[20];PurchInvHdrNo@5272724 : Code[20];PurchCrMemoHdrNo@5272725 : Code[20]);
+    VAR
+      SalesShipmentHeader@5272727 : Record "Sales Shipment Header";
+      SalesShipmentLine@5272726 : Record "Sales Shipment Line";
+    BEGIN
+      LeBitCorrespDocSingleInst.CopyLongTextForPostCombineSalesOrderShipment(SalesShipmentHeader,SalesShipmentLine,2,0);
+    END;
+
+    [EventSubscriber(Codeunit,90,OnBeforePurchCrMemoHeaderInsert)]
+    LOCAL PROCEDURE OnBeforePurchCrMemoHeaderInsert_Codeunit90@5272900(VAR PurchCrMemoHdr@5272720 : Record "Purch. Cr. Memo Hdr.";VAR PurchHeader@5272721 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      TargetRecRef@5272722 : RecordRef;
+    BEGIN
+      SourceRecRef.GETTABLE(PurchHeader);
+      TargetRecRef.GETTABLE(PurchCrMemoHdr);
+      LeBitLongtextMgt.CopyLongtext(SourceRecRef,TargetRecRef);
+    END;
+
+    [EventSubscriber(Codeunit,90,OnBeforePurchCrMemoLineInsert)]
+    LOCAL PROCEDURE OnBeforePurchCrMemoLineInsert_Codeunit90@5272901(VAR PurchCrMemoLine@5272720 : Record "Purch. Cr. Memo Line";VAR PurchCrMemoHdr@5272721 : Record "Purch. Cr. Memo Hdr.";VAR PurchLine@5272722 : Record "Purchase Line");
+    VAR
+      SourceRecRef@5272724 : RecordRef;
+      TargetRecRef@5272723 : RecordRef;
+    BEGIN
+      SourceRecRef.GETTABLE(PurchLine);
+      TargetRecRef.GETTABLE(PurchCrMemoLine);
+      LeBitLongtextMgt.CopyLongtext(SourceRecRef,TargetRecRef);
+    END;
+
+    [EventSubscriber(Codeunit,90,OnBeforePurchInvHeaderInsert)]
+    LOCAL PROCEDURE OnBeforePurchInvHeaderInsert_Codeunit90@5272902(VAR PurchInvHeader@5272720 : Record "Purch. Inv. Header";VAR PurchHeader@5272721 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      TargetRecRef@5272722 : RecordRef;
+    BEGIN
+      SourceRecRef.GETTABLE(PurchHeader);
+      TargetRecRef.GETTABLE(PurchInvHeader);
+      LeBitLongtextMgt.CopyLongtext(SourceRecRef,TargetRecRef);
+    END;
+
+    [EventSubscriber(Codeunit,90,OnBeforePurchInvLineInsert)]
+    LOCAL PROCEDURE OnBeforePurchInvLineInsert_Codeunit90@5272903(VAR PurchInvLine@5272720 : Record "Purch. Inv. Line";VAR PurchInvHeader@5272721 : Record "Purch. Inv. Header";VAR PurchaseLine@5272722 : Record "Purchase Line");
+    VAR
+      SourceRecRef@5272724 : RecordRef;
+      TargetRecRef@5272723 : RecordRef;
+    BEGIN
+      SourceRecRef.GETTABLE(PurchaseLine);
+      TargetRecRef.GETTABLE(PurchInvLine);
+      LeBitLongtextMgt.CopyLongtext(SourceRecRef,TargetRecRef);
+    END;
+
+    [EventSubscriber(Codeunit,90,OnBeforePurchRcptHeaderInsert)]
+    LOCAL PROCEDURE OnBeforePurchRcptHeaderInsert_Codeunit90@5272904(VAR PurchRcptHeader@5272720 : Record "Purch. Rcpt. Header";VAR PurchaseHeader@5272721 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      TargetRecRef@5272722 : RecordRef;
+    BEGIN
+      SourceRecRef.GETTABLE(PurchaseHeader);
+      TargetRecRef.GETTABLE(PurchRcptHeader);
+      LeBitLongtextMgt.CopyLongtext(SourceRecRef,TargetRecRef);
+    END;
+
+    [EventSubscriber(Codeunit,90,OnBeforePurchRcptLineInsert)]
+    LOCAL PROCEDURE OnBeforePurchRcptLineInsert_Codeunit90@5272905(VAR PurchRcptLine@5272720 : Record "Purch. Rcpt. Line";VAR PurchRcptHeader@5272721 : Record "Purch. Rcpt. Header";VAR PurchLine@5272722 : Record "Purchase Line");
+    VAR
+      SourceRecRef@5272724 : RecordRef;
+      TargetRecRef@5272723 : RecordRef;
+    BEGIN
+      SourceRecRef.GETTABLE(PurchLine);
+      TargetRecRef.GETTABLE(PurchRcptLine);
+      LeBitLongtextMgt.CopyLongtext(SourceRecRef,TargetRecRef);
+    END;
+
+    [EventSubscriber(Codeunit,90,OnBeforeReturnShptHeaderInsert)]
+    LOCAL PROCEDURE OnBeforeReturnShptHeaderInsert_Codeunit90@5272907(VAR ReturnShptHeader@5272720 : Record "Return Shipment Header";VAR PurchHeader@5272721 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      TargetRecRef@5272722 : RecordRef;
+    BEGIN
+      SourceRecRef.GETTABLE(PurchHeader);
+      TargetRecRef.GETTABLE(ReturnShptHeader);
+      LeBitLongtextMgt.CopyLongtext(SourceRecRef,TargetRecRef);
+    END;
+
+    [EventSubscriber(Codeunit,90,OnBeforeReturnShptLineInsert)]
+    LOCAL PROCEDURE OnBeforeReturnShptLineInsert_Codeunit90@5272908(VAR ReturnShptLine@5272720 : Record "Return Shipment Line";VAR ReturnShptHeader@5272721 : Record "Return Shipment Header";VAR PurchLine@5272722 : Record "Purchase Line");
+    VAR
+      SourceRecRef@5272724 : RecordRef;
+      TargetRecRef@5272723 : RecordRef;
+    BEGIN
+      SourceRecRef.GETTABLE(PurchLine);
+      TargetRecRef.GETTABLE(ReturnShptLine);
+      LeBitLongtextMgt.CopyLongtext(SourceRecRef,TargetRecRef);
+    END;
+
+    [EventSubscriber(Codeunit,96,OnBeforeInsertPurchOrderHeader)]
+    LOCAL PROCEDURE OnBeforeInsertPurchOrderHeader_Codeunit96@5272909(VAR PurchOrderHeader@5272720 : Record "Purchase Header";PurchQuoteHeader@5272721 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      TargetRecRef@5272722 : RecordRef;
+    BEGIN
+      SourceRecRef.GETTABLE(PurchQuoteHeader);
+      TargetRecRef.GETTABLE(PurchOrderHeader);
+      LeBitLongtextMgt.CopyLongtext(SourceRecRef,TargetRecRef);
+    END;
+
+    [EventSubscriber(Codeunit,96,OnBeforeInsertPurchOrderLine)]
+    LOCAL PROCEDURE OnBeforeInsertPurchOrderLine_Codeunit96@5272910(VAR PurchOrderLine@5272720 : Record "Purchase Line";PurchOrderHeader@5272721 : Record "Purchase Header";PurchQuoteLine@5272722 : Record "Purchase Line";PurchQuoteHeader@5272723 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272725 : RecordRef;
+      TargetRecRef@5272724 : RecordRef;
+    BEGIN
+      SourceRecRef.GETTABLE(PurchQuoteLine);
+      TargetRecRef.GETTABLE(PurchOrderLine);
+      LeBitLongtextMgt.CopyLongtext(SourceRecRef,TargetRecRef);
+    END;
+
+    [EventSubscriber(Codeunit,97,OnBeforeInsertPurchOrderHeader)]
+    LOCAL PROCEDURE OnBeforeInsertPurchOrderHeader_Codeunit97@5272915(VAR PurchOrderHeader@5272720 : Record "Purchase Header";BlanketOrderPurchHeader@5272721 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272723 : RecordRef;
+      TargetRecRef@5272722 : RecordRef;
+    BEGIN
+      SourceRecRef.GETTABLE(BlanketOrderPurchHeader);
+      TargetRecRef.GETTABLE(PurchOrderHeader);
+      LeBitLongtextMgt.CopyLongtext(SourceRecRef,TargetRecRef);
+    END;
+
+    [EventSubscriber(Codeunit,97,OnBeforeInsertPurchOrderLine)]
+    LOCAL PROCEDURE OnBeforeInsertPurchOrderLine_Codeunit97@5272916(VAR PurchOrderLine@5272720 : Record "Purchase Line";PurchOrderHeader@5272721 : Record "Purchase Header";BlanketOrderPurchLine@5272722 : Record "Purchase Line";BlanketOrderPurchHeader@5272723 : Record "Purchase Header");
+    VAR
+      SourceRecRef@5272725 : RecordRef;
+      TargetRecRef@5272724 : RecordRef;
+    BEGIN
+      SourceRecRef.GETTABLE(BlanketOrderPurchLine);
+      TargetRecRef.GETTABLE(PurchOrderLine);
+      LeBitLongtextMgt.CopyLongtext(SourceRecRef,TargetRecRef);
+    END;
+
+    [EventSubscriber(Codeunit,5063,OnAfterStoreSalesLineArchive)]
+    LOCAL PROCEDURE OnAfterStoreSalesLineArchive_Codeunit5063@5272917(VAR SalesHeader@5272720 : Record "Sales Header";VAR SalesLine@5272721 : Record "Sales Line";VAR SalesHeaderArchive@5272722 : Record "Sales Header Archive";VAR SalesLineArchive@5272723 : Record "Sales Line Archive");
+    BEGIN
+      LeBitLongtextMgt.CopyLongTextForSalesArchivMgt(SalesHeader,SalesLine,SalesHeaderArchive,SalesLineArchive);
+    END;
+
+    [EventSubscriber(Codeunit,5063,OnAfterStorePurchLineArchive)]
+    LOCAL PROCEDURE OnAfterStorePurchLineArchive_Codeunit5063@5272918(VAR PurchHeader@5272720 : Record "Purchase Header";VAR PurchLine@5272721 : Record "Purchase Line";VAR PurchHeaderArchive@5272722 : Record "Purchase Header Archive";VAR PurchLineArchive@5272723 : Record "Purchase Line Archive");
+    BEGIN
+      LeBitLongtextMgt.CopyLongTextForPurchArchivMgt(PurchHeader,PurchLine,PurchHeaderArchive,PurchLineArchive);
+    END;
+
+    [EventSubscriber(Codeunit,6620,OnCopySalesDocWithHeader)]
+    LOCAL PROCEDURE OnCopySalesDocWithHeader_Codeunit6620@5272906(FromDocType@5272720 : Option;FromDocNo@5272721 : Code[20];VAR ToSalesHeader@5272722 : Record "Sales Header");
+    VAR
+      SalesDocType@5272723 : 'Quote,"Blanket Order",Order,Invoice,"Return Order","Credit Memo","Posted Shipment","Posted Invoice","Posted Return Receipt","Posted Credit Memo","Arch. Quote","Arch. Order","Arch. Blanket Order","Arch. Return Order"';
+    BEGIN
+      LeBitCorrespDocSingleInst.SetWithSalesHeader(true);
+    END;
+
+    [EventSubscriber(Codeunit,6620,OnAfterUpdateSalesLine)]
+    LOCAL PROCEDURE OnAfterUpdateSalesLine_Codeunit6620@5272921(VAR ToSalesHeader@5272720 : Record "Sales Header";VAR ToSalesLine@5272721 : Record "Sales Line";VAR FromSalesHeader@5272722 : Record "Sales Header";VAR FromSalesLine@5272723 : Record "Sales Line";VAR CopyThisLine@5272724 : Boolean;RecalculateAmount@5272725 : Boolean;FromSalesDocType@5272726 : Option;VAR CopyPostedDeferral@5272727 : Boolean);
+    BEGIN
+      LeBitLongtextMgt.CopyLongTextForSalesCopyMgt(ToSalesHeader,ToSalesLine,FromSalesHeader,FromSalesLine,CopyThisLine,FromSalesDocType,LeBitCorrespDocSingleInst.GetWithSalesHeader);
+      LeBitCorrespDocSingleInst.SetWithSalesHeader(false);
+    END;
+
+    [EventSubscriber(Codeunit,6620,OnAfterInsertSalesArchiveLine)]
+    LOCAL PROCEDURE OnAfterInsertSalesArchiveLine_Codeunit6620@5272923(VAR ToSalesHeader@5272720 : Record "Sales Header";VAR ToSalesLine@5272721 : Record "Sales Line";VAR FromSalesHeaderArchive@5272722 : Record "Sales Header Archive";VAR FromSalesLineArchive@5272723 : Record "Sales Line Archive";VAR CopyThisLine@5272724 : Boolean);
+    VAR
+      SalesDocType@5272725 : 'Quote,"Blanket Order",Order,Invoice,"Return Order","Credit Memo","Posted Shipment","Posted Invoice","Posted Return Receipt","Posted Credit Memo","Arch. Quote","Arch. Order","Arch. Blanket Order","Arch. Return Order"';
+      FromSalesHeader@5272727 : Record "Sales Header";
+      FromSalesLine@5272726 : Record "Sales Line";
+      RecalculateAmount@5272729 : Boolean;
+      CopyPostedDeferral@5272728 : Boolean;
+    BEGIN
+      FromSalesHeader.TRANSFERFIELDS(FromSalesHeaderArchive);
+      FromSalesLine.TRANSFERFIELDS(FromSalesLineArchive);
+      case FromSalesHeaderArchive."Document Type" of
+        FromSalesHeaderArchive."Document Type"::"Blanket Order": SalesDocType := SalesDocType::"Arch. Blanket Order";
+        FromSalesHeaderArchive."Document Type"::Order: SalesDocType := SalesDocType::"Arch. Order";
+        FromSalesHeaderArchive."Document Type"::Quote: SalesDocType := SalesDocType::"Arch. Quote";
+        FromSalesHeaderArchive."Document Type"::"Return Order": SalesDocType := SalesDocType::"Arch. Return Order";
+      end;
+      LeBitCorrespDocMgt.SetGetSalesArchivValues(FromSalesHeaderArchive."Doc. No. Occurrence",FromSalesHeaderArchive."Version No.");
+      LeBitLongtextMgt.CopyLongTextForSalesCopyMgt(ToSalesHeader,ToSalesLine,FromSalesHeader,FromSalesLine,CopyThisLine,SalesDocType,LeBitCorrespDocSingleInst.GetWithSalesHeader);
+      LeBitCorrespDocSingleInst.SetWithSalesHeader(false);
+    END;
+
+    [EventSubscriber(Codeunit,6620,OnBeforeModifyPurchHeader)]
+    LOCAL PROCEDURE OnBeforeModifyPurchHeader_Codeunit6620@5272924(VAR ToPurchHeader@5272720 : Record "Purchase Header";FromDocType@5272721 : Option;FromDocNo@5272722 : Code[20];IncludeHeader@5272723 : Boolean);
+    BEGIN
+      LeBitCorrespDocSingleInst.SetWithPurchHeader(true);
+    END;
+
+    [EventSubscriber(Codeunit,6620,OnAfterUpdatePurchLine)]
+    LOCAL PROCEDURE OnAfterUpdatePurchLine_Codeunit6620@5272925(VAR ToPurchHeader@5272720 : Record "Purchase Header";VAR ToPurchLine@5272721 : Record "Purchase Line";VAR FromPurchHeader@5272722 : Record "Purchase Header";VAR FromPurchLine@5272723 : Record "Purchase Line";VAR CopyThisLine@5272724 : Boolean;RecalculateAmount@5272725 : Boolean;FromPurchDocType@5272726 : Option;VAR CopyPostedDeferral@5272727 : Boolean);
+    BEGIN
+      LeBitLongtextMgt.CopyLongTextForPurchCopyMgt(ToPurchHeader,ToPurchLine,FromPurchHeader,FromPurchLine,CopyThisLine,FromPurchDocType,LeBitCorrespDocSingleInst.GetWithPurchHeader);
+      LeBitCorrespDocSingleInst.SetWithPurchHeader(false);
+    END;
+
+    [EventSubscriber(Codeunit,6620,OnAfterInsertPurchArchiveLine)]
+    LOCAL PROCEDURE OnAfterInsertPurchArchiveLine_Codeunit6620@5272926(VAR ToPurchHeader@5272720 : Record "Purchase Header";VAR ToPurchLine@5272721 : Record "Purchase Line";VAR FromPurchaseHeaderArchive@5272722 : Record "Purchase Header Archive";VAR FromPurchaseLineArchive@5272723 : Record "Purchase Line Archive";VAR CopyThisLine@5272724 : Boolean);
+    VAR
+      FromPurchaseHeader@5272725 : Record "Purchase Header";
+      FromPurchaseLine@5272726 : Record "Purchase Line";
+      PurchDocType@5272727 : 'Quote,"Blanket Order",Order,Invoice,"Return Order","Credit Memo","Posted Receipt","Posted Invoice","Posted Return Shipment","Posted Credit Memo","Arch. Quote","Arch. Order","Arch. Blanket Order","Arch. Return Order"';
+    BEGIN
+      FromPurchaseHeader.TRANSFERFIELDS(FromPurchaseHeaderArchive);
+      FromPurchaseLine.TRANSFERFIELDS(FromPurchaseLineArchive);
+      case FromPurchaseHeaderArchive."Document Type" of
+        FromPurchaseHeaderArchive."Document Type"::"Blanket Order": PurchDocType := PurchDocType::"Arch. Blanket Order";
+        FromPurchaseHeaderArchive."Document Type"::Order: PurchDocType := PurchDocType::"Arch. Order";
+        FromPurchaseHeaderArchive."Document Type"::Quote: PurchDocType := PurchDocType::"Arch. Quote";
+        FromPurchaseHeaderArchive."Document Type"::"Return Order": PurchDocType := PurchDocType::"Arch. Return Order";
+      end;
+      LeBitCorrespDocMgt.SetGetPurchArchivValues(FromPurchaseHeaderArchive."Doc. No. Occurrence",FromPurchaseHeaderArchive."Version No.");
+      LeBitLongtextMgt.CopyLongTextForPurchCopyMgt(ToPurchHeader,ToPurchLine,FromPurchaseHeader,FromPurchaseLine,CopyThisLine,PurchDocType,LeBitCorrespDocSingleInst.GetWithPurchHeader);
+      LeBitCorrespDocSingleInst.SetWithPurchHeader(false);
+    END;
+
+    [EventSubscriber(Codeunit,6620,OnAfterCopySalesDocument)]
+    LOCAL PROCEDURE OnAfterCopySalesDocument_Codeunit6620@1000000000(FromDocumentType@1000000000 : Option;FromDocumentNo@1000000001 : Code[20];VAR ToSalesHeader@1000000002 : Record "Sales Header");
+    BEGIN
+      LeBitCorrespDocMgt.SalesLineIndentTotaling(ToSalesHeader);
+    END;
+
+    [EventSubscriber(Codeunit,6620,OnAfterCopyPurchaseDocument)]
+    LOCAL PROCEDURE OnAfterCopyPurchaseDocument_Codeunit6620@1000000001(FromDocumentType@1000000000 : Option;FromDocumentNo@1000000001 : Code[20];VAR ToPurchaseHeader@1000000002 : Record "Purchase Header");
+    BEGIN
+      LeBitCorrespDocMgt.PurchLineIndentTotaling(ToPurchaseHeader);
+    END;
+
+    BEGIN
+    {
+      LBCOR01    191218 MH   FUNKTION   H19/0803 : Table Extended Text Header - OnAfterRenameEvent
+    }
+    END.
+  }
+}
+
