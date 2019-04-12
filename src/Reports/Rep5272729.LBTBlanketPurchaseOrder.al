@@ -880,7 +880,7 @@ report 5272729 "LBT Blanket Purchase Order"
                         CopyText := FormatDocument.GetCOPYText;
                         OutputNo += 1;
                     end;
-                    CurrReport.PAGENO := 1;
+
                 end;
 
                 trigger OnPostDataItem()
