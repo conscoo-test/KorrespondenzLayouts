@@ -55,9 +55,8 @@ tableextension 5272729 "LBT Sales Line" extends "Sales Line"
                 Printoption: Option Standard,Title,,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total";
                 LeBitCorrespDocMgt: Codeunit "LBT Corresp. Doc. Mgt";
             begin
-                if (("Printoption" = "Printoption"::Alternative) or
-                  ("Printoption" = "Printoption"::Optional)) and
-                  ("No." <> '')
+                if ("Printoption" = "Printoption"::Alternative) or
+                  ("Printoption" = "Printoption"::Optional)
                 then begin
                     VALIDATE(Quantity, 0);
                     VALIDATE("Unit Price");

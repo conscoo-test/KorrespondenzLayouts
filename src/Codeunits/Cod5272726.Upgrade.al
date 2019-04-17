@@ -8,8 +8,8 @@ codeunit 5272726 "LBT Upgrade"
     begin
         if not NavApp.GetCurrentModuleInfo(LBTModuleInfo) then
             Clear(LBTModuleInfo);
-        case LBTModuleInfo.DataVersion() of
-        end;
+        // case LBTModuleInfo.DataVersion() of
+        // end;
     end;
 
     trigger OnCheckPreconditionsPerDatabase()
@@ -18,8 +18,8 @@ codeunit 5272726 "LBT Upgrade"
     begin
         if not NavApp.GetCurrentModuleInfo(LBTModuleInfo) then
             Clear(LBTModuleInfo);
-        case LBTModuleInfo.DataVersion() of
-        end;
+        // case LBTModuleInfo.DataVersion() of
+        // end;
     end;
 
     trigger OnUpgradePerCompany()
@@ -28,8 +28,8 @@ codeunit 5272726 "LBT Upgrade"
     begin
         if not NavApp.GetCurrentModuleInfo(LBTModuleInfo) then
             Clear(LBTModuleInfo);
-        case LBTModuleInfo.DataVersion() of
-        end;
+        // case LBTModuleInfo.DataVersion() of
+        // end;
     end;
 
     trigger OnUpgradePerDatabase()
@@ -38,8 +38,8 @@ codeunit 5272726 "LBT Upgrade"
     begin
         if not NavApp.GetCurrentModuleInfo(LBTModuleInfo) then
             Clear(LBTModuleInfo);
-        case LBTModuleInfo.DataVersion() of
-        end;
+        // case LBTModuleInfo.DataVersion() of
+        // end;
     end;
 
     trigger OnValidateUpgradePerCompany()
@@ -48,8 +48,8 @@ codeunit 5272726 "LBT Upgrade"
     begin
         if not NavApp.GetCurrentModuleInfo(LBTModuleInfo) then
             Clear(LBTModuleInfo);
-        case LBTModuleInfo.DataVersion() of
-        end;
+        // case LBTModuleInfo.DataVersion() of
+        // end;
     end;
 
     trigger OnValidateUpgradePerDatabase()
@@ -58,8 +58,8 @@ codeunit 5272726 "LBT Upgrade"
     begin
         if not NavApp.GetCurrentModuleInfo(LBTModuleInfo) then
             Clear(LBTModuleInfo);
-        case LBTModuleInfo.DataVersion() of
-        end;
+        // case LBTModuleInfo.DataVersion() of
+        // end;
     end;
 
 }

@@ -1338,14 +1338,17 @@ report 5272720 "LBT Sales - Quote"
                     field(NoOfCopies; NoOfCopies)
                     {
                         Caption = 'No. of Copies';
+                        ApplicationArea = All;
                     }
                     field(ShowInternalInfo; ShowInternalInfo)
                     {
                         Caption = 'Show Internal Information';
+                        ApplicationArea = All;
                     }
                     field(ArchiveDocument; ArchiveDocument)
                     {
                         Caption = 'Archive Document';
+                        ApplicationArea = All;
 
                         trigger OnValidate()
                         begin
@@ -1356,6 +1359,7 @@ report 5272720 "LBT Sales - Quote"
                     field(LogInteraction; LogInteraction)
                     {
                         Caption = 'Log Interaction';
+                        ApplicationArea = All;
                         Enabled = LogInteractionEnable;
 
                         trigger OnValidate()
@@ -1367,10 +1371,12 @@ report 5272720 "LBT Sales - Quote"
                     field(HideCompanyInfo; HideCompanyInfo)
                     {
                         Caption = 'Hide Company Info';
+                        ApplicationArea = All;
                     }
                     field(ItemPicturePrint; ItemPicturePrint)
                     {
                         Caption = 'Print Item Picture';
+                        ApplicationArea = All;
                     }
                 }
             }

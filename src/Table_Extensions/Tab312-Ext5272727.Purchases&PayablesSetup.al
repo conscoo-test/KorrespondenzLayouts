@@ -12,17 +12,17 @@ tableextension 5272727 "LBT Purchases & Payables Setup" extends "Purchases & Pay
             OptionMembers = "No Logo",Left,Center,Right;
         }
 
-        field(5272721; "Archiving Purchase Quote"; Option)
-        {
-            Caption = 'Archiving Purchase Quote';
-            DataClassification = CustomerContent;
-            OptionMembers = Never,Question,Always;
-        }
-        field(5272722; "Arch. Orders and Ret. Orders"; Boolean)
-        {
-            Caption = 'Arch. Orders and Ret. Orders';
-            DataClassification = CustomerContent;
-        }
+        // field(5272721; "Archiving Purchase Quote"; Option)
+        // {
+        //     Caption = 'Archiving Purchase Quote';
+        //     DataClassification = CustomerContent;
+        //     OptionMembers = Never,Question,Always;
+        // }
+        // field(5272722; "Arch. Orders and Ret. Orders"; Boolean)
+        // {
+        //     Caption = 'Arch. Orders and Ret. Orders';
+        //     DataClassification = CustomerContent;
+        // }
 
     }
 }

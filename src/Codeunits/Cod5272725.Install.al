@@ -12,9 +12,9 @@ codeunit 5272725 "LBT Install"
         end
         else begin
             //reinstallation
-            case LBTModuleInfo.DataVersion() of
-            //add reinstallation code for each version
-            end;
+            // case LBTModuleInfo.DataVersion() of
+            // //add reinstallation code for each version
+            // end;
         end;
     end;
 
@@ -28,9 +28,9 @@ codeunit 5272725 "LBT Install"
         end
         else begin
             //reinstallation
-            case LBTModuleInfo.DataVersion() of
-            //add reinstallation code for each version
-            end;
+            // case LBTModuleInfo.DataVersion() of
+            // //add reinstallation code for each version
+            // end;
         end;
     end;
 }

@@ -8087,7 +8087,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 819160008 - NamedType 699948485" size-unit="char" translate="yes" xml:space="preserve">
           <source>If type is %1 then you only can use printoption "Title" and "Line Invisible".</source>
-          <target>If type is %1 then you only can use printoption "Title" and "Line Invisible".</target>
+          <target>For alternative or optional positions, no quantities are recorded..</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension LBT Sales Line - NamedType Text5272721</note>
         </trans-unit>
