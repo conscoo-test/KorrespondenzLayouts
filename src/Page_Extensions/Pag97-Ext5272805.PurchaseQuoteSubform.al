@@ -17,7 +17,7 @@ pageextension 5272805 "LBT Purchase Quote Subform" extends "Purchase Quote Subfo
                 ApplicationArea = All;
             }
         }
-        addafter("ShortcutDimCode[8]")
+        addafter("ShortcutDimCode8")
         {
             field("LBT Long Text"; "LBT Long Text")
             {

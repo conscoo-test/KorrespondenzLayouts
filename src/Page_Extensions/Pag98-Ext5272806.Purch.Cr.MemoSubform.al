@@ -17,7 +17,7 @@ pageextension 5272806 "LBT Purch. Cr. Memo Subform" extends "Purch. Cr. Memo Sub
                 ApplicationArea = All;
             }
         }
-        addafter("ShortcutDimCode[8]")
+        addafter("ShortcutDimCode8")
         {
             field("LBT Long Text"; "LBT Long Text")
             {

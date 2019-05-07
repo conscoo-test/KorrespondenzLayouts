@@ -17,7 +17,7 @@ pageextension 5272804 "LBT Sales Cr. Memo Subform" extends "Sales Cr. Memo Subfo
                 ApplicationArea = All;
             }
         }
-        addafter("ShortcutDimCode[8]")
+        addafter("ShortcutDimCode8")
         {
             field("LBT Long Text"; "LBT Long Text")
             {

@@ -17,7 +17,7 @@ pageextension 5272803 "LBT Sales Quote Subform" extends "Sales Quote Subform"
                 ApplicationArea = All;
             }
         }
-        addafter("ShortcutDimCode[8]")
+        addafter("ShortcutDimCode8")
         {
             field("LBT Long Text"; "LBT Long Text")
             {

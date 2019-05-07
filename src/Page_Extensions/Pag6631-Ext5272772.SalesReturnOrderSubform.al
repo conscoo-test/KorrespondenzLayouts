@@ -22,7 +22,7 @@ pageextension 5272772 "LBT Sales Return Order Subform" extends "Sales Return Ord
                 ApplicationArea = All;
             }
         }
-        addafter("ShortcutDimCode[8]")
+        addafter("ShortcutDimCode8")
         {
             field("LBT Long Text"; "LBT Long Text")
             {

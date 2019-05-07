@@ -13,15 +13,18 @@
   "capabilities": [],
   "dependencies": [],
   "screenshots": [],
-  "platform": "13.0.0.0",
-  "application": "13.0.0.0",
-  "idRange": {
+  "platform": "14.0.0.0",
+  "application": "14.0.0.0",
+  "idRanges": [{
     "from": 5272720,
     "to": 5272810
-  },
-  "runtime": "2.3"
+  }],
+  "runtime": "3.0"
   , "features": [
       "TranslationFile"
   ],
-  "target": "Extension"
+  "target": "Extension",
+  "contextSensitiveHelpUrl": "https://ALProject11.com/help/",
+  "showMyCode": true
+
 }

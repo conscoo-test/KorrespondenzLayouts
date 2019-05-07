@@ -17,7 +17,7 @@ pageextension 5272775 "LBT Purch. Return Order Sub." extends "Purchase Return Or
                 ApplicationArea = All;
             }
         }
-        addafter("ShortcutDimCode[8]")
+        addafter("ShortcutDimCode8")
         {
             field("LBT Long Text"; "LBT Long Text")
             {
