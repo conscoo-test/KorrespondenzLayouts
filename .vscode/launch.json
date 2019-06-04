@@ -1,13 +1,16 @@
 {
     "version": "0.2.0",
     "configurations": [
+        
+
+
+
+
         {
             "type": "al",
             "request": "launch",
             "name": "Your own server",
-            // "server": "http://LeBit-Target",
-            // "serverInstance": "NAV",
-            // "authentication": "UserPassword",
+            "sandboxName": "Sandbox_ExtensionTesting",
             "startupObjectId": 22,
             "startupObjectType": "Page",
             "breakOnError": true
