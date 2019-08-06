@@ -6,7 +6,7 @@ pageextension 5272754 "LBT Blanket Purchase Order" extends "Blanket Purchase Ord
         {
             group("LBT correspondence documents")
             {
-                Caption = 'correspondence documents';
+                Caption = 'LIS365 Correspondence layout', Comment = 'DEU="LIS365 Korrespondenzbelege"';
                 action("Tot&aling")
                 {
                     ApplicationArea = All;

@@ -6,7 +6,7 @@ pageextension 5272738 "LBT Posted Purch. Credit Memos" extends "Posted Purchase 
         {
             group("LBT correspondence documents")
             {
-                Caption = 'correspondence documents';
+                Caption = 'LIS365 Correspondence layout', Comment = 'DEU="LIS365 Korrespondenzbelege"';
                 action("LBT Header Text")
                 {
                     ApplicationArea = All;

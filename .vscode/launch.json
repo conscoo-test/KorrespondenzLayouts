@@ -10,7 +10,7 @@
             "type": "al",
             "request": "launch",
             "name": "Your own server",
-            "sandboxName": "Sandbox_ExtensionTesting",
+            "sandboxName": "",
             "startupObjectId": 22,
             "startupObjectType": "Page",
             "breakOnError": true

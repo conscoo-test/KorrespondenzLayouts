@@ -1,7 +1,7 @@
 page 5272720 "LBT PS Longtext Lines"
 {
     AutoSplitKey = true;
-    Caption = 'PS Longtext Lines';
+    Caption = 'PS Longtext Lines', Comment = 'DEU="EK/VK Langtext Zeilen"';
     PageType = List;
     SourceTable = "LBT PS Longtext Line";
     // UsageCategory = Lists;
@@ -41,7 +41,7 @@ page 5272720 "LBT PS Longtext Lines"
             action("E&ditor")
             {
                 ApplicationArea = All;
-                Caption = 'E&ditor';
+                Caption = 'Editor', Comment = 'DEU="Bearbeiten"';
                 Image = Edit;
                 Promoted = true;
                 PromotedCategory = Process;

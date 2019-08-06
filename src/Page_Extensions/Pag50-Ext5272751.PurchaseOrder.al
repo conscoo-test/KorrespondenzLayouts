@@ -8,11 +8,11 @@ pageextension 5272751 "LBT Purchase Order" extends "Purchase Order"
         {
             group("LBT correspondence documents")
             {
-                Caption = 'correspondence documents';
+                Caption = 'LIS365 Correspondence layout', Comment = 'DEU="LIS365 Korrespondenzbelege"';
                 action("Tot&aling")
                 {
                     ApplicationArea = All;
-                    Caption = 'Tot&aling';
+                    Caption = 'Totaling', Comment = 'DEU="Summieren"';
                     Image = Totals;
                     trigger OnAction()
                     var
@@ -24,7 +24,7 @@ pageextension 5272751 "LBT Purchase Order" extends "Purchase Order"
                 action("LBT Num&bering")
                 {
                     ApplicationArea = All;
-                    Caption = 'Num&bering';
+                    Caption = 'Numbering', Comment = 'DEU="Nummerieren"';
                     Image = NumberGroup;
                     trigger OnAction()
                     var
@@ -36,7 +36,7 @@ pageextension 5272751 "LBT Purchase Order" extends "Purchase Order"
                 action("LBT Header Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Header Text';
+                    Caption = 'Header Text', Comment = 'DEU="Kopftext"';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -52,7 +52,7 @@ pageextension 5272751 "LBT Purchase Order" extends "Purchase Order"
                 action("LBT Footer Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Footer Text';
+                    Caption = 'Footer Text', Comment = 'DEU="Kopftext"';
                     Image = EndingText;
 
                     trigger OnAction()
@@ -68,7 +68,7 @@ pageextension 5272751 "LBT Purchase Order" extends "Purchase Order"
                 action("LBT Invoice Header Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Invoice Header Text';
+                    Caption = 'Invoice Header Text', Comment = 'DEU="Rechnungskopftext"';
                     Image = Import;
 
                     trigger OnAction()
@@ -88,7 +88,7 @@ pageextension 5272751 "LBT Purchase Order" extends "Purchase Order"
                 action("LBT Invoice Footer Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Invoice Footer Text';
+                    Caption = 'Invoice Footer Text', Comment = 'DEU="Rechnungsfusstext"';
                     Image = Export;
 
                     trigger OnAction()
@@ -108,7 +108,7 @@ pageextension 5272751 "LBT Purchase Order" extends "Purchase Order"
                 action("LBT Shipment Header Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Shipment Header Text';
+                    Caption = 'Shipment Header Text', Comment = 'DEU="Lieferungskopftext"';
                     Image = Import;
 
                     trigger OnAction()
@@ -128,7 +128,7 @@ pageextension 5272751 "LBT Purchase Order" extends "Purchase Order"
                 action("LBT Shipment Footer Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Shipment Footer Text';
+                    Caption = 'Shipment Footer Text', Comment = 'DEU="Lieferungsfusstext"';
                     Image = Export;
 
                     trigger OnAction()

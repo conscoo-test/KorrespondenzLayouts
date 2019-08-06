@@ -6,7 +6,7 @@ pageextension 5272780 "LBT Posted Return Shipment" extends "Posted Return Shipme
         {
             group("LBT correspondence documents")
             {
-                Caption = 'correspondence documents';
+                Caption = 'LIS365 Correspondence layout', Comment = 'DEU="LIS365 Korrespondenzbelege"';
                 action("LBT Header Text")
                 {
                     ApplicationArea = All;

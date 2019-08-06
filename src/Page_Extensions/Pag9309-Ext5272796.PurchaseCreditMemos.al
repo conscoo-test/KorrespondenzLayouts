@@ -6,7 +6,7 @@ pageextension 5272796 "LBT Purchase Credit Memos" extends "Purchase Credit Memos
         {
             group("LBT correspondence documents")
             {
-                Caption = 'correspondence documents';
+                Caption = 'LIS365 Correspondence layout', Comment = 'DEU="LIS365 Korrespondenzbelege"';
                 action("LBT Header Text")
                 {
                     ApplicationArea = All;

@@ -6,7 +6,7 @@ pageextension 5272791 "LBT Sales Return Order List" extends "Sales Return Order 
         {
             group("LBT correspondence documents")
             {
-                Caption = 'correspondence documents';
+                Caption = 'LIS365 Correspondence layout', Comment = 'DEU="LIS365 Korrespondenzbelege"';
                 action("LBT Header Text")
                 {
                     ApplicationArea = All;

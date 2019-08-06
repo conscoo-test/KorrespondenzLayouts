@@ -34,7 +34,7 @@ pageextension 5272747 "LBT Sales Order Subform" extends "Sales Order Subform"
             action("LBT LongText")
             {
                 ApplicationArea = Suite;
-                Caption = 'Long Text';
+                Caption = 'Long Text', Comment = 'DEU="Langtext"';
                 Image = Import;
                 trigger OnAction()
                 var

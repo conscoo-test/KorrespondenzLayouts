@@ -6,7 +6,7 @@ pageextension 5272786 "LBT Item Attributes" extends "Item Attributes"
         {
             group("LBT correspondence documents")
             {
-                Caption = 'correspondence documents';
+                Caption = 'LIS365 Correspondence layout', Comment = 'DEU="LIS365 Korrespondenzbelege"';
                 action("LBT Report - Attribute Setup")
                 {
                     ApplicationArea = All;

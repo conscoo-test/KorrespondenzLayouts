@@ -32,7 +32,7 @@ pageextension 5272732 "LBT Post. Purch. Cr. Memo Sub." extends "Posted Purch. Cr
             action("LBT LongText")
             {
                 ApplicationArea = Suite;
-                Caption = 'Long Text';
+                Caption = 'Long Text', Comment = 'DEU="Langtext"';
                 Image = Import;
                 trigger OnAction()
                 var

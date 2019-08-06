@@ -6,8 +6,7 @@ pageextension 5272794 "LBT Purchase Order List" extends "Purchase Order List"
         {
             group("LBT correspondence documents")
             {
-                Caption = 'correspondence documents';
-                action("LBT Header Text")
+                Caption = 'LIS365 Correspondence layout', Comment = 'DEU="LIS365 Korrespondenzbelege"';                action("LBT Header Text")
                 {
                     ApplicationArea = All;
                     Caption = 'Header Text';

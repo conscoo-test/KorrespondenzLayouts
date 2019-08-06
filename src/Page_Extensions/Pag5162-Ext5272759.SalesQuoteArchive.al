@@ -6,8 +6,7 @@ pageextension 5272759 "LBT Sales Quote Archive" extends "Sales Quote Archive"
         {
             group("LBT correspondence documents")
             {
-                Caption = 'correspondence documents';
-                action("LBT Header Text")
+                Caption = 'LIS365 Correspondence layout', Comment = 'DEU="LIS365 Korrespondenzbelege"';                action("LBT Header Text")
                 {
                     ApplicationArea = All;
                     Caption = 'Header Text';

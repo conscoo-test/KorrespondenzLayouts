@@ -6,7 +6,7 @@ pageextension 5272800 "LBT Purchase Order Archives" extends "Purchase Order Arch
         {
             group("LBT correspondence documents")
             {
-                Caption = 'correspondence documents';
+                Caption = 'LIS365 Correspondence layout', Comment = 'DEU="LIS365 Korrespondenzbelege"';
                 action("LBT Header Text")
                 {
                     ApplicationArea = All;

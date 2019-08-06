@@ -32,7 +32,7 @@ pageextension 5272722 "LBT Posted Sales Shpt. Subform" extends "Posted Sales Shp
             action("LBT LongText")
             {
                 ApplicationArea = Suite;
-                Caption = 'Long Text';
+                Caption = 'Long Text', Comment = 'DEU="Langtext"';
                 Image = Import;
                 trigger OnAction()
                 var

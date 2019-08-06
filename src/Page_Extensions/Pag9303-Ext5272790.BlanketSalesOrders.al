@@ -6,8 +6,7 @@ pageextension 5272790 "LBT Blanket Sales Orders" extends "Blanket Sales Orders"
         {
             group("LBT correspondence documents")
             {
-                Caption = 'correspondence documents';
-                action("LBT Header Text")
+                Caption = 'LIS365 Correspondence layout', Comment = 'DEU="LIS365 Korrespondenzbelege"';                action("LBT Header Text")
                 {
                     ApplicationArea = All;
                     Caption = 'Header Text';

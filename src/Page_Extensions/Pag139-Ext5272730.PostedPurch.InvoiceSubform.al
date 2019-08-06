@@ -32,7 +32,7 @@ pageextension 5272730 "LBT Posted Purch. Invoice Sub." extends "Posted Purch. In
             action("LBT LongText")
             {
                 ApplicationArea = Suite;
-                Caption = 'Long Text';
+                Caption = 'Long Text', Comment = 'DEU="Langtext"';
                 Image = Import;
                 trigger OnAction()
                 var

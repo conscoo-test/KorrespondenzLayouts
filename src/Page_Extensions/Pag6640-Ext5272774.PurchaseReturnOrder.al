@@ -6,7 +6,7 @@ pageextension 5272774 "LBT Purchase Return Order" extends "Purchase Return Order
         {
             group("LBT correspondence documents")
             {
-                Caption = 'correspondence documents';
+                Caption = 'LIS365 Correspondence layout', Comment = 'DEU="LIS365 Korrespondenzbelege"';
                 action("Tot&aling")
                 {
                     ApplicationArea = All;

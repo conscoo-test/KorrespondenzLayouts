@@ -34,7 +34,7 @@ pageextension 5272749 "LBT Sales Invoice Subform" extends "Sales Invoice Subform
             action("LBT LongText")
             {
                 ApplicationArea = Suite;
-                Caption = 'Long Text';
+                Caption = 'Long Text', Comment = 'DEU="Langtext"';
                 Image = Import;
             }
         }
