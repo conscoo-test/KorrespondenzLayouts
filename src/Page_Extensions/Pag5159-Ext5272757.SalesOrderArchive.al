@@ -10,7 +10,7 @@ pageextension 5272757 "LBT Sales Order Archive" extends "Sales Order Archive"
                 action("LBT Header Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Header Text';
+                    Caption = 'Header Text', Comment = 'DEU="Kopftext"';
                     Image = BeginningText;
 
                     trigger OnAction()

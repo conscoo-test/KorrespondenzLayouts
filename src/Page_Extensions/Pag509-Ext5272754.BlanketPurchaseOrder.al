@@ -34,7 +34,7 @@ pageextension 5272754 "LBT Blanket Purchase Order" extends "Blanket Purchase Ord
                 action("LBT Header Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Header Text';
+                    Caption = 'Header Text', Comment = 'DEU="Kopftext"';
                     Image = BeginningText;
 
                     trigger OnAction()

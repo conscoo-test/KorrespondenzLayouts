@@ -13,7 +13,7 @@ pageextension 5272741 "LBT Extended Text" extends "Extended Text"
         {
             part("LBT LongTextSUB"; "LBT Ext. Text Lines Long")
             {
-                Caption = 'Long Text';
+                Caption = 'Long Text', Comment = 'DEU="Langtext"';
                 SubPageLink = Table_ID = FIELD ("Table Name"),
                               "No." = FIELD ("No."),
                               "Language Code" = FIELD ("Language Code"),
