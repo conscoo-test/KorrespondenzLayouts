@@ -12,7 +12,7 @@ table 5272726 "LBT Source Setup"
         {
             Caption = 'Type', Comment = 'DEU="Art"';
             DataClassification = ToBeClassified;
-            OptionCaption = 'Sales,Purchase';
+            OptionCaption = 'Sales,Purchase', Comment = 'DEU="Verkauf,Einkauf"';
             OptionMembers = Sales,Purchase;
         }
         field(2;"Report Type";Option)

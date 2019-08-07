@@ -32,7 +32,7 @@ pageextension 5272742 "LBT Sales Quote" extends "Sales Quote"
                 action("LBT Num&bering")
                 {
                     ApplicationArea = All;
-                    Caption = 'Numbering', Comment = 'DEU="Nummierung"';
+                    Caption = 'Numbering', Comment = 'DEU="Nummerierung"';
                     Image = NumberGroup;
                     trigger OnAction()
                     var

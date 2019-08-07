@@ -9,7 +9,7 @@ pageextension 5272759 "LBT Sales Quote Archive" extends "Sales Quote Archive"
                 Caption = 'LIS365 Correspondence layout', Comment = 'DEU="LIS365 Korrespondenzbelege"';                action("LBT Header Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Header Text';
+                    Caption = 'Header Text', Comment = 'DEU="Kopftext"';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -25,7 +25,7 @@ pageextension 5272759 "LBT Sales Quote Archive" extends "Sales Quote Archive"
                 action("LBT Footer Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Footer Text';
+                    Caption = 'Footer Text', Comment = 'DEU="Fußtext"';
                     Image = EndingText;
 
                     trigger OnAction()

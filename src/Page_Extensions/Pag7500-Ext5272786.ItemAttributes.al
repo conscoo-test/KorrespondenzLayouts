@@ -10,7 +10,7 @@ pageextension 5272786 "LBT Item Attributes" extends "Item Attributes"
                 action("LBT Report - Attribute Setup")
                 {
                     ApplicationArea = All;
-                    Caption = 'Report - Attribute Setup';
+                    Caption = 'Report - Attribute Setup', Comment = 'DEU="Bericht - Attribute Einrichtung"';
                     Image = Setup;
                     RunObject = Page "LBT Report - Attribute Setup";
                     RunPageView = SORTING ("Report-Type", "Report-ID", Position, Priority);

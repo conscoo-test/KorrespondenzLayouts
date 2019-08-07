@@ -9,7 +9,7 @@ pageextension 5272790 "LBT Blanket Sales Orders" extends "Blanket Sales Orders"
                 Caption = 'LIS365 Correspondence layout', Comment = 'DEU="LIS365 Korrespondenzbelege"';                action("LBT Header Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Header Text';
+                    Caption = 'Header Text', Comment = 'DEU="Kopftext"';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -25,7 +25,7 @@ pageextension 5272790 "LBT Blanket Sales Orders" extends "Blanket Sales Orders"
                 action("LBT Footer Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Footer Text';
+                    Caption = 'Footer Text', Comment = 'DEU="Fußtext"';
                     Image = EndingText;
 
                     trigger OnAction()

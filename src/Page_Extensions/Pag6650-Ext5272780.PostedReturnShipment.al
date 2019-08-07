@@ -10,7 +10,7 @@ pageextension 5272780 "LBT Posted Return Shipment" extends "Posted Return Shipme
                 action("LBT Header Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Header Text';
+                    Caption = 'Header Text', Comment = 'DEU="Kopftext"';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -26,7 +26,7 @@ pageextension 5272780 "LBT Posted Return Shipment" extends "Posted Return Shipme
                 action("LBT &Footer Text")
                 {
                     ApplicationArea = All;
-                    Caption = '&Footer Text';
+                    Caption = '&Footer Text', Comment = 'DEU="Fußtext"';
                     Image = EndingText;
 
                     trigger OnAction()

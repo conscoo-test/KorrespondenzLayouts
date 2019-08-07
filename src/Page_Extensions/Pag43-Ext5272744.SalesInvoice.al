@@ -22,7 +22,7 @@ pageextension 5272744 "LBT Sales Invoice" extends "Sales Invoice"
                 action("LBT Num&bering")
                 {
                     ApplicationArea = All;
-                    Caption = 'Numbering', Comment = 'DEU="Nummieren"';
+                    Caption = 'Numbering', Comment = 'DEU="Nummerieren"';
                     Image = NumberGroup;
                     trigger OnAction()
                     var

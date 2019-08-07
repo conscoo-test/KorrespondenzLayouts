@@ -51,7 +51,7 @@ pageextension 5272754 "LBT Blanket Purchase Order" extends "Blanket Purchase Ord
                 action("LBT Footer Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Footer Text';
+                    Caption = 'Footer Text', Comment = 'DEU="Fußtext"';
                     Image = EndingText;
 
                     trigger OnAction()
