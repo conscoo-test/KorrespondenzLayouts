@@ -1861,7 +1861,7 @@ report 5272728 "LBT Order"
         CompanyInfo__Bank_Account_No__CaptionLbl: Label 'Account No.', Comment = 'DEU="Kontonr."';
         Order_No_CaptionLbl: Label 'Order No.', Comment = 'DEU="Bestellnr."';
         Header_DimensionsCaptionLbl: Label 'Header Dimensions', Comment = 'DEU="Kopfdimension"';
-        Direct_Unit_CostCaptionLbl: Label 'Direct Unit Cost', Comment = 'DEU=""';
+        Direct_Unit_CostCaptionLbl: Label 'Direct Unit Cost', Comment = 'DEU="EK-Preis"';
         Purchase_Line___Line_Discount___CaptionLbl: Label 'Disc. %', Comment = 'DEU="Rab. %"';
         AmountCaptionLbl: Label 'Amount', Comment = 'DEU="Betrag"';
         ContinuedCaptionLbl: Label 'Continued', Comment = 'DEU="Fortsetzung"';
