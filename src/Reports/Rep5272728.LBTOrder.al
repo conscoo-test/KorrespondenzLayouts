@@ -1861,7 +1861,7 @@ report 5272728 "LBT Order"
         CompanyInfo__Bank_Account_No__CaptionLbl: Label 'Account No.', Comment = 'DEU="Kontonr."';
         Order_No_CaptionLbl: Label 'Order No.', Comment = 'DEU="Bestellnr."';
         Header_DimensionsCaptionLbl: Label 'Header Dimensions', Comment = 'DEU="Kopfdimension"';
-        Direct_Unit_CostCaptionLbl: Label 'Direct Unit Cost', Comment = 'DEU=""';
+        Direct_Unit_CostCaptionLbl: Label 'Direct Unit Cost', Comment = 'DEU="EK-Preis"';
         Purchase_Line___Line_Discount___CaptionLbl: Label 'Disc. %', Comment = 'DEU="Rab. %"';
         AmountCaptionLbl: Label 'Amount', Comment = 'DEU="Betrag"';
         ContinuedCaptionLbl: Label 'Continued', Comment = 'DEU="Fortsetzung"';
@@ -1940,7 +1940,7 @@ report 5272728 "LBT Order"
         TempLeBitPSLongtextLine: Record "LBT PS Longtext Line" temporary;
         ReportType: Option Purchase,Sales,QA,Production,Delivery,"Report";
         Vendor: Record Vendor;
-        DocCaptionLbl: Label 'Order %1', Comment = '%1 = Document No.', Comment = 'DEU="Bestellung %1"';
+        DocCaptionLbl: Label 'Order %1', Comment = 'DEU="Bestellung %1"';
         PagefromPageCaptionLbl: Label 'Page %1 of %2', Comment = 'DEU="Seite %1 von %2"';
         PageCaptionLbl: Label 'Page %1', Comment = 'DEU="Seite %1"';
         NoCaptionLbl: Label 'No.', Comment = 'DEU="Nr."';
