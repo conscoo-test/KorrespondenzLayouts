@@ -24,7 +24,7 @@ codeunit 5272725 "LBT Install"
         Note: Notification;
     begin
         Note.Message('Ready!');
-        Note.Scope := NotificationScope::GlobalScope;
+        Note.Scope := NotificationScope::LocalScope;
         Note.AddAction('click', Codeunit::"LBT AssistedSetup", 'HandleNotification');
         Note.Send();
     end;
