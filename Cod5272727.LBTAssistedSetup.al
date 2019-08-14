@@ -14,6 +14,14 @@ codeunit 5272727 "LBT AssistedSetup"
             '');
     end;
 
+    procedure HandleNotification(Note: Notification)
+    var
+        AggregatedAssistedSetup: Record "Aggregated Assisted Setup";
+    begin
+        if GetSetupStatus(AggregatedAssistedSetup) <> AggregatedAssistedSetup.Status::Completed then
+            Page.Run(Page::"LBT Wizard");
+    end;
+
     local procedure GetSetupStatus(AggregatedAssistedSetup: Record "Aggregated Assisted Setup"): Integer
     var
         CompanyInformation: Record "Company Information";

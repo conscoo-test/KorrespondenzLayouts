@@ -41,7 +41,7 @@ page 5272724 "LBT Wizard"
                     group(Introduction)
                     {
                         Caption = '';
-                        InstructionalText = 'englisch',  //TODO
+                        InstructionalText = 'englisch',  //TODO: 
                             Comment = 'DEU="Sie können einstellen mit welche Art von Korrespondenzbelegen Sie die Komfortfunktionen nutzen möchten und an welcher Stelle ein evtl. vorhandenes Firmenlogo auf den Belegen erscheinen soll"';
 
                     }
