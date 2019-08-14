@@ -66,6 +66,18 @@ page 5272724 "LBT Wizard"
                 group(Default)
                 {
                     Caption = '';
+                    field(SelectAll; SelectAll)
+                    {
+                        Caption = 'Select all', Comment = 'DEU="Alle Auswählen"';
+                        ApplicationArea = All;
+                        trigger OnValidate()
+                        var
+                            i: Integer;
+                        begin
+                            for i := 1 to 12 do
+                                DefaultReports[i] := SelectAll;
+                        end;
+                    }
                     field(report1; DefaultReports[1])
                     {
                         Caption = 'Sales Quote', Comment = 'DEU="Angebot"';
@@ -352,8 +364,56 @@ page 5272724 "LBT Wizard"
 
     local procedure TakeStep(Step: Integer)
     begin
+        case CurrentStep of
+            2:
+                SetReportSelections();
+        end;
+
         CurrentStep += Step;
         SetControls();
+        case CurrentStep of
+            2:
+                GetReportSelections();
+
+        end;
+    end;
+
+    local procedure GetReportSelections()
+    var
+        ReportSelections: Record "Report Selections";
+    begin
+        DefaultReports[1] := GetReportSelection(ReportSelections.Usage::"S.Quote", Report::"LBT Sales - Quote");
+        DefaultReports[2] := GetReportSelection(ReportSelections.Usage::"S.Order", Report::"LBT Order Confirmation");
+        DefaultReports[3] := GetReportSelection(ReportSelections.Usage::"S.Invoice", Report::"LBT Sales - Invoice");
+        DefaultReports[4] := GetReportSelection(ReportSelections.Usage::"S.Cr.Memo", Report::"LBT Sales - Credit Memo");
+        DefaultReports[5] := GetReportSelection(ReportSelections.Usage::"S.Shipment", Report::"LBT Sales - Shipment");
+        DefaultReports[6] := GetReportSelection(ReportSelections.Usage::"S.Blanket", Report::"LBT Blanket Sales Order");
+        DefaultReports[7] := GetReportSelection(ReportSelections.Usage::"Pro Forma S. Invoice", Report::"LBT Sales pro forma Invoice");
+        DefaultReports[8] := GetReportSelection(ReportSelections.Usage::"P.Quote", Report::"LBT Purchase - Quote");
+        DefaultReports[9] := GetReportSelection(ReportSelections.Usage::"P.Order", Report::"LBT Order");
+        DefaultReports[10] := GetReportSelection(ReportSelections.Usage::"S.Quote", Report::"LBT Blanket Purchase Order");
+        DefaultReports[11] := GetReportSelection(ReportSelections.Usage::"P.Return", Report::"LBT Return Order");
+        DefaultReports[12] := GetReportSelection(ReportSelections.Usage::Reminder, Report::"LBT Reminder");
+    end;
+
+    local procedure GetReportSelection(Usage: Integer; ReportId: Integer): Boolean
+    var
+        ReportSelections: Record "Report Selections";
+    begin
+        ReportSelections.SetRange(Usage, Usage);
+        ReportSelections.SetRange("Report ID", ReportId);
+        exit(not ReportSelections.IsEmpty());
+
+    end;
+
+    local procedure SetReportSelections()
+    var
+        ReportSelections: Record "Report Selections";
+    begin
+        if ReportSelections.Get(ReportSelections.Usage::"S.Quote", 1) then begin
+            ReportSelections."Report ID" := Report::"LBT Sales - Quote";
+            ReportSelections.Modify();
+        end;
     end;
 
     local procedure LoadTopBanners();
@@ -377,6 +437,7 @@ page 5272724 "LBT Wizard"
         FinishEnabled: Boolean;
         CurrentStep: Integer;
         DefaultReports: array[12] of Boolean;
+        SelectAll: Boolean;
         FinishWhenNotCompleteQst: Label 'Setup has not been completed.\\Are you sure you want to exit?',
             Comment = 'DEU="Die Einrichtung wurde nicht abgeschlossen.\\Möchten Sie den Assistenten wirklich beenden?"';
 
