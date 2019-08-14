@@ -433,6 +433,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page LBT Source Setup - Control PurchSourceType - Property OptionCaption</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2454770309 - NamedType 2999628943" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Setup LIS365</source>
+          <note from="Developer" annotates="general" priority="2">DEU="LIS365-Belegset einrichten"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit LBT AssistedSetup - NamedType SetupLbl</note>
+        </trans-unit>
         <trans-unit id="Codeunit 955195706 - NamedType 1806432696" size-unit="char" translate="yes" xml:space="preserve">
           <source>Indenting the Document #1##########</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -467,6 +472,151 @@
           <source>This Message ist for Developer:\\\ Table %1 %2 is not exist.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit LBT Longtext Mgt. - NamedType Text5272728</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Wizard</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Control 3800514526 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Welcome</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Willkommen bei der Einrichtung der LIS365-Korrespondenzbelege"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Control Welcome - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Control 203669508 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Control Introduction - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Control 203669508 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve">
+          <source>englisch</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Sie können einstellen mit welche Art von Korrespondenzbelegen Sie die Komfortfunktionen nutzen möchten und an welcher Stelle ein evtl. vorhandenes Firmenlogo auf den Belegen erscheinen soll"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Control Introduction - Property InstructionalText</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Control 926340698 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lets go</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Los gehts"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Control LetsGo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Control 1235620153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Control Next - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Control 1235620153 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Choose Next so you can set up.</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Wählen Sie \"Weiter\" damit Sie die Korrespondenzbelege auswählen können."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Control Next - Property InstructionalText</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Control 1383905037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Control Default - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Control 3710759497 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales Quote</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Angebot"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Control report1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Control 3073062880 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order Confirmation</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Auftragsbestätigung"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Control report2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Control 2435366263 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales Invoice</source>
+          <note from="Developer" annotates="general" priority="2">DEU="VK Rechnung"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Control report3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Control 2604275286 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales Credit Memo</source>
+          <note from="Developer" annotates="general" priority="2">DEU="VK Gutschrift"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Control report4 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Control 1966578669 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales Shipment</source>
+          <note from="Developer" annotates="general" priority="2">DEU="VK Lieferung"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Control report5 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Control 1328882052 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Blanket Sales Order</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Rahmenauftrag"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Control report6 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Control 691185435 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales Proforma Invoice</source>
+          <note from="Developer" annotates="general" priority="2">DEU="VK Proforma Rechnung"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Control report7 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Control 3541850474 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Quote</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Einkaufsanfrage"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Control report8 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Control 2904153857 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Bestellung"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Control report9 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Control 4290795529 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Blanket Purchase Order</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Rahmenbestellung"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Control report10 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Control 633524850 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Return Order</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Return Order"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Control report11 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Control 3015402295 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reminder</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Mahnung"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Control report12 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Control 27561757 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Control PictureGroup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Control 3577866785 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Control Bank1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Control 2940170168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Control Bank2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Control 2302473551 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Control Bank3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Control 3883758224 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Control other - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Action 2438272767 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Back</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Zurück"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Action ActionBack - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Action 914282563 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Next</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Weiter"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Action ActionNext - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - Action 3259912055 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Finish</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Fertig stellen"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - Action ActionFinish - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3362841595 - NamedType 134228871" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Setup has not been completed.\\Are you sure you want to exit?</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Die Einrichtung wurde nicht abgeschlossen.\\Möchten Sie den Assistenten wirklich beenden?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LBT Wizard - NamedType FinishWhenNotCompleteQst</note>
         </trans-unit>
         <trans-unit id="Page 1321805965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>PS Longtext Lines</source>
@@ -5287,6 +5437,11 @@
           <source>District Court</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension LBT Company Information - Field LBT District Court - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3514450611 - Field 2980186185 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LBT Setup finished</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension LBT Company Information - Field LBT Setup finished - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1941952221 - Action 3055982536 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>correspondence documents</source>
