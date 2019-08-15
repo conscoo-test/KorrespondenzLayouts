@@ -155,6 +155,18 @@ page 5272724 "LBT Wizard"
                     {
                         ApplicationArea = All;
                     }
+                    field(SalesLogoPosition; SalesLogoPosition)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Logoposition on Sales Documents', Comment = 'DEU="Logoposition auf Verkaufsbelegen"';
+                        OptionCaption = 'No Logo,Left,Center,Right', Comment = 'DEU="Kein Logo,Links,Mitte,Rechts"';
+                    }
+                    field(PurchaseLogoPosition; PurchaseLogoPosition)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Logoposition on Purchase Documents', Comment = 'DEU="Logoposition auf Einkaufsbelegen"';
+                        OptionCaption = 'No Logo,Left,Center,Right', Comment = 'DEU="Kein Logo,Links,Mitte,Rechts"';
+                    }
                 }
             }
 
@@ -367,6 +379,8 @@ page 5272724 "LBT Wizard"
         case CurrentStep of
             2:
                 SetReportSelections();
+            3:
+                SetLogoPosition();
         end;
 
         CurrentStep += Step;
@@ -374,7 +388,39 @@ page 5272724 "LBT Wizard"
         case CurrentStep of
             2:
                 GetReportSelections();
+            3:
+                GetLogoPosition();
 
+        end;
+    end;
+
+    local procedure GetLogoPosition()
+    var
+        SalesReceivablesSetup: Record "Sales & Receivables Setup";
+        PurchPayablesSetup: Record "Purchases & Payables Setup";
+    begin
+        SalesReceivablesSetup.Get();
+        SalesLogoPosition := SalesReceivablesSetup."Logo Position on Documents";
+
+        PurchPayablesSetup.Get();
+        PurchaseLogoPosition := PurchPayablesSetup."LBT Logo Position on Documents";
+    end;
+
+    local procedure SetLogoPosition()
+    var
+        SalesReceivablesSetup: Record "Sales & Receivables Setup";
+        PurchPayablesSetup: Record "Purchases & Payables Setup";
+    begin
+        SalesReceivablesSetup.Get();
+        if SalesReceivablesSetup."Logo Position on Documents" <> SalesLogoPosition then begin
+            SalesReceivablesSetup."Logo Position on Documents" := SalesLogoPosition;
+            SalesReceivablesSetup.Modify();
+        end;
+
+        PurchPayablesSetup.Get();
+        if PurchPayablesSetup."LBT Logo Position on Documents" <> PurchaseLogoPosition then begin
+            PurchPayablesSetup."LBT Logo Position on Documents" := PurchaseLogoPosition;
+            PurchPayablesSetup.Modify();
         end;
     end;
 
@@ -431,6 +477,7 @@ page 5272724 "LBT Wizard"
         MediaResources: Record "Media Resources";
         MediaRepositoryDone: Record "Media Repository";
         MediaResourcesDone: Record "Media Resources";
+
         TopBannerVisible: Boolean;
         NextEnabled: Boolean;
         BackEnabled: Boolean;
@@ -440,6 +487,7 @@ page 5272724 "LBT Wizard"
         SelectAll: Boolean;
         FinishWhenNotCompleteQst: Label 'Setup has not been completed.\\Are you sure you want to exit?',
             Comment = 'DEU="Die Einrichtung wurde nicht abgeschlossen.\\Möchten Sie den Assistenten wirklich beenden?"';
-
+        SalesLogoPosition: Option "No Logo",Left,Center,Right;
+        PurchaseLogoPosition: Option "No Logo",Left,Center,Right;
 
 }
