@@ -1,7 +1,8 @@
 page 5272724 "LBT Wizard"
 {
     PageType = NavigatePage;
-    Caption = 'Wizard';
+    Caption = 'LIS365 Setup', Comment = 'DEU="LIS365-Belegset Einrichtung"';
+
     SourceTable = "Company Information";
     layout
     {
@@ -40,7 +41,7 @@ page 5272724 "LBT Wizard"
                     group(Introduction)
                     {
                         Caption = '';
-                        InstructionalText = 'englisch',  //TODO: Englischen Text
+                        InstructionalText = 'You can set the type of correspondence documents with which you want to use the comfort functions and where any existing company logo should appear on the documents.',
                             Comment = 'DEU="Sie können einstellen mit welche Art von Korrespondenzbelegen Sie die Komfortfunktionen nutzen möchten und an welcher Stelle ein evtl. vorhandenes Firmenlogo auf den Belegen erscheinen soll"';
 
                     }
@@ -129,7 +130,7 @@ page 5272724 "LBT Wizard"
                     }
                     field(report11; DefaultReports[11])
                     {
-                        Caption = 'Return Order', Comment = 'DEU="Return Order"';
+                        Caption = 'Return Order', Comment = 'DEU="Reklamation"';
                         ApplicationArea = all;
                     }
                     field(report12; DefaultReports[12])
@@ -327,7 +328,6 @@ page 5272724 "LBT Wizard"
 
     trigger OnOpenPage()
     begin
-        "LBT Setup finished" := false; //TODO: dieses wieder rausnehmen
         CurrentStep := 1;
         SetControls();
     end;
@@ -439,10 +439,31 @@ page 5272724 "LBT Wizard"
     var
         ReportSelections: Record "Report Selections";
     begin
-        if ReportSelections.Get(ReportSelections.Usage::"S.Quote", 1) then begin
-            ReportSelections."Report ID" := Report::"LBT Sales - Quote";
-            ReportSelections.Modify();
-        end;
+        SetReportSelection(DefaultReports[1], ReportSelections.Usage::"S.Quote", Report::"LBT Sales - Quote");
+        SetReportSelection(DefaultReports[2], ReportSelections.Usage::"S.Order", Report::"LBT Order Confirmation");
+        SetReportSelection(DefaultReports[3], ReportSelections.Usage::"S.Invoice", Report::"LBT Sales - Invoice");
+        SetReportSelection(DefaultReports[4], ReportSelections.Usage::"S.Cr.Memo", Report::"LBT Sales - Credit Memo");
+        SetReportSelection(DefaultReports[5], ReportSelections.Usage::"S.Shipment", Report::"LBT Sales - Shipment");
+        SetReportSelection(DefaultReports[6], ReportSelections.Usage::"S.Blanket", Report::"LBT Blanket Sales Order");
+        SetReportSelection(DefaultReports[7], ReportSelections.Usage::"Pro Forma S. Invoice", Report::"LBT Sales pro forma Invoice");
+        SetReportSelection(DefaultReports[8], ReportSelections.Usage::"P.Quote", Report::"LBT Purchase - Quote");
+        SetReportSelection(DefaultReports[9], ReportSelections.Usage::"P.Order", Report::"LBT Order");
+        SetReportSelection(DefaultReports[10], ReportSelections.Usage::"S.Quote", Report::"LBT Blanket Purchase Order");
+        SetReportSelection(DefaultReports[11], ReportSelections.Usage::"P.Return", Report::"LBT Return Order");
+        SetReportSelection(DefaultReports[12], ReportSelections.Usage::Reminder, Report::"LBT Reminder");
+    end;
+
+    local procedure SetReportSelection(UseLIS365Report: Boolean; Usage: Integer; ReportId: Integer)
+    var
+        ReportSelections: Record "Report Selections";
+    begin
+        if not UseLIS365Report then
+            exit;
+        ReportSelections.Get(Usage, 1);
+        if ReportSelections."Report ID" = ReportId then
+            exit;
+        ReportSelections."Report ID" := ReportId;
+        ReportSelections.Modify();
     end;
 
     local procedure LoadTopBanners();
