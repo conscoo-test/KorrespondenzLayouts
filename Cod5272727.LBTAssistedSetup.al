@@ -25,6 +25,25 @@ codeunit 5272727 "LBT AssistedSetup"
         TempAggregatedAssistedSetup.Modify();
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Role Center Notification Mgt.", 'OnBeforeShowNotifications', '', true, true)]
+    local procedure MyProcedure()
+
+    begin
+        if not IsComplete() then
+            CreateNotification();
+    end;
+
+    local procedure CreateNotification()
+    var
+        Note: Notification;
+    begin
+        Note.Id := GetNotificationId();
+        Note.Message(NotificationMsg);
+        Note.Scope := NotificationScope::LocalScope;
+        Note.AddAction(ActionMsg, Codeunit::"LBT AssistedSetup", 'HandleNotification');
+        Note.Send();
+    end;
+
     procedure HandleNotification(Note: Notification)
     var
         AggregatedAssistedSetup: Record "Aggregated Assisted Setup";
@@ -53,6 +72,17 @@ codeunit 5272727 "LBT AssistedSetup"
         end;
     end;
 
+    local procedure GetNotificationId(): Guid
+    var
+        NotificationId: Guid;
+    begin
+        Evaluate(NotificationId, NotificationIdTxt);
+        exit(NotificationId);
+    end;
+
     var
         SetupLbl: Label 'Setup LIS365', Comment = 'DEU="LIS365-Belegset einrichten"';
+        NotificationIdTxt: Label 'e6947c77-ec45-40c2-8c7e-01295de6efe4';
+        NotificationMsg: Label 'The setup for LIS365 Reports is incomplete', Comment = 'DEU="Die Einrichtung für LIS365-Belege ist unvollständig."';
+        ActionMsg: Label 'To Wizard...', Comment = 'DEU="Zum Wizard..."';
 }

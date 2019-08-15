@@ -16,19 +16,7 @@ codeunit 5272725 "LBT Install"
             // //add reinstallation code for each version
             // end;
         end;
-        CreateNotification();
     end;
-
-    local procedure CreateNotification()
-    var
-        Note: Notification;
-    begin
-        Note.Message('Ready!');
-        Note.Scope := NotificationScope::LocalScope;
-        Note.AddAction('click', Codeunit::"LBT AssistedSetup", 'HandleNotification');
-        Note.Send();
-    end;
-
 
     trigger OnInstallAppPerDatabase()
     var
