@@ -1,6 +1,5 @@
 page 5272724 "LBT Wizard"
 {
-    SourceTableTemporary = true;
     PageType = NavigatePage;
     Caption = 'Wizard';
     SourceTable = "Company Information";
@@ -327,16 +326,8 @@ page 5272724 "LBT Wizard"
     end;
 
     trigger OnOpenPage()
-    var
-        CompanyInformation: Record "Company Information";
     begin
-        Init();
-        if CompanyInformation.Get() then begin
-            TransferFields(CompanyInformation);
-            CompanyInformation."LBT Setup finished" := false; //TODO: dieses wieder rausnehmen
-            CompanyInformation.Modify();
-        end;
-        Insert();
+        "LBT Setup finished" := false; //TODO: dieses wieder rausnehmen
         CurrentStep := 1;
         SetControls();
     end;
@@ -352,17 +343,9 @@ page 5272724 "LBT Wizard"
     end;
 
     local procedure Finish()
-    var
-        CompanyInformation: Record "Company Information";
     begin
-        if not CompanyInformation.Get() then begin
-            CompanyInformation.Init();
-            CompanyInformation.Insert();
-        end;
-
-        CompanyInformation.TransferFields(Rec);
-        CompanyInformation."LBT Setup finished" := true;
-        CompanyInformation.Modify();
+        "LBT Setup finished" := true;
+        Modify();
         Commit();
         CurrPage.Close();
     end;
