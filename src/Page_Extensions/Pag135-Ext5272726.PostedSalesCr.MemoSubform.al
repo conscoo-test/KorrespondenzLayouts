@@ -12,6 +12,9 @@ pageextension 5272726 "LBT Posted Sales Cr. Memo Sub." extends "Posted Sales Cr.
             {
                 ApplicationArea = All;
             }
+        }
+        addafter(Type)
+        {
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;

@@ -12,6 +12,9 @@ pageextension 5272722 "LBT Posted Sales Shpt. Subform" extends "Posted Sales Shp
             {
                 ApplicationArea = All;
             }
+        }
+        addafter(Type)
+        {
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;

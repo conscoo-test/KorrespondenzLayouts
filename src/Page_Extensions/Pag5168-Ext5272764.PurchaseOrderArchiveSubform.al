@@ -12,6 +12,10 @@ pageextension 5272764 "LBT Purch. Order Archive Sub." extends "Purchase Order Ar
             {
                 ApplicationArea = All;
             }
+        }
+        addafter(Type)
+        {
+
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;

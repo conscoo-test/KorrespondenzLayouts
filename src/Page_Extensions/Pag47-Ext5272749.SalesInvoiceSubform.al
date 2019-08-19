@@ -14,6 +14,9 @@ pageextension 5272749 "LBT Sales Invoice Subform" extends "Sales Invoice Subform
             {
                 ApplicationArea = All;
             }
+        }
+        addafter(FilteredTypeField)
+        {
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;

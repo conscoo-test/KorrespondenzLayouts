@@ -12,6 +12,9 @@ pageextension 5272758 "LBT Sales Order Archive Sub." extends "Sales Order Archiv
             {
                 ApplicationArea = All;
             }
+        }
+        addafter(Type)
+        {
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;

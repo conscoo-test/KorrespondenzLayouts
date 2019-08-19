@@ -12,6 +12,10 @@ pageextension 5272760 "LBT Sales Quote Archive Sub." extends "Sales Quote Archiv
             {
                 ApplicationArea = All;
             }
+        }
+        addafter(Type)
+        {
+
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;

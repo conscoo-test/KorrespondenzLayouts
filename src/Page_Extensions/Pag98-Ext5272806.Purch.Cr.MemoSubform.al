@@ -12,6 +12,9 @@ pageextension 5272806 "LBT Purch. Cr. Memo Subform" extends "Purch. Cr. Memo Sub
             {
                 ApplicationArea = All;
             }
+        }
+        addafter(FilteredTypeField)
+        {
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;

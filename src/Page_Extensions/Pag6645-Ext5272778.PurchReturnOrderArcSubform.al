@@ -8,6 +8,10 @@ pageextension 5272778 "LBT Purch Ret. Order Arc Sub." extends "Purch Return Orde
             {
                 ApplicationArea = All;
             }
+        }
+        addafter(Type)
+        {
+
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;

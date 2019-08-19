@@ -12,6 +12,9 @@ pageextension 5272766 "LBT Purchase Order Subform" extends "Purchase Order Subfo
             {
                 ApplicationArea = All;
             }
+        }
+        addafter(FilteredTypeField)
+        {
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;

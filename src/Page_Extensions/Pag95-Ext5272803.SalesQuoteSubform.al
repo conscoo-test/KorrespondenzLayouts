@@ -12,6 +12,9 @@ pageextension 5272803 "LBT Sales Quote Subform" extends "Sales Quote Subform"
             {
                 ApplicationArea = All;
             }
+        }
+        addafter(FilteredTypeField)
+        {
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;

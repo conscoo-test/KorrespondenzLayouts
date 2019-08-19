@@ -12,6 +12,9 @@ pageextension 5272724 "LBT Posted Sales Inv. Subform" extends "Posted Sales Invo
             {
                 ApplicationArea = All;
             }
+        }
+        addafter(Type)
+        {
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;

@@ -14,6 +14,9 @@ pageextension 5272747 "LBT Sales Order Subform" extends "Sales Order Subform"
             {
                 ApplicationArea = All;
             }
+        }
+        addafter(FilteredTypeField)
+        {
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;

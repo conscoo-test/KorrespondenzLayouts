@@ -12,6 +12,9 @@ pageextension 5272781 "LBT Posted Ret. Shipment Sub." extends "Posted Return Shi
             {
                 ApplicationArea = All;
             }
+        }
+        addafter(Type)
+        {
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;

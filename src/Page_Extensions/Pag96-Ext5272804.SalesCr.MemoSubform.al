@@ -12,6 +12,9 @@ pageextension 5272804 "LBT Sales Cr. Memo Subform" extends "Sales Cr. Memo Subfo
             {
                 ApplicationArea = All;
             }
+        }
+        addafter(FilteredTypeField)
+        {
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;

@@ -9,6 +9,9 @@ pageextension 5272767 "LBT Purch. Invoice Subform" extends "Purch. Invoice Subfo
             {
                 ApplicationArea = All;
             }
+        }
+        addafter(FilteredTypeField)
+        {
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;

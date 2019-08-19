@@ -12,6 +12,10 @@ pageextension 5272762 "LBT Purch. Quote Archive Sub." extends "Purchase Quote Ar
             {
                 ApplicationArea = All;
             }
+        }
+        addafter(Type)
+        {
+
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;
