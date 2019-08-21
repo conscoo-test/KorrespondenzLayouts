@@ -1300,7 +1300,7 @@ report 5272730 "LBT Return Order"
 
         trigger OnOpenPage()
         begin
-            ArchiveDocument := PurchSetup."Arch. Orders and Ret. Orders";
+            ArchiveDocument := PurchSetup."Archive Return Orders";
             LogInteraction := SegManagement.FindInteractTmplCode(13) <> '';
 
             LogInteractionEnable := LogInteraction;

@@ -1280,7 +1280,7 @@ report 5272720 "LBT Sales - Quote"
 
                 if Print then begin
                     if CurrReport.USEREQUESTPAGE and ArchiveDocument or
-                       not CurrReport.USEREQUESTPAGE and (SalesSetup."Archiving Sales Quote" = SalesSetup."Archiving Sales Quote"::Always)
+                       not CurrReport.USEREQUESTPAGE and (SalesSetup."Archive Quotes" = SalesSetup."Archive Quotes"::Always)
                     then
                         ArchiveManagement.StoreSalesDocument("Sales Header", LogInteraction);
 
@@ -1393,10 +1393,10 @@ report 5272720 "LBT Sales - Quote"
 
         trigger OnOpenPage()
         begin
-            case SalesSetup."Archiving Sales Quote" of
-                SalesSetup."Archiving Sales Quote"::Never:
+            case SalesSetup."Archive Quotes" of
+                SalesSetup."Archive Quotes"::Never:
                     ArchiveDocument := false;
-                SalesSetup."Archiving Sales Quote"::Always:
+                SalesSetup."Archive Quotes"::Always:
                     ArchiveDocument := true;
             end;
             LogInteraction := SegManagement.FindInteractTmplCode(1) <> '';

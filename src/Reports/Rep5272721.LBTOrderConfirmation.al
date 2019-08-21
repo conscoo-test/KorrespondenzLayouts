@@ -1706,7 +1706,7 @@ report 5272721 "LBT Order Confirmation"
 
                 if Print then begin
                     if CurrReport.USEREQUESTPAGE and ArchiveDocument or
-                       not CurrReport.USEREQUESTPAGE and SalesSetup."Arch. Orders and Ret. Orders"
+                       not CurrReport.USEREQUESTPAGE and SalesSetup."Archive Orders"
                     then
                         ArchiveManagement.StoreSalesDocument("Sales Header", LogInteraction);
 
@@ -1808,7 +1808,7 @@ report 5272721 "LBT Order Confirmation"
 
         trigger OnOpenPage()
         begin
-            ArchiveDocument := SalesSetup."Arch. Orders and Ret. Orders";
+            ArchiveDocument := SalesSetup."Archive Orders";
             LogInteraction := SegManagement.FindInteractTmplCode(3) <> '';
 
             LogInteractionEnable := LogInteraction;

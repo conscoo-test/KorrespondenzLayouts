@@ -1787,7 +1787,7 @@ report 5272726 "LBT Sales pro forma Invoice"
 
                 if Print then begin
                     if CurrReport.USEREQUESTPAGE and ArchiveDocument or
-                       not CurrReport.USEREQUESTPAGE and SalesSetup."Arch. Orders and Ret. Orders"
+                       not CurrReport.USEREQUESTPAGE and SalesSetup."Archive Orders"
                     then
                         ArchiveManagement.StoreSalesDocument("Sales Header", LogInteraction);
 
@@ -1889,7 +1889,7 @@ report 5272726 "LBT Sales pro forma Invoice"
 
         trigger OnOpenPage()
         begin
-            ArchiveDocument := SalesSetup."Arch. Orders and Ret. Orders";
+            ArchiveDocument := SalesSetup."Archive Orders";
             LogInteraction := SegManagement.FindInteractTmplCode(3) <> '';
 
             LogInteractionEnable := LogInteraction;

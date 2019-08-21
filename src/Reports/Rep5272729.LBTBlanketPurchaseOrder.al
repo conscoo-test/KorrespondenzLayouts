@@ -986,12 +986,7 @@ report 5272729 "LBT Blanket Purchase Order"
 
         trigger OnOpenPage()
         begin
-            case PurchSetup."Archiving Purchase Quote" of
-                PurchSetup."Archiving Purchase Quote"::Never:
-                    ArchiveDocument := false;
-                PurchSetup."Archiving Purchase Quote"::Always:
-                    ArchiveDocument := true;
-            end;
+            ArchiveDocument := PurchSetup."Archive Blanket Orders";
             LogInteraction := SegManagement.FindInteractTmplCode(11) <> '';
 
             LogInteractionEnable := LogInteraction;
