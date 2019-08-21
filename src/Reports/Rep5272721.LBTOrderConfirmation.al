@@ -1967,7 +1967,7 @@ report 5272721 "LBT Order Confirmation"
         VALVATBaseLCY_Control160CaptionLbl: Label 'Total', Comment = 'DEU="Gesamt"';
         PaymentTerms_DescriptionCaptionLbl: Label 'Payment Terms', Comment = 'DEU="Zahlungsbedingungen"';
         ShipmentMethod_DescriptionCaptionLbl: Label 'Shipment Method', Comment = 'DEU="Lieferbedingungen"';
-        Ship_to_AddressCaptionLbl: Label 'Ship-to Address', Comment = 'DEU="Lief. an Adresse"'
+        Ship_to_AddressCaptionLbl: Label 'Ship-to Address', Comment = 'DEU="Lief. an Adresse"';
         PrepmtLineAmount_Control166CaptionLbl: Label 'Amount', Comment = 'DEU="Betrag"';
         PrepmtInvBuf_DescriptionCaptionLbl: Label 'Description', Comment = 'DEU="Beschreibung"';
         PrepmtInvBuf__G_L_Account_No__CaptionLbl: Label 'G/L Account No.', Comment = 'DEU="Sachkontonr."';
@@ -2010,11 +2010,11 @@ report 5272721 "LBT Order Confirmation"
         NewPageLBLang: Integer;
         LBFuss_Description: Text;
         NewPageLBFuss: Integer;
-        DocCaptionLbl: Label 'Order Confirmation %1', Comment = 'DEU="Auftragsbestätigung %1"', Comment = '%1 = Document No.';
+        DocCaptionLbl: Label 'Order Confirmation %1', Comment = 'DEU="Auftragsbestätigung %1"';
         PagefromPageCaptionLbl: Label 'Page %1 of %2', Comment = 'DEU="Seite %1 von %2"';
-        PageCaptionLbl: Label 'Page %1', Comment = 'DEU="Seite %1 von %2"';
+        PageCaptionLbl: Label 'Page %1', Comment = 'DEU="Seite %1"';
         NoCaptionLbl: Label 'No.', Comment = 'DEU="Nr."';
-        FromCaptionLbl: Label 'from', Comment = 'DEU="von"';
+        FromCaptionLbl: Label 'from', Comment = 'DEU="vom"';
         Sales_Header___Bill_to_Customer_No__CaptionLbl: Label 'Customer ID', Comment = 'DEU="Kunden-Nr."';
         DatumCaptionLbl: Label 'Date', Comment = 'DEU="Datum"';
         CompanyInfo__VAT_Registration_No__CaptionLbl2: Label 'VAT Reg. No.', Comment = 'DEU="USt-IdNr."';

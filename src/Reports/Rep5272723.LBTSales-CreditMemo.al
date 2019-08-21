@@ -3,7 +3,7 @@ report 5272723 "LBT Sales - Credit Memo"
     DefaultLayout = RDLC;
     RDLCLayout = './src/Reports/Rep5272723.LBTSales-CreditMemo.rdlc';
 
-    Caption = 'Sales - Credit Memo';
+    Caption = 'Sales - Credit Memo', Comment = 'DEU="Verkauf - Gutschrift"';
     Permissions = TableData "Sales Shipment Buffer" = rimd;
     PreviewMode = PrintLayout;
 
@@ -1210,33 +1210,33 @@ report 5272723 "LBT Sales - Credit Memo"
             {
                 group(Options)
                 {
-                    Caption = 'Options';
+                    Caption = 'Options', Comment = 'DEU="Optionen"';
                     field(NoOfCopies; NoOfCopies)
                     {
                         ApplicationArea = Basic, Suite;
-                        Caption = 'No. of Copies';
+                        Caption = 'No. of Copies', Comment = 'DEU="Anzahl Kopien"';
                         ToolTip = 'Specifies how many copies of the document to print.';
                     }
                     field(ShowInternalInfo; ShowInternalInfo)
                     {
                         ApplicationArea = Basic, Suite;
-                        Caption = 'Show Internal Information';
+                        Caption = 'Show Internal Information', Comment = 'DEU="Interne Informationen anzeigen"';
                         ToolTip = 'Specifies if the document shows internal information.';
                     }
                     field(LogInteraction; LogInteraction)
                     {
                         ApplicationArea = Basic, Suite;
-                        Caption = 'Log Interaction';
+                        Caption = 'Log Interaction', Comment = 'DEU="Aktivität protokollieren"';
                         Enabled = LogInteractionEnable;
                         ToolTip = 'Specifies that interactions with the contact are logged.';
                     }
                     field(HideCompanyInfo; HideCompanyInfo)
                     {
-                        Caption = 'Hide Company Info';
+                        Caption = 'Hide Company Info', Comment = 'DEU="Firmendaten ausblenden"';
                     }
                     field(ItemPicturePrint; ItemPicturePrint)
                     {
-                        Caption = 'Print Item Picture';
+                        Caption = 'Print Item Picture', Comment = 'DEU="Artikelbilder drucken"';
                     }
                 }
             }
@@ -1277,8 +1277,8 @@ report 5272723 "LBT Sales - Credit Memo"
     end;
 
     var
-        Text003: Label '(Applies to %1 %2)';
-        PageCaptionCap: Label 'Page %1 of %2';
+        Text003: Label '(Applies to %1 %2)', Comment = 'DEU="(Ausgleich für %1 %2)"';
+        PageCaptionCap: Label 'Page %1 of %2', Comment = 'DEU="Seite %1 von %2"';
         GLSetup: Record "General Ledger Setup";
         RespCenter: Record "Responsibility Center";
         SalesSetup: Record "Sales & Receivables Setup";
@@ -1323,9 +1323,9 @@ report 5272723 "LBT Sales - Credit Memo"
         NextEntryNo: Integer;
         VALVATBaseLCY: Decimal;
         VALVATAmountLCY: Decimal;
-        Text008: Label 'VAT Amount Specification in ';
-        Text009: Label 'Local Currency';
-        Text010: Label 'Exchange rate: %1/%2';
+        Text008: Label 'VAT Amount Specification in ', Comment = 'DEU="VAT Amount Specification in "';
+        Text009: Label 'Local Currency', Comment = 'DEU="Landeswährung"';
+        Text010: Label 'Exchange rate: %1/%2', Comment = 'DEU="Wechselkurs: %1/%2"';
         VALSpecLCYHeader: Text[80];
         VALExchRate: Text[50];
         CalculatedExchRate: Decimal;
@@ -1336,43 +1336,43 @@ report 5272723 "LBT Sales - Credit Memo"
         NNC_TotalAmount: Decimal;
         [InDataSet]
         LogInteractionEnable: Boolean;
-        DocCreditMemoCap: Label 'Credit Memo %1', Comment = 'Substitute can be COPY or blank';
-        DocCreditMemoPrepmtCap: Label 'Prepmt. Credit Memo %1', Comment = 'Substitute can be COPY or blank';
-        DocDECap: Label 'Corrective Invoice %1', Comment = 'Subsitute can be COPY or blank';
-        DocDEPrepmtCap: Label 'Prepmt. Corrective Invoice %1', Comment = 'Substitute can be COPY or blank';
-        CompanyInfoPhoneNoCaptionLbl: Label 'Phone No.';
-        CompanyInfoFaxNoCaptionLbl: Label 'Fax No.';
-        CompanyInfoVATRegNoCaptionLbl: Label 'VAT Reg. No.';
-        CompanyInfoGiroNoCaptionLbl: Label 'Giro No.';
-        CompanyInfoBankNameCaptionLbl: Label 'Bank';
-        CompanyInfoBankAccNoCaptionLbl: Label 'Account No.';
-        SalesHeaderNoLbl: Label 'Credit Memo No.';
-        DESalesHeaderNoLbl: Label 'Corrective Invoice No.';
-        PostingDateCaptionLbl: Label 'Posting Date';
-        HeaderDimCaptionLbl: Label 'Header Dimensions';
-        UnitPriceCaptionLbl: Label 'Unit Price';
-        DiscountCaptionLbl: Label 'Discount %';
-        AmountCaptionLbl: Label 'Amount';
-        PostedReceiptDateCaptionLbl: Label 'Posted Return Receipt Date';
-        ContinuedCaptionLbl: Label 'Continued';
-        InvDiscAmtCaptionLbl: Label 'Invoice Discount Amount';
-        SubtotalCaptionLbl: Label 'Subtotal';
-        PaymentDiscountVATCaptionLbl: Label 'Payment Discount on VAT';
-        VATClausesCap: Label 'VAT Clause';
-        LineDimensionsCaptionLbl: Label 'Line Dimensions';
-        VATAmtLineVATCaptionLbl: Label 'VAT %';
-        VATBaseCaptionLbl: Label 'VAT Base';
-        VATAmountCaptionLbl: Label 'VAT Amount';
-        VATAmtSpecificationCaptionLbl: Label 'VAT Amount Specification';
-        VATIdentifierCaptionLbl: Label 'VAT Identifier';
-        InvDiscBaseAmtCaptionLbl: Label 'Invoice Discount Base Amount';
-        LineAmtCaptionLbl: Label 'Line Amount';
-        InvoiceDiscoutAmountCaptionLbl: Label 'Invoice Discount Amount';
-        TotalCaptionLbl: Label 'Total';
-        ShiptoAddressCaptionLbl: Label 'Ship-to Address';
-        EMailCaptionLbl: Label 'Email';
-        HomePageCaptionLbl: Label 'Home Page';
-        DocumentDateCaptionLbl: Label 'Document Date';
+        DocCreditMemoCap: Label 'Credit Memo %1', Comment = 'DEU="Gutschrift %1"';
+        DocCreditMemoPrepmtCap: Label 'Prepmt. Credit Memo %1', Comment = 'DEU=""';
+        DocDECap: Label 'Corrective Invoice %1', Comment = 'DEU="Vorauszahlungsgutschrift %1"';
+        DocDEPrepmtCap: Label 'Prepmt. Corrective Invoice %1', Comment = 'DEU="Korrekturrechnung Vorauszahlung %1"';
+        CompanyInfoPhoneNoCaptionLbl: Label 'Phone No.', Comment = 'DEU="Telefonnr."';
+        CompanyInfoFaxNoCaptionLbl: Label 'Fax No.', Comment = 'DEU="Faxnr."';
+        CompanyInfoVATRegNoCaptionLbl: Label 'VAT Reg. No.', Comment = 'DEU=""';
+        CompanyInfoGiroNoCaptionLbl: Label 'Giro No.', Comment = 'DEU="USt-IdNr."';
+        CompanyInfoBankNameCaptionLbl: Label 'Bank', Comment = 'DEU="Bankkonto"';
+        CompanyInfoBankAccNoCaptionLbl: Label 'Account No.', Comment = 'DEU="Kontonr."';
+        SalesHeaderNoLbl: Label 'Credit Memo No.', Comment = 'DEU="Gutschriftsnr"';
+        DESalesHeaderNoLbl: Label 'Corrective Invoice No.', Comment = 'DEU="Korrekturrechnungsnr."';
+        PostingDateCaptionLbl: Label 'Posting Date', Comment = 'DEU="Buchungsdatum"';
+        HeaderDimCaptionLbl: Label 'Header Dimensions', Comment = 'DEU="Buchungsdatum"';
+        UnitPriceCaptionLbl: Label 'Unit Price', Comment = 'DEU="VK-Preis"';
+        DiscountCaptionLbl: Label 'Discount %', Comment = 'DEU="Rabatt %"';
+        AmountCaptionLbl: Label 'Amount', Comment = 'DEU="Betrag"';
+        PostedReceiptDateCaptionLbl: Label 'Posted Return Receipt Date', Comment = 'DEU="Gebuchtes Rücksendungsdatum"';
+        ContinuedCaptionLbl: Label 'Continued', Comment = 'DEU="Fortsetzung"';
+        InvDiscAmtCaptionLbl: Label 'Invoice Discount Amount', Comment = 'DEU="Rechnungsrab.-Betrag"';
+        SubtotalCaptionLbl: Label 'Subtotal', Comment = 'DEU="Zw.summe"';
+        PaymentDiscountVATCaptionLbl: Label 'Payment Discount on VAT', Comment = 'DEU="Skonto auf MwSt."';
+        VATClausesCap: Label 'VAT Clause', Comment = 'DEU="MwSt.-Klausel"';
+        LineDimensionsCaptionLbl: Label 'Line Dimensions', Comment = 'DEU="Zeilendimensionen"';
+        VATAmtLineVATCaptionLbl: Label 'VAT %', Comment = 'DEU="MwSt. %"';
+        VATBaseCaptionLbl: Label 'VAT Base', Comment = 'DEU="MwSt.-Bemessungsgrundlage"';
+        VATAmountCaptionLbl: Label 'VAT Amount', Comment = 'DEU="MwSt.-Bemessungsgrundlage"';
+        VATAmtSpecificationCaptionLbl: Label 'VAT Amount Specification', Comment = 'DEU="MwSt.-Betrag - Spezifikation"';
+        VATIdentifierCaptionLbl: Label 'VAT Identifier', Comment = 'DEU="MwSt.-Kennzeichen"';
+        InvDiscBaseAmtCaptionLbl: Label 'Invoice Discount Base Amount', Comment = 'DEU="Rechnungsrab.-Bem.grundlage"';
+        LineAmtCaptionLbl: Label 'Line Amount', Comment = 'DEU="Zeilenbetrag"';
+        InvoiceDiscoutAmountCaptionLbl: Label 'Invoice Discount Amount', Comment = 'DEU="Rechnungsrab.-Betrag"';
+        TotalCaptionLbl: Label 'Total', Comment = 'DEU="Gesamt"';
+        ShiptoAddressCaptionLbl: Label 'Ship-to Address', Comment = 'DEU="Lief. an Adresse"';
+        EMailCaptionLbl: Label 'Email', Comment = 'DEU="E-Mail"';
+        HomePageCaptionLbl: Label 'Home Page', Comment = 'DEU="Homepage"';
+        DocumentDateCaptionLbl: Label 'Document Date', Comment = 'DEU="Belegdatum"';
         "### Lebit Correspondence Globals ###": Integer;
         CompanyAddressLine: Text;
         LeBitCorrespDocMgt: Codeunit "LBT Corresp. Doc. Mgt";
@@ -1398,41 +1398,41 @@ report 5272723 "LBT Sales - Credit Memo"
         NewPageLBLang: Integer;
         LBFuss_Description: Text;
         NewPageLBFuss: Integer;
-        DocCaptionLbl: Label 'Invoice %1', Comment = '%1 = Document No.';
-        PagefromPageCaptionLbl: Label 'Page %1 of %2';
-        PageCaptionLbl: Label 'Page %1';
-        NoCaptionLbl: Label 'No.';
-        FromCaptionLbl: Label 'from';
-        Bill_to_Customer_No__CaptionLbl: Label 'Customer ID';
-        DatumCaptionLbl: Label 'Date';
-        CompanyInfo__VAT_Registration_No__CaptionLbl2: Label 'VAT Reg. No.';
-        Alternativposition_CaptionLbl: Label 'Alternative position';
-        Bedarfposition_CaptionLbl: Label 'Position requirements';
-        BitteAndern_CaptionLbl: Label 'please change!';
-        PosNo_CaptionLbl: Label 'Pos.';
-        UOM_CaptionLbl: Label 'Unit';
-        CarryForwardCaptionLbl: Label 'Carry-forward %1';
-        CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl: Label 'Registered in:';
-        CompanyInfo__LeBit_CEO_Caption_Lbl: Label 'Chief Executive Officer';
-        CompanyInfo__Bank_Name_Caption_Lbl: Label 'Bank';
-        CompanyInfo_IBAN_Caption_Lbl: Label 'IBAN';
-        CompanyInfo__SWIFT_Code_Caption_Lbl: Label 'SWIFT-BIC';
-        SalesPersonText_Caption: Label 'Salesperson';
-        CompanyInfo_E_Mail_Caption_Lbl: Label 'Mail:';
-        CompanyInfo__Home_Page_Caption_Lbl: Label 'Homepage:';
-        Text5272768: Label 'At orders no alternative positions and demand positions are allowed!';
-        FaxNoCaptionLbl: Label 'Telefax no.';
+        DocCaptionLbl: Label 'Invoice %1', Comment = 'DEU="Rechnungsnr. %1"';
+        PagefromPageCaptionLbl: Label 'Page %1 of %2', Comment = 'DEU="Seite %1 von %2"';
+        PageCaptionLbl: Label 'Page %1', Comment = 'DEU="Seite %1"';
+        NoCaptionLbl: Label 'No.', Comment = 'DEU="Nr."';
+        FromCaptionLbl: Label 'from', Comment = 'DEU="vom"';
+        Bill_to_Customer_No__CaptionLbl: Label 'Customer ID', Comment = 'DEU="Kunden-Nr."';
+        DatumCaptionLbl: Label 'Date', Comment = 'DEU="Datum"';
+        CompanyInfo__VAT_Registration_No__CaptionLbl2: Label 'VAT Reg. No.', Comment = 'DEU="USt-IdNr."';
+        Alternativposition_CaptionLbl: Label 'Alternative position', Comment = 'DEU="Alternativposition"';
+        Bedarfposition_CaptionLbl: Label 'Position requirements', Comment = 'DEU="Bedarfposition"';
+        BitteAndern_CaptionLbl: Label 'please change!', Comment = 'DEU="bitte ändern!"';
+        PosNo_CaptionLbl: Label 'Pos.', Comment = 'DEU="Pos."';
+        UOM_CaptionLbl: Label 'Unit', Comment = 'DEU="Einheit"';
+        CarryForwardCaptionLbl: Label 'Carry-forward %1', Comment = 'DEU="Übertrag %1"';
+        CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl: Label 'Registered in:', Comment = 'DEU="Eingetragen im:"';
+        CompanyInfo__LeBit_CEO_Caption_Lbl: Label 'Chief Executive Officer', Comment = 'DEU="Chief Executive Officer"';
+        CompanyInfo__Bank_Name_Caption_Lbl: Label 'Bank', Comment = 'DEU="Bankkonto"';
+        CompanyInfo_IBAN_Caption_Lbl: Label 'IBAN', Comment = 'DEU="IBAN"';
+        CompanyInfo__SWIFT_Code_Caption_Lbl: Label 'SWIFT-BIC', Comment = 'DEU="SWIFT-BIC"';
+        SalesPersonText_Caption: Label 'Salesperson', Comment = 'DEU="Bearbeiter"';
+        CompanyInfo_E_Mail_Caption_Lbl: Label 'Mail:', Comment = 'DEU="E-Mail"';
+        CompanyInfo__Home_Page_Caption_Lbl: Label 'Homepage:', Comment = 'DEU="Homepage:"';
+        Text5272768: Label 'At orders no alternative positions and demand positions are allowed!', Comment = 'DEU="Auf Aufträgen sind keine Alternativ- und Bedarfspositionen erlaubt."';
+        FaxNoCaptionLbl: Label 'Telefax no.', Comment = 'DEU="Faxnr."';
         PaymentTerms: Record "Payment Terms";
         PaymentMethod: Record "Payment Method";
         ShipmentMethod: Record "Shipment Method";
-        ShipmentLbl: Label 'Shipment';
-        AppliesToTextLbl: Label 'Applies to Document';
-        PaymentTerms_DescriptionCaptionLbl: Label 'Payment Terms';
-        ShipmentMethod_DescriptionCaptionLbl: Label 'Shipment Method';
-        PaymentMethod_DescriptionCaptionLbl: Label 'Payment Method';
+        ShipmentLbl: Label 'Shipment', Comment = 'DEU="Lieferung"';
+        AppliesToTextLbl: Label 'Applies to Document', Comment = 'DEU="Ausgleich mit Beleg"';
+        PaymentTerms_DescriptionCaptionLbl: Label 'Payment Terms', Comment = 'DEU="Zahlungsbedingungen"';
+        ShipmentMethod_DescriptionCaptionLbl: Label 'Shipment Method', Comment = 'DEU="Lieferbedingung"';
+        PaymentMethod_DescriptionCaptionLbl: Label 'Payment Method', Comment = 'DEU="Zahlungsform"';
         ReportType: Option Purchase,Sales,QA,Production,Delivery,"Report";
         LeBitReportFunctions: Codeunit "LBT Report Functions";
-        VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
+        VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.', Comment = 'DEU="USt-IdNr."';
 
     procedure InitLogInteraction()
     begin
