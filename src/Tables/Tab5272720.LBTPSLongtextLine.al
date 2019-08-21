@@ -2,7 +2,7 @@ table 5272720 "LBT PS Longtext Line"
 {
     // version LBCOR1.00
 
-    Caption = 'Purch/Sales Longtext Line';
+    Caption = 'Purch/Sales Longtext Line', Comment = 'DEU="EK/VK Langtext Zeile"';
     DrillDownPageID = "LBT PS Longtext Lines";
     LookupPageID = "LBT PS Longtext Lines";
     PasteIsValid = false;
@@ -11,18 +11,18 @@ table 5272720 "LBT PS Longtext Line"
     {
         field(1; "Table ID"; Integer)
         {
-            Caption = 'Table ID';
+            Caption = 'Table ID', Comment = 'DEU="Tabellen ID"';
             TableRelation = AllObj."Object ID" WHERE ("Object Type" = CONST (Table));
         }
         field(2; "Document Type"; Option)
         {
-            Caption = 'Document Type';
-            OptionCaption = 'Quote,Order,Invoice,Credit Memo,Blanket Order,Return Order,Shipment/Receipt';
+            Caption = 'Document Type', Comment = 'DEU="Belegart"';
+            OptionCaption = 'Quote,Order,Invoice,Credit Memo,Blanket Order,Return Order,Shipment/Receipt', Comment = 'DEU="Angebot,Auftrag/Bestellung,Rechnung,Gutschrift,Rahmenauftrag/Rahmenbestellung,Reklamation,Lieferschein"';
             OptionMembers = Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order","Shipment/Receipt";
         }
         field(3; "Document No."; Code[20])
         {
-            Caption = 'Document No.';
+            Caption = 'Document No.', Comment = 'DEU="Belegnr."';
             NotBlank = true;
             TableRelation = IF ("Table ID" = CONST (36)) "Sales Header"."No." WHERE ("Document Type" = FIELD ("Document Type"))
             ELSE
@@ -37,13 +37,13 @@ table 5272720 "LBT PS Longtext Line"
         }
         field(4; Position; Option)
         {
-            Caption = 'Position';
-            OptionCaption = 'Header,Footer,Longtext';
+            Caption = 'Position', Comment = 'DEU="Position"';
+            OptionCaption = 'Header,Footer,Longtext', Comment = 'DEU="Kopf,Fuß,Langtext"';
             OptionMembers = Header,Footer,Longtext;
         }
         field(5; "Document Line No."; Integer)
         {
-            Caption = 'Document Line No.';
+            Caption = 'Document Line No.', Comment = 'DEU="Beleg Zeilennr."';
             TableRelation = IF ("Table ID" = CONST (37)) "Sales Line"."Line No." WHERE ("Document Type" = FIELD ("Document Type"),
                                                                                      "Document No." = FIELD ("Document No."))
             ELSE
@@ -52,12 +52,12 @@ table 5272720 "LBT PS Longtext Line"
         }
         field(6; "Line No."; Integer)
         {
-            Caption = 'Line No.';
+            Caption = 'Line No.', Comment = 'DEU="Zeilennr."';
         }
         field(10; Type; Option)
         {
-            Caption = 'Type';
-            OptionCaption = 'Text,New Page,Text + Line break';
+            Caption = 'Type', Comment = 'DEU="Art"';
+            OptionCaption = 'Text,New Page,Text + Line break', Comment = 'DEU="Text,Neue Seite, Text + Zeilenumbruch"';
             OptionMembers = Text,"New Page","Text + Line break";
 
             trigger OnValidate()
@@ -79,7 +79,7 @@ table 5272720 "LBT PS Longtext Line"
         }
         field(11; "No."; Code[20])
         {
-            Caption = 'No.';
+            Caption = 'No.', Comment = 'DEU="Nr."';
             TableRelation = IF (Type = CONST (Text)) "Standard Text";
 
             trigger OnValidate()
@@ -96,7 +96,7 @@ table 5272720 "LBT PS Longtext Line"
         }
         field(12; Description; Text[120])
         {
-            Caption = 'Description';
+            Caption = 'Description', Comment = 'DEU="Beschreibung"';
 
             trigger OnValidate()
             begin
@@ -108,7 +108,7 @@ table 5272720 "LBT PS Longtext Line"
         }
         field(13; Text; BLOB)
         {
-            Caption = 'Text';
+            Caption = 'Text', Comment = 'DEU="Text"';
         }
     }
 
@@ -131,9 +131,9 @@ table 5272720 "LBT PS Longtext Line"
 
     var
         StandardTextRec: Record "Standard Text";
-        Text001: Label '--- New Page ---';
-        Text002: Label 'You can not change this text.';
-        Text003: Label 'You cannot rename a %1.';
+        Text001: Label '--- New Page ---', Comment = 'DEU="Seitenwechsel"';
+        Text002: Label 'You can not change this text.', Comment = 'DEU=""';
+        Text003: Label 'You cannot rename a %1.', Comment = 'DEU="Sie können diesen Text nicht ändern"';
 
     procedure DBOpenMemo()
     var

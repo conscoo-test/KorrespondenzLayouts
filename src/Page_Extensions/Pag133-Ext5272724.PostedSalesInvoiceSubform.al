@@ -32,7 +32,7 @@ pageextension 5272724 "LBT Posted Sales Inv. Subform" extends "Posted Sales Invo
             action("LBT LongText")
             {
                 ApplicationArea = Suite;
-                Caption = 'Long Text';
+                Caption = 'Long Text', Comment = 'DEU="Langtext"';
                 Image = Import;
                 trigger OnAction()
                 var

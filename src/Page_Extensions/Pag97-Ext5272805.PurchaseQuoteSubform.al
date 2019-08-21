@@ -32,7 +32,7 @@ pageextension 5272805 "LBT Purchase Quote Subform" extends "Purchase Quote Subfo
             action("LBT LongText")
             {
                 ApplicationArea = Suite;
-                Caption = 'Long Text';
+                Caption = 'Long Text', Comment = 'DEU="Langtext"';
                 Image = Import;
                 trigger OnAction()
                 var

@@ -1,7 +1,7 @@
 page 5272722 "LBT Arch. PS Longtext Lines"
 {
     AutoSplitKey = true;
-    Caption = 'Archive PS Longtext Lines';
+    Caption = 'Archive PS Longtext Lines', Comment = 'DEU="Archivierte EK/VK Langtext Zeilen"';
     DeleteAllowed = false;
     InsertAllowed = false;
     ModifyAllowed = false;

@@ -32,7 +32,7 @@ pageextension 5272726 "LBT Posted Sales Cr. Memo Sub." extends "Posted Sales Cr.
             action("LBT LongText")
             {
                 ApplicationArea = Suite;
-                Caption = 'Long Text';
+                Caption = 'Long Text', Comment = 'DEU="Langtext"';
                 Image = Import;
                 trigger OnAction()
                 var

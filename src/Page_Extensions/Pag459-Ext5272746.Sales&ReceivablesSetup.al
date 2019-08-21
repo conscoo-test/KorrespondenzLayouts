@@ -7,7 +7,7 @@ pageextension 5272746 "LBT Sales & Receivables Setup" extends "Sales & Receivabl
             action("LBT Source Setup")
             {
                 ApplicationArea = All;
-                Caption = 'Source Setup';
+                Caption = 'Source Setup', Comment = 'DEU="Herkunft Einrichtung"';
                 Image = Print;
                 RunObject = Page "LBT Source Setup";
                 RunPageView = SORTING (Type, "Report Type")

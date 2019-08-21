@@ -6,11 +6,11 @@ pageextension 5272795 "LBT Purchase Invoices" extends "Purchase Invoices"
         {
             group("LBT correspondence documents")
             {
-                Caption = 'correspondence documents';
+                Caption = 'LIS365 Correspondence layout', Comment = 'DEU="LIS365 Korrespondenzbelege"';
                 action("LBT Header Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Header Text';
+                    Caption = 'Header Text', Comment = 'DEU="Kopftext"';
                     Image = BeginningText;
                     trigger OnAction()
                     var
@@ -25,7 +25,7 @@ pageextension 5272795 "LBT Purchase Invoices" extends "Purchase Invoices"
                 action("LBT Footer Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Footer Text';
+                    Caption = 'Footer Text', Comment = 'DEU="Fußtext"';
                     Image = EndingText;
                     trigger OnAction()
                     var

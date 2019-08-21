@@ -32,7 +32,7 @@ pageextension 5272803 "LBT Sales Quote Subform" extends "Sales Quote Subform"
             action("LBT LongText")
             {
                 ApplicationArea = Suite;
-                Caption = 'Long Text';
+                Caption = 'Long Text', Comment = 'DEU="Langtext"';
                 Image = Import;
                 trigger OnAction()
                 var

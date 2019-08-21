@@ -32,7 +32,7 @@ pageextension 5272766 "LBT Purchase Order Subform" extends "Purchase Order Subfo
             action("LBT LongText")
             {
                 ApplicationArea = Suite;
-                Caption = 'Long Text';
+                Caption = 'Long Text', Comment = 'DEU="Langtext"';
                 Image = Import;
                 trigger OnAction()
                 var
