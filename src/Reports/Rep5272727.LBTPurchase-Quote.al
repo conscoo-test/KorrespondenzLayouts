@@ -984,10 +984,10 @@ report 5272727 "LBT Purchase - Quote"
 
         trigger OnOpenPage()
         begin
-            case PurchSetup."Archiving Purchase Quote" of
-                PurchSetup."Archiving Purchase Quote"::Never:
+            case PurchSetup."Archive Quotes" of
+                PurchSetup."Archive Quotes"::Never:
                     ArchiveDocument := false;
-                PurchSetup."Archiving Purchase Quote"::Always:
+                PurchSetup."Archive Quotes"::Always:
                     ArchiveDocument := true;
             end;
             LogInteraction := SegManagement.FindInteractTmplCode(11) <> '';

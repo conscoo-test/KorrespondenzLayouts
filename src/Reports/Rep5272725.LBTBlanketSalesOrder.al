@@ -1374,7 +1374,7 @@ report 5272725 "LBT Blanket Sales Order"
 
         trigger OnOpenPage()
         begin
-            ArchiveDocument := SalesSetup."Arch. Orders and Ret. Orders";
+            ArchiveDocument := SalesSetup."Archive Blanket Orders";
             LogInteraction := SegManagement.FindInteractTmplCode(3) <> '';
 
             LogInteractionEnable := LogInteraction;
