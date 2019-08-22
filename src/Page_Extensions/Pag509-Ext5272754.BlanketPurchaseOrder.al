@@ -6,7 +6,7 @@ pageextension 5272754 "LBT Blanket Purchase Order" extends "Blanket Purchase Ord
         {
             group("LBT correspondence documents")
             {
-                Caption = 'correspondence documents';
+                Caption = 'LIS365 Correspondence layout', Comment = 'DEU="LIS365 Korrespondenzbelege"';
                 action("Tot&aling")
                 {
                     ApplicationArea = All;
@@ -34,7 +34,7 @@ pageextension 5272754 "LBT Blanket Purchase Order" extends "Blanket Purchase Ord
                 action("LBT Header Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Header Text';
+                    Caption = 'Header Text', Comment = 'DEU="Kopftext"';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -51,7 +51,7 @@ pageextension 5272754 "LBT Blanket Purchase Order" extends "Blanket Purchase Ord
                 action("LBT Footer Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Footer Text';
+                    Caption = 'Footer Text', Comment = 'DEU="Fußtext"';
                     Image = EndingText;
 
                     trigger OnAction()

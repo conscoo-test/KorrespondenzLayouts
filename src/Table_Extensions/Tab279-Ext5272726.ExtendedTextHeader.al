@@ -4,8 +4,8 @@ tableextension 5272726 "LBT Extended Text Header" extends "Extended Text Header"
     {
         field(5272720; "LBT Textchoice"; Option)
         {
-            Caption = 'Textchoice';
-            OptionCaption = 'Standard,Longtext';
+            Caption = 'Textchoice', Comment = 'DEU="Textauswahl"';
+            OptionCaption = 'Standard,Longtext', Comment = 'DEU="Standard, Langtext"';
             OptionMembers = standard,"long text";
         }
     }

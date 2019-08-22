@@ -6,11 +6,11 @@ pageextension 5272773 "LBT Sales Return Orders" extends "Sales Return Orders"
         {
             group("LBT correspondence documents")
             {
-                Caption = 'correspondence documents';
+                Caption = 'LIS365 Correspondence layout', Comment = 'DEU="LIS365 Korrespondenzbelege"';
                 action("LBT Header Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Header Text';
+                    Caption = 'Header Text', Comment = 'DEU="Koptext"';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -26,7 +26,7 @@ pageextension 5272773 "LBT Sales Return Orders" extends "Sales Return Orders"
                 action("LBT &Footer Text")
                 {
                     ApplicationArea = All;
-                    Caption = '&Footer Text';
+                    Caption = '&Footer Text', Comment = 'DEU="&Fußtext"';
                     Image = EndingText;
 
                     trigger OnAction()

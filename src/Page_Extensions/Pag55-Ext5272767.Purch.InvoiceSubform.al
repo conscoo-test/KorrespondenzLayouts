@@ -29,7 +29,7 @@ pageextension 5272767 "LBT Purch. Invoice Subform" extends "Purch. Invoice Subfo
             action("LBT LongText")
             {
                 ApplicationArea = Suite;
-                Caption = 'Long Text';
+                Caption = 'Long Text', Comment = 'DEU="Langtext"';
                 Image = Import;
                 trigger OnAction()
                 var

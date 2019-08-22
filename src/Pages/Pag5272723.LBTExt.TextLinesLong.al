@@ -1,7 +1,7 @@
 page 5272723 "LBT Ext. Text Lines Long"
 {
     AutoSplitKey = true;
-    Caption = 'Ext. Text Lines Long';
+    Caption = 'Ext. Text Lines Long', Comment = 'DEU="Ext. Textbausteinzeilen Lang"';
     MultipleNewLines = true;
     PageType = ListPart;
     SourceTable = "LBT Extended Text Line Long";

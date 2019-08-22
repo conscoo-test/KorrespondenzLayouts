@@ -32,7 +32,7 @@ pageextension 5272728 "LBT Posted Purch. Rcpt. Sub." extends "Posted Purchase Rc
             action("LBT LongText")
             {
                 ApplicationArea = Suite;
-                Caption = 'Long Text';
+                Caption = 'Long Text', Comment = 'DEU="Langtext"';
                 Image = Import;
                 trigger OnAction()
                 var

@@ -1,6 +1,6 @@
 page 5272721 "LBT Posted PS Longtext Lines"
 {
-    Caption = 'Posted PS Longtext Lines';
+    Caption = 'Posted PS Longtext Lines', Comment = 'DEU="Gebuchte EK/VK Langtext Zeilen"';
     DeleteAllowed = false;
     InsertAllowed = false;
     ModifyAllowed = false;

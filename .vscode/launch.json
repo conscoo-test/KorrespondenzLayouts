@@ -10,10 +10,11 @@
             "type": "al",
             "request": "launch",
             "name": "Your own server",
-            "sandboxName": "Sandbox_ExtensionTesting",
+            
             "startupObjectId": 22,
             "startupObjectType": "Page",
-            "breakOnError": true
+            "breakOnError": true,
+            "schemaUpdateMode": "Recreate"
         }
     ]
 }

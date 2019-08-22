@@ -6,11 +6,11 @@ pageextension 5272774 "LBT Purchase Return Order" extends "Purchase Return Order
         {
             group("LBT correspondence documents")
             {
-                Caption = 'correspondence documents';
+                Caption = 'LIS365 Correspondence layout', Comment = 'DEU="LIS365 Korrespondenzbelege"';
                 action("Tot&aling")
                 {
                     ApplicationArea = All;
-                    Caption = 'Tot&aling';
+                    Caption = 'Tot&aling', Comment = 'DEU="&Summieren"';
                     Image = Totals;
                     trigger OnAction()
                     var
@@ -22,7 +22,7 @@ pageextension 5272774 "LBT Purchase Return Order" extends "Purchase Return Order
                 action("LBT Num&bering")
                 {
                     ApplicationArea = All;
-                    Caption = 'Num&bering';
+                    Caption = 'Num&bering', Comment = 'DEU="&Nummerieren"';
                     Image = NumberGroup;
                     trigger OnAction()
                     var
@@ -34,7 +34,7 @@ pageextension 5272774 "LBT Purchase Return Order" extends "Purchase Return Order
                 action("LBT Header Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Header Text';
+                    Caption = 'Header Text', Comment = 'DEU="Kopftext"';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -50,7 +50,7 @@ pageextension 5272774 "LBT Purchase Return Order" extends "Purchase Return Order
                 action("LBT &Footer Text")
                 {
                     ApplicationArea = All;
-                    Caption = '&Footer Text';
+                    Caption = '&Footer Text', Comment = 'DEU="&Fußtext"';
                     Image = EndingText;
 
                     trigger OnAction()

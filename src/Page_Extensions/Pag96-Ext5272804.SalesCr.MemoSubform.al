@@ -32,7 +32,7 @@ pageextension 5272804 "LBT Sales Cr. Memo Subform" extends "Sales Cr. Memo Subfo
             action("LBT LongText")
             {
                 ApplicationArea = Suite;
-                Caption = 'Long Text';
+                Caption = 'Long Text', Comment = 'DEU="Langtext"';
                 Image = Import;
                 trigger OnAction()
                 var

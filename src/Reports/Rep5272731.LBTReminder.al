@@ -2,7 +2,7 @@ report 5272731 "LBT Reminder"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './src/Reports/Rep5272731.LBTReminder.rdlc';
-    Caption = 'Reminder';
+    Caption = 'Reminder', Comment = 'DEU="Mahnung"';
 
     dataset
     {
@@ -735,23 +735,23 @@ report 5272731 "LBT Reminder"
             {
                 group(Options)
                 {
-                    Caption = 'Options';
+                    Caption = 'Options', Comment = 'DEU="Optionen"';
                     field(ShowInternalInfo; ShowInternalInfo)
                     {
-                        Caption = 'Show Internal Information';
+                        Caption = 'Show Internal Information', Comment = 'DEU="Interne Informationen anzeigen"';
                     }
                     field(LogInteraction; LogInteraction)
                     {
-                        Caption = 'Log Interaction';
+                        Caption = 'Log Interaction', Comment = 'DEU="Aktivität protokollieren"';
                         Enabled = LogInteractionEnable;
                     }
                     field(ShowNotDueAmounts; ShowNotDueAmounts)
                     {
-                        Caption = 'Show Not Due Amounts';
+                        Caption = 'Show Not Due Amounts', Comment = 'DEU="Nicht fällige Beträge anzeigen"';
                     }
                     field(HideCompanyInfo; HideCompanyInfo)
                     {
-                        Caption = 'Hide Company Info';
+                        Caption = 'Hide Company Info', Comment = 'DEU="Firmendaten ausblenden"';
                     }
                 }
             }
@@ -805,9 +805,9 @@ report 5272731 "LBT Reminder"
     end;
 
     var
-        Text000: Label 'Total %1';
-        Text001: Label 'Total %1 Incl. VAT';
-        Text002: Label 'Page %1';
+        Text000: Label 'Total %1', Comment = 'DEU="Summe %1"';
+        Text001: Label 'Total %1 Incl. VAT', Comment = 'DEU="Summe %1 inkl. MwSt."';
+        Text002: Label 'Page %1', Comment = 'DEU="Seite %1"';
         CustEntry: Record "Cust. Ledger Entry";
         GLSetup: Record "General Ledger Setup";
         CompanyInfo: Record "Company Information";
@@ -840,9 +840,9 @@ report 5272731 "LBT Reminder"
         VALSpecLCYHeader: Text[80];
         VALExchRate: Text[50];
         CurrFactor: Decimal;
-        Text011: Label 'VAT Amount Specification in ';
-        Text012: Label 'Local Currency';
-        Text013: Label 'Exchange rate: %1/%2';
+        Text011: Label 'VAT Amount Specification in ', Comment = 'DEU="MwSt.-Betrag Spezifikation in "';
+        Text012: Label 'Local Currency', Comment = 'DEU="Landeswährung"';
+        Text013: Label 'Exchange rate: %1/%2', Comment = 'DEU="Wechselkurs: %1/%2"';
         AddFeeInclVAT: Decimal;
         AddFeePerLineInclVAT: Decimal;
         TotalVATAmount: Decimal;
@@ -861,57 +861,57 @@ report 5272731 "LBT Reminder"
         [InDataSet]
         LogInteractionEnable: Boolean;
         ShowNotDueAmounts: Boolean;
-        TextPageLbl: Label 'Page';
-        PostingDateCaptionLbl: Label 'Posting Date';
-        ReminderHeaderNoCaptionLbl: Label 'Reminder No.';
-        BankAccountNoCaptionLbl: Label 'Account No.';
-        BankNameCaptionLbl: Label 'Bank';
-        GiroNoCaptionLbl: Label 'Giro No.';
-        VATRegNoCaptionLbl: Label 'VAT Registration No.';
-        PhoneNoCaptionLbl: Label 'Phone No.';
-        ReminderCaptionLbl: Label 'Reminder';
-        HeaderDimensionsCaptionLbl: Label 'Header Dimensions';
-        InterestAmountCaptionLbl: Label 'Interest Amount';
-        AmountIncludingVATCaptionLbl: Label 'Amount Including VAT';
-        VATAmtSpecificationCaptionLbl: Label 'VAT Amount Specification';
-        VATClausesCap: Label 'VAT Clause';
-        VATIdentifierCaptionLbl: Label 'VAT Identifier';
-        VALVATBaseCaptionLbl: Label 'Continued';
-        VALVATBaseLCYCaptionLbl: Label 'Continued';
-        DueDateCaptionLbl: Label 'Due Date';
-        DocDateCaptionLbl: Label 'Document Date';
-        VATAmountCaptionLbl: Label 'VAT Amount';
-        VATBaseCaptionLbl: Label 'VAT Base';
-        VATCaptionLbl: Label 'VAT %';
-        TotalCaptionLbl: Label 'Total';
-        HomePageCaptionLbl: Label 'Home Page';
-        EMailCaptionLbl: Label 'Email';
+        TextPageLbl: Label 'Page', Comment = 'DEU="Seite"';
+        PostingDateCaptionLbl: Label 'Posting Date', Comment = 'DEU="Buchungsdatum"';
+        ReminderHeaderNoCaptionLbl: Label 'Reminder No.', Comment = 'DEU="Mahnung Nr."';
+        BankAccountNoCaptionLbl: Label 'Account No.', Comment = 'DEU="Kontonr."';
+        BankNameCaptionLbl: Label 'Bank', Comment = 'DEU="Bankkonto"';
+        GiroNoCaptionLbl: Label 'Giro No.', Comment = 'DEU="Girokontonr."';
+        VATRegNoCaptionLbl: Label 'VAT Registration No.', Comment = 'DEU="USt-IdNr."';
+        PhoneNoCaptionLbl: Label 'Phone No.', Comment = 'DEU="Telefonnr."';
+        ReminderCaptionLbl: Label 'Reminder', Comment = 'DEU="Mahnung"';
+        HeaderDimensionsCaptionLbl: Label 'Header Dimensions', Comment = 'DEU="Kopfdimensionen"';
+        InterestAmountCaptionLbl: Label 'Interest Amount', Comment = 'DEU="Zinsbetrag"';
+        AmountIncludingVATCaptionLbl: Label 'Amount Including VAT', Comment = 'DEU="Betrag inkl. MwSt."';
+        VATAmtSpecificationCaptionLbl: Label 'VAT Amount Specification', Comment = 'DEU="MwSt.-Betrag - Spezifikation"';
+        VATClausesCap: Label 'VAT Clause', Comment = 'DEU="MwSt.-Klausel"';
+        VATIdentifierCaptionLbl: Label 'VAT Identifier', Comment = 'DEU="MwSt.-Kennzeichen"';
+        VALVATBaseCaptionLbl: Label 'Continued', Comment = 'DEU="Fortsetzung"';
+        VALVATBaseLCYCaptionLbl: Label 'Continued', Comment = 'DEU="Fortsetzung"';
+        DueDateCaptionLbl: Label 'Due Date', Comment = 'DEU="Fälligkeitsdatum"';
+        DocDateCaptionLbl: Label 'Document Date', Comment = 'DEU="Belegdatum"';
+        VATAmountCaptionLbl: Label 'VAT Amount', Comment = 'DEU=""';
+        VATBaseCaptionLbl: Label 'VAT Base', Comment = 'DEU="MwSt.-Bemessungsgrundlage"';
+        VATCaptionLbl: Label 'VAT %', Comment = 'DEU="MwSt. %"';
+        TotalCaptionLbl: Label 'Total', Comment = 'DEU="Gesamt"';
+        HomePageCaptionLbl: Label 'Home Page', Comment = 'DEU="Homepage"';
+        EMailCaptionLbl: Label 'Email', Comment = 'DEU="E-Mail"';
         "### Lebit Correspondence Globals ###": Integer;
         CompanyAddressLine: Text;
-        PagefromPageCaptionLbl: Label 'Page %1 of %2';
-        PageCaptionLbl: Label 'Page %1';
-        NoCaptionLbl: Label 'No.';
-        FromCaptionLbl: Label 'from';
-        Bill_to_Customer_No__CaptionLbl: Label 'Customer ID';
-        DatumCaptionLbl: Label 'Date';
-        CompanyInfo__VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
-        PosNo_CaptionLbl: Label 'Pos.';
-        UOM_CaptionLbl: Label 'Unit';
-        CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl: Label 'Registered in:';
-        CompanyInfo__LeBit_CEO_Caption_Lbl: Label 'Chief Executive Officer';
-        CompanyInfo__Bank_Name_Caption_Lbl: Label 'Bank';
-        CompanyInfo_IBAN_Caption_Lbl: Label 'IBAN';
-        CompanyInfo__SWIFT_Code_Caption_Lbl: Label 'SWIFT-BIC';
-        PurchPersonText_Caption: Label 'Salesperson';
-        CompanyInfo_E_Mail_Caption_Lbl: Label 'Mail:';
-        CompanyInfo__Home_Page_Caption_Lbl: Label 'Homepage:';
-        FaxNoCaptionLbl: Label 'Telefax no.';
-        CarryForwardCaptionLbl: Label 'Carry-forward %1';
-        Alternativposition_CaptionLbl: Label 'Alternative position';
-        Bedarfposition_CaptionLbl: Label 'Position requirements';
-        BitteAndern_CaptionLbl: Label 'please change!';
-        SubtotalCaptionLbl: Label 'Subtotal';
+        PagefromPageCaptionLbl: Label 'Page %1 of %2', Comment = 'DEU="Seite %1 von %2"';
+        PageCaptionLbl: Label 'Page %1', Comment = 'DEU="Seite %1"';
+        NoCaptionLbl: Label 'No.', Comment = 'DEU="Nr."';
+        FromCaptionLbl: Label 'from', Comment = 'DEU="vom"';
+        Bill_to_Customer_No__CaptionLbl: Label 'Customer ID', Comment = 'DEU="Kunden-Nr."';
+        DatumCaptionLbl: Label 'Date', Comment = 'DEU="Datum"';
+        CompanyInfo__VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.', Comment = 'DEU="USt-IdNr."';
+        PosNo_CaptionLbl: Label 'Pos.', Comment = 'DEU="Pos."';
+        UOM_CaptionLbl: Label 'Unit', Comment = 'DEU="Einheit"';
+        CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl: Label 'Registered in:', Comment = 'DEU="Eingetragen im:"';
+        CompanyInfo__LeBit_CEO_Caption_Lbl: Label 'Chief Executive Officer', Comment = 'DEU="Geschäftsführer"';
+        CompanyInfo__Bank_Name_Caption_Lbl: Label 'Bank', Comment = 'DEU="Bankkonto"';
+        CompanyInfo_IBAN_Caption_Lbl: Label 'IBAN', Comment = 'DEU="IBAN"';
+        CompanyInfo__SWIFT_Code_Caption_Lbl: Label 'SWIFT-BIC', Comment = 'DEU="SWIFT-BIC"';
+        PurchPersonText_Caption: Label 'Salesperson', Comment = 'DEU="Bearbeiter"';
+        CompanyInfo_E_Mail_Caption_Lbl: Label 'Mail:', Comment = 'DEU="E-Mail"';
+        CompanyInfo__Home_Page_Caption_Lbl: Label 'Homepage:', Comment = 'DEU="Homepage:"';
+        FaxNoCaptionLbl: Label 'Telefax no.', Comment = 'DEU="Faxnr."';
+        CarryForwardCaptionLbl: Label 'Carry-forward %1', Comment = 'DEU="Übertrag %1"';
+        Alternativposition_CaptionLbl: Label 'Alternative position', Comment = 'DEU="Alternative position"';
+        Bedarfposition_CaptionLbl: Label 'Position requirements', Comment = 'DEU="Bedarfposition"';
+        BitteAndern_CaptionLbl: Label 'please change!', Comment = 'DEU="bitte ändern!"';
+        SubtotalCaptionLbl: Label 'Subtotal', Comment = 'DEU="Zw.summe"';
         HideCompanyInfo: Boolean;
-        VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
+        VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.', Comment = 'DEU="USt-IdNr."';
 }
 

@@ -6,11 +6,11 @@ pageextension 5272793 "LBT Purchase Quotes" extends "Purchase Quotes"
         {
             group("LBT correspondence documents")
             {
-                Caption = 'correspondence documents';
+                Caption = 'LIS365 Correspondence layout', Comment = 'DEU="LIS365 Korrespondenzbelege"';
                 action("LBT Header Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Header Text';
+                    Caption = 'Header Text', Comment = 'DEU="Kopftext"';
                     Image = BeginningText;
                     trigger OnAction()
                     var
@@ -25,7 +25,7 @@ pageextension 5272793 "LBT Purchase Quotes" extends "Purchase Quotes"
                 action("LBT Footer Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Footer Text';
+                    Caption = 'Footer Text', Comment = 'DEU="Fußtext"';
                     Image = EndingText;
                     trigger OnAction()
                     var

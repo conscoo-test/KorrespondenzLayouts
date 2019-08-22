@@ -6,11 +6,10 @@ pageextension 5272802 "LBT Sales Order Archives" extends "Sales Order Archives"
         {
             group("LBT correspondence documents")
             {
-                Caption = 'correspondence documents';
-                action("LBT Header Text")
+                Caption = 'LIS365 Correspondence layout', Comment = 'DEU="LIS365 Korrespondenzbelege"';                action("LBT Header Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Header Text';
+                    Caption = 'Header Text', Comment = 'DEU="Kopftext"';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -26,7 +25,7 @@ pageextension 5272802 "LBT Sales Order Archives" extends "Sales Order Archives"
                 action("LBT Footer Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Footer Text';
+                    Caption = 'Footer Text', Comment = 'DEU="Fußtext"';
                     Image = EndingText;
 
                     trigger OnAction()
