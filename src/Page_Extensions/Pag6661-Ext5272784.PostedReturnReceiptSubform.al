@@ -12,6 +12,9 @@ pageextension 5272784 "LBT Post. Return Receipt Sub." extends "Posted Return Rec
             {
                 ApplicationArea = All;
             }
+        }
+        addafter(Type)
+        {
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;

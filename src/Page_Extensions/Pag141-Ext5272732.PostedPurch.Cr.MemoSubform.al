@@ -12,6 +12,9 @@ pageextension 5272732 "LBT Post. Purch. Cr. Memo Sub." extends "Posted Purch. Cr
             {
                 ApplicationArea = All;
             }
+        }
+        addafter(Type)
+        {
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;

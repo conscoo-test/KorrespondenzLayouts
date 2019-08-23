@@ -12,6 +12,9 @@ pageextension 5272728 "LBT Posted Purch. Rcpt. Sub." extends "Posted Purchase Rc
             {
                 ApplicationArea = All;
             }
+        }
+        addafter(Type)
+        {
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;

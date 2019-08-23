@@ -12,6 +12,9 @@ pageextension 5272730 "LBT Posted Purch. Invoice Sub." extends "Posted Purch. In
             {
                 ApplicationArea = All;
             }
+        }
+        addafter(Type)
+        {
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;

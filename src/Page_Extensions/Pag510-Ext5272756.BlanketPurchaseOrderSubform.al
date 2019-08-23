@@ -12,6 +12,9 @@ pageextension 5272756 "LBT Blanket Purch. Order Sub." extends "Blanket Purchase 
             {
                 ApplicationArea = All;
             }
+        }
+        addafter(Type)
+        {
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;

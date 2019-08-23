@@ -12,6 +12,10 @@ pageextension 5272775 "LBT Purch. Return Order Sub." extends "Purchase Return Or
             {
                 ApplicationArea = All;
             }
+        }
+        addafter(Type)
+        {
+
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;
