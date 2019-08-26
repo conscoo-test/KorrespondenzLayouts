@@ -770,7 +770,7 @@
         </trans-unit>
         <trans-unit id="Report 3420415687 - NamedType 2593559584" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quote %1</source>
-          <note from="Developer" annotates="general" priority="2">DEU="Lief. an Adresse"</note>
+          <note from="Developer" annotates="general" priority="2">DEU="Angebot %1"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report LBT Sales - Quote - NamedType DocCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3420415687 - NamedType 3345444166" size-unit="char" translate="yes" xml:space="preserve">
