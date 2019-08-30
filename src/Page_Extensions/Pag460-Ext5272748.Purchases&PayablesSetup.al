@@ -7,7 +7,7 @@ pageextension 5272748 "LBT Purchases & Payables Setup" extends "Purchases & Paya
             field("LBT Logo Position on Documents"; "LBT Logo Position on Documents")
             {
                 ApplicationArea = Basic, Suite;
-                ToolTip = 'Specifies the position of your company logo on business letters and documents.';
+                ToolTip = 'Specifies the position of your company logo on business letters and documents.', Comment = 'DEU=" Legt die Position des Firmenlogos für Firmenbriefpapier und Dokumente fest"';
             }
         }
     }
@@ -19,6 +19,7 @@ pageextension 5272748 "LBT Purchases & Payables Setup" extends "Purchases & Paya
             {
                 ApplicationArea = All;
                 Caption = 'Source Setup', Comment = 'DEU="Herkunft Einrichtung"';
+                ToolTip = 'Source Setup', Comment = 'DEU="Herkunft Einrichtung"';
                 Image = Print;
                 RunObject = Page "LBT Source Setup";
                 RunPageView = SORTING (Type, "Report Type")

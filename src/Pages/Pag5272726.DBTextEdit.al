@@ -14,6 +14,7 @@ page 5272726 DBTextEdit
                 field(Text; Text)
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Text', comment = 'DEU="Text"';
                     MultiLine = true;
                 }
             }

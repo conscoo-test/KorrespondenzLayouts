@@ -11,10 +11,12 @@ pageextension 5272728 "LBT Posted Purch. Rcpt. Sub." extends "Posted Purchase Rc
             field("LBT Pos. No."; "LBT Pos. No.")
             {
                 ApplicationArea = All;
+                ToolTip = 'Specified the Position No.', comment = 'DEU="Legt die Positionsnr. fest"';
             }
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;
+                ToolTip = 'Specified the Printoption', comment = 'DEU="Legt die Druckauswahl fest"';
             }
         }
         addafter(Correction)
@@ -22,6 +24,7 @@ pageextension 5272728 "LBT Posted Purch. Rcpt. Sub." extends "Posted Purchase Rc
             field("LBT Long Text"; "LBT Long Text")
             {
                 ApplicationArea = All;
+                ToolTip = 'Long Text', comment = 'DEU="Langtext"';
             }
         }
     }
@@ -33,6 +36,7 @@ pageextension 5272728 "LBT Posted Purch. Rcpt. Sub." extends "Posted Purchase Rc
             {
                 ApplicationArea = Suite;
                 Caption = 'Long Text', Comment = 'DEU="Langtext"';
+                ToolTip = 'Long Text', comment = 'DEU="Langtext"';
                 Image = Import;
                 trigger OnAction()
                 var

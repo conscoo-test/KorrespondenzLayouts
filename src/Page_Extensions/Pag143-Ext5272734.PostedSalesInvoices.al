@@ -12,7 +12,9 @@ pageextension 5272734 "LBT Posted Sales Invoices" extends "Posted Sales Invoices
                 action("LBT Header Text")
                 {
                     ApplicationArea = All;
+                    
                     Caption = 'Header Text', Comment = 'DEU="Kopftext"';
+                    ToolTip = 'Specified the Header Text', comment = 'DEU="Legt den Kopftext fest"';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -29,6 +31,7 @@ pageextension 5272734 "LBT Posted Sales Invoices" extends "Posted Sales Invoices
                 {
                     ApplicationArea = All;
                     Caption = 'Footer Text', Comment = 'DEU="Fußtext"';
+                    ToolTip = 'Specified the Footer Text', comment = 'DEU="Legt den Fußtext fest"';
                     Image = EndingText;
 
                     trigger OnAction()

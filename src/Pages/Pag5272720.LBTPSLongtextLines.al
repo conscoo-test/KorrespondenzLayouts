@@ -14,21 +14,26 @@ page 5272720 "LBT PS Longtext Lines"
             repeater(Control5272723)
             {
                 ShowCaption = false;
+            
                 field("No."; "No.")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies a unique number', comment = 'DEU="Legt eine eindeutige Nr. fest"';
                     trigger OnValidate()
                     begin
                         NoOnAfterValidate;
                     end;
                 }
+        
                 field(Description; Description)
                 {
                     ApplicationArea = All;
+                ToolTip = 'Specifies a unique description', comment = 'DEU="Legt eine eindeutige Beschreibung fest"';
                 }
                 field(Type; Type)
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies a unique description the type', comment = 'DEU="Legt den Typ fest"';
                 }
             }
         }
@@ -41,6 +46,7 @@ page 5272720 "LBT PS Longtext Lines"
             action("E&ditor")
             {
                 ApplicationArea = All;
+                ToolTip = 'Edit', comment = 'DEU="Bearbeiten"';
                 Caption = 'Editor', Comment = 'DEU="Bearbeiten"';
                 Image = Edit;
                 Promoted = true;

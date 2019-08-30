@@ -1382,38 +1382,41 @@ report 5272722 "LBT Sales - Invoice"
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'No. of Copies', Comment = 'DEU="Anzahl Kopien"';
-                        ToolTip = 'Specifies how many copies of the document to print.';
+                        ToolTip = 'Specifies how many copies of the document to print.', comment = 'DEU="Legt die Anzahl der Kopien fest"';
                     }
                     field(ShowInternalInfo; ShowInternalInfo)
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Show Internal Information', Comment = 'DEU="Interne Informationen anzeigen"';
-                        ToolTip = 'Specifies if the document shows internal information.';
+                        ToolTip = 'Specifies if the document shows internal information.', comment = 'DEU=" Ausdrucken der Dimensionen"';
                     }
                     field(LogInteraction; LogInteraction)
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Log Interaction', Comment = 'DEU="Aktivität protokollieren"';
                         Enabled = LogInteractionEnable;
-                        ToolTip = 'Specifies that interactions with the contact are logged.';
+                        ToolTip = 'Specifies that interactions with the contact are logged.', comment = 'DEU="Legt fest, dass Aktivitäten mit dem Kontakt protokolliert werden."';
                     }
                     field(DisplayAsmInformation; DisplayAssemblyInformation)
                     {
                         Caption = 'Show Assembly Components', Comment = 'DEU="Montagekomponenten anzeigen"';
+                        ToolTip = 'Specifies that you want to display the assembly components', comment = 'DEU="Legen Sie fest ob Sie die Montagekomponenten anzeigen möchten"';
                     }
                     field(DisplayAdditionalFeeNote; DisplayAdditionalFeeNote)
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Show Additional Fee Note', Comment = 'DEU="Hinweis zu zusätzlicher Gebühr anzeigen"';
-                        ToolTip = 'Specifies that any notes about additional fees are included on the document.';
+                        ToolTip = 'Specifies that any notes about additional fees are included on the document.', comment = 'DEU="Legen Sie fest ob Sie ein Hinweis zu zusätzlicher Gebühr anzeigen möchten"';
                     }
                     field(HideCompanyInfo; HideCompanyInfo)
                     {
                         Caption = 'Hide Company Info', Comment = 'DEU="Firmendaten ausblenden"';
+                        ToolTip = 'Specifies that the company data is to be "hidden" for printing', comment = 'DEU="Hiermit können Sie die Firmendaten für den Druck ausblenden"';
                     }
                     field(ItemPicturePrint; ItemPicturePrint)
                     {
                         Caption = 'Print Item Picture', Comment = 'DEU="Artikelbilder drucken"';
+                        ToolTip = 'Specifies that the images are printed ', comment = 'DEU="Legt fest ob Artikelbilder mit ausgedruckt werden"';
                     }
                 }
             }

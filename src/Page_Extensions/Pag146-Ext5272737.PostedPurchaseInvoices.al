@@ -11,6 +11,7 @@ pageextension 5272737 "LBT Posted Purchase Invoices" extends "Posted Purchase In
                 {
                     ApplicationArea = All;
                     Caption = 'Header Text', Comment = 'DEU="Kopftext"';
+                    ToolTip = 'Specified the Header Text', comment = 'DEU="Legt den Kopftext fest"';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -27,6 +28,7 @@ pageextension 5272737 "LBT Posted Purchase Invoices" extends "Posted Purchase In
                 {
                     ApplicationArea = All;
                     Caption = 'Footer Text', Comment = 'DEU="Fußtext"';
+                    ToolTip = 'Specified the Footer Text', comment = 'DEU="Legt den Fußtext fest"';
                     Image = EndingText;
 
                     trigger OnAction()

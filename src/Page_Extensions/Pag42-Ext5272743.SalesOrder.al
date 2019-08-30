@@ -13,6 +13,7 @@ pageextension 5272743 "LBT Sales Order" extends "Sales Order"
                 {
                     ApplicationArea = All;
                     Caption = 'Totaling', Comment = 'DEU="Summieren"';
+                    ToolTip = 'Creates a total of the line items "From total" / "To total"', comment = 'DEU="Legt eine Summierung der Zeilenpositionen "Von Summe" / "Bis Summe fest""';
                     Image = Totals;
                     trigger OnAction()
                     var
@@ -24,7 +25,8 @@ pageextension 5272743 "LBT Sales Order" extends "Sales Order"
                 action("LBT Num&bering")
                 {
                     ApplicationArea = All;
-                    Caption = 'Numbering', Comment = 'DEU="Nummieren"';
+                    Caption = 'Numbering', Comment = 'DEU="Nummerieren"';
+                    ToolTip = 'Specified a numbering of the line positions"', comment = 'DEU="Legt eine Nummerierung der Zeilenpositionen fest"';
                     Image = NumberGroup;
                     trigger OnAction()
                     var
@@ -37,6 +39,7 @@ pageextension 5272743 "LBT Sales Order" extends "Sales Order"
                 {
                     ApplicationArea = All;
                     Caption = 'Header Text', Comment = 'DEU="Kopftext"';
+                    ToolTip = 'Specified the Header Text', comment = 'DEU="Legt den Kopftext fest"';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -53,6 +56,7 @@ pageextension 5272743 "LBT Sales Order" extends "Sales Order"
                 {
                     ApplicationArea = All;
                     Caption = 'Footer Text', Comment = 'DEU="Fußtext"';
+                    ToolTip = 'Specified the Footer Text', comment = 'DEU="Legt den Fußtext fest"';
                     Image = EndingText;
 
                     trigger OnAction()
@@ -69,6 +73,7 @@ pageextension 5272743 "LBT Sales Order" extends "Sales Order"
                 {
                     ApplicationArea = All;
                     Caption = 'Invoice Header Text', Comment = 'DEU="Rechnungskopftext"';
+                    ToolTip = 'Specified the Invoice Header Text', comment = 'DEU="Legt den Rechnungskopftext fest"';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -89,6 +94,7 @@ pageextension 5272743 "LBT Sales Order" extends "Sales Order"
                 {
                     ApplicationArea = All;
                     Caption = 'Invoice Footer Text', Comment = 'DEU="Rechnungsfußtext"';
+                    ToolTip = 'Specified the Invoice Footer Text', comment = 'DEU="Legt den Rechnungsfußtext fest"';
                     Image = EndingText;
 
                     trigger OnAction()
@@ -109,6 +115,7 @@ pageextension 5272743 "LBT Sales Order" extends "Sales Order"
                 {
                     ApplicationArea = All;
                     Caption = 'Shipment Header Text', Comment = 'DEU="Lieferungskopftext"';
+                    ToolTip = 'Specified the Invoice Footer Text', comment = 'DEU="Legt den Rechnungsfußtext fest"';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -129,6 +136,7 @@ pageextension 5272743 "LBT Sales Order" extends "Sales Order"
                 {
                     ApplicationArea = All;
                     Caption = 'Shipment Footer Text', Comment = 'DEU="Lieferungsfußtext"';
+                    ToolTip = 'Specified the Shipment Footer Text', comment = 'DEU="Legt den Lieferungsfußtext fest"';
                     Image = EndingText;
 
                     trigger OnAction()

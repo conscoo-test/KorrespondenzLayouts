@@ -1713,14 +1713,17 @@ report 5272728 "LBT Order"
                     field(NoofCopies; NoOfCopies)
                     {
                         Caption = 'No. of Copies', Comment = 'DEU="Anzahl Kopien"';
+                        ToolTip = 'Specifies how many copies of the document to print.', comment = 'DEU="Legt die Anzahl der Ausdrücke fest"';
                     }
                     field(ShowInternalInformation; ShowInternalInfo)
                     {
                         Caption = 'Show Internal Information', Comment = 'DEU="Interne Informationen anzeigen"';
+                        ToolTip = 'Specifies if the document shows internal information.', comment = 'DEU="Legt fest ob vorhandene Dimensionswerte mit ausgedruckt werden sollen"';
                     }
                     field(ArchiveDocument; ArchiveDocument)
                     {
                         Caption = 'Archive Document', Comment = 'DEU="Beleg archivieren"';
+                        ToolTip = 'Specifies if the document is archived after you preview or print it.', comment = 'DEU="Legt fest ob das Dokument nach dem Ausdruck oder Vorschau auch archiviert wird"';
 
                         trigger OnValidate()
                         begin
@@ -1731,6 +1734,7 @@ report 5272728 "LBT Order"
                     field(LogInteraction; LogInteraction)
                     {
                         Caption = 'Log Interaction', Comment = 'DEU="Aktivität protokollieren"';
+                        ToolTip = 'Specifies that interactions with the contact are logged.', comment = 'DEU="Legt fest, dass Aktivitäten mit dem Kontakt protokolliert werden."';
                         Enabled = LogInteractionEnable;
 
                         trigger OnValidate()
@@ -1742,10 +1746,12 @@ report 5272728 "LBT Order"
                     field(HideCompanyInfo; HideCompanyInfo)
                     {
                         Caption = 'Hide Company Info', Comment = 'DEU="Firmendaten ausblenden"';
+                        ToolTip = 'Specifies that the company data is to be "hidden" for printing', comment = 'DEU="Hiermit können Sie die Firmendaten für den Druck ausblenden"';
                     }
                     field(ItemPicturePrint; ItemPicturePrint)
                     {
                         Caption = 'Print Item Picture', Comment = 'DEU="Artikelbilder drucken"';
+                        ToolTip = 'Specifies that the images are printed ', comment = 'DEU="Legt fest ob Artikelbilder mit ausgedruckt werden"';
                     }
                 }
             }

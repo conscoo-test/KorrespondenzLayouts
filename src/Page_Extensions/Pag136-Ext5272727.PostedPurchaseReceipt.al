@@ -13,6 +13,7 @@ pageextension 5272727 "LBT Posted Purchase Receipt" extends "Posted Purchase Rec
                 {
                     ApplicationArea = All;
                     Caption = 'Header Text', Comment = 'DEU="Kopftext"';
+                    ToolTip = 'Specified the Header Text', comment = 'DEU="Legt den Kopftext fest"';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -29,6 +30,7 @@ pageextension 5272727 "LBT Posted Purchase Receipt" extends "Posted Purchase Rec
                 {
                     ApplicationArea = All;
                     Caption = 'Footer Text', Comment = 'DEU="Fußtext"';
+                    ToolTip = 'Specified the Footer Text', comment = 'DEU="Legt den Fußtext fest"';
                     Image = EndingText;
 
                     trigger OnAction()

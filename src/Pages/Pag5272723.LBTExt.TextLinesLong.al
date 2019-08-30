@@ -17,6 +17,7 @@ page 5272723 "LBT Ext. Text Lines Long"
                 field(Description; Description)
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies a unique description', comment = 'DEU="Legt eine eindeutige Beschreibung fest"';
                 }
             }
         }

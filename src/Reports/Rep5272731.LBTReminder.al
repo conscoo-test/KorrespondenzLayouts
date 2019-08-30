@@ -739,19 +739,23 @@ report 5272731 "LBT Reminder"
                     field(ShowInternalInfo; ShowInternalInfo)
                     {
                         Caption = 'Show Internal Information', Comment = 'DEU="Interne Informationen anzeigen"';
+                        ToolTip = 'Specifies if the document shows internal information.', comment = 'DEU="Legt fest ob vorhandene Dimensionswerte mit ausgedruckt werden sollen"';
                     }
                     field(LogInteraction; LogInteraction)
                     {
                         Caption = 'Log Interaction', Comment = 'DEU="Aktivität protokollieren"';
+                        ToolTip = 'Specifies that interactions with the contact are logged.', comment = 'DEU="Legt fest, dass Aktivitäten mit dem Kontakt protokolliert werden."';
                         Enabled = LogInteractionEnable;
                     }
                     field(ShowNotDueAmounts; ShowNotDueAmounts)
                     {
                         Caption = 'Show Not Due Amounts', Comment = 'DEU="Nicht fällige Beträge anzeigen"';
+                        ToolTip = 'Specifies that display Amounts not due', comment = 'DEU="Legt fest das nicht fällige Beträge angezeigt werden"';
                     }
                     field(HideCompanyInfo; HideCompanyInfo)
                     {
                         Caption = 'Hide Company Info', Comment = 'DEU="Firmendaten ausblenden"';
+                        ToolTip = 'Specifies that the company data is to be "hidden" for printing', comment = 'DEU="Hiermit können Sie die Firmendaten für den Druck ausblenden"';
                     }
                 }
             }

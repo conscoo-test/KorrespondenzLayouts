@@ -11,10 +11,12 @@ pageextension 5272730 "LBT Posted Purch. Invoice Sub." extends "Posted Purch. In
             field("LBT Pos. No."; "LBT Pos. No.")
             {
                 ApplicationArea = All;
+                ToolTip = 'Specified the Position No.', comment = 'DEU="Legt die Positionsnr. fest"';
             }
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;
+                ToolTip = 'Specified the Printoption', comment = 'DEU="Legt die Druckauswahl fest"';
             }
         }
         addafter("Shortcut Dimension 2 Code")
@@ -22,6 +24,7 @@ pageextension 5272730 "LBT Posted Purch. Invoice Sub." extends "Posted Purch. In
             field("LBT Long Text"; "LBT Long Text")
             {
                 ApplicationArea = All;
+                ToolTip = 'Long Text', comment = 'DEU="Langtext"';
             }
         }
     }
@@ -33,6 +36,7 @@ pageextension 5272730 "LBT Posted Purch. Invoice Sub." extends "Posted Purch. In
             {
                 ApplicationArea = Suite;
                 Caption = 'Long Text', Comment = 'DEU="Langtext"';
+                ToolTip = 'Long Text', comment = 'DEU="Langtext"';
                 Image = Import;
                 trigger OnAction()
                 var

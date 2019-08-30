@@ -1215,28 +1215,30 @@ report 5272723 "LBT Sales - Credit Memo"
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'No. of Copies', Comment = 'DEU="Anzahl Kopien"';
-                        ToolTip = 'Specifies how many copies of the document to print.';
+                        ToolTip = 'Specifies how many copies of the document to print.', comment = 'DEU="Legen Sie die Anzahl der Kopien fest"';
                     }
                     field(ShowInternalInfo; ShowInternalInfo)
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Show Internal Information', Comment = 'DEU="Interne Informationen anzeigen"';
-                        ToolTip = 'Specifies if the document shows internal information.';
+                        ToolTip = 'Specifies if the document shows internal information.', comment = 'DEU=" Ausdrucken der Dimensionen"';
                     }
                     field(LogInteraction; LogInteraction)
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Log Interaction', Comment = 'DEU="Aktivität protokollieren"';
                         Enabled = LogInteractionEnable;
-                        ToolTip = 'Specifies that interactions with the contact are logged.';
+                        ToolTip = 'Specifies that interactions with the contact are logged.', comment = 'DEU="Legt fest, dass Aktivitäten mit dem Kontakt protokolliert werden."';
                     }
                     field(HideCompanyInfo; HideCompanyInfo)
                     {
                         Caption = 'Hide Company Info', Comment = 'DEU="Firmendaten ausblenden"';
+                        ToolTip = 'Specifies that the company data is to be "hidden" for printing', comment = 'DEU="Hiermit können Sie die Firmendaten für den Druck ausblenden"';
                     }
                     field(ItemPicturePrint; ItemPicturePrint)
                     {
                         Caption = 'Print Item Picture', Comment = 'DEU="Artikelbilder drucken"';
+                        ToolTip = 'Specifies that the  images are printed ', comment = 'DEU="Legt fest ob Artikelbilder mit ausgedruckt werden"';
                     }
                 }
             }
