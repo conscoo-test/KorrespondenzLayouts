@@ -35,7 +35,7 @@ pageextension 5272753 "LBT Blanket Sales Order Sub." extends "Blanket Sales Orde
             action("LBT LongText")
             {
                 ApplicationArea = Suite;
-                Caption = 'Long Text';
+                Caption = 'Long Text', comment = 'DEU="Lang Text"';
                 ToolTip = 'Long Text', comment = 'DEU="Langtext"';
                 Image = Import;
                 trigger OnAction()

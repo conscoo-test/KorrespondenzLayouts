@@ -10,7 +10,7 @@ pageextension 5272752 "LBT Blanket Sales Order" extends "Blanket Sales Order"
                 action("Tot&aling")
                 {
                     ApplicationArea = All;
-                    Caption = 'Tot&aling';
+                    Caption = 'Tot&aling', comment = 'DEU="Summieren"';
                     ToolTip = 'Creates a total of the line items "From total" / "To total"', comment = 'DEU="Legt eine Summierung der Zeilenpositionen "Von Summe" / "Bis Summe fest""';
                     Image = Totals;
                     trigger OnAction()
@@ -23,7 +23,7 @@ pageextension 5272752 "LBT Blanket Sales Order" extends "Blanket Sales Order"
                 action("LBT Num&bering")
                 {
                     ApplicationArea = All;
-                    Caption = 'Num&bering';
+                    Caption = 'Num&bering', comment = 'DEU="Nummerieren"';
                     ToolTip = 'Specified a numbering of the line positions"', comment = 'DEU="Legt eine Nummerierung der Zeilenpositionen fest"';
                     Image = NumberGroup;
                     trigger OnAction()
