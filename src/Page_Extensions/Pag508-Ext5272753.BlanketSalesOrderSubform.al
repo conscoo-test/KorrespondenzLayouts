@@ -11,10 +11,12 @@ pageextension 5272753 "LBT Blanket Sales Order Sub." extends "Blanket Sales Orde
             field("LBT Pos. No."; "LBT Pos. No.")
             {
                 ApplicationArea = All;
+                ToolTip = 'Specified the Position No.', comment = 'DEU="Legt die Positionsnr. fest"';
             }
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;
+                ToolTip = 'Specified the Printoption', comment = 'DEU="Legt die Druckauswahl fest"';
             }
         }
         addafter("ShortcutDimCode[8]")
@@ -22,6 +24,7 @@ pageextension 5272753 "LBT Blanket Sales Order Sub." extends "Blanket Sales Orde
             field("LBT Long Text"; "LBT Long Text")
             {
                 ApplicationArea = All;
+                ToolTip = 'Long Text', comment = 'DEU="Langtext"';
             }
         }
     }
@@ -33,6 +36,7 @@ pageextension 5272753 "LBT Blanket Sales Order Sub." extends "Blanket Sales Orde
             {
                 ApplicationArea = Suite;
                 Caption = 'Long Text';
+                ToolTip = 'Long Text', comment = 'DEU="Langtext"';
                 Image = Import;
                 trigger OnAction()
                 var

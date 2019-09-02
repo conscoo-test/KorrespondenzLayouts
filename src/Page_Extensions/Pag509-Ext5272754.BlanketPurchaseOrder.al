@@ -11,6 +11,7 @@ pageextension 5272754 "LBT Blanket Purchase Order" extends "Blanket Purchase Ord
                 {
                     ApplicationArea = All;
                     Caption = 'Tot&aling';
+                    ToolTip = 'Creates a total of the line items "From total" / "To total"', comment = 'DEU="Legt eine Summierung der Zeilenpositionen "Von Summe" / "Bis Summe fest""';
                     Image = Totals;
                     trigger OnAction()
                     var
@@ -23,6 +24,7 @@ pageextension 5272754 "LBT Blanket Purchase Order" extends "Blanket Purchase Ord
                 {
                     ApplicationArea = All;
                     Caption = 'Num&bering';
+                    ToolTip = 'Specified a numbering of the line positions"', comment = 'DEU="Legt eine Nummerierung der Zeilenpositionen fest"';
                     Image = NumberGroup;
                     trigger OnAction()
                     var
@@ -35,6 +37,7 @@ pageextension 5272754 "LBT Blanket Purchase Order" extends "Blanket Purchase Ord
                 {
                     ApplicationArea = All;
                     Caption = 'Header Text', Comment = 'DEU="Kopftext"';
+                    ToolTip = 'Specified the Header Text', comment = 'DEU="Legt den Kopftext fest"';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -52,6 +55,7 @@ pageextension 5272754 "LBT Blanket Purchase Order" extends "Blanket Purchase Ord
                 {
                     ApplicationArea = All;
                     Caption = 'Footer Text', Comment = 'DEU="Fußtext"';
+                    ToolTip = 'Specified the Footer Text', comment = 'DEU="Legt den Fußtext fest"';
                     Image = EndingText;
 
                     trigger OnAction()
