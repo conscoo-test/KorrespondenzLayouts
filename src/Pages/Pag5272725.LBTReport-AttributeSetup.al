@@ -1,6 +1,6 @@
 page 5272725 "LBT Report - Attribute Setup"
 {
-    Caption = 'Report - Attribute Setup';, Comment = 'DEU="Bericht - Attribute Einrichtung"'
+    Caption = 'Report - Attribute Setup', Comment = 'DEU="Bericht - Attribute Einrichtung"';
     PageType = List;
     SourceTable = "LBT Report - Attribute Setup";
     UsageCategory = Administration;

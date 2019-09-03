@@ -1,6 +1,6 @@
 page 5272727 "LBT Source Setup"
 {
-    Caption = 'LBT Source Setup';, Comment = 'DEU="Herkunft Einrichtung"'
+    Caption = 'LBT Source Setup', Comment = 'DEU="Herkunft Einrichtung"';
     PageType = List;
     SourceTable = "LBT Source Setup";
     UsageCategory = Administration;
@@ -17,8 +17,8 @@ page 5272727 "LBT Source Setup"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Please select the report type', comment = 'DEU="Bitte wählen Sie den Berichtstyp"';
-                    Caption = 'Report Type';, Comment = 'DEU="Berichtstyp"'
-                    OptionCaption = 'General,Sales Quote,Sales Order,Sales Pro Forma Inv,Blanket Sales Order';, Comment = 'DEU="Allgemein,Verkauf - Angebot,Verkauf - Auftrag,Verkauf - Proformarechnung,Verkauf Rahmenauftrag,Einkauf - Anfrage,Einkauf - Bestellung,Einkauf Rahmenbestellung"'
+                    Caption = 'Report Type', Comment = 'DEU="Berichtstyp"';
+                    
 
                     trigger OnValidate()
                     begin
@@ -29,8 +29,8 @@ page 5272727 "LBT Source Setup"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Please select type of origin', comment = 'DEU="Bitte wählen Sie den Herkunfts Typ"';
-                    Caption = 'Source Type';, Comment = 'DEU="Herkunft Typ"'
-                    OptionCaption = 'Default,Bill-to Customer,Sell-to Customer';, Comment = 'DEU="Standard,Rech. an Debitor,Verk. an Debitor,Zahlung an Kreditor,Eink. von Kreditor"'
+                    Caption = 'Source Type', Comment = 'DEU="Herkunft Typ"';
+                    
 
                     trigger OnValidate()
                     begin
@@ -45,8 +45,8 @@ page 5272727 "LBT Source Setup"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Please select the report type', comment = 'DEU="Bitte wählen Sie den Berichtstyp"';
-                    Caption = 'Report Type';, Comment = 'DEU="Berichts Typ"'
-                    OptionCaption = 'General,Purchase Quote,Purchase Order,Blanket Purchase Order';, Comment = 'DEU="Allgemein,Einkauf - Anfrage,Einkauf - Bestellung,Einkauf Rahmenbestellung"'
+                    Caption = 'Report Type', Comment = 'DEU="Berichts Typ"';
+                    
 
                     trigger OnValidate()
                     begin
@@ -57,9 +57,8 @@ page 5272727 "LBT Source Setup"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Please select type of origin', comment = 'DEU="Bitte wählen Sie den Herkunftstyp"';
-                    Caption = 'Source Type';, Comment = 'DEU="Herkunftstyp"'
-                    OptionCaption = 'Default,Pay-to Vendor,Buy-from Vendor';, Comment = 'DEU="Standard,Rech. an Debitor,Verk. an Debitor"'
-
+                    Caption = 'Source Type', Comment = 'DEU="Herkunftstyp"';
+                   
                     trigger OnValidate()
                     begin
                         SetSourceType;
