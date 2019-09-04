@@ -46,8 +46,8 @@ page 5272720 "LBT PS Longtext Lines"
             action("E&ditor")
             {
                 ApplicationArea = All;
-                ToolTip = 'Edit', comment = 'DEU="Bearbeiten"';
-                Caption = 'Editor', Comment = 'DEU="Bearbeiten"';
+                ToolTip = 'Here you can add a text that will be printed on the report.', comment = 'DEU="Hier können Sie einen Text verfassen, der auf dem Report angedruckt wird."';
+                Caption = 'Editor', Comment = 'DEU="Editor"';
                 Image = Edit;
                 Promoted = true;
                 PromotedCategory = Process;
