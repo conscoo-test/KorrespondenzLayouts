@@ -11,6 +11,7 @@ pageextension 5272774 "LBT Purchase Return Order" extends "Purchase Return Order
                 {
                     ApplicationArea = All;
                     Caption = 'Tot&aling', Comment = 'DEU="&Summieren"';
+                    ToolTip = 'Creates a total of the line items "From total" / "To total"', comment = 'DEU="Legt eine Summierung der Zeilenpositionen "Von Summe" / "Bis Summe fest""';
                     Image = Totals;
                     trigger OnAction()
                     var
@@ -23,6 +24,7 @@ pageextension 5272774 "LBT Purchase Return Order" extends "Purchase Return Order
                 {
                     ApplicationArea = All;
                     Caption = 'Num&bering', Comment = 'DEU="&Nummerieren"';
+                    ToolTip = 'Specified a numbering of the line positions"', comment = 'DEU="Legt eine Nummerierung der Zeilenpositionen fest"';
                     Image = NumberGroup;
                     trigger OnAction()
                     var
@@ -35,6 +37,7 @@ pageextension 5272774 "LBT Purchase Return Order" extends "Purchase Return Order
                 {
                     ApplicationArea = All;
                     Caption = 'Header Text', Comment = 'DEU="Kopftext"';
+                    ToolTip = 'Here you can define the Header Text.', comment = 'deu="Hier können Sie den Kopftext erfassen."';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -51,6 +54,7 @@ pageextension 5272774 "LBT Purchase Return Order" extends "Purchase Return Order
                 {
                     ApplicationArea = All;
                     Caption = '&Footer Text', Comment = 'DEU="&Fußtext"';
+                    ToolTip = 'Here you can define the Footer Text.', comment = 'deu="Hier können Sie den Fußtext erfassen."';
                     Image = EndingText;
 
                     trigger OnAction()

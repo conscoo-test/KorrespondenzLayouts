@@ -11,7 +11,7 @@ pageextension 5272769 "LBT Sales Return Ord. Arc Sub." extends "Sales Return Ord
             }
             field("LBT Printoption"; "LBT Printoption")
             {
-                ToolTip = 'Here ypu can choose the Printoptions.', comment = 'Deu="Hier können Sie die Druckoptionen wählen."';
+                ToolTip = 'Here you can choose the Printoptions.', comment = 'Deu="Hier können Sie die Druckoptionen wählen."';
                 ApplicationArea = All;
             }
         }

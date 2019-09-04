@@ -15,7 +15,7 @@ pageextension 5272764 "LBT Purch. Order Archive Sub." extends "Purchase Order Ar
             }
             field("LBT Printoption"; "LBT Printoption")
             {
-                ToolTip = 'Here ypu can choose the Printoptions.', comment = 'Deu="Hier können Sie die Druckoptionen wählen."';
+                ToolTip = 'Here you can choose the Printoptions.', comment = 'Deu="Hier können Sie die Druckoptionen wählen."';
                 ApplicationArea = All;
             }
         }

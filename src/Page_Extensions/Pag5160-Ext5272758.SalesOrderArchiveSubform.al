@@ -15,7 +15,7 @@ pageextension 5272758 "LBT Sales Order Archive Sub." extends "Sales Order Archiv
             }
             field("LBT Printoption"; "LBT Printoption")
             {
-                ToolTip = 'Here ypu can choose the Printoptions.', comment = 'Deu="Hier können Sie die Druckoptionen wählen."';
+                ToolTip = 'Here you can choose the Printoptions.', comment = 'Deu="Hier können Sie die Druckoptionen wählen."';
                 ApplicationArea = All;
             }
         }

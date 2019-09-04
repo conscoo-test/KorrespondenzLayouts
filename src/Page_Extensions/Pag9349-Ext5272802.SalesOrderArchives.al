@@ -10,6 +10,7 @@ pageextension 5272802 "LBT Sales Order Archives" extends "Sales Order Archives"
                 {
                     ApplicationArea = All;
                     Caption = 'Header Text', Comment = 'DEU="Kopftext"';
+                    ToolTip = 'Here you can define the Header Text.', comment = 'deu="Hier können Sie den Kopftext erfassen."';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -26,6 +27,7 @@ pageextension 5272802 "LBT Sales Order Archives" extends "Sales Order Archives"
                 {
                     ApplicationArea = All;
                     Caption = 'Footer Text', Comment = 'DEU="Fußtext"';
+                    ToolTip = 'Here you can define the Footer Text.', comment = 'deu="Hier können Sie den Fußtext erfassen."';
                     Image = EndingText;
 
                     trigger OnAction()

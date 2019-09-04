@@ -24,7 +24,7 @@ pageextension 5272753 "LBT Blanket Sales Order Sub." extends "Blanket Sales Orde
             field("LBT Long Text"; "LBT Long Text")
             {
                 ApplicationArea = All;
-                ToolTip = 'Long Text', comment = 'DEU="Langtext"';
+                ToolTip = 'Here you can insert long texts.', comment = 'DEU="Hier können Sie Langtexte einfügen."';
             }
         }
     }
@@ -36,7 +36,7 @@ pageextension 5272753 "LBT Blanket Sales Order Sub." extends "Blanket Sales Orde
             {
                 ApplicationArea = Suite;
                 Caption = 'Long Text', comment = 'DEU="Lang Text"';
-                ToolTip = 'Long Text', comment = 'DEU="Langtext"';
+                ToolTip = 'Here you can insert the long text for the line.', comment = 'DEU="Hier können Sie den Langtext für die Zeile einfügen."';
                 Image = Import;
                 trigger OnAction()
                 var

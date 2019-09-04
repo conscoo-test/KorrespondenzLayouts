@@ -24,7 +24,7 @@ pageextension 5272722 "LBT Posted Sales Shpt. Subform" extends "Posted Sales Shp
             field("LBT Long Text"; "LBT Long Text")
             {
                 ApplicationArea = All;
-                ToolTip = 'Long Text', comment = 'DEU="Langtext"';
+                ToolTip = 'Here you can insert long texts.', comment = 'DEU="Hier können Sie Langtexte einfügen."';
             }
         }
     }
@@ -36,7 +36,7 @@ pageextension 5272722 "LBT Posted Sales Shpt. Subform" extends "Posted Sales Shp
             {
                 ApplicationArea = Suite;
                 Caption = 'Long Text', Comment = 'DEU="Langtext"';
-                ToolTip = 'Long Text', comment = 'DEU="Langtext"';
+                ToolTip = 'Here you can insert the long text for the line.', comment = 'DEU="Hier können Sie den Langtext für die Zeile einfügen."';
                 Image = Import;
                 trigger OnAction()
                 var

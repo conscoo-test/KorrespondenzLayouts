@@ -19,7 +19,7 @@ pageextension 5272748 "LBT Purchases & Payables Setup" extends "Purchases & Paya
             {
                 ApplicationArea = All;
                 Caption = 'Source Setup', Comment = 'DEU="Herkunft Einrichtung"';
-                ToolTip = 'Source Setup', Comment = 'DEU="Herkunft Einrichtung"';
+                ToolTip = 'Here you can define origin codes for certain reports.', Comment = 'DEU="Hier können Sie Herkunftscodes für bestimmte Berichte hinterlegen."';
                 Image = Print;
                 RunObject = Page "LBT Source Setup";
                 RunPageView = SORTING (Type, "Report Type")

@@ -15,7 +15,7 @@ pageextension 5272756 "LBT Blanket Purch. Order Sub." extends "Blanket Purchase 
             }
             field("LBT Printoption"; "LBT Printoption")
             {
-                ToolTip = 'Here ypu can choose the Printoptions.', comment = 'Deu="Hier können Sie die Druckoptionen wählen."';
+                ToolTip = 'Here you can choose the Printoptions.', comment = 'Deu="Hier können Sie die Druckoptionen wählen."';
                 ApplicationArea = All;
             }
         }

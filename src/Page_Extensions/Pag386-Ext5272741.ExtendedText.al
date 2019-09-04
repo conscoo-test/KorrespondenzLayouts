@@ -15,7 +15,7 @@ pageextension 5272741 "LBT Extended Text" extends "Extended Text"
             part("LBT LongTextSUB"; "LBT Ext. Text Lines Long")
             {
                 Caption = 'Long Text', Comment = 'DEU="Langtext"';
-                ToolTip = 'Long Text', comment = 'DEU="Langtext"';
+                ToolTip = 'Here you can insert long texts.', comment = 'DEU="Hier können Sie Langtexte einfügen."';
                 SubPageLink = Table_ID = FIELD ("Table Name"),
                               "No." = FIELD ("No."),
                               "Language Code" = FIELD ("Language Code"),
