@@ -10,6 +10,7 @@ pageextension 5272797 "LBT Blanket Purchase Orders" extends "Blanket Purchase Or
                 {
                     ApplicationArea = All;
                     Caption = 'Header Text', Comment = 'DEU="Kopftext"';
+                    ToolTip = 'Here you can define the Header Text.', comment = 'deu="Hier können Sie den Kopftext erfassen."';
                     Image = BeginningText;
                     trigger OnAction()
                     var
@@ -25,6 +26,7 @@ pageextension 5272797 "LBT Blanket Purchase Orders" extends "Blanket Purchase Or
                 {
                     ApplicationArea = All;
                     Caption = 'Footer Text', Comment = 'DEU="Fußtext"';
+                    ToolTip = 'Here you can define the Footer Text.', comment = 'deu="Hier können Sie den Fußtext erfassen."';
                     Image = EndingText;
                     trigger OnAction()
                     var

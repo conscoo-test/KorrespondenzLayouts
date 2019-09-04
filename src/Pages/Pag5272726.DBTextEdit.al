@@ -14,6 +14,7 @@ page 5272726 DBTextEdit
                 field(Text; Text)
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Here you can enter the text.', comment = 'DEU="Hier ist die Texteingabe möglich."';
                     MultiLine = true;
                 }
             }

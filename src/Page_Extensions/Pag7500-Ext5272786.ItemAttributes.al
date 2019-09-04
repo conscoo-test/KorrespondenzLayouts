@@ -11,6 +11,7 @@ pageextension 5272786 "LBT Item Attributes" extends "Item Attributes"
                 {
                     ApplicationArea = All;
                     Caption = 'Report - Attribute Setup', Comment = 'DEU="Bericht - Attribute Einrichtung"';
+                    ToolTip = 'Allows you to assign attributes to a specific report or area.', comment = 'deu="Hier können Sie Attribute für einen bestimmten Bericht oder Bereiche zuweisen."';
                     Image = Setup;
                     RunObject = Page "LBT Report - Attribute Setup";
                     RunPageView = SORTING ("Report-Type", "Report-ID", Position, Priority);

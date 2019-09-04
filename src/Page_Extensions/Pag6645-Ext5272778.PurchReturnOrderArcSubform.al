@@ -7,6 +7,7 @@ pageextension 5272778 "LBT Purch Ret. Order Arc Sub." extends "Purch Return Orde
             field("LBT Pos. No."; "LBT Pos. No.")
             {
                 ApplicationArea = All;
+                ToolTip = 'Here you can fill in position numbers.', comment = 'Deu="Hier können Sie Positionsnummern angeben."';
             }
         }
         addafter(Type)
@@ -15,6 +16,7 @@ pageextension 5272778 "LBT Purch Ret. Order Arc Sub." extends "Purch Return Orde
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;
+                 ToolTip = 'Here you can choose the Printoptions.', comment = 'Deu="Hier können Sie die Druckoptionen wählen."';
             }
         }
         addafter("Shortcut Dimension 2 Code")
@@ -22,6 +24,7 @@ pageextension 5272778 "LBT Purch Ret. Order Arc Sub." extends "Purch Return Orde
             field("LBT Long Text"; "LBT Long Text")
             {
                 ApplicationArea = All;
+                ToolTip = 'Here you can insert long texts. ', comment = 'deu="Hier können Sie Langtexte einfügen."';
             }
         }
     }
@@ -33,6 +36,7 @@ pageextension 5272778 "LBT Purch Ret. Order Arc Sub." extends "Purch Return Orde
             {
                 ApplicationArea = Suite;
                 Caption = 'Long Text';
+                ToolTip = 'Here you can insert the long text for the line.', comment = 'Deu="Hier können Sie den Langtext für die Zeile einfügen."';
                 Image = Import;
                 trigger OnAction()
                 var

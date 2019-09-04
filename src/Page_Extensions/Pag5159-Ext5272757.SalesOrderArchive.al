@@ -9,6 +9,7 @@ pageextension 5272757 "LBT Sales Order Archive" extends "Sales Order Archive"
                 Caption = 'LIS365 Correspondence layout', Comment = 'DEU="LIS365 Korrespondenzbelege"';
                 action("LBT Header Text")
                 {
+                    ToolTip = 'Here you can define the Header Text.', comment = 'deu="Hier können Sie den Kopftext erfassen."';
                     ApplicationArea = All;
                     Caption = 'Header Text', Comment = 'DEU="Kopftext"';
                     Image = BeginningText;
@@ -25,6 +26,7 @@ pageextension 5272757 "LBT Sales Order Archive" extends "Sales Order Archive"
                 }
                 action("LBT Footer Text")
                 {
+                    ToolTip = 'Here you can define the Footer Text.', comment = 'deu="Hier können Sie den Fußtext erfassen."';
                     ApplicationArea = All;
                     Caption = 'Footer Text', Comment = 'DEU="Fußtext"';
                     Image = EndingText;

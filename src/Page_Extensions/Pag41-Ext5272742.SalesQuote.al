@@ -21,6 +21,7 @@ pageextension 5272742 "LBT Sales Quote" extends "Sales Quote"
                 {
                     ApplicationArea = All;
                     Caption = 'Totaling', Comment = 'DEU="Summierung"';
+                    ToolTip = 'Creates a total of the line items "From total" / "To total"', comment = 'DEU="Legt eine Summierung der Zeilenpositionen "Von Summe" / "Bis Summe fest""';
                     Image = Totals;
                     trigger OnAction()
                     var
@@ -33,6 +34,7 @@ pageextension 5272742 "LBT Sales Quote" extends "Sales Quote"
                 {
                     ApplicationArea = All;
                     Caption = 'Numbering', Comment = 'DEU="Nummerierung"';
+                    ToolTip = 'Specified a numbering of the line positions"', comment = 'DEU="Legt eine Nummerierung der Zeilenpositionen fest"';
                     Image = NumberGroup;
                     trigger OnAction()
                     var
@@ -45,6 +47,7 @@ pageextension 5272742 "LBT Sales Quote" extends "Sales Quote"
                 {
                     ApplicationArea = All;
                     Caption = 'Header Text', Comment = 'DEU="Kopftext"';
+                    ToolTip = 'Specified the Header Text', comment = 'DEU="Legt den Kopftext fest"';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -61,6 +64,7 @@ pageextension 5272742 "LBT Sales Quote" extends "Sales Quote"
                 {
                     ApplicationArea = All;
                     Caption = 'Footer Text', Comment = 'DEU="Fußtext"';
+                    ToolTip = 'Specified the Footer Text', comment = 'DEU="Legt den Fußtext fest"';
                     Image = EndingText;
 
                     trigger OnAction()

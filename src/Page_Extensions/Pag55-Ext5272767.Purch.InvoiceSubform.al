@@ -8,6 +8,7 @@ pageextension 5272767 "LBT Purch. Invoice Subform" extends "Purch. Invoice Subfo
             field("LBT Pos. No."; "LBT Pos. No.")
             {
                 ApplicationArea = All;
+                ToolTip = 'Specified the Position No.', comment = 'DEU="Legt die Positionsnr. fest"';
             }
         }
         addafter(FilteredTypeField)
@@ -15,6 +16,7 @@ pageextension 5272767 "LBT Purch. Invoice Subform" extends "Purch. Invoice Subfo
             field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;
+                ToolTip = 'Specified the Printoption', comment = 'DEU="Legt die Druckauswahl fest"';
             }
         }
         addafter("Line No.")
@@ -22,6 +24,7 @@ pageextension 5272767 "LBT Purch. Invoice Subform" extends "Purch. Invoice Subfo
             field("LBT Long Text"; "LBT Long Text")
             {
                 ApplicationArea = All;
+                ToolTip = 'Here you can insert long texts.', comment = 'DEU="Hier können Sie Langtexte einfügen."';
             }
         }
     }
@@ -33,6 +36,7 @@ pageextension 5272767 "LBT Purch. Invoice Subform" extends "Purch. Invoice Subfo
             {
                 ApplicationArea = Suite;
                 Caption = 'Long Text', Comment = 'DEU="Langtext"';
+                ToolTip = 'Here you can insert the long text for the line.', comment = 'DEU="Hier können Sie den Langtext für die Zeile einfügen."';
                 Image = Import;
                 trigger OnAction()
                 var

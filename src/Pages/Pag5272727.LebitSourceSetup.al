@@ -1,6 +1,6 @@
 page 5272727 "LBT Source Setup"
 {
-    Caption = 'LBT Source Setup';
+    Caption = 'LBT Source Setup', Comment = 'DEU="Herkunft Einrichtung"';
     PageType = List;
     SourceTable = "LBT Source Setup";
     UsageCategory = Administration;
@@ -16,8 +16,9 @@ page 5272727 "LBT Source Setup"
                 field(SalesReportType; SalesReportType)
                 {
                     ApplicationArea = All;
-                    Caption = 'Report Type';
-                    OptionCaption = 'General,Sales Quote,Sales Order,Sales Pro Forma Inv,Blanket Sales Order';
+                    ToolTip = 'Please select the report type', comment = 'DEU="Bitte wählen Sie den Berichtstyp"';
+                    Caption = 'Report Type', Comment = 'DEU="Berichtstyp"';
+                    
 
                     trigger OnValidate()
                     begin
@@ -27,8 +28,9 @@ page 5272727 "LBT Source Setup"
                 field(SalesSourceType; SalesSourceType)
                 {
                     ApplicationArea = All;
-                    Caption = 'Source Type';
-                    OptionCaption = 'Default,Bill-to Customer,Sell-to Customer';
+                    ToolTip = 'Please select type of origin', comment = 'DEU="Bitte wählen Sie den Herkunfts Typ"';
+                    Caption = 'Source Type', Comment = 'DEU="Herkunft Typ"';
+                    
 
                     trigger OnValidate()
                     begin
@@ -42,8 +44,9 @@ page 5272727 "LBT Source Setup"
                 field(PurchReportType; PurchReportType)
                 {
                     ApplicationArea = All;
-                    Caption = 'Report Type';
-                    OptionCaption = 'General,Purchase Quote,Purchase Order,Blanket Purchase Order';
+                    ToolTip = 'Please select the report type', comment = 'DEU="Bitte wählen Sie den Berichtstyp"';
+                    Caption = 'Report Type', Comment = 'DEU="Berichts Typ"';
+                    
 
                     trigger OnValidate()
                     begin
@@ -53,9 +56,9 @@ page 5272727 "LBT Source Setup"
                 field(PurchSourceType; PurchSourceType)
                 {
                     ApplicationArea = All;
-                    Caption = 'Source Type';
-                    OptionCaption = 'Default,Pay-to Vendor,Buy-from Vendor';
-
+                    ToolTip = 'Please select type of origin', comment = 'DEU="Bitte wählen Sie den Herkunftstyp"';
+                    Caption = 'Source Type', Comment = 'DEU="Herkunftstyp"';
+                   
                     trigger OnValidate()
                     begin
                         SetSourceType;
