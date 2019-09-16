@@ -1342,7 +1342,6 @@ report 5272720 "LBT Sales - Quote"
                         ToolTip = 'Specifies how many copies of the document to print.', comment = 'DEU="Legt die Anzahl der Ausdrücke fest"';
                     }
 
-                    }
                     field(ShowInternalInfo; ShowInternalInfo)
                     {
                         Caption = 'Show Internal Information', Comment = 'DEU="Interne Informationen anzeigen"';
