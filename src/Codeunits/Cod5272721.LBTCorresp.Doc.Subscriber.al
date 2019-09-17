@@ -11,6 +11,13 @@ codeunit 5272721 "LBT Corresp. Doc. Subscriber"
         LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
         FieldNo: Integer;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Document Totals", 'OnCalculateSalesSubPageTotalsOnAfterSetFilters', '', true, true)]
+    local procedure ExcludeAlternativeAndOptional(var SalesLine: Record "Sales Line"; SalesHeader: Record "Sales Header")
+    begin
+        with SalesLine do
+            SetFilter("LBT Printoption", '<>%1&<>%2', "LBT Printoption"::Alternative, "LBT Printoption"::Optional);
+    end;
+
     [EventSubscriber(ObjectType::Table, 36, 'OnAfterCreateSalesLine', '', false, false)]
     local procedure "Table Sales Header - OnAfterCreateSalesLine"(var SalesLine: Record "Sales Line"; var TempSalesLine: Record "Sales Line" temporary)
     begin

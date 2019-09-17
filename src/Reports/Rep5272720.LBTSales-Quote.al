@@ -1546,7 +1546,7 @@ report 5272720 "LBT Sales - Quote"
         Ship_to_AddressCaptionLbl: Label 'Ship-to Address', Comment = 'DEU="Lief. an Adresse"';
         "### Lebit Correspondence Globals ###": Integer;
         CompanyAddressLine: Text;
-        DocCaptionLbl: Label 'Quote %1', Comment = 'DEU="Lief. an Adresse"';
+        DocCaptionLbl: Label 'Quote %1', Comment = 'DEU="Angebot %1"';
         PagefromPageCaptionLbl: Label 'Page %1 of %2', Comment = 'DEU="Seite %1 von %2"';
         PageCaptionLbl: Label 'Page %1', Comment = 'DEU="Seite %1"';
         NoCaptionLbl: Label 'No.', Comment = 'DEU="Nr."';

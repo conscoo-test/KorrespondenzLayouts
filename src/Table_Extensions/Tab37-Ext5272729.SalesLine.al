@@ -20,19 +20,7 @@ tableextension 5272729 "LBT Sales Line" extends "Sales Line"
 
             end;
         }
-        modify(Quantity)
-        {
-            trigger OnAfterValidate()
-            begin
-                if (Type <> Type::" ") and
-                   (Quantity <> 0)
-                 then
-                    if ("LBT Printoption" = "LBT Printoption"::Alternative) or
-                      ("LBT Printoption" = "LBT Printoption"::Optional)
-                    then
-                        ERROR(Text5272721, FIELDCAPTION(Quantity), FIELDCAPTION("LBT Printoption"), "LBT Printoption");
-            end;
-        }
+
         field(5272720; "LBT Long Text"; Boolean)
         {
             CalcFormula = Exist ("LBT PS Longtext Line" WHERE ("Table ID" = CONST (37),
