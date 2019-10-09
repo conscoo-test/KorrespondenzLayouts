@@ -1870,10 +1870,10 @@ report 5272721 "lbt Order Confirmation"
         TempPrepmtDimSetEntry: Record "Dimension Set Entry" temporary;
         PrepmtInvBuf: Record "Prepayment Inv. Line Buffer" temporary;
         RespCenter: Record "Responsibility Center";
-        Language: Record Language;
         CurrExchRate: Record "Currency Exchange Rate";
         AsmHeader: Record "Assembly Header";
         AsmLine: Record "Assembly Line";
+        Language: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         SegManagement: Codeunit SegManagement;
         ArchiveManagement: Codeunit ArchiveManagement;
