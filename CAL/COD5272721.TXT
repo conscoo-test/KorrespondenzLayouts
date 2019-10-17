@@ -6,16 +6,6 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     Time=131154.810T;
     Modified=true;
     Version List=LBCOR1.00;
-    Permissions = TableData 111 = m;
-    Permissions = TableData 113 = m;
-    Permissions = TableData 115 = m;
-    Permissions = TableData 6661 = m;
-    Permissions = TableData 5108 = m;
-    Permissions = TableData 121 = m;
-    Permissions = TableData 123 = m;
-    Permissions = TableData 125 = m;
-    Permissions = TableData 6651 = m;
-    Permissions = TableData 5110 = m;
   }
   PROPERTIES
   {
@@ -309,7 +299,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,41,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page41_ActionFuÃ¡text"@5272721(VAR Rec@5272720 : Record "Sales Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page41_ActionFuátext"@5272721(VAR Rec@5272720 : Record "Sales Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -341,7 +331,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,42,OnAfterActionEvent,Action5272725)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page42_ActionFuÃ¡text"@5272723(VAR Rec@5272720 : Record "Sales Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page42_ActionFuátext"@5272723(VAR Rec@5272720 : Record "Sales Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -365,7 +355,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,42,OnAfterActionEvent,Action5272723)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page42_ActionRechnungsfuÃ¡text"@5272725(VAR Rec@5272720 : Record "Sales Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page42_ActionRechnungsfuátext"@5272725(VAR Rec@5272720 : Record "Sales Header");
     VAR
       SalesHeaderLRec@5272724 : Record "Sales Header";
       SourceRecRef@5272723 : RecordRef;
@@ -393,7 +383,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,42,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page42_ActionLieferungsfuÃ¡text"@5272727(VAR Rec@5272720 : Record "Sales Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page42_ActionLieferungsfuátext"@5272727(VAR Rec@5272720 : Record "Sales Header");
     VAR
       SalesHeaderLRec@5272724 : Record "Sales Header";
       SourceRecRef@5272723 : RecordRef;
@@ -429,7 +419,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,43,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page43_ActionFuÃ¡text"@5272728(VAR Rec@5272720 : Record "Sales Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page43_ActionFuátext"@5272728(VAR Rec@5272720 : Record "Sales Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -461,7 +451,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,44,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page44_ActionFuÃ¡text"@5272730(VAR Rec@5272720 : Record "Sales Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page44_ActionFuátext"@5272730(VAR Rec@5272720 : Record "Sales Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -515,7 +505,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,49,OnAfterActionEvent,Action5272720)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page49_ActionFuÃ¡text"@5272781(VAR Rec@5272720 : Record "Purchase Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page49_ActionFuátext"@5272781(VAR Rec@5272720 : Record "Purchase Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -547,7 +537,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,50,OnAfterActionEvent,Action5272720)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page50_ActionFuÃ¡text"@5272783(VAR Rec@5272720 : Record "Purchase Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page50_ActionFuátext"@5272783(VAR Rec@5272720 : Record "Purchase Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -571,7 +561,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,50,OnAfterActionEvent,Action5272727)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page50_ActionRechnungeFuÃ¡text"@5272789(VAR Rec@5272720 : Record "Purchase Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page50_ActionRechnungeFuátext"@5272789(VAR Rec@5272720 : Record "Purchase Header");
     VAR
       PurchaseHeaderRec@5272724 : Record "Purchase Header";
       SourceRecRef@5272723 : RecordRef;
@@ -599,7 +589,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,50,OnAfterActionEvent,Action5272725)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page50_ActionLieferungFuÃ¡text"@5272791(VAR Rec@5272720 : Record "Purchase Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page50_ActionLieferungFuátext"@5272791(VAR Rec@5272720 : Record "Purchase Header");
     VAR
       PurchaseHeaderRec@5272724 : Record "Purchase Header";
       SourceRecRef@5272723 : RecordRef;
@@ -635,7 +625,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,51,OnAfterActionEvent,Action5272720)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page51_ActionFuÃ¡text"@5272785(VAR Rec@5272720 : Record "Purchase Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page51_ActionFuátext"@5272785(VAR Rec@5272720 : Record "Purchase Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -667,7 +657,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,52,OnAfterActionEvent,Action5272720)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page52_ActionFuÃ¡text"@5272787(VAR Rec@5272720 : Record "Purchase Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page52_ActionFuátext"@5272787(VAR Rec@5272720 : Record "Purchase Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -795,7 +785,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,130,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page130_ActionFuÃ¡text"@5272739(VAR Rec@5272720 : Record "Sales Shipment Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page130_ActionFuátext"@5272739(VAR Rec@5272720 : Record "Sales Shipment Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -831,7 +821,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,132,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page132_ActionFuÃ¡text"@5272742(VAR Rec@5272720 : Record "Sales Invoice Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page132_ActionFuátext"@5272742(VAR Rec@5272720 : Record "Sales Invoice Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -867,7 +857,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,134,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page134_ActionFuÃ¡text"@5272745(VAR Rec@5272720 : Record "Sales Cr.Memo Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page134_ActionFuátext"@5272745(VAR Rec@5272720 : Record "Sales Cr.Memo Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -903,7 +893,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,136,OnAfterActionEvent,Action5272720)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page136_ActionFuÃ¡text"@5272798(VAR Rec@5272720 : Record "Purch. Rcpt. Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page136_ActionFuátext"@5272798(VAR Rec@5272720 : Record "Purch. Rcpt. Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -939,7 +929,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,138,OnAfterActionEvent,Action5272720)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page138_ActionFuÃ¡text"@5272801(VAR Rec@5272720 : Record "Purch. Inv. Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page138_ActionFuátext"@5272801(VAR Rec@5272720 : Record "Purch. Inv. Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -975,7 +965,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,140,OnAfterActionEvent,Action5272720)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page140_ActionFuÃ¡text"@5272804(VAR Rec@5272720 : Record "Purch. Cr. Memo Hdr.");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page140_ActionFuátext"@5272804(VAR Rec@5272720 : Record "Purch. Cr. Memo Hdr.");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1011,7 +1001,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,142,OnAfterActionEvent,Action5272720)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page142_ActionFuÃ¡text"@5272768(VAR Rec@5272720 : Record "Sales Shipment Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page142_ActionFuátext"@5272768(VAR Rec@5272720 : Record "Sales Shipment Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1031,7 +1021,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,143,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page143_ActionFuÃ¡text"@5272770(VAR Rec@5272720 : Record "Sales Invoice Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page143_ActionFuátext"@5272770(VAR Rec@5272720 : Record "Sales Invoice Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1051,7 +1041,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,144,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page144_ActionFuÃ¡text"@5272772(VAR Rec@5272720 : Record "Sales Cr.Memo Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page144_ActionFuátext"@5272772(VAR Rec@5272720 : Record "Sales Cr.Memo Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1071,7 +1061,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,145,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page145_ActionFuÃ¡text"@5272806(VAR Rec@5272720 : Record "Purch. Rcpt. Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page145_ActionFuátext"@5272806(VAR Rec@5272720 : Record "Purch. Rcpt. Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1091,7 +1081,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,146,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page146_ActionFuÃ¡text"@5272808(VAR Rec@5272720 : Record "Purch. Inv. Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page146_ActionFuátext"@5272808(VAR Rec@5272720 : Record "Purch. Inv. Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1111,7 +1101,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,147,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page147_ActionFuÃ¡text"@5272810(VAR Rec@5272720 : Record "Purch. Cr. Memo Hdr.");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page147_ActionFuátext"@5272810(VAR Rec@5272720 : Record "Purch. Cr. Memo Hdr.");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1131,7 +1121,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,507,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page507_ActionFuÃ¡text"@5272734(VAR Rec@5272720 : Record "Sales Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page507_ActionFuátext"@5272734(VAR Rec@5272720 : Record "Sales Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1179,7 +1169,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,509,OnAfterActionEvent,Action5272720)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page509_ActionFuÃ¡text"@5272813(VAR Rec@5272720 : Record "Purchase Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page509_ActionFuátext"@5272813(VAR Rec@5272720 : Record "Purchase Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1227,7 +1217,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,5159,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page5159_ActionFuÃ¡text"@5272965(VAR Rec@5272720 : Record "Sales Header Archive");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page5159_ActionFuátext"@5272965(VAR Rec@5272720 : Record "Sales Header Archive");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1263,7 +1253,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,5162,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page5162_ActionFuÃ¡text"@5272967(VAR Rec@5272720 : Record "Sales Header Archive");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page5162_ActionFuátext"@5272967(VAR Rec@5272720 : Record "Sales Header Archive");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1299,7 +1289,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,5164,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page5164_ActionFuÃ¡text"@5272969(VAR Rec@5272720 : Record "Purchase Header Archive");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page5164_ActionFuátext"@5272969(VAR Rec@5272720 : Record "Purchase Header Archive");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1335,7 +1325,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,5167,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page5167_ActionFuÃ¡text"@5272971(VAR Rec@5272720 : Record "Purchase Header Archive");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page5167_ActionFuátext"@5272971(VAR Rec@5272720 : Record "Purchase Header Archive");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1371,7 +1361,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,6627,OnAfterActionEvent,Action5272720)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page6627_ActionFuÃ¡text"@5272763(VAR Rec@5272720 : Record "Sales Header Archive");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page6627_ActionFuátext"@5272763(VAR Rec@5272720 : Record "Sales Header Archive");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1401,7 +1391,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,6629,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page6629_ActionFuÃ¡text"@5272766(VAR Rec@5272720 : Record "Sales Header Archive");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page6629_ActionFuátext"@5272766(VAR Rec@5272720 : Record "Sales Header Archive");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1421,7 +1411,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,6630,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page6630_ActionFuÃ¡text"@5272860(VAR Rec@5272720 : Record "Sales Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page6630_ActionFuátext"@5272860(VAR Rec@5272720 : Record "Sales Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1469,7 +1459,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,6633,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page6633_ActionFuÃ¡text"@5272866(VAR Rec@5272720 : Record "Sales Line");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page6633_ActionFuátext"@5272866(VAR Rec@5272720 : Record "Sales Line");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1489,7 +1479,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,6640,OnAfterActionEvent,Action5272720)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page6640_ActionFuÃ¡text"@5272816(VAR Rec@5272720 : Record "Purchase Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page6640_ActionFuátext"@5272816(VAR Rec@5272720 : Record "Purchase Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1537,7 +1527,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,6643,OnAfterActionEvent,Action5272720)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page6643_ActionFuÃ¡text"@5272818(VAR Rec@5272720 : Record "Purchase Line");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page6643_ActionFuátext"@5272818(VAR Rec@5272720 : Record "Purchase Line");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1557,7 +1547,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,6644,OnAfterActionEvent,Action5272720)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page6644_ActionFuÃ¡text"@5272820(VAR Rec@5272720 : Record "Purchase Header Archive");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page6644_ActionFuátext"@5272820(VAR Rec@5272720 : Record "Purchase Header Archive");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1587,7 +1577,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,6646,OnAfterActionEvent,Action5272720)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page6646_ActionFuÃ¡text"@5272823(VAR Rec@5272720 : Record "Purchase Header Archive");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page6646_ActionFuátext"@5272823(VAR Rec@5272720 : Record "Purchase Header Archive");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1607,7 +1597,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,6650,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page6650_ActionFuÃ¡text"@5272826(VAR Rec@5272720 : Record "Return Shipment Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page6650_ActionFuátext"@5272826(VAR Rec@5272720 : Record "Return Shipment Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1643,7 +1633,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,6652,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page6652_ActionFuÃ¡text"@5272828(VAR Rec@5272720 : Record "Return Shipment Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page6652_ActionFuátext"@5272828(VAR Rec@5272720 : Record "Return Shipment Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1663,7 +1653,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,6660,OnAfterActionEvent,Action5272720)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page6660_ActionFuÃ¡text"@5272779(VAR Rec@5272720 : Record "Return Receipt Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page6660_ActionFuátext"@5272779(VAR Rec@5272720 : Record "Return Receipt Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1699,7 +1689,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,6662,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page6662_ActionFuÃ¡text"@5272776(VAR Rec@5272720 : Record "Return Receipt Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page6662_ActionFuátext"@5272776(VAR Rec@5272720 : Record "Return Receipt Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1719,7 +1709,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,9300,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page9300_ActionFuÃ¡text"@5272747(VAR Rec@5272720 : Record "Sales Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9300_ActionFuátext"@5272747(VAR Rec@5272720 : Record "Sales Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1739,7 +1729,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,9301,OnAfterActionEvent,Action5272720)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page9301_ActionFuÃ¡text"@5272749(VAR Rec@5272720 : Record "Sales Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9301_ActionFuátext"@5272749(VAR Rec@5272720 : Record "Sales Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1759,7 +1749,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,9302,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page9302_ActionFuÃ¡text"@5272751(VAR Rec@5272720 : Record "Sales Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9302_ActionFuátext"@5272751(VAR Rec@5272720 : Record "Sales Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1779,7 +1769,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,9303,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page9303_ActionFuÃ¡text"@5272753(VAR Rec@5272720 : Record "Sales Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9303_ActionFuátext"@5272753(VAR Rec@5272720 : Record "Sales Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1799,7 +1789,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,9304,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page9304_ActionFuÃ¡text"@5272755(VAR Rec@5272720 : Record "Sales Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9304_ActionFuátext"@5272755(VAR Rec@5272720 : Record "Sales Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1819,7 +1809,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,9305,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page9305_ActionFuÃ¡text"@5272757(VAR Rec@5272720 : Record "Sales Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9305_ActionFuátext"@5272757(VAR Rec@5272720 : Record "Sales Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1839,7 +1829,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,9306,OnAfterActionEvent,Action5272720)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page9306_ActionFuÃ¡text"@5272830(VAR Rec@5272720 : Record "Purchase Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9306_ActionFuátext"@5272830(VAR Rec@5272720 : Record "Purchase Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1859,7 +1849,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,9307,OnAfterActionEvent,Action5272720)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page9307_ActionFuÃ¡text"@5272832(VAR Rec@5272720 : Record "Purchase Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9307_ActionFuátext"@5272832(VAR Rec@5272720 : Record "Purchase Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1879,7 +1869,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,9308,OnAfterActionEvent,Action5272720)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page9308_ActionFuÃ¡text"@5272834(VAR Rec@5272720 : Record "Purchase Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9308_ActionFuátext"@5272834(VAR Rec@5272720 : Record "Purchase Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1899,7 +1889,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,9309,OnAfterActionEvent,Action5272720)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page9309_ActionFuÃ¡text"@5272836(VAR Rec@5272720 : Record "Purchase Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9309_ActionFuátext"@5272836(VAR Rec@5272720 : Record "Purchase Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1919,7 +1909,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,9310,OnAfterActionEvent,Action5272720)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page9310_ActionFuÃ¡text"@5272838(VAR Rec@5272720 : Record "Purchase Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9310_ActionFuátext"@5272838(VAR Rec@5272720 : Record "Purchase Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1939,7 +1929,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,9311,OnAfterActionEvent,Action5272720)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page9311_ActionFuÃ¡text"@5272840(VAR Rec@5272720 : Record "Purchase Header");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9311_ActionFuátext"@5272840(VAR Rec@5272720 : Record "Purchase Header");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1959,7 +1949,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,9346,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page9346_ActionFuÃ¡text"@5272842(VAR Rec@5272720 : Record "Purchase Header Archive");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9346_ActionFuátext"@5272842(VAR Rec@5272720 : Record "Purchase Header Archive");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1979,7 +1969,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,9347,OnAfterActionEvent,Action5272721)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page9347_ActionFuÃ¡text"@5272844(VAR Rec@5272720 : Record "Purchase Header Archive");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9347_ActionFuátext"@5272844(VAR Rec@5272720 : Record "Purchase Header Archive");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -1999,7 +1989,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,9348,OnAfterActionEvent,Action5272720)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page9348_ActionFuÃ¡text"@5272759(VAR Rec@5272720 : Record "Sales Header Archive");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9348_ActionFuátext"@5272759(VAR Rec@5272720 : Record "Sales Header Archive");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -2019,7 +2009,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,9349,OnAfterActionEvent,Action5272720)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page9349_ActionFuÃ¡text"@5272761(VAR Rec@5272720 : Record "Sales Header Archive");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page9349_ActionFuátext"@5272761(VAR Rec@5272720 : Record "Sales Header Archive");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -2039,7 +2029,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,35580,OnAfterActionEvent,Action5272722)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page35580_ActionFuÃ¡text"@5272774(VAR Rec@5272720 : Record "Sales Header Archive");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page35580_ActionFuátext"@5272774(VAR Rec@5272720 : Record "Sales Header Archive");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
@@ -2059,7 +2049,7 @@ OBJECT Codeunit 5272721 LeBit Corresp. Doc. Subscriber
     END;
 
     [EventSubscriber(Page,35581,OnAfterActionEvent,Action5272720)]
-    LOCAL PROCEDURE "OnAfterActionEvent_Page35581_ActionFuÃ¡text"@5272846(VAR Rec@5272720 : Record "Purchase Header Archive");
+    LOCAL PROCEDURE "OnAfterActionEvent_Page35581_ActionFuátext"@5272846(VAR Rec@5272720 : Record "Purchase Header Archive");
     VAR
       SourceRecRef@5272723 : RecordRef;
       Position@5272722 : 'Header,Footer,Longtext';
