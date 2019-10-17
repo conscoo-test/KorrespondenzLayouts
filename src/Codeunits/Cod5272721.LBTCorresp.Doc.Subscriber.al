@@ -1,5 +1,15 @@
 codeunit 5272721 "LBT Corresp. Doc. Subscriber"
 {
+    Permissions = TableData 111 = m;
+    Permissions = TableData 113 = m;
+    Permissions = TableData 115 = m;
+    Permissions = TableData 6661 = m;
+    Permissions = TableData 5108 = m;
+    Permissions = TableData 121 = m;
+    Permissions = TableData 123 = m;
+    Permissions = TableData 125 = m;
+    Permissions = TableData 6651 = m;
+    Permissions = TableData 5110 = m;
     trigger OnRun()
     begin
     end;
