@@ -1,4 +1,4 @@
-page 5272724 "LBT Wizard"
+page 5272724 "lbt Wizard"
 {
     PageType = NavigatePage;
     Caption = 'LIS365 Setup', Comment = 'DEU="LIS365-Belegset Einrichtung"';
@@ -51,7 +51,7 @@ page 5272724 "LBT Wizard"
                 {
                     Caption = 'Lets go', Comment = 'DEU="Los gehts"';
 
-                    group(Next)
+                    group("Next")
                     {
                         Caption = '';
                         InstructionalText = 'Choose Next so you can set up.',
@@ -172,14 +172,14 @@ page 5272724 "LBT Wizard"
                     field(SalesLogoPosition; SalesLogoPosition)
                     {
                         ApplicationArea = All;
-                        ToolTip = 'Defines the logo position on the Sales documents', comment = 'DEU="Legt die Logopostion auf den Verkaufsbelegen fest"';
+                        ToolTip = 'Defines the logo position on the Sales documents', comment = 'DEU="Legt die Logoposition auf den Verkaufsbelegen fest"';
                         Caption = 'Logoposition on Sales Documents', Comment = 'DEU="Logoposition auf Verkaufsbelegen"';
                         OptionCaption = 'No Logo,Left,Center,Right', Comment = 'DEU="Kein Logo,Links,Mitte,Rechts"';
                     }
                     field(PurchaseLogoPosition; PurchaseLogoPosition)
                     {
                         ApplicationArea = All;
-                        ToolTip = 'Defines the logo position on the Purchase documents', comment = 'DEU="Legt die Logopostion auf den Einkaufsbelegen fest"';
+                        ToolTip = 'Defines the logo position on the Purchase documents', comment = 'DEU="Legt die Logoposition auf den Einkaufsbelegen fest"';
                         Caption = 'Logoposition on Purchase Documents', Comment = 'DEU="Logoposition auf Einkaufsbelegen"';
                         OptionCaption = 'No Logo,Left,Center,Right', Comment = 'DEU="Kein Logo,Links,Mitte,Rechts"';
                     }
@@ -371,19 +371,24 @@ page 5272724 "LBT Wizard"
 
     trigger OnQueryClosePage(CloseAction: Action): Boolean
     var
-        AssistedSetup: Codeunit "LBT AssistedSetup";
+        lbtAssistedSetup: Codeunit "LBT AssistedSetup";
+        AssistedSetup: Codeunit "Assisted Setup";
     begin
         if CloseAction = Action::OK then
-            if not AssistedSetup.IsComplete() then
+            if not AssistedSetup.IsComplete(lbtAssistedSetup.GetAppId(), Page::"LBT Wizard") then
                 if not Confirm(FinishWhenNotCompleteQst, false) then
                     Error('');
     end;
 
     local procedure Finish()
+    var
+        lbtAssistedSetup: Codeunit "lbt AssistedSetup";
+        AssistedSetup: Codeunit "Assisted Setup";
     begin
         "LBT Setup finished" := true;
         Modify();
         Commit();
+        AssistedSetup.Complete(lbtAssistedSetup.GetAppId(), Page::"LBT Wizard");
         CurrPage.Close();
     end;
 

@@ -1,4 +1,4 @@
-report 5272724 "LBT Sales - Shipment"
+report 5272724 "lbt Sales - Shipment"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './src/Reports/Rep5272724.LBTSales-Shipment.rdlc';
@@ -10,7 +10,7 @@ report 5272724 "LBT Sales - Shipment"
     {
         dataitem("Sales Shipment Header"; "Sales Shipment Header")
         {
-            DataItemTableView = SORTING ("No.");
+            DataItemTableView = SORTING("No.");
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
             RequestFilterHeading = 'Posted Sales Shipment';
             column(No_SalesShptHeader; "No.")
@@ -21,10 +21,10 @@ report 5272724 "LBT Sales - Shipment"
             }
             dataitem(CopyLoop; "Integer")
             {
-                DataItemTableView = SORTING (Number);
+                DataItemTableView = SORTING(Number);
                 dataitem(PageLoop; "Integer")
                 {
-                    DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                    DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                     column(CompanyInfo2Picture; CompanyInfo2.Picture)
                     {
                     }
@@ -264,9 +264,9 @@ report 5272724 "LBT Sales - Shipment"
                     }
                     dataitem(LBKopf; "LBT Posted PS Longtext Line")
                     {
-                        DataItemLink = "Document No." = FIELD ("No.");
+                        DataItemLink = "Document No." = FIELD("No.");
                         DataItemLinkReference = "Sales Shipment Header";
-                        DataItemTableView = SORTING ("Table ID", "Document No.", Position, "Document Line No.", "Line No.") WHERE ("Table ID" = CONST (110), Position = FILTER (Header));
+                        DataItemTableView = SORTING("Table ID", "Document No.", Position, "Document Line No.", "Line No.") WHERE("Table ID" = CONST(110), Position = FILTER(Header));
 
                         trigger OnAfterGetRecord()
                         begin
@@ -280,7 +280,7 @@ report 5272724 "LBT Sales - Shipment"
                     }
                     dataitem(TempLBKopf; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(LBKopf_LineNo; FORMAT(TempLeBitPostedPSLongtextLine."Line No."))
                         {
                         }
@@ -331,7 +331,7 @@ report 5272724 "LBT Sales - Shipment"
                     dataitem(DimensionLoop1; "Integer")
                     {
                         DataItemLinkReference = "Sales Shipment Header";
-                        DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
+                        DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
                         column(DimText; DimText)
                         {
                         }
@@ -378,9 +378,9 @@ report 5272724 "LBT Sales - Shipment"
                     }
                     dataitem("Sales Shipment Line"; "Sales Shipment Line")
                     {
-                        DataItemLink = "Document No." = FIELD ("No.");
+                        DataItemLink = "Document No." = FIELD("No.");
                         DataItemLinkReference = "Sales Shipment Header";
-                        DataItemTableView = SORTING ("Document No.", "Line No.");
+                        DataItemTableView = SORTING("Document No.", "Line No.");
                         column(Description_SalesShptLine; Description)
                         {
                         }
@@ -420,7 +420,7 @@ report 5272724 "LBT Sales - Shipment"
                         column(No_SalesShptLineCaption; FIELDCAPTION("No."))
                         {
                         }
-                        column(Item_Picture; TempBlob.Blob)
+                        column(Item_Picture; Item.Picture)
                         {
                         }
                         column(ItemPictureExist; ItemPictureExist)
@@ -446,7 +446,7 @@ report 5272724 "LBT Sales - Shipment"
                         }
                         dataitem(ParameterAndUnits; "Integer")
                         {
-                            DataItemTableView = SORTING (Number);
+                            DataItemTableView = SORTING(Number);
                             column(RowNumber; Number)
                             {
                             }
@@ -470,9 +470,9 @@ report 5272724 "LBT Sales - Shipment"
                         }
                         dataitem(LBLang; "LBT Posted PS Longtext Line")
                         {
-                            DataItemLink = "Document No." = FIELD ("Document No."), "Document Line No." = FIELD ("Line No.");
+                            DataItemLink = "Document No." = FIELD("Document No."), "Document Line No." = FIELD("Line No.");
                             DataItemLinkReference = "Sales Shipment Line";
-                            DataItemTableView = SORTING ("Table ID", "Document No.", Position, "Document Line No.", "Line No.") WHERE ("Table ID" = CONST (111), Position = FILTER (Longtext));
+                            DataItemTableView = SORTING("Table ID", "Document No.", Position, "Document Line No.", "Line No.") WHERE("Table ID" = CONST(111), Position = FILTER(Longtext));
 
                             trigger OnAfterGetRecord()
                             begin
@@ -486,7 +486,7 @@ report 5272724 "LBT Sales - Shipment"
                         }
                         dataitem(TempLBLang; "Integer")
                         {
-                            DataItemTableView = SORTING (Number);
+                            DataItemTableView = SORTING(Number);
                             column(LBLang_LineNo; FORMAT(TempLeBitPostedPSLongtextLine."Line No."))
                             {
                             }
@@ -536,7 +536,7 @@ report 5272724 "LBT Sales - Shipment"
                         }
                         dataitem(DimensionLoop2; "Integer")
                         {
-                            DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
+                            DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
                             column(DimText1; DimText)
                             {
                             }
@@ -580,7 +580,7 @@ report 5272724 "LBT Sales - Shipment"
                         }
                         dataitem(DisplayAsmInfo; "Integer")
                         {
-                            DataItemTableView = SORTING (Number);
+                            DataItemTableView = SORTING(Number);
                             column(PostedAsmLineItemNo; BlanksForIndent + PostedAsmLine."No.")
                             {
                             }
@@ -654,7 +654,7 @@ report 5272724 "LBT Sales - Shipment"
 
                             if Type = Type::Item then begin
                                 Item.GET("No.");
-                                ItemPictureExist := GetFirstMediaFromSet(Item.Picture.MEDIAID, TempBlob);
+                                ItemPictureExist := Item.Picture.Count > 0;
                                 if not ItemPicturePrint then
                                     ItemPictureExist := false;
                                 TxtVar := CurrReport.OBJECTID(false);
@@ -722,11 +722,11 @@ report 5272724 "LBT Sales - Shipment"
                     }
                     dataitem(Total; "Integer")
                     {
-                        DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                     }
                     dataitem(Total2; "Integer")
                     {
-                        DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                         column(BilltoCustNo_SalesShptHeader; "Sales Shipment Header"."Bill-to Customer No.")
                         {
                         }
@@ -769,7 +769,7 @@ report 5272724 "LBT Sales - Shipment"
                     }
                     dataitem(ItemTrackingLine; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(TrackingSpecBufferNo; TrackingSpecBuffer."Item No.")
                         {
                         }
@@ -808,7 +808,7 @@ report 5272724 "LBT Sales - Shipment"
                         }
                         dataitem(TotalItemTracking; "Integer")
                         {
-                            DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                            DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                             column(Quantity1; TotalQty)
                             {
                             }
@@ -853,9 +853,9 @@ report 5272724 "LBT Sales - Shipment"
                     }
                     dataitem(LBFuss; "LBT Posted PS Longtext Line")
                     {
-                        DataItemLink = "Document No." = FIELD ("No.");
+                        DataItemLink = "Document No." = FIELD("No.");
                         DataItemLinkReference = "Sales Shipment Header";
-                        DataItemTableView = SORTING ("Table ID", "Document No.", Position, "Document Line No.", "Line No.") WHERE ("Table ID" = CONST (110), Position = FILTER (Footer));
+                        DataItemTableView = SORTING("Table ID", "Document No.", Position, "Document Line No.", "Line No.") WHERE("Table ID" = CONST(110), Position = FILTER(Footer));
 
                         trigger OnAfterGetRecord()
                         begin
@@ -869,7 +869,7 @@ report 5272724 "LBT Sales - Shipment"
                     }
                     dataitem(TempLBFuss; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(LBFuss_LineNo; FORMAT(TempLeBitPostedPSLongtextLine."Line No."))
                         {
                         }
@@ -1071,12 +1071,12 @@ report 5272724 "LBT Sales - Shipment"
         SalesSetup: Record "Sales & Receivables Setup";
         DimSetEntry1: Record "Dimension Set Entry";
         DimSetEntry2: Record "Dimension Set Entry";
-        Language: Record Language;
         TrackingSpecBuffer: Record "Tracking Specification" temporary;
         PostedAsmHeader: Record "Posted Assembly Header";
         PostedAsmLine: Record "Posted Assembly Line";
         RespCenter: Record "Responsibility Center";
         ItemTrackingAppendix: Report "Item Tracking Appendix";
+        Language: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
         SegManagement: Codeunit SegManagement;
@@ -1163,7 +1163,6 @@ report 5272724 "LBT Sales - Shipment"
         HideCompanyInfo: Boolean;
         NewPageGroup: Integer;
         Item: Record Item;
-        TempBlob: Record TempBlob;
         ItemPictureExist: Boolean;
         ItemPicturePrint: Boolean;
         LBKopf_Description: Text;
@@ -1316,24 +1315,6 @@ report 5272724 "LBT Sales - Shipment"
             TempLeBitPostedPSLongtextLine.Type := TempLeBitPostedPSLongtextLine.Type::Text;
             TempLeBitPostedPSLongtextLine.INSERT;
         end;
-    end;
-
-    local procedure GetFirstMediaFromSet(MediaSetID: Guid; var TempBlob: Record TempBlob): Boolean
-    var
-        TenantMediaSet: Record "Tenant Media Set";
-        OStream: OutStream;
-    begin
-        CLEAR(TempBlob);
-        TenantMediaSet.SETRANGE(ID, MediaSetID);
-
-        if TenantMediaSet.FINDFIRST then begin
-            TempBlob.Blob.CREATEOUTSTREAM(OStream);
-            TenantMediaSet."Media ID".EXPORTSTREAM(OStream);
-
-            exit(true);
-        end;
-
-        exit(false);
     end;
 }
 

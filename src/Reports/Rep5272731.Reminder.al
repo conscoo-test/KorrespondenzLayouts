@@ -1,4 +1,4 @@
-report 5272731 "LBT Reminder"
+report 5272731 "lbt Reminder"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './src/Reports/Rep5272731.LBTReminder.rdlc';
@@ -8,7 +8,7 @@ report 5272731 "LBT Reminder"
     {
         dataitem("Issued Reminder Header"; "Issued Reminder Header")
         {
-            DataItemTableView = SORTING ("No.");
+            DataItemTableView = SORTING("No.");
             RequestFilterFields = "No.";
             RequestFilterHeading = 'Reminder';
             column(No_IssuedReminderHeader; "No.")
@@ -58,7 +58,7 @@ report 5272731 "LBT Reminder"
             }
             dataitem("Integer"; "Integer")
             {
-                DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                 column(CompanyInfo1Picture; CompanyInfo1.Picture)
                 {
                 }
@@ -272,7 +272,7 @@ report 5272731 "LBT Reminder"
                 dataitem(DimensionLoop; "Integer")
                 {
                     DataItemLinkReference = "Issued Reminder Header";
-                    DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
+                    DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
                     column(DimText; DimText)
                     {
                     }
@@ -319,9 +319,9 @@ report 5272731 "LBT Reminder"
                 }
                 dataitem("Issued Reminder Line"; "Issued Reminder Line")
                 {
-                    DataItemLink = "Reminder No." = FIELD ("No.");
+                    DataItemLink = "Reminder No." = FIELD("No.");
                     DataItemLinkReference = "Issued Reminder Header";
-                    DataItemTableView = SORTING ("Reminder No.", "Line No.");
+                    DataItemTableView = SORTING("Reminder No.", "Line No.");
                     column(RemainingAmt_IssuedReminderLine; "Remaining Amount")
                     {
                         AutoFormatExpression = "Issued Reminder Line".GetCurrencyCodeFromHeader;
@@ -454,9 +454,9 @@ report 5272731 "LBT Reminder"
                 }
                 dataitem(IssuedReminderLine2; "Issued Reminder Line")
                 {
-                    DataItemLink = "Reminder No." = FIELD ("No.");
+                    DataItemLink = "Reminder No." = FIELD("No.");
                     DataItemLinkReference = "Issued Reminder Header";
-                    DataItemTableView = SORTING ("Reminder No.", "Line No.");
+                    DataItemTableView = SORTING("Reminder No.", "Line No.");
                     column(Description_IssuedReminderLine2; Description)
                     {
                     }
@@ -482,7 +482,7 @@ report 5272731 "LBT Reminder"
                 }
                 dataitem(VATCounter; "Integer")
                 {
-                    DataItemTableView = SORTING (Number);
+                    DataItemTableView = SORTING(Number);
                     column(VATAmtLineAmtInclVAT; VATAmountLine."Amount Including VAT")
                     {
                         AutoFormatExpression = "Issued Reminder Line".GetCurrencyCodeFromHeader;
@@ -536,7 +536,7 @@ report 5272731 "LBT Reminder"
                 }
                 dataitem(VATClauseEntryCounter; "Integer")
                 {
-                    DataItemTableView = SORTING (Number);
+                    DataItemTableView = SORTING(Number);
                     column(VATClauseVATIdentifier; VATAmountLine."VAT Identifier")
                     {
                     }
@@ -580,7 +580,7 @@ report 5272731 "LBT Reminder"
                 }
                 dataitem(VATCounterLCY; "Integer")
                 {
-                    DataItemTableView = SORTING (Number);
+                    DataItemTableView = SORTING(Number);
                     column(VALExchRate; VALExchRate)
                     {
                     }
@@ -822,8 +822,8 @@ report 5272731 "LBT Reminder"
         VATAmountLine: Record "VAT Amount Line" temporary;
         VATClause: Record "VAT Clause";
         DimSetEntry: Record "Dimension Set Entry";
-        Language: Record Language;
         CurrExchRate: Record "Currency Exchange Rate";
+        Language: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         SegManagement: Codeunit SegManagement;
         CustAddr: array[8] of Text[50];
