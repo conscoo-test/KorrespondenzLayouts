@@ -1323,8 +1323,6 @@ report 5272722 "lbt Sales - Invoice"
 
             trigger OnAfterGetRecord()
             begin
-                CurrReport.LANGUAGE := Language.GetLanguageID("Language Code");
-
                 FormatAddressFields("Sales Invoice Header");
                 FormatDocumentFields("Sales Invoice Header");
 

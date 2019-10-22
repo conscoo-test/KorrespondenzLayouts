@@ -1179,8 +1179,6 @@ report 5272723 "lbt Sales - Credit Memo"
 
             trigger OnAfterGetRecord()
             begin
-                CurrReport.LANGUAGE := Language.GetLanguageID("Language Code");
-
                 FormatAddressFields("Sales Cr.Memo Header");
                 FormatDocumentFields("Sales Cr.Memo Header");
 
@@ -1295,7 +1293,6 @@ report 5272723 "lbt Sales - Credit Memo"
         DimSetEntry2: Record "Dimension Set Entry";
         SalesShipmentBuffer: Record "Sales Shipment Buffer" temporary;
         CurrExchRate: Record "Currency Exchange Rate";
-        Language: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
         SegManagement: Codeunit SegManagement;

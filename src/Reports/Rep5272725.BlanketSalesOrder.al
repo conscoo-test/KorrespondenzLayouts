@@ -1288,8 +1288,6 @@ report 5272725 "lbt Blanket Sales Order"
 
             trigger OnAfterGetRecord()
             begin
-                CurrReport.LANGUAGE := Language.GetLanguageID("Language Code");
-
                 FormatAddressFields("Sales Header");
                 FormatDocumentFields("Sales Header");
 
@@ -1492,7 +1490,6 @@ report 5272725 "lbt Blanket Sales Order"
         DimSetEntry2: Record "Dimension Set Entry";
         RespCenter: Record "Responsibility Center";
         CurrExchRate: Record "Currency Exchange Rate";
-        Language: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
         SegManagement: Codeunit SegManagement;

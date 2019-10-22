@@ -1697,8 +1697,6 @@ report 5272721 "lbt Order Confirmation"
 
             trigger OnAfterGetRecord()
             begin
-                CurrReport.LANGUAGE := Language.GetLanguageID("Language Code");
-
                 FormatAddressFields("Sales Header");
                 FormatDocumentFields("Sales Header");
 
@@ -1873,7 +1871,6 @@ report 5272721 "lbt Order Confirmation"
         CurrExchRate: Record "Currency Exchange Rate";
         AsmHeader: Record "Assembly Header";
         AsmLine: Record "Assembly Line";
-        Language: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         SegManagement: Codeunit SegManagement;
         ArchiveManagement: Codeunit ArchiveManagement;
