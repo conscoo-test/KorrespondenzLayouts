@@ -1,17 +1,17 @@
-report 5272727 "LBT Purchase - Quote"
+report 5272729 "lbt Blanket Purchase Order"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './src/Reports/Rep5272727.LBTPurchase-Quote.rdlc';
-    Caption = 'Purchase - Quote', comment = 'DEU="Bestellung - Anfrage"';
+    RDLCLayout = './src/Reports/Rep5272729.LBTBlanketPurchaseOrder.rdlc';
+    Caption = 'Blanket Purchase Order', Comment = 'DEU="Einkauf Rahmenbestellung"';
     PreviewMode = PrintLayout;
 
     dataset
     {
         dataitem("Purchase Header"; "Purchase Header")
         {
-            DataItemTableView = SORTING ("Document Type", "No.") WHERE ("Document Type" = CONST (Quote));
+            DataItemTableView = SORTING("Document Type", "No.") WHERE("Document Type" = CONST("Blanket Order"));
             RequestFilterFields = "No.", "Buy-from Vendor No.", "No. Printed";
-            RequestFilterHeading = 'Purchase Quote';
+            RequestFilterHeading = 'Blanket Purchase Order';
             column(DocType_PurchHead; "Document Type")
             {
             }
@@ -20,10 +20,10 @@ report 5272727 "LBT Purchase - Quote"
             }
             dataitem(CopyLoop; "Integer")
             {
-                DataItemTableView = SORTING (Number);
+                DataItemTableView = SORTING(Number);
                 dataitem(PageLoop; "Integer")
                 {
-                    DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                    DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                     column(CompanyInfo2Picture; CompanyInfo2.Picture)
                     {
                     }
@@ -171,7 +171,7 @@ report 5272727 "LBT Purchase - Quote"
                     column(Expected_DateCaption; Expected_DateCaptionLbl)
                     {
                     }
-                    column(Quote_No_Caption; Quote_No_CaptionLbl)
+                    column(Blanket_Purchase_Order_No_Caption; Blanket_Purchase_Order_No_CaptionLbl)
                     {
                     }
                     column(CompanyInfo__VAT_Registration_No__Caption; CompanyInfo__VAT_Registration_No__CaptionLbl)
@@ -255,7 +255,7 @@ report 5272727 "LBT Purchase - Quote"
                     dataitem(DimensionLoop1; "Integer")
                     {
                         DataItemLinkReference = "Purchase Header";
-                        DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
+                        DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
                         column(DimText; DimText)
                         {
                         }
@@ -305,9 +305,9 @@ report 5272727 "LBT Purchase - Quote"
                     }
                     dataitem(LBKopf; "LBT PS Longtext Line")
                     {
-                        DataItemLink = "Document No." = FIELD ("No."), "Document Type" = FIELD ("Document Type");
+                        DataItemLink = "Document No." = FIELD("No."), "Document Type" = FIELD("Document Type");
                         DataItemLinkReference = "Purchase Header";
-                        DataItemTableView = SORTING ("Table ID", "Document Type", "Document No.", Position, "Document Line No.", "Line No.") ORDER(Ascending) WHERE ("Table ID" = CONST (38), Position = CONST (Header));
+                        DataItemTableView = SORTING("Table ID", "Document Type", "Document No.", Position, "Document Line No.", "Line No.") ORDER(Ascending) WHERE("Table ID" = CONST(38), Position = CONST(Header));
 
                         trigger OnAfterGetRecord()
                         begin
@@ -321,7 +321,7 @@ report 5272727 "LBT Purchase - Quote"
                     }
                     dataitem(TempLBKopf; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(LBKopf_LineNo; FORMAT(TempLeBitPSLongtextLine."Line No."))
                         {
                         }
@@ -374,9 +374,9 @@ report 5272727 "LBT Purchase - Quote"
                     }
                     dataitem("Purchase Line"; "Purchase Line")
                     {
-                        DataItemLink = "Document Type" = FIELD ("Document Type"), "Document No." = FIELD ("No.");
+                        DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("No.");
                         DataItemLinkReference = "Purchase Header";
-                        DataItemTableView = SORTING ("Document Type", "Document No.", "Line No.");
+                        DataItemTableView = SORTING("Document Type", "Document No.", "Line No.");
 
                         trigger OnPreDataItem()
                         begin
@@ -385,7 +385,7 @@ report 5272727 "LBT Purchase - Quote"
                     }
                     dataitem(RoundLoop; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(ShowInternalInfo; ShowInternalInfo)
                         {
                         }
@@ -461,7 +461,7 @@ report 5272727 "LBT Purchase - Quote"
                         column(ItemUnitDescription; ItemUnitDescription)
                         {
                         }
-                        column(Item_Picture; TempBlob.Blob)
+                        column(Item_Picture; Item.Picture)
                         {
                         }
                         column(ItemPictureExist; ItemPictureExist)
@@ -469,7 +469,7 @@ report 5272727 "LBT Purchase - Quote"
                         }
                         dataitem(ParameterAndUnits; "Integer")
                         {
-                            DataItemTableView = SORTING (Number);
+                            DataItemTableView = SORTING(Number);
                             column(RowNumber; Number)
                             {
                             }
@@ -493,9 +493,9 @@ report 5272727 "LBT Purchase - Quote"
                         }
                         dataitem(LBLang; "LBT PS Longtext Line")
                         {
-                            DataItemLink = "Document Type" = FIELD ("Document Type"), "Document No." = FIELD ("Document No."), "Document Line No." = FIELD ("Line No.");
+                            DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("Document No."), "Document Line No." = FIELD("Line No.");
                             DataItemLinkReference = "Purchase Line";
-                            DataItemTableView = SORTING ("Table ID", "Document Type", "Document No.", Position, "Document Line No.", "Line No.") ORDER(Ascending) WHERE ("Table ID" = CONST (39), Position = CONST (Longtext));
+                            DataItemTableView = SORTING("Table ID", "Document Type", "Document No.", Position, "Document Line No.", "Line No.") ORDER(Ascending) WHERE("Table ID" = CONST(39), Position = CONST(Longtext));
 
                             trigger OnAfterGetRecord()
                             begin
@@ -509,7 +509,7 @@ report 5272727 "LBT Purchase - Quote"
                         }
                         dataitem(TempLBLang; "Integer")
                         {
-                            DataItemTableView = SORTING (Number);
+                            DataItemTableView = SORTING(Number);
                             column(LBLang_LineNo; FORMAT(TempLeBitPSLongtextLine."Line No."))
                             {
                             }
@@ -559,7 +559,7 @@ report 5272727 "LBT Purchase - Quote"
                         }
                         dataitem(DimensionLoop2; "Integer")
                         {
-                            DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
+                            DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
                             column(DimText1; DimText)
                             {
                             }
@@ -640,7 +640,7 @@ report 5272727 "LBT Purchase - Quote"
                             PurchLine.CALCFIELDS("LBT Balance");
                             if PurchLine.Type = PurchLine.Type::Item then begin
                                 Item.GET(PurchLine."No.");
-                                ItemPictureExist := GetFirstMediaFromSet(Item.Picture.MEDIAID, TempBlob);
+                                ItemPictureExist := Item.Picture.Count > 0;
                                 if not ItemPicturePrint then
                                     ItemPictureExist := false;
                                 TxtVar := CurrReport.OBJECTID(false);
@@ -701,6 +701,7 @@ report 5272727 "LBT Purchase - Quote"
                                 else
                                     InfoRowNo := 0;
                             end;
+
                         end;
 
                         trigger OnPostDataItem()
@@ -724,7 +725,7 @@ report 5272727 "LBT Purchase - Quote"
                     }
                     dataitem(Total; "Integer")
                     {
-                        DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                         column(ShipmentMethod_Description; ShipmentMethod.Description)
                         {
                         }
@@ -737,7 +738,7 @@ report 5272727 "LBT Purchase - Quote"
                     }
                     dataitem(Total2; "Integer")
                     {
-                        DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                         column(Purchase_Header___Buy_from_Vendor_No__; "Purchase Header"."Buy-from Vendor No.")
                         {
                         }
@@ -756,7 +757,7 @@ report 5272727 "LBT Purchase - Quote"
                     }
                     dataitem(Total3; "Integer")
                     {
-                        DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                         column(SelltoCustNo_PurchHdr; "Purchase Header"."Sell-to Customer No.")
                         {
                         }
@@ -802,9 +803,9 @@ report 5272727 "LBT Purchase - Quote"
                     }
                     dataitem(LBFuss; "LBT PS Longtext Line")
                     {
-                        DataItemLink = "Document Type" = FIELD ("Document Type"), "Document No." = FIELD ("No.");
+                        DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("No.");
                         DataItemLinkReference = "Purchase Header";
-                        DataItemTableView = SORTING ("Table ID", "Document Type", "Document No.", Position, "Document Line No.", "Line No.") ORDER(Ascending) WHERE ("Table ID" = CONST (38), Position = CONST (Footer));
+                        DataItemTableView = SORTING("Table ID", "Document Type", "Document No.", Position, "Document Line No.", "Line No.") ORDER(Ascending) WHERE("Table ID" = CONST(38), Position = CONST(Footer));
 
                         trigger OnAfterGetRecord()
                         begin
@@ -818,7 +819,7 @@ report 5272727 "LBT Purchase - Quote"
                     }
                     dataitem(TempLBFuss; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(LBFuss_LineNo; FORMAT(TempLeBitPSLongtextLine."Line No."))
                         {
                         }
@@ -879,6 +880,7 @@ report 5272727 "LBT Purchase - Quote"
                         CopyText := FormatDocument.GetCOPYText;
                         OutputNo += 1;
                     end;
+
                 end;
 
                 trigger OnPostDataItem()
@@ -939,7 +941,7 @@ report 5272727 "LBT Purchase - Quote"
                     }
                     field(ShowInternalInfo; ShowInternalInfo)
                     {
-                        Caption = 'Show Internal Information', Comment = 'DEU="Interne Informationen anzeigen"';
+                        Caption = 'Show Internal Information', Comment = 'DEU="Show Internal Information"';
                         ToolTip = 'Specifies if the document shows internal information.', comment = 'DEU="Legt fest ob vorhandene Dimensionswerte mit ausgedruckt werden sollen"';
                     }
                     field(ArchiveDocument; ArchiveDocument)
@@ -968,13 +970,12 @@ report 5272727 "LBT Purchase - Quote"
                     field(HideCompanyInfo; HideCompanyInfo)
                     {
                         Caption = 'Hide Company Info', Comment = 'DEU="Firmendaten ausblenden"';
-                        ToolTip = 'Specifies that the company data is to be "hidden" for printing', comment = 'DEU="Hiermit können Sie die Firmendaten für den Druck ausblenden"';
-
+                        ToolTip = ' Specifies that the company data is to be "hidden" for printing', comment = 'DEU="Hiermit können Sie die Firmendaten für den Druck ausblenden"';
                     }
                     field(ItemPicturePrint; ItemPicturePrint)
                     {
                         Caption = 'Print Item Picture', Comment = 'DEU="Artikelbilder drucken"';
-                        ToolTip = 'Specifies that the images are printed ', comment = 'DEU="Legt fest ob Artikelbilder mit ausgedruckt werden"';
+                        ToolTip = 'Specifies that the article images are printed ', comment = 'DEU="Legt fest ob Artikelbilder mit ausgedruckt werden"';
                     }
                 }
             }
@@ -991,12 +992,7 @@ report 5272727 "LBT Purchase - Quote"
 
         trigger OnOpenPage()
         begin
-            case PurchSetup."Archive Quotes" of
-                PurchSetup."Archive Quotes"::Never:
-                    ArchiveDocument := false;
-                PurchSetup."Archive Quotes"::Always:
-                    ArchiveDocument := true;
-            end;
+            ArchiveDocument := PurchSetup."Archive Blanket Orders";
             LogInteraction := SegManagement.FindInteractTmplCode(11) <> '';
 
             LogInteractionEnable := LogInteraction;
@@ -1015,7 +1011,7 @@ report 5272727 "LBT Purchase - Quote"
     end;
 
     var
-        Text002: Label 'Purchase - Quote %1', Comment = 'DEU="Einkauf - Anfrage %1"';
+        Text002: Label 'Blanket Purchase Order %1', Comment = 'DEU="Einkauf Rahmenbestellung %1"';
         Text003: Label 'Page %1', Comment = 'DEU="Seite %1"';
         ShipmentMethod: Record "Shipment Method";
         SalesPurchPerson: Record "Salesperson/Purchaser";
@@ -1024,8 +1020,8 @@ report 5272727 "LBT Purchase - Quote"
         DimSetEntry1: Record "Dimension Set Entry";
         DimSetEntry2: Record "Dimension Set Entry";
         RespCenter: Record "Responsibility Center";
-        Language: Record Language;
         PurchSetup: Record "Purchases & Payables Setup";
+        Language: Codeunit Language;
         PurchPost: Codeunit "Purch.-Post";
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
@@ -1059,8 +1055,8 @@ report 5272727 "LBT Purchase - Quote"
         CompanyInfo__Bank_Name_CaptionLbl: Label 'Bank', Comment = 'DEU="Bankkonto"';
         CompanyInfo__Bank_Account_No__CaptionLbl: Label 'Account No.', Comment = 'DEU="Kontonr."';
         Expected_DateCaptionLbl: Label 'Expected Date', Comment = 'DEU="Erwartetes Datum"';
-        Quote_No_CaptionLbl: Label 'Quote No.', Comment = 'DEU="Angebotsnr."';
-        Header_DimensionsCaptionLbl: Label 'Header Dimensions', Comment = 'DEU=""';
+        Blanket_Purchase_Order_No_CaptionLbl: Label 'Blanket Purchase Order No.', Comment = 'DEU="Einkauf Rahmenbestellung Nr."';
+        Header_DimensionsCaptionLbl: Label 'Header Dimensions', Comment = 'DEU="Kopfdimensionen"';
         Purchase_Line___Expected_Receipt_Date__CaptionLbl: Label 'Expected Date', Comment = 'DEU="Erwartetes Datum"';
         Purchase_Line___No__CaptionLbl: Label 'Our No.', Comment = 'DEU="Unsere Nr."';
         Purchase_Line___Vendor_Item_No__CaptionLbl: Label 'No.', Comment = 'DEU="Nr."';
@@ -1082,7 +1078,6 @@ report 5272727 "LBT Purchase - Quote"
         HideCompanyInfo: Boolean;
         NewPageGroup: Integer;
         Item: Record Item;
-        TempBlob: Record TempBlob;
         ItemPictureExist: Boolean;
         ItemPicturePrint: Boolean;
         LBKopf_Description: Text;
@@ -1094,10 +1089,10 @@ report 5272727 "LBT Purchase - Quote"
         CompanyInfo1: Record "Company Information";
         CompanyInfo2: Record "Company Information";
         CompanyInfo3: Record "Company Information";
-        DocCaptionLbl: Label 'Quote %1', Comment = 'DEU="Angebotnr. %1"';
+        DocCaptionLbl: Label 'Blanket Purchase Order %1', Comment = 'DEU="Einkauf Rahmenbestellung Nr."';
         PagefromPageCaptionLbl: Label 'Page %1 of %2', Comment = 'DEU="Seite %1 von %2"';
         PageCaptionLbl: Label 'Page %1', Comment = 'DEU="Seite %1"';
-        NoCaptionLbl: Label 'No.', Comment = 'DEU="Nr. "';
+        NoCaptionLbl: Label 'No.', Comment = 'DEU="Nr."';
         FromCaptionLbl: Label 'from', Comment = 'DEU="vom"';
         Bill_to_Customer_No__CaptionLbl: Label 'Customer ID', Comment = 'DEU="Kunden-Nr."';
         DatumCaptionLbl: Label 'Date', Comment = 'DEU="Datum"';
@@ -1110,10 +1105,10 @@ report 5272727 "LBT Purchase - Quote"
         CompanyInfo_IBAN_Caption_Lbl: Label 'IBAN', Comment = 'DEU="IBAN"';
         CompanyInfo__SWIFT_Code_Caption_Lbl: Label 'SWIFT-BIC', Comment = 'DEU="SWIFT-BIC"';
         PurchPersonText_Caption: Label 'Salesperson', Comment = 'DEU="Bearbeiter"';
-        CompanyInfo_E_Mail_Caption_Lbl: Label 'Mail:', Comment = 'DEU="E-Mail"';
+        CompanyInfo_E_Mail_Caption_Lbl: Label 'Mail:', Comment = 'DEU="E-Mail:"';
         CompanyInfo__Home_Page_Caption_Lbl: Label 'Homepage:', Comment = 'DEU="Homepage:"';
         FaxNoCaptionLbl: Label 'Telefax no.', Comment = 'DEU="Faxnr."';
-        CarryForwardCaptionLbl: Label 'Carry-forward %1', Comment = 'DEU="Carry-forward %1"';
+        CarryForwardCaptionLbl: Label 'Carry-forward %1', Comment = 'DEU="Übertrag %1"';
         GLSetup: Record "General Ledger Setup";
         SubtotalCaptionLbl: Label 'Subtotal', Comment = 'DEU="Zw.summe"';
         AmountCaptionLbl: Label 'Amount', Comment = 'DEU="Betrag"';
@@ -1270,30 +1265,12 @@ report 5272727 "LBT Purchase - Quote"
         end;
     end;
 
-    local procedure GetFirstMediaFromSet(MediaSetID: Guid; var TempBlob: Record TempBlob): Boolean
-    var
-        TenantMediaSet: Record "Tenant Media Set";
-        OStream: OutStream;
-    begin
-        CLEAR(TempBlob);
-        TenantMediaSet.SETRANGE(ID, MediaSetID);
-
-        if TenantMediaSet.FINDFIRST then begin
-            TempBlob.Blob.CREATEOUTSTREAM(OStream);
-            TenantMediaSet."Media ID".EXPORTSTREAM(OStream);
-
-            exit(true);
-        end;
-
-        exit(false);
-    end;
-
     local procedure GetVendSource()
     var
         TypeVar: Option Sales,Purchase;
         ReportType: Option " ","Sales Quote","Sales Order","Sales Pro Forma Inv","Blanket Sales Order","Purchase Quote","Purchase Order","Blanket Purchase Order";
     begin
-        LeBitReportFunctions.GetSourceType(TypeVar::Purchase, ReportType::"Purchase Quote", VendSource);
+        LeBitReportFunctions.GetSourceType(TypeVar::Purchase, ReportType::"Blanket Purchase Order", VendSource);
     end;
 }
 

@@ -1,29 +1,44 @@
-report 5272729 "LBT Blanket Purchase Order"
+report 5272730 "lbt Return Order"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './src/Reports/Rep5272729.LBTBlanketPurchaseOrder.rdlc';
-    Caption = 'Blanket Purchase Order', Comment = 'DEU="Einkauf Rahmenbestellung"';
+    RDLCLayout = './src/Reports/Rep5272730.LBTReturnOrder.rdlc';
+    Caption = 'Return Order', Comment = 'DEU="Reklamation"';
     PreviewMode = PrintLayout;
 
     dataset
     {
         dataitem("Purchase Header"; "Purchase Header")
         {
-            DataItemTableView = SORTING ("Document Type", "No.") WHERE ("Document Type" = CONST ("Blanket Order"));
+            DataItemTableView = SORTING("Document Type", "No.") WHERE("Document Type" = CONST("Return Order"));
             RequestFilterFields = "No.", "Buy-from Vendor No.", "No. Printed";
-            RequestFilterHeading = 'Blanket Purchase Order';
-            column(DocType_PurchHead; "Document Type")
+            RequestFilterHeading = 'Purchase Return Order';
+            column(Purchase_Header_Document_Type; "Document Type")
             {
             }
-            column(PurchHeadNo; "No.")
+            column(Purchase_Header_No_; "No.")
+            {
+            }
+            column(VATIdentifierCaption1; VATIdentifierCaptionLbl)
+            {
+            }
+            column(VATPctCaption; VATPctCaptionLbl)
+            {
+            }
+            column(VATBaseCaption2; VATBaseCaption2Lbl)
+            {
+            }
+            column(VATAmountCaption; VATAmountCaptionLbl)
+            {
+            }
+            column(TotalCaption1; TotalCaption1Lbl)
             {
             }
             dataitem(CopyLoop; "Integer")
             {
-                DataItemTableView = SORTING (Number);
+                DataItemTableView = SORTING(Number);
                 dataitem(PageLoop; "Integer")
                 {
-                    DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                    DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                     column(CompanyInfo2Picture; CompanyInfo2.Picture)
                     {
                     }
@@ -36,28 +51,28 @@ report 5272729 "LBT Blanket Purchase Order"
                     column(DocumentConfirmCopyCaption; STRSUBSTNO(DocCaptionLbl, CopyText))
                     {
                     }
-                    column(VendAddr1; VendAddr[1])
+                    column(BuyFromAddr1; BuyFromAddr[1])
                     {
                     }
-                    column(VendAddr2; VendAddr[2])
+                    column(BuyFromAddr2; BuyFromAddr[2])
                     {
                     }
-                    column(VendAddr3; VendAddr[3])
+                    column(BuyFromAddr3; BuyFromAddr[3])
                     {
                     }
-                    column(VendAddr4; VendAddr[4])
+                    column(BuyFromAddr4; BuyFromAddr[4])
                     {
                     }
-                    column(VendAddr5; VendAddr[5])
+                    column(BuyFromAddr5; BuyFromAddr[5])
                     {
                     }
-                    column(VendAddr6; VendAddr[6])
+                    column(BuyFromAddr6; BuyFromAddr[6])
                     {
                     }
-                    column(VendAddr7; VendAddr[7])
+                    column(BuyFromAddr7; BuyFromAddr[7])
                     {
                     }
-                    column(VendAddr8; VendAddr[8])
+                    column(BuyFromAddr8; BuyFromAddr[8])
                     {
                     }
                     column(CompanyInfo_Name; CompanyInfo.Name)
@@ -129,31 +144,34 @@ report 5272729 "LBT Blanket Purchase Order"
                     column(CompanyInfo__LeBit_SWIFT_Code_3; CompanyInfo."LBT SWIFT Code 3")
                     {
                     }
-                    column(DocDate_PurchHdr; FORMAT("Purchase Header"."Document Date", 0, 4))
+                    column(FORMAT__Purchase_Header___Document_Date__0_4_; FORMAT("Purchase Header"."Document Date", 0, 4))
                     {
                     }
-                    column(ExpctRecpDt_PurchHdr; FORMAT("Purchase Header"."Expected Receipt Date", 0, 4))
+                    column(Purchase_Header___Your_Reference_; "Purchase Header"."Your Reference")
                     {
                     }
-                    column(VatTRegNo_PurchHdr; "Purchase Header"."VAT Registration No.")
+                    column(Purchase_Header___Buy_from_Vendor_No__; "Purchase Header"."Buy-from Vendor No.")
                     {
                     }
-                    column(PaytoVendNo_PurchHdr; "Purchase Header"."Pay-to Vendor No.")
+                    column(Purchase_Header___Prices_Including_VAT_; "Purchase Header"."Prices Including VAT")
                     {
                     }
-                    column(YourRef_PurchHdr; "Purchase Header"."Your Reference")
+                    column(Purchase_Header___VAT_Registration_No__; "Purchase Header"."VAT Registration No.")
                     {
                     }
-                    column(No1_PurchaseHdr; "Purchase Header"."No.")
+                    column(Purchase_Header___VAT_Base_Discount___; "Purchase Header"."VAT Base Discount %")
                     {
                     }
-                    column(VatNoText; VATNoText)
+                    column(VATNoText; VATNoText)
                     {
                     }
                     column(PurchaserText; PurchaserText)
                     {
                     }
-                    column(SalesPurchPersonName; SalesPurchPerson.Name)
+                    column(SalesPurchPerson_Name; SalesPurchPerson.Name)
+                    {
+                    }
+                    column(Purchase_Header___No__; "Purchase Header"."No.")
                     {
                     }
                     column(ReferenceText; ReferenceText)
@@ -162,16 +180,25 @@ report 5272729 "LBT Blanket Purchase Order"
                     column(OutputNo; OutputNo)
                     {
                     }
+                    column(PricesInclVATtxt; PricesInclVATtxt)
+                    {
+                    }
+                    column(ShowInternalInfo; ShowInternalInfo)
+                    {
+                    }
                     column(PageLoop_Number; Number)
                     {
                     }
-                    column(PaytoVendNo_PurchHdrCaption; "Purchase Header".FIELDCAPTION("Pay-to Vendor No."))
+                    column(ReturnOrderNoCaption; ReturnOrderNoCaptionLbl)
                     {
                     }
-                    column(Expected_DateCaption; Expected_DateCaptionLbl)
+                    column(Purchase_Header___Buy_from_Vendor_No__Caption; "Purchase Header".FIELDCAPTION("Buy-from Vendor No."))
                     {
                     }
-                    column(Blanket_Purchase_Order_No_Caption; Blanket_Purchase_Order_No_CaptionLbl)
+                    column(Purchase_Header___Prices_Including_VAT_Caption; "Purchase Header".FIELDCAPTION("Prices Including VAT"))
+                    {
+                    }
+                    column(PageCaption; PageCaptionLbl)
                     {
                     }
                     column(CompanyInfo__VAT_Registration_No__Caption; CompanyInfo__VAT_Registration_No__CaptionLbl)
@@ -222,6 +249,9 @@ report 5272729 "LBT Blanket Purchase Order"
                     column(UOM_Caption; UOM_CaptionLbl)
                     {
                     }
+                    column(Direct_Unit_CostCaption; Direct_Unit_CostCaptionLbl)
+                    {
+                    }
                     column(CarryForwardText; STRSUBSTNO(CarryForwardCaptionLbl, GLSetup."LCY Code"))
                     {
                     }
@@ -255,14 +285,14 @@ report 5272729 "LBT Blanket Purchase Order"
                     dataitem(DimensionLoop1; "Integer")
                     {
                         DataItemLinkReference = "Purchase Header";
-                        DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
+                        DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
                         column(DimText; DimText)
                         {
                         }
-                        column(DimensionLoop1_Number; DimensionLoop1.Number)
+                        column(DimText_Control72; DimText)
                         {
                         }
-                        column(DimText_Control58; DimText)
+                        column(DimensionLoop1_Number; Number)
                         {
                         }
                         column(Header_DimensionsCaption; Header_DimensionsCaptionLbl)
@@ -283,11 +313,11 @@ report 5272729 "LBT Blanket Purchase Order"
                             repeat
                                 OldDimText := DimText;
                                 if DimText = '' then
-                                    DimText := STRSUBSTNO('%1 - %2', DimSetEntry1."Dimension Code", DimSetEntry1."Dimension Value Code")
+                                    DimText := STRSUBSTNO('%1 %2', DimSetEntry1."Dimension Code", DimSetEntry1."Dimension Value Code")
                                 else
                                     DimText :=
                                       STRSUBSTNO(
-                                        '%1; %2 - %3', DimText,
+                                        '%1, %2 %3', DimText,
                                         DimSetEntry1."Dimension Code", DimSetEntry1."Dimension Value Code");
                                 if STRLEN(DimText) > MAXSTRLEN(OldDimText) then begin
                                     DimText := OldDimText;
@@ -305,9 +335,9 @@ report 5272729 "LBT Blanket Purchase Order"
                     }
                     dataitem(LBKopf; "LBT PS Longtext Line")
                     {
-                        DataItemLink = "Document No." = FIELD ("No."), "Document Type" = FIELD ("Document Type");
+                        DataItemLink = "Document No." = FIELD("No."), "Document Type" = FIELD("Document Type");
                         DataItemLinkReference = "Purchase Header";
-                        DataItemTableView = SORTING ("Table ID", "Document Type", "Document No.", Position, "Document Line No.", "Line No.") ORDER(Ascending) WHERE ("Table ID" = CONST (38), Position = CONST (Header));
+                        DataItemTableView = SORTING("Table ID", "Document Type", "Document No.", Position, "Document Line No.", "Line No.") ORDER(Ascending) WHERE("Table ID" = CONST(38), Position = CONST(Header));
 
                         trigger OnAfterGetRecord()
                         begin
@@ -321,7 +351,7 @@ report 5272729 "LBT Blanket Purchase Order"
                     }
                     dataitem(TempLBKopf; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(LBKopf_LineNo; FORMAT(TempLeBitPSLongtextLine."Line No."))
                         {
                         }
@@ -374,9 +404,9 @@ report 5272729 "LBT Blanket Purchase Order"
                     }
                     dataitem("Purchase Line"; "Purchase Line")
                     {
-                        DataItemLink = "Document Type" = FIELD ("Document Type"), "Document No." = FIELD ("No.");
+                        DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("No.");
                         DataItemLinkReference = "Purchase Header";
-                        DataItemTableView = SORTING ("Document Type", "Document No.", "Line No.");
+                        DataItemTableView = SORTING("Document Type", "Document No.", "Line No.");
 
                         trigger OnPreDataItem()
                         begin
@@ -385,53 +415,180 @@ report 5272729 "LBT Blanket Purchase Order"
                     }
                     dataitem(RoundLoop; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
-                        column(ShowInternalInfo; ShowInternalInfo)
+                        DataItemTableView = SORTING(Number);
+                        column(PurchLine__Line_Amount_; PurchLine."Line Amount")
+                        {
+                            AutoFormatExpression = "Purchase Line"."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(Purchase_Line__Description; "Purchase Line".Description)
                         {
                         }
-                        column(ArchiveDocument; ArchiveDocument)
+                        column(Purchase_Line___Line_No__; "Purchase Line"."Line No.")
                         {
                         }
-                        column(LogInteraction; LogInteraction)
+                        column(AllowInvDisctxt; AllowInvDisctxt)
                         {
                         }
                         column(PurchaseLineType; FORMAT("Purchase Line".Type, 0, 2))
                         {
                         }
-                        column(LineNo_PurchaseLine; "Purchase Line"."Line No.")
+                        column(Purchase_Line___No__; "Purchase Line"."No.")
                         {
                         }
-                        column(Description_PurchaseLine; "Purchase Line".Description)
+                        column(Purchase_Line__Description_Control63; "Purchase Line".Description)
                         {
                         }
-                        column(Quantity_PurchaseLine; "Purchase Line".Quantity)
+                        column(Purchase_Line__Quantity; "Purchase Line".Quantity)
                         {
                         }
-                        column(UnitOfMeasure_PurchaseLine; "Purchase Line"."Unit of Measure")
+                        column(Purchase_Line___Unit_of_Measure_; "Purchase Line"."Unit of Measure")
                         {
                         }
-                        column(Purchase_Line___Expected_Receipt_Date_; FORMAT("Purchase Line"."Expected Receipt Date"))
+                        column(Purchase_Line___Direct_Unit_Cost_; DirectUnitCost)
+                        {
+                            AutoFormatExpression = "Purchase Header"."Currency Code";
+                            AutoFormatType = 2;
+                        }
+                        column(Purchase_Line___Line_Discount___; "Purchase Line"."Line Discount %")
                         {
                         }
-                        column(No_PurchaseLine; "Purchase Line"."No.")
+                        column(Purchase_Line___Line_Amount_; "Purchase Line"."Line Amount")
+                        {
+                            AutoFormatExpression = "Purchase Header"."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(Purchase_Line___Allow_Invoice_Disc__; "Purchase Line"."Allow Invoice Disc.")
                         {
                         }
-                        column(Purchase_Line___Vendor_Item_No__; "Purchase Line"."Vendor Item No.")
+                        column(Purchase_Line___VAT_Identifier_; "Purchase Line"."VAT Identifier")
                         {
+                        }
+                        column(PurchLine__Line_Amount__Control77; PurchLine."Line Amount")
+                        {
+                            AutoFormatExpression = "Purchase Header"."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(PurchLine__Inv__Discount_Amount_; -PurchLine."Inv. Discount Amount")
+                        {
+                            AutoFormatExpression = "Purchase Line"."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(PurchLine__Line_Amount__Control109; PurchLine."Line Amount")
+                        {
+                            AutoFormatExpression = "Purchase Header"."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(TotalText; TotalText)
+                        {
+                        }
+                        column(PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount_; PurchLine."Line Amount" - PurchLine."Inv. Discount Amount")
+                        {
+                            AutoFormatExpression = "Purchase Header"."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(TotalInclVATText; TotalInclVATText)
+                        {
+                        }
+                        column(VATAmountLine_VATAmountText; VATAmountLine.VATAmountText)
+                        {
+                        }
+                        column(VATAmount; VATAmount)
+                        {
+                            AutoFormatExpression = "Purchase Header"."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount____VATAmount; PurchLine."Line Amount" - PurchLine."Inv. Discount Amount" + VATAmount)
+                        {
+                            AutoFormatExpression = "Purchase Header"."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(TotalExclVATText; TotalExclVATText)
+                        {
+                        }
+                        column(PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount__Control147; PurchLine."Line Amount" - PurchLine."Inv. Discount Amount")
+                        {
+                            AutoFormatExpression = "Purchase Header"."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(VATDiscountAmount; -VATDiscountAmount)
+                        {
+                            AutoFormatExpression = "Purchase Header"."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(VATAmountLine_VATAmountText_Control32; VATAmountLine.VATAmountText)
+                        {
+                        }
+                        column(TotalExclVATText_Control51; TotalExclVATText)
+                        {
+                        }
+                        column(TotalInclVATText_Control69; TotalInclVATText)
+                        {
+                        }
+                        column(VATBaseAmount; VATBaseAmount)
+                        {
+                            AutoFormatExpression = "Purchase Header"."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(VATAmount_Control83; VATAmount)
+                        {
+                            AutoFormatExpression = "Purchase Header"."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(TotalAmountInclVAT; TotalAmountInclVAT)
+                        {
+                            AutoFormatExpression = "Purchase Header"."Currency Code";
+                            AutoFormatType = 1;
                         }
                         column(RoundLoop_Number; Number)
                         {
                         }
-                        column(Purchase_Line___Expected_Receipt_Date__Caption; Purchase_Line___Expected_Receipt_Date__CaptionLbl)
+                        column(TotalSubTotal; TotalSubTotal)
+                        {
+                            AutoFormatExpression = "Purchase Header"."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(TotalInvoiceDiscountAmount; TotalInvoiceDiscountAmount)
+                        {
+                            AutoFormatExpression = "Purchase Header"."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(TotalAmount; TotalAmount)
+                        {
+                            AutoFormatExpression = "Purchase Header"."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(Purchase_Line___No__Caption; "Purchase Line".FIELDCAPTION("No."))
                         {
                         }
-                        column(Purchase_Line___Unit_of_Measure__Caption; "Purchase Line".FIELDCAPTION("Unit of Measure"))
+                        column(Purchase_Line__Description_Control63Caption; "Purchase Line".FIELDCAPTION(Description))
                         {
                         }
-                        column(Purchase_Line___No__Caption; Purchase_Line___No__CaptionLbl)
+                        column(Purchase_Line__QuantityCaption; "Purchase Line".FIELDCAPTION(Quantity))
                         {
                         }
-                        column(Purchase_Line___Vendor_Item_No__Caption; Purchase_Line___Vendor_Item_No__CaptionLbl)
+                        column(Purchase_Line___Unit_of_Measure_Caption; "Purchase Line".FIELDCAPTION("Unit of Measure"))
+                        {
+                        }
+                        column(Purchase_Line___Line_Discount___Caption; Purchase_Line___Line_Discount___CaptionLbl)
+                        {
+                        }
+                        column(Purchase_Line___Allow_Invoice_Disc__Caption; "Purchase Line".FIELDCAPTION("Allow Invoice Disc."))
+                        {
+                        }
+                        column(Purchase_Line___VAT_Identifier_Caption; "Purchase Line".FIELDCAPTION("VAT Identifier"))
+                        {
+                        }
+                        column(ContinuedCaption; ContinuedCaptionLbl)
+                        {
+                        }
+                        column(ContinuedCaption_Control76; ContinuedCaption_Control76Lbl)
+                        {
+                        }
+                        column(PurchLine__Inv__Discount_Amount_Caption; PurchLine__Inv__Discount_Amount_CaptionLbl)
+                        {
+                        }
+                        column(VATDiscountAmountCaption; VATDiscountAmountCaptionLbl)
                         {
                         }
                         column(NewPageGroup; NewPageGroup)
@@ -441,6 +598,9 @@ report 5272729 "LBT Blanket Purchase Order"
                         {
                         }
                         column(LeBitPosNo_PurchaseLine; "Purchase Line"."LBT Pos. No.")
+                        {
+                        }
+                        column(LeBitBalance_PurchaseLine; PurchLine."LBT Balance")
                         {
                         }
                         column(Alternativposition_Caption; Alternativposition_CaptionLbl)
@@ -461,7 +621,7 @@ report 5272729 "LBT Blanket Purchase Order"
                         column(ItemUnitDescription; ItemUnitDescription)
                         {
                         }
-                        column(Item_Picture; TempBlob.Blob)
+                        column(Item_Picture; Item.Picture)
                         {
                         }
                         column(ItemPictureExist; ItemPictureExist)
@@ -469,7 +629,7 @@ report 5272729 "LBT Blanket Purchase Order"
                         }
                         dataitem(ParameterAndUnits; "Integer")
                         {
-                            DataItemTableView = SORTING (Number);
+                            DataItemTableView = SORTING(Number);
                             column(RowNumber; Number)
                             {
                             }
@@ -493,9 +653,9 @@ report 5272729 "LBT Blanket Purchase Order"
                         }
                         dataitem(LBLang; "LBT PS Longtext Line")
                         {
-                            DataItemLink = "Document Type" = FIELD ("Document Type"), "Document No." = FIELD ("Document No."), "Document Line No." = FIELD ("Line No.");
+                            DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("Document No."), "Document Line No." = FIELD("Line No.");
                             DataItemLinkReference = "Purchase Line";
-                            DataItemTableView = SORTING ("Table ID", "Document Type", "Document No.", Position, "Document Line No.", "Line No.") ORDER(Ascending) WHERE ("Table ID" = CONST (39), Position = CONST (Longtext));
+                            DataItemTableView = SORTING("Table ID", "Document Type", "Document No.", Position, "Document Line No.", "Line No.") ORDER(Ascending) WHERE("Table ID" = CONST(39), Position = CONST(Longtext));
 
                             trigger OnAfterGetRecord()
                             begin
@@ -509,7 +669,7 @@ report 5272729 "LBT Blanket Purchase Order"
                         }
                         dataitem(TempLBLang; "Integer")
                         {
-                            DataItemTableView = SORTING (Number);
+                            DataItemTableView = SORTING(Number);
                             column(LBLang_LineNo; FORMAT(TempLeBitPSLongtextLine."Line No."))
                             {
                             }
@@ -559,14 +719,11 @@ report 5272729 "LBT Blanket Purchase Order"
                         }
                         dataitem(DimensionLoop2; "Integer")
                         {
-                            DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
-                            column(DimText1; DimText)
+                            DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
+                            column(DimText_Control74; DimText)
                             {
                             }
-                            column(DimensionLoop2_Number; DimensionLoop2.Number)
-                            {
-                            }
-                            column(DimText_Control80; DimText)
+                            column(DimensionLoop2_Number; Number)
                             {
                             }
                             column(Line_DimensionsCaption; Line_DimensionsCaptionLbl)
@@ -587,11 +744,11 @@ report 5272729 "LBT Blanket Purchase Order"
                                 repeat
                                     OldDimText := DimText;
                                     if DimText = '' then
-                                        DimText := STRSUBSTNO('%1 - %2', DimSetEntry2."Dimension Code", DimSetEntry2."Dimension Value Code")
+                                        DimText := STRSUBSTNO('%1 %2', DimSetEntry2."Dimension Code", DimSetEntry2."Dimension Value Code")
                                     else
                                         DimText :=
                                           STRSUBSTNO(
-                                            '%1; %2 - %3', DimText,
+                                            '%1, %2 %3', DimText,
                                             DimSetEntry2."Dimension Code", DimSetEntry2."Dimension Value Code");
                                     if STRLEN(DimText) > MAXSTRLEN(OldDimText) then begin
                                         DimText := OldDimText;
@@ -605,6 +762,8 @@ report 5272729 "LBT Blanket Purchase Order"
                             begin
                                 if not ShowInternalInfo then
                                     CurrReport.BREAK;
+
+                                DimSetEntry2.SETRANGE("Dimension Set ID", "Purchase Line"."Dimension Set ID");
                             end;
                         }
 
@@ -620,7 +779,17 @@ report 5272729 "LBT Blanket Purchase Order"
                                 PurchLine.NEXT;
                             "Purchase Line" := PurchLine;
 
-                            DimSetEntry2.SETRANGE("Dimension Set ID", "Purchase Line"."Dimension Set ID");
+                            if not "Purchase Header"."Prices Including VAT" and
+                               (PurchLine."VAT Calculation Type" = PurchLine."VAT Calculation Type"::"Full VAT")
+                            then
+                                PurchLine."Line Amount" := 0;
+
+                            if (PurchLine.Type = PurchLine.Type::"G/L Account") and (not ShowInternalInfo) then
+                                "Purchase Line"."No." := '';
+                            AllowInvDisctxt := FORMAT("Purchase Line"."Allow Invoice Disc.");
+                            TotalSubTotal += "Purchase Line"."Line Amount";
+                            TotalInvoiceDiscountAmount -= "Purchase Line"."Inv. Discount Amount";
+                            TotalAmount += "Purchase Line".Amount;
 
                             if PurchLine."LBT Printoption" = PurchLine."LBT Printoption"::"New Page" then
                                 NewPageGroup += 1;
@@ -637,10 +806,15 @@ report 5272729 "LBT Blanket Purchase Order"
                             CLEAR(Item);
                             ItemPictureExist := false;
 
+                            if "Purchase Line".Quantity <> 0 then
+                                DirectUnitCost := "Purchase Line"."Direct Unit Cost" - "Purchase Line"."Line Discount Amount" / "Purchase Line".Quantity
+                            else
+                                DirectUnitCost := 0;
+
                             PurchLine.CALCFIELDS("LBT Balance");
                             if PurchLine.Type = PurchLine.Type::Item then begin
                                 Item.GET(PurchLine."No.");
-                                ItemPictureExist := GetFirstMediaFromSet(Item.Picture.MEDIAID, TempBlob);
+                                ItemPictureExist := Item.Picture.Count > 0;
                                 if not ItemPicturePrint then
                                     ItemPictureExist := false;
                                 TxtVar := CurrReport.OBJECTID(false);
@@ -723,31 +897,144 @@ report 5272729 "LBT Blanket Purchase Order"
                             SETRANGE(Number, 1, PurchLine.COUNT);
                         end;
                     }
+                    dataitem(VATCounter; "Integer")
+                    {
+                        DataItemTableView = SORTING(Number);
+                        column(VATAmtLineVATBase; VATAmountLine."VAT Base")
+                        {
+                            AutoFormatExpression = "Purchase Header"."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(VATAmtLineVATAmt; VATAmountLine."VAT Amount")
+                        {
+                            AutoFormatExpression = "Purchase Header"."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(VATAmtLineLineAmt; VATAmountLine."Line Amount")
+                        {
+                            AutoFormatExpression = "Purchase Header"."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(VATAmtLineInvDiscBaseAmt; VATAmountLine."Inv. Disc. Base Amount")
+                        {
+                            AutoFormatExpression = "Purchase Header"."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(VATAmtLineInvDiscAmt; VATAmountLine."Invoice Discount Amount")
+                        {
+                            AutoFormatExpression = "Purchase Header"."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(VATAmtLineVAT; VATAmountLine."VAT %")
+                        {
+                            DecimalPlaces = 0 : 5;
+                        }
+                        column(VATAmtLineVATIdentifier; VATAmountLine."VAT Identifier")
+                        {
+                        }
+                        column(VATPercentCaption; VATPercentCaptionLbl)
+                        {
+                        }
+                        column(VATBaseCaption; VATBaseCaptionLbl)
+                        {
+                        }
+                        column(VATAmtCaption; VATAmtCaptionLbl)
+                        {
+                        }
+                        column(VATAmtSpecCaption; VATAmtSpecCaptionLbl)
+                        {
+                        }
+                        column(VATIdentifierCaption; VATIdentifierCaptionLbl)
+                        {
+                        }
+                        column(InvDiscBaseAmtCaption; InvDiscBaseAmtCaptionLbl)
+                        {
+                        }
+                        column(LineAmtCaption; LineAmtCaptionLbl)
+                        {
+                        }
+                        column(InvDisAmtCaption; InvDisAmtCaptionLbl)
+                        {
+                        }
+                        column(VATBaseCaption1; VATBaseCaption1Lbl)
+                        {
+                        }
+
+                        trigger OnAfterGetRecord()
+                        begin
+                            VATAmountLine.GetLine(Number);
+                        end;
+
+                        trigger OnPreDataItem()
+                        begin
+                            if VATAmountLine.COUNT < 2 then
+                                CurrReport.BREAK;
+                            if VATAmount = 0 then
+                                CurrReport.BREAK;
+                            SETRANGE(Number, 1, VATAmountLine.COUNT);
+                        end;
+                    }
+                    dataitem(VATCounterLCY; "Integer")
+                    {
+                        DataItemTableView = SORTING(Number);
+                        column(VALExchRate; VALExchRate)
+                        {
+                        }
+                        column(VALSpecLCYHdr; VALSpecLCYHeader)
+                        {
+                        }
+                        column(VALVATAmtLCY; VALVATAmountLCY)
+                        {
+                            AutoFormatType = 1;
+                        }
+                        column(VALVATBaseLCY; VALVATBaseLCY)
+                        {
+                            AutoFormatType = 1;
+                        }
+                        column(VATAmtLineVAT1; VATAmountLine."VAT %")
+                        {
+                            DecimalPlaces = 0 : 5;
+                        }
+                        column(VATAmtLineVATIdentifier1; VATAmountLine."VAT Identifier")
+                        {
+                        }
+
+                        trigger OnAfterGetRecord()
+                        begin
+                            VATAmountLine.GetLine(Number);
+
+                            VALVATBaseLCY := ROUND(CurrExchRate.ExchangeAmtFCYToLCY(
+                                  "Purchase Header"."Posting Date", "Purchase Header"."Currency Code",
+                                  VATAmountLine."VAT Base", "Purchase Header"."Currency Factor"));
+                            VALVATAmountLCY := ROUND(CurrExchRate.ExchangeAmtFCYToLCY(
+                                  "Purchase Header"."Posting Date", "Purchase Header"."Currency Code",
+                                  VATAmountLine."VAT Amount", "Purchase Header"."Currency Factor"));
+                        end;
+
+                        trigger OnPreDataItem()
+                        begin
+                            if VATAmountLine.COUNT < 2 then
+                                CurrReport.BREAK;
+                            if (not GLSetup."Print VAT specification in LCY") or
+                               ("Purchase Header"."Currency Code" = '') or
+                               (VATAmountLine.GetTotalVATAmount = 0)
+                            then
+                                CurrReport.BREAK;
+
+                            SETRANGE(Number, 1, VATAmountLine.COUNT);
+
+                            if GLSetup."LCY Code" = '' then
+                                VALSpecLCYHeader := Text007 + Text008
+                            else
+                                VALSpecLCYHeader := Text007 + FORMAT(GLSetup."LCY Code");
+
+                            CurrExchRate.FindCurrency("Purchase Header"."Posting Date", "Purchase Header"."Currency Code", 1);
+                            VALExchRate := STRSUBSTNO(Text009, CurrExchRate."Relational Exch. Rate Amount", CurrExchRate."Exchange Rate Amount");
+                        end;
+                    }
                     dataitem(Total; "Integer")
                     {
-                        DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
-                        column(ShipmentMethod_Description; ShipmentMethod.Description)
-                        {
-                        }
-                        column(Total_Number; Number)
-                        {
-                        }
-                        column(ShipmentMethod_DescriptionCaption; ShipmentMethod_DescriptionCaptionLbl)
-                        {
-                        }
-                    }
-                    dataitem(Total2; "Integer")
-                    {
-                        DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
-                        column(Purchase_Header___Buy_from_Vendor_No__; "Purchase Header"."Buy-from Vendor No.")
-                        {
-                        }
-                        column(Total2_Number; Number)
-                        {
-                        }
-                        column(Purchase_Header___Buy_from_Vendor_No__Caption; "Purchase Header".FIELDCAPTION("Buy-from Vendor No."))
-                        {
-                        }
+                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
 
                         trigger OnPreDataItem()
                         begin
@@ -755,9 +1042,9 @@ report 5272729 "LBT Blanket Purchase Order"
                                 CurrReport.BREAK;
                         end;
                     }
-                    dataitem(Total3; "Integer")
+                    dataitem(Total2; "Integer")
                     {
-                        DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                         column(SelltoCustNo_PurchHdr; "Purchase Header"."Sell-to Customer No.")
                         {
                         }
@@ -785,13 +1072,10 @@ report 5272729 "LBT Blanket Purchase Order"
                         column(ShipToAddr8; ShipToAddr[8])
                         {
                         }
-                        column(Total3_Number; Number)
+                        column(ShiptoAddressCaption; ShiptoAddressCaptionLbl)
                         {
                         }
-                        column(Ship_to_AddressCaption; Ship_to_AddressCaptionLbl)
-                        {
-                        }
-                        column(Purchase_Header___Sell_to_Customer_No__Caption; "Purchase Header".FIELDCAPTION("Sell-to Customer No."))
+                        column(SelltoCustNo_PurchHdrCaption; "Purchase Header".FIELDCAPTION("Sell-to Customer No."))
                         {
                         }
 
@@ -803,9 +1087,9 @@ report 5272729 "LBT Blanket Purchase Order"
                     }
                     dataitem(LBFuss; "LBT PS Longtext Line")
                     {
-                        DataItemLink = "Document Type" = FIELD ("Document Type"), "Document No." = FIELD ("No.");
+                        DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("No.");
                         DataItemLinkReference = "Purchase Header";
-                        DataItemTableView = SORTING ("Table ID", "Document Type", "Document No.", Position, "Document Line No.", "Line No.") ORDER(Ascending) WHERE ("Table ID" = CONST (38), Position = CONST (Footer));
+                        DataItemTableView = SORTING("Table ID", "Document Type", "Document No.", Position, "Document Line No.", "Line No.") ORDER(Ascending) WHERE("Table ID" = CONST(38), Position = CONST(Footer));
 
                         trigger OnAfterGetRecord()
                         begin
@@ -819,7 +1103,7 @@ report 5272729 "LBT Blanket Purchase Order"
                     }
                     dataitem(TempLBFuss; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(LBFuss_LineNo; FORMAT(TempLeBitPSLongtextLine."Line No."))
                         {
                         }
@@ -870,17 +1154,44 @@ report 5272729 "LBT Blanket Purchase Order"
                 }
 
                 trigger OnAfterGetRecord()
+                var
+                    PrepmtPurchLine: Record "Purchase Line" temporary;
+                    TempPurchLine: Record "Purchase Line" temporary;
                 begin
                     CLEAR(PurchLine);
                     CLEAR(PurchPost);
                     PurchLine.DELETEALL;
+                    VATAmountLine.DELETEALL;
                     PurchPost.GetPurchLines("Purchase Header", PurchLine, 0);
+                    PurchLine.CalcVATAmountLines(0, "Purchase Header", PurchLine, VATAmountLine);
+                    PurchLine.UpdateVATOnLines(0, "Purchase Header", PurchLine, VATAmountLine);
+                    VATAmount := VATAmountLine.GetTotalVATAmount;
+                    VATBaseAmount := VATAmountLine.GetTotalVATBase;
+                    VATDiscountAmount :=
+                      VATAmountLine.GetTotalVATDiscount("Purchase Header"."Currency Code", "Purchase Header"."Prices Including VAT");
+                    TotalAmountInclVAT := VATAmountLine.GetTotalAmountInclVAT;
 
-                    if Number > 1 then begin
-                        CopyText := FormatDocument.GetCOPYText;
-                        OutputNo += 1;
+                    PrepmtInvBuf.DELETEALL;
+                    PurchPostPrepmt.GetPurchLines("Purchase Header", 0, PrepmtPurchLine);
+                    if not PrepmtPurchLine.ISEMPTY then begin
+                        PurchPostPrepmt.GetPurchLinesToDeduct("Purchase Header", TempPurchLine);
+                        if not TempPurchLine.ISEMPTY then
+                            PurchPostPrepmt.CalcVATAmountLines("Purchase Header", TempPurchLine, PrePmtVATAmountLineDeduct, 1);
                     end;
+                    PurchPostPrepmt.CalcVATAmountLines("Purchase Header", PrepmtPurchLine, PrepmtVATAmountLine, 0);
+                    PrepmtVATAmountLine.DeductVATAmountLine(PrePmtVATAmountLineDeduct);
+                    PurchPostPrepmt.UpdateVATOnLines("Purchase Header", PrepmtPurchLine, PrepmtVATAmountLine, 0);
+                    PurchPostPrepmt.BuildInvLineBuffer("Purchase Header", PrepmtPurchLine, 0, PrepmtInvBuf);
+                    PrepmtVATAmount := PrepmtVATAmountLine.GetTotalVATAmount;
+                    PrepmtVATBaseAmount := PrepmtVATAmountLine.GetTotalVATBase;
+                    PrepmtTotalAmountInclVAT := PrepmtVATAmountLine.GetTotalAmountInclVAT;
 
+                    if Number > 1 then
+                        CopyText := FormatDocument.GetCOPYText;
+                    OutputNo := OutputNo + 1;
+
+                    TotalSubTotal := 0;
+                    TotalAmount := 0;
                 end;
 
                 trigger OnPostDataItem()
@@ -894,7 +1205,7 @@ report 5272729 "LBT Blanket Purchase Order"
                     NoOfLoops := ABS(NoOfCopies) + 1;
                     CopyText := '';
                     SETRANGE(Number, 1, NoOfLoops);
-                    OutputNo := 1;
+                    OutputNo := 0;
                     NewPageGroup := 1;
                 end;
             }
@@ -905,6 +1216,7 @@ report 5272729 "LBT Blanket Purchase Order"
 
                 FormatAddressFields("Purchase Header");
                 FormatDocumentFields("Purchase Header");
+                PricesInclVATtxt := FORMAT("Prices Including VAT");
 
                 DimSetEntry1.SETRANGE("Dimension Set ID", "Dimension Set ID");
 
@@ -915,10 +1227,12 @@ report 5272729 "LBT Blanket Purchase Order"
                     if LogInteraction then begin
                         CALCFIELDS("No. of Archived Versions");
                         SegManagement.LogDocument(
-                          11, "No.", "Doc. No. Occurrence", "No. of Archived Versions", DATABASE::Vendor, "Pay-to Vendor No.",
+                          13, "No.", "Doc. No. Occurrence", "No. of Archived Versions", DATABASE::Vendor, "Buy-from Vendor No.",
                           "Purchaser Code", '', "Posting Description", '');
                     end;
                 end;
+
+                Vendor.GET("Purchase Header"."Pay-to Vendor No.");
             end;
         }
     }
@@ -934,14 +1248,14 @@ report 5272729 "LBT Blanket Purchase Order"
                 group(Options)
                 {
                     Caption = 'Options', Comment = 'DEU="Optionen"';
-                    field(NoOfCopies; NoOfCopies)
+                    field(NoofCopies; NoOfCopies)
                     {
                         Caption = 'No. of Copies', Comment = 'DEU="Anzahl Kopien"';
                         ToolTip = 'Specifies how many copies of the document to print.', comment = 'DEU="Legt die Anzahl der Ausdrücke fest"';
                     }
-                    field(ShowInternalInfo; ShowInternalInfo)
+                    field(ShowInternalInformation; ShowInternalInfo)
                     {
-                        Caption = 'Show Internal Information', Comment = 'DEU="Show Internal Information"';
+                        Caption = 'Show Internal Information', Comment = 'DEU="Interne Informationen anzeigen"';
                         ToolTip = 'Specifies if the document shows internal information.', comment = 'DEU="Legt fest ob vorhandene Dimensionswerte mit ausgedruckt werden sollen"';
                     }
                     field(ArchiveDocument; ArchiveDocument)
@@ -970,7 +1284,7 @@ report 5272729 "LBT Blanket Purchase Order"
                     field(HideCompanyInfo; HideCompanyInfo)
                     {
                         Caption = 'Hide Company Info', Comment = 'DEU="Firmendaten ausblenden"';
-                        ToolTip = ' Specifies that the company data is to be "hidden" for printing', comment = 'DEU="Hiermit können Sie die Firmendaten für den Druck ausblenden"';
+                        ToolTip = 'Specifies that the company data is to be "hidden" for printing', comment = 'DEU="Hiermit können Sie die Firmendaten für den Druck ausblenden"';
                     }
                     field(ItemPicturePrint; ItemPicturePrint)
                     {
@@ -992,8 +1306,8 @@ report 5272729 "LBT Blanket Purchase Order"
 
         trigger OnOpenPage()
         begin
-            ArchiveDocument := PurchSetup."Archive Blanket Orders";
-            LogInteraction := SegManagement.FindInteractTmplCode(11) <> '';
+            ArchiveDocument := PurchSetup."Archive Return Orders";
+            LogInteraction := SegManagement.FindInteractTmplCode(13) <> '';
 
             LogInteractionEnable := LogInteraction;
         end;
@@ -1005,64 +1319,113 @@ report 5272729 "LBT Blanket Purchase Order"
 
     trigger OnInitReport()
     begin
+        GLSetup.GET;
         CompanyInfo.GET;
         PurchSetup.GET;
         FormatDocument.SetLogoPosition(PurchSetup."LBT Logo Position on Documents", CompanyInfo1, CompanyInfo2, CompanyInfo3);
     end;
 
     var
-        Text002: Label 'Blanket Purchase Order %1', Comment = 'DEU="Einkauf Rahmenbestellung %1"';
-        Text003: Label 'Page %1', Comment = 'DEU="Seite %1"';
-        ShipmentMethod: Record "Shipment Method";
-        SalesPurchPerson: Record "Salesperson/Purchaser";
+        Text004: Label 'Return Order %1', Comment = 'DEU="Reklamation %1"';
+        Text005: Label 'Page %1', Comment = 'DEU="Seite Nr. %1"';
+        GLSetup: Record "General Ledger Setup";
         CompanyInfo: Record "Company Information";
+        ShipmentMethod: Record "Shipment Method";
+        PaymentTerms: Record "Payment Terms";
+        PrepmtPaymentTerms: Record "Payment Terms";
+        SalesPurchPerson: Record "Salesperson/Purchaser";
+        VATAmountLine: Record "VAT Amount Line" temporary;
+        PrepmtVATAmountLine: Record "VAT Amount Line" temporary;
+        PrePmtVATAmountLineDeduct: Record "VAT Amount Line" temporary;
         PurchLine: Record "Purchase Line" temporary;
         DimSetEntry1: Record "Dimension Set Entry";
         DimSetEntry2: Record "Dimension Set Entry";
+        PrepmtDimSetEntry: Record "Dimension Set Entry";
+        PrepmtInvBuf: Record "Prepayment Inv. Line Buffer" temporary;
         RespCenter: Record "Responsibility Center";
-        Language: Record Language;
+        CurrExchRate: Record "Currency Exchange Rate";
         PurchSetup: Record "Purchases & Payables Setup";
-        PurchPost: Codeunit "Purch.-Post";
+        Language: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
-        SegManagement: Codeunit SegManagement;
+        PurchPost: Codeunit "Purch.-Post";
         ArchiveManagement: Codeunit ArchiveManagement;
+        SegManagement: Codeunit SegManagement;
+        PurchPostPrepmt: Codeunit "Purchase-Post Prepayments";
         VendAddr: array[8] of Text[50];
         ShipToAddr: array[8] of Text[50];
         CompanyAddr: array[8] of Text[50];
+        BuyFromAddr: array[8] of Text[50];
         PurchaserText: Text[30];
         VATNoText: Text[80];
         ReferenceText: Text[80];
+        TotalText: Text[50];
+        TotalInclVATText: Text[50];
+        TotalExclVATText: Text[50];
         MoreLines: Boolean;
         NoOfCopies: Integer;
         NoOfLoops: Integer;
         CopyText: Text[30];
+        OutputNo: Integer;
         DimText: Text[120];
         OldDimText: Text[75];
         ShowInternalInfo: Boolean;
         Continue: Boolean;
         ArchiveDocument: Boolean;
         LogInteraction: Boolean;
-        OutputNo: Integer;
+        VATAmount: Decimal;
+        VATBaseAmount: Decimal;
+        VATDiscountAmount: Decimal;
+        TotalAmountInclVAT: Decimal;
+        VALVATBaseLCY: Decimal;
+        VALVATAmountLCY: Decimal;
+        VALSpecLCYHeader: Text[80];
+        VALExchRate: Text[50];
+        Text007: Label 'VAT Amount Specification in ', Comment = 'DEU="MwSt.-Betrag Spezifikation in "';
+        Text008: Label 'Local Currency', Comment = 'DEU="Landeswährung"';
+        Text009: Label 'Exchange rate: %1/%2', Comment = 'DEU="Wechselkurs: %1/%2"';
+        PrepmtVATAmount: Decimal;
+        PrepmtVATBaseAmount: Decimal;
+        PrepmtTotalAmountInclVAT: Decimal;
+        PrepmtLineAmount: Decimal;
+        PricesInclVATtxt: Text[30];
+        AllowInvDisctxt: Text[30];
         [InDataSet]
         ArchiveDocumentEnable: Boolean;
         [InDataSet]
         LogInteractionEnable: Boolean;
+        TotalSubTotal: Decimal;
+        TotalAmount: Decimal;
+        TotalInvoiceDiscountAmount: Decimal;
         CompanyInfo__Phone_No__CaptionLbl: Label 'Phone No.', Comment = 'DEU="Telefonnr."';
         CompanyInfo__Fax_No__CaptionLbl: Label 'Fax No.', Comment = 'DEU="Faxnr."';
         CompanyInfo__VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.', Comment = 'DEU="USt-IdNr."';
         CompanyInfo__Giro_No__CaptionLbl: Label 'Giro No.', Comment = 'DEU="Girokontonr."';
         CompanyInfo__Bank_Name_CaptionLbl: Label 'Bank', Comment = 'DEU="Bankkonto"';
         CompanyInfo__Bank_Account_No__CaptionLbl: Label 'Account No.', Comment = 'DEU="Kontonr."';
-        Expected_DateCaptionLbl: Label 'Expected Date', Comment = 'DEU="Erwartetes Datum"';
-        Blanket_Purchase_Order_No_CaptionLbl: Label 'Blanket Purchase Order No.', Comment = 'DEU="Einkauf Rahmenbestellung Nr."';
+        ReturnOrderNoCaptionLbl: Label 'Return Order No.', Comment = 'DEU="Reklamationsnr."';
         Header_DimensionsCaptionLbl: Label 'Header Dimensions', Comment = 'DEU="Kopfdimensionen"';
-        Purchase_Line___Expected_Receipt_Date__CaptionLbl: Label 'Expected Date', Comment = 'DEU="Erwartetes Datum"';
-        Purchase_Line___No__CaptionLbl: Label 'Our No.', Comment = 'DEU="Unsere Nr."';
-        Purchase_Line___Vendor_Item_No__CaptionLbl: Label 'No.', Comment = 'DEU="Nr."';
+        Direct_Unit_CostCaptionLbl: Label 'Direct Unit Cost', Comment = 'DEU="EK-Preis"';
+        Purchase_Line___Line_Discount___CaptionLbl: Label 'Disc. %', Comment = 'DEU="Rab. %"';
+        AmountCaptionLbl: Label 'Amount', Comment = 'DEU="Betrag"';
+        ContinuedCaptionLbl: Label 'Continued', Comment = 'DEU=""';
+        ContinuedCaption_Control76Lbl: Label 'Continued', Comment = 'DEU="Fortsetzung"';
+        PurchLine__Inv__Discount_Amount_CaptionLbl: Label 'Inv. Discount Amount', Comment = 'DEU=""';
+        SubtotalCaptionLbl: Label 'Subtotal', Comment = 'DEU="Zw.summe"';
+        VATDiscountAmountCaptionLbl: Label 'Payment Discount on VAT', Comment = 'DEU="Skonto auf MwSt."';
         Line_DimensionsCaptionLbl: Label 'Line Dimensions', Comment = 'DEU="Zeilendimensionen"';
+        PaymentTerms_DescriptionCaptionLbl: Label 'Payment Terms', Comment = 'DEU="Zahlungsbedingungen"';
         ShipmentMethod_DescriptionCaptionLbl: Label 'Shipment Method', Comment = 'DEU="Lieferbedingung"';
+        Payment_DetailsCaptionLbl: Label 'Payment Details', Comment = 'DEU="Zahlungsdetails"';
+        Vendor_No_CaptionLbl: Label 'Vendor No.', Comment = 'DEU="Kreditorennr."';
         Ship_to_AddressCaptionLbl: Label 'Ship-to Address', Comment = 'DEU="Lief. an Adresse"';
+        PrepmtLineAmount_Control173CaptionLbl: Label 'Amount', Comment = 'DEU="Betrag"';
+        PrepmtInvBuf_DescriptionCaptionLbl: Label 'Description', Comment = 'DEU="Beschreibung"';
+        PrepmtInvBuf__G_L_Account_No__CaptionLbl: Label 'G/L Account No.', Comment = 'DEU="Sachkontonr."';
+        Prepayment_SpecificationCaptionLbl: Label 'Prepayment Specification', Comment = 'DEU="Vorauszahlung - Spezifikation"';
+        ContinuedCaption_Control176Lbl: Label 'Continued', Comment = 'DEU="Fortsetzung"';
+        ContinuedCaption_Control178Lbl: Label 'Continued', Comment = 'DEU="Fortsetzung"';
+        Line_DimensionsCaption_Control180Lbl: Label 'Line Dimensions', Comment = 'DEU="Fortsetzung"';
         "### Lebit Correspondence Globals ###": Integer;
         CompanyAddressLine: Text;
         LeBitCorrespDocMgt: Codeunit "LBT Corresp. Doc. Mgt";
@@ -1078,7 +1441,6 @@ report 5272729 "LBT Blanket Purchase Order"
         HideCompanyInfo: Boolean;
         NewPageGroup: Integer;
         Item: Record Item;
-        TempBlob: Record TempBlob;
         ItemPictureExist: Boolean;
         ItemPicturePrint: Boolean;
         LBKopf_Description: Text;
@@ -1090,7 +1452,25 @@ report 5272729 "LBT Blanket Purchase Order"
         CompanyInfo1: Record "Company Information";
         CompanyInfo2: Record "Company Information";
         CompanyInfo3: Record "Company Information";
-        DocCaptionLbl: Label 'Blanket Purchase Order %1', Comment = 'DEU="Einkauf Rahmenbestellung Nr."';
+        TempLeBitPSLongtextLine: Record "LBT PS Longtext Line" temporary;
+        ReportType: Option Purchase,Sales,QA,Production,Delivery,"Report";
+        Vendor: Record Vendor;
+        VATPercentCaptionLbl: Label 'VAT %', Comment = 'DEU="MwSt. %"';
+        VATBaseCaptionLbl: Label 'VAT Base', Comment = 'DEU="MwSt.-Bemessungsgrundlage"';
+        VATAmtCaptionLbl: Label 'VAT Amount', Comment = 'DEU="MwSt.-Betrag"';
+        VATAmtSpecCaptionLbl: Label 'VAT Amount Specification', Comment = 'DEU="MwSt.-Betrag Spezifikation in "';
+        VATIdentifierCaptionLbl: Label 'VAT Identifier', Comment = 'DEU="MwSt.-Kennzeichen"';
+        InvDiscBaseAmtCaptionLbl: Label 'Invoice Discount Base Amount', Comment = 'DEU="Rechnungsrab.-Bem.grundlage"';
+        LineAmtCaptionLbl: Label 'Line Amount', Comment = 'DEU="Zeilenbetrag"';
+        InvDisAmtCaptionLbl: Label 'Invoice Discount Amount', Comment = 'DEU="Rechnungsrab.-Bem.grundlage"';
+        VATBaseCaption1Lbl: Label 'Total', Comment = 'DEU="Gesamt"';
+        ShiptoAddressCaptionLbl: Label 'Ship-to Address', Comment = 'DEU="Lief. an Adresse"';
+        VATIdentifierCaption1Lbl: Label 'VAT Identifier', Comment = 'DEU="MwSt.-Kennzeichen"';
+        VATPctCaptionLbl: Label 'VAT %', Comment = 'DEU="MwSt. %"';
+        VATBaseCaption2Lbl: Label 'VAT Base', Comment = 'DEU="MwSt.-Bemessungsgrundlage"';
+        VATAmountCaptionLbl: Label 'VAT Amount', Comment = 'DEU="MwSt.-Betrag"';
+        TotalCaption1Lbl: Label 'Total', Comment = 'DEU="Gesamt"';
+        DocCaptionLbl: Label 'Return Order %1', Comment = 'DEU="Reklamation %1"';
         PagefromPageCaptionLbl: Label 'Page %1 of %2', Comment = 'DEU="Seite %1 von %2"';
         PageCaptionLbl: Label 'Page %1', Comment = 'DEU="Seite %1"';
         NoCaptionLbl: Label 'No.', Comment = 'DEU="Nr."';
@@ -1106,24 +1486,19 @@ report 5272729 "LBT Blanket Purchase Order"
         CompanyInfo_IBAN_Caption_Lbl: Label 'IBAN', Comment = 'DEU="IBAN"';
         CompanyInfo__SWIFT_Code_Caption_Lbl: Label 'SWIFT-BIC', Comment = 'DEU="SWIFT-BIC"';
         PurchPersonText_Caption: Label 'Salesperson', Comment = 'DEU="Bearbeiter"';
-        CompanyInfo_E_Mail_Caption_Lbl: Label 'Mail:', Comment = 'DEU="E-Mail:"';
+        CompanyInfo_E_Mail_Caption_Lbl: Label 'Mail:', Comment = 'DEU="E-Mail"';
         CompanyInfo__Home_Page_Caption_Lbl: Label 'Homepage:', Comment = 'DEU="Homepage:"';
         FaxNoCaptionLbl: Label 'Telefax no.', Comment = 'DEU="Faxnr."';
         CarryForwardCaptionLbl: Label 'Carry-forward %1', Comment = 'DEU="Übertrag %1"';
-        GLSetup: Record "General Ledger Setup";
-        SubtotalCaptionLbl: Label 'Subtotal', Comment = 'DEU="Zw.summe"';
-        AmountCaptionLbl: Label 'Amount', Comment = 'DEU="Betrag"';
         Alternativposition_CaptionLbl: Label 'Alternative position', Comment = 'DEU="Alternativposition"';
         Bedarfposition_CaptionLbl: Label 'Position requirements', Comment = 'DEU="Bedarfposition"';
         BitteAndern_CaptionLbl: Label 'please change!', Comment = 'DEU="bitte ändern!"';
-        TempLeBitPSLongtextLine: Record "LBT PS Longtext Line" temporary;
-        ReportType: Option Purchase,Sales,QA,Production,Delivery,"Report";
-        Vendor: Record Vendor;
+        Purchase_Line___Vendor_Item_No__CaptionLbl: Label 'No.', Comment = 'DEU="Nr."';
+        DirectUnitCost: Decimal;
         LeBitReportFunctions: Codeunit "LBT Report Functions";
         VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.', Comment = 'DEU="USt-IdNr."';
-        VendSource: Option Default,"Pay-to Vendor","Buy-from Vendor";
 
-    procedure IntializeRequest(NewNoOfCopies: Integer; NewShowInternalInfo: Boolean; NewArchiveDocument: Boolean; NewLogInteraction: Boolean)
+    procedure InitializeRequest(NewNoOfCopies: Integer; NewShowInternalInfo: Boolean; NewArchiveDocument: Boolean; NewLogInteraction: Boolean)
     begin
         NoOfCopies := NewNoOfCopies;
         ShowInternalInfo := NewShowInternalInfo;
@@ -1131,24 +1506,14 @@ report 5272729 "LBT Blanket Purchase Order"
         LogInteraction := NewLogInteraction;
     end;
 
-    local procedure FormatAddressFields(PurchaseHeader: Record "Purchase Header")
+    local procedure FormatAddressFields(var PurchaseHeader: Record "Purchase Header")
     var
         i: Integer;
     begin
         FormatAddr.GetCompanyAddr(PurchaseHeader."Responsibility Center", RespCenter, CompanyInfo, CompanyAddr);
-        GetVendSource;
-        case VendSource of
-            VendSource::Default, VendSource::"Pay-to Vendor":
-                begin
-                    FormatAddr.PurchHeaderPayTo(VendAddr, PurchaseHeader);
-                    Vendor.GET("Purchase Header"."Pay-to Vendor No.");
-                end;
-            VendSource::"Buy-from Vendor":
-                begin
-                    FormatAddr.PurchHeaderBuyFrom(VendAddr, PurchaseHeader);
-                    Vendor.GET("Purchase Header"."Buy-from Vendor No.");
-                end;
-        end;
+        FormatAddr.PurchHeaderBuyFrom(BuyFromAddr, PurchaseHeader);
+        if PurchaseHeader."Buy-from Vendor No." <> PurchaseHeader."Pay-to Vendor No." then
+            FormatAddr.PurchHeaderPayTo(VendAddr, PurchaseHeader);
         FormatAddr.PurchHeaderShipTo(ShipToAddr, PurchaseHeader);
         CLEAR(CompanyAddressLine);
 
@@ -1163,8 +1528,12 @@ report 5272729 "LBT Blanket Purchase Order"
     local procedure FormatDocumentFields(PurchaseHeader: Record "Purchase Header")
     begin
         with PurchaseHeader do begin
+            FormatDocument.SetTotalLabels("Currency Code", TotalText, TotalInclVATText, TotalExclVATText);
             FormatDocument.SetPurchaser(SalesPurchPerson, "Purchaser Code", PurchaserText);
+            FormatDocument.SetPaymentTerms(PaymentTerms, "Payment Terms Code", "Language Code");
+            FormatDocument.SetPaymentTerms(PrepmtPaymentTerms, "Prepmt. Payment Terms Code", "Language Code");
             FormatDocument.SetShipmentMethod(ShipmentMethod, "Shipment Method Code", "Language Code");
+
             ReferenceText := FormatDocument.SetText("Your Reference" <> '', FIELDCAPTION("Your Reference"));
             VATNoText := FormatDocument.SetText("VAT Registration No." <> '', FIELDCAPTION("VAT Registration No."));
             if PurchaserText <> '' then
@@ -1264,32 +1633,6 @@ report 5272729 "LBT Blanket Purchase Order"
             TempLeBitPSLongtextLine.Type := TempLeBitPSLongtextLine.Type::Text;
             TempLeBitPSLongtextLine.INSERT;
         end;
-    end;
-
-    local procedure GetFirstMediaFromSet(MediaSetID: Guid; var TempBlob: Record TempBlob): Boolean
-    var
-        TenantMediaSet: Record "Tenant Media Set";
-        OStream: OutStream;
-    begin
-        CLEAR(TempBlob);
-        TenantMediaSet.SETRANGE(ID, MediaSetID);
-
-        if TenantMediaSet.FINDFIRST then begin
-            TempBlob.Blob.CREATEOUTSTREAM(OStream);
-            TenantMediaSet."Media ID".EXPORTSTREAM(OStream);
-
-            exit(true);
-        end;
-
-        exit(false);
-    end;
-
-    local procedure GetVendSource()
-    var
-        TypeVar: Option Sales,Purchase;
-        ReportType: Option " ","Sales Quote","Sales Order","Sales Pro Forma Inv","Blanket Sales Order","Purchase Quote","Purchase Order","Blanket Purchase Order";
-    begin
-        LeBitReportFunctions.GetSourceType(TypeVar::Purchase, ReportType::"Blanket Purchase Order", VendSource);
     end;
 }
 

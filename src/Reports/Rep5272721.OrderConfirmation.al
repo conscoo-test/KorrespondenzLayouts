@@ -1,17 +1,17 @@
-report 5272726 "LBT Sales pro forma Invoice"
+report 5272721 "lbt Order Confirmation"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './src/Reports/Rep5272726.LBTSalesproformaInvoice.rdlc';
-    Caption = 'Pro Forma Invoice', Comment = 'DEU="Proforma - Rechnung"';
+    RDLCLayout = './src/Reports/Rep5272721.LBTOrderConfirmation.rdlc';
+    Caption = 'Order Confirmation', Comment = 'DEU="Verkauf - Auftragsbestätigung"';
     PreviewMode = PrintLayout;
 
     dataset
     {
         dataitem("Sales Header"; "Sales Header")
         {
-            DataItemTableView = SORTING ("Document Type", "No.") WHERE ("Document Type" = FILTER (Invoice | Order));
+            DataItemTableView = SORTING("Document Type", "No.") WHERE("Document Type" = CONST(Order));
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
-            RequestFilterHeading = 'Pro Forma Invoice';
+            RequestFilterHeading = 'Sales Order';
             column(DocType_SalesHeader; "Document Type")
             {
             }
@@ -20,10 +20,10 @@ report 5272726 "LBT Sales pro forma Invoice"
             }
             dataitem(CopyLoop; "Integer")
             {
-                DataItemTableView = SORTING (Number);
+                DataItemTableView = SORTING(Number);
                 dataitem(PageLoop; "Integer")
                 {
-                    DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                    DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                     column(CompanyInfo2_Picture; CompanyInfo2.Picture)
                     {
                     }
@@ -183,13 +183,13 @@ report 5272726 "LBT Sales pro forma Invoice"
                     column(Sales_Header___Shipment_Date_Caption; Sales_Header___Shipment_Date_CaptionLbl)
                     {
                     }
-                    column(Sales_Header___No__Caption; Invoice_No_CaptionLbl)
+                    column(Sales_Header___No__Caption; Order_No_CaptionLbl)
                     {
                     }
                     column(Sales_Header___Prices_Including_VAT_Caption; "Sales Header".FIELDCAPTION("Prices Including VAT"))
                     {
                     }
-                    column(Invoice_No_Caption; Invoice_No_CaptionLbl)
+                    column(Order_No_Caption; Order_No_CaptionLbl)
                     {
                     }
                     column(PagefromPageCaption; PagefromPageCaptionLbl)
@@ -261,19 +261,13 @@ report 5272726 "LBT Sales pro forma Invoice"
                     column(CompanyInfo__Home_Page_Caption; CompanyInfo__Home_Page_Caption_Lbl)
                     {
                     }
-                    column(OrderNoText; OrderNoText)
-                    {
-                    }
-                    column(OrderNo; OrderNo)
-                    {
-                    }
                     column(VAT_Registration_No__Caption; VAT_Registration_No__CaptionLbl)
                     {
                     }
                     dataitem(DimensionLoop1; "Integer")
                     {
                         DataItemLinkReference = "Sales Header";
-                        DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
+                        DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
                         column(DimText; DimText)
                         {
                         }
@@ -323,9 +317,9 @@ report 5272726 "LBT Sales pro forma Invoice"
                     }
                     dataitem(LBKopf; "LBT PS Longtext Line")
                     {
-                        DataItemLink = "Document No." = FIELD ("No."), "Document Type" = FIELD ("Document Type");
+                        DataItemLink = "Document No." = FIELD("No."), "Document Type" = FIELD("Document Type");
                         DataItemLinkReference = "Sales Header";
-                        DataItemTableView = SORTING ("Table ID", "Document Type", "Document No.", Position, "Document Line No.", "Line No.") ORDER(Ascending) WHERE ("Table ID" = CONST (36), Position = CONST (Header));
+                        DataItemTableView = SORTING("Table ID", "Document Type", "Document No.", Position, "Document Line No.", "Line No.") ORDER(Ascending) WHERE("Table ID" = CONST(36), Position = CONST(Header));
 
                         trigger OnAfterGetRecord()
                         begin
@@ -339,7 +333,7 @@ report 5272726 "LBT Sales pro forma Invoice"
                     }
                     dataitem(TempLBKopf; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(LBKopf_LineNo; FORMAT(TempLeBitPSLongtextLine."Line No."))
                         {
                         }
@@ -389,9 +383,9 @@ report 5272726 "LBT Sales pro forma Invoice"
                     }
                     dataitem("Sales Line"; "Sales Line")
                     {
-                        DataItemLink = "Document Type" = FIELD ("Document Type"), "Document No." = FIELD ("No.");
+                        DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("No.");
                         DataItemLinkReference = "Sales Header";
-                        DataItemTableView = SORTING ("Document Type", "Document No.", "Line No.");
+                        DataItemTableView = SORTING("Document Type", "Document No.", "Line No.");
 
                         trigger OnPreDataItem()
                         begin
@@ -400,8 +394,8 @@ report 5272726 "LBT Sales pro forma Invoice"
                     }
                     dataitem(RoundLoop; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
-                        column(Item_Picture; TempBlob.Blob)
+                        DataItemTableView = SORTING(Number);
+                        column(Item_Picture; Item.Picture)
                         {
                         }
                         column(ItemPictureExist; ItemPictureExist)
@@ -466,10 +460,13 @@ report 5272726 "LBT Sales pro forma Invoice"
                         column(UOM_SalesLine; "Sales Line"."Unit of Measure")
                         {
                         }
-                        column(UnitPrice_SalesLine; UnitPrice)
+                        column(UnitPrice_SalesLine; "Sales Line"."Unit Price")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 2;
+                        }
+                        column(UnitPrice; UnitPrice)
+                        {
                         }
                         column(LineDisc_SalesLine; "Sales Line"."Line Discount %")
                         {
@@ -626,7 +623,7 @@ report 5272726 "LBT Sales pro forma Invoice"
                         }
                         dataitem(ParameterAndUnits; "Integer")
                         {
-                            DataItemTableView = SORTING (Number);
+                            DataItemTableView = SORTING(Number);
                             column(RowNumber; Number)
                             {
                             }
@@ -650,9 +647,9 @@ report 5272726 "LBT Sales pro forma Invoice"
                         }
                         dataitem(LBLang; "LBT PS Longtext Line")
                         {
-                            DataItemLink = "Document Type" = FIELD ("Document Type"), "Document No." = FIELD ("Document No."), "Document Line No." = FIELD ("Line No.");
+                            DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("Document No."), "Document Line No." = FIELD("Line No.");
                             DataItemLinkReference = "Sales Line";
-                            DataItemTableView = SORTING ("Table ID", "Document Type", "Document No.", Position, "Document Line No.", "Line No.") ORDER(Ascending) WHERE ("Table ID" = CONST (37), Position = CONST (Longtext));
+                            DataItemTableView = SORTING("Table ID", "Document Type", "Document No.", Position, "Document Line No.", "Line No.") ORDER(Ascending) WHERE("Table ID" = CONST(37), Position = CONST(Longtext));
 
                             trigger OnAfterGetRecord()
                             begin
@@ -666,7 +663,7 @@ report 5272726 "LBT Sales pro forma Invoice"
                         }
                         dataitem(TempLBLang; "Integer")
                         {
-                            DataItemTableView = SORTING (Number);
+                            DataItemTableView = SORTING(Number);
                             column(LBLang_LineNo; FORMAT(TempLeBitPSLongtextLine."Line No."))
                             {
                             }
@@ -716,7 +713,7 @@ report 5272726 "LBT Sales pro forma Invoice"
                         }
                         dataitem(DimensionLoop2; "Integer")
                         {
-                            DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
+                            DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
                             column(DimText_Control82; DimText)
                             {
                             }
@@ -765,7 +762,7 @@ report 5272726 "LBT Sales pro forma Invoice"
                         }
                         dataitem(AsmLoop; "Integer")
                         {
-                            DataItemTableView = SORTING (Number);
+                            DataItemTableView = SORTING(Number);
                             column(AsmLineUOMText; GetUnitOfMeasureDescr(AsmLine."Unit of Measure Code"))
                             {
                             }
@@ -858,15 +855,15 @@ report 5272726 "LBT Sales pro forma Invoice"
                             CLEAR(Item);
                             ItemPictureExist := false;
 
-                            if SalesLine.Quantity <> 0 then
-                                UnitPrice := SalesLine."Unit Price" - SalesLine."Line Discount Amount" / SalesLine.Quantity
+                            if "Sales Line".Quantity <> 0 then
+                                UnitPrice := "Sales Line"."Unit Price" - "Sales Line"."Line Discount Amount" / "Sales Line".Quantity
                             else
                                 UnitPrice := 0;
 
                             SalesLine.CALCFIELDS("LBT Balance");
                             if SalesLine.Type = SalesLine.Type::Item then begin
                                 Item.GET("Sales Line"."No.");
-                                ItemPictureExist := GetFirstMediaFromSet(Item.Picture.MEDIAID, TempBlob);
+                                ItemPictureExist := Item.Picture.Count > 0;
                                 if not ItemPicturePrint then
                                     ItemPictureExist := false;
                                 TxtVar := CurrReport.OBJECTID(false);
@@ -898,30 +895,12 @@ report 5272726 "LBT Sales pro forma Invoice"
                                     COMPRESSARRAY(ItemUnitDescriptionArry);
                                     COMPRESSARRAY(ItemUnitQtyArry);
                                 end;
-                                //zusätzliche Infos
-                                //Auftragsnummer
-                                if OrderNoText = '' then begin
-                                    if SalesShipmentLine.GET(SalesLine."Shipment No.", SalesLine."Shipment Line No.") then
-                                        if SalesShipmentLine."Order No." <> '' then begin
-                                            Counter := 0;
-                                            repeat
-                                                Counter += 1;
-                                            until InfoCaptionArry[Counter] = '';
-                                            InfoCaptionArry[Counter] := OrderNoCaptionLbl;
-                                            InfoValueArry[Counter] := SalesShipmentLine."Order No.";
-                                        end;
-                                end;
-
-                                ///Prüfung auf MaxRowNo
                                 Counter := 0;
                                 repeat
                                     Counter += 1;
                                 until (InfoCaptionArry[Counter] = '') and
                                   (ItemUnitDescriptionArry[Counter] = '');
-                                if Counter > 1 then
-                                    InfoRowNo := Counter - 1
-                                else
-                                    InfoRowNo := 0;
+                                InfoRowNo := Counter - 1;
                             end;
                         end;
 
@@ -946,7 +925,7 @@ report 5272726 "LBT Sales pro forma Invoice"
                     }
                     dataitem(VATCounter; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(VATAmountLineVATBase; VATAmountLine."VAT Base")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
@@ -1105,53 +1084,9 @@ report 5272726 "LBT Sales pro forma Invoice"
                             SETRANGE(Number, 1, VATAmountLine.COUNT);
                         end;
                     }
-                    dataitem(VATClauseEntryCounter; "Integer")
-                    {
-                        DataItemTableView = SORTING (Number);
-                        column(VATClauseVATIdentifier; VATAmountLine."VAT Identifier")
-                        {
-                        }
-                        column(VATClauseCode; VATAmountLine."VAT Clause Code")
-                        {
-                        }
-                        column(VATClauseDescription; VATClause.Description)
-                        {
-                        }
-                        column(VATClauseDescription2; VATClause."Description 2")
-                        {
-                        }
-                        column(VATClauseAmount; VATAmountLine."VAT Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(VATClausesCaption; VATClausesCap)
-                        {
-                        }
-                        column(VATClauseVATIdentifierCaption; VATIdentifierCaptionLbl)
-                        {
-                        }
-                        column(VATClauseVATAmtCaption; VATAmountCaptionLbl)
-                        {
-                        }
-
-                        trigger OnAfterGetRecord()
-                        begin
-                            VATAmountLine.GetLine(Number);
-                            if not VATClause.GET(VATAmountLine."VAT Clause Code") then
-                                CurrReport.SKIP;
-                            VATClause.TranslateDescription("Sales Header"."Language Code");
-                        end;
-
-                        trigger OnPreDataItem()
-                        begin
-                            CLEAR(VATClause);
-                            SETRANGE(Number, 1, VATAmountLine.COUNT);
-                        end;
-                    }
                     dataitem(VATCounterLCY; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(VALExchRate; VALExchRate)
                         {
                         }
@@ -1256,7 +1191,7 @@ report 5272726 "LBT Sales pro forma Invoice"
                     }
                     dataitem(Total; "Integer")
                     {
-                        DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                         column(PmntTermsDesc; PaymentTerms.Description)
                         {
                         }
@@ -1275,7 +1210,7 @@ report 5272726 "LBT Sales pro forma Invoice"
                     }
                     dataitem(Total2; "Integer")
                     {
-                        DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                         column(SelltoCustNo_SalesHeader; "Sales Header"."Sell-to Customer No.")
                         {
                         }
@@ -1321,7 +1256,7 @@ report 5272726 "LBT Sales pro forma Invoice"
                     }
                     dataitem(PrepmtLoop; "Integer")
                     {
-                        DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
+                        DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
                         column(PrepmtLineAmount; PrepmtLineAmount)
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
@@ -1413,7 +1348,7 @@ report 5272726 "LBT Sales pro forma Invoice"
                         }
                         dataitem(PrepmtDimLoop; "Integer")
                         {
-                            DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
+                            DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
                             column(DimText_Control173; DimText)
                             {
                             }
@@ -1481,7 +1416,7 @@ report 5272726 "LBT Sales pro forma Invoice"
                     }
                     dataitem(PrepmtVATCounter; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(PrepmtVATAmtLineVATAmt; PrepmtVATAmountLine."VAT Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
@@ -1600,7 +1535,7 @@ report 5272726 "LBT Sales pro forma Invoice"
                     }
                     dataitem(PrepmtTotal; "Integer")
                     {
-                        DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                         column(PrepmtPmtTermsDesc; PrepmtPaymentTerms.Description)
                         {
                         }
@@ -1619,9 +1554,9 @@ report 5272726 "LBT Sales pro forma Invoice"
                     }
                     dataitem(LBFuss; "LBT PS Longtext Line")
                     {
-                        DataItemLink = "Document Type" = FIELD ("Document Type"), "Document No." = FIELD ("No.");
+                        DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("No.");
                         DataItemLinkReference = "Sales Header";
-                        DataItemTableView = SORTING ("Table ID", "Document Type", "Document No.", Position, "Document Line No.", "Line No.") ORDER(Ascending) WHERE ("Table ID" = CONST (36), Position = CONST (Footer));
+                        DataItemTableView = SORTING("Table ID", "Document Type", "Document No.", Position, "Document Line No.", "Line No.") ORDER(Ascending) WHERE("Table ID" = CONST(36), Position = CONST(Footer), "Document Type" = CONST(Order));
 
                         trigger OnAfterGetRecord()
                         begin
@@ -1635,7 +1570,7 @@ report 5272726 "LBT Sales pro forma Invoice"
                     }
                     dataitem(TempLBFuss; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(LBFuss_LineNo; FORMAT(TempLeBitPSLongtextLine."Line No."))
                         {
                         }
@@ -1715,7 +1650,7 @@ report 5272726 "LBT Sales pro forma Invoice"
                     SalesPostPrepmt.CalcVATAmountLines("Sales Header", PrepmtSalesLine, PrepmtVATAmountLine, 0);
                     PrepmtVATAmountLine.DeductVATAmountLine(PrepmtVATAmountLineDeduct);
                     SalesPostPrepmt.UpdateVATOnLines("Sales Header", PrepmtSalesLine, PrepmtVATAmountLine, 0);
-                    SalesPostPrepmt.BuildInvLineBuffer2("Sales Header", PrepmtSalesLine, 0, PrepmtInvBuf);
+                    SalesPostPrepmt.BuildInvLineBuffer("Sales Header", PrepmtSalesLine, 0, PrepmtInvBuf);
                     PrepmtVATAmount := PrepmtVATAmountLine.GetTotalVATAmount;
                     PrepmtVATBaseAmount := PrepmtVATAmountLine.GetTotalVATBase;
                     PrepmtTotalAmountInclVAT := PrepmtVATAmountLine.GetTotalAmountInclVAT;
@@ -1763,22 +1698,6 @@ report 5272726 "LBT Sales pro forma Invoice"
             trigger OnAfterGetRecord()
             begin
                 CurrReport.LANGUAGE := Language.GetLanguageID("Language Code");
-
-                OrderNo := '';
-                Counter := 0;
-                SalesLineRec.SETRANGE("Document Type", "Sales Header"."Document Type");
-                SalesLineRec.SETRANGE("Document No.", "Sales Header"."No.");
-                SalesLineRec.SETFILTER(Type, '<>%1', SalesLineRec.Type::" ");
-                if SalesLineRec.FINDSET then
-                    repeat
-                        Counter += 1;
-                        if SalesShipmentLine.GET(SalesLineRec."Shipment No.", SalesLineRec."Shipment Line No.") then
-                            if Counter = 1 then
-                                OrderNo := SalesShipmentLine."Order No."
-                            else
-                                if OrderNo <> SalesShipmentLine."Order No." then
-                                    OrderNo := '';
-                    until SalesLineRec.NEXT = 0;
 
                 FormatAddressFields("Sales Header");
                 FormatDocumentFields("Sales Header");
@@ -1829,19 +1748,20 @@ report 5272726 "LBT Sales pro forma Invoice"
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'No. of Copies', Comment = 'DEU="Anzahl Kopien"';
-                        ToolTip = 'Specifies how many copies of the document to print.', comment = 'DEU="Legt die Anzahl der Ausdrücke fest"';
+                        ToolTip = 'Specifies how many copies of the document to print.', comment = 'DEU="Legen Sie die Anzahl der Kopien fest"';
+
                     }
                     field(ShowInternalInfo; ShowInternalInfo)
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Show Internal Information', Comment = 'DEU="Interne Informationen anzeigen"';
-                        ToolTip = 'Specifies if the document shows internal information.', comment = 'DEU="Legt fest ob vorhandene Dimensionswerte mit ausgedruckt werden sollen"';
+                        ToolTip = 'Specifies if the document shows internal information.', comment = 'DEU=" Ausdrucken der Dimensionen"';
                     }
                     field(ArchiveDocument; ArchiveDocument)
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Archive Document', Comment = 'DEU="Beleg archivieren"';
-                        ToolTip = 'Specifies if the document is archived after you preview or print it.', comment = 'DEU="Legt fest ob das Dokument nach dem Ausdruck oder Vorschau auch archiviert wird"';
+                        ToolTip = 'Specifies if the document is archived after you preview or print it.', comment = 'DEU="Legen Sie fest ob das Dokument nach dem Ausdruck oder Vorschau auch archiviert wird"';
 
                         trigger OnValidate()
                         begin
@@ -1864,7 +1784,6 @@ report 5272726 "LBT Sales pro forma Invoice"
                     }
                     field(ShowAssemblyComponents; DisplayAssemblyInfo)
                     {
-                
                         Caption = 'Show Assembly Components', Comment = 'DEU="Montagekomponenten anzeigen"';
                         ToolTip = 'Specifies that you want to display the assembly components', comment = 'DEU="Legen Sie fest ob Sie die Montagekomponenten anzeigen möchten"';
                     }
@@ -1876,7 +1795,7 @@ report 5272726 "LBT Sales pro forma Invoice"
                     field(ItemPicturePrint; ItemPicturePrint)
                     {
                         Caption = 'Print Item Picture', Comment = 'DEU="Artikelbilder drucken"';
-                        ToolTip = 'Specifies that the images are printed ', comment = 'DEU="Legt fest ob Artikelbilder mit ausgedruckt werden"';
+                        ToolTip = 'Specifies that the  images are printed ', comment = 'DEU="Legt fest ob Artikelbilder mit ausgedruckt werden"';
                     }
                 }
             }
@@ -1931,7 +1850,7 @@ report 5272726 "LBT Sales pro forma Invoice"
     end;
 
     var
-        Text004: Label 'Sales Invoice pre %1', Comment = 'DEU="Rechnung vorab %1"';
+        Text004: Label 'Order Confirmation %1', Comment = 'DEU="Auftragsbestätigung %1"';
         PageCaptionCap: Label 'Page %1 of %2', Comment = 'DEU="Seite %1 von %2"';
         GLSetup: Record "General Ledger Setup";
         ShipmentMethod: Record "Shipment Method";
@@ -1951,10 +1870,10 @@ report 5272726 "LBT Sales pro forma Invoice"
         TempPrepmtDimSetEntry: Record "Dimension Set Entry" temporary;
         PrepmtInvBuf: Record "Prepayment Inv. Line Buffer" temporary;
         RespCenter: Record "Responsibility Center";
-        Language: Record Language;
         CurrExchRate: Record "Currency Exchange Rate";
         AsmHeader: Record "Assembly Header";
         AsmLine: Record "Assembly Line";
+        Language: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         SegManagement: Codeunit SegManagement;
         ArchiveManagement: Codeunit ArchiveManagement;
@@ -1988,7 +1907,7 @@ report 5272726 "LBT Sales pro forma Invoice"
         VALVATBaseLCY: Decimal;
         VALVATAmountLCY: Decimal;
         VALSpecLCYHeader: Text[80];
-        Text007: Label 'VAT Amount Specification in ', Comment = 'DEU="MwSt.-Betrag Spezifikation in "';
+        Text007: Label 'VAT Amount Specification in ', Comment = 'DEU="MwSt.-Betrag Spezifikation in"';
         Text008: Label 'Local Currency', Comment = 'DEU="Landeswährung"';
         Text009: Label 'Exchange rate: %1/%2', Comment = 'DEU="Wechselkurs: %1/%2"';
         VALExchRate: Text[50];
@@ -2016,12 +1935,12 @@ report 5272726 "LBT Sales pro forma Invoice"
         AsmInfoExistsForLine: Boolean;
         CompanyInfo__Phone_No__CaptionLbl: Label 'Phone No.', Comment = 'DEU="Telefonnr."';
         CompanyInfo__Fax_No__CaptionLbl: Label 'Fax No.', Comment = 'DEU="Faxnr."';
-        CompanyInfo__VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.', Comment = 'DEU="USt-IdNr."';
+        CompanyInfo__VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.', Comment = 'DEU="USt-IDNr."';
         CompanyInfo__Giro_No__CaptionLbl: Label 'Giro No.', Comment = 'DEU="Girokontonr."';
-        CompanyInfo__Bank_Name_CaptionLbl: Label 'Bank', Comment = 'DEU="Bankkonto"';
+        CompanyInfo__Bank_Name_CaptionLbl: Label 'Bank', Comment = 'DEU="Banknr."';
         CompanyInfo__Bank_Account_No__CaptionLbl: Label 'Account No.', Comment = 'DEU="Kontonr."';
-        Sales_Header___Shipment_Date_CaptionLbl: Label 'Shipment Date', Comment = 'DEU="Warenausg.-Datum"';
-        Invoice_No_CaptionLbl: Label 'Invoice No.', Comment = 'DEU="Rechnungsnr."';
+        Sales_Header___Shipment_Date_CaptionLbl: Label 'Shipment Date', Comment = 'DEU="Gebuchtes Versanddatum"';
+        Order_No_CaptionLbl: Label 'Order No.', Comment = 'DEU="Auftragsnr."';
         Header_DimensionsCaptionLbl: Label 'Header Dimensions', Comment = 'DEU="Kopfdimensionen"';
         Unit_PriceCaptionLbl: Label 'Unit Price', Comment = 'DEU="VK-Preis"';
         Sales_Line___Line_Discount___CaptionLbl: Label 'Disc. %', Comment = 'DEU="Rab. %"';
@@ -2034,9 +1953,9 @@ report 5272726 "LBT Sales pro forma Invoice"
         Line_DimensionsCaptionLbl: Label 'Line Dimensions', Comment = 'DEU="Zeilendimensionen"';
         VATAmountLine__VAT___CaptionLbl: Label 'VAT %', Comment = 'DEU="MwSt. %"';
         VATAmountLine__VAT_Base__Control106CaptionLbl: Label 'VAT Base', Comment = 'DEU="MwSt.-Bemessungsgrundlage"';
-        VATAmountLine__VAT_Amount__Control107CaptionLbl: Label 'VAT Amount', Comment = 'DEU=""';
+        VATAmountLine__VAT_Amount__Control107CaptionLbl: Label 'VAT Amount', Comment = 'DEU="MwSt.-Betrag"';
         VAT_Amount_SpecificationCaptionLbl: Label 'VAT Amount Specification', Comment = 'DEU="MwSt.-Betrag - Spezifikation"';
-        VATAmountLine__Inv__Disc__Base_Amount__Control73CaptionLbl: Label 'Inv. Disc. Base Amount', Comment = 'DEU="Rechnungsrab.-Bem.grundlage"';
+        VATAmountLine__Inv__Disc__Base_Amount__Control73CaptionLbl: Label 'Inv. Disc. Base Amount', Comment = 'DEU="Rechnungsrab.-Bemessungsgr."';
         VATAmountLine__Line_Amount__Control72CaptionLbl: Label 'Line Amount', Comment = 'DEU="Zeilenbetrag"';
         VATAmountLine__Invoice_Discount_Amount__Control74CaptionLbl: Label 'Invoice Discount Amount', Comment = 'DEU="Rechnungsrab.-Betrag"';
         VATAmountLine__VAT_Identifier_CaptionLbl: Label 'VAT Identifier', Comment = 'DEU="MwSt.-Kennzeichen"';
@@ -2051,9 +1970,9 @@ report 5272726 "LBT Sales pro forma Invoice"
         VALVATBaseLCY_Control157CaptionLbl: Label 'Continued', Comment = 'DEU="Fortsetzung"';
         VALVATBaseLCY_Control160CaptionLbl: Label 'Total', Comment = 'DEU="Gesamt"';
         PaymentTerms_DescriptionCaptionLbl: Label 'Payment Terms', Comment = 'DEU="Zahlungsbedingungen"';
-        ShipmentMethod_DescriptionCaptionLbl: Label 'Shipment Method', Comment = 'DEU="Lieferbedingung"';
-        Ship_to_AddressCaptionLbl: Label 'Ship-to Address', Comment = 'DEU=""';
-        PrepmtLineAmount_Control166CaptionLbl: Label 'Amount', Comment = 'DEU="Gesamt"';
+        ShipmentMethod_DescriptionCaptionLbl: Label 'Shipment Method', Comment = 'DEU="Lieferbedingungen"';
+        Ship_to_AddressCaptionLbl: Label 'Ship-to Address', Comment = 'DEU="Lief. an Adresse"';
+        PrepmtLineAmount_Control166CaptionLbl: Label 'Amount', Comment = 'DEU="Betrag"';
         PrepmtInvBuf_DescriptionCaptionLbl: Label 'Description', Comment = 'DEU="Beschreibung"';
         PrepmtInvBuf__G_L_Account_No__CaptionLbl: Label 'G/L Account No.', Comment = 'DEU="Sachkontonr."';
         Prepayment_SpecificationCaptionLbl: Label 'Prepayment Specification', Comment = 'DEU="Vorauszahlung - Spezifikation"';
@@ -2085,7 +2004,6 @@ report 5272726 "LBT Sales pro forma Invoice"
         HideCompanyInfo: Boolean;
         NewPageGroup: Integer;
         Item: Record Item;
-        TempBlob: Record TempBlob;
         ItemPictureExist: Boolean;
         ItemPicturePrint: Boolean;
         LBKopf_Description: Text;
@@ -2095,7 +2013,7 @@ report 5272726 "LBT Sales pro forma Invoice"
         NewPageLBLang: Integer;
         LBFuss_Description: Text;
         NewPageLBFuss: Integer;
-        DocCaptionLbl: Label 'Pro forma Invoice %1', Comment = 'DEU="Pro Forma - Rechnung %1"';
+        DocCaptionLbl: Label 'Order Confirmation %1', Comment = 'DEU="Auftragsbestätigung %1"';
         PagefromPageCaptionLbl: Label 'Page %1 of %2', Comment = 'DEU="Seite %1 von %2"';
         PageCaptionLbl: Label 'Page %1', Comment = 'DEU="Seite %1"';
         NoCaptionLbl: Label 'No.', Comment = 'DEU="Nr."';
@@ -2104,7 +2022,7 @@ report 5272726 "LBT Sales pro forma Invoice"
         DatumCaptionLbl: Label 'Date', Comment = 'DEU="Datum"';
         CompanyInfo__VAT_Registration_No__CaptionLbl2: Label 'VAT Reg. No.', Comment = 'DEU="USt-IdNr."';
         Alternativposition_CaptionLbl: Label 'Alternative position', Comment = 'DEU="Alternativposition"';
-        Bedarfposition_CaptionLbl: Label 'Position requirements', Comment = 'DEU="Bedarfposition"';
+        Bedarfposition_CaptionLbl: Label 'Position requirements', Comment = 'DEU="Bedarfsposition"';
         BitteAndern_CaptionLbl: Label 'please change!', Comment = 'DEU="bitte ändern!"';
         PosNo_SalesLineCaptionLbl: Label 'Pos.', Comment = 'DEU="Pos."';
         UOM_SalesLineCaptionLbl: Label 'Unit', Comment = 'DEU="Einheit"';
@@ -2116,21 +2034,11 @@ report 5272726 "LBT Sales pro forma Invoice"
         CompanyInfo__SWIFT_Code_Caption_Lbl: Label 'SWIFT-BIC', Comment = 'DEU="SWIFT-BIC"';
         SalesPersonText_Caption: Label 'Salesperson', Comment = 'DEU="Bearbeiter"';
         CompanyInfo_E_Mail_Caption_Lbl: Label 'Mail:', Comment = 'DEU="E-Mail"';
-        CompanyInfo__Home_Page_Caption_Lbl: Label 'Homepage:', Comment = 'DEU="Homepage:"';
+        CompanyInfo__Home_Page_Caption_Lbl: Label 'Homepage:', Comment = 'DEU="Homepage"';
         Text5272768: Label 'At orders no alternative positions and demand positions are allowed!', Comment = 'DEU="Auf Aufträgen sind keine Alternativ- und Bedarfspositionen erlaubt."';
         ReportType: Option Purchase,Sales,QA,Production,Delivery,"Report";
         UnitPrice: Decimal;
         LeBitReportFunctions: Codeunit "LBT Report Functions";
-        SalesLineRec: Record "Sales Line";
-        OrderNo: Code[20];
-        Counter: Integer;
-        OrderNoText: Text;
-        OrderNoCaptionLbl: Label 'Order No.', Comment = 'DEU="Bestellnr. "';
-        SalesShipmentLine: Record "Sales Shipment Line";
-        VATClause: Record "VAT Clause";
-        VATClausesCap: Label 'VAT Clause', Comment = 'DEU="USt-IdNr."';
-        VATIdentifierCaptionLbl: Label 'VAT Identifier', Comment = 'DEU=""';
-        VATAmountCaptionLbl: Label 'VAT Amount', Comment = 'DEU="MwSt. Betrag"';
         VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.', Comment = 'DEU="USt-IdNr."';
         CustSource: Option Default,"Bill-to Customer","Sell-to Customer";
 
@@ -2178,7 +2086,6 @@ report 5272726 "LBT Sales pro forma Invoice"
 
             ReferenceText := FormatDocument.SetText("Your Reference" <> '', FIELDCAPTION("Your Reference"));
             VATNoText := FormatDocument.SetText("VAT Registration No." <> '', FIELDCAPTION("VAT Registration No."));
-            OrderNoText := FormatDocument.SetText(OrderNo <> '', OrderNoCaptionLbl);
             if SalesPersonText <> '' then
                 SalesPersonText := SalesPersonText_Caption;
         end;
@@ -2292,30 +2199,12 @@ report 5272726 "LBT Sales pro forma Invoice"
         end;
     end;
 
-    local procedure GetFirstMediaFromSet(MediaSetID: Guid; var TempBlob: Record TempBlob): Boolean
-    var
-        TenantMediaSet: Record "Tenant Media Set";
-        OStream: OutStream;
-    begin
-        CLEAR(TempBlob);
-        TenantMediaSet.SETRANGE(ID, MediaSetID);
-
-        if TenantMediaSet.FINDFIRST then begin
-            TempBlob.Blob.CREATEOUTSTREAM(OStream);
-            TenantMediaSet."Media ID".EXPORTSTREAM(OStream);
-
-            exit(true);
-        end;
-
-        exit(false);
-    end;
-
     local procedure GetCustSource()
     var
         TypeVar: Option Sales,Purchase;
         ReportType: Option " ","Sales Quote","Sales Order","Sales Pro Forma Inv","Blanket Sales Order","Purchase Quote","Purchase Order","Blanket Purchase Order";
     begin
-        LeBitReportFunctions.GetSourceType(TypeVar::Sales, ReportType::"Sales Pro Forma Inv", CustSource);
+        LeBitReportFunctions.GetSourceType(TypeVar::Sales, ReportType::"Sales Order", CustSource);
     end;
 }
 
