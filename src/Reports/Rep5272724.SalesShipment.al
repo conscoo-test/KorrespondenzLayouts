@@ -955,8 +955,6 @@ report 5272724 "lbt Sales - Shipment"
 
             trigger OnAfterGetRecord()
             begin
-                CurrReport.LANGUAGE := Language.GetLanguageID("Language Code");
-
                 FormatAddressFields("Sales Shipment Header");
                 FormatDocumentFields("Sales Shipment Header");
 
@@ -1076,7 +1074,6 @@ report 5272724 "lbt Sales - Shipment"
         PostedAsmLine: Record "Posted Assembly Line";
         RespCenter: Record "Responsibility Center";
         ItemTrackingAppendix: Report "Item Tracking Appendix";
-        Language: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
         SegManagement: Codeunit SegManagement;

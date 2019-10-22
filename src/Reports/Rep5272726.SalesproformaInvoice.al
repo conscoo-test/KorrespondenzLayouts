@@ -1762,8 +1762,6 @@ report 5272726 "lbt Sales pro forma Invoice"
 
             trigger OnAfterGetRecord()
             begin
-                CurrReport.LANGUAGE := Language.GetLanguageID("Language Code");
-
                 OrderNo := '';
                 Counter := 0;
                 SalesLineRec.SETRANGE("Document Type", "Sales Header"."Document Type");
@@ -1954,7 +1952,6 @@ report 5272726 "lbt Sales pro forma Invoice"
         CurrExchRate: Record "Currency Exchange Rate";
         AsmHeader: Record "Assembly Header";
         AsmLine: Record "Assembly Line";
-        Language: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         SegManagement: Codeunit SegManagement;
         ArchiveManagement: Codeunit ArchiveManagement;

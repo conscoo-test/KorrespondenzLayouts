@@ -1676,8 +1676,6 @@ report 5272728 "lbt Order"
 
             trigger OnAfterGetRecord()
             begin
-                CurrReport.LANGUAGE := Language.GetLanguageID("Language Code");
-
                 FormatAddressFields("Purchase Header");
                 FormatDocumentFields("Purchase Header");
                 PricesInclVATtxt := FORMAT("Prices Including VAT");
@@ -1807,7 +1805,6 @@ report 5272728 "lbt Order"
         RespCenter: Record "Responsibility Center";
         CurrExchRate: Record "Currency Exchange Rate";
         PurchSetup: Record "Purchases & Payables Setup";
-        Language: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
         PurchPost: Codeunit "Purch.-Post";

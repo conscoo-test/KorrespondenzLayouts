@@ -1271,8 +1271,6 @@ report 5272720 "lbt Sales - Quote"
 
             trigger OnAfterGetRecord()
             begin
-                CurrReport.LANGUAGE := Language.GetLanguageID("Language Code");
-
                 FormatAddressFields("Sales Header");
                 FormatDocumentFields("Sales Header");
 
@@ -1308,7 +1306,6 @@ report 5272720 "lbt Sales - Quote"
             begin
                 MARKEDONLY := true;
                 COMMIT;
-                CurrReport.LANGUAGE := GLOBALLANGUAGE;
                 if CurrentClientType <> ClientType::Web then
                     if FIND('-') and ToDo.WRITEPERMISSION then
                         if Print and (NoOfRecords = 1) then
@@ -1460,7 +1457,6 @@ report 5272720 "lbt Sales - Quote"
         DimSetEntry2: Record "Dimension Set Entry";
         RespCenter: Record "Responsibility Center";
         CurrExchRate: Record "Currency Exchange Rate";
-        Language: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         SegManagement: Codeunit SegManagement;
         ArchiveManagement: Codeunit ArchiveManagement;
