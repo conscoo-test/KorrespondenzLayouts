@@ -1,4 +1,4 @@
-report 5272728 "LBT Order"
+report 5272728 "lbt Order"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './src/Reports/Rep5272728.LBTOrder.rdlc';
@@ -9,7 +9,7 @@ report 5272728 "LBT Order"
     {
         dataitem("Purchase Header"; "Purchase Header")
         {
-            DataItemTableView = SORTING ("Document Type", "No.") WHERE ("Document Type" = CONST (Order));
+            DataItemTableView = SORTING("Document Type", "No.") WHERE("Document Type" = CONST(Order));
             RequestFilterFields = "No.", "Buy-from Vendor No.", "No. Printed";
             RequestFilterHeading = 'Purchase Order';
             column(Purchase_Header_Document_Type; "Document Type")
@@ -20,10 +20,10 @@ report 5272728 "LBT Order"
             }
             dataitem(CopyLoop; "Integer")
             {
-                DataItemTableView = SORTING (Number);
+                DataItemTableView = SORTING(Number);
                 dataitem(PageLoop; "Integer")
                 {
-                    DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                    DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                     column(CompanyInfo2Picture; CompanyInfo2.Picture)
                     {
                     }
@@ -270,7 +270,7 @@ report 5272728 "LBT Order"
                     dataitem(DimensionLoop1; "Integer")
                     {
                         DataItemLinkReference = "Purchase Header";
-                        DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
+                        DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
                         column(DimText; DimText)
                         {
                         }
@@ -320,9 +320,9 @@ report 5272728 "LBT Order"
                     }
                     dataitem(LBKopf; "LBT PS Longtext Line")
                     {
-                        DataItemLink = "Document No." = FIELD ("No."), "Document Type" = FIELD ("Document Type");
+                        DataItemLink = "Document No." = FIELD("No."), "Document Type" = FIELD("Document Type");
                         DataItemLinkReference = "Purchase Header";
-                        DataItemTableView = SORTING ("Table ID", "Document Type", "Document No.", Position, "Document Line No.", "Line No.") ORDER(Ascending) WHERE ("Table ID" = CONST (38), Position = CONST (Header));
+                        DataItemTableView = SORTING("Table ID", "Document Type", "Document No.", Position, "Document Line No.", "Line No.") ORDER(Ascending) WHERE("Table ID" = CONST(38), Position = CONST(Header));
 
                         trigger OnAfterGetRecord()
                         begin
@@ -336,7 +336,7 @@ report 5272728 "LBT Order"
                     }
                     dataitem(TempLBKopf; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(LBKopf_LineNo; FORMAT(TempLeBitPSLongtextLine."Line No."))
                         {
                         }
@@ -389,9 +389,9 @@ report 5272728 "LBT Order"
                     }
                     dataitem("Purchase Line"; "Purchase Line")
                     {
-                        DataItemLink = "Document Type" = FIELD ("Document Type"), "Document No." = FIELD ("No.");
+                        DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("No.");
                         DataItemLinkReference = "Purchase Header";
-                        DataItemTableView = SORTING ("Document Type", "Document No.", "Line No.");
+                        DataItemTableView = SORTING("Document Type", "Document No.", "Line No.");
 
                         trigger OnPreDataItem()
                         begin
@@ -400,7 +400,7 @@ report 5272728 "LBT Order"
                     }
                     dataitem(RoundLoop; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(PurchLine__Line_Amount_; PurchLine."Line Amount")
                         {
                             AutoFormatExpression = "Purchase Line"."Currency Code";
@@ -606,7 +606,7 @@ report 5272728 "LBT Order"
                         column(ItemUnitDescription; ItemUnitDescription)
                         {
                         }
-                        column(Item_Picture; TempBlob.Blob)
+                        column(Item_Picture; Item.Picture)
                         {
                         }
                         column(ItemPictureExist; ItemPictureExist)
@@ -614,7 +614,7 @@ report 5272728 "LBT Order"
                         }
                         dataitem(ParameterAndUnits; "Integer")
                         {
-                            DataItemTableView = SORTING (Number);
+                            DataItemTableView = SORTING(Number);
                             column(RowNumber; Number)
                             {
                             }
@@ -638,9 +638,9 @@ report 5272728 "LBT Order"
                         }
                         dataitem(LBLang; "LBT PS Longtext Line")
                         {
-                            DataItemLink = "Document Type" = FIELD ("Document Type"), "Document No." = FIELD ("Document No."), "Document Line No." = FIELD ("Line No.");
+                            DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("Document No."), "Document Line No." = FIELD("Line No.");
                             DataItemLinkReference = "Purchase Line";
-                            DataItemTableView = SORTING ("Table ID", "Document Type", "Document No.", Position, "Document Line No.", "Line No.") ORDER(Ascending) WHERE ("Table ID" = CONST (39), Position = CONST (Longtext));
+                            DataItemTableView = SORTING("Table ID", "Document Type", "Document No.", Position, "Document Line No.", "Line No.") ORDER(Ascending) WHERE("Table ID" = CONST(39), Position = CONST(Longtext));
 
                             trigger OnAfterGetRecord()
                             begin
@@ -654,7 +654,7 @@ report 5272728 "LBT Order"
                         }
                         dataitem(TempLBLang; "Integer")
                         {
-                            DataItemTableView = SORTING (Number);
+                            DataItemTableView = SORTING(Number);
                             column(LBLang_LineNo; FORMAT(TempLeBitPSLongtextLine."Line No."))
                             {
                             }
@@ -704,7 +704,7 @@ report 5272728 "LBT Order"
                         }
                         dataitem(DimensionLoop2; "Integer")
                         {
-                            DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
+                            DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
                             column(DimText_Control74; DimText)
                             {
                             }
@@ -799,7 +799,7 @@ report 5272728 "LBT Order"
                             PurchLine.CALCFIELDS("LBT Balance");
                             if PurchLine.Type = PurchLine.Type::Item then begin
                                 Item.GET(PurchLine."No.");
-                                ItemPictureExist := GetFirstMediaFromSet(Item.Picture.MEDIAID, TempBlob);
+                                ItemPictureExist := Item.Picture.Count > 0;
                                 if not ItemPicturePrint then
                                     ItemPictureExist := false;
                                 TxtVar := CurrReport.OBJECTID(false);
@@ -883,7 +883,7 @@ report 5272728 "LBT Order"
                     }
                     dataitem(VATCounter; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(VATAmountLine__VAT_Base_; VATAmountLine."VAT Base")
                         {
                             AutoFormatExpression = "Purchase Header"."Currency Code";
@@ -1044,7 +1044,7 @@ report 5272728 "LBT Order"
                     }
                     dataitem(VATCounterLCY; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(VALExchRate; VALExchRate)
                         {
                         }
@@ -1149,7 +1149,7 @@ report 5272728 "LBT Order"
                     }
                     dataitem(Total; "Integer")
                     {
-                        DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                         column(PaymentTerms_Description; PaymentTerms.Description)
                         {
                         }
@@ -1168,7 +1168,7 @@ report 5272728 "LBT Order"
                     }
                     dataitem(Total2; "Integer")
                     {
-                        DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                         column(Purchase_Header___Pay_to_Vendor_No__; "Purchase Header"."Pay-to Vendor No.")
                         {
                         }
@@ -1214,7 +1214,7 @@ report 5272728 "LBT Order"
                     }
                     dataitem(Total3; "Integer")
                     {
-                        DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                         column(Purchase_Header___Sell_to_Customer_No__; "Purchase Header"."Sell-to Customer No.")
                         {
                         }
@@ -1260,7 +1260,7 @@ report 5272728 "LBT Order"
                     }
                     dataitem(PrepmtLoop; "Integer")
                     {
-                        DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
+                        DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
                         column(PrepmtLineAmount; PrepmtLineAmount)
                         {
                             AutoFormatExpression = "Purchase Header"."Currency Code";
@@ -1358,7 +1358,7 @@ report 5272728 "LBT Order"
                         }
                         dataitem(PrepmtDimLoop; "Integer")
                         {
-                            DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
+                            DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
 
                             trigger OnAfterGetRecord()
                             begin
@@ -1413,7 +1413,7 @@ report 5272728 "LBT Order"
                     }
                     dataitem(PrepmtVATCounter; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(PrepmtVATAmountLine__VAT_Amount_; PrepmtVATAmountLine."VAT Amount")
                         {
                             AutoFormatExpression = "Purchase Header"."Currency Code";
@@ -1532,7 +1532,7 @@ report 5272728 "LBT Order"
                     }
                     dataitem(PrepmtTotal; "Integer")
                     {
-                        DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                         column(PrepmtPaymentTerms_Description; PrepmtPaymentTerms.Description)
                         {
                         }
@@ -1551,9 +1551,9 @@ report 5272728 "LBT Order"
                     }
                     dataitem(LBFuss; "LBT PS Longtext Line")
                     {
-                        DataItemLink = "Document Type" = FIELD ("Document Type"), "Document No." = FIELD ("No.");
+                        DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("No.");
                         DataItemLinkReference = "Purchase Header";
-                        DataItemTableView = SORTING ("Table ID", "Document Type", "Document No.", Position, "Document Line No.", "Line No.") ORDER(Ascending) WHERE ("Table ID" = CONST (38), Position = CONST (Footer));
+                        DataItemTableView = SORTING("Table ID", "Document Type", "Document No.", Position, "Document Line No.", "Line No.") ORDER(Ascending) WHERE("Table ID" = CONST(38), Position = CONST(Footer));
 
                         trigger OnAfterGetRecord()
                         begin
@@ -1567,7 +1567,7 @@ report 5272728 "LBT Order"
                     }
                     dataitem(TempLBFuss; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(LBFuss_LineNo; FORMAT(TempLeBitPSLongtextLine."Line No."))
                         {
                         }
@@ -1645,7 +1645,7 @@ report 5272728 "LBT Order"
                     PurchPostPrepmt.CalcVATAmountLines("Purchase Header", PrepmtPurchLine, PrepmtVATAmountLine, 0);
                     PrepmtVATAmountLine.DeductVATAmountLine(PrePmtVATAmountLineDeduct);
                     PurchPostPrepmt.UpdateVATOnLines("Purchase Header", PrepmtPurchLine, PrepmtVATAmountLine, 0);
-                    PurchPostPrepmt.BuildInvLineBuffer2("Purchase Header", PrepmtPurchLine, 0, PrepmtInvBuf);
+                    PurchPostPrepmt.BuildInvLineBuffer("Purchase Header", PrepmtPurchLine, 0, PrepmtInvBuf);
                     PrepmtVATAmount := PrepmtVATAmountLine.GetTotalVATAmount;
                     PrepmtVATBaseAmount := PrepmtVATAmountLine.GetTotalVATBase;
                     PrepmtTotalAmountInclVAT := PrepmtVATAmountLine.GetTotalAmountInclVAT;
@@ -1805,9 +1805,9 @@ report 5272728 "LBT Order"
         PrepmtDimSetEntry: Record "Dimension Set Entry";
         PrepmtInvBuf: Record "Prepayment Inv. Line Buffer" temporary;
         RespCenter: Record "Responsibility Center";
-        Language: Record Language;
         CurrExchRate: Record "Currency Exchange Rate";
         PurchSetup: Record "Purchases & Payables Setup";
+        Language: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
         PurchPost: Codeunit "Purch.-Post";
@@ -1931,7 +1931,6 @@ report 5272728 "LBT Order"
         HideCompanyInfo: Boolean;
         NewPageGroup: Integer;
         Item: Record Item;
-        TempBlob: Record TempBlob;
         ItemPictureExist: Boolean;
         ItemPicturePrint: Boolean;
         LBKopf_Description: Text;
@@ -2122,24 +2121,6 @@ report 5272728 "LBT Order"
             TempLeBitPSLongtextLine.Type := TempLeBitPSLongtextLine.Type::Text;
             TempLeBitPSLongtextLine.INSERT;
         end;
-    end;
-
-    local procedure GetFirstMediaFromSet(MediaSetID: Guid; var TempBlob: Record TempBlob): Boolean
-    var
-        TenantMediaSet: Record "Tenant Media Set";
-        OStream: OutStream;
-    begin
-        CLEAR(TempBlob);
-        TenantMediaSet.SETRANGE(ID, MediaSetID);
-
-        if TenantMediaSet.FINDFIRST then begin
-            TempBlob.Blob.CREATEOUTSTREAM(OStream);
-            TenantMediaSet."Media ID".EXPORTSTREAM(OStream);
-
-            exit(true);
-        end;
-
-        exit(false);
     end;
 
     local procedure GetVendSource()
