@@ -901,8 +901,6 @@ report 5272729 "lbt Blanket Purchase Order"
 
             trigger OnAfterGetRecord()
             begin
-                CurrReport.LANGUAGE := Language.GetLanguageID("Language Code");
-
                 FormatAddressFields("Purchase Header");
                 FormatDocumentFields("Purchase Header");
 
@@ -1021,7 +1019,6 @@ report 5272729 "lbt Blanket Purchase Order"
         DimSetEntry2: Record "Dimension Set Entry";
         RespCenter: Record "Responsibility Center";
         PurchSetup: Record "Purchases & Payables Setup";
-        Language: Codeunit Language;
         PurchPost: Codeunit "Purch.-Post";
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
