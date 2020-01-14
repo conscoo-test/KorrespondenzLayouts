@@ -1,7 +1,7 @@
 {
-    "name": "LeBit365 Admincenter",
+    "name": "LeBit365 Korrespondenz Layouts",
     "appFolders": "app",
-    "testFolders": "",
+    "testFolders": "test",
     "dependenciesFolders": "",
     "publicDnsName": "lvserver19.lebit.intranet",
     "launch": {
