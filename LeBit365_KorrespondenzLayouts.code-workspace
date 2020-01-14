@@ -1,0 +1,34 @@
+{
+	"folders": [
+		{
+			"path": "App"
+		},
+		{
+			"path": "Test"
+		},
+		{
+			"path": "Scripts"
+		},
+		{
+			"path": "Appendix"
+		},
+		{
+			"path": "Dependencies"
+		}
+		,
+		{
+			"path": "CAL"
+		}
+	],
+	"settings": {
+		"al.enableCodeAnalysis": true,
+		"CRS.ObjectNamePrefix": "lbt ",
+		"CRS.OnSaveAlFileAction": "Rename",
+		"CRS.RemovePrefixFromFilename": true,
+		"al.codeAnalyzers": [
+			"${AppSourceCop}",
+			"${CodeCop}",
+			"${UICop}"
+		],
+	}
+}
