@@ -1,4 +1,4 @@
-page 5272726 DBTextEdit
+page 5272726 "DBTextEdit"
 {
     PageType = StandardDialog;
     // UsageCategory = None;
