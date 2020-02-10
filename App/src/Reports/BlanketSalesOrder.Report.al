@@ -1,7 +1,7 @@
 report 5272725 "lbt Blanket Sales Order"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './src/Reports/Rep5272725.lbtBlanketSalesOrder.rdlc';
+    RDLCLayout = './src/Reports/BlanketSalesOrder.Report.rdlc';
     Caption = 'Blanket Sales Order', Comment = 'DEU="Rahmenauftrag"';
     PreviewMode = PrintLayout;
 

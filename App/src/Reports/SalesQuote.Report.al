@@ -1,7 +1,7 @@
 report 5272720 "lbt Sales - Quote"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './src/Reports/Rep5272720.lbtSales-Quote.rdlc';
+    RDLCLayout = './src/Reports/SalesQuote.Report.rdlc';
 
     Caption = 'Sales - Quote', Comment = 'DEU="Verkauf - Angebot"';
     PreviewMode = PrintLayout;

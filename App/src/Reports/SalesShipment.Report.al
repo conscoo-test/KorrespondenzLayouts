@@ -1,7 +1,7 @@
 report 5272724 "lbt Sales - Shipment"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './src/Reports/Rep5272724.lbtSales-Shipment.rdlc';
+    RDLCLayout = './src/Reports/SalesShipment.Report.rdlc';
 
     Caption = 'Sales - Shipment', Comment = 'DEU="Verkauf - Lieferschein"';
     PreviewMode = PrintLayout;

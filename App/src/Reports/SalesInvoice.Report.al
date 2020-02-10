@@ -1,7 +1,7 @@
 report 5272722 "lbt Sales - Invoice"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './src/Reports/Rep5272722.lbtSales-Invoice.rdlc';
+    RDLCLayout = './src/Reports/SalesInvoice.Report.rdlc';
     Caption = 'Sales - Invoice', Comment = 'DEU="Verkauf - Rechnung"';
     EnableHyperlinks = true;
     Permissions = TableData "Sales Shipment Buffer" = rimd;

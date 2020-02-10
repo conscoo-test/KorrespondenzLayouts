@@ -1,7 +1,7 @@
 report 5272729 "lbt Blanket Purchase Order"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './src/Reports/Rep5272729.lbtBlanketPurchaseOrder.rdlc';
+    RDLCLayout = './src/Reports/BlanketPurchaseOrder.Report.rdlc';
     Caption = 'Blanket Purchase Order', Comment = 'DEU="Einkauf Rahmenbestellung"';
     PreviewMode = PrintLayout;
 

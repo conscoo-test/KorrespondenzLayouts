@@ -1,7 +1,7 @@
 report 5272731 "lbt Reminder"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './src/Reports/Rep5272731.lbtReminder.rdlc';
+    RDLCLayout = './src/Reports/Reminder.Report.rdlc';
     Caption = 'Reminder', Comment = 'DEU="Mahnung"';
 
     dataset

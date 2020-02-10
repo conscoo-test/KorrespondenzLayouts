@@ -1,7 +1,7 @@
 report 5272727 "lbt Purchase - Quote"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './src/Reports/Rep5272727.lbtPurchase-Quote.rdlc';
+    RDLCLayout = './src/Reports/PurchaseQuote.Report.rdlc';
     Caption = 'Purchase - Quote', comment = 'DEU="Bestellung - Anfrage"';
     PreviewMode = PrintLayout;
 

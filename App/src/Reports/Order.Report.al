@@ -1,7 +1,7 @@
 report 5272728 "lbt Order"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './src/Reports/Rep5272728.lbtOrder.rdlc';
+    RDLCLayout = './src/Reports/Order.Report.rdlc';
     Caption = 'Order', Comment = 'DEU="Bestellung"';
     PreviewMode = PrintLayout;
 

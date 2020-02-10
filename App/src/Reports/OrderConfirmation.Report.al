@@ -1,7 +1,7 @@
 report 5272721 "lbt Order Confirmation"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './src/Reports/Rep5272721.lbtOrderConfirmation.rdlc';
+    RDLCLayout = './src/Reports/OrderConfirmation.Report.rdlc';
     Caption = 'Order Confirmation', Comment = 'DEU="Verkauf - Auftragsbestätigung"';
     PreviewMode = PrintLayout;
 

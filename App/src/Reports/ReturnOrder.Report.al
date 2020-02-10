@@ -1,7 +1,7 @@
 report 5272730 "lbt Return Order"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './src/Reports/Rep5272730.lbtReturnOrder.rdlc';
+    RDLCLayout = './src/Reports/ReturnOrder.Report.rdlc';
     Caption = 'Return Order', Comment = 'DEU="Reklamation"';
     PreviewMode = PrintLayout;
 

@@ -1,7 +1,7 @@
 report 5272726 "lbt Sales pro forma Invoice"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './src/Reports/Rep5272726.lbtSalesproformaInvoice.rdlc';
+    RDLCLayout = './src/Reports/SalesproformaInvoice.Report.rdlc';
     Caption = 'Pro Forma Invoice', Comment = 'DEU="Proforma - Rechnung"';
     PreviewMode = PrintLayout;
 

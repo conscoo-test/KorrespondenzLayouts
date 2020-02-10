@@ -1,7 +1,7 @@
 report 5272723 "lbt Sales - Credit Memo"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './src/Reports/Rep5272723.lbtSales-CreditMemo.rdlc';
+    RDLCLayout = './src/Reports/SalesCreditMemo.Report.rdlc';
 
     Caption = 'Sales - Credit Memo', Comment = 'DEU="Verkauf - Gutschrift"';
     Permissions = TableData "Sales Shipment Buffer" = rimd;
