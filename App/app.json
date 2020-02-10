@@ -1,10 +1,10 @@
 {
   "id": "ae7eef02-bb60-436c-856d-d815600787b0",
   "name": "LeBit Correspondence Layouts",
-  "publisher": "LeBit Software and Consult GmbH",
+  "publisher": "LeBit Software & Consult GmbH",
   "brief": "Komfort Belegset und Komfort Funktionen für Korrespondenzbelege",
-  "description": "",
-  "version": "1.0.1.0",
+  "description": "Komfort Belegset und Komfort Funktionen für Korrespondenzbelege",
+  "version": "1.0.0.0",
   "privacyStatement": "https://www.lebit.net/impressum#datenschutz",
   "EULA": "https://www.lebit.net/impressum#datenschutz",
   "help": "https://www.lebit.net/#support",
@@ -26,16 +26,17 @@
   ],
   "screenshots": [],
   "platform": "15.0.0.0",
-  "idRanges": [{
-    "from": 5272720,
-    "to": 5272810
-  }],
-  "runtime": "4.0"
-  , "features": [
-      "TranslationFile"
+  "idRanges": [
+    {
+      "from": 5272720,
+      "to": 5272810
+    }
+  ],
+  "runtime": "4.0",
+  "features": [
+    "TranslationFile"
   ],
   "target": "Cloud",
   "contextSensitiveHelpUrl": "https://ALProject11.com/help/",
   "showMyCode": false
-
 }
