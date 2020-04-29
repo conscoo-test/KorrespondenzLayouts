@@ -1179,6 +1179,7 @@ report 5272723 "lbt Sales - Credit Memo"
 
             trigger OnAfterGetRecord()
             begin
+                CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
                 FormatAddressFields("Sales Cr.Memo Header");
                 FormatDocumentFields("Sales Cr.Memo Header");
 
@@ -1298,6 +1299,7 @@ report 5272723 "lbt Sales - Credit Memo"
         PaymentTerms: Record "Payment Terms";
         PaymentMethod: Record "Payment Method";
         ShipmentMethod: Record "Shipment Method";
+        Language: Codeunit Language;
         LeBitReportFunctions: Codeunit "lbt Report Functions";
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";

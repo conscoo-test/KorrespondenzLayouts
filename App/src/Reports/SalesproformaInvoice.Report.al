@@ -1761,6 +1761,7 @@ report 5272726 "lbt Sales pro forma Invoice"
 
             trigger OnAfterGetRecord()
             begin
+                CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
                 OrderNo := '';
                 Counter := 0;
                 SalesLineRec.SETRANGE("Document Type", "Sales Header"."Document Type");
@@ -1955,6 +1956,7 @@ report 5272726 "lbt Sales pro forma Invoice"
         Item: Record Item;
         TempLeBitPSLongtextLine: Record "lbt PS Longtext Line" temporary;
         SalesLineRec: Record "Sales Line";
+        Language: Codeunit Language;
         LeBitReportFunctions: Codeunit "lbt Report Functions";
         FormatAddr: Codeunit "Format Address";
         SegManagement: Codeunit SegManagement;

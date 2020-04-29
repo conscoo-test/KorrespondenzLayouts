@@ -1697,6 +1697,7 @@ report 5272721 "lbt Order Confirmation"
 
             trigger OnAfterGetRecord()
             begin
+                CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
                 FormatAddressFields("Sales Header");
                 FormatDocumentFields("Sales Header");
 
@@ -1872,6 +1873,7 @@ report 5272721 "lbt Order Confirmation"
         AsmLine: Record "Assembly Line";
         Item: Record Item;
         TempLeBitPSLongtextLine: Record "lbt PS Longtext Line" temporary;
+        Language: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         SegManagement: Codeunit SegManagement;
         ArchiveManagement: Codeunit ArchiveManagement;

@@ -1676,6 +1676,7 @@ report 5272728 "lbt Order"
 
             trigger OnAfterGetRecord()
             begin
+                CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
                 FormatAddressFields("Purchase Header");
                 FormatDocumentFields("Purchase Header");
                 PricesInclVATtxt := FORMAT("Prices Including VAT");
@@ -1815,6 +1816,7 @@ report 5272728 "lbt Order"
         CompanyInfo3: Record "Company Information";
         TempLeBitPSLongtextLine: Record "lbt PS Longtext Line" temporary;
         Vendor: Record Vendor;
+        Language: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
         PurchPost: Codeunit "Purch.-Post";

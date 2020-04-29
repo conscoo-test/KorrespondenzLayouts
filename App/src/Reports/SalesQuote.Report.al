@@ -1271,6 +1271,7 @@ report 5272720 "lbt Sales - Quote"
 
             trigger OnAfterGetRecord()
             begin
+                CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
                 FormatAddressFields("Sales Header");
                 FormatDocumentFields("Sales Header");
 
@@ -1454,6 +1455,7 @@ report 5272720 "lbt Sales - Quote"
         DimSetEntry2: Record "Dimension Set Entry";
         RespCenter: Record "Responsibility Center";
         CurrExchRate: Record "Currency Exchange Rate";
+        Language: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         SegManagement: Codeunit SegManagement;
         ArchiveManagement: Codeunit ArchiveManagement;
