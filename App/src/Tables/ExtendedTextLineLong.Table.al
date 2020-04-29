@@ -2,7 +2,7 @@ table 5272723 "lbt Extended Text Line Long"
 {
     // version LBCOR1.00
 
-    Caption = 'Extended Text Line Long', Comment = 'DEU="Textbausteinzeile Lang"';
+    Caption = 'Extended Text Line Long';
     DrillDownPageID = "lbt Ext. Text Lines Long";
     LookupPageID = "lbt Ext. Text Lines Long";
 
@@ -10,14 +10,14 @@ table 5272723 "lbt Extended Text Line Long"
     {
         field(1; "Table_ID"; Option)
         {
-            Caption = 'Table ID', Comment = 'DEU="Tabellen ID<"';
-            OptionCaption = 'Standard Text,G/L Account,Item,Resource', Comment = 'DEU="Standard Text,Sachkonto,Artikel,Ressource"';
+            Caption = 'Table ID';
+            OptionCaption = 'Standard Text,G/L Account,Item,Resource';
             OptionMembers = "Standard Text","G/L Account",Item,Resource;
             DataClassification = CustomerContent;
         }
         field(2; "No."; Code[20])
         {
-            Caption = 'No.', Comment = 'DEU="Nr."';
+            Caption = 'No.';
             NotBlank = true;
             TableRelation = IF (Table_ID = CONST("Standard Text")) "Standard Text"
             ELSE
@@ -30,23 +30,23 @@ table 5272723 "lbt Extended Text Line Long"
         }
         field(3; "Language Code"; Code[10])
         {
-            Caption = 'Language Code', Comment = 'DEU="Sprachcode"';
+            Caption = 'Language Code';
             TableRelation = Language;
             DataClassification = CustomerContent;
         }
         field(4; "Text No."; Integer)
         {
-            Caption = 'Text No.', Comment = 'DEU="Text Nr."';
+            Caption = 'Text No.';
             DataClassification = CustomerContent;
         }
         field(5; "Line No."; Integer)
         {
-            Caption = 'Line No.', Comment = 'DEU="Zeilennr."';
+            Caption = 'Line No.';
             DataClassification = CustomerContent;
         }
         field(6; Description; Text[120])
         {
-            Caption = 'Description', Comment = 'DEU="Beschreibung"';
+            Caption = 'Description';
             DataClassification = CustomerContent;
         }
     }

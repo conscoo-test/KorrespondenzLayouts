@@ -4,29 +4,29 @@ table 5272726 "lbt Source Setup"
 
     // LBIS00     211218 MH   ERSTELLT   H19/0780
 
-    Caption = 'lbt Source Setup', Comment = 'DEU="Herkunft Einrichtung"';
+    Caption = 'lbt Source Setup';
 
     fields
     {
         field(1; Type; Option)
         {
-            Caption = 'Type', Comment = 'DEU="Art"';
+            Caption = 'Type';
             DataClassification = CustomerContent;
-            OptionCaption = 'Sales,Purchase', Comment = 'DEU="Verkauf,Einkauf"';
+            OptionCaption = 'Sales,Purchase';
             OptionMembers = Sales,Purchase;
         }
         field(2; "Report Type"; Option)
         {
-            Caption = 'Report Type', Comment = 'DEU="Bericht Art"';
+            Caption = 'Report Type';
             DataClassification = CustomerContent;
-            OptionCaption = 'General,Sales Quote,Sales Order,Sales Pro Forma Inv,Blanket Sales Order,Purchase Quote,Purchase Order,Blanket Purchase Order', Comment = 'DEU="Allgemein,Verkauf - Angebot,Verkauf - Auftrag,Verkauf - Proformarechnung,Verkauf Rahmenauftrag,Einkauf - Anfrage,Einkauf - Bestellung,Einkauf Rahmenbestellung"';
+            OptionCaption = 'General,Sales Quote,Sales Order,Sales Pro Forma Inv,Blanket Sales Order,Purchase Quote,Purchase Order,Blanket Purchase Order';
             OptionMembers = General,"Sales Quote","Sales Order","Sales Pro Forma Inv","Blanket Sales Order","Purchase Quote","Purchase Order","Blanket Purchase Order";
         }
         field(3; "Source Type"; Option)
         {
-            Caption = 'Source Type', Comment = 'DEU="Herkunft Art"';
+            Caption = 'Source Type';
             DataClassification = CustomerContent;
-            OptionCaption = 'Default,Bill-to Customer,Sell-to Customer,Pay-to Vendor,Buy-from Vendor', Comment = 'DEU="Standard,Rech. an Debitor,Verk. an Debitor,Zahlung an Kreditor,Eink. von Kreditor"';
+            OptionCaption = 'Default,Bill-to Customer,Sell-to Customer,Pay-to Vendor,Buy-from Vendor';
             OptionMembers = Default,"Bill-to Customer","Sell-to Customer","Pay-to Vendor","Buy-from Vendor";
         }
     }

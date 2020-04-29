@@ -11,7 +11,7 @@ pageextension 5272804 "lbt Sales Cr. Memo Subform" extends "Sales Cr. Memo Subfo
             field("lbt Pos. No."; "lbt Pos. No.")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specified the Position No.', comment = 'DEU="Legt die Positionsnr. fest"';
+                ToolTip = 'Specified the Position No.';
             }
         }
         addafter(FilteredTypeField)
@@ -19,7 +19,7 @@ pageextension 5272804 "lbt Sales Cr. Memo Subform" extends "Sales Cr. Memo Subfo
             field("lbt Printoption"; "lbt Printoption")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specified the Printoption', comment = 'DEU="Legt die Druckauswahl fest"';
+                ToolTip = 'Specified the Printoption';
             }
         }
         addafter("ShortcutDimCode8")
@@ -27,7 +27,7 @@ pageextension 5272804 "lbt Sales Cr. Memo Subform" extends "Sales Cr. Memo Subfo
             field("lbt Long Text"; "lbt Long Text")
             {
                 ApplicationArea = All;
-                ToolTip = 'Here you can insert long texts.', comment = 'DEU="Hier können Sie Langtexte einfügen."';
+                ToolTip = 'Here you can insert long texts.';
             }
         }
     }
@@ -38,8 +38,8 @@ pageextension 5272804 "lbt Sales Cr. Memo Subform" extends "Sales Cr. Memo Subfo
             action("lbt LongText")
             {
                 ApplicationArea = Suite;
-                Caption = 'Long Text', Comment = 'DEU="Langtext"';
-                ToolTip = 'Here you can insert the long text for the line.', comment = 'DEU="Hier können Sie den Langtext für die Zeile einfügen."';
+                Caption = 'Long Text';
+                ToolTip = 'Here you can insert the long text for the line.';
                 Image = Import;
                 trigger OnAction()
                 var

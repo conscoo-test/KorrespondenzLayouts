@@ -6,47 +6,47 @@ tableextension 5272736 "lbt Company Information" extends "Company Information"
     {
         field(5272720; "lbt CEO1"; Text[60])
         {
-            Caption = 'CEO1', Comment = 'DEU="Geschäftsführer1"';
+            Caption = 'CEO1';
             DataClassification = CustomerContent;
         }
         field(5272721; "lbt CEO2"; Text[60])
         {
-            Caption = 'CEO2', Comment = 'DEU="Geschäftsführer2"';
+            Caption = 'CEO2';
             DataClassification = CustomerContent;
         }
         field(5272722; "lbt CEO3"; Text[60])
         {
-            Caption = 'CEO3', Comment = 'DEU="Geschäftsführer3"';
+            Caption = 'CEO3';
             DataClassification = CustomerContent;
         }
         field(5272723; "lbt Commercial Register No."; Text[50])
         {
-            Caption = 'Commercial Register', Comment = 'DEU="Handelsregister-Nr."';
+            Caption = 'Commercial Register';
             DataClassification = CustomerContent;
         }
         field(5272724; "lbt Trade Register Name"; Text[80])
         {
-            Caption = 'Trade Register Name', Comment = 'DEU="Handelsregister Name"';
+            Caption = 'Trade Register Name';
             DataClassification = CustomerContent;
         }
         field(5272725; "lbt Bank Name 2"; Text[50])
         {
-            Caption = 'Bank Name 2', Comment = 'DEU="Bankname 2"';
+            Caption = 'Bank Name 2';
             DataClassification = CustomerContent;
         }
         field(5272726; "lbt Bank Branch No. 2"; Text[20])
         {
-            Caption = 'Bank Branch No. 2', Comment = 'DEU="BLZ 2"';
+            Caption = 'Bank Branch No. 2';
             DataClassification = CustomerContent;
         }
         field(5272727; "lbt Bank Account No. 2"; Text[30])
         {
-            Caption = 'Bank Account No. 2', Comment = 'DEU="Bankkontonummer 2"';
+            Caption = 'Bank Account No. 2';
             DataClassification = CustomerContent;
         }
         field(5272728; "lbt IBAN 2"; Code[50])
         {
-            Caption = 'IBAN 2', Comment = 'DEU="IBAN 2"';
+            Caption = 'IBAN 2';
             DataClassification = CustomerContent;
 
             trigger OnValidate()
@@ -56,27 +56,27 @@ tableextension 5272736 "lbt Company Information" extends "Company Information"
         }
         field(5272729; "lbt SWIFT Code 2"; Code[20])
         {
-            Caption = 'SWIFT Code 2', Comment = 'DEU="SWIFT-Code 2"';
+            Caption = 'SWIFT Code 2';
             DataClassification = CustomerContent;
         }
         field(5272730; "lbt Bank Name 3"; Text[50])
         {
-            Caption = 'Bank Name 3', Comment = 'DEU="Bankname 2"';
+            Caption = 'Bank Name 3';
             DataClassification = CustomerContent;
         }
         field(5272731; "lbt Bank Branch No. 3"; Text[20])
         {
-            Caption = 'Bank Branch No. 3', Comment = 'DEU="BLZ 3"';
+            Caption = 'Bank Branch No. 3';
             DataClassification = CustomerContent;
         }
         field(5272732; "lbt Bank Account No. 3"; Text[30])
         {
-            Caption = 'Bank Account No. 3', Comment = 'DEU="Bankkontonr. 3"';
+            Caption = 'Bank Account No. 3';
             DataClassification = CustomerContent;
         }
         field(5272733; "lbt IBAN 3"; Code[50])
         {
-            Caption = 'IBAN 3', Comment = 'DEU="IBAN 3"';
+            Caption = 'IBAN 3';
             DataClassification = CustomerContent;
 
             trigger OnValidate()
@@ -86,12 +86,12 @@ tableextension 5272736 "lbt Company Information" extends "Company Information"
         }
         field(5272734; "lbt SWIFT Code 3"; Code[20])
         {
-            Caption = 'SWIFT Code 3', Comment = 'DEU="SWIFT-Code 3"';
+            Caption = 'SWIFT Code 3';
             DataClassification = CustomerContent;
         }
         field(5272735; "lbt District Court"; Text[50])
         {
-            Caption = 'District Court', Comment = 'DEU="Amtsgericht"';
+            Caption = 'District Court';
             DataClassification = CustomerContent;
         }
         field(5272736; "lbt Setup finished"; Boolean)

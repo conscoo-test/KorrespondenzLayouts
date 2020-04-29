@@ -10,20 +10,20 @@ table 5272722 "lbt Archive PS Longtext Line"
     {
         field(1; "Table ID"; Integer)
         {
-            Caption = 'Table ID', Comment = 'DEU="Tabellen ID"';
+            Caption = 'Table ID';
             TableRelation = AllObj."Object ID" WHERE("Object Type" = CONST(Table));
             DataClassification = CustomerContent;
         }
         field(2; "Document Type"; Option)
         {
-            Caption = 'Document Type', Comment = 'DEU="Belegart"';
-            OptionCaption = 'Quote,Order,Invoice,Credit Memo,Blanket Order,Return Order,Shipment/Receipt', Comment = 'DEU="Angebot,Auftrag/Bestellung,Rechnung,Gutschrift,Rahmenauftrag/Rahmenbestellung,Reklamation,Lieferschein"';
+            Caption = 'Document Type';
+            OptionCaption = 'Quote,Order,Invoice,Credit Memo,Blanket Order,Return Order,Shipment/Receipt';
             OptionMembers = Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order","Shipment/Receipt";
             DataClassification = CustomerContent;
         }
         field(3; "Document No."; Code[20])
         {
-            Caption = 'Document No.', Comment = 'DEU="Belegnr."';
+            Caption = 'Document No.';
             NotBlank = true;
             TableRelation = IF ("Table ID" = CONST(5107)) "Sales Header Archive"."No." WHERE("Document Type" = FIELD("Document Type"))
             ELSE
@@ -32,52 +32,52 @@ table 5272722 "lbt Archive PS Longtext Line"
         }
         field(4; Position; Option)
         {
-            Caption = 'Position', Comment = 'DEU="Position"';
-            OptionCaption = 'Header,Footer,Longtext', Comment = 'DEU="Kopf,Fuß,Langtext"';
+            Caption = 'Position';
+            OptionCaption = 'Header,Footer,Longtext';
             OptionMembers = Header,Footer,Longtext;
             DataClassification = CustomerContent;
         }
         field(5; "Document Line No."; Integer)
         {
-            Caption = 'Document Line No.', Comment = 'DEU="Beleg Zeilennr."';
+            Caption = 'Document Line No.';
             DataClassification = CustomerContent;
         }
         field(6; "Line No."; Integer)
         {
-            Caption = 'Line No.', Comment = 'DEU="Zeilennr."';
+            Caption = 'Line No.';
             DataClassification = CustomerContent;
         }
         field(7; "Version No."; Integer)
         {
-            Caption = 'Version No.', Comment = 'DEU="Versionsnr."';
+            Caption = 'Version No.';
             DataClassification = CustomerContent;
         }
         field(8; "Doc. No. Occurrence"; Integer)
         {
-            Caption = 'Doc. No. Occurrence', Comment = 'DEU="Belegnr.-Häufigkeit"';
+            Caption = 'Doc. No. Occurrence';
             DataClassification = CustomerContent;
         }
         field(10; Type; Option)
         {
-            Caption = 'Type', Comment = 'DEU="Art"';
-            OptionCaption = 'Text,New Page,Text + Line break', Comment = 'DEU="Text,Neue Seite, Text + Zeilenumbruch"';
+            Caption = 'Type';
+            OptionCaption = 'Text,New Page,Text + Line break';
             OptionMembers = Text,"New Page","Text + Line break";
             DataClassification = CustomerContent;
         }
         field(11; "No."; Code[20])
         {
-            Caption = 'No.', Comment = 'DEU="Nr."';
+            Caption = 'No.';
             TableRelation = IF (Type = CONST(Text)) "Standard Text";
             DataClassification = CustomerContent;
         }
         field(12; Description; Text[120])
         {
-            Caption = 'Description', Comment = 'DEU="Beschreibung"';
+            Caption = 'Description';
             DataClassification = CustomerContent;
         }
         field(13; "Text"; BLOB)
         {
-            Caption = 'Text', Comment = 'DEU="Text"';
+            Caption = 'Text';
             DataClassification = CustomerContent;
         }
     }

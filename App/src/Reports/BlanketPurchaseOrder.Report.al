@@ -2,7 +2,7 @@ report 5272729 "lbt Blanket Purchase Order"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './src/Reports/BlanketPurchaseOrder.Report.rdlc';
-    Caption = 'Blanket Purchase Order', Comment = 'DEU="Einkauf Rahmenbestellung"';
+    Caption = 'Blanket Purchase Order';
     PreviewMode = PrintLayout;
 
     dataset
@@ -932,24 +932,24 @@ report 5272729 "lbt Blanket Purchase Order"
             {
                 group(Options)
                 {
-                    Caption = 'Options', Comment = 'DEU="Optionen"';
+                    Caption = 'Options';
                     field("No Of Copies"; NoOfCopies)
                     {
                         ApplicationArea = All;
-                        Caption = 'No. of Copies', Comment = 'DEU="Anzahl Kopien"';
-                        ToolTip = 'Specifies how many copies of the document to print.', comment = 'DEU="Legt die Anzahl der Ausdrücke fest"';
+                        Caption = 'No. of Copies';
+                        ToolTip = 'Specifies how many copies of the document to print.';
                     }
                     field("Show Internal Info"; ShowInternalInfo)
                     {
                         ApplicationArea = All;
-                        Caption = 'Show Internal Information', Comment = 'DEU="Show Internal Information"';
-                        ToolTip = 'Specifies if the document shows internal information.', comment = 'DEU="Legt fest ob vorhandene Dimensionswerte mit ausgedruckt werden sollen"';
+                        Caption = 'Show Internal Information';
+                        ToolTip = 'Specifies if the document shows internal information.';
                     }
                     field("Archive Document"; ArchiveDocument)
                     {
                         ApplicationArea = All;
-                        Caption = 'Archive Document', Comment = 'DEU="Beleg archivieren"';
-                        ToolTip = 'Specifies if the document is archived after you preview or print it.', comment = 'DEU="Legt fest ob das Dokument nach dem Ausdruck oder Vorschau auch archiviert wird"';
+                        Caption = 'Archive Document';
+                        ToolTip = 'Specifies if the document is archived after you preview or print it.';
 
                         trigger OnValidate()
                         begin
@@ -960,21 +960,21 @@ report 5272729 "lbt Blanket Purchase Order"
                     field("Log Interaction"; LogInteraction)
                     {
                         ApplicationArea = All;
-                        Caption = 'Log Interaction', Comment = 'DEU="Aktivität protokollieren"';
-                        ToolTip = 'Specifies that interactions with the contact are logged.', comment = 'DEU="Legt fest, dass Aktivitäten mit dem Kontakt protokolliert werden."';
+                        Caption = 'Log Interaction';
+                        ToolTip = 'Specifies that interactions with the contact are logged.';
                         Enabled = LogInteractionEnable;
                     }
                     field("Hide Company Info"; HideCompanyInfo)
                     {
                         ApplicationArea = All;
-                        Caption = 'Hide Company Info', Comment = 'DEU="Firmendaten ausblenden"';
-                        ToolTip = ' Specifies that the company data is to be "hidden" for printing', comment = 'DEU="Hiermit können Sie die Firmendaten für den Druck ausblenden"';
+                        Caption = 'Hide Company Info';
+                        ToolTip = ' Specifies that the company data is to be "hidden" for printing';
                     }
                     field("Item Picture Print"; ItemPicturePrint)
                     {
                         ApplicationArea = All;
-                        Caption = 'Print Item Picture', Comment = 'DEU="Artikelbilder drucken"';
-                        ToolTip = 'Specifies that the article images are printed ', comment = 'DEU="Legt fest ob Artikelbilder mit ausgedruckt werden"';
+                        Caption = 'Print Item Picture';
+                        ToolTip = 'Specifies that the article images are printed ';
                     }
                 }
             }
@@ -1051,18 +1051,18 @@ report 5272729 "lbt Blanket Purchase Order"
         OutputNo: Integer;
         [InDataSet]
         LogInteractionEnable: Boolean;
-        CompanyInfo__Phone_No__CaptionLbl: Label 'Phone No.', Comment = 'DEU="Telefonnr."';
-        CompanyInfo__Fax_No__CaptionLbl: Label 'Fax No.', Comment = 'DEU="Faxnr."';
-        CompanyInfo__VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.', Comment = 'DEU="USt-IdNr."';
-        Expected_DateCaptionLbl: Label 'Expected Date', Comment = 'DEU="Erwartetes Datum"';
-        Blanket_Purchase_Order_No_CaptionLbl: Label 'Blanket Purchase Order No.', Comment = 'DEU="Einkauf Rahmenbestellung Nr."';
-        Header_DimensionsCaptionLbl: Label 'Header Dimensions', Comment = 'DEU="Kopfdimensionen"';
-        Purchase_Line___Expected_Receipt_Date__CaptionLbl: Label 'Expected Date', Comment = 'DEU="Erwartetes Datum"';
-        Purchase_Line___No__CaptionLbl: Label 'Our No.', Comment = 'DEU="Unsere Nr."';
-        Purchase_Line___Vendor_Item_No__CaptionLbl: Label 'No.', Comment = 'DEU="Nr."';
-        Line_DimensionsCaptionLbl: Label 'Line Dimensions', Comment = 'DEU="Zeilendimensionen"';
-        ShipmentMethod_DescriptionCaptionLbl: Label 'Shipment Method', Comment = 'DEU="Lieferbedingung"';
-        Ship_to_AddressCaptionLbl: Label 'Ship-to Address', Comment = 'DEU="Lief. an Adresse"';
+        CompanyInfo__Phone_No__CaptionLbl: Label 'Phone No.';
+        CompanyInfo__Fax_No__CaptionLbl: Label 'Fax No.';
+        CompanyInfo__VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
+        Expected_DateCaptionLbl: Label 'Expected Date';
+        Blanket_Purchase_Order_No_CaptionLbl: Label 'Blanket Purchase Order No.';
+        Header_DimensionsCaptionLbl: Label 'Header Dimensions';
+        Purchase_Line___Expected_Receipt_Date__CaptionLbl: Label 'Expected Date';
+        Purchase_Line___No__CaptionLbl: Label 'Our No.';
+        Purchase_Line___Vendor_Item_No__CaptionLbl: Label 'No.';
+        Line_DimensionsCaptionLbl: Label 'Line Dimensions';
+        ShipmentMethod_DescriptionCaptionLbl: Label 'Shipment Method';
+        Ship_to_AddressCaptionLbl: Label 'Ship-to Address';
         CompanyAddressLine: Text;
         InfoCaptionArry: array[99] of Text;
         InfoValueArry: array[99] of Text;
@@ -1083,29 +1083,29 @@ report 5272729 "lbt Blanket Purchase Order"
         NewPageLBLang: Integer;
         LBFuss_Description: Text;
         NewPageLBFuss: Integer;
-        DocCaptionLbl: Label 'Blanket Purchase Order %1', Comment = 'DEU="Einkauf Rahmenbestellung %1"';
-        PagefromPageCaptionLbl: Label 'Page %1 of %2', Comment = 'DEU="Seite %1 von %2"';
-        NoCaptionLbl: Label 'No.', Comment = 'DEU="Nr."';
-        FromCaptionLbl: Label 'from', Comment = 'DEU="vom"';
-        DatumCaptionLbl: Label 'Date', Comment = 'DEU="Datum"';
-        PosNo_CaptionLbl: Label 'Pos.', Comment = 'DEU="Pos."';
-        UOM_CaptionLbl: Label 'Unit', Comment = 'DEU="Einheit"';
-        CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl: Label 'Registered in:', Comment = 'DEU="Eingetragen im:"';
-        CompanyInfo__LeBit_CEO_Caption_Lbl: Label 'Chief Executive Officer', Comment = 'DEU="Geschäftsführer"';
-        CompanyInfo__Bank_Name_Caption_Lbl: Label 'Bank', Comment = 'DEU="Bankkonto"';
-        CompanyInfo_IBAN_Caption_Lbl: Label 'IBAN', Comment = 'DEU="IBAN"';
-        CompanyInfo__SWIFT_Code_Caption_Lbl: Label 'SWIFT-BIC', Comment = 'DEU="SWIFT-BIC"';
-        PurchPersonText_CaptionLbl: Label 'Salesperson', Comment = 'DEU="Bearbeiter"';
-        CompanyInfo_E_Mail_Caption_Lbl: Label 'Mail:', Comment = 'DEU="E-Mail:"';
-        CompanyInfo__Home_Page_Caption_Lbl: Label 'Homepage:', Comment = 'DEU="Homepage:"';
-        CarryForwardCaptionLbl: Label 'Carry-forward %1', Comment = 'DEU="Übertrag %1"';
-        SubtotalCaptionLbl: Label 'Subtotal', Comment = 'DEU="Zw.summe"';
-        AmountCaptionLbl: Label 'Amount', Comment = 'DEU="Betrag"';
-        Alternativposition_CaptionLbl: Label 'Alternative position', Comment = 'DEU="Alternativposition"';
-        Bedarfposition_CaptionLbl: Label 'Position requirements', Comment = 'DEU="Bedarfposition"';
-        BitteAndern_CaptionLbl: Label 'please change!', Comment = 'DEU="bitte ändern!"';
+        DocCaptionLbl: Label 'Blanket Purchase Order %1', Comment = '%1 - Document No.';
+        PagefromPageCaptionLbl: Label 'Page %1 of %2', Comment = '%1 - Current Page, %2 - Total Pages';
+        NoCaptionLbl: Label 'No.';
+        FromCaptionLbl: Label 'from';
+        DatumCaptionLbl: Label 'Date';
+        PosNo_CaptionLbl: Label 'Pos.';
+        UOM_CaptionLbl: Label 'Unit';
+        CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl: Label 'Registered in:';
+        CompanyInfo__LeBit_CEO_Caption_Lbl: Label 'Chief Executive Officer';
+        CompanyInfo__Bank_Name_Caption_Lbl: Label 'Bank';
+        CompanyInfo_IBAN_Caption_Lbl: Label 'IBAN';
+        CompanyInfo__SWIFT_Code_Caption_Lbl: Label 'SWIFT-BIC';
+        PurchPersonText_CaptionLbl: Label 'Salesperson';
+        CompanyInfo_E_Mail_Caption_Lbl: Label 'Mail:';
+        CompanyInfo__Home_Page_Caption_Lbl: Label 'Homepage:';
+        CarryForwardCaptionLbl: Label 'Carry-forward %1', Comment = '%1 - Amount';
+        SubtotalCaptionLbl: Label 'Subtotal';
+        AmountCaptionLbl: Label 'Amount';
+        Alternativposition_CaptionLbl: Label 'Alternative position';
+        Bedarfposition_CaptionLbl: Label 'Position requirements';
+        BitteAndern_CaptionLbl: Label 'please change!';
         ReportType: Option Purchase,Sales,QA,Production,Delivery,"Report";
-        VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.', Comment = 'DEU="USt-IdNr."';
+        VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
         VendSource: Option Default,"Pay-to Vendor","Buy-from Vendor";
 
     procedure IntializeRequest(NewNoOfCopies: Integer; NewShowInternalInfo: Boolean; NewArchiveDocument: Boolean; NewLogInteraction: Boolean)

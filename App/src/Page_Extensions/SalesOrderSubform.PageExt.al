@@ -13,7 +13,7 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
             field("lbt Pos. No."; "lbt Pos. No.")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specified the Position No.', comment = 'DEU="Legt die Positionsnr. fest"';
+                ToolTip = 'Specified the Position No.';
             }
         }
         addafter(FilteredTypeField)
@@ -21,7 +21,7 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
             field("lbt Printoption"; "lbt Printoption")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specified the Printoption', comment = 'DEU="Legt die Druckauswahl fest"';
+                ToolTip = 'Specified the Printoption';
             }
         }
         addafter("Line No.")
@@ -29,7 +29,7 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
             field("lbt Long Text"; "lbt Long Text")
             {
                 ApplicationArea = All;
-                ToolTip = 'Long Text', comment = 'DEU="Langtext"';
+                ToolTip = 'Long Text';
             }
         }
     }
@@ -40,8 +40,8 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
             action("lbt LongText")
             {
                 ApplicationArea = Suite;
-                Caption = 'Long Text', Comment = 'DEU="Langtext"';
-                ToolTip = 'Long Text', comment = 'DEU="Langtetxt"';
+                Caption = 'Long Text';
+                ToolTip = 'Long Text';
                 Image = Import;
                 trigger OnAction()
                 var

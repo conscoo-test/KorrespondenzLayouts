@@ -62,9 +62,9 @@ codeunit 5272727 "lbt AssistedSetup"
     end;
 
     var
-        SetupLbl: Label 'Setup LeBit365', Comment = 'DEU="LeBit365-Belegset einrichten"';
+        SetupLbl: Label 'Setup LeBit365';
         NotificationIdTxt: Label 'e6947c77-ec45-40c2-8c7e-01295de6efe4';
-        NotificationMsg: Label 'The setup for LeBit365 Reports is incomplete', Comment = 'DEU="Die Einrichtung für LeBit365-Belege ist unvollständig."';
-        ActionMsg: Label 'To Wizard...', Comment = 'DEU="Zum Wizard..."';
+        NotificationMsg: Label 'The setup for LeBit365 Reports is incomplete';
+        ActionMsg: Label 'To Wizard...';
         ExtensionGuidTxt: Label 'ae7eef02-bb60-436c-856d-d815600787b0';
 }

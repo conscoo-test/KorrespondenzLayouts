@@ -6,7 +6,7 @@ pageextension 5272769 "lbt Sales Return Ord. Arc Sub." extends "Sales Return Ord
         {
             field("lbt Pos. No."; "lbt Pos. No.")
             {
-                ToolTip = 'Here you can fill in position numbers.', comment = 'Deu="Hier können Sie Positionsnummern angeben."';
+                ToolTip = 'Here you can fill in position numbers.';
                 ApplicationArea = All;
             }
         }
@@ -15,7 +15,7 @@ pageextension 5272769 "lbt Sales Return Ord. Arc Sub." extends "Sales Return Ord
 
             field("lbt Printoption"; "lbt Printoption")
             {
-                ToolTip = 'Here you can choose the Printoptions.', comment = 'Deu="Hier können Sie die Druckoptionen wählen."';
+                ToolTip = 'Here you can choose the Printoptions.';
                 ApplicationArea = All;
             }
         }
@@ -23,7 +23,7 @@ pageextension 5272769 "lbt Sales Return Ord. Arc Sub." extends "Sales Return Ord
         {
             field("lbt Long Text"; "lbt Long Text")
             {
-                ToolTip = 'Here you can insert long texts. ', comment = 'deu="Hier können Sie Langtexte einfügen."';
+                ToolTip = 'Here you can insert long texts. ';
                 ApplicationArea = All;
             }
         }
@@ -34,7 +34,7 @@ pageextension 5272769 "lbt Sales Return Ord. Arc Sub." extends "Sales Return Ord
         {
             action("lbt LongText")
             {
-                ToolTip = 'Here you can insert the long text for the line.', comment = 'Deu="Hier können Sie den Langtext für die Zeile einfügen."';
+                ToolTip = 'Here you can insert the long text for the line.';
                 ApplicationArea = Suite;
                 Caption = 'Long Text';
                 Image = Import;

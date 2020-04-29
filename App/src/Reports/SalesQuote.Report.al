@@ -3,7 +3,7 @@ report 5272720 "lbt Sales - Quote"
     DefaultLayout = RDLC;
     RDLCLayout = './src/Reports/SalesQuote.Report.rdlc';
 
-    Caption = 'Sales - Quote', Comment = 'DEU="Verkauf - Angebot"';
+    Caption = 'Sales - Quote';
     PreviewMode = PrintLayout;
 
     dataset
@@ -1331,25 +1331,25 @@ report 5272720 "lbt Sales - Quote"
             {
                 group(Options)
                 {
-                    Caption = 'Options', Comment = 'DEU="Optionen"';
+                    Caption = 'Options';
                     field("No Of Copies"; NoOfCopies)
                     {
-                        Caption = 'No. of Copies', Comment = 'DEU="Anzahl der Ausdrücke"';
+                        Caption = 'No. of Copies';
                         ApplicationArea = All;
-                        ToolTip = 'Specifies how many copies of the document to print.', comment = 'DEU="Legt die Anzahl der Ausdrücke fest"';
+                        ToolTip = 'Specifies how many copies of the document to print.';
                     }
 
                     field("Show InternalInfo"; ShowInternalInfo)
                     {
-                        Caption = 'Show Internal Information', Comment = 'DEU="Interne Informationen anzeigen"';
+                        Caption = 'Show Internal Information';
                         ApplicationArea = All;
-                        ToolTip = 'Specifies if the document shows internal information.', comment = 'DEU="Legt fest ob vorhandene Dimensionswerte mit ausgedruckt werden sollen"';
+                        ToolTip = 'Specifies if the document shows internal information.';
                     }
                     field("Archive Document"; ArchiveDocument)
                     {
-                        Caption = 'Archive Document', Comment = 'DEU="Beleg archivieren"';
+                        Caption = 'Archive Document';
                         ApplicationArea = All;
-                        ToolTip = 'Specifies if the document is archived after you preview or print it.', comment = 'DEU="Legt fest ob das Dokument nach dem Ausdruck oder Vorschau auch archiviert wird"';
+                        ToolTip = 'Specifies if the document is archived after you preview or print it.';
 
                         trigger OnValidate()
                         begin
@@ -1359,22 +1359,22 @@ report 5272720 "lbt Sales - Quote"
                     }
                     field("Log Interaction"; LogInteraction)
                     {
-                        Caption = 'Log Interaction', Comment = 'DEU="Aktivität protokollieren"';
+                        Caption = 'Log Interaction';
                         ApplicationArea = All;
-                        ToolTip = 'Specifies that interactions with the contact are logged.', comment = 'DEU="Legt fest, dass Aktivitäten mit dem Kontakt protokolliert werden."';
+                        ToolTip = 'Specifies that interactions with the contact are logged.';
                         Enabled = LogInteractionEnable;
                     }
                     field("Hide CompanyInfo"; HideCompanyInfo)
                     {
-                        Caption = 'Hide Company Info', Comment = 'DEU="Firmendaten ausblenden"';
+                        Caption = 'Hide Company Info';
                         ApplicationArea = All;
-                        ToolTip = 'Specifies that the company data is to be "hidden" for printing', comment = 'DEU="Hiermit können Sie die Firmendaten für den Druck ausblenden"';
+                        ToolTip = 'Specifies that the company data is to be "hidden" for printing';
                     }
                     field("Item Picture Print"; ItemPicturePrint)
                     {
-                        Caption = 'Print Item Picture', Comment = 'DEU="Artikelbilder drucken"';
+                        Caption = 'Print Item Picture';
                         ApplicationArea = All;
-                        ToolTip = 'Specifies that the  images are printed ', comment = 'DEU="Legt fest ob Artikelbilder mit ausgedruckt werden"';
+                        ToolTip = 'Specifies that the  images are printed ';
                     }
                 }
             }
@@ -1479,64 +1479,64 @@ report 5272720 "lbt Sales - Quote"
         VATBaseAmount: Decimal;
         VATDiscountAmount: Decimal;
         TotalAmountInclVAT: Decimal;
-        FollowUpQst: Label 'Do you want to create a follow-up to-do?', Comment = 'DEU="Möchten Sie eine Nachfassaufgabe erstellen?"';
+        FollowUpQst: Label 'Do you want to create a follow-up to-do?';
         NoOfRecords: Integer;
         VALVATBaseLCY: Decimal;
         VALVATAmountLCY: Decimal;
         VALSpecLCYHeader: Text[80];
         VALExchRate: Text[50];
-        VatAmountLbl: Label 'VAT Amount Specification in ', Comment = 'DEU="MwSt.-Betrag Spezifikation in"';
-        LCYLbl: Label 'Local Currency', Comment = 'DEU="Landeswährung"';
-        ExchangeRateLbl: Label 'Exchange rate: %1/%2', Comment = 'DEU="Wechselkurs: %1/%2"';
+        VatAmountLbl: Label 'VAT Amount Specification in ';
+        LCYLbl: Label 'Local Currency';
+        ExchangeRateLbl: Label 'Exchange rate: %1/%2', Comment = '%1 - Rel. Amount, %2 - Amount';
         OutputNo: Integer;
         Print: Boolean;
         [InDataSet]
         LogInteractionEnable: Boolean;
-        CompanyInfo__Phone_No__CaptionLbl: Label 'Pho:', Comment = 'DEU="Tel:"';
-        CompanyInfo__Fax_No__CaptionLbl: Label 'Fax:', Comment = 'DEU="Fax:"';
-        CompanyInfo__VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.', Comment = 'DEU="USt-IDNr."';
-        Sales_Header___Shipment_Date_CaptionLbl: Label 'Shipment Date', Comment = 'DEU="Warenausg.-Datum"';
-        Sales_Header___No__CaptionLbl: Label 'Quote No.', Comment = 'DEU="Angebotsnr."';
-        Header_DimensionsCaptionLbl: Label 'Header Dimensions', Comment = 'DEU="Kopfdimensionen"';
-        Unit_PriceCaptionLbl: Label 'Unit Price', Comment = 'DEU="VK-Preis"';
-        Sales_Line___Line_Discount___CaptionLbl: Label 'Disc. %', Comment = 'DEU="Rab. %"';
-        AmountCaptionLbl: Label 'Amount', Comment = 'DEU="Betrag"';
-        Sales_Line___VAT_Identifier_CaptionLbl: Label 'VAT Identifier', Comment = 'DEU="Kopfdimensionen"';
-        ContinuedCaptionLbl: Label 'Continued', Comment = 'DEU="Fortsetzung"';
-        ContinuedCaption_Control83Lbl: Label 'Continued', Comment = 'DEU="Fortsetzung"';
-        SalesLine__Inv__Discount_Amount_CaptionLbl: Label 'Inv. Discount Amount', Comment = 'DEU="Rechnungsrabattbetrag"';
-        SubtotalCaptionLbl: Label 'Subtotal', Comment = 'DEU="Zw.summe"';
-        VATDiscountAmountCaptionLbl: Label 'Payment Discount on VAT', Comment = 'DEU="Skonto auf MwSt."';
-        Line_DimensionsCaptionLbl: Label 'Line Dimensions', Comment = 'DEU="Zeilendimensionen"';
-        VATAmountLine__VAT___CaptionLbl: Label 'VAT %', Comment = 'DEU="MwSt. %"';
-        VATAmountLine__VAT_Base__Control70CaptionLbl: Label 'VAT Base', Comment = 'DEU="MwSt.-Bemessungsgrundlage"';
-        VATAmountLine__VAT_Amount__Control69CaptionLbl: Label 'VAT Amount', Comment = 'DEU="MwSt.-Betrag"';
-        VAT_Amount_SpecificationCaptionLbl: Label 'VAT Amount Specification', Comment = 'DEU="MwSt.-Betrag - Spezifikation"';
-        VATAmountLine__Line_Amount__Control73CaptionLbl: Label 'Line Amount', Comment = 'DEU="Zeilenbetrag"';
-        VATAmountLine__Inv__Disc__Base_Amount__Control72CaptionLbl: Label 'Inv. Disc. Base Amount', Comment = 'DEU="Rechnungsrab.-Bemessungsgr."';
-        VATAmountLine__Invoice_Discount_Amount__Control71CaptionLbl: Label 'Invoice Discount Amount', Comment = 'DEU="Rechnungsrab.-Betrag"';
-        VATAmountLine__VAT_Identifier_CaptionLbl: Label 'VAT Identifier', Comment = 'DEU="MwSt.-Kennzeichen"';
-        VATAmountLine__VAT_Base_CaptionLbl: Label 'Continued', Comment = 'DEU="Fortsetzung"';
-        VATAmountLine__VAT_Base__Control110CaptionLbl: Label 'Continued', Comment = 'DEU="Fortsetzung"';
-        VATAmountLine__VAT_Base__Control114CaptionLbl: Label 'Total', Comment = 'DEU="Gesamt"';
-        VALVATAmountLCY_Control152CaptionLbl: Label 'VAT Amount', Comment = 'DEU="MwSt.-Betrag"';
-        VALVATBaseLCY_Control153CaptionLbl: Label 'VAT Base', Comment = 'DEU="MwSt.-Bemessungsgrundlage"';
-        VATAmountLine__VAT____Control154CaptionLbl: Label 'VAT %', Comment = 'DEU="MwSt. %"';
-        VATAmountLine__VAT_Identifier__Control155CaptionLbl: Label 'VAT Identifier', Comment = 'DEU="MwSt.-Kennzeichen"';
-        VALVATBaseLCYCaptionLbl: Label 'Continued', Comment = 'DEU="Fortsetzung"';
-        VALVATBaseLCY_Control157CaptionLbl: Label 'Continued', Comment = 'DEU="Fortsetzung"';
-        VALVATBaseLCY_Control160CaptionLbl: Label 'Total', Comment = 'DEU="Gesamt"';
-        PaymentTerms_DescriptionCaptionLbl: Label 'Payment Terms', Comment = 'DEU="Zahlungsbedingungen"';
-        ShipmentMethod_DescriptionCaptionLbl: Label 'Shipment Method', Comment = 'DEU="Lieferbedingung"';
-        Ship_to_AddressCaptionLbl: Label 'Ship-to Address', Comment = 'DEU="Lief. an Adresse"';
+        CompanyInfo__Phone_No__CaptionLbl: Label 'Pho:';
+        CompanyInfo__Fax_No__CaptionLbl: Label 'Fax:';
+        CompanyInfo__VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
+        Sales_Header___Shipment_Date_CaptionLbl: Label 'Shipment Date';
+        Sales_Header___No__CaptionLbl: Label 'Quote No.';
+        Header_DimensionsCaptionLbl: Label 'Header Dimensions';
+        Unit_PriceCaptionLbl: Label 'Unit Price';
+        Sales_Line___Line_Discount___CaptionLbl: Label 'Disc. %';
+        AmountCaptionLbl: Label 'Amount';
+        Sales_Line___VAT_Identifier_CaptionLbl: Label 'VAT Identifier';
+        ContinuedCaptionLbl: Label 'Continued';
+        ContinuedCaption_Control83Lbl: Label 'Continued';
+        SalesLine__Inv__Discount_Amount_CaptionLbl: Label 'Inv. Discount Amount';
+        SubtotalCaptionLbl: Label 'Subtotal';
+        VATDiscountAmountCaptionLbl: Label 'Payment Discount on VAT';
+        Line_DimensionsCaptionLbl: Label 'Line Dimensions';
+        VATAmountLine__VAT___CaptionLbl: Label 'VAT %';
+        VATAmountLine__VAT_Base__Control70CaptionLbl: Label 'VAT Base';
+        VATAmountLine__VAT_Amount__Control69CaptionLbl: Label 'VAT Amount';
+        VAT_Amount_SpecificationCaptionLbl: Label 'VAT Amount Specification';
+        VATAmountLine__Line_Amount__Control73CaptionLbl: Label 'Line Amount';
+        VATAmountLine__Inv__Disc__Base_Amount__Control72CaptionLbl: Label 'Inv. Disc. Base Amount';
+        VATAmountLine__Invoice_Discount_Amount__Control71CaptionLbl: Label 'Invoice Discount Amount';
+        VATAmountLine__VAT_Identifier_CaptionLbl: Label 'VAT Identifier';
+        VATAmountLine__VAT_Base_CaptionLbl: Label 'Continued';
+        VATAmountLine__VAT_Base__Control110CaptionLbl: Label 'Continued';
+        VATAmountLine__VAT_Base__Control114CaptionLbl: Label 'Total';
+        VALVATAmountLCY_Control152CaptionLbl: Label 'VAT Amount';
+        VALVATBaseLCY_Control153CaptionLbl: Label 'VAT Base';
+        VATAmountLine__VAT____Control154CaptionLbl: Label 'VAT %';
+        VATAmountLine__VAT_Identifier__Control155CaptionLbl: Label 'VAT Identifier';
+        VALVATBaseLCYCaptionLbl: Label 'Continued';
+        VALVATBaseLCY_Control157CaptionLbl: Label 'Continued';
+        VALVATBaseLCY_Control160CaptionLbl: Label 'Total';
+        PaymentTerms_DescriptionCaptionLbl: Label 'Payment Terms';
+        ShipmentMethod_DescriptionCaptionLbl: Label 'Shipment Method';
+        Ship_to_AddressCaptionLbl: Label 'Ship-to Address';
         CompanyAddressLine: Text;
-        DocCaptionLbl: Label 'Quote %1', Comment = 'DEU="Angebot %1"';
-        PagefromPageCaptionLbl: Label 'Page %1 of %2', Comment = 'DEU="Seite %1 von %2"';
-        PageCaptionLbl: Label 'Page %1', Comment = 'DEU="Seite %1"';
-        NoCaptionLbl: Label 'No.', Comment = 'DEU="Nr."';
-        FromCaptionLbl: Label 'from', Comment = 'DEU="vom"';
-        Sales_Header___Bill_to_Customer_No__CaptionLbl: Label 'Customer ID', Comment = 'DEU="Kunden-Nr"';
-        DatumCaptionLbl: Label 'Date', Comment = 'DEU="Datum"';
+        DocCaptionLbl: Label 'Quote %1', Comment = '%1 - Document No.';
+        PageFromPageCaptionLbl: Label 'Page %1 of %2', Comment = '%1 - Current Page, %2 - Total Pages';
+        PageCaptionLbl: Label 'Page %1', Comment = '%1 - Current Page';
+        NoCaptionLbl: Label 'No.';
+        FromCaptionLbl: Label 'from';
+        Sales_Header___Bill_to_Customer_No__CaptionLbl: Label 'Customer ID';
+        DatumCaptionLbl: Label 'Date';
         InfoCaptionArry: array[99] of Text;
         InfoValueArry: array[99] of Text;
         ItemUnitCodeArry: array[50] of Code[20];
@@ -1547,18 +1547,18 @@ report 5272720 "lbt Sales - Quote"
         ItemUnitDescription: Text;
         ItemUnitQty: Text;
         HideCompanyInfo: Boolean;
-        Alternativposition_CaptionLbl: Label 'Alternative position', Comment = 'DEU="Alternativposition"';
-        Bedarfposition_CaptionLbl: Label 'Position requirements', Comment = 'DEU="Bedarfposition"';
-        BitteAndern_CaptionLbl: Label 'please change!', Comment = 'DEU="bitte ändern!"';
-        PosNo_SalesLineCaptionLbl: Label 'Pos.', Comment = 'DEU="Pos."';
-        UOM_SalesLineCaptionLbl: Label 'Unit', Comment = 'DEU="Einheit"';
-        CarryForwardCaptionLbl: Label 'Carry-forward %1', Comment = 'DEU="Übertrag %1"';
+        Alternativposition_CaptionLbl: Label 'Alternative position';
+        Bedarfposition_CaptionLbl: Label 'Position requirements';
+        BitteAndern_CaptionLbl: Label 'please change!';
+        PosNo_SalesLineCaptionLbl: Label 'Pos.';
+        UOM_SalesLineCaptionLbl: Label 'Unit';
+        CarryForwardCaptionLbl: Label 'Carry-forward %1', Comment = '%1 - Amount';
         NewPageGroup: Integer;
-        CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl: Label 'Registered in:', Comment = 'DEU="Eingetragen im:"';
-        CompanyInfo__LeBit_CEO_Caption_Lbl: Label 'Chief Executive Officer', Comment = 'DEU="Geschäftsführer"';
-        CompanyInfo__Bank_Name_Caption_Lbl: Label 'Bank', Comment = 'DEU="Bankkonto"';
-        CompanyInfo_IBAN_Caption_Lbl: Label 'IBAN', Comment = 'DEU="IBAN"';
-        CompanyInfo__SWIFT_Code_Caption_Lbl: Label 'SWIFT-BIC', Comment = 'DEU="SWIFT-BIC"';
+        CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl: Label 'Registered in:';
+        CompanyInfo__LeBit_CEO_Caption_Lbl: Label 'Chief Executive Officer';
+        CompanyInfo__Bank_Name_Caption_Lbl: Label 'Bank';
+        CompanyInfo_IBAN_Caption_Lbl: Label 'IBAN';
+        CompanyInfo__SWIFT_Code_Caption_Lbl: Label 'SWIFT-BIC';
         ItemPictureExist: Boolean;
         ItemPicturePrint: Boolean;
         LBKopf_Description: Text;
@@ -1567,12 +1567,12 @@ report 5272720 "lbt Sales - Quote"
         NewPageLBLang: Integer;
         LBFuss_Description: Text;
         NewPageLBFuss: Integer;
-        SalesPersonText_CaptionLbl: Label 'Salesperson', Comment = 'DEU="Bearbeiter"';
-        CompanyInfo_E_Mail_Caption_Lbl: Label 'Mail:', Comment = 'DEU="E-Mail"';
-        CompanyInfo__Home_Page_Caption_Lbl: Label 'Homepage:', Comment = 'DEU="SWIFT-BIC"';
+        SalesPersonText_CaptionLbl: Label 'Salesperson';
+        CompanyInfo_E_Mail_Caption_Lbl: Label 'Mail:';
+        CompanyInfo__Home_Page_Caption_Lbl: Label 'Homepage:';
         ReportType: Option Purchase,Sales,QA,Production,Delivery,"Report";
         UnitPrice: Decimal;
-        VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.', Comment = 'DEU="USt-IdNr."';
+        VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
         CustSource: Option Default,"Bill-to Customer","Sell-to Customer";
 
     procedure InitializeRequest(NoOfCopiesFrom: Integer; ShowInternalInfoFrom: Boolean; ArchiveDocumentFrom: Boolean; LogInteractionFrom: Boolean; PrintFrom: Boolean)

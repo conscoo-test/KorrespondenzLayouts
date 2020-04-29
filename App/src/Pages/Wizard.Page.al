@@ -1,7 +1,7 @@
 page 5272724 "lbt Wizard"
 {
     PageType = NavigatePage;
-    Caption = 'LeBit365 Setup', Comment = 'DEU="LeBit365-Belegset Einrichtung"';
+    Caption = 'LeBit365 Setup';
 
     SourceTable = "Company Information";
     layout
@@ -37,7 +37,7 @@ page 5272724 "lbt Wizard"
                 Visible = CurrentStep = 1;
                 group(Welcome)
                 {
-                    Caption = 'Welcome', Comment = 'DEU="Willkommen bei der Einrichtung der LeBit365-Korrespondenzbelege"';
+                    Caption = 'Welcome';
 
 
                     group(Introduction)
@@ -51,7 +51,7 @@ page 5272724 "lbt Wizard"
 
                 group(LetsGo)
                 {
-                    Caption = 'Lets go', Comment = 'DEU="Los gehts"';
+                    Caption = 'Lets go';
 
                     group("Next")
                     {
@@ -70,9 +70,9 @@ page 5272724 "lbt Wizard"
                     Caption = '';
                     field("Select All"; SelectAll)
                     {
-                        Caption = 'Select all', Comment = 'DEU="Alle Auswählen"';
+                        Caption = 'Select all';
                         ApplicationArea = All;
-                        ToolTip = 'Here you can select all', comment = 'DEU="Hier könne Sie alle Auswählen"';
+                        ToolTip = 'Here you can select all';
                         trigger OnValidate()
                         var
                             i: Integer;
@@ -83,75 +83,75 @@ page 5272724 "lbt Wizard"
                     }
                     field(report1; DefaultReports[1])
                     {
-                        Caption = 'Sales Quote', Comment = 'DEU="Angebot"';
+                        Caption = 'Sales Quote';
                         ApplicationArea = All;
-                        ToolTip = 'Select document for configuration', comment = 'DEU="Dokument zur Konfiguration auswählen"';
+                        ToolTip = 'Select document for configuration';
                     }
                     field(report2; DefaultReports[2])
                     {
-                        Caption = 'Order Confirmation', Comment = 'DEU="Auftragsbestätigung"';
+                        Caption = 'Order Confirmation';
                         ApplicationArea = All;
-                        ToolTip = 'Select document for configuration', comment = 'DEU="Dokument zur Konfiguration auswählen"';
+                        ToolTip = 'Select document for configuration';
                     }
                     field(report3; DefaultReports[3])
                     {
-                        Caption = 'Sales Invoice', Comment = 'DEU="VK Rechnung"';
+                        Caption = 'Sales Invoice';
                         ApplicationArea = all;
-                        ToolTip = 'Select document for configuration', comment = 'DEU="Dokument zur Konfiguration auswählen"';
+                        ToolTip = 'Select document for configuration';
                     }
                     field(report4; DefaultReports[4])
                     {
-                        Caption = 'Sales Credit Memo', Comment = 'DEU="VK Gutschrift"';
+                        Caption = 'Sales Credit Memo';
                         ApplicationArea = all;
-                        ToolTip = 'Select document for configuration', comment = 'DEU="Dokument zur Konfiguration auswählen"';
+                        ToolTip = 'Select document for configuration';
                     }
                     field(report5; DefaultReports[5])
                     {
-                        Caption = 'Sales Shipment', Comment = 'DEU="VK Lieferung"';
+                        Caption = 'Sales Shipment';
                         ApplicationArea = all;
-                        ToolTip = 'Select document for configuration', comment = 'DEU="Dokument zur Konfiguration auswählen"';
+                        ToolTip = 'Select document for configuration';
                     }
                     field(report6; DefaultReports[6])
                     {
-                        Caption = 'Blanket Sales Order', Comment = 'DEU="Rahmenauftrag"';
+                        Caption = 'Blanket Sales Order';
                         ApplicationArea = all;
-                        ToolTip = 'Select document for configuration', comment = 'DEU="Dokument zur Konfiguration auswählen"';
+                        ToolTip = 'Select document for configuration';
                     }
                     field(report7; DefaultReports[7])
                     {
-                        Caption = 'Sales Proforma Invoice', Comment = 'DEU="VK Proforma Rechnung"';
+                        Caption = 'Sales Proforma Invoice';
                         ApplicationArea = all;
-                        ToolTip = 'Select document for configuration', comment = 'DEU="Dokument zur Konfiguration auswählen"';
+                        ToolTip = 'Select document for configuration';
                     }
                     field(report8; DefaultReports[8])
                     {
-                        Caption = 'Purchase Quote', Comment = 'DEU="Einkaufsanfrage"';
+                        Caption = 'Purchase Quote';
                         ApplicationArea = all;
-                        ToolTip = 'Select document for configuration', comment = 'DEU="Dokument zur Konfiguration auswählen"';
+                        ToolTip = 'Select document for configuration';
                     }
                     field(report9; DefaultReports[9])
                     {
-                        Caption = 'Order', Comment = 'DEU="Bestellung"';
+                        Caption = 'Order';
                         ApplicationArea = all;
-                        ToolTip = 'Select document for configuration', comment = 'DEU="Dokument zur Konfiguration auswählen"';
+                        ToolTip = 'Select document for configuration';
                     }
                     field(report10; DefaultReports[10])
                     {
-                        Caption = 'Blanket Purchase Order', Comment = 'DEU="Rahmenbestellung"';
+                        Caption = 'Blanket Purchase Order';
                         ApplicationArea = all;
-                        ToolTip = 'Select document for configuration', comment = 'DEU="Dokument zur Konfiguration auswählen"';
+                        ToolTip = 'Select document for configuration';
                     }
                     field(report11; DefaultReports[11])
                     {
-                        Caption = 'Return Order', Comment = 'DEU="Reklamation"';
+                        Caption = 'Return Order';
                         ApplicationArea = all;
-                        ToolTip = 'Select document for configuration', comment = 'DEU="Dokument zur Konfiguration auswählen"';
+                        ToolTip = 'Select document for configuration';
                     }
                     field(report12; DefaultReports[12])
                     {
-                        Caption = 'Reminder', Comment = 'DEU="Mahnung"';
+                        Caption = 'Reminder';
                         ApplicationArea = all;
-                        ToolTip = 'Select document for configuration', comment = 'DEU="Dokument zur Konfiguration auswählen"';
+                        ToolTip = 'Select document for configuration';
                     }
 
 
@@ -169,21 +169,21 @@ page 5272724 "lbt Wizard"
                     field(Picture; Picture) //TODO: MediaSet
                     {
                         ApplicationArea = All;
-                        ToolTip = 'Specifies the logo file', comment = 'DEU="Legt die Logodatei fest"';
+                        ToolTip = 'Specifies the logo file';
                     }
                     field("Sales Logo Position"; SalesLogoPosition)
                     {
                         ApplicationArea = All;
-                        ToolTip = 'Defines the logo position on the Sales documents', comment = 'DEU="Legt die Logoposition auf den Verkaufsbelegen fest"';
-                        Caption = 'Logoposition on Sales Documents', Comment = 'DEU="Logoposition auf Verkaufsbelegen"';
-                        OptionCaption = 'No Logo,Left,Center,Right', Comment = 'DEU="Kein Logo,Links,Mitte,Rechts"';
+                        ToolTip = 'Defines the logo position on the Sales documents';
+                        Caption = 'Logoposition on Sales Documents';
+                        OptionCaption = 'No Logo,Left,Center,Right';
                     }
                     field("Purchase Logo Position"; PurchaseLogoPosition)
                     {
                         ApplicationArea = All;
-                        ToolTip = 'Defines the logo position on the Purchase documents', comment = 'DEU="Legt die Logoposition auf den Einkaufsbelegen fest"';
-                        Caption = 'Logoposition on Purchase Documents', Comment = 'DEU="Logoposition auf Einkaufsbelegen"';
-                        OptionCaption = 'No Logo,Left,Center,Right', Comment = 'DEU="Kein Logo,Links,Mitte,Rechts"';
+                        ToolTip = 'Defines the logo position on the Purchase documents';
+                        Caption = 'Logoposition on Purchase Documents';
+                        OptionCaption = 'No Logo,Left,Center,Right';
                     }
                 }
             }
@@ -197,22 +197,22 @@ page 5272724 "lbt Wizard"
                     field("Bank Account No."; "Bank Account No.")
                     {
                         ApplicationArea = All;
-                        ToolTip = 'Please enter your bank account number here', comment = 'DEU="Bitte geben Sie hier ihre Bankkontonr. ein"';
+                        ToolTip = 'Please enter your bank account number here';
                     }
                     field("Bank Name"; "Bank Name")
                     {
                         ApplicationArea = All;
-                        ToolTip = 'Please enter the Name of your bank  here', comment = 'DEU="Bitte geen Sie hier den Namen ihrer Bank ein"';
+                        ToolTip = 'Please enter the Name of your bank  here';
                     }
                     field("Bank Branch No."; "Bank Branch No.")
                     {
                         ApplicationArea = All;
-                        ToolTip = 'Please enter the bank code here', comment = 'DEU="Bitte geben Sie hier die Bankleitzahl ein"';
+                        ToolTip = 'Please enter the bank code here';
                     }
                     field(IBAN; IBAN)
                     {
                         ApplicationArea = All;
-                        ToolTip = 'Please enter your IBAN code here', comment = 'DEU="Bitte geben Sie hier ihre IBAN ein"';
+                        ToolTip = 'Please enter your IBAN code here';
                     }
 
                 }
@@ -222,22 +222,22 @@ page 5272724 "lbt Wizard"
                     field("lbt Bank Account No. 2"; "lbt Bank Account No. 2")
                     {
                         ApplicationArea = All;
-                        ToolTip = 'Please enter your 2. bank account number here', comment = 'DEU="Bitte geben Sie hier ihre 2. Bankkontonr. ein"';
+                        ToolTip = 'Please enter your 2. bank account number here';
                     }
                     field("lbt Bank Name 2"; "lbt Bank Name 2")
                     {
                         ApplicationArea = All;
-                        ToolTip = 'Please enter the Name of your 2. bank  here', comment = 'DEU="Bitte geben Sie hier den Namen ihrer 2. Bank ein"';
+                        ToolTip = 'Please enter the Name of your 2. bank  here';
                     }
                     field("lbt Bank Branch No. 2"; "lbt Bank Branch No. 2")
                     {
                         ApplicationArea = All;
-                        ToolTip = 'Please enter the 2. bank code here', comment = 'DEU="Bitte geben Sie hier die 2. Bankleitzahl ein"';
+                        ToolTip = 'Please enter the 2. bank code here';
                     }
                     field("lbt IBAN 2"; "lbt IBAN 2")
                     {
                         ApplicationArea = All;
-                        ToolTip = 'Please enter your 2. IBAN code here', comment = 'DEU="Bitte geben Sie hier ihre 2. IBAN ein"';
+                        ToolTip = 'Please enter your 2. IBAN code here';
                     }
 
                 }
@@ -247,22 +247,22 @@ page 5272724 "lbt Wizard"
                     field("lbt Bank Account No. 3"; "lbt Bank Account No. 3")
                     {
                         ApplicationArea = All;
-                        ToolTip = 'Please enter your 3. bank account number here', comment = 'DEU="Bitte geben Sie hier ihre 3. Bankkontonr. ein"';
+                        ToolTip = 'Please enter your 3. bank account number here';
                     }
                     field("lbt Bank Name 3"; "lbt Bank Name 3")
                     {
                         ApplicationArea = All;
-                        ToolTip = 'Please enter the Name of your 3. bank here', comment = 'DEU="Bitte geben Sie hier den Namen ihrer 3. Bank ein"';
+                        ToolTip = 'Please enter the Name of your 3. bank here';
                     }
                     field("lbt Bank Branch No. 3"; "lbt Bank Branch No. 3")
                     {
                         ApplicationArea = All;
-                        ToolTip = 'Please enter the 3. bank code here', comment = 'DEU="Bitte geben Sie hier die 3. Bankleitzahl ein"';
+                        ToolTip = 'Please enter the 3. bank code here';
                     }
                     field("lbt IBAN 3"; "lbt IBAN 3")
                     {
                         ApplicationArea = All;
-                        ToolTip = 'Please enter your 3. IBAN code here', comment = 'DEU="Bitte geben Sie hier ihre 3. IBAN ein"';
+                        ToolTip = 'Please enter your 3. IBAN code here';
                     }
 
                 }
@@ -277,32 +277,32 @@ page 5272724 "lbt Wizard"
                     field("lbt District Court"; "lbt District Court")
                     {
                         ApplicationArea = All;
-                        ToolTip = 'Enter the district court here', comment = 'DEU="Tragen Sie hier das Amtsgericht ein"';
+                        ToolTip = 'Enter the district court here';
                     }
                     field("lbt CEO1"; "lbt CEO1")
                     {
                         ApplicationArea = All;
-                        ToolTip = 'Enter the Name of CEO', comment = 'DEU="Name des Geschäftsführer"';
+                        ToolTip = 'Enter the Name of CEO';
                     }
                     field("lbt CEO2"; "lbt CEO2")
                     {
                         ApplicationArea = All;
-                        ToolTip = 'Enter the Name of the 2. CEO', comment = 'DEU="Name des 2. Geschäftsführer"';
+                        ToolTip = 'Enter the Name of the 2. CEO';
                     }
                     field("lbt CEO3"; "lbt CEO3")
                     {
                         ApplicationArea = All;
-                        ToolTip = 'Enter the Name of the 3. CEO', comment = 'DEU="Name des 3. Geschäftsführer"';
+                        ToolTip = 'Enter the Name of the 3. CEO';
                     }
                     field("lbt Commercial Register No."; "lbt Commercial Register No.")
                     {
                         ApplicationArea = All;
-                        ToolTip = 'Enter your commercial register number', comment = 'DEU="Tragen Sie ihre Handelsregisternr. ein"';
+                        ToolTip = 'Enter your commercial register number';
                     }
                     field("lbt Trade Register Name"; "lbt Trade Register Name")
                     {
                         ApplicationArea = All;
-                        ToolTip = 'Enter your trade register name.', comment = 'DEU="Tragen Sie ihren Handelsregisternamen ein"';
+                        ToolTip = 'Enter your trade register name.';
                     }
 
                 }
@@ -319,8 +319,8 @@ page 5272724 "lbt Wizard"
             action(ActionBack)
             {
                 ApplicationArea = All;
-                ToolTip = 'One record back', comment = 'DEU="Einen Datensatz zurück"';
-                Caption = 'Back', Comment = 'DEU="Zurück"';
+                ToolTip = 'One record back';
+                Caption = 'Back';
                 Enabled = BackEnabled;
                 Visible = BackEnabled;
                 Image = PreviousRecord;
@@ -334,8 +334,8 @@ page 5272724 "lbt Wizard"
             action(ActionNext)
             {
                 ApplicationArea = All;
-                ToolTip = 'One record forward', comment = 'DEU="Einen Datensatz vor"';
-                Caption = 'Next', Comment = 'DEU="Weiter"';
+                ToolTip = 'One record forward';
+                Caption = 'Next';
                 Enabled = NextEnabled;
                 Image = NextRecord;
                 InFooterBar = true;
@@ -347,8 +347,8 @@ page 5272724 "lbt Wizard"
             action(ActionFinish)
             {
                 ApplicationArea = All;
-                ToolTip = 'Complete the configuration', comment = 'DEU="Konfiguration abschließen"';
-                Caption = 'Finish', Comment = 'DEU="Fertig stellen"';
+                ToolTip = 'Complete the configuration';
+                Caption = 'Finish';
                 Enabled = FinishEnabled;
                 Image = Approve;
                 InFooterBar = true;

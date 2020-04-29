@@ -6,12 +6,12 @@ pageextension 5272731 "lbt Posted Purch. Credit Memo" extends "Posted Purchase C
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout', Comment = 'DEU="LeBit365 Korrespondenzbelege"';
+                Caption = 'LeBit365 Correspondence layout';
                 action("lbt Header Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Header Text', Comment = 'DEU="Kopftext"';
-                    ToolTip = 'Specified the Header Text', comment = 'DEU="Legt den Kopftext fest"';
+                    Caption = 'Header Text';
+                    ToolTip = 'Specified the Header Text';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -27,8 +27,8 @@ pageextension 5272731 "lbt Posted Purch. Credit Memo" extends "Posted Purchase C
                 action("lbt Footer Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Footer Text', Comment = 'DEU="Fußtext"';
-                    ToolTip = 'Specified the Footer Text', comment = 'DEU="Legt den Fußtext fest"';
+                    Caption = 'Footer Text';
+                    ToolTip = 'Specified the Footer Text';
                     Image = EndingText;
 
                     trigger OnAction()

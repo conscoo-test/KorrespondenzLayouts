@@ -2,7 +2,7 @@ table 5272720 "lbt PS Longtext Line"
 {
     // version LBCOR1.00
 
-    Caption = 'Purch/Sales Longtext Line', Comment = 'DEU="EK/VK Langtext Zeile"';
+    Caption = 'Purch/Sales Longtext Line';
     DrillDownPageID = "lbt PS Longtext Lines";
     LookupPageID = "lbt PS Longtext Lines";
     PasteIsValid = false;
@@ -11,20 +11,20 @@ table 5272720 "lbt PS Longtext Line"
     {
         field(1; "Table ID"; Integer)
         {
-            Caption = 'Table ID', Comment = 'DEU="Tabellen ID"';
+            Caption = 'Table ID';
             TableRelation = AllObj."Object ID" WHERE("Object Type" = CONST(Table));
             DataClassification = CustomerContent;
         }
         field(2; "Document Type"; Option)
         {
-            Caption = 'Document Type', Comment = 'DEU="Belegart"';
-            OptionCaption = 'Quote,Order,Invoice,Credit Memo,Blanket Order,Return Order,Shipment/Receipt', Comment = 'DEU="Angebot,Auftrag/Bestellung,Rechnung,Gutschrift,Rahmenauftrag/Rahmenbestellung,Reklamation,Lieferschein"';
+            Caption = 'Document Type';
+            OptionCaption = 'Quote,Order,Invoice,Credit Memo,Blanket Order,Return Order,Shipment/Receipt';
             OptionMembers = Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order","Shipment/Receipt";
             DataClassification = CustomerContent;
         }
         field(3; "Document No."; Code[20])
         {
-            Caption = 'Document No.', Comment = 'DEU="Belegnr."';
+            Caption = 'Document No.';
             NotBlank = true;
             TableRelation = IF ("Table ID" = CONST(36)) "Sales Header"."No." WHERE("Document Type" = FIELD("Document Type"))
             ELSE
@@ -40,14 +40,14 @@ table 5272720 "lbt PS Longtext Line"
         }
         field(4; Position; Option)
         {
-            Caption = 'Position', Comment = 'DEU="Position"';
-            OptionCaption = 'Header,Footer,Longtext', Comment = 'DEU="Kopf,Fuß,Langtext"';
+            Caption = 'Position';
+            OptionCaption = 'Header,Footer,Longtext';
             OptionMembers = Header,Footer,Longtext;
             DataClassification = CustomerContent;
         }
         field(5; "Document Line No."; Integer)
         {
-            Caption = 'Document Line No.', Comment = 'DEU="Beleg Zeilennr."';
+            Caption = 'Document Line No.';
             TableRelation = IF ("Table ID" = CONST(37)) "Sales Line"."Line No." WHERE("Document Type" = FIELD("Document Type"),
                                                                                      "Document No." = FIELD("Document No."))
             ELSE
@@ -57,13 +57,13 @@ table 5272720 "lbt PS Longtext Line"
         }
         field(6; "Line No."; Integer)
         {
-            Caption = 'Line No.', Comment = 'DEU="Zeilennr."';
+            Caption = 'Line No.';
             DataClassification = CustomerContent;
         }
         field(10; Type; Option)
         {
-            Caption = 'Type', Comment = 'DEU="Art"';
-            OptionCaption = 'Text,New Page,Text + Line break', Comment = 'DEU="Text,Neue Seite, Text + Zeilenumbruch"';
+            Caption = 'Type';
+            OptionCaption = 'Text,New Page,Text + Line break';
             OptionMembers = Text,"New Page","Text + Line break";
             DataClassification = CustomerContent;
 
@@ -86,7 +86,7 @@ table 5272720 "lbt PS Longtext Line"
         }
         field(11; "No."; Code[20])
         {
-            Caption = 'No.', Comment = 'DEU="Nr."';
+            Caption = 'No.';
             TableRelation = IF (Type = CONST(Text)) "Standard Text";
             DataClassification = CustomerContent;
 
@@ -104,7 +104,7 @@ table 5272720 "lbt PS Longtext Line"
         }
         field(12; Description; Text[120])
         {
-            Caption = 'Description', Comment = 'DEU="Beschreibung"';
+            Caption = 'Description';
             DataClassification = CustomerContent;
 
             trigger OnValidate()
@@ -117,7 +117,7 @@ table 5272720 "lbt PS Longtext Line"
         }
         field(13; "Text"; BLOB)
         {
-            Caption = 'Text', Comment = 'DEU="Text"';
+            Caption = 'Text';
             DataClassification = CustomerContent;
         }
     }
@@ -141,8 +141,8 @@ table 5272720 "lbt PS Longtext Line"
 
     var
         StandardTextRec: Record "Standard Text";
-        NewPageLbl: Label '--- New Page ---', Comment = 'DEU="Seitenwechsel"';
-        CantChangeTxt: Label 'You can not change this text.', Comment = 'DEU=""'; //TODO: ??
+        NewPageLbl: Label '--- New Page ---';
+        CantChangeTxt: Label 'You can not change this text.'; //TODO: ??
 
     procedure DBOpenMemo()
     var

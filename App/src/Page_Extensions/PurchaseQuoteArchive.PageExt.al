@@ -6,12 +6,12 @@ pageextension 5272761 "lbt Purchase Quote Archive" extends "Purchase Quote Archi
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout', Comment = 'DEU="LeBit365 Korrespondenzbelege"';
+                Caption = 'LeBit365 Correspondence layout';
                 action("lbt Header Text")
                 {
-                    ToolTip = 'Here you can define the Header Text.', comment = 'deu="Hier können Sie den Kopftext erfassen."';
+                    ToolTip = 'Here you can define the Header Text.';
                     ApplicationArea = All;
-                    Caption = 'Header Text', Comment = 'DEU="Kopftext"';
+                    Caption = 'Header Text';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -27,9 +27,9 @@ pageextension 5272761 "lbt Purchase Quote Archive" extends "Purchase Quote Archi
                 }
                 action("lbt Footer Text")
                 {
-                    ToolTip = 'Here you can define the Footer Text.', comment = 'deu="Hier können Sie den Fußtext erfassen."';
+                    ToolTip = 'Here you can define the Footer Text.';
                     ApplicationArea = All;
-                    Caption = 'Footer Text', Comment = 'DEU="Fußtext"';
+                    Caption = 'Footer Text';
                     Image = EndingText;
 
                     trigger OnAction()

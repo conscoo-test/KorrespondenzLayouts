@@ -6,12 +6,12 @@ pageextension 5272752 "lbt Blanket Sales Order" extends "Blanket Sales Order"
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout', Comment = 'DEU="LeBit365 Korrespondenzbelege"';
+                Caption = 'LeBit365 Correspondence layout';
                 action("lbt Tot&aling")
                 {
                     ApplicationArea = All;
-                    Caption = 'Tot&aling', comment = 'DEU="Summieren"';
-                    ToolTip = 'Creates a total of the line items "From total" / "To total"', comment = 'DEU="Legt eine Summierung der Zeilenpositionen "Von Summe" / "Bis Summe fest""';
+                    Caption = 'Tot&aling';
+                    ToolTip = 'Creates a total of the line items "From total" / "To total"';
                     Image = Totals;
                     trigger OnAction()
                     var
@@ -23,8 +23,8 @@ pageextension 5272752 "lbt Blanket Sales Order" extends "Blanket Sales Order"
                 action("lbt Num&bering")
                 {
                     ApplicationArea = All;
-                    Caption = 'Num&bering', comment = 'DEU="Nummerieren"';
-                    ToolTip = 'Specified a numbering of the line positions"', comment = 'DEU="Legt eine Nummerierung der Zeilenpositionen fest"';
+                    Caption = 'Num&bering';
+                    ToolTip = 'Specified a numbering of the line positions"';
                     Image = NumberGroup;
                     trigger OnAction()
                     var
@@ -36,8 +36,8 @@ pageextension 5272752 "lbt Blanket Sales Order" extends "Blanket Sales Order"
                 action("lbt Header Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Header Text', Comment = 'DEU="Kopftext"';
-                    ToolTip = 'Specified the Header Text', comment = 'DEU="Legt den Kopftext fest"';
+                    Caption = 'Header Text';
+                    ToolTip = 'Specified the Header Text';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -53,8 +53,8 @@ pageextension 5272752 "lbt Blanket Sales Order" extends "Blanket Sales Order"
                 action("lbt Footer Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Footer Text', Comment = 'DEU="Fußtext"';
-                    ToolTip = 'Specified the Footer Text', comment = 'DEU="Legt den Fußtext fest"';
+                    Caption = 'Footer Text';
+                    ToolTip = 'Specified the Footer Text';
                     Image = EndingText;
 
                     trigger OnAction()

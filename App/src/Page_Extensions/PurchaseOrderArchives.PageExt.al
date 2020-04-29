@@ -6,12 +6,12 @@ pageextension 5272800 "lbt Purchase Order Archives" extends "Purchase Order Arch
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout', Comment = 'DEU="LeBit365 Korrespondenzbelege"';
+                Caption = 'LeBit365 Correspondence layout';
                 action("lbt Header Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Header Text', Comment = 'DEU="Kopftext"';
-                    ToolTip = 'Here you can define the Header Text.', comment = 'deu="Hier können Sie den Kopftext erfassen."';
+                    Caption = 'Header Text';
+                    ToolTip = 'Here you can define the Header Text.';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -28,8 +28,8 @@ pageextension 5272800 "lbt Purchase Order Archives" extends "Purchase Order Arch
                 action("lbt Footer Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Footer Text', Comment = 'DEU="Fußtext"';
-                    ToolTip = 'Here you can define the Footer Text.', comment = 'deu="Hier können Sie den Fußtext erfassen."';
+                    Caption = 'Footer Text';
+                    ToolTip = 'Here you can define the Footer Text.';
                     Image = EndingText;
 
                     trigger OnAction()
