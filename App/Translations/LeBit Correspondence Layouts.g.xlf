@@ -438,6 +438,11 @@
           <note from="Developer" annotates="general" priority="2">DEU="Berichtstyp"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Source Setup - Control SalesReportType - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 591534636 - Control 3967931714 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General,"Sales Quote","Sales Order","Sales Pro Forma Inv","Blanket Sales Order"</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Source Setup - Control SalesReportType - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Page 591534636 - Control 3923609135 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Please select type of origin</source>
           <note from="Developer" annotates="general" priority="2">DEU="Bitte wählen Sie den Herkunfts Typ"</note>
@@ -447,6 +452,11 @@
           <source>Source Type</source>
           <note from="Developer" annotates="general" priority="2">DEU="Herkunft Typ"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Source Setup - Control SalesSourceType - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 591534636 - Control 3923609135 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Default,"Bill-to Customer","Sell-to Customer"</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Source Setup - Control SalesSourceType - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Page 591534636 - Control 3825544118 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Please select the report type</source>
@@ -458,6 +468,11 @@
           <note from="Developer" annotates="general" priority="2">DEU="Berichts Typ"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Source Setup - Control PurchReportType - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 591534636 - Control 3825544118 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General,"Purchase Quote","Purchase Order","Blanket Purchase Order"</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Source Setup - Control PurchReportType - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Page 591534636 - Control 1453534659 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Please select type of origin</source>
           <note from="Developer" annotates="general" priority="2">DEU="Bitte wählen Sie den Herkunftstyp"</note>
@@ -467,6 +482,11 @@
           <source>Source Type</source>
           <note from="Developer" annotates="general" priority="2">DEU="Herkunftstyp"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Source Setup - Control PurchSourceType - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 591534636 - Control 1453534659 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Default,"Pay-to Vendor","Buy-from Vendor"</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Source Setup - Control PurchSourceType - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Codeunit 1539813029 - NamedType 2999628943" size-unit="char" translate="yes" xml:space="preserve">
           <source>Setup LeBit365</source>
@@ -495,12 +515,12 @@
         </trans-unit>
         <trans-unit id="Codeunit 1676505754 - NamedType 2418854512" size-unit="char" translate="yes" xml:space="preserve">
           <source>Indenting the Document #1##########</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">%1 - Document Name</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt Corresp. Doc. Mgt - NamedType IndentTxt</note>
         </trans-unit>
         <trans-unit id="Codeunit 1676505754 - NamedType 3786465571" size-unit="char" translate="yes" xml:space="preserve">
           <source>End-Total %1 is missing a matching Begin-Total.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">%1 - End-Total Name</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt Corresp. Doc. Mgt - NamedType MissingBeginTotalTxt</note>
         </trans-unit>
         <trans-unit id="Codeunit 1676505754 - NamedType 309314094" size-unit="char" translate="yes" xml:space="preserve">
@@ -520,7 +540,7 @@
         </trans-unit>
         <trans-unit id="Codeunit 1968274535 - NamedType 1414188967" size-unit="char" translate="yes" xml:space="preserve">
           <source>This Message ist for Developer:\\\ Table %1 %2 is not exist.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">%1 - Table No., %2 - Table Caption</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt Longtext Mgt. - NamedType NotTableExistErr</note>
         </trans-unit>
         <trans-unit id="Page 4224219719 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -542,6 +562,11 @@
           <source>Specifies a unique type</source>
           <note from="Developer" annotates="general" priority="2">DEU="Legt den Typ fest"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Arch. PS Longtext Lines - Control Type - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 435237695 - Control 1821279055 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt DBTextEdit - Control Text - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 435237695 - Control 1821279055 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Here you can enter the text.</source>
@@ -612,6 +637,16 @@
           <source>LeBit365 Setup</source>
           <note from="Developer" annotates="general" priority="2">DEU="LeBit365-Belegset Einrichtung"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Wizard - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 935603355 - Control 1121192543 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Media Resources</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Wizard - Control Media Resources - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 935603355 - Control 911458447 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Media Resources Done</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Wizard - Control Media Resources Done - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 935603355 - Control 3800514526 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Welcome</source>
@@ -1100,7 +1135,7 @@
         </trans-unit>
         <trans-unit id="Report 3134870048 - NamedType 2593559584" size-unit="char" translate="yes" xml:space="preserve">
           <source>Blanket Purchase Order %1</source>
-          <note from="Developer" annotates="general" priority="2">DEU="Einkauf Rahmenbestellung Nr."</note>
+          <note from="Developer" annotates="general" priority="2">DEU="Einkauf Rahmenbestellung %1"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Blanket Purchase Order - NamedType DocCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3134870048 - NamedType 3345444166" size-unit="char" translate="yes" xml:space="preserve">
@@ -3590,7 +3625,7 @@
         </trans-unit>
         <trans-unit id="Report 2085745012 - NamedType 3184283195" size-unit="char" translate="yes" xml:space="preserve">
           <source>Prepmt. Credit Memo %1</source>
-          <note from="Developer" annotates="general" priority="2">DEU=""</note>
+          <note from="Developer" annotates="general" priority="2">DEU="Vorauszahlung Gutschrift %1"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales - Credit Memo - NamedType DocCreditMemoPrepmtCapLbl</note>
         </trans-unit>
         <trans-unit id="Report 2085745012 - NamedType 3694251867" size-unit="char" translate="yes" xml:space="preserve">
