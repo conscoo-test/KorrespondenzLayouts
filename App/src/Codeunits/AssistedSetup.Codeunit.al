@@ -1,19 +1,9 @@
 codeunit 5272727 "lbt AssistedSetup"
 {
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Assisted Setup", 'OnRegister', '', true, true)]
-    // [EventSubscriber(ObjectType::Table, Database::"Aggregated Assisted Setup", 'OnRegisterAssistedSetup', '', true, true)]
     local procedure AggregatedSetup_OnRegisterAssistedSetup()
-    var
-        AssistedSetup: Codeunit "Assisted Setup";
-        AssistedSetupGroup: Enum "Assisted Setup Group";
-    // CurrentGlobalLanguage: Integer;
     begin
-        // CurrentGlobalLanguage := GlobalLanguage();
         RegisterAssistedSetup();
-        // GlobalLanguage(1033);
-        // AssistedSetup.AddTranslation(ExtensionGuidTxt, Page::"lbt Wizard", 1033, SetupLbl);
-        // GlobalLanguage(CurrentGlobalLanguage);
-
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Assisted Setup", 'OnRegister', '', true, true)]
@@ -35,7 +25,7 @@ codeunit 5272727 "lbt AssistedSetup"
     var
         AssistedSetup: Codeunit "Assisted Setup";
     begin
-        if not AssistedSetup.IsComplete(GetAppId(), Page::"lbt Wizard") then
+        if not AssistedSetup.IsComplete(Page::"lbt Wizard") then
             CreateNotification();
     end;
 
@@ -55,7 +45,7 @@ codeunit 5272727 "lbt AssistedSetup"
         AssistedSetup: Codeunit "Assisted Setup";
     begin
         RegisterAssistedSetup();
-        AssistedSetup.Run(GetAppId(), Page::"lbt Wizard");
+        AssistedSetup.Run(Page::"lbt Wizard");
     end;
 
     local procedure GetNotificationId(): Guid

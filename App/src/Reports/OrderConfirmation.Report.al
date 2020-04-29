@@ -1774,12 +1774,6 @@ report 5272721 "lbt Order Confirmation"
                         Caption = 'Log Interaction', Comment = 'DEU="Aktivität protokollieren"';
                         Enabled = LogInteractionEnable;
                         ToolTip = 'Specifies that interactions with the contact are logged.', comment = 'DEU="Legt fest, dass Aktivitäten mit dem Kontakt protokolliert werden."';
-
-                        trigger OnValidate()
-                        begin
-                            if LogInteraction then
-                                ArchiveDocument := ArchiveDocumentEnable;
-                        end;
                     }
                     field("Show Assembly Components"; DisplayAssemblyInfo)
                     {
@@ -1930,8 +1924,6 @@ report 5272721 "lbt Order Confirmation"
         NNC_SalesLineLineAmt: Decimal;
         NNC_SalesLineInvDiscAmt: Decimal;
         Print: Boolean;
-        [InDataSet]
-        ArchiveDocumentEnable: Boolean;
         [InDataSet]
         LogInteractionEnable: Boolean;
         DisplayAssemblyInfo: Boolean;

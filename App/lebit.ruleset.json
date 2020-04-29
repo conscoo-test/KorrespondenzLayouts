@@ -1,0 +1,10 @@
+{
+    "name": "lebit",
+    "rules": [
+        {
+            "id": "AA0214",
+            "action": "Hidden"
+        }
+        
+    ]
+}

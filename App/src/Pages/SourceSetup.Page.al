@@ -18,7 +18,7 @@ page 5272727 "lbt Source Setup"
                     ApplicationArea = All;
                     ToolTip = 'Please select the report type', comment = 'DEU="Bitte wählen Sie den Berichtstyp"';
                     Caption = 'Report Type', Comment = 'DEU="Berichtstyp"';
-
+                    OptionCaption = 'General,"Sales Quote","Sales Order","Sales Pro Forma Inv","Blanket Sales Order"';
 
                     trigger OnValidate()
                     begin
@@ -30,6 +30,7 @@ page 5272727 "lbt Source Setup"
                     ApplicationArea = All;
                     ToolTip = 'Please select type of origin', comment = 'DEU="Bitte wählen Sie den Herkunfts Typ"';
                     Caption = 'Source Type', Comment = 'DEU="Herkunft Typ"';
+                    OptionCaption = 'Default,"Bill-to Customer","Sell-to Customer"';
 
 
                     trigger OnValidate()
@@ -46,6 +47,7 @@ page 5272727 "lbt Source Setup"
                     ApplicationArea = All;
                     ToolTip = 'Please select the report type', comment = 'DEU="Bitte wählen Sie den Berichtstyp"';
                     Caption = 'Report Type', Comment = 'DEU="Berichts Typ"';
+                    OptionCaption = 'General,"Purchase Quote","Purchase Order","Blanket Purchase Order"';
 
 
                     trigger OnValidate()
@@ -58,6 +60,7 @@ page 5272727 "lbt Source Setup"
                     ApplicationArea = All;
                     ToolTip = 'Please select type of origin', comment = 'DEU="Bitte wählen Sie den Herkunftstyp"';
                     Caption = 'Source Type', Comment = 'DEU="Herkunftstyp"';
+                    OptionCaption = 'Default,"Pay-to Vendor","Buy-from Vendor"';
 
                     trigger OnValidate()
                     begin

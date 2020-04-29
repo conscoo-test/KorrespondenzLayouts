@@ -961,12 +961,6 @@ report 5272727 "lbt Purchase - Quote"
                         Caption = 'Log Interaction', Comment = 'DEU="Aktivität protokollieren"';
                         ToolTip = 'Specifies that interactions with the contact are logged.', comment = 'DEU="Legt fest, dass Aktivitäten mit dem Kontakt protokolliert werden."';
                         Enabled = LogInteractionEnable;
-
-                        trigger OnValidate()
-                        begin
-                            if LogInteraction then
-                                ArchiveDocument := ArchiveDocumentEnable;
-                        end;
                     }
                     field("Hide CompanyInfo"; HideCompanyInfo)
                     {
@@ -1059,8 +1053,6 @@ report 5272727 "lbt Purchase - Quote"
         ArchiveDocument: Boolean;
         LogInteraction: Boolean;
         OutputNo: Integer;
-        [InDataSet]
-        ArchiveDocumentEnable: Boolean;
         [InDataSet]
         LogInteractionEnable: Boolean;
         CompanyInfo__Phone_No__CaptionLbl: Label 'Phone No.', Comment = 'DEU="Telefonnr."';

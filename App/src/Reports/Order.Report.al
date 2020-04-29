@@ -1739,12 +1739,6 @@ report 5272728 "lbt Order"
                         Caption = 'Log Interaction', Comment = 'DEU="Aktivität protokollieren"';
                         ToolTip = 'Specifies that interactions with the contact are logged.', comment = 'DEU="Legt fest, dass Aktivitäten mit dem Kontakt protokolliert werden."';
                         Enabled = LogInteractionEnable;
-
-                        trigger OnValidate()
-                        begin
-                            if LogInteraction then
-                                ArchiveDocument := ArchiveDocumentEnable;
-                        end;
                     }
                     field("Hide CompanyInfo"; HideCompanyInfo)
                     {
@@ -1863,8 +1857,6 @@ report 5272728 "lbt Order"
         PrepmtLineAmount: Decimal;
         PricesInclVATtxt: Text[30];
         AllowInvDisctxt: Text[30];
-        [InDataSet]
-        ArchiveDocumentEnable: Boolean;
         [InDataSet]
         LogInteractionEnable: Boolean;
         TotalSubTotal: Decimal;

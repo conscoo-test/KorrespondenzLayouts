@@ -16,6 +16,7 @@ page 5272724 "lbt Wizard"
                 {
                     ApplicationArea = All;
                     ShowCaption = false;
+                    ToolTip = 'Media Resources';
                 }
             }
 
@@ -27,6 +28,7 @@ page 5272724 "lbt Wizard"
                 {
                     ApplicationArea = All;
                     ShowCaption = false;
+                    ToolTip = 'Media Resources Done';
                 }
             }
 
@@ -371,24 +373,22 @@ page 5272724 "lbt Wizard"
 
     trigger OnQueryClosePage(CloseAction: Action): Boolean
     var
-        lbtAssistedSetup: Codeunit "lbt AssistedSetup";
         AssistedSetup: Codeunit "Assisted Setup";
     begin
         if CloseAction = Action::OK then
-            if not AssistedSetup.IsComplete(lbtAssistedSetup.GetAppId(), Page::"lbt Wizard") then
+            if not AssistedSetup.IsComplete(Page::"lbt Wizard") then
                 if not Confirm(FinishWhenNotCompleteQst, false) then
                     Error('');
     end;
 
     local procedure Finish()
     var
-        lbtAssistedSetup: Codeunit "lbt AssistedSetup";
         AssistedSetup: Codeunit "Assisted Setup";
     begin
         "lbt Setup finished" := true;
         Modify();
         Commit();
-        AssistedSetup.Complete(lbtAssistedSetup.GetAppId(), Page::"lbt Wizard");
+        AssistedSetup.Complete(Page::"lbt Wizard");
         CurrPage.Close();
     end;
 

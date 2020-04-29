@@ -1346,7 +1346,7 @@ report 5272723 "lbt Sales - Credit Memo"
         [InDataSet]
         LogInteractionEnable: Boolean;
         DocCreditMemoCapLbl: Label 'Credit Memo %1', Comment = 'DEU="Gutschrift %1"';
-        DocCreditMemoPrepmtCapLbl: Label 'Prepmt. Credit Memo %1', Comment = 'DEU=""';
+        DocCreditMemoPrepmtCapLbl: Label 'Prepmt. Credit Memo %1', Comment = 'DEU="Vorauszahlung Gutschrift %1"';
         DocDECapLbl: Label 'Corrective Invoice %1', Comment = 'DEU="Vorauszahlungsgutschrift %1"';
         DocDEPrepmtCapLbl: Label 'Prepmt. Corrective Invoice %1', Comment = 'DEU="Korrekturrechnung Vorauszahlung %1"';
         CompanyInfoPhoneNoCaptionLbl: Label 'Phone No.', Comment = 'DEU="Telefonnr."';

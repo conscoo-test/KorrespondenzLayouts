@@ -1363,12 +1363,6 @@ report 5272720 "lbt Sales - Quote"
                         ApplicationArea = All;
                         ToolTip = 'Specifies that interactions with the contact are logged.', comment = 'DEU="Legt fest, dass Aktivitäten mit dem Kontakt protokolliert werden."';
                         Enabled = LogInteractionEnable;
-
-                        trigger OnValidate()
-                        begin
-                            if LogInteraction then
-                                ArchiveDocument := ArchiveDocumentEnable;
-                        end;
                     }
                     field("Hide CompanyInfo"; HideCompanyInfo)
                     {
@@ -1496,8 +1490,6 @@ report 5272720 "lbt Sales - Quote"
         ExchangeRateLbl: Label 'Exchange rate: %1/%2', Comment = 'DEU="Wechselkurs: %1/%2"';
         OutputNo: Integer;
         Print: Boolean;
-        [InDataSet]
-        ArchiveDocumentEnable: Boolean;
         [InDataSet]
         LogInteractionEnable: Boolean;
         CompanyInfo__Phone_No__CaptionLbl: Label 'Pho:', Comment = 'DEU="Tel:"';

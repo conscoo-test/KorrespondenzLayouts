@@ -963,12 +963,6 @@ report 5272729 "lbt Blanket Purchase Order"
                         Caption = 'Log Interaction', Comment = 'DEU="Aktivität protokollieren"';
                         ToolTip = 'Specifies that interactions with the contact are logged.', comment = 'DEU="Legt fest, dass Aktivitäten mit dem Kontakt protokolliert werden."';
                         Enabled = LogInteractionEnable;
-
-                        trigger OnValidate()
-                        begin
-                            if LogInteraction then
-                                ArchiveDocument := ArchiveDocumentEnable;
-                        end;
                     }
                     field("Hide Company Info"; HideCompanyInfo)
                     {
@@ -1056,8 +1050,6 @@ report 5272729 "lbt Blanket Purchase Order"
         LogInteraction: Boolean;
         OutputNo: Integer;
         [InDataSet]
-        ArchiveDocumentEnable: Boolean;
-        [InDataSet]
         LogInteractionEnable: Boolean;
         CompanyInfo__Phone_No__CaptionLbl: Label 'Phone No.', Comment = 'DEU="Telefonnr."';
         CompanyInfo__Fax_No__CaptionLbl: Label 'Fax No.', Comment = 'DEU="Faxnr."';
@@ -1091,7 +1083,7 @@ report 5272729 "lbt Blanket Purchase Order"
         NewPageLBLang: Integer;
         LBFuss_Description: Text;
         NewPageLBFuss: Integer;
-        DocCaptionLbl: Label 'Blanket Purchase Order %1', Comment = 'DEU="Einkauf Rahmenbestellung Nr."';
+        DocCaptionLbl: Label 'Blanket Purchase Order %1', Comment = 'DEU="Einkauf Rahmenbestellung %1"';
         PagefromPageCaptionLbl: Label 'Page %1 of %2', Comment = 'DEU="Seite %1 von %2"';
         NoCaptionLbl: Label 'No.', Comment = 'DEU="Nr."';
         FromCaptionLbl: Label 'from', Comment = 'DEU="vom"';

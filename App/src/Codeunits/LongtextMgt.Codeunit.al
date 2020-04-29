@@ -8,12 +8,10 @@ codeunit 5272723 "lbt Longtext Mgt."
         TempExtTextLineLongRec2: Record "lbt Extended Text Line Long" temporary;
         TmpExtTextLine: Record "Extended Text Line" temporary;
         HeaderExistsErr: Label 'Header/footer texts already exists. Do you want to delete this?';
-        FromDocOccurrenceNo: Integer;
-        FromDocVersionNo: Integer;
         NotEnoughSpaceErr: Label 'There is not enough space to insert extended text lines.';
         NextLineNo: Integer;
         MakeUpdateRequired: Boolean;
-        NotTableExistErr: Label 'This Message ist for Developer:\\\ Table %1 %2 is not exist.';
+        NotTableExistErr: Label 'This Message ist for Developer:\\\ Table %1 %2 is not exist.', Comment = '%1 - Table No., %2 - Table Caption';
 
     procedure CopyLongTextForSalesCopyMgt(var ToSalesHeader: Record "Sales Header"; var ToSalesLine: Record "Sales Line"; var FromSalesHeader: Record "Sales Header"; var FromSalesLine: Record "Sales Line"; var CopyThisLine: Boolean; FromSalesDocType: Option; WithSalesHeader: Boolean)
     var
@@ -31,6 +29,8 @@ codeunit 5272723 "lbt Longtext Mgt."
         SourceRecRef: RecordRef;
         TargetRecRef: RecordRef;
         SalesDocType: Option Quote,"Blanket Order","Order",Invoice,"Return Order","Credit Memo","Posted Shipment","Posted Invoice","Posted Return Receipt","Posted Credit Memo","Arch. Quote","Arch. Order","Arch. Blanket Order","Arch. Return Order";
+        FromDocOccurrenceNo: Integer;
+        FromDocVersionNo: Integer;
     begin
         if WithSalesHeader then begin
             TargetRecRef.GETTABLE(ToSalesHeader);
@@ -110,6 +110,8 @@ codeunit 5272723 "lbt Longtext Mgt."
             SalesDocType::"Arch. Blanket Order",
             SalesDocType::"Arch. Return Order":
                 begin
+                    FromDocOccurrenceNo := 0;
+                    FromDocVersionNo := 0;
                     if WithSalesHeader then begin
                         FromArchSalesHeader.GET(CopyDocumentMgt.ArchSalesHeaderDocType(FromSalesDocType),
                                                 FromSalesHeader."No.",
@@ -148,6 +150,8 @@ codeunit 5272723 "lbt Longtext Mgt."
         SourceRecRef: RecordRef;
         TargetRecRef: RecordRef;
         PurchDocType: Option Quote,"Blanket Order","Order",Invoice,"Return Order","Credit Memo","Posted Receipt","Posted Invoice","Posted Return Shipment","Posted Credit Memo","Arch. Quote","Arch. Order","Arch. Blanket Order","Arch. Return Order";
+        FromDocOccurrenceNo: Integer;
+        FromDocVersionNo: Integer;
     begin
         if WithPurchHeader then begin
             TargetRecRef.GETTABLE(ToPurchHeader);
@@ -227,6 +231,8 @@ codeunit 5272723 "lbt Longtext Mgt."
             PurchDocType::"Arch. Blanket Order",
             PurchDocType::"Arch. Return Order":
                 begin
+                    FromDocOccurrenceNo := 0;
+                    FromDocVersionNo := 0;
                     if WithPurchHeader then begin
                         FromArchPurchHeader.GET(CopyDocumentMgt.ArchPurchHeaderDocType(FromPurchDocType),
                                                 FromPurchHeader."No.",
