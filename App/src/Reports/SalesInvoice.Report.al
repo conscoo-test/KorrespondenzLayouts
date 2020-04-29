@@ -1784,7 +1784,12 @@ report 5272722 "lbt Sales - Invoice"
     end;
 
     local procedure DocumentCaption(): Text[250]
+    var
+        DocCaption: text;
     begin
+        OnBeforeGetDocumentCaption("Sales Invoice Header", DocCaption);
+        IF DocCaption <> '' THEN
+            EXIT(DocCaption);
         if "Sales Invoice Header"."Prepayment Invoice" then
             exit(PrepaymentTitleLbl);
         exit(TitleLbl);
@@ -2023,6 +2028,11 @@ report 5272722 "lbt Sales - Invoice"
             TempLeBitPostedPSLongtextLine.Type := TempLeBitPostedPSLongtextLine.Type::Text;
             TempLeBitPostedPSLongtextLine.Insert();
         end;
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeGetDocumentCaption(SalesInvoiceHeader: Record "Sales Invoice Header"; var DocCaption: text);
+    begin
     end;
 }
 

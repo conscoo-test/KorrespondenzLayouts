@@ -1600,6 +1600,9 @@ report 5272723 "lbt Sales - Credit Memo"
     var
         Caption: Text;
     begin
+        OnBeforeGetDocumentCaption("Sales Cr.Memo Header", Caption);
+        if Caption <> '' then
+            exit(Caption);
         if CompanyInfo."Country/Region Code" = 'DE' then begin
             if "Sales Cr.Memo Header"."Prepayment Credit Memo" then
                 Caption := DocDEPrepmtCapLbl
@@ -1753,5 +1756,11 @@ report 5272723 "lbt Sales - Credit Memo"
             TempLeBitPostedPSLongtextLine.Insert();
         end;
     end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeGetDocumentCaption(SalesCrMemoHeaderHeader: Record "Sales Cr.Memo Header"; var DocCaption: text);
+    begin
+    end;
+
 }
 
