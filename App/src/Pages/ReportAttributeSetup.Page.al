@@ -1,6 +1,6 @@
 page 5272725 "lbt Report - Attribute Setup"
 {
-    Caption = 'Report - Attribute Setup', Comment = 'DEU="Bericht - Attribute Einrichtung"';
+    Caption = 'Report - Attribute Setup';
     PageType = List;
     SourceTable = "lbt Report - Attribute Setup";
     UsageCategory = Administration;
@@ -16,43 +16,43 @@ page 5272725 "lbt Report - Attribute Setup"
                 field("Report-Type"; "Report-Type")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Please select the report type', comment = 'DEU="Bitte wählen Sie den Berichtstyp"';
+                    ToolTip = 'Please select the report type';
                 }
                 field("Report-ID"; "Report-ID")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Please select the report-id', comment = 'DEU="Bitte wählen Sie die Report-ID"';
+                    ToolTip = 'Please select the report-id';
                     LookupPageID = Objects;
                 }
                 field(Position; Position)
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Select the position at which the attributes appear', comment = 'DEU="Legen Sie fest an welcher Position die Attribute erscheinen"';
+                    ToolTip = 'Select the position at which the attributes appear';
                 }
                 field(Priority; Priority)
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Please choose a priority', comment = 'DEU="Bitte wählen Sie eine Priorität"';
+                    ToolTip = 'Please choose a priority';
                 }
                 field(ID; ID)
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Please choose a No.', comment = 'DEU="Bitte wählen Sie eine Nr."';
+                    ToolTip = 'Please choose a No.';
                 }
                 field("Additional Character"; "Additional Character")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Additional Character', comment = 'DEU="Zusatzzeichen"';
+                    ToolTip = 'Additional Character';
                 }
                 field(Description; Description)
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Please enter a description', comment = 'DEU="Bitte hier eine Beschreibung eingeben"';
+                    ToolTip = 'Please enter a description';
                 }
                 field("Permit Description"; "Permit Description")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Allow description', comment = 'DEU="Beschreibung zulassen"';
+                    ToolTip = 'Allow description';
 
                     trigger OnValidate()
                     begin
@@ -62,12 +62,12 @@ page 5272725 "lbt Report - Attribute Setup"
                 field("Control Unit of Measure Code"; "Control Unit of Measure Code")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Select a unit of measure code', comment = 'DEU="Legt eine Einheit für den Prüfeinheitencode fest"';
+                    ToolTip = 'Select a unit of measure code';
                 }
                 field("Decimal Places"; "Decimal Places")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Specifies the number of decimal places.', comment = 'DEU="Legt die Anzahl der Dezimalstellen fest"';
+                    ToolTip = 'Specifies the number of decimal places.';
                 }
             }
         }

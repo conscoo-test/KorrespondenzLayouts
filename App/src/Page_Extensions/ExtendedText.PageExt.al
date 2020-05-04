@@ -7,7 +7,7 @@ pageextension 5272741 "lbt Extended Text" extends "Extended Text"
             field("lbt Textchoice"; "lbt Textchoice")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specified a Textchoice', comment = 'DEU="Legt eine Textauswahl fest"';
+                ToolTip = 'Specified a Textchoice';
             }
         }
         addafter(Control25)
@@ -15,8 +15,8 @@ pageextension 5272741 "lbt Extended Text" extends "Extended Text"
             part("lbt LongTextSUB"; "lbt Ext. Text Lines Long")
             {
                 ApplicationArea = All;
-                Caption = 'Long Text', Comment = 'DEU="Langtext"';
-                ToolTip = 'Here you can insert long texts.', comment = 'DEU="Hier können Sie Langtexte einfügen."';
+                Caption = 'Long Text';
+                ToolTip = 'Here you can insert long texts.';
                 SubPageLink = Table_ID = FIELD("Table Name"),
                               "No." = FIELD("No."),
                               "Language Code" = FIELD("Language Code"),

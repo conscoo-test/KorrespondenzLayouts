@@ -1,7 +1,7 @@
 page 5272720 "lbt PS Longtext Lines"
 {
     AutoSplitKey = true;
-    Caption = 'PS Longtext Lines', Comment = 'DEU="EK/VK Langtext Zeilen"';
+    Caption = 'PS Longtext Lines';
     PageType = List;
     SourceTable = "lbt PS Longtext Line";
     // UsageCategory = Lists;
@@ -18,7 +18,7 @@ page 5272720 "lbt PS Longtext Lines"
                 field("No."; "No.")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Specifies a unique number', comment = 'DEU="Legt eine eindeutige Nr. fest"';
+                    ToolTip = 'Specifies a unique number';
                     trigger OnValidate()
                     begin
                         NoOnAfterValidate();
@@ -28,12 +28,12 @@ page 5272720 "lbt PS Longtext Lines"
                 field(Description; Description)
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Specifies a unique description', comment = 'DEU="Legt eine eindeutige Beschreibung fest"';
+                    ToolTip = 'Specifies a unique description';
                 }
                 field(Type; Type)
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Specifies a unique description the type', comment = 'DEU="Legt den Typ fest"';
+                    ToolTip = 'Specifies a unique description the type';
                 }
             }
         }
@@ -46,8 +46,8 @@ page 5272720 "lbt PS Longtext Lines"
             action("E&ditor")
             {
                 ApplicationArea = All;
-                ToolTip = 'Here you can add a text that will be printed on the report.', comment = 'DEU="Hier können Sie einen Text verfassen, der auf dem Report angedruckt wird."';
-                Caption = 'Editor', Comment = 'DEU="Editor"';
+                ToolTip = 'Here you can add a text that will be printed on the report.';
+                Caption = 'Editor';
                 Image = Edit;
                 Promoted = true;
                 PromotedCategory = Process;

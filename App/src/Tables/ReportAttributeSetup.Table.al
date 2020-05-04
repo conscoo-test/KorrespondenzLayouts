@@ -2,20 +2,20 @@ table 5272725 "lbt Report - Attribute Setup"
 {
     // version LBCOR1.00
 
-    Caption = 'Report - Attribute Setup', Comment = 'DEU="Bericht - Attribute Einrichtung"';
+    Caption = 'Report - Attribute Setup';
 
     fields
     {
         field(1; "Report-Type"; Option)
         {
-            Caption = 'Report-Type', Comment = 'DEU="Bericht-Art"';
-            OptionCaption = 'Purchase,Sales,QA,Production,Delivery,Report', Comment = 'DEU="Einkauf,Verkauf,QS,Produktion,Versand,Report"';
+            Caption = 'Report-Type';
+            OptionCaption = 'Purchase,Sales,QA,Production,Delivery,Report';
             OptionMembers = Purchase,Sales,QA,Production,Delivery,"Report";
             DataClassification = CustomerContent;
         }
         field(2; "Report-ID"; Integer)
         {
-            Caption = 'Report-ID', Comment = 'DEU="Bericht-Nr"';
+            Caption = 'Report-ID';
             TableRelation = IF ("Report-Type" = CONST(Report)) AllObjWithCaption."Object ID" WHERE("Object Type" = CONST(Report));
             DataClassification = CustomerContent;
 
@@ -27,19 +27,19 @@ table 5272725 "lbt Report - Attribute Setup"
         }
         field(3; Position; Integer)
         {
-            Caption = 'Position', Comment = 'DEU="Position"';
+            Caption = 'Position';
             MinValue = 1;
             NotBlank = true;
             DataClassification = CustomerContent;
         }
         field(4; Priority; Integer)
         {
-            Caption = 'Priority', Comment = 'DEU="Priorität"';
+            Caption = 'Priority';
             DataClassification = CustomerContent;
         }
         field(5; ID; Integer)
         {
-            Caption = 'Parameter', Comment = 'DEU="ID"';
+            Caption = 'Parameter';
             TableRelation = "Item Attribute";
             DataClassification = CustomerContent;
 
@@ -68,24 +68,24 @@ table 5272725 "lbt Report - Attribute Setup"
         }
         field(6; Description; Text[250])
         {
-            Caption = 'Description', Comment = 'DEU="Beschreibung"';
+            Caption = 'Description';
             Editable = false;
             DataClassification = CustomerContent;
         }
         field(7; "Control Unit of Measure Code"; Code[30])
         {
-            Caption = 'Control Unit of Measure Code', Comment = 'DEU="Prüfeinheitencode"';
+            Caption = 'Control Unit of Measure Code';
             Editable = false;
             DataClassification = CustomerContent;
         }
         field(8; "Additional Character"; Text[30])
         {
-            Caption = 'Additional Character', Comment = 'DEU="Zusatzzeichen"';
+            Caption = 'Additional Character';
             DataClassification = CustomerContent;
         }
         field(9; "Permit Description"; Boolean)
         {
-            Caption = 'Permit Description', Comment = 'DEU="Beschreibung zulassen"';
+            Caption = 'Permit Description';
             DataClassification = CustomerContent;
 
             trigger OnValidate()
@@ -104,7 +104,7 @@ table 5272725 "lbt Report - Attribute Setup"
         }
         field(10; "Decimal Places"; Text[30])
         {
-            Caption = 'Decimal Places', Comment = 'DEU="Decimalstellen"';
+            Caption = 'Decimal Places';
             DataClassification = CustomerContent;
 
             trigger OnValidate()
@@ -143,8 +143,8 @@ table 5272725 "lbt Report - Attribute Setup"
 
     var
         ParamSetupRec: Record "lbt Report - Attribute Setup";
-        PosZeroErr: Label 'Position 0 is not allowed!.', Comment = 'DEU="Für diese Berichtsart ist Berichts-Nr. 0 nicht zulässig."';
-        TypingErr: Label 'Typing is not correct. A correct entry would be for example\\1      A minimum of 1 and a maximum of 1 decimal place\1:4   A minimum of 1 and a maximum of 4 decimal places\2:     At least 2 decimal places\:2     No more than 2 decimal places.', Comment = 'DEU="Eingabe ist nicht korrekt. Eine korrekte Eingabe wäre z.B.\\1      mindestens 1 und maximal 1 Dezimalstelle\1:4   Ein Minimum von 1 und einem Maximum von 4 Dezimalstellen\2:"';
-        DecimalPlacesErr: Label 'Decimal places only valid for parameters with decimal type.', Comment = 'DEU=""';
+        PosZeroErr: Label 'Position 0 is not allowed!.';
+        TypingErr: Label 'Typing is not correct. A correct entry would be for example\\1      A minimum of 1 and a maximum of 1 decimal place\1:4   A minimum of 1 and a maximum of 4 decimal places\2:     At least 2 decimal places\:2     No more than 2 decimal places.';
+        DecimalPlacesErr: Label 'Decimal places only valid for parameters with decimal type.';
 }
 

@@ -3,7 +3,7 @@ report 5272724 "lbt Sales - Shipment"
     DefaultLayout = RDLC;
     RDLCLayout = './src/Reports/SalesShipment.Report.rdlc';
 
-    Caption = 'Sales - Shipment', Comment = 'DEU="Verkauf - Lieferschein"';
+    Caption = 'Sales - Shipment';
     PreviewMode = PrintLayout;
 
     dataset
@@ -955,6 +955,7 @@ report 5272724 "lbt Sales - Shipment"
 
             trigger OnAfterGetRecord()
             begin
+                CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
                 FormatAddressFields("Sales Shipment Header");
                 FormatDocumentFields("Sales Shipment Header");
 
@@ -979,55 +980,55 @@ report 5272724 "lbt Sales - Shipment"
             {
                 group(Options)
                 {
-                    Caption = 'Options', Comment = 'DEU="Optionen"';
+                    Caption = 'Options';
                     field("No OfCopies"; NoOfCopies)
                     {
                         ApplicationArea = All;
-                        Caption = 'No. of Copies', Comment = 'DEU="Anzahl Kopien"';
-                        ToolTip = 'Specifies how many copies of the document to print.', comment = 'DEU="Legt die Anzahl der Kopien fest"';
+                        Caption = 'No. of Copies';
+                        ToolTip = 'Specifies how many copies of the document to print.';
                     }
                     field("Show InternalInfo"; ShowInternalInfo)
                     {
                         ApplicationArea = All;
-                        Caption = 'Show Internal Information', Comment = 'DEU="Interne Informationen anzeigen"';
-                        ToolTip = 'Specifies if the document shows internal information.', comment = 'DEU=" Ausdrucken der Dimensionen"';
+                        Caption = 'Show Internal Information';
+                        ToolTip = 'Specifies if the document shows internal information.';
                     }
                     field("Log Interaction"; LogInteraction)
                     {
                         ApplicationArea = All;
-                        Caption = 'Log Interaction', Comment = 'DEU="Aktivität protokollieren"';
-                        ToolTip = 'Specifies that interactions with the contact are logged.', comment = 'DEU="Legt fest, dass Aktivitäten mit dem Kontakt protokolliert werden."';
+                        Caption = 'Log Interaction';
+                        ToolTip = 'Specifies that interactions with the contact are logged.';
                         Enabled = LogInteractionEnable;
                     }
                     field("Show Correction Lines"; ShowCorrectionLines)
                     {
                         ApplicationArea = All;
-                        Caption = 'Show Correction Lines', Comment = 'DEU="Korrekturzeilen anzeigen"';
-                        ToolTip = 'Specifies that correction lines are displayed', comment = 'DEU="Legt fest das Korrekturzeilen angezeigt werden"';
+                        Caption = 'Show Correction Lines';
+                        ToolTip = 'Specifies that correction lines are displayed';
                     }
                     field("Show LotSN"; ShowLotSN)
                     {
                         ApplicationArea = All;
-                        Caption = 'Show Serial/Lot Number Appendix', Comment = 'DEU="Chargennr./Seriennr. Anhang anzeigen"';
-                        ToolTip = 'Specifies the Lot number /serial number to be displayed.', comment = 'DEU="Legt fest das Chargennr. /Seriennr. angezeigt werden"';
+                        Caption = 'Show Serial/Lot Number Appendix';
+                        ToolTip = 'Specifies the Lot number /serial number to be displayed.';
                     }
                     field("Display AsmInfo"; DisplayAssemblyInformation)
                     {
                         ApplicationArea = All;
-                        Caption = 'Show Assembly Components', Comment = 'DEU="Montagekomponenten anzeigen"';
-                        ToolTip = 'Specifies that you want to display the assembly components', comment = 'DEU="Legen Sie fest ob Sie die Montagekomponenten anzeigen möchten"';
+                        Caption = 'Show Assembly Components';
+                        ToolTip = 'Specifies that you want to display the assembly components';
                     }
                     field("Hide CompanyInfo"; HideCompanyInfo)
                     {
                         ApplicationArea = All;
-                        Caption = 'Hide Company Info', Comment = 'DEU=""';
-                        ToolTip = 'Specifies that the company data is to be "hidden" for printing', comment = 'DEU="Hiermit können Sie die Firmendaten für den Druck ausblenden"';
+                        Caption = 'Hide Company Info';
+                        ToolTip = 'Specifies that the company data is to be "hidden" for printing';
                     }
                     field("Item PicturePrint"; ItemPicturePrint)
                     {
                         ApplicationArea = All;
-                        Caption = 'Print Item Picture', Comment = 'DEU="Artikelbilder drucken"';
-                        ToolTip = 'Specifies that the  images are printed ', comment = 'DEU="Legt fest ob Artikelbilder mit ausgedruckt werden"';
+                        Caption = 'Print Item Picture';
+                        ToolTip = 'Specifies that the  images are printed ';
                     }
                 }
             }
@@ -1083,6 +1084,7 @@ report 5272724 "lbt Sales - Shipment"
         RespCenter: Record "Responsibility Center";
         TempLeBitPostedPSLongtextLine: Record "lbt Posted PS Longtext Line" temporary;
         ItemTrackingAppendix: Report "Item Tracking Appendix";
+        Language: Codeunit Language;
         LeBitReportFunctions: Codeunit "lbt Report Functions";
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
@@ -1117,40 +1119,40 @@ report 5272724 "lbt Sales - Shipment"
         DisplayAssemblyInformation: Boolean;
         AsmHeaderExists: Boolean;
         LinNo: Integer;
-        ItemTrackingAppendixCaptionLbl: Label 'Item Tracking - Appendix', Comment = 'DEU="Artikelverfolgung - Anhang"';
-        PhoneNoCaptionLbl: Label 'Phone No.', Comment = 'DEU="Telefonnr."';
-        VATRegNoCaptionLbl: Label 'VAT Reg. No.', Comment = 'DEU="USt-IdNr."';
-        GiroNoCaptionLbl: Label 'Giro No.', Comment = 'DEU="Girokontonr."';
-        BankNameCaptionLbl: Label 'Bank', Comment = 'DEU="Bankkonto"';
-        TitleLbl: Label 'Sales - Shipment %1', Comment = 'DEU="Verkauf - Lieferscheinnr. %1"';
-        BankAccNoCaptionLbl: Label 'Account No.', Comment = 'DEU="Kontonr."';
-        ShipmentNoCaptionLbl: Label 'Shipment No.', Comment = 'DEU="Lieferungsnr."';
-        ShipmentDateCaptionLbl: Label 'Shipment Date', Comment = 'DEU="Warenausg.-Datum"';
-        HomePageCaptionLbl: Label 'Home Page', Comment = 'DEU="Homepage"';
-        EmailCaptionLbl: Label 'Email', Comment = 'DEU="E-Mail"';
-        DocumentDateCaptionLbl: Label 'Document Date', Comment = 'DEU="Belegdatum"';
-        HeaderDimensionsCaptionLbl: Label 'Header Dimensions', Comment = 'DEU="Kopfdimensionen"';
-        LineDimensionsCaptionLbl: Label 'Line Dimensions', Comment = 'DEU="Zeilendimensionen"';
-        BilltoAddressCaptionLbl: Label 'Bill-to Address', Comment = 'DEU="Rech. an Adresse"';
-        QuantityCaptionLbl: Label 'Quantity', Comment = 'DEU="Menge"';
-        SerialNoCaptionLbl: Label 'Serial No.', Comment = 'DEU="Seriennr."';
-        LotNoCaptionLbl: Label 'Lot No.', Comment = 'DEU="Chargennr."';
-        DescriptionCaptionLbl: Label 'Description', Comment = 'DEU="Beschreibung"';
-        NoCaptionLbl: Label 'No.', Comment = 'DEU="Nr."';
-        PageCaptionCapLbl: Label 'Page %1 of %2', Comment = 'DEU="Seite %1 von %2"';
-        PagefromPageCaptionLbl: Label 'Page %1 of %2', Comment = 'DEU="Seite %1 von %2"';
-        FromCaptionLbl: Label 'from', Comment = 'DEU="vom"';
-        DatumCaptionLbl: Label 'Date', Comment = 'DEU="Datum"';
-        PosNo_CaptionLbl: Label 'Pos.', Comment = 'DEU="Pos."';
-        UOM_CaptionLbl: Label 'Unit', Comment = 'DEU="Einheit"';
-        CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl: Label 'Registered in:', Comment = 'DEU="Eingetragen im:"';
-        CompanyInfo__LeBit_CEO_Caption_Lbl: Label 'Chief Executive Officer', Comment = 'DEU="Geschäftsführer"';
-        CompanyInfo__Bank_Name_Caption_Lbl: Label 'Bank', Comment = 'DEU="Bankkonto"';
-        CompanyInfo_IBAN_Caption_Lbl: Label 'IBAN', Comment = 'DEU="IBAN"';
-        CompanyInfo__SWIFT_Code_Caption_Lbl: Label 'SWIFT-BIC', Comment = 'DEU="SWIFT-BIC"';
-        CompanyInfo_E_Mail_Caption_Lbl: Label 'Mail:', Comment = 'DEU="E-Mail"';
-        CompanyInfo__Home_Page_Caption_Lbl: Label 'Homepage:', Comment = 'DEU="Homepage:"';
-        FaxNoCaptionLbl: Label 'Telefax no.', Comment = 'DEU="Faxnr."';
+        ItemTrackingAppendixCaptionLbl: Label 'Item Tracking - Appendix';
+        PhoneNoCaptionLbl: Label 'Phone No.';
+        VATRegNoCaptionLbl: Label 'VAT Reg. No.';
+        GiroNoCaptionLbl: Label 'Giro No.';
+        BankNameCaptionLbl: Label 'Bank';
+        TitleLbl: Label 'Sales - Shipment %1', Comment = '%1 - Document No.';
+        BankAccNoCaptionLbl: Label 'Account No.';
+        ShipmentNoCaptionLbl: Label 'Shipment No.';
+        ShipmentDateCaptionLbl: Label 'Shipment Date';
+        HomePageCaptionLbl: Label 'Home Page';
+        EmailCaptionLbl: Label 'Email';
+        DocumentDateCaptionLbl: Label 'Document Date';
+        HeaderDimensionsCaptionLbl: Label 'Header Dimensions';
+        LineDimensionsCaptionLbl: Label 'Line Dimensions';
+        BilltoAddressCaptionLbl: Label 'Bill-to Address';
+        QuantityCaptionLbl: Label 'Quantity';
+        SerialNoCaptionLbl: Label 'Serial No.';
+        LotNoCaptionLbl: Label 'Lot No.';
+        DescriptionCaptionLbl: Label 'Description';
+        NoCaptionLbl: Label 'No.';
+        PageCaptionCapLbl: Label 'Page %1 of %2', Comment = '%1 - Current Page, %2 - Total Pages';
+        PageFromPageCaptionLbl: Label 'Page %1 of %2', Comment = '%1 - Current Page, %2 - Total Pages';
+        FromCaptionLbl: Label 'from';
+        DatumCaptionLbl: Label 'Date';
+        PosNo_CaptionLbl: Label 'Pos.';
+        UOM_CaptionLbl: Label 'Unit';
+        CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl: Label 'Registered in:';
+        CompanyInfo__LeBit_CEO_Caption_Lbl: Label 'Chief Executive Officer';
+        CompanyInfo__Bank_Name_Caption_Lbl: Label 'Bank';
+        CompanyInfo_IBAN_Caption_Lbl: Label 'IBAN';
+        CompanyInfo__SWIFT_Code_Caption_Lbl: Label 'SWIFT-BIC';
+        CompanyInfo_E_Mail_Caption_Lbl: Label 'Mail:';
+        CompanyInfo__Home_Page_Caption_Lbl: Label 'Homepage:';
+        FaxNoCaptionLbl: Label 'Telefax no.';
         CompanyAddressLine: Text;
         InfoCaptionArry: array[99] of Text;
         InfoValueArry: array[99] of Text;
@@ -1173,7 +1175,7 @@ report 5272724 "lbt Sales - Shipment"
         NewPageLBFuss: Integer;
         ReportType: Option Purchase,Sales,QA,Production,Delivery,"Report";
         OrderNoText: Text;
-        VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.', Comment = 'DEU="USt-IdNr."';
+        VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
 
     procedure InitLogInteraction()
     begin

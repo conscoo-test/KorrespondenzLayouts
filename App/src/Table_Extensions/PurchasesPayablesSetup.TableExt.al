@@ -6,9 +6,9 @@ tableextension 5272727 "lbt Purchases & Payables Setup" extends "Purchases & Pay
     {
         field(5272720; "lbt Logo Position on Documents"; Option)
         {
-            Caption = 'Logo Position on Documents', Comment = 'DEU="Logoposition auf Belegen"';
+            Caption = 'Logo Position on Documents';
             Description = 'LBCOR';
-            OptionCaption = 'No Logo,Left,Center,Right', Comment = 'DEU="Kein Logo,Links,Mitte,Rechts"';
+            OptionCaption = 'No Logo,Left,Center,Right';
             OptionMembers = "No Logo",Left,Center,Right;
             DataClassification = CustomerContent;
         }

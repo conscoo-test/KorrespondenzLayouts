@@ -5,8 +5,8 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
     end;
 
     var
-        IndentTxt: Label 'Indenting the Document #1##########';
-        MissingBeginTotalTxt: Label 'End-Total %1 is missing a matching Begin-Total.';
+        IndentTxt: Label 'Indenting the Document #1##########', Comment = '%1 - Document Name';
+        MissingBeginTotalTxt: Label 'End-Total %1 is missing a matching Begin-Total.', Comment = '%1 - End-Total Name';
         FromDocOccurrenceNo: Integer;
         FromDocVersionNo: Integer;
         TotalTxt: Label 'Total';
@@ -27,6 +27,7 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
         RestLength: Integer;
         i: Integer;
     begin
+        i := 0;
         SummText := TotalTxt;
         if SummText <> '' then
             if COPYSTR(SummText, STRLEN(SummText)) <> ' ' then
@@ -211,6 +212,7 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
         NewLength: Integer;
         RestLength: Integer;
     begin
+        i := 0;
         Summtext := TotalTxt;
         if Summtext <> '' then
             if COPYSTR(Summtext, STRLEN(Summtext)) <> ' ' then

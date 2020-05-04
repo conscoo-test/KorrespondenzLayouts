@@ -6,12 +6,12 @@ pageextension 5272790 "lbt Blanket Sales Orders" extends "Blanket Sales Orders"
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout', Comment = 'DEU="LeBit365 Korrespondenzbelege"';
+                Caption = 'LeBit365 Correspondence layout';
                 action("lbt Header Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Header Text', Comment = 'DEU="Kopftext"';
-                    ToolTip = 'Here you can define the Header Text.', comment = 'deu="Hier können Sie den Kopftext erfassen."';
+                    Caption = 'Header Text';
+                    ToolTip = 'Here you can define the Header Text.';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -27,8 +27,8 @@ pageextension 5272790 "lbt Blanket Sales Orders" extends "Blanket Sales Orders"
                 action("lbt Footer Text")
                 {
                     ApplicationArea = All;
-                    Caption = 'Footer Text', Comment = 'DEU="Fußtext"';
-                    ToolTip = 'Here you can define the Footer Text.', comment = 'deu="Hier können Sie den Fußtext erfassen."';
+                    Caption = 'Footer Text';
+                    ToolTip = 'Here you can define the Footer Text.';
                     Image = EndingText;
 
                     trigger OnAction()
