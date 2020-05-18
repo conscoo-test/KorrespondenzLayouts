@@ -373,22 +373,24 @@ page 5272724 "lbt Wizard"
 
     trigger OnQueryClosePage(CloseAction: Action): Boolean
     var
+        lbtAssistedSetup: Codeunit "lbt AssistedSetup";
         AssistedSetup: Codeunit "Assisted Setup";
     begin
         if CloseAction = Action::OK then
-            if not AssistedSetup.IsComplete(Page::"lbt Wizard") then
+            if not AssistedSetup.IsComplete(lbtAssistedSetup.GetAppId(), Page::"LBT Wizard") then
                 if not Confirm(FinishWhenNotCompleteQst, false) then
                     Error('');
     end;
 
     local procedure Finish()
     var
+        lbtAssistedSetup: Codeunit "lbt AssistedSetup";
         AssistedSetup: Codeunit "Assisted Setup";
     begin
         "lbt Setup finished" := true;
         Modify();
         Commit();
-        AssistedSetup.Complete(Page::"lbt Wizard");
+        AssistedSetup.Complete(lbtAssistedSetup.GetAppId(), Page::"LBT Wizard");
         CurrPage.Close();
     end;
 

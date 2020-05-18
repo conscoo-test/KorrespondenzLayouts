@@ -25,7 +25,7 @@ codeunit 5272727 "lbt AssistedSetup"
     var
         AssistedSetup: Codeunit "Assisted Setup";
     begin
-        if not AssistedSetup.IsComplete(Page::"lbt Wizard") then
+        if not AssistedSetup.IsComplete(GetAppId(), Page::"LBT Wizard") then
             CreateNotification();
     end;
 
@@ -45,7 +45,7 @@ codeunit 5272727 "lbt AssistedSetup"
         AssistedSetup: Codeunit "Assisted Setup";
     begin
         RegisterAssistedSetup();
-        AssistedSetup.Run(Page::"lbt Wizard");
+        AssistedSetup.Run(GetAppId(), Page::"LBT Wizard");
     end;
 
     local procedure GetNotificationId(): Guid
