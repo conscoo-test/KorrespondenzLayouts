@@ -14,25 +14,10 @@ codeunit 5272724 "lbt Report Functions"
     procedure GetParameterArry(ReportType: Option Purchase,Sales,QA,Production,Delivery,"Report"; ReportID: Integer; ParaType: Integer; LanguageCode: Code[10]; RowID: Text[250]; LotNo: Code[20]; ItemNo: Code[20]; var Description: array[99] of Text; var Value: array[99] of Text)
     var
         ParamSetupRecRef: RecordRef;
-        LeBiINSTSetupRecRef: RecordRef;
-        ParameterTableExist: Boolean;
         Counter: Integer;
         IntVar: Integer;
     begin
-        CLEAR(LeBiINSTSetupRecRef);
-        Object.SETRANGE("Object Type", Object."Object Type"::Table);
-        Object.SETRANGE("Object ID", 5102700);
-        if Object.FindSet() then begin
-            LeBiINSTSetupRecRef.OPEN(5102700);
-            if LeBiINSTSetupRecRef.FindFirst() then
-                ParameterTableExist := true;
-        end;
-
-        CLEAR(ParamSetupRecRef);
-        if ParameterTableExist then
-            ParamSetupRecRef.OPEN(5077913)
-        else
-            ParamSetupRecRef.OPEN(5272725);
+        ParamSetupRecRef.OPEN(Database::"LBT Report - Attribute Setup");
 
         SetFilterRecRef(ParamSetupRecRef, 1, 5, UseFilter::SETRANGE);
         SetFilterRecRef(ParamSetupRecRef, 2, ReportID, UseFilter::SETRANGE);
@@ -65,39 +50,21 @@ codeunit 5272724 "lbt Report Functions"
     var
         ItemAttribute: Record "Item Attribute";
         ItemAttributeTranslation: Record "Item Attribute Translation";
-        ParaDocLineRecRef: RecordRef;
-        ParaTranslationRecRef: RecordRef;
-        ParaRecRef: RecordRef;
-        ParaAssignRecRef: RecordRef;
-        ParaEntryRecRef: RecordRef;
         ParamSetupRecRef: RecordRef;
-        LeBiINSTSetupRecRef: RecordRef;
         StrArray: array[6] of Text[100];
         ParameterDescription: Text;
         Counter: Integer;
-        ParameterTableExist: Boolean;
     begin
         // Ermittlung der Beschreibung, der zu druckenenden Parameter
         // Return eines Strings (wenn Sprachcode hinterlegt, mit Übersetzung)
 
-        CLEAR(LeBiINSTSetupRecRef);
-        Object.SETRANGE("Object Type", Object."Object Type"::Table);
-        Object.SETRANGE("Object ID", 5102700);
-        if Object.FindSet() then begin
-            LeBiINSTSetupRecRef.OPEN(5102700);
-            if LeBiINSTSetupRecRef.FindFirst() then
-                ParameterTableExist := true;
-        end;
 
         // Tabellen Filter wird definiert
         ParameterDescription := '';
         ParaDescriptionList := '';
 
         CLEAR(ParamSetupRecRef);
-        if ParameterTableExist then
-            ParamSetupRecRef.OPEN(5077913)
-        else
-            ParamSetupRecRef.OPEN(5272725);
+        ParamSetupRecRef.OPEN(Database::"LBT Report - Attribute Setup");
 
         SetFilterRecRef(ParamSetupRecRef, 1, 5, UseFilter::SETRANGE);
         SetFilterRecRef(ParamSetupRecRef, 2, ReportID, UseFilter::SETRANGE);
@@ -121,48 +88,13 @@ codeunit 5272724 "lbt Report Functions"
                 if ParaDescriptionList <> '' then
                     ParaDescriptionList += ' ';
                 Counter += 1;
-                if not ParameterTableExist then begin
-                    if ItemAttributeTranslation.GET(GetValueRecRef(ParamSetupRecRef, 5), LanguageCode) then
-                        ParameterDescription := ItemAttributeTranslation.Name
-                    else
-                        if ItemAttribute.GET(GetValueRecRef(ParamSetupRecRef, 5)) then
-                            ParameterDescription := ItemAttribute.Name;
-                end else begin
-                    if Counter = 1 then begin
-                        CLEAR(ParaDocLineRecRef);
-                        ParaDocLineRecRef.OPEN(5078148);                                         //Posted Parameter Document Line
-                        SetFilterRecRef(ParaDocLineRecRef, 1, StrArray[1], UseFilter::SETFILTER);   //"Table ID"
-                        SetFilterRecRef(ParaDocLineRecRef, 2, StrArray[2], UseFilter::SETFILTER);   //"Document Type"
-                        SetFilterRecRef(ParaDocLineRecRef, 3, StrArray[3], UseFilter::SETRANGE);    //"Document No."
-                        SetFilterRecRef(ParaDocLineRecRef, 4, StrArray[4], UseFilter::SETRANGE);    //"Document No. 2"
-                        SetFilterRecRef(ParaDocLineRecRef, 5, StrArray[6], UseFilter::SETFILTER);   //"Document Line No."
-                        SetFilterRecRef(ParaDocLineRecRef, 6, LotNo, UseFilter::SETRANGE);          //"Lot No."
-                    end;
-                    SetFilterRecRef(ParaDocLineRecRef, 7, GetValueRecRef(ParamSetupRecRef, 5), UseFilter::SETRANGE); //Parameter
-                    if ParaDocLineRecRef.FindFirst() then
-                        if (LanguageCode <> '') then begin
-                            CLEAR(ParaTranslationRecRef);
-                            ParaTranslationRecRef.OPEN(5077943);                                                              //Parameter Translation
-                            SetFilterRecRef(ParaTranslationRecRef, 1, GetValueRecRef(ParaDocLineRecRef, 7), UseFilter::SETRANGE); //Parameter
-                            SetFilterRecRef(ParaTranslationRecRef, 2, LanguageCode, UseFilter::SETRANGE);                        //"Language Code"
-                            if ParaTranslationRecRef.FindFirst() then
-                                ParameterDescription := GetValueRecRef(ParaTranslationRecRef, 3)
-                            else begin
-                                CLEAR(ParaRecRef);
-                                ParaRecRef.OPEN(5102726);                                                               //Parameter
-                                SetFilterRecRef(ParaRecRef, 1, GetValueRecRef(ParaDocLineRecRef, 7), UseFilter::SETRANGE);  //Parameter
-                                if ParaRecRef.FindFirst() then
-                                    ParameterDescription := GetValueRecRef(ParaRecRef, 3);
-                            end;
-                        end else begin
-                            CLEAR(ParaRecRef);
-                            ParaRecRef.OPEN(5102726);                                                               //Parameter
-                            SetFilterRecRef(ParaRecRef, 1, GetValueRecRef(ParaDocLineRecRef, 7), UseFilter::SETRANGE);  //Parameter
-                            if ParaRecRef.FindFirst() then
-                                ParameterDescription := GetValueRecRef(ParaRecRef, 3);
-                        end;
 
-                end;
+                if ItemAttributeTranslation.GET(GetValueRecRef(ParamSetupRecRef, 5), LanguageCode) then
+                    ParameterDescription := ItemAttributeTranslation.Name
+                else
+                    if ItemAttribute.GET(GetValueRecRef(ParamSetupRecRef, 5)) then
+                        ParameterDescription := ItemAttribute.Name;
+
                 ParaDescriptionList += ParameterDescription;
                 if GetValueRecRef(ParamSetupRecRef, 8) <> '' then
                     ParaDescriptionList += ' ' + GetValueRecRef(ParamSetupRecRef, 8);
@@ -175,59 +107,11 @@ codeunit 5272724 "lbt Report Functions"
                 if ParaDescriptionList <> '' then
                     ParaDescriptionList += ' ';
                 Counter += 1;
-                if not ParameterTableExist then begin
-                    if ItemAttributeTranslation.GET(GetValueRecRef(ParamSetupRecRef, 5), LanguageCode) then
-                        ParameterDescription := ItemAttributeTranslation.Name
-                    else
-                        if ItemAttribute.GET(GetValueRecRef(ParamSetupRecRef, 5)) then
-                            ParameterDescription := ItemAttribute.Name;
-                end else begin
-                    if Counter = 1 then begin
-                        CLEAR(ParaDocLineRecRef);
-                        ParaDocLineRecRef.OPEN(5078146);
-                        SetFilterRecRef(ParaDocLineRecRef, 1, StrArray[1], UseFilter::SETFILTER);  //"Table ID"
-                        SetFilterRecRef(ParaDocLineRecRef, 2, StrArray[2], UseFilter::SETFILTER);  //"Document Type"
-                        SetFilterRecRef(ParaDocLineRecRef, 3, StrArray[3], UseFilter::SETRANGE);   //"Document No."
-                        SetFilterRecRef(ParaDocLineRecRef, 4, StrArray[4], UseFilter::SETRANGE);   //"Document No. 2"
-                        case StrArray[1] of
-                            FORMAT(DATABASE::"Prod. Order Line"):
-                                SetFilterRecRef(ParaDocLineRecRef, 5, StrArray[5], UseFilter::SETFILTER); //"Document Line No."
-                            FORMAT(DATABASE::"Prod. Order Component"):
-                                begin
-                                    SetFilterRecRef(ParaDocLineRecRef, 4, StrArray[6], UseFilter::SETRANGE);  //"Document No. 2"
-                                    SetFilterRecRef(ParaDocLineRecRef, 5, StrArray[5], UseFilter::SETFILTER); //"Document Line No."
-                                end;
-                            else
-                                SetFilterRecRef(ParaDocLineRecRef, 5, StrArray[6], UseFilter::SETFILTER); //"Document Line No."
-                        end;
-                        SetFilterRecRef(ParaDocLineRecRef, 6, LotNo, UseFilter::SETRANGE);        //"Lot No."
-                    end;
-
-                    SetFilterRecRef(ParaDocLineRecRef, 7, GetValueRecRef(ParamSetupRecRef, 5), UseFilter::SETRANGE); //Parameter
-                    if ParaDocLineRecRef.FindFirst() then
-                        if (LanguageCode <> '') then begin
-                            CLEAR(ParaTranslationRecRef);
-                            ParaTranslationRecRef.OPEN(5077943);                                                               //Parameter Translation
-                            SetFilterRecRef(ParaTranslationRecRef, 1, GetValueRecRef(ParaDocLineRecRef, 7), UseFilter::SETRANGE);  //Parameter
-                            SetFilterRecRef(ParaTranslationRecRef, 2, LanguageCode, UseFilter::SETRANGE);                         //"Language Code"
-                            if ParaTranslationRecRef.FindFirst() then
-                                ParameterDescription := GetValueRecRef(ParaTranslationRecRef, 3)
-                            else begin
-                                CLEAR(ParaRecRef);
-                                ParaRecRef.OPEN(5102726);                                                               //Parameter
-                                SetFilterRecRef(ParaRecRef, 1, GetValueRecRef(ParaDocLineRecRef, 7), UseFilter::SETRANGE);  //Parameter
-                                if ParaRecRef.FindFirst() then
-                                    ParameterDescription := GetValueRecRef(ParaRecRef, 3);
-                            end;
-                        end else begin
-                            CLEAR(ParaRecRef);
-                            ParaRecRef.OPEN(5102726);                                                               //Parameter
-                            SetFilterRecRef(ParaRecRef, 1, GetValueRecRef(ParaDocLineRecRef, 7), UseFilter::SETRANGE);  //Parameter
-                            if ParaRecRef.FindFirst() then
-                                ParameterDescription := GetValueRecRef(ParaRecRef, 3);
-                        end;
-
-                end;
+                if ItemAttributeTranslation.GET(GetValueRecRef(ParamSetupRecRef, 5), LanguageCode) then
+                    ParameterDescription := ItemAttributeTranslation.Name
+                else
+                    if ItemAttribute.GET(GetValueRecRef(ParamSetupRecRef, 5)) then
+                        ParameterDescription := ItemAttribute.Name;
                 ParaDescriptionList += ParameterDescription;
                 if GetValueRecRef(ParamSetupRecRef, 8) <> '' then
                     ParaDescriptionList += ' ' + GetValueRecRef(ParamSetupRecRef, 8);
@@ -239,45 +123,11 @@ codeunit 5272724 "lbt Report Functions"
                 if ParaDescriptionList <> '' then
                     ParaDescriptionList += ' ';
                 Counter += 1;
-                if not ParameterTableExist then begin
-                    if ItemAttributeTranslation.GET(GetValueRecRef(ParamSetupRecRef, 5), LanguageCode) then
-                        ParameterDescription := ItemAttributeTranslation.Name
-                    else
-                        if ItemAttribute.GET(GetValueRecRef(ParamSetupRecRef, 5)) then
-                            ParameterDescription := ItemAttribute.Name;
-                end else begin
-                    if Counter = 1 then begin
-                        CLEAR(ParaAssignRecRef);
-                        ParaAssignRecRef.OPEN(5102703);                                         //Parameter Assignment
-                        SetFilterRecRef(ParaAssignRecRef, 1, StrArray[1], UseFilter::SETFILTER);  //"Table-ID"
-                        SetFilterRecRef(ParaAssignRecRef, 2, StrArray[3], UseFilter::SETRANGE);   //Code
-                        SetFilterRecRef(ParaAssignRecRef, 12, StrArray[4], UseFilter::SETRANGE);   //"Code 2"
-                    end;
-                    SetFilterRecRef(ParaAssignRecRef, 3, GetValueRecRef(ParamSetupRecRef, 5), UseFilter::SETRANGE);
-                    if ParaAssignRecRef.FindFirst() then
-                        if (LanguageCode <> '') then begin
-                            CLEAR(ParaTranslationRecRef);
-                            ParaTranslationRecRef.OPEN(5077943);                                                              //Parameter Translation
-                            SetFilterRecRef(ParaTranslationRecRef, 1, GetValueRecRef(ParaAssignRecRef, 3), UseFilter::SETRANGE);  //Parameter
-                            SetFilterRecRef(ParaTranslationRecRef, 2, LanguageCode, UseFilter::SETRANGE);                        //"Language Code"
-                            if ParaTranslationRecRef.FindFirst() then
-                                ParameterDescription := GetValueRecRef(ParaTranslationRecRef, 3)
-                            else begin
-                                CLEAR(ParaRecRef);
-                                ParaRecRef.OPEN(5102726);                                                               //Parameter
-                                SetFilterRecRef(ParaRecRef, 1, GetValueRecRef(ParaAssignRecRef, 3), UseFilter::SETRANGE);   //Parameter
-                                if ParaRecRef.FindFirst() then
-                                    ParameterDescription := GetValueRecRef(ParaRecRef, 3);
-                            end;
-                        end else begin
-                            CLEAR(ParaRecRef);
-                            ParaRecRef.OPEN(5102726);                                                              //Parameter
-                            SetFilterRecRef(ParaRecRef, 1, GetValueRecRef(ParaAssignRecRef, 3), UseFilter::SETRANGE);  //Parameter
-                            if ParaRecRef.FindFirst() then
-                                ParameterDescription := GetValueRecRef(ParaRecRef, 3);
-                        end;
-
-                end;
+                if ItemAttributeTranslation.GET(GetValueRecRef(ParamSetupRecRef, 5), LanguageCode) then
+                    ParameterDescription := ItemAttributeTranslation.Name
+                else
+                    if ItemAttribute.GET(GetValueRecRef(ParamSetupRecRef, 5)) then
+                        ParameterDescription := ItemAttribute.Name;
                 ParaDescriptionList += ParameterDescription;
                 if GetValueRecRef(ParamSetupRecRef, 8) <> '' then
                     ParaDescriptionList += ' ' + GetValueRecRef(ParamSetupRecRef, 8);
@@ -289,45 +139,11 @@ codeunit 5272724 "lbt Report Functions"
                 if ParaDescriptionList <> '' then
                     ParaDescriptionList += ' ';
                 Counter += 1;
-                if not ParameterTableExist then begin
-                    if ItemAttributeTranslation.GET(GetValueRecRef(ParamSetupRecRef, 5), LanguageCode) then
-                        ParameterDescription := ItemAttributeTranslation.Name
-                    else
-                        if ItemAttribute.GET(GetValueRecRef(ParamSetupRecRef, 5)) then
-                            ParameterDescription := ItemAttribute.Name;
-                end else begin
-                    if Counter = 1 then begin
-                        CLEAR(ParaEntryRecRef);
-                        ParaEntryRecRef.OPEN(5078149);                                        //Parameter Entry
-                        SetFilterRecRef(ParaEntryRecRef, 6, StrArray[3], UseFilter::SETRANGE); //"Lot No."
-                        SetFilterRecRef(ParaEntryRecRef, 201, StrArray[4], UseFilter::SETRANGE); //"Item No."
-                        SetFilterRecRef(ParaEntryRecRef, 50, false, UseFilter::SETRANGE);       //Canceled
-                    end;
-                    SetFilterRecRef(ParaEntryRecRef, 7, GetValueRecRef(ParamSetupRecRef, 5), UseFilter::SETRANGE);
-                    if ParaEntryRecRef.FindFirst() then
-                        if (LanguageCode <> '') then begin
-                            CLEAR(ParaTranslationRecRef);
-                            ParaTranslationRecRef.OPEN(5077943);                                                              //Parameter Translation
-                            SetFilterRecRef(ParaTranslationRecRef, 1, GetValueRecRef(ParaEntryRecRef, 7), UseFilter::SETRANGE);   //Parameter
-                            SetFilterRecRef(ParaTranslationRecRef, 2, LanguageCode, UseFilter::SETRANGE);                        //"Language Code"
-                            if ParaTranslationRecRef.FindFirst() then
-                                ParameterDescription := GetValueRecRef(ParaTranslationRecRef, 3)
-                            else begin
-                                CLEAR(ParaRecRef);
-                                ParaRecRef.OPEN(5102726);                                                             //Parameter
-                                SetFilterRecRef(ParaRecRef, 1, GetValueRecRef(ParaEntryRecRef, 7), UseFilter::SETRANGE);  //Parameter
-                                if ParaRecRef.FindFirst() then
-                                    ParameterDescription := GetValueRecRef(ParaRecRef, 3);
-                            end;
-                        end else begin
-                            CLEAR(ParaRecRef);
-                            ParaRecRef.OPEN(5102726);                                                             //Parameter
-                            SetFilterRecRef(ParaRecRef, 1, GetValueRecRef(ParaEntryRecRef, 7), UseFilter::SETRANGE);  //Parameter
-                            if ParaRecRef.FindFirst() then
-                                ParameterDescription := GetValueRecRef(ParaRecRef, 3);
-                        end;
-
-                end;
+                if ItemAttributeTranslation.GET(GetValueRecRef(ParamSetupRecRef, 5), LanguageCode) then
+                    ParameterDescription := ItemAttributeTranslation.Name
+                else
+                    if ItemAttribute.GET(GetValueRecRef(ParamSetupRecRef, 5)) then
+                        ParameterDescription := ItemAttribute.Name;
                 ParaDescriptionList += ParameterDescription;
                 if GetValueRecRef(ParamSetupRecRef, 8) <> '' then
                     ParaDescriptionList += ' ' + GetValueRecRef(ParamSetupRecRef, 8);
@@ -340,61 +156,11 @@ codeunit 5272724 "lbt Report Functions"
                 if ParaDescriptionList <> '' then
                     ParaDescriptionList += ' ';
                 Counter += 1;
-                if not ParameterTableExist then begin
-                    if ItemAttributeTranslation.GET(GetValueRecRef(ParamSetupRecRef, 5), LanguageCode) then
-                        ParameterDescription := ItemAttributeTranslation.Name
-                    else
-                        if ItemAttribute.GET(GetValueRecRef(ParamSetupRecRef, 5)) then
-                            ParameterDescription := ItemAttribute.Name;
-                end else begin
-                    if Counter = 1 then begin
-                        CLEAR(ParaDocLineRecRef);
-                        ParaDocLineRecRef.OPEN(5078160);
-                        SetFilterRecRef(ParaDocLineRecRef, 1, StrArray[1], UseFilter::SETFILTER);
-                        SetFilterRecRef(ParaDocLineRecRef, 2, StrArray[2], UseFilter::SETFILTER);
-                        SetFilterRecRef(ParaDocLineRecRef, 3, StrArray[3], UseFilter::SETRANGE);
-                        SetFilterRecRef(ParaDocLineRecRef, 4, StrArray[4], UseFilter::SETRANGE);
-                        case StrArray[1] of
-                            FORMAT(DATABASE::"Prod. Order Line"):
-                                SetFilterRecRef(ParaDocLineRecRef, 5, StrArray[5], UseFilter::SETFILTER);
-                            FORMAT(DATABASE::"Prod. Order Component"):
-                                begin
-                                    SetFilterRecRef(ParaDocLineRecRef, 4, StrArray[6], UseFilter::SETRANGE);
-                                    SetFilterRecRef(ParaDocLineRecRef, 5, StrArray[5], UseFilter::SETFILTER);
-                                end;
-                            else begin
-                                    SetFilterRecRef(ParaDocLineRecRef, 5047, StrArray[5], UseFilter::SETFILTER);
-                                    SetFilterRecRef(ParaDocLineRecRef, 5, StrArray[6], UseFilter::SETFILTER);
-                                end;
-                        end;
-                        SetFilterRecRef(ParaDocLineRecRef, 6, LotNo, UseFilter::SETRANGE);
-                    end;
-
-                    SetFilterRecRef(ParaDocLineRecRef, 7, GetValueRecRef(ParamSetupRecRef, 5), UseFilter::SETRANGE);
-                    if ParaDocLineRecRef.FindFirst() then
-                        if (LanguageCode <> '') then begin
-                            CLEAR(ParaTranslationRecRef);
-                            ParaTranslationRecRef.OPEN(5077943);                                                              //Parameter Translation
-                            SetFilterRecRef(ParaTranslationRecRef, 1, GetValueRecRef(ParaDocLineRecRef, 7), UseFilter::SETRANGE);   //Parameter
-                            SetFilterRecRef(ParaTranslationRecRef, 2, LanguageCode, UseFilter::SETRANGE);                        //"Language Code"
-                            if ParaTranslationRecRef.FindFirst() then
-                                ParameterDescription := GetValueRecRef(ParaTranslationRecRef, 3)
-                            else begin
-                                CLEAR(ParaRecRef);
-                                ParaRecRef.OPEN(5102726);                                                             //Parameter
-                                SetFilterRecRef(ParaRecRef, 1, GetValueRecRef(ParaDocLineRecRef, 7), UseFilter::SETRANGE);  //Parameter
-                                if ParaRecRef.FindFirst() then
-                                    ParameterDescription := GetValueRecRef(ParaRecRef, 3);
-                            end;
-                        end else begin
-                            CLEAR(ParaRecRef);
-                            ParaRecRef.OPEN(5102726);                                                             //Parameter
-                            SetFilterRecRef(ParaRecRef, 1, GetValueRecRef(ParaDocLineRecRef, 7), UseFilter::SETRANGE);  //Parameter
-                            if ParaRecRef.FindFirst() then
-                                ParameterDescription := GetValueRecRef(ParaRecRef, 3);
-                        end;
-
-                end;
+                if ItemAttributeTranslation.GET(GetValueRecRef(ParamSetupRecRef, 5), LanguageCode) then
+                    ParameterDescription := ItemAttributeTranslation.Name
+                else
+                    if ItemAttribute.GET(GetValueRecRef(ParamSetupRecRef, 5)) then
+                        ParameterDescription := ItemAttribute.Name;
                 ParaDescriptionList += ParameterDescription;
                 if GetValueRecRef(ParamSetupRecRef, 8) <> '' then
                     ParaDescriptionList += ' ' + GetValueRecRef(ParamSetupRecRef, 8);
@@ -411,39 +177,21 @@ codeunit 5272724 "lbt Report Functions"
         ItemAttributeValue: Record "Item Attribute Value";
         ItemAttribute: Record "Item Attribute";
         UnitofMeasureTranslationRec: Record "Unit of Measure Translation";
-        ParaDocLineRecRef: RecordRef;
-        ParaAssignRecRef: RecordRef;
-        ParaEntryRecRef: RecordRef;
         ParamSetupRecRef: RecordRef;
-        LeBiINSTSetupRecRef: RecordRef;
         StrArray: array[6] of Text[100];
         UnitofMeasureDescription: Text;
-        PrintValueDec: Decimal;
-        PrintValue: Text;
         localUseFilter: Option SETRANGE,SETFILTER;
         Counter: Integer;
-        ParameterTableExist: Boolean;
     begin
         // Ermittlung der Werte, der zu druckenden Parameter
         // Return eines Strings (wenn Sprachcode hinterlegt, mit Übersetzung)
 
-        CLEAR(LeBiINSTSetupRecRef);
-        Object.SETRANGE("Object Type", Object."Object Type"::Table);
-        Object.SETRANGE("Object ID", 5102700);
-        if Object.FindSet() then begin
-            LeBiINSTSetupRecRef.OPEN(5102700);
-            if LeBiINSTSetupRecRef.FindFirst() then
-                ParameterTableExist := true;
-        end;
 
         ParaValueList := '';
 
         // Tabellen Filter wird definiert
         CLEAR(ParamSetupRecRef);
-        if ParameterTableExist then
-            ParamSetupRecRef.OPEN(5077913)
-        else
-            ParamSetupRecRef.OPEN(5272725);
+        ParamSetupRecRef.OPEN(Database::"LBT Report - Attribute Setup");
 
         SetFilterRecRef(ParamSetupRecRef, 1, 5, localUseFilter::SETRANGE);
         SetFilterRecRef(ParamSetupRecRef, 2, ReportID, localUseFilter::SETRANGE);
@@ -468,68 +216,23 @@ codeunit 5272724 "lbt Report Functions"
                 if ParaValueList <> '' then
                     ParaValueList += ' ';
                 Counter += 1;
-                if not ParameterTableExist then begin
-                    if ItemAttributeValueMapping.GET(DATABASE::Item, ItemNo, GetValueRecRef(ParamSetupRecRef, 5)) then begin
-                        if ItemAttrValueTranslation.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode) then
-                            ParaValueList += ItemAttrValueTranslation.Name
-                        else
-                            if ItemAttributeValue.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID") then
-                                ParaValueList += ItemAttributeValue.Value;
+                if ItemAttributeValueMapping.GET(DATABASE::Item, ItemNo, GetValueRecRef(ParamSetupRecRef, 5)) then begin
+                    if ItemAttrValueTranslation.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode) then
+                        ParaValueList += ItemAttrValueTranslation.Name
+                    else
+                        if ItemAttributeValue.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID") then
+                            ParaValueList += ItemAttributeValue.Value;
 
-                        if ItemAttribute.GET(GetValueRecRef(ParamSetupRecRef, 5)) then
-                            if UnitofMeasureTranslationRec.GET(ItemAttribute."Unit of Measure", LanguageCode) then
-                                UnitofMeasureDescription := UnitofMeasureTranslationRec.Description
-                            else
-                                if UnitofMeasureRec.GET(ItemAttribute."Unit of Measure") then
-                                    UnitofMeasureDescription := UnitofMeasureRec.Description;
-
-
-                    end;
-                end else begin
-                    if Counter = 1 then begin
-                        CLEAR(ParaDocLineRecRef);
-                        ParaDocLineRecRef.OPEN(5078148);                                         //Posted Parameter Document Line
-                        SetFilterRecRef(ParaDocLineRecRef, 1, StrArray[1], localUseFilter::SETFILTER);   //"Table ID"
-                        SetFilterRecRef(ParaDocLineRecRef, 2, StrArray[2], localUseFilter::SETFILTER);   //"Document Type"
-                        SetFilterRecRef(ParaDocLineRecRef, 3, StrArray[3], localUseFilter::SETRANGE);    //"Document No."
-                        SetFilterRecRef(ParaDocLineRecRef, 4, StrArray[4], localUseFilter::SETRANGE);    //"Document No. 2"
-                        SetFilterRecRef(ParaDocLineRecRef, 5, StrArray[6], localUseFilter::SETFILTER);   //"Document Line No."
-                        SetFilterRecRef(ParaDocLineRecRef, 6, LotNo, localUseFilter::SETRANGE);          //"Lot No."
-                    end;
-
-
-                    SetFilterRecRef(ParaDocLineRecRef, 7, GetValueRecRef(ParamSetupRecRef, 5), localUseFilter::SETRANGE); //Parameter
-                    if ParaDocLineRecRef.FindFirst() then begin
-                        case GetValueRecRef(ParaDocLineRecRef, 8) of
-                            'Decimal':
-                                begin
-                                    if not EVALUATE(PrintValueDec, GetValueRecRef(ParaDocLineRecRef, 70)) then
-                                        PrintValue := GetValueRecRef(ParaDocLineRecRef, 70)
-                                    else
-                                        if GetValueRecRef(ParamSetupRecRef, 10) <> '' then
-                                            PrintValue := FORMAT(PrintValueDec, 0, '<Precision,' + GetValueRecRef(ParamSetupRecRef, 10) +
-                                            '><Sign><Integer><Decimals>')
-                                        else
-                                            PrintValue := GetValueRecRef(ParaDocLineRecRef, 70);
-                                    ParaValueList += PrintValue;
-                                end;
-                            'Boolean', 'Text':
-                                ParaValueList += IdentifyValueTranslation(GetValueRecRef(ParaDocLineRecRef, 70),   //"Print Value"
-                                                                          GetValueRecRef(ParaDocLineRecRef, 300),  //Text
-                                                                          GetValueRecRef(ParaDocLineRecRef, 7),    //Parameter
-                                                                          GetValueRecRef(ParaDocLineRecRef, 305),  //"Parameter Domain"
-                                                                          LanguageCode);                          //"Language Code"
-
-                        end;
-                        UnitofMeasureDescription := '';
-                        if UnitofMeasureTranslationRec.GET(GetValueRecRef(ParaDocLineRecRef, 410), LanguageCode) then
+                    if ItemAttribute.GET(GetValueRecRef(ParamSetupRecRef, 5)) then
+                        if UnitofMeasureTranslationRec.GET(ItemAttribute."Unit of Measure", LanguageCode) then
                             UnitofMeasureDescription := UnitofMeasureTranslationRec.Description
                         else
-                            if UnitofMeasureRec.GET(GetValueRecRef(ParaDocLineRecRef, 410)) then
+                            if UnitofMeasureRec.GET(ItemAttribute."Unit of Measure") then
                                 UnitofMeasureDescription := UnitofMeasureRec.Description;
 
-                    end;
+
                 end;
+
                 if UnitofMeasureDescription <> '' then
                     ParaValueList += ' ' + UnitofMeasureDescription;
                 if GetValueRecRef(ParamSetupRecRef, 8) <> '' then
@@ -543,76 +246,23 @@ codeunit 5272724 "lbt Report Functions"
                 if ParaValueList <> '' then
                     ParaValueList += ' ';
                 Counter += 1;
-                if not ParameterTableExist then begin
-                    if ItemAttributeValueMapping.GET(DATABASE::Item, ItemNo, GetValueRecRef(ParamSetupRecRef, 5)) then begin
-                        if ItemAttrValueTranslation.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode) then
-                            ParaValueList += ItemAttrValueTranslation.Name
-                        else
-                            if ItemAttributeValue.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID") then
-                                ParaValueList += ItemAttributeValue.Value;
+                if ItemAttributeValueMapping.GET(DATABASE::Item, ItemNo, GetValueRecRef(ParamSetupRecRef, 5)) then begin
+                    if ItemAttrValueTranslation.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode) then
+                        ParaValueList += ItemAttrValueTranslation.Name
+                    else
+                        if ItemAttributeValue.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID") then
+                            ParaValueList += ItemAttributeValue.Value;
 
-                        if ItemAttribute.GET(GetValueRecRef(ParamSetupRecRef, 5)) then
-                            if UnitofMeasureTranslationRec.GET(ItemAttribute."Unit of Measure", LanguageCode) then
-                                UnitofMeasureDescription := UnitofMeasureTranslationRec.Description
-                            else
-                                if UnitofMeasureRec.GET(ItemAttribute."Unit of Measure") then
-                                    UnitofMeasureDescription := UnitofMeasureRec.Description;
-
-
-                    end;
-                end else begin
-                    if Counter = 1 then begin
-                        CLEAR(ParaDocLineRecRef);
-                        ParaDocLineRecRef.OPEN(5078146);
-                        SetFilterRecRef(ParaDocLineRecRef, 1, StrArray[1], localUseFilter::SETFILTER);  //"Table ID"
-                        SetFilterRecRef(ParaDocLineRecRef, 2, StrArray[2], localUseFilter::SETFILTER);  //"Document Type"
-                        SetFilterRecRef(ParaDocLineRecRef, 3, StrArray[3], localUseFilter::SETRANGE);   //"Document No."
-                        SetFilterRecRef(ParaDocLineRecRef, 4, StrArray[4], localUseFilter::SETRANGE);   //"Document No. 2"
-                        case StrArray[1] of
-                            FORMAT(DATABASE::"Prod. Order Line"):
-                                SetFilterRecRef(ParaDocLineRecRef, 5, StrArray[5], localUseFilter::SETFILTER); //"Document Line No."
-                            FORMAT(DATABASE::"Prod. Order Component"):
-                                begin
-                                    SetFilterRecRef(ParaDocLineRecRef, 4, StrArray[6], localUseFilter::SETRANGE);  //"Document No. 2"
-                                    SetFilterRecRef(ParaDocLineRecRef, 5, StrArray[5], localUseFilter::SETFILTER); //"Document Line No."
-                                end;
-                            else
-                                SetFilterRecRef(ParaDocLineRecRef, 5, StrArray[6], localUseFilter::SETFILTER); //"Document Line No."
-                        end;
-                        SetFilterRecRef(ParaDocLineRecRef, 6, LotNo, localUseFilter::SETRANGE);        //"Lot No."
-                    end;
-                    // Prüfung ob mehrere Parameter für die zu druckende Position vorhanden sind und Rückgabe String bilden
-                    SetFilterRecRef(ParaDocLineRecRef, 7, GetValueRecRef(ParamSetupRecRef, 5), localUseFilter::SETRANGE); //Parameter
-                    if ParaDocLineRecRef.FindFirst() then begin
-                        case GetValueRecRef(ParaDocLineRecRef, 8) of
-                            'Decimal':
-                                begin
-                                    if not EVALUATE(PrintValueDec, GetValueRecRef(ParaDocLineRecRef, 70)) then
-                                        PrintValue := GetValueRecRef(ParaDocLineRecRef, 70)
-                                    else
-                                        if GetValueRecRef(ParamSetupRecRef, 10) <> '' then
-                                            PrintValue := FORMAT(PrintValueDec, 0, '<Precision,' + GetValueRecRef(ParamSetupRecRef, 10) +
-                                            '><Sign><Integer><Decimals>')
-                                        else
-                                            PrintValue := GetValueRecRef(ParaDocLineRecRef, 70);
-                                    ParaValueList += PrintValue;
-                                end;
-                            'Boolean', 'Text':
-                                ParaValueList += IdentifyValueTranslation(GetValueRecRef(ParaDocLineRecRef, 70),   //"Print Value"
-                                                                          GetValueRecRef(ParaDocLineRecRef, 300),  //Text
-                                                                          GetValueRecRef(ParaDocLineRecRef, 7),    //Parameter
-                                                                          GetValueRecRef(ParaDocLineRecRef, 305),  //"Parameter Domain"
-                                                                          LanguageCode);                          //"Language Code"
-                        end;
-                        UnitofMeasureDescription := '';
-                        if UnitofMeasureTranslationRec.GET(GetValueRecRef(ParaDocLineRecRef, 410), LanguageCode) then
+                    if ItemAttribute.GET(GetValueRecRef(ParamSetupRecRef, 5)) then
+                        if UnitofMeasureTranslationRec.GET(ItemAttribute."Unit of Measure", LanguageCode) then
                             UnitofMeasureDescription := UnitofMeasureTranslationRec.Description
                         else
-                            if UnitofMeasureRec.GET(GetValueRecRef(ParaDocLineRecRef, 410)) then
+                            if UnitofMeasureRec.GET(ItemAttribute."Unit of Measure") then
                                 UnitofMeasureDescription := UnitofMeasureRec.Description;
 
-                    end;
+
                 end;
+
                 if UnitofMeasureDescription <> '' then
                     ParaValueList += ' ' + UnitofMeasureDescription;
                 if GetValueRecRef(ParamSetupRecRef, 8) <> '' then
@@ -626,63 +276,21 @@ codeunit 5272724 "lbt Report Functions"
                 if ParaValueList <> '' then
                     ParaValueList += ' ';
                 Counter += 1;
-                if not ParameterTableExist then begin
-                    if ItemAttributeValueMapping.GET(DATABASE::Item, ItemNo, GetValueRecRef(ParamSetupRecRef, 5)) then begin
-                        if ItemAttrValueTranslation.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode) then
-                            ParaValueList += ItemAttrValueTranslation.Name
-                        else
-                            if ItemAttributeValue.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID") then
-                                ParaValueList += ItemAttributeValue.Value;
+                if ItemAttributeValueMapping.GET(DATABASE::Item, ItemNo, GetValueRecRef(ParamSetupRecRef, 5)) then begin
+                    if ItemAttrValueTranslation.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode) then
+                        ParaValueList += ItemAttrValueTranslation.Name
+                    else
+                        if ItemAttributeValue.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID") then
+                            ParaValueList += ItemAttributeValue.Value;
 
-                        if ItemAttribute.GET(GetValueRecRef(ParamSetupRecRef, 5)) then
-                            if UnitofMeasureTranslationRec.GET(ItemAttribute."Unit of Measure", LanguageCode) then
-                                UnitofMeasureDescription := UnitofMeasureTranslationRec.Description
-                            else
-                                if UnitofMeasureRec.GET(ItemAttribute."Unit of Measure") then
-                                    UnitofMeasureDescription := UnitofMeasureRec.Description;
-
-
-                    end;
-                end else begin
-                    if Counter = 1 then begin
-                        CLEAR(ParaAssignRecRef);
-                        ParaAssignRecRef.OPEN(5102703);                                         //Parameter Assignment
-                        SetFilterRecRef(ParaAssignRecRef, 1, StrArray[1], localUseFilter::SETFILTER);  //"Table-ID"
-                        SetFilterRecRef(ParaAssignRecRef, 2, StrArray[3], localUseFilter::SETRANGE);   //Code
-                        SetFilterRecRef(ParaAssignRecRef, 12, StrArray[4], localUseFilter::SETRANGE);   //"Code 2"
-                    end;
-                    SetFilterRecRef(ParaAssignRecRef, 3, GetValueRecRef(ParamSetupRecRef, 5), localUseFilter::SETRANGE);
-                    if ParaAssignRecRef.FindFirst() then begin
-                        case GetValueRecRef(ParaAssignRecRef, 4) of
-                            'Decimal':
-                                begin
-                                    if not EVALUATE(PrintValueDec, GetValueRecRef(ParaAssignRecRef, 5077904)) then
-                                        PrintValue := GetValueRecRef(ParaAssignRecRef, 5077904)
-                                    else
-                                        if GetValueRecRef(ParamSetupRecRef, 10) <> '' then
-                                            PrintValue := FORMAT(PrintValueDec, 0, '<Precision,' + GetValueRecRef(ParamSetupRecRef, 10) +
-                                            '><Sign><Integer><Decimals>')
-                                        else
-                                            PrintValue := GetValueRecRef(ParaAssignRecRef, 5077904);
-                                    ParaValueList += PrintValue;
-                                end;
-                            'Boolean', 'Text':
-
-                                ParaValueList += IdentifyValueTranslation(GetValueRecRef(ParaAssignRecRef, 5077904),   //"Print Value"
-                                                                          GetValueRecRef(ParaAssignRecRef, 20),        //Text
-                                                                          GetValueRecRef(ParaAssignRecRef, 3),         //Parameter
-                                                                          GetValueRecRef(ParaAssignRecRef, 5077903),   //"Parameter Domain"
-                                                                          LanguageCode);                              //"Language Code"
-
-                        end;
-                        UnitofMeasureDescription := '';
-                        if UnitofMeasureTranslationRec.GET(GetValueRecRef(ParaAssignRecRef, 5078000), LanguageCode) then
+                    if ItemAttribute.GET(GetValueRecRef(ParamSetupRecRef, 5)) then
+                        if UnitofMeasureTranslationRec.GET(ItemAttribute."Unit of Measure", LanguageCode) then
                             UnitofMeasureDescription := UnitofMeasureTranslationRec.Description
                         else
-                            if UnitofMeasureRec.GET(GetValueRecRef(ParaAssignRecRef, 5078000)) then
+                            if UnitofMeasureRec.GET(ItemAttribute."Unit of Measure") then
                                 UnitofMeasureDescription := UnitofMeasureRec.Description;
 
-                    end;
+
                 end;
                 if UnitofMeasureDescription <> '' then
                     ParaValueList += ' ' + UnitofMeasureDescription;
@@ -696,61 +304,20 @@ codeunit 5272724 "lbt Report Functions"
                 if ParaValueList <> '' then
                     ParaValueList += ' ';
                 Counter += 1;
-                if not ParameterTableExist then begin
-                    if ItemAttributeValueMapping.GET(DATABASE::Item, ItemNo, GetValueRecRef(ParamSetupRecRef, 5)) then begin
-                        if ItemAttrValueTranslation.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode) then
-                            ParaValueList += ItemAttrValueTranslation.Name
-                        else
-                            if ItemAttributeValue.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID") then
-                                ParaValueList += ItemAttributeValue.Value;
+                if ItemAttributeValueMapping.GET(DATABASE::Item, ItemNo, GetValueRecRef(ParamSetupRecRef, 5)) then begin
+                    if ItemAttrValueTranslation.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode) then
+                        ParaValueList += ItemAttrValueTranslation.Name
+                    else
+                        if ItemAttributeValue.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID") then
+                            ParaValueList += ItemAttributeValue.Value;
 
-                        if ItemAttribute.GET(GetValueRecRef(ParamSetupRecRef, 5)) then
-                            if UnitofMeasureTranslationRec.GET(ItemAttribute."Unit of Measure", LanguageCode) then
-                                UnitofMeasureDescription := UnitofMeasureTranslationRec.Description
-                            else
-                                if UnitofMeasureRec.GET(ItemAttribute."Unit of Measure") then
-                                    UnitofMeasureDescription := UnitofMeasureRec.Description;
-
-                    end;
-                end else begin
-                    if Counter = 1 then begin
-                        CLEAR(ParaEntryRecRef);
-                        ParaEntryRecRef.OPEN(5078149);                                        //Parameter Entry
-                        SetFilterRecRef(ParaEntryRecRef, 6, StrArray[3], localUseFilter::SETRANGE); //"Lot No."
-                        SetFilterRecRef(ParaEntryRecRef, 201, StrArray[4], localUseFilter::SETRANGE); //"Item No."
-                        SetFilterRecRef(ParaEntryRecRef, 50, false, localUseFilter::SETRANGE);       //Canceled
-                    end;
-                    SetFilterRecRef(ParaEntryRecRef, 7, GetValueRecRef(ParamSetupRecRef, 5), localUseFilter::SETRANGE);
-                    if ParaEntryRecRef.FindFirst() then begin
-                        case GetValueRecRef(ParaEntryRecRef, 8) of
-                            'Decimal':
-                                begin
-                                    if not EVALUATE(PrintValueDec, GetValueRecRef(ParaEntryRecRef, 70)) then
-                                        PrintValue := GetValueRecRef(ParaEntryRecRef, 70)
-                                    else
-                                        if GetValueRecRef(ParamSetupRecRef, 10) <> '' then
-                                            PrintValue := FORMAT(PrintValueDec, 0, '<Precision,' + GetValueRecRef(ParamSetupRecRef, 10) +
-                                            '><Sign><Integer><Decimals>')
-                                        else
-                                            PrintValue := GetValueRecRef(ParaEntryRecRef, 70);
-                                    ParaValueList += PrintValue;
-                                end;
-                            'Boolean', 'Text':
-                                ParaValueList += IdentifyValueTranslation(GetValueRecRef(ParaEntryRecRef, 70),     //"Print Value"
-                                                                          GetValueRecRef(ParaAssignRecRef, 300),   //Text
-                                                                          GetValueRecRef(ParaAssignRecRef, 7),     //Parameter
-                                                                          GetValueRecRef(ParaAssignRecRef, 305),   //"Parameter Domain"
-                                                                          LanguageCode);                          //"Language Code"
-
-                        end;
-                        UnitofMeasureDescription := '';
-                        if UnitofMeasureTranslationRec.GET(GetValueRecRef(ParaEntryRecRef, 410), LanguageCode) then
+                    if ItemAttribute.GET(GetValueRecRef(ParamSetupRecRef, 5)) then
+                        if UnitofMeasureTranslationRec.GET(ItemAttribute."Unit of Measure", LanguageCode) then
                             UnitofMeasureDescription := UnitofMeasureTranslationRec.Description
                         else
-                            if UnitofMeasureRec.GET(GetValueRecRef(ParaEntryRecRef, 410)) then
+                            if UnitofMeasureRec.GET(ItemAttribute."Unit of Measure") then
                                 UnitofMeasureDescription := UnitofMeasureRec.Description;
 
-                    end;
                 end;
                 if UnitofMeasureDescription <> '' then
                     ParaValueList += ' ' + UnitofMeasureDescription;
@@ -765,76 +332,20 @@ codeunit 5272724 "lbt Report Functions"
                 if ParaValueList <> '' then
                     ParaValueList += ' ';
                 Counter += 1;
-                if not ParameterTableExist then begin
-                    if ItemAttributeValueMapping.GET(DATABASE::Item, ItemNo, GetValueRecRef(ParamSetupRecRef, 5)) then begin
-                        if ItemAttrValueTranslation.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode) then
-                            ParaValueList += ItemAttrValueTranslation.Name
-                        else
-                            if ItemAttributeValue.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID") then
-                                ParaValueList += ItemAttributeValue.Value;
+                if ItemAttributeValueMapping.GET(DATABASE::Item, ItemNo, GetValueRecRef(ParamSetupRecRef, 5)) then begin
+                    if ItemAttrValueTranslation.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode) then
+                        ParaValueList += ItemAttrValueTranslation.Name
+                    else
+                        if ItemAttributeValue.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID") then
+                            ParaValueList += ItemAttributeValue.Value;
 
-                        if ItemAttribute.GET(GetValueRecRef(ParamSetupRecRef, 5)) then
-                            if UnitofMeasureTranslationRec.GET(ItemAttribute."Unit of Measure", LanguageCode) then
-                                UnitofMeasureDescription := UnitofMeasureTranslationRec.Description
-                            else
-                                if UnitofMeasureRec.GET(ItemAttribute."Unit of Measure") then
-                                    UnitofMeasureDescription := UnitofMeasureRec.Description;
-
-                    end;
-                end else begin
-                    if Counter = 1 then begin
-                        CLEAR(ParaDocLineRecRef);
-                        ParaDocLineRecRef.OPEN(5078160);
-                        SetFilterRecRef(ParaDocLineRecRef, 1, StrArray[1], localUseFilter::SETFILTER);
-                        SetFilterRecRef(ParaDocLineRecRef, 2, StrArray[2], localUseFilter::SETFILTER);
-                        SetFilterRecRef(ParaDocLineRecRef, 3, StrArray[3], localUseFilter::SETRANGE);
-                        SetFilterRecRef(ParaDocLineRecRef, 4, StrArray[4], localUseFilter::SETRANGE);
-                        case StrArray[1] of
-                            FORMAT(DATABASE::"Prod. Order Line"):
-                                SetFilterRecRef(ParaDocLineRecRef, 5, StrArray[5], localUseFilter::SETFILTER);
-                            FORMAT(DATABASE::"Prod. Order Component"):
-                                begin
-                                    SetFilterRecRef(ParaDocLineRecRef, 4, StrArray[6], localUseFilter::SETRANGE);
-                                    SetFilterRecRef(ParaDocLineRecRef, 5, StrArray[5], localUseFilter::SETFILTER);
-                                end;
-                            else begin
-                                    SetFilterRecRef(ParaDocLineRecRef, 5047, StrArray[5], localUseFilter::SETFILTER);
-                                    SetFilterRecRef(ParaDocLineRecRef, 5, StrArray[6], localUseFilter::SETFILTER);
-                                end;
-                        end;
-                        SetFilterRecRef(ParaDocLineRecRef, 6, LotNo, localUseFilter::SETRANGE);
-                    end;
-                    SetFilterRecRef(ParaDocLineRecRef, 7, GetValueRecRef(ParamSetupRecRef, 5), localUseFilter::SETRANGE);
-                    if ParaDocLineRecRef.FindFirst() then begin
-                        case GetValueRecRef(ParaDocLineRecRef, 8) of
-                            'Decimal':
-                                begin
-                                    if not EVALUATE(PrintValueDec, GetValueRecRef(ParaDocLineRecRef, 70)) then
-                                        PrintValue := GetValueRecRef(ParaDocLineRecRef, 70)
-                                    else
-                                        if GetValueRecRef(ParamSetupRecRef, 10) <> '' then
-                                            PrintValue := FORMAT(PrintValueDec, 0, '<Precision,' + GetValueRecRef(ParamSetupRecRef, 10) +
-                                            '><Sign><Integer><Decimals>')
-                                        else
-                                            PrintValue := GetValueRecRef(ParaDocLineRecRef, 70);
-                                    ParaValueList += PrintValue;
-                                end;
-                            'Boolean', 'Text':
-                                ParaValueList += IdentifyValueTranslation(GetValueRecRef(ParaDocLineRecRef, 70),    //"Print Value"
-                                          GetValueRecRef(ParaDocLineRecRef, 300),   //Text
-                                          GetValueRecRef(ParaDocLineRecRef, 7),     //Parameter
-                                          GetValueRecRef(ParaDocLineRecRef, 305),   //"Parameter Domain"
-                                          LanguageCode);                           //"Language Code"
-
-                        end;
-                        UnitofMeasureDescription := '';
-                        if UnitofMeasureTranslationRec.GET(GetValueRecRef(ParaDocLineRecRef, 410), LanguageCode) then
+                    if ItemAttribute.GET(GetValueRecRef(ParamSetupRecRef, 5)) then
+                        if UnitofMeasureTranslationRec.GET(ItemAttribute."Unit of Measure", LanguageCode) then
                             UnitofMeasureDescription := UnitofMeasureTranslationRec.Description
                         else
-                            if UnitofMeasureRec.GET(GetValueRecRef(ParaDocLineRecRef, 410)) then
+                            if UnitofMeasureRec.GET(ItemAttribute."Unit of Measure") then
                                 UnitofMeasureDescription := UnitofMeasureRec.Description;
 
-                    end;
                 end;
                 if UnitofMeasureDescription <> '' then
                     ParaValueList += ' ' + UnitofMeasureDescription;
@@ -985,24 +496,6 @@ codeunit 5272724 "lbt Report Functions"
         end;
     end;
 
-    procedure IdentifyValueTranslation(PrintValue: Text; Text: Text; Parameter: Text; ParameterDomain: Text; LanguageCode: Code[10]): Text
-    var
-        ParaDomainTransRecRef: RecordRef;
-        l_UseFilter: Option SETRANGE,SETFILTER;
-    begin
-        if PrintValue = Text then begin
-            CLEAR(ParaDomainTransRecRef);
-            ParaDomainTransRecRef.OPEN(5077944);
-            SetFilterRecRef(ParaDomainTransRecRef, 1, Parameter, l_UseFilter::SETRANGE);
-            SetFilterRecRef(ParaDomainTransRecRef, 2, ParameterDomain, l_UseFilter::SETRANGE);
-            SetFilterRecRef(ParaDomainTransRecRef, 3, LanguageCode, l_UseFilter::SETRANGE);
-            if ParaDomainTransRecRef.FindFirst() then
-                exit(GetValueRecRef(ParaDomainTransRecRef, 4))
-            else
-                exit(PrintValue);
-        end else
-            exit(PrintValue);
-    end;
 
     procedure RowID1ForSalesShipmentLine(SalesShipmentLine: Record "Sales Shipment Line"): Text[250]
     var
