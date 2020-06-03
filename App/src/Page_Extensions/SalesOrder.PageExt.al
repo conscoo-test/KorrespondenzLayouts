@@ -1,4 +1,4 @@
-pageextension 5272743 "lbt Sales Order" extends "Sales Order"
+pageextension 5272743 "LBT Sales Order" extends "Sales Order"
 {
     // version NAVW111.00.00.19846,LBCOR1.00
 
@@ -6,10 +6,10 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
     {
         addafter(ActionGroupCRM)
         {
-            group("lbt correspondence documents")
+            group("LBT correspondence documents")
             {
                 Caption = 'LeBit365 Correspondence layout';
-                action("lbt Tot&aling")
+                action("LBT Tot&aling")
                 {
                     ApplicationArea = All;
                     Caption = 'Totaling';
@@ -17,12 +17,12 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                     Image = Totals;
                     trigger OnAction()
                     var
-                        LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
+                        LeBitCorrespDocMgt: Codeunit "LBT Corresp. Doc. Mgt";
                     begin
                         LeBitCorrespDocMgt.SalesLineIndentTotaling(Rec);
                     end;
                 }
-                action("lbt Num&bering")
+                action("LBT Num&bering")
                 {
                     ApplicationArea = All;
                     Caption = 'Numbering';
@@ -30,12 +30,12 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                     Image = NumberGroup;
                     trigger OnAction()
                     var
-                        LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
+                        LeBitCorrespDocMgt: Codeunit "LBT Corresp. Doc. Mgt";
                     begin
                         LeBitCorrespDocMgt.SalesLinePosNumber(Rec);
                     end;
                 }
-                action("lbt Header Text")
+                action("LBT Header Text")
                 {
                     ApplicationArea = All;
                     Caption = 'Header Text';
@@ -44,7 +44,7 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                     begin
@@ -52,7 +52,7 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                         LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Header);
                     end;
                 }
-                action("lbt Footer Text")
+                action("LBT Footer Text")
                 {
                     ApplicationArea = All;
                     Caption = 'Footer Text';
@@ -61,7 +61,7 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                     begin
@@ -69,7 +69,7 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                         LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Footer);
                     end;
                 }
-                action("lbt Invoice Header Text")
+                action("LBT Invoice Header Text")
                 {
                     ApplicationArea = All;
                     Caption = 'Invoice Header Text';
@@ -79,7 +79,7 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                     trigger OnAction()
                     var
                         SalesHeaderLRec: Record "Sales Header";
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                     begin
@@ -89,7 +89,7 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                         LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Header);
                     end;
                 }
-                action("lbt Invoice Footer Text")
+                action("LBT Invoice Footer Text")
                 {
                     ApplicationArea = All;
                     Caption = 'Invoice Footer Text';
@@ -99,7 +99,7 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                     trigger OnAction()
                     var
                         SalesHeaderLRec: Record "Sales Header";
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                     begin
@@ -109,7 +109,7 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                         LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Footer);
                     end;
                 }
-                action("lbt Shipment Header Text")
+                action("LBT Shipment Header Text")
                 {
                     ApplicationArea = All;
                     Caption = 'Shipment Header Text';
@@ -119,7 +119,7 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                     trigger OnAction()
                     var
                         SalesHeaderLRec: Record "Sales Header";
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                         DocType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order","Shipment/Receipt";
@@ -130,7 +130,7 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                         LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Header);
                     end;
                 }
-                action("lbt Shipment Footer Text")
+                action("LBT Shipment Footer Text")
                 {
                     ApplicationArea = All;
                     Caption = 'Shipment Footer Text';
@@ -140,7 +140,7 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                     trigger OnAction()
                     var
                         SalesHeaderLRec: Record "Sales Header";
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                         DocType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order","Shipment/Receipt";

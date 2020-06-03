@@ -1,14 +1,14 @@
-pageextension 5272758 "lbt Sales Order Archive Sub." extends "Sales Order Archive Subform"
+pageextension 5272758 "LBT Sales Order Archive Sub." extends "Sales Order Archive Subform"
 {
     layout
     {
         modify(Description)
         {
-            StyleExpr = "lbt Printoption StyleExpr";
+            StyleExpr = "LBT Printoption StyleExpr";
         }
         addfirst(Control1)
         {
-            field("lbt Pos. No."; "lbt Pos. No.")
+            field("LBT Pos. No."; "LBT Pos. No.")
             {
                 ToolTip = 'Here you can fill in position numbers.';
                 ApplicationArea = All;
@@ -16,7 +16,7 @@ pageextension 5272758 "lbt Sales Order Archive Sub." extends "Sales Order Archiv
         }
         addafter(Type)
         {
-            field("lbt Printoption"; "lbt Printoption")
+            field("LBT Printoption"; "LBT Printoption")
             {
                 ToolTip = 'Here you can choose the Printoptions.';
                 ApplicationArea = All;
@@ -24,7 +24,7 @@ pageextension 5272758 "lbt Sales Order Archive Sub." extends "Sales Order Archiv
         }
         addafter("Shortcut Dimension 2 Code")
         {
-            field("lbt Long Text"; "lbt Long Text")
+            field("LBT Long Text"; "LBT Long Text")
             {
                 ToolTip = 'Here you can insert long texts. ';
                 ApplicationArea = All;
@@ -35,7 +35,7 @@ pageextension 5272758 "lbt Sales Order Archive Sub." extends "Sales Order Archiv
     {
         addafter(DeferralSchedule)
         {
-            action("lbt LongText")
+            action("LBT LongText")
             {
                 ToolTip = 'Here you can insert the long text for the line.';
                 ApplicationArea = Suite;
@@ -43,7 +43,7 @@ pageextension 5272758 "lbt Sales Order Archive Sub." extends "Sales Order Archiv
                 Image = Import;
                 trigger OnAction()
                 var
-                    LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                    LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                     SourceRecRef: RecordRef;
                     Position: Option Header,Footer,Longtext;
                 begin
@@ -55,9 +55,9 @@ pageextension 5272758 "lbt Sales Order Archive Sub." extends "Sales Order Archiv
     }
     trigger OnAfterGetRecord()
     var
-        LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
+        LeBitCorrespDocMgt: Codeunit "LBT Corresp. Doc. Mgt";
     begin
-        "lbt Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr("lbt Printoption");
+        "LBT Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr("LBT Printoption");
     end;
 }
 

@@ -1,11 +1,11 @@
-tableextension 5272740 "lbt Purchase Header Archive" extends "Purchase Header Archive"
+tableextension 5272740 "LBT Purchase Header Archive" extends "Purchase Header Archive"
 {
     fields
     {
     }
     trigger OnDelete()
     var
-        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
         SourceRecRef: RecordRef;
     begin
         SourceRecRef.GETTABLE(Rec);

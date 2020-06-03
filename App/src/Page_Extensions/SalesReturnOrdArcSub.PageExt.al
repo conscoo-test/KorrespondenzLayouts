@@ -1,10 +1,10 @@
-pageextension 5272769 "lbt Sales Return Ord. Arc Sub." extends "Sales Return Order Arc Subform"
+pageextension 5272769 "LBT Sales Return Ord. Arc Sub." extends "Sales Return Order Arc Subform"
 {
     layout
     {
         addfirst(Control1)
         {
-            field("lbt Pos. No."; "lbt Pos. No.")
+            field("LBT Pos. No."; "LBT Pos. No.")
             {
                 ToolTip = 'Here you can fill in position numbers.';
                 ApplicationArea = All;
@@ -13,7 +13,7 @@ pageextension 5272769 "lbt Sales Return Ord. Arc Sub." extends "Sales Return Ord
         addafter(Type)
         {
 
-            field("lbt Printoption"; "lbt Printoption")
+            field("LBT Printoption"; "LBT Printoption")
             {
                 ToolTip = 'Here you can choose the Printoptions.';
                 ApplicationArea = All;
@@ -21,7 +21,7 @@ pageextension 5272769 "lbt Sales Return Ord. Arc Sub." extends "Sales Return Ord
         }
         addafter("Shortcut Dimension 2 Code")
         {
-            field("lbt Long Text"; "lbt Long Text")
+            field("LBT Long Text"; "LBT Long Text")
             {
                 ToolTip = 'Here you can insert long texts. ';
                 ApplicationArea = All;
@@ -32,7 +32,7 @@ pageextension 5272769 "lbt Sales Return Ord. Arc Sub." extends "Sales Return Ord
     {
         addafter(DeferralSchedule)
         {
-            action("lbt LongText")
+            action("LBT LongText")
             {
                 ToolTip = 'Here you can insert the long text for the line.';
                 ApplicationArea = Suite;
@@ -40,7 +40,7 @@ pageextension 5272769 "lbt Sales Return Ord. Arc Sub." extends "Sales Return Ord
                 Image = Import;
                 trigger OnAction()
                 var
-                    LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                    LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                     SourceRecRef: RecordRef;
                     Position: Option Header,Footer,Longtext;
                 begin

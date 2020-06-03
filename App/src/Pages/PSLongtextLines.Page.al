@@ -1,9 +1,9 @@
-page 5272720 "lbt PS Longtext Lines"
+page 5272720 "LBT PS Longtext Lines"
 {
     AutoSplitKey = true;
     Caption = 'PS Longtext Lines';
     PageType = List;
-    SourceTable = "lbt PS Longtext Line";
+    SourceTable = "LBT PS Longtext Line";
     // UsageCategory = Lists;
     // ApplicationArea = All;
 
@@ -76,7 +76,7 @@ page 5272720 "lbt PS Longtext Lines"
 
     local procedure NoOnAfterValidate()
     var
-        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
     begin
         LanguageCode := '';
         Belegdatum := 0D;

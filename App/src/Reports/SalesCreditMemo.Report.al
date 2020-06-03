@@ -1,4 +1,4 @@
-report 5272723 "lbt Sales - Credit Memo"
+report 5272723 "LBT Sales - Credit Memo"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './src/Reports/SalesCreditMemo.Report.rdlc';
@@ -101,19 +101,19 @@ report 5272723 "lbt Sales - Credit Memo"
                     column(CompanyInfo__Home_Page; CompanyInfo."Home Page")
                     {
                     }
-                    column(CompanyInfo__LeBit_CEO1; CompanyInfo."lbt CEO1")
+                    column(CompanyInfo__LeBit_CEO1; CompanyInfo."LBT CEO1")
                     {
                     }
-                    column(CompanyInfo__LeBit_CEO2; CompanyInfo."lbt CEO2")
+                    column(CompanyInfo__LeBit_CEO2; CompanyInfo."LBT CEO2")
                     {
                     }
-                    column(CompanyInfo__LeBit_CEO3; CompanyInfo."lbt CEO3")
+                    column(CompanyInfo__LeBit_CEO3; CompanyInfo."LBT CEO3")
                     {
                     }
-                    column(CompanyInfo__LeBit_Commercial_Register_No; CompanyInfo."lbt Commercial Register No.")
+                    column(CompanyInfo__LeBit_Commercial_Register_No; CompanyInfo."LBT Commercial Register No.")
                     {
                     }
-                    column(CompanyInfo__LeBit_Trade_Register_Name; CompanyInfo."lbt Trade Register Name")
+                    column(CompanyInfo__LeBit_Trade_Register_Name; CompanyInfo."LBT Trade Register Name")
                     {
                     }
                     column(CompanyInfo__Bank_Name; CompanyInfo."Bank Name")
@@ -125,22 +125,22 @@ report 5272723 "lbt Sales - Credit Memo"
                     column(CompanyInfo__SWIFT_Code; CompanyInfo."SWIFT Code")
                     {
                     }
-                    column(CompanyInfo__LeBit_Bank_Name_2; CompanyInfo."lbt Bank Name 2")
+                    column(CompanyInfo__LeBit_Bank_Name_2; CompanyInfo."LBT Bank Name 2")
                     {
                     }
-                    column(CompanyInfo__LeBit_IBAN_2; CompanyInfo."lbt IBAN 2")
+                    column(CompanyInfo__LeBit_IBAN_2; CompanyInfo."LBT IBAN 2")
                     {
                     }
-                    column(CompanyInfo__LeBit_SWIFT_Code_2; CompanyInfo."lbt SWIFT Code 2")
+                    column(CompanyInfo__LeBit_SWIFT_Code_2; CompanyInfo."LBT SWIFT Code 2")
                     {
                     }
-                    column(CompanyInfo__LeBit_Bank_Name_3; CompanyInfo."lbt Bank Name 3")
+                    column(CompanyInfo__LeBit_Bank_Name_3; CompanyInfo."LBT Bank Name 3")
                     {
                     }
-                    column(CompanyInfo__LeBit_IBAN_3; CompanyInfo."lbt IBAN 3")
+                    column(CompanyInfo__LeBit_IBAN_3; CompanyInfo."LBT IBAN 3")
                     {
                     }
-                    column(CompanyInfo__LeBit_SWIFT_Code_3; CompanyInfo."lbt SWIFT Code 3")
+                    column(CompanyInfo__LeBit_SWIFT_Code_3; CompanyInfo."LBT SWIFT Code 3")
                     {
                     }
                     column(PostingDate_SalesCrMemoHeader; FORMAT("Sales Cr.Memo Header"."Posting Date", 0, 4))
@@ -299,7 +299,7 @@ report 5272723 "lbt Sales - Credit Memo"
                     column(VAT_Registration_No__Caption; VAT_Registration_No__CaptionLbl)
                     {
                     }
-                    dataitem(LBKopf; "lbt Posted PS Longtext Line")
+                    dataitem(LBKopf; "LBT Posted PS Longtext Line")
                     {
                         DataItemLink = "Document No." = FIELD("No.");
                         DataItemLinkReference = "Sales Cr.Memo Header";
@@ -532,13 +532,13 @@ report 5272723 "lbt Sales - Credit Memo"
                         column(VATId_SalesCrMemoLineCaption; FIELDCAPTION("VAT Identifier"))
                         {
                         }
-                        column(SalesLineLeBitPrintoption; FORMAT("lbt Printoption", 0, 2))
+                        column(SalesLineLeBitPrintoption; FORMAT("LBT Printoption", 0, 2))
                         {
                         }
-                        column(LeBitBalance_SalesCrMemoLine; "lbt Balance")
+                        column(LeBitBalance_SalesCrMemoLine; "LBT Balance")
                         {
                         }
-                        column(LeBitPosNo_SalesCrMemoLine; "lbt Pos. No.")
+                        column(LeBitPosNo_SalesCrMemoLine; "LBT Pos. No.")
                         {
                         }
                         column(Description2_SalesCrMemoLine; "Description 2")
@@ -583,7 +583,7 @@ report 5272723 "lbt Sales - Credit Memo"
                                 SETRANGE(Number, 1, InfoRowNo);
                             end;
                         }
-                        dataitem(LBLang; "lbt Posted PS Longtext Line")
+                        dataitem(LBLang; "LBT Posted PS Longtext Line")
                         {
                             DataItemLink = "Document No." = FIELD("Document No."), "Document Line No." = FIELD("Line No.");
                             DataItemLinkReference = "Sales Cr.Memo Line";
@@ -750,7 +750,7 @@ report 5272723 "lbt Sales - Credit Memo"
                             VATAmountLine."VAT Clause Code" := "VAT Clause Code";
                             VATAmountLine.InsertLine();
 
-                            if "lbt Printoption" = "lbt Printoption"::"New Page" then
+                            if "LBT Printoption" = "LBT Printoption"::"New Page" then
                                 NewPageGroup += 1;
 
                             ItemUnitCode := '';
@@ -765,7 +765,7 @@ report 5272723 "lbt Sales - Credit Memo"
                             CLEAR(Item);
                             ItemPictureExist := false;
 
-                            CALCFIELDS("lbt Balance");
+                            CALCFIELDS("LBT Balance");
                             if Type = Type::Item then begin
                                 Item.Get("No.");
                                 ItemPictureExist := Item.Picture.Count() > 0;
@@ -1081,7 +1081,7 @@ report 5272723 "lbt Sales - Credit Memo"
                                 CurrReport.Break();
                         end;
                     }
-                    dataitem(LBFuss; "lbt Posted PS Longtext Line")
+                    dataitem(LBFuss; "LBT Posted PS Longtext Line")
                     {
                         DataItemLink = "Document No." = FIELD("No.");
                         DataItemLinkReference = "Sales Cr.Memo Header";
@@ -1295,12 +1295,12 @@ report 5272723 "lbt Sales - Credit Memo"
         SalesShipmentBuffer: Record "Sales Shipment Buffer" temporary;
         CurrExchRate: Record "Currency Exchange Rate";
         Item: Record Item;
-        TempLeBitPostedPSLongtextLine: Record "lbt Posted PS Longtext Line" temporary;
+        TempLeBitPostedPSLongtextLine: Record "LBT Posted PS Longtext Line" temporary;
         PaymentTerms: Record "Payment Terms";
         PaymentMethod: Record "Payment Method";
         ShipmentMethod: Record "Shipment Method";
         Language: Codeunit Language;
-        LeBitReportFunctions: Codeunit "lbt Report Functions";
+        LeBitReportFunctions: Codeunit "LBT Report Functions";
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
         SegManagement: Codeunit SegManagement;
@@ -1672,7 +1672,7 @@ report 5272723 "lbt Sales - Credit Memo"
     begin
     end;
 
-    local procedure Createlbtext(LeBitPostedPSLongtextLine: Record "lbt Posted PS Longtext Line")
+    local procedure Createlbtext(LeBitPostedPSLongtextLine: Record "LBT Posted PS Longtext Line")
     var
         lbtext: Text;
         Streamin: InStream;

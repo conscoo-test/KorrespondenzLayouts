@@ -1,4 +1,4 @@
-tableextension 5272737 "lbt Sales Shipment Header" extends "Sales Shipment Header"
+tableextension 5272737 "LBT Sales Shipment Header" extends "Sales Shipment Header"
 {
     fields
     {
@@ -7,7 +7,7 @@ tableextension 5272737 "lbt Sales Shipment Header" extends "Sales Shipment Heade
     trigger OnInsert()
     var
         SalesShipmentLine: Record "Sales Shipment Line";
-        LeBitCorrespDocSingleInst: Codeunit "lbt Corresp. Doc. SingleInst";
+        LeBitCorrespDocSingleInst: Codeunit "LBT Corresp. Doc. SingleInst";
     begin
         LeBitCorrespDocSingleInst.CopyLongTextForPostCombineSalesOrderShipment(Rec, SalesShipmentLine, 1, 0);
     end;

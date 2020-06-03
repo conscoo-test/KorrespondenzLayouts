@@ -1,4 +1,4 @@
-table 5272725 "lbt Report - Attribute Setup"
+table 5272725 "LBT Report - Attribute Setup"
 {
     // version LBCOR1.00
 
@@ -142,7 +142,7 @@ table 5272725 "lbt Report - Attribute Setup"
     }
 
     var
-        ParamSetupRec: Record "lbt Report - Attribute Setup";
+        ParamSetupRec: Record "LBT Report - Attribute Setup";
         PosZeroErr: Label 'Position 0 is not allowed!.';
         TypingErr: Label 'Typing is not correct. A correct entry would be for example\\1      A minimum of 1 and a maximum of 1 decimal place\1:4   A minimum of 1 and a maximum of 4 decimal places\2:     At least 2 decimal places\:2     No more than 2 decimal places.';
         DecimalPlacesErr: Label 'Decimal places only valid for parameters with decimal type.';

@@ -1,4 +1,4 @@
-tableextension 5272729 "lbt Sales Line" extends "Sales Line"
+tableextension 5272729 "LBT Sales Line" extends "Sales Line"
 {
     fields
     {
@@ -8,22 +8,22 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
             trigger OnAfterValidate()
             begin
                 if Type <> Type::" " then begin
-                    if "lbt Printoption" in ["lbt Printoption"::"Begin Total",
-                                                   "lbt Printoption"::"End Total",
-                                                   "lbt Printoption"::Title,
-                                                   "lbt Printoption"::"New Page"]
+                    if "LBT Printoption" in ["LBT Printoption"::"Begin Total",
+                                                   "LBT Printoption"::"End Total",
+                                                   "LBT Printoption"::Title,
+                                                   "LBT Printoption"::"New Page"]
                     then
-                        VALIDATE("lbt Printoption", "lbt Printoption"::Standard);
+                        VALIDATE("LBT Printoption", "LBT Printoption"::Standard);
                 end else
-                    if "lbt Printoption" <> "lbt Printoption"::"New Page" then
-                        VALIDATE("lbt Printoption", "lbt Printoption"::Standard);
+                    if "LBT Printoption" <> "LBT Printoption"::"New Page" then
+                        VALIDATE("LBT Printoption", "LBT Printoption"::Standard);
 
             end;
         }
 
-        field(5272720; "lbt Long Text"; Boolean)
+        field(5272720; "LBT Long Text"; Boolean)
         {
-            CalcFormula = Exist ("lbt PS Longtext Line" WHERE("Table ID" = CONST(37),
+            CalcFormula = Exist ("LBT PS Longtext Line" WHERE("Table ID" = CONST(37),
                                                                 "Document Type" = FIELD("Document Type"),
                                                                 "Document No." = FIELD("Document No."),
                                                                 Position = CONST(Longtext),
@@ -32,7 +32,7 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
             Editable = false;
             FieldClass = FlowField;
         }
-        field(5272721; "lbt Printoption"; Option)
+        field(5272721; "LBT Printoption"; Option)
         {
             Caption = 'Printoption';
             OptionCaption = 'Standard,Title,,Price Invisible,Line Invisible,Alternative,Optional,New Page,Begin Total,End Total';
@@ -41,7 +41,7 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
 
             trigger OnValidate()
             var
-                LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
+                LeBitCorrespDocMgt: Codeunit "LBT Corresp. Doc. Mgt";
                 Printoption: Option Standard,Title,,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total";
             begin
                 if ("Printoption" = "Printoption"::Alternative) or
@@ -69,10 +69,10 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
                     "Printoption" := Printoption;
                 end;
 
-                "lbt Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr("Printoption");
+                "LBT Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr("Printoption");
             end;
         }
-        field(5272722; "lbt Summation"; Text[250])
+        field(5272722; "LBT Summation"; Text[250])
         {
             Caption = 'Summation';
             TableRelation = "Sales Line"."Line No." WHERE("Document Type" = FIELD("Document Type"),
@@ -84,47 +84,47 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
             begin
                 if Type <> 9 then
                     FIELDERROR(Type);
-                CALCFIELDS("lbt Balance");
+                CALCFIELDS("LBT Balance");
             end;
         }
-        field(5272723; "lbt Balance"; Decimal)
+        field(5272723; "LBT Balance"; Decimal)
         {
             AutoFormatType = 1;
             CalcFormula = Sum ("Sales Line"."Line Amount" WHERE("Document Type" = FIELD("Document Type"),
                                                                 "Document No." = FIELD("Document No."),
-                                                                "Line No." = FIELD(FILTER("lbt Summation"))));
+                                                                "Line No." = FIELD(FILTER("LBT Summation"))));
             Caption = 'Balance';
             Editable = false;
             FieldClass = FlowField;
             TableRelation = "Sales Line"."Line No." WHERE("Document Type" = FIELD("Document Type"),
                                                            "Document No." = FIELD("Document No."));
         }
-        field(5272724; "lbt Pos. No."; Text[30])
+        field(5272724; "LBT Pos. No."; Text[30])
         {
             Caption = 'Pos.No.';
             DataClassification = CustomerContent;
         }
-        field(5272725; "lbt Indentation"; Integer)
+        field(5272725; "LBT Indentation"; Integer)
         {
             Caption = 'Indentation';
             MinValue = 0;
             DataClassification = CustomerContent;
         }
-        field(5272726; "lbt Source Document Line No."; Integer)
+        field(5272726; "LBT Source Document Line No."; Integer)
         {
             Caption = 'Source Document Line No.';
             DataClassification = CustomerContent;
         }
-        field(5272727; "lbt Printoption StyleExpr"; Text[30])
+        field(5272727; "LBT Printoption StyleExpr"; Text[30])
         {
-            Caption = 'lbt Printoption StyleExpr';
+            Caption = 'LBT Printoption StyleExpr';
             DataClassification = CustomerContent;
         }
     }
 
     trigger OnDelete()
     var
-        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
         SourceRecRef: RecordRef;
     begin
         SourceRecRef.GETTABLE(Rec);

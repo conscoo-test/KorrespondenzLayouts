@@ -1,13 +1,13 @@
-pageextension 5272761 "lbt Purchase Quote Archive" extends "Purchase Quote Archive"
+pageextension 5272761 "LBT Purchase Quote Archive" extends "Purchase Quote Archive"
 {
     actions
     {
         addafter("Ver&sion")
         {
-            group("lbt correspondence documents")
+            group("LBT correspondence documents")
             {
                 Caption = 'LeBit365 Correspondence layout';
-                action("lbt Header Text")
+                action("LBT Header Text")
                 {
                     ToolTip = 'Here you can define the Header Text.';
                     ApplicationArea = All;
@@ -16,7 +16,7 @@ pageextension 5272761 "lbt Purchase Quote Archive" extends "Purchase Quote Archi
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                     begin
@@ -25,7 +25,7 @@ pageextension 5272761 "lbt Purchase Quote Archive" extends "Purchase Quote Archi
                     end;
 
                 }
-                action("lbt Footer Text")
+                action("LBT Footer Text")
                 {
                     ToolTip = 'Here you can define the Footer Text.';
                     ApplicationArea = All;
@@ -34,7 +34,7 @@ pageextension 5272761 "lbt Purchase Quote Archive" extends "Purchase Quote Archi
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                     begin

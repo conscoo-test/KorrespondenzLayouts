@@ -1,4 +1,4 @@
-report 5272727 "lbt Purchase - Quote"
+report 5272727 "LBT Purchase - Quote"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './src/Reports/PurchaseQuote.Report.rdlc';
@@ -87,19 +87,19 @@ report 5272727 "lbt Purchase - Quote"
                     column(CompanyInfo__Home_Page; CompanyInfo."Home Page")
                     {
                     }
-                    column(CompanyInfo__LeBit_CEO1; CompanyInfo."lbt CEO1")
+                    column(CompanyInfo__LeBit_CEO1; CompanyInfo."LBT CEO1")
                     {
                     }
-                    column(CompanyInfo__LeBit_CEO2; CompanyInfo."lbt CEO2")
+                    column(CompanyInfo__LeBit_CEO2; CompanyInfo."LBT CEO2")
                     {
                     }
-                    column(CompanyInfo__LeBit_CEO3; CompanyInfo."lbt CEO3")
+                    column(CompanyInfo__LeBit_CEO3; CompanyInfo."LBT CEO3")
                     {
                     }
-                    column(CompanyInfo__LeBit_Commercial_Register_No; CompanyInfo."lbt Commercial Register No.")
+                    column(CompanyInfo__LeBit_Commercial_Register_No; CompanyInfo."LBT Commercial Register No.")
                     {
                     }
-                    column(CompanyInfo__LeBit_Trade_Register_Name; CompanyInfo."lbt Trade Register Name")
+                    column(CompanyInfo__LeBit_Trade_Register_Name; CompanyInfo."LBT Trade Register Name")
                     {
                     }
                     column(CompanyInfo__Bank_Name; CompanyInfo."Bank Name")
@@ -111,22 +111,22 @@ report 5272727 "lbt Purchase - Quote"
                     column(CompanyInfo__SWIFT_Code; CompanyInfo."SWIFT Code")
                     {
                     }
-                    column(CompanyInfo__LeBit_Bank_Name_2; CompanyInfo."lbt Bank Name 2")
+                    column(CompanyInfo__LeBit_Bank_Name_2; CompanyInfo."LBT Bank Name 2")
                     {
                     }
-                    column(CompanyInfo__LeBit_IBAN_2; CompanyInfo."lbt IBAN 2")
+                    column(CompanyInfo__LeBit_IBAN_2; CompanyInfo."LBT IBAN 2")
                     {
                     }
-                    column(CompanyInfo__LeBit_SWIFT_Code_2; CompanyInfo."lbt SWIFT Code 2")
+                    column(CompanyInfo__LeBit_SWIFT_Code_2; CompanyInfo."LBT SWIFT Code 2")
                     {
                     }
-                    column(CompanyInfo__LeBit_Bank_Name_3; CompanyInfo."lbt Bank Name 3")
+                    column(CompanyInfo__LeBit_Bank_Name_3; CompanyInfo."LBT Bank Name 3")
                     {
                     }
-                    column(CompanyInfo__LeBit_IBAN_3; CompanyInfo."lbt IBAN 3")
+                    column(CompanyInfo__LeBit_IBAN_3; CompanyInfo."LBT IBAN 3")
                     {
                     }
-                    column(CompanyInfo__LeBit_SWIFT_Code_3; CompanyInfo."lbt SWIFT Code 3")
+                    column(CompanyInfo__LeBit_SWIFT_Code_3; CompanyInfo."LBT SWIFT Code 3")
                     {
                     }
                     column(DocDate_PurchHdr; FORMAT("Purchase Header"."Document Date", 0, 4))
@@ -303,7 +303,7 @@ report 5272727 "lbt Purchase - Quote"
                                 CurrReport.Break();
                         end;
                     }
-                    dataitem(LBKopf; "lbt PS Longtext Line")
+                    dataitem(LBKopf; "LBT PS Longtext Line")
                     {
                         DataItemLink = "Document No." = FIELD("No."), "Document Type" = FIELD("Document Type");
                         DataItemLinkReference = "Purchase Header";
@@ -437,10 +437,10 @@ report 5272727 "lbt Purchase - Quote"
                         column(NewPageGroup; NewPageGroup)
                         {
                         }
-                        column(PurchaseLineLeBitPrintoption; FORMAT("Purchase Line"."lbt Printoption", 0, 2))
+                        column(PurchaseLineLeBitPrintoption; FORMAT("Purchase Line"."LBT Printoption", 0, 2))
                         {
                         }
-                        column(LeBitPosNo_PurchaseLine; "Purchase Line"."lbt Pos. No.")
+                        column(LeBitPosNo_PurchaseLine; "Purchase Line"."LBT Pos. No.")
                         {
                         }
                         column(Alternativposition_Caption; Alternativposition_CaptionLbl)
@@ -491,7 +491,7 @@ report 5272727 "lbt Purchase - Quote"
                                 SETRANGE(Number, 1, InfoRowNo);
                             end;
                         }
-                        dataitem(LBLang; "lbt PS Longtext Line")
+                        dataitem(LBLang; "LBT PS Longtext Line")
                         {
                             DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("Document No."), "Document Line No." = FIELD("Line No.");
                             DataItemLinkReference = "Purchase Line";
@@ -622,7 +622,7 @@ report 5272727 "lbt Purchase - Quote"
 
                             DimSetEntry2.SETRANGE("Dimension Set ID", "Purchase Line"."Dimension Set ID");
 
-                            if PurchLine."lbt Printoption" = PurchLine."lbt Printoption"::"New Page" then
+                            if PurchLine."LBT Printoption" = PurchLine."LBT Printoption"::"New Page" then
                                 NewPageGroup += 1;
 
                             ItemUnitCode := '';
@@ -637,7 +637,7 @@ report 5272727 "lbt Purchase - Quote"
                             CLEAR(Item);
                             ItemPictureExist := false;
 
-                            PurchLine.CALCFIELDS("lbt Balance");
+                            PurchLine.CALCFIELDS("LBT Balance");
                             if PurchLine.Type = PurchLine.Type::Item then begin
                                 Item.Get(PurchLine."No.");
                                 ItemPictureExist := Item.Picture.Count() > 0;
@@ -800,7 +800,7 @@ report 5272727 "lbt Purchase - Quote"
                                 CurrReport.Break();
                         end;
                     }
-                    dataitem(LBFuss; "lbt PS Longtext Line")
+                    dataitem(LBFuss; "LBT PS Longtext Line")
                     {
                         DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("No.");
                         DataItemLinkReference = "Purchase Header";
@@ -1010,7 +1010,7 @@ report 5272727 "lbt Purchase - Quote"
     begin
         CompanyInfo.Get();
         PurchSetup.Get();
-        FormatDocument.SetLogoPosition(PurchSetup."lbt Logo Position on Documents", CompanyInfo1, CompanyInfo2, CompanyInfo3);
+        FormatDocument.SetLogoPosition(PurchSetup."LBT Logo Position on Documents", CompanyInfo1, CompanyInfo2, CompanyInfo3);
     end;
 
     var
@@ -1027,10 +1027,10 @@ report 5272727 "lbt Purchase - Quote"
         CompanyInfo2: Record "Company Information";
         CompanyInfo3: Record "Company Information";
         GLSetup: Record "General Ledger Setup";
-        TempLeBitPSLongtextLine: Record "lbt PS Longtext Line" temporary;
+        TempLeBitPSLongtextLine: Record "LBT PS Longtext Line" temporary;
         Vendor: Record Vendor;
         Language: Codeunit Language;
-        LeBitReportFunctions: Codeunit "lbt Report Functions";
+        LeBitReportFunctions: Codeunit "LBT Report Functions";
         PurchPost: Codeunit "Purch.-Post";
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
@@ -1165,7 +1165,7 @@ report 5272727 "lbt Purchase - Quote"
     begin
     end;
 
-    local procedure Createlbtext(LeBitPSLongtextLine: Record "lbt PS Longtext Line")
+    local procedure Createlbtext(LeBitPSLongtextLine: Record "LBT PS Longtext Line")
     var
         lbtext: Text;
         Streamin: InStream;

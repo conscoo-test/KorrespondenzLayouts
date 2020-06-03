@@ -1,13 +1,13 @@
-pageextension 5272771 "lbt Sales Return Order" extends "Sales Return Order"
+pageextension 5272771 "LBT Sales Return Order" extends "Sales Return Order"
 {
     actions
     {
         addafter("&Return Order")
         {
-            group("lbt correspondence documents")
+            group("LBT correspondence documents")
             {
                 Caption = 'LeBit365 Correspondence layout';
-                action("lbt Tot&aling")
+                action("LBT Tot&aling")
                 {
                     ApplicationArea = All;
                     Caption = 'Tot&aling';
@@ -15,12 +15,12 @@ pageextension 5272771 "lbt Sales Return Order" extends "Sales Return Order"
                     Image = Totals;
                     trigger OnAction()
                     var
-                        LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
+                        LeBitCorrespDocMgt: Codeunit "LBT Corresp. Doc. Mgt";
                     begin
                         LeBitCorrespDocMgt.SalesLineIndentTotaling(Rec);
                     end;
                 }
-                action("lbt Num&bering")
+                action("LBT Num&bering")
                 {
                     ApplicationArea = All;
                     Caption = 'Num&bering';
@@ -28,12 +28,12 @@ pageextension 5272771 "lbt Sales Return Order" extends "Sales Return Order"
                     Image = NumberGroup;
                     trigger OnAction()
                     var
-                        LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
+                        LeBitCorrespDocMgt: Codeunit "LBT Corresp. Doc. Mgt";
                     begin
                         LeBitCorrespDocMgt.SalesLinePosNumber(Rec);
                     end;
                 }
-                action("lbt Header Text")
+                action("LBT Header Text")
                 {
                     ToolTip = 'Here you can define the Header Text.';
                     ApplicationArea = All;
@@ -42,7 +42,7 @@ pageextension 5272771 "lbt Sales Return Order" extends "Sales Return Order"
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                     begin
@@ -50,7 +50,7 @@ pageextension 5272771 "lbt Sales Return Order" extends "Sales Return Order"
                         LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Header);
                     end;
                 }
-                action("lbt &Footer Text")
+                action("LBT &Footer Text")
                 {
                     ToolTip = 'Here you can define the Footer Text.';
                     ApplicationArea = All;
@@ -59,7 +59,7 @@ pageextension 5272771 "lbt Sales Return Order" extends "Sales Return Order"
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                     begin

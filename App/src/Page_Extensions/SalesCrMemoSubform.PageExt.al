@@ -1,14 +1,14 @@
-pageextension 5272804 "lbt Sales Cr. Memo Subform" extends "Sales Cr. Memo Subform"
+pageextension 5272804 "LBT Sales Cr. Memo Subform" extends "Sales Cr. Memo Subform"
 {
     layout
     {
         modify(Description)
         {
-            StyleExpr = "lbt Printoption StyleExpr";
+            StyleExpr = "LBT Printoption StyleExpr";
         }
         addfirst(Control1)
         {
-            field("lbt Pos. No."; "lbt Pos. No.")
+            field("LBT Pos. No."; "LBT Pos. No.")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specified the Position No.';
@@ -16,7 +16,7 @@ pageextension 5272804 "lbt Sales Cr. Memo Subform" extends "Sales Cr. Memo Subfo
         }
         addafter(FilteredTypeField)
         {
-            field("lbt Printoption"; "lbt Printoption")
+            field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specified the Printoption';
@@ -24,7 +24,7 @@ pageextension 5272804 "lbt Sales Cr. Memo Subform" extends "Sales Cr. Memo Subfo
         }
         addafter("ShortcutDimCode8")
         {
-            field("lbt Long Text"; "lbt Long Text")
+            field("LBT Long Text"; "LBT Long Text")
             {
                 ApplicationArea = All;
                 ToolTip = 'Here you can insert long texts.';
@@ -35,7 +35,7 @@ pageextension 5272804 "lbt Sales Cr. Memo Subform" extends "Sales Cr. Memo Subfo
     {
         addafter(ItemTrackingLines)
         {
-            action("lbt LongText")
+            action("LBT LongText")
             {
                 ApplicationArea = Suite;
                 Caption = 'Long Text';
@@ -43,7 +43,7 @@ pageextension 5272804 "lbt Sales Cr. Memo Subform" extends "Sales Cr. Memo Subfo
                 Image = Import;
                 trigger OnAction()
                 var
-                    LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                    LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                     SourceRecRef: RecordRef;
                     Position: Option Header,Footer,Longtext;
                 begin
@@ -55,9 +55,9 @@ pageextension 5272804 "lbt Sales Cr. Memo Subform" extends "Sales Cr. Memo Subfo
     }
     trigger OnAfterGetRecord()
     var
-        LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
+        LeBitCorrespDocMgt: Codeunit "LBT Corresp. Doc. Mgt";
     begin
-        "lbt Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr("lbt Printoption");
+        "LBT Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr("LBT Printoption");
     end;
 }
 

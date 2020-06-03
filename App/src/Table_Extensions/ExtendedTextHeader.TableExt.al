@@ -1,8 +1,8 @@
-tableextension 5272726 "lbt Extended Text Header" extends "Extended Text Header"
+tableextension 5272726 "LBT Extended Text Header" extends "Extended Text Header"
 {
     fields
     {
-        field(5272720; "lbt Textchoice"; Option)
+        field(5272720; "LBT Textchoice"; Option)
         {
             Caption = 'Textchoice';
             OptionCaption = 'Standard,Longtext';
@@ -12,8 +12,8 @@ tableextension 5272726 "lbt Extended Text Header" extends "Extended Text Header"
     }
     trigger OnRename()
     var
-        ExtTextLineLongOld: Record "lbt Extended Text Line Long";
-        ExtTextLineLongNew: Record "lbt Extended Text Line Long";
+        ExtTextLineLongOld: Record "LBT Extended Text Line Long";
+        ExtTextLineLongNew: Record "LBT Extended Text Line Long";
     begin
         ExtTextLineLongOld.SetRange(Table_ID, Rec."Table Name");
         ExtTextLineLongOld.SetRange("No.", Rec."No.");

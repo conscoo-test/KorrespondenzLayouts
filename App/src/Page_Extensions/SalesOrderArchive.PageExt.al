@@ -1,13 +1,13 @@
-pageextension 5272757 "lbt Sales Order Archive" extends "Sales Order Archive"
+pageextension 5272757 "LBT Sales Order Archive" extends "Sales Order Archive"
 {
     actions
     {
         addafter("Ver&sion")
         {
-            group("lbt correspondence documents")
+            group("LBT correspondence documents")
             {
                 Caption = 'LeBit365 Correspondence layout';
-                action("lbt Header Text")
+                action("LBT Header Text")
                 {
                     ToolTip = 'Here you can define the Header Text.';
                     ApplicationArea = All;
@@ -16,7 +16,7 @@ pageextension 5272757 "lbt Sales Order Archive" extends "Sales Order Archive"
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                     begin
@@ -24,7 +24,7 @@ pageextension 5272757 "lbt Sales Order Archive" extends "Sales Order Archive"
                         LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Header);
                     end;
                 }
-                action("lbt Footer Text")
+                action("LBT Footer Text")
                 {
                     ToolTip = 'Here you can define the Footer Text.';
                     ApplicationArea = All;
@@ -33,7 +33,7 @@ pageextension 5272757 "lbt Sales Order Archive" extends "Sales Order Archive"
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                     begin

@@ -1,4 +1,4 @@
-page 5272726 "lbt DBTextEdit"
+page 5272726 "LBT DBTextEdit"
 {
     PageType = StandardDialog;
     // UsageCategory = None;

@@ -1,4 +1,4 @@
-codeunit 5272727 "lbt AssistedSetup"
+codeunit 5272727 "LBT AssistedSetup"
 {
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Assisted Setup", 'OnRegister', '', true, true)]
     local procedure AggregatedSetup_OnRegisterAssistedSetup()
@@ -17,7 +17,7 @@ codeunit 5272727 "lbt AssistedSetup"
         AssistedSetup: Codeunit "Assisted Setup";
         AssistedSetupGroup: Enum "Assisted Setup Group";
     begin
-        AssistedSetup.Add(GetAppId(), Page::"lbt Wizard", SetupLbl, AssistedSetupGroup::Extensions);
+        AssistedSetup.Add(GetAppId(), Page::"LBT Wizard", SetupLbl, AssistedSetupGroup::Extensions);
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Role Center Notification Mgt.", 'OnBeforeShowNotifications', '', true, true)]
@@ -36,7 +36,7 @@ codeunit 5272727 "lbt AssistedSetup"
         Note.Id := GetNotificationId();
         Note.Message(NotificationMsg);
         Note.Scope := NotificationScope::LocalScope;
-        Note.AddAction(ActionMsg, Codeunit::"lbt AssistedSetup", 'HandleNotification');
+        Note.AddAction(ActionMsg, Codeunit::"LBT AssistedSetup", 'HandleNotification');
         Note.Send();
     end;
 

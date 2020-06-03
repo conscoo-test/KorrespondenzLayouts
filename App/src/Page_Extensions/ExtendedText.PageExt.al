@@ -1,10 +1,10 @@
-pageextension 5272741 "lbt Extended Text" extends "Extended Text"
+pageextension 5272741 "LBT Extended Text" extends "Extended Text"
 {
     layout
     {
         addafter("Ending Date")
         {
-            field("lbt Textchoice"; "lbt Textchoice")
+            field("LBT Textchoice"; "LBT Textchoice")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specified a Textchoice';
@@ -12,7 +12,7 @@ pageextension 5272741 "lbt Extended Text" extends "Extended Text"
         }
         addafter(Control25)
         {
-            part("lbt LongTextSUB"; "lbt Ext. Text Lines Long")
+            part("LBT LongTextSUB"; "LBT Ext. Text Lines Long")
             {
                 ApplicationArea = All;
                 Caption = 'Long Text';

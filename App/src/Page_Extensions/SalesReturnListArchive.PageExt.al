@@ -1,4 +1,4 @@
-pageextension 5272770 "lbt Sales Return List Archive" extends "Sales Return List Archive"
+pageextension 5272770 "LBT Sales Return List Archive" extends "Sales Return List Archive"
 {
     // version NAVW111.00.00.19846,LBCOR1.00
 
@@ -6,10 +6,10 @@ pageextension 5272770 "lbt Sales Return List Archive" extends "Sales Return List
     {
         addafter("<Action1102601000>")
         {
-            group("lbt correspondence documents")
+            group("LBT correspondence documents")
             {
                 Caption = 'LeBit365 Correspondence layout';
-                action("lbt Header Text")
+                action("LBT Header Text")
                 {
                     ToolTip = 'Here you can define the Header Text.';
                     ApplicationArea = All;
@@ -18,7 +18,7 @@ pageextension 5272770 "lbt Sales Return List Archive" extends "Sales Return List
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                     begin
@@ -27,7 +27,7 @@ pageextension 5272770 "lbt Sales Return List Archive" extends "Sales Return List
                     end;
 
                 }
-                action("lbt &Footer Text")
+                action("LBT &Footer Text")
                 {
                     ToolTip = 'Here you can define the Footer Text.';
                     ApplicationArea = All;
@@ -36,7 +36,7 @@ pageextension 5272770 "lbt Sales Return List Archive" extends "Sales Return List
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                     begin

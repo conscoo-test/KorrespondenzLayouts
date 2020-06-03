@@ -1,4 +1,4 @@
-pageextension 5272745 "lbt Sales Credit Memo" extends "Sales Credit Memo"
+pageextension 5272745 "LBT Sales Credit Memo" extends "Sales Credit Memo"
 {
     // version NAVW111.00.00.19846,LBCOR1.00
 
@@ -6,10 +6,10 @@ pageextension 5272745 "lbt Sales Credit Memo" extends "Sales Credit Memo"
     {
         addafter("&Credit Memo")
         {
-            group("lbt correspondence documents")
+            group("LBT correspondence documents")
             {
                 Caption = 'LeBit365 Correspondence layout';
-                action("lbt Tot&aling")
+                action("LBT Tot&aling")
                 {
                     ApplicationArea = All;
                     Caption = 'Totaling';
@@ -17,12 +17,12 @@ pageextension 5272745 "lbt Sales Credit Memo" extends "Sales Credit Memo"
                     Image = Totals;
                     trigger OnAction()
                     var
-                        LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
+                        LeBitCorrespDocMgt: Codeunit "LBT Corresp. Doc. Mgt";
                     begin
                         LeBitCorrespDocMgt.SalesLineIndentTotaling(Rec);
                     end;
                 }
-                action("lbt Num&bering")
+                action("LBT Num&bering")
                 {
                     ApplicationArea = All;
                     Caption = 'Numbering';
@@ -30,12 +30,12 @@ pageextension 5272745 "lbt Sales Credit Memo" extends "Sales Credit Memo"
                     Image = NumberGroup;
                     trigger OnAction()
                     var
-                        LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
+                        LeBitCorrespDocMgt: Codeunit "LBT Corresp. Doc. Mgt";
                     begin
                         LeBitCorrespDocMgt.SalesLinePosNumber(Rec);
                     end;
                 }
-                action("lbt Header Text")
+                action("LBT Header Text")
                 {
                     ApplicationArea = All;
                     Caption = 'Header Text';
@@ -44,7 +44,7 @@ pageextension 5272745 "lbt Sales Credit Memo" extends "Sales Credit Memo"
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                     begin
@@ -52,7 +52,7 @@ pageextension 5272745 "lbt Sales Credit Memo" extends "Sales Credit Memo"
                         LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Header);
                     end;
                 }
-                action("lbt Footer Text")
+                action("LBT Footer Text")
                 {
                     ApplicationArea = All;
                     Caption = 'Footer Text';
@@ -61,7 +61,7 @@ pageextension 5272745 "lbt Sales Credit Memo" extends "Sales Credit Memo"
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                     begin

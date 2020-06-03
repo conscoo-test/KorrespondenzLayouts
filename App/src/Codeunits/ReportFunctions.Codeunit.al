@@ -1,4 +1,4 @@
-codeunit 5272724 "lbt Report Functions"
+codeunit 5272724 "LBT Report Functions"
 {
     // version LBCOR1.00
 
@@ -507,7 +507,7 @@ codeunit 5272724 "lbt Report Functions"
 
     procedure GetSourceType(TypeVar: Option Sales,Purchase; ReportType: Option General,"Sales Quote","Sales Order","Sales Pro Forma Inv","Blanket Sales Order","Purchase Quote","Purchase Order","Blanket Purchase Order"; var SourceType: Option)
     var
-        LebitSourceSetup: Record "lbt Source Setup";
+        LebitSourceSetup: Record "LBT Source Setup";
     begin
         LebitSourceSetup.SETRANGE(Type, TypeVar);
         LebitSourceSetup.SETRANGE("Report Type", ReportType);

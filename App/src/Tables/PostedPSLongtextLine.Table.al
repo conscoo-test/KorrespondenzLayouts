@@ -1,10 +1,10 @@
-table 5272721 "lbt Posted PS Longtext Line"
+table 5272721 "LBT Posted PS Longtext Line"
 {
     // version LBCOR1.00
 
     Caption = 'Posted Purch/Sales Longtext Line';
-    DrillDownPageID = "lbt Posted PS Longtext Lines";
-    LookupPageID = "lbt Posted PS Longtext Lines";
+    DrillDownPageID = "LBT Posted PS Longtext Lines";
+    LookupPageID = "LBT Posted PS Longtext Lines";
     PasteIsValid = false;
 
     fields

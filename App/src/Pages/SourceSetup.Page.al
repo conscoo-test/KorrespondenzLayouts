@@ -1,8 +1,8 @@
-page 5272727 "lbt Source Setup"
+page 5272727 "LBT Source Setup"
 {
-    Caption = 'lbt Source Setup';
+    Caption = 'LBT Source Setup';
     PageType = List;
-    SourceTable = "lbt Source Setup";
+    SourceTable = "LBT Source Setup";
     UsageCategory = Administration;
     ApplicationArea = All;
 

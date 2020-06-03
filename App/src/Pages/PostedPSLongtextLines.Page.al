@@ -1,11 +1,11 @@
-page 5272721 "lbt Posted PS Longtext Lines"
+page 5272721 "LBT Posted PS Longtext Lines"
 {
     Caption = 'Posted PS Longtext Lines';
     DeleteAllowed = false;
     InsertAllowed = false;
     ModifyAllowed = false;
     PageType = List;
-    SourceTable = "lbt Posted PS Longtext Line";
+    SourceTable = "LBT Posted PS Longtext Line";
     // UsageCategory = Lists;
     // ApplicationArea = All;    
 

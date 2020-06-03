@@ -1,14 +1,14 @@
-pageextension 5272784 "lbt Post. Return Receipt Sub." extends "Posted Return Receipt Subform"
+pageextension 5272784 "LBT Post. Return Receipt Sub." extends "Posted Return Receipt Subform"
 {
     layout
     {
         modify(Description)
         {
-            StyleExpr = "lbt Printoption StyleExpr";
+            StyleExpr = "LBT Printoption StyleExpr";
         }
         addfirst(Control1)
         {
-            field("lbt Pos. No."; "lbt Pos. No.")
+            field("LBT Pos. No."; "LBT Pos. No.")
             {
                 ApplicationArea = All;
                 ToolTip = 'Here you can fill in position numbers.';
@@ -16,7 +16,7 @@ pageextension 5272784 "lbt Post. Return Receipt Sub." extends "Posted Return Rec
         }
         addafter(Type)
         {
-            field("lbt Printoption"; "lbt Printoption")
+            field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;
                 ToolTip = 'Here you can choose the Printoptions.';
@@ -24,7 +24,7 @@ pageextension 5272784 "lbt Post. Return Receipt Sub." extends "Posted Return Rec
         }
         addafter("Shortcut Dimension 2 Code")
         {
-            field("lbt Long Text"; "lbt Long Text")
+            field("LBT Long Text"; "LBT Long Text")
             {
                 ApplicationArea = All;
                 ToolTip = 'Here you can insert long texts. ';
@@ -35,7 +35,7 @@ pageextension 5272784 "lbt Post. Return Receipt Sub." extends "Posted Return Rec
     {
         addafter(ItemCreditMemoLines)
         {
-            action("lbt LongText")
+            action("LBT LongText")
             {
                 ApplicationArea = Suite;
                 Caption = 'Long Text';
@@ -43,7 +43,7 @@ pageextension 5272784 "lbt Post. Return Receipt Sub." extends "Posted Return Rec
                 Image = Import;
                 trigger OnAction()
                 var
-                    LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                    LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                     SourceRecRef: RecordRef;
                     Position: Option Header,Footer,Longtext;
                 begin
@@ -55,9 +55,9 @@ pageextension 5272784 "lbt Post. Return Receipt Sub." extends "Posted Return Rec
     }
     trigger OnAfterGetRecord()
     var
-        LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
+        LeBitCorrespDocMgt: Codeunit "LBT Corresp. Doc. Mgt";
     begin
-        "lbt Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr("lbt Printoption");
+        "LBT Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr("LBT Printoption");
     end;
 }
 

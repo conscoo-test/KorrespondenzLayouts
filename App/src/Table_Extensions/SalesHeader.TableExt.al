@@ -1,4 +1,4 @@
-tableextension 5272728 "lbt Sales Header" extends "Sales Header"
+tableextension 5272728 "LBT Sales Header" extends "Sales Header"
 {
     fields
     {
@@ -6,14 +6,14 @@ tableextension 5272728 "lbt Sales Header" extends "Sales Header"
 
     trigger OnDelete()
     var
-        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
         SourceRecRef: RecordRef;
     begin
         SourceRecRef.GETTABLE(Rec);
         LeBitLongtextMgt.DelLongtext(SourceRecRef);
     end;
 
-    procedure LeBitTransferPSLongtextLineToTemp(var LeBitPSLongtextLine: Record "lbt PS Longtext Line"; var TempLeBitPSLongtextLine: Record "lbt PS Longtext Line" temporary)
+    procedure LeBitTransferPSLongtextLineToTemp(var LeBitPSLongtextLine: Record "LBT PS Longtext Line"; var TempLeBitPSLongtextLine: Record "LBT PS Longtext Line" temporary)
     begin
         if LeBitPSLongtextLine.FindSet() then
             repeat

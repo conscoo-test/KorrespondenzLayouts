@@ -1,10 +1,10 @@
-pageextension 5272778 "lbt Purch Ret. Order Arc Sub." extends "Purch Return Order Arc Subform"
+pageextension 5272778 "LBT Purch Ret. Order Arc Sub." extends "Purch Return Order Arc Subform"
 {
     layout
     {
         addfirst(Control1)
         {
-            field("lbt Pos. No."; "lbt Pos. No.")
+            field("LBT Pos. No."; "LBT Pos. No.")
             {
                 ApplicationArea = All;
                 ToolTip = 'Here you can fill in position numbers.';
@@ -13,7 +13,7 @@ pageextension 5272778 "lbt Purch Ret. Order Arc Sub." extends "Purch Return Orde
         addafter(Type)
         {
 
-            field("lbt Printoption"; "lbt Printoption")
+            field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;
                 ToolTip = 'Here you can choose the Printoptions.';
@@ -21,7 +21,7 @@ pageextension 5272778 "lbt Purch Ret. Order Arc Sub." extends "Purch Return Orde
         }
         addafter("Shortcut Dimension 2 Code")
         {
-            field("lbt Long Text"; "lbt Long Text")
+            field("LBT Long Text"; "LBT Long Text")
             {
                 ApplicationArea = All;
                 ToolTip = 'Here you can insert long texts. ';
@@ -32,7 +32,7 @@ pageextension 5272778 "lbt Purch Ret. Order Arc Sub." extends "Purch Return Orde
     {
         addafter(DeferralSchedule)
         {
-            action("lbt LongText")
+            action("LBT LongText")
             {
                 ApplicationArea = Suite;
                 Caption = 'Long Text';
@@ -40,7 +40,7 @@ pageextension 5272778 "lbt Purch Ret. Order Arc Sub." extends "Purch Return Orde
                 Image = Import;
                 trigger OnAction()
                 var
-                    LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                    LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                     SourceRecRef: RecordRef;
                     Position: Option Header,Footer,Longtext;
                 begin

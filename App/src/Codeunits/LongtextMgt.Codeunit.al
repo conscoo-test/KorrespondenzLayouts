@@ -1,11 +1,11 @@
-codeunit 5272723 "lbt Longtext Mgt."
+codeunit 5272723 "LBT Longtext Mgt."
 {
     trigger OnRun()
     begin
     end;
 
     var
-        TempExtTextLineLongRec2: Record "lbt Extended Text Line Long" temporary;
+        TempExtTextLineLongRec2: Record "LBT Extended Text Line Long" temporary;
         TmpExtTextLine: Record "Extended Text Line" temporary;
         HeaderExistsErr: Label 'Header/footer texts already exists. Do you want to delete this?';
         NotEnoughSpaceErr: Label 'There is not enough space to insert extended text lines.';
@@ -64,7 +64,7 @@ codeunit 5272723 "lbt Longtext Mgt."
                         SourceRecRef.GETTABLE(FromSalesShptHeader);
                         CopyLongtext(SourceRecRef, TargetRecRef);
                     end;
-                    FromSalesShptLine.GET(FromSalesHeader."No.", FromSalesLine."lbt Source Document Line No.");
+                    FromSalesShptLine.GET(FromSalesHeader."No.", FromSalesLine."LBT Source Document Line No.");
                     SourceRecRef.GETTABLE(FromSalesShptLine);
                     TargetRecRef.GETTABLE(ToSalesLine);
                     CopyLongtext(SourceRecRef, TargetRecRef);
@@ -76,7 +76,7 @@ codeunit 5272723 "lbt Longtext Mgt."
                         SourceRecRef.GETTABLE(FromSalesInvHeader);
                         CopyLongtext(SourceRecRef, TargetRecRef);
                     end;
-                    FromSalesInvLine.GET(FromSalesHeader."No.", FromSalesLine."lbt Source Document Line No.");
+                    FromSalesInvLine.GET(FromSalesHeader."No.", FromSalesLine."LBT Source Document Line No.");
                     SourceRecRef.GETTABLE(FromSalesInvLine);
                     TargetRecRef.GETTABLE(ToSalesLine);
                     CopyLongtext(SourceRecRef, TargetRecRef);
@@ -88,7 +88,7 @@ codeunit 5272723 "lbt Longtext Mgt."
                         SourceRecRef.GETTABLE(FromReturnRcptHeader);
                         CopyLongtext(SourceRecRef, TargetRecRef);
                     end;
-                    FromReturnRcptLine.GET(FromSalesHeader."No.", FromSalesLine."lbt Source Document Line No.");
+                    FromReturnRcptLine.GET(FromSalesHeader."No.", FromSalesLine."LBT Source Document Line No.");
                     SourceRecRef.GETTABLE(FromReturnRcptLine);
                     TargetRecRef.GETTABLE(ToSalesLine);
                     CopyLongtext(SourceRecRef, TargetRecRef);
@@ -100,7 +100,7 @@ codeunit 5272723 "lbt Longtext Mgt."
                         SourceRecRef.GETTABLE(FromSalesCrMemoHeader);
                         CopyLongtext(SourceRecRef, TargetRecRef);
                     end;
-                    FromSalesCrMemoLine.GET(FromSalesHeader."No.", FromSalesLine."lbt Source Document Line No.");
+                    FromSalesCrMemoLine.GET(FromSalesHeader."No.", FromSalesLine."LBT Source Document Line No.");
                     SourceRecRef.GETTABLE(FromSalesCrMemoLine);
                     TargetRecRef.GETTABLE(ToSalesLine);
                     CopyLongtext(SourceRecRef, TargetRecRef);
@@ -185,7 +185,7 @@ codeunit 5272723 "lbt Longtext Mgt."
                         SourceRecRef.GETTABLE(FromPurchRcptHeader);
                         CopyLongtext(SourceRecRef, TargetRecRef);
                     end;
-                    FromPurchRcptLine.GET(FromPurchHeader."No.", FromPurchLine."lbt Source Document Line No.");
+                    FromPurchRcptLine.GET(FromPurchHeader."No.", FromPurchLine."LBT Source Document Line No.");
                     SourceRecRef.GETTABLE(FromPurchRcptLine);
                     TargetRecRef.GETTABLE(ToPurchLine);
                     CopyLongtext(SourceRecRef, TargetRecRef);
@@ -197,7 +197,7 @@ codeunit 5272723 "lbt Longtext Mgt."
                         SourceRecRef.GETTABLE(FromPurchInvHeader);
                         CopyLongtext(SourceRecRef, TargetRecRef);
                     end;
-                    FromPurchInvLine.GET(FromPurchHeader."No.", FromPurchLine."lbt Source Document Line No.");
+                    FromPurchInvLine.GET(FromPurchHeader."No.", FromPurchLine."LBT Source Document Line No.");
                     SourceRecRef.GETTABLE(FromPurchInvLine);
                     TargetRecRef.GETTABLE(ToPurchLine);
                     CopyLongtext(SourceRecRef, TargetRecRef);
@@ -209,7 +209,7 @@ codeunit 5272723 "lbt Longtext Mgt."
                         SourceRecRef.GETTABLE(FromReturnShptHeader);
                         CopyLongtext(SourceRecRef, TargetRecRef);
                     end;
-                    FromReturnShptLine.GET(FromPurchHeader."No.", FromPurchLine."lbt Source Document Line No.");
+                    FromReturnShptLine.GET(FromPurchHeader."No.", FromPurchLine."LBT Source Document Line No.");
                     SourceRecRef.GETTABLE(FromReturnShptLine);
                     TargetRecRef.GETTABLE(ToPurchLine);
                     CopyLongtext(SourceRecRef, TargetRecRef);
@@ -221,7 +221,7 @@ codeunit 5272723 "lbt Longtext Mgt."
                         SourceRecRef.GETTABLE(FromPurchCrMemoHeader);
                         CopyLongtext(SourceRecRef, TargetRecRef);
                     end;
-                    FromPurchCrMemoLine.GET(FromPurchHeader."No.", FromPurchLine."lbt Source Document Line No.");
+                    FromPurchCrMemoLine.GET(FromPurchHeader."No.", FromPurchLine."LBT Source Document Line No.");
                     SourceRecRef.GETTABLE(FromPurchCrMemoLine);
                     TargetRecRef.GETTABLE(ToPurchLine);
                     CopyLongtext(SourceRecRef, TargetRecRef);
@@ -318,20 +318,20 @@ codeunit 5272723 "lbt Longtext Mgt."
 
     procedure CopyFieldInfoAfterCreateSalesLine(var SalesLine: Record "Sales Line"; var TempSalesLine: Record "Sales Line" temporary; RunModify: Boolean)
     begin
-        SalesLine."lbt Indentation" := TempSalesLine."lbt Indentation";
-        SalesLine."lbt Pos. No." := TempSalesLine."lbt Pos. No.";
-        SalesLine."lbt Printoption" := TempSalesLine."lbt Printoption";
-        SalesLine."lbt Summation" := TempSalesLine."lbt Summation";
+        SalesLine."LBT Indentation" := TempSalesLine."LBT Indentation";
+        SalesLine."LBT Pos. No." := TempSalesLine."LBT Pos. No.";
+        SalesLine."LBT Printoption" := TempSalesLine."LBT Printoption";
+        SalesLine."LBT Summation" := TempSalesLine."LBT Summation";
         if RunModify then
             SalesLine.Modify();
     end;
 
     procedure CopyFieldInfoAfterCreatePurchLine(var PurchaseLine: Record "Purchase Line"; var TempPurchaseLine: Record "Purchase Line" temporary; RunModify: Boolean)
     begin
-        PurchaseLine."lbt Indentation" := TempPurchaseLine."lbt Indentation";
-        PurchaseLine."lbt Pos. No." := TempPurchaseLine."lbt Pos. No.";
-        PurchaseLine."lbt Printoption" := TempPurchaseLine."lbt Printoption";
-        PurchaseLine."lbt Summation" := TempPurchaseLine."lbt Summation";
+        PurchaseLine."LBT Indentation" := TempPurchaseLine."LBT Indentation";
+        PurchaseLine."LBT Pos. No." := TempPurchaseLine."LBT Pos. No.";
+        PurchaseLine."LBT Printoption" := TempPurchaseLine."LBT Printoption";
+        PurchaseLine."LBT Summation" := TempPurchaseLine."LBT Summation";
         if RunModify then
             PurchaseLine.Modify();
     end;
@@ -343,9 +343,9 @@ codeunit 5272723 "lbt Longtext Mgt."
 
     local procedure LookupLongtext(SourceRecRef: RecordRef; Position: Option Header,Footer,Longtext)
     var
-        LongtextRec: Record "lbt PS Longtext Line";
-        PostedLongtextRec: Record "lbt Posted PS Longtext Line";
-        ArchivedLongtextRec: Record "lbt Archive PS Longtext Line";
+        LongtextRec: Record "LBT PS Longtext Line";
+        PostedLongtextRec: Record "LBT Posted PS Longtext Line";
+        ArchivedLongtextRec: Record "LBT Archive PS Longtext Line";
         SourceFieldRef: FieldRef;
         SourceDocumentType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order";
         SourceDocumentNo: Code[20];
@@ -382,7 +382,7 @@ codeunit 5272723 "lbt Longtext Mgt."
                     LongtextRec.SetRange("Document Line No.", SourceLineNo);
 
                     // Page öffnen
-                    PAGE.RUNMODAL(PAGE::"lbt PS Longtext Lines", LongtextRec)
+                    PAGE.RUNMODAL(PAGE::"LBT PS Longtext Lines", LongtextRec)
                 end;
 
             DATABASE::"Sales Shipment Header", DATABASE::"Sales Shipment Line",
@@ -417,7 +417,7 @@ codeunit 5272723 "lbt Longtext Mgt."
                     PostedLongtextRec.SetRange("Document Line No.", SourceLineNo);
 
                     // Page öffnen
-                    PAGE.RUNMODAL(PAGE::"lbt Posted PS Longtext Lines", PostedLongtextRec)
+                    PAGE.RUNMODAL(PAGE::"LBT Posted PS Longtext Lines", PostedLongtextRec)
                 end;
 
             DATABASE::"Sales Header Archive", DATABASE::"Sales Line Archive",
@@ -455,7 +455,7 @@ codeunit 5272723 "lbt Longtext Mgt."
                     ArchivedLongtextRec.SetRange("Document Line No.", SourceLineNo);
 
                     // Page öffnen
-                    PAGE.RUNMODAL(PAGE::"lbt Arch. PS Longtext Lines", ArchivedLongtextRec)
+                    PAGE.RUNMODAL(PAGE::"LBT Arch. PS Longtext Lines", ArchivedLongtextRec)
                 end;
         end;
     end;
@@ -477,7 +477,7 @@ codeunit 5272723 "lbt Longtext Mgt."
         case SourceTableID of
             DATABASE::"Sales Header", DATABASE::"Sales Line",
         DATABASE::"Purchase Header", DATABASE::"Purchase Line":
-                SourceLongtextRecRef.OPEN(DATABASE::"lbt PS Longtext Line");
+                SourceLongtextRecRef.OPEN(DATABASE::"LBT PS Longtext Line");
             DATABASE::"Sales Shipment Header", DATABASE::"Sales Shipment Line",
         DATABASE::"Sales Invoice Header", DATABASE::"Sales Invoice Line",
         DATABASE::"Sales Cr.Memo Header", DATABASE::"Sales Cr.Memo Line",
@@ -486,10 +486,10 @@ codeunit 5272723 "lbt Longtext Mgt."
         DATABASE::"Purch. Cr. Memo Hdr.", DATABASE::"Purch. Cr. Memo Line",
         DATABASE::"Return Shipment Header", DATABASE::"Return Shipment Line",
         DATABASE::"Return Receipt Header", DATABASE::"Return Receipt Line":
-                SourceLongtextRecRef.OPEN(DATABASE::"lbt Posted PS Longtext Line");
+                SourceLongtextRecRef.OPEN(DATABASE::"LBT Posted PS Longtext Line");
             DATABASE::"Sales Header Archive", DATABASE::"Sales Line Archive",
         DATABASE::"Purchase Header Archive", DATABASE::"Purchase Line Archive":
-                SourceLongtextRecRef.OPEN(DATABASE::"lbt Archive PS Longtext Line");
+                SourceLongtextRecRef.OPEN(DATABASE::"LBT Archive PS Longtext Line");
         end;
         SourceFieldRef := SourceLongtextRecRef.FIELD(1);
         SourceFieldRef.SetRange(SourceTableID);
@@ -575,7 +575,7 @@ codeunit 5272723 "lbt Longtext Mgt."
         case SourceTableID of
             DATABASE::"Sales Header", DATABASE::"Sales Line",
         DATABASE::"Purchase Header", DATABASE::"Purchase Line":
-                SourceLongtextRecRef.OPEN(DATABASE::"lbt PS Longtext Line");
+                SourceLongtextRecRef.OPEN(DATABASE::"LBT PS Longtext Line");
             DATABASE::"Sales Shipment Header", DATABASE::"Sales Shipment Line",
         DATABASE::"Sales Invoice Header", DATABASE::"Sales Invoice Line",
         DATABASE::"Sales Cr.Memo Header", DATABASE::"Sales Cr.Memo Line",
@@ -584,10 +584,10 @@ codeunit 5272723 "lbt Longtext Mgt."
         DATABASE::"Purch. Cr. Memo Hdr.", DATABASE::"Purch. Cr. Memo Line",
         DATABASE::"Return Shipment Header", DATABASE::"Return Shipment Line",
         DATABASE::"Return Receipt Header", DATABASE::"Return Receipt Line":
-                SourceLongtextRecRef.OPEN(DATABASE::"lbt Posted PS Longtext Line");
+                SourceLongtextRecRef.OPEN(DATABASE::"LBT Posted PS Longtext Line");
             DATABASE::"Sales Header Archive", DATABASE::"Sales Line Archive",
         DATABASE::"Purchase Header Archive", DATABASE::"Purchase Line Archive":
-                SourceLongtextRecRef.OPEN(DATABASE::"lbt Archive PS Longtext Line");
+                SourceLongtextRecRef.OPEN(DATABASE::"LBT Archive PS Longtext Line");
         end;
         SourceFieldRef := SourceLongtextRecRef.FIELD(1);
         SourceFieldRef.SetRange(SourceTableID);
@@ -647,7 +647,7 @@ codeunit 5272723 "lbt Longtext Mgt."
         case TargetTableID of
             DATABASE::"Sales Header", DATABASE::"Sales Line",
         DATABASE::"Purchase Header", DATABASE::"Purchase Line":
-                TargetLongtextRecRef.OPEN(DATABASE::"lbt PS Longtext Line");
+                TargetLongtextRecRef.OPEN(DATABASE::"LBT PS Longtext Line");
             DATABASE::"Sales Shipment Header", DATABASE::"Sales Shipment Line",
         DATABASE::"Sales Invoice Header", DATABASE::"Sales Invoice Line",
         DATABASE::"Sales Cr.Memo Header", DATABASE::"Sales Cr.Memo Line",
@@ -656,10 +656,10 @@ codeunit 5272723 "lbt Longtext Mgt."
         DATABASE::"Purch. Cr. Memo Hdr.", DATABASE::"Purch. Cr. Memo Line",
         DATABASE::"Return Shipment Header", DATABASE::"Return Shipment Line",
         DATABASE::"Return Receipt Header", DATABASE::"Return Receipt Line":
-                TargetLongtextRecRef.OPEN(DATABASE::"lbt Posted PS Longtext Line");
+                TargetLongtextRecRef.OPEN(DATABASE::"LBT Posted PS Longtext Line");
             DATABASE::"Sales Header Archive", DATABASE::"Sales Line Archive",
         DATABASE::"Purchase Header Archive", DATABASE::"Purchase Line Archive":
-                TargetLongtextRecRef.OPEN(DATABASE::"lbt Archive PS Longtext Line");
+                TargetLongtextRecRef.OPEN(DATABASE::"LBT Archive PS Longtext Line");
         end;
         TargetFieldRef := TargetLongtextRecRef.FIELD(1);
         TargetFieldRef.SetRange(TargetTableID);
@@ -818,7 +818,7 @@ codeunit 5272723 "lbt Longtext Mgt."
 
     procedure DelLongtext(SourceRecRef: RecordRef)
     var
-        LongtextLineRec: Record "lbt PS Longtext Line";
+        LongtextLineRec: Record "LBT PS Longtext Line";
         SourceFieldRef: FieldRef;
         SourceDocumentType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order";
         SourceDocumentNo: Code[20];
@@ -849,9 +849,9 @@ codeunit 5272723 "lbt Longtext Mgt."
         LongtextLineRec.DeleteAll();
     end;
 
-    procedure InsertLongTextExtText(var PurchSalesTextRec: Record "lbt PS Longtext Line"; NewDocumentType: Integer)
+    procedure InsertLongTextExtText(var PurchSalesTextRec: Record "LBT PS Longtext Line"; NewDocumentType: Integer)
     var
-        ToPurchSalesTextRec: Record "lbt PS Longtext Line";
+        ToPurchSalesTextRec: Record "LBT PS Longtext Line";
         FirstLine: Boolean;
         LineSpacing: Integer;
     begin
@@ -911,7 +911,7 @@ codeunit 5272723 "lbt Longtext Mgt."
     local procedure ReadLines(var ExtTextHeader: Record "Extended Text Header"; DocDate: Date; LanguageCode: Code[10]; Longtext: Boolean) Result: Boolean
     var
         ExtTextLine: Record "Extended Text Line";
-        ExtTextLineLongRec: Record "lbt Extended Text Line Long";
+        ExtTextLineLongRec: Record "LBT Extended Text Line Long";
         InLongtext: Boolean;
     begin
         ExtTextHeader.SETCURRENTKEY(
@@ -932,7 +932,7 @@ codeunit 5272723 "lbt Longtext Mgt."
             end;
         end;
 
-        if (ExtTextHeader."lbt Textchoice" = ExtTextHeader."lbt Textchoice"::standard) and (Longtext) then begin
+        if (ExtTextHeader."LBT Textchoice" = ExtTextHeader."LBT Textchoice"::standard) and (Longtext) then begin
             Longtext := false;
             InLongtext := true;
         end;
@@ -1040,11 +1040,11 @@ codeunit 5272723 "lbt Longtext Mgt."
                 CommentFieldNo := 6;
             DATABASE::"Inter. Log Entry Comment Line":
                 CommentFieldNo := 7;
-            DATABASE::"lbt Extended Text Line Long":
+            DATABASE::"LBT Extended Text Line Long":
                 CommentFieldNo := 6;
             // DATABASE::"Journal Line Memo":
             //     CommentFieldNo := 5;
-            DATABASE::"lbt PS Longtext Line":
+            DATABASE::"LBT PS Longtext Line":
                 CommentFieldNo := 12;
             // DATABASE::Table5159501:
             //  CommentFieldNo := 3;

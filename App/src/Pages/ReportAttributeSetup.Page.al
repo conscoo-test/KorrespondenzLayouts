@@ -1,8 +1,8 @@
-page 5272725 "lbt Report - Attribute Setup"
+page 5272725 "LBT Report - Attribute Setup"
 {
     Caption = 'Report - Attribute Setup';
     PageType = List;
-    SourceTable = "lbt Report - Attribute Setup";
+    SourceTable = "LBT Report - Attribute Setup";
     UsageCategory = Administration;
     ApplicationArea = All;
 

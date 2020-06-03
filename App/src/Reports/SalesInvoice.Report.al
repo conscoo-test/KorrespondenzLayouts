@@ -1,4 +1,4 @@
-report 5272722 "lbt Sales - Invoice"
+report 5272722 "LBT Sales - Invoice"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './src/Reports/SalesInvoice.Report.rdlc';
@@ -119,19 +119,19 @@ report 5272722 "lbt Sales - Invoice"
                     column(CompanyInfo__Home_Page; CompanyInfo."Home Page")
                     {
                     }
-                    column(CompanyInfo__LeBit_CEO1; CompanyInfo."lbt CEO1")
+                    column(CompanyInfo__LeBit_CEO1; CompanyInfo."LBT CEO1")
                     {
                     }
-                    column(CompanyInfo__LeBit_CEO2; CompanyInfo."lbt CEO2")
+                    column(CompanyInfo__LeBit_CEO2; CompanyInfo."LBT CEO2")
                     {
                     }
-                    column(CompanyInfo__LeBit_CEO3; CompanyInfo."lbt CEO3")
+                    column(CompanyInfo__LeBit_CEO3; CompanyInfo."LBT CEO3")
                     {
                     }
-                    column(CompanyInfo__LeBit_Commercial_Register_No; CompanyInfo."lbt Commercial Register No.")
+                    column(CompanyInfo__LeBit_Commercial_Register_No; CompanyInfo."LBT Commercial Register No.")
                     {
                     }
-                    column(CompanyInfo__LeBit_Trade_Register_Name; CompanyInfo."lbt Trade Register Name")
+                    column(CompanyInfo__LeBit_Trade_Register_Name; CompanyInfo."LBT Trade Register Name")
                     {
                     }
                     column(CompanyInfo__Bank_Name; CompanyInfo."Bank Name")
@@ -143,22 +143,22 @@ report 5272722 "lbt Sales - Invoice"
                     column(CompanyInfo__SWIFT_Code; CompanyInfo."SWIFT Code")
                     {
                     }
-                    column(CompanyInfo__LeBit_Bank_Name_2; CompanyInfo."lbt Bank Name 2")
+                    column(CompanyInfo__LeBit_Bank_Name_2; CompanyInfo."LBT Bank Name 2")
                     {
                     }
-                    column(CompanyInfo__LeBit_IBAN_2; CompanyInfo."lbt IBAN 2")
+                    column(CompanyInfo__LeBit_IBAN_2; CompanyInfo."LBT IBAN 2")
                     {
                     }
-                    column(CompanyInfo__LeBit_SWIFT_Code_2; CompanyInfo."lbt SWIFT Code 2")
+                    column(CompanyInfo__LeBit_SWIFT_Code_2; CompanyInfo."LBT SWIFT Code 2")
                     {
                     }
-                    column(CompanyInfo__LeBit_Bank_Name_3; CompanyInfo."lbt Bank Name 3")
+                    column(CompanyInfo__LeBit_Bank_Name_3; CompanyInfo."LBT Bank Name 3")
                     {
                     }
-                    column(CompanyInfo__LeBit_IBAN_3; CompanyInfo."lbt IBAN 3")
+                    column(CompanyInfo__LeBit_IBAN_3; CompanyInfo."LBT IBAN 3")
                     {
                     }
-                    column(CompanyInfo__LeBit_SWIFT_Code_3; CompanyInfo."lbt SWIFT Code 3")
+                    column(CompanyInfo__LeBit_SWIFT_Code_3; CompanyInfo."LBT SWIFT Code 3")
                     {
                     }
                     column(PostingDate_SalesInvHdr; FORMAT("Sales Invoice Header"."Posting Date", 0, 4))
@@ -329,7 +329,7 @@ report 5272722 "lbt Sales - Invoice"
                     column(VAT_Registration_No__Caption; VAT_Registration_No__CaptionLbl)
                     {
                     }
-                    dataitem(LBKopf; "lbt Posted PS Longtext Line")
+                    dataitem(LBKopf; "LBT Posted PS Longtext Line")
                     {
                         DataItemLink = "Document No." = FIELD("No.");
                         DataItemLinkReference = "Sales Invoice Header";
@@ -580,13 +580,13 @@ report 5272722 "lbt Sales - Invoice"
                         column(IsLineWithTotals; LineNoWithTotal = "Line No.")
                         {
                         }
-                        column(SalesLineLeBitPrintoption; FORMAT("Sales Invoice Line"."lbt Printoption", 0, 2))
+                        column(SalesLineLeBitPrintoption; FORMAT("Sales Invoice Line"."LBT Printoption", 0, 2))
                         {
                         }
-                        column(LeBitBalance_SalesInvoiceLine; "lbt Balance")
+                        column(LeBitBalance_SalesInvoiceLine; "LBT Balance")
                         {
                         }
-                        column(LeBitPosNo_SalesInvoiceLine; "lbt Pos. No.")
+                        column(LeBitPosNo_SalesInvoiceLine; "LBT Pos. No.")
                         {
                         }
                         column(Description2_SalesInvoiceLine; "Description 2")
@@ -625,7 +625,7 @@ report 5272722 "lbt Sales - Invoice"
                                 SETRANGE(Number, 1, InfoRowNo);
                             end;
                         }
-                        dataitem(LBLang; "lbt Posted PS Longtext Line")
+                        dataitem(LBLang; "LBT Posted PS Longtext Line")
                         {
                             DataItemLink = "Document No." = FIELD("Document No."), "Document Line No." = FIELD("Line No.");
                             DataItemLinkReference = "Sales Invoice Line";
@@ -848,7 +848,7 @@ report 5272722 "lbt Sales - Invoice"
                             TotalAmountInclVAT += "Amount Including VAT";
                             TotalPaymentDiscountOnVAT += -("Line Amount" - "Inv. Discount Amount" - "Amount Including VAT");
 
-                            if "lbt Printoption" = "lbt Printoption"::"New Page" then
+                            if "LBT Printoption" = "LBT Printoption"::"New Page" then
                                 NewPageGroup += 1;
 
                             ItemUnitCode := '';
@@ -862,7 +862,7 @@ report 5272722 "lbt Sales - Invoice"
                             CLEAR(ItemUnitQtyArry);
                             CLEAR(Item);
                             ItemPictureExist := false;
-                            CALCFIELDS("lbt Balance");
+                            CALCFIELDS("LBT Balance");
 
                             if Quantity <> 0 then
                                 UnitPrice := "Unit Price" - "Line Discount Amount" / Quantity
@@ -1221,7 +1221,7 @@ report 5272722 "lbt Sales - Invoice"
                                     CurrReport.Break();
                         end;
                     }
-                    dataitem(LBFuss; "lbt Posted PS Longtext Line")
+                    dataitem(LBFuss; "LBT Posted PS Longtext Line")
                     {
                         DataItemLink = "Document No." = FIELD("No.");
                         DataItemLinkReference = "Sales Invoice Header";
@@ -1479,9 +1479,9 @@ report 5272722 "lbt Sales - Invoice"
         VATClause: Record "VAT Clause";
         TempLineFeeNoteOnReportHist: Record "Line Fee Note on Report Hist." temporary;
         Item: Record Item;
-        TempLeBitPostedPSLongtextLine: Record "lbt Posted PS Longtext Line" temporary;
+        TempLeBitPostedPSLongtextLine: Record "LBT Posted PS Longtext Line" temporary;
         SalesInvoiceLine: Record "Sales Invoice Line";
-        LeBitReportFunctions: Codeunit "lbt Report Functions";
+        LeBitReportFunctions: Codeunit "LBT Report Functions";
         Language: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
@@ -1944,7 +1944,7 @@ report 5272722 "lbt Sales - Invoice"
     begin
     end;
 
-    local procedure Createlbtext(LeBitPostedPSLongtextLine: Record "lbt Posted PS Longtext Line")
+    local procedure Createlbtext(LeBitPostedPSLongtextLine: Record "LBT Posted PS Longtext Line")
     var
         lbtext: Text;
         Streamin: InStream;

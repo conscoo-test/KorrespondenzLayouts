@@ -1,10 +1,10 @@
-table 5272723 "lbt Extended Text Line Long"
+table 5272723 "LBT Extended Text Line Long"
 {
     // version LBCOR1.00
 
     Caption = 'Extended Text Line Long';
-    DrillDownPageID = "lbt Ext. Text Lines Long";
-    LookupPageID = "lbt Ext. Text Lines Long";
+    DrillDownPageID = "LBT Ext. Text Lines Long";
+    LookupPageID = "LBT Ext. Text Lines Long";
 
     fields
     {

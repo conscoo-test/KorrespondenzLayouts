@@ -1,4 +1,4 @@
-codeunit 5272721 "lbt Corresp. Doc. Subscriber"
+codeunit 5272721 "LBT Corresp. Doc. Subscriber"
 {
     Permissions = TableData 111 = m, TableData 113 = m, TableData 115 = m, TableData 6661 = m, TableData 5108 = m, TableData 121 = m, TableData 123 = m, TableData 125 = m, TableData 6651 = m, TableData 5110 = m;
     trigger OnRun()
@@ -6,15 +6,15 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
     end;
 
     var
-        LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
-        LeBitCorrespDocSingleInst: Codeunit "lbt Corresp. Doc. SingleInst";
-        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+        LeBitCorrespDocMgt: Codeunit "LBT Corresp. Doc. Mgt";
+        LeBitCorrespDocSingleInst: Codeunit "LBT Corresp. Doc. SingleInst";
+        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Document Totals", 'OnCalculateSalesSubPageTotalsOnAfterSetFilters', '', true, true)]
     local procedure ExcludeAlternativeAndOptional(var SalesLine: Record "Sales Line"; SalesHeader: Record "Sales Header")
     begin
         with SalesLine do
-            SetFilter("lbt Printoption", '<>%1&<>%2', "lbt Printoption"::Alternative, "lbt Printoption"::Optional);
+            SetFilter("LBT Printoption", '<>%1&<>%2', "LBT Printoption"::Alternative, "LBT Printoption"::Optional);
     end;
 
     [EventSubscriber(ObjectType::Table, 36, 'OnAfterCreateSalesLine', '', false, false)]
@@ -26,14 +26,14 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
     [EventSubscriber(ObjectType::Table, 37, 'OnValidateTypeOnCopyFromTempSalesLine', '', false, false)]
     local procedure "Table Sales Line - OnValidateTypeOnCopyFromTempSalesLine"(var SalesLine: Record "Sales Line"; var TempSalesLine: Record "Sales Line" temporary)
     begin
-        SalesLine."lbt Printoption" := TempSalesLine."lbt Printoption";
+        SalesLine."LBT Printoption" := TempSalesLine."LBT Printoption";
     end;
 
     [EventSubscriber(ObjectType::Table, 37, 'OnValidateNoOnCopyFromTempSalesLine', '', false, false)]
     local procedure "Table Sales Line - OnValidateNoOnCopyFromTempSalesLine"(var SalesLine: Record "Sales Line"; var TempSalesLine: Record "Sales Line" temporary)
     begin
-        SalesLine."lbt Printoption" := TempSalesLine."lbt Printoption";
-        SalesLine."lbt Pos. No." := TempSalesLine."lbt Pos. No.";
+        SalesLine."LBT Printoption" := TempSalesLine."LBT Printoption";
+        SalesLine."LBT Pos. No." := TempSalesLine."LBT Pos. No.";
     end;
 
     [EventSubscriber(ObjectType::Table, 38, 'OnAfterCreatePurchLine', '', false, false)]
@@ -45,14 +45,14 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
     [EventSubscriber(ObjectType::Table, 39, 'OnValidateTypeOnCopyFromTempPurchLine', '', false, false)]
     local procedure "Table Purchase Line - OnValidateTypeOnCopyFromTempPurchLine"(var PurchLine: Record "Purchase Line"; TempPurchaseLine: Record "Purchase Line" temporary)
     begin
-        PurchLine."lbt Printoption" := TempPurchaseLine."lbt Printoption";
+        PurchLine."LBT Printoption" := TempPurchaseLine."LBT Printoption";
     end;
 
     [EventSubscriber(ObjectType::Table, 39, 'OnValidateNoOnCopyFromTempPurchLine', '', false, false)]
     local procedure "Table Purchase Line - OnValidateNoOnCopyFromTempPurchLine"(var PurchLine: Record "Purchase Line"; TempPurchaseLine: Record "Purchase Line" temporary)
     begin
-        PurchLine."lbt Printoption" := TempPurchaseLine."lbt Printoption";
-        PurchLine."lbt Pos. No." := TempPurchaseLine."lbt Pos. No.";
+        PurchLine."LBT Printoption" := TempPurchaseLine."LBT Printoption";
+        PurchLine."LBT Pos. No." := TempPurchaseLine."LBT Pos. No.";
     end;
 
     [EventSubscriber(ObjectType::Table, 111, 'OnBeforeInsertInvLineFromShptLine', '', false, false)]
@@ -421,8 +421,8 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
     local procedure OnBeforeRecreateSalesLines_Table36(VAR SalesHeader: Record "Sales Header")
     var
         SalesLine: Record "Sales Line";
-        LeBitPSLongtextLine: Record "lbt PS Longtext Line";
-        TempLeBitPSLongtextLine: Record "lbt PS Longtext Line" temporary;
+        LeBitPSLongtextLine: Record "LBT PS Longtext Line";
+        TempLeBitPSLongtextLine: Record "LBT PS Longtext Line" temporary;
     begin
         with SalesHeader do begin
             SalesLine.Reset();
@@ -441,8 +441,8 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
     [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnAfterRecreateSalesLine', '', false, false)]
     local procedure OnAfterRecreateSalesLine_Table36(var SalesLine: Record "Sales Line"; var TempSalesLine: Record "Sales Line")
     var
-        LeBitPSLongtextLine: Record "lbt PS Longtext Line";
-        TempLeBitPSLongtextLine: Record "lbt PS Longtext Line" temporary;
+        LeBitPSLongtextLine: Record "LBT PS Longtext Line";
+        TempLeBitPSLongtextLine: Record "LBT PS Longtext Line" temporary;
     begin
         TempLeBitPSLongtextLine.SetRange("Table ID", Database::"Sales Line");
         TempLeBitPSLongtextLine.SetRange("Document Type", TempSalesLine."Document Type");
@@ -461,8 +461,8 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
     [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnBeforeRecreatePurchLines', '', false, false)]
     local procedure OnBeforeRecreatePurchLines_Table38(var PurchHeader: Record "Purchase Header")
     var
-        LeBitPSLongtextLine: Record "lbt PS Longtext Line";
-        TempLeBitPSLongtextLine: Record "lbt PS Longtext Line" temporary;
+        LeBitPSLongtextLine: Record "LBT PS Longtext Line";
+        TempLeBitPSLongtextLine: Record "LBT PS Longtext Line" temporary;
     begin
         with PurchHeader do begin
             LeBitPSLongtextLine.SetRange("Table ID", Database::"Purchase Line");
@@ -476,8 +476,8 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
     [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterRecreatePurchLine', '', false, false)]
     local procedure OnAfterRecreatePurchLine_Table38(var PurchLine: Record "Purchase Line"; var TempPurchLine: Record "Purchase Line")
     var
-        LeBitPSLongtextLine: Record "lbt PS Longtext Line";
-        TempLeBitPSLongtextLine: Record "lbt PS Longtext Line" temporary;
+        LeBitPSLongtextLine: Record "LBT PS Longtext Line";
+        TempLeBitPSLongtextLine: Record "LBT PS Longtext Line" temporary;
         PurchHeader: Record "Purchase Header";
     begin
         with TempPurchLine do begin
@@ -601,7 +601,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
                     SalesLine.SetRange("Document No.", FromDocumentNo);
                     IF SalesLine.FindSet() then
                         repeat
-                            SalesLine."lbt Source Document Line No." := SalesLine."Line No.";
+                            SalesLine."LBT Source Document Line No." := SalesLine."Line No.";
                             SalesLine.modify();
                         until SalesLine.Next() = 0;
                 end;
@@ -610,7 +610,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
                     SalesShipmentLine.SetRange("Document No.", FromDocumentNo);
                     IF SalesShipmentLine.FindSet() then
                         repeat
-                            SalesShipmentLine."lbt Source Document Line No." := SalesShipmentLine."Line No.";
+                            SalesShipmentLine."LBT Source Document Line No." := SalesShipmentLine."Line No.";
                             SalesShipmentLine.modify();
                         until SalesShipmentLine.Next() = 0;
                 end;
@@ -619,7 +619,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
                     SalesInvoiceLine.SetRange("Document No.", FromDocumentNo);
                     IF SalesInvoiceLine.FindSet() then
                         repeat
-                            SalesInvoiceLine."lbt Source Document Line No." := SalesInvoiceLine."Line No.";
+                            SalesInvoiceLine."LBT Source Document Line No." := SalesInvoiceLine."Line No.";
                             SalesInvoiceLine.modify();
                         until SalesInvoiceLine.Next() = 0;
                 end;
@@ -628,7 +628,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
                     ReturnReceiptLine.SetRange("Document No.", FromDocumentNo);
                     IF ReturnReceiptLine.FindSet() then
                         repeat
-                            ReturnReceiptLine."lbt Source Document Line No." := ReturnReceiptLine."Line No.";
+                            ReturnReceiptLine."LBT Source Document Line No." := ReturnReceiptLine."Line No.";
                             ReturnReceiptLine.modify();
                         until ReturnReceiptLine.Next() = 0;
                 end;
@@ -637,7 +637,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
                     SalesCrMemoLine.SetRange("Document No.", FromDocumentNo);
                     IF SalesCrMemoLine.FindSet() then
                         repeat
-                            SalesCrMemoLine."lbt Source Document Line No." := SalesCrMemoLine."Line No.";
+                            SalesCrMemoLine."LBT Source Document Line No." := SalesCrMemoLine."Line No.";
                             SalesCrMemoLine.modify();
                         until SalesCrMemoLine.Next() = 0;
                 end;
@@ -659,7 +659,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
                     SalesLineArchive.SetRange("Document No.", FromDocumentNo);
                     IF SalesLineArchive.FindSet() then
                         repeat
-                            SalesLineArchive."lbt Source Document Line No." := SalesLineArchive."Line No.";
+                            SalesLineArchive."LBT Source Document Line No." := SalesLineArchive."Line No.";
                             SalesLineArchive.modify();
                         until SalesLineArchive.Next() = 0;
                 end;
@@ -702,7 +702,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
                     PurchLine.SetRange("Document No.", FromDocumentNo);
                     IF PurchLine.FindSet() then
                         repeat
-                            PurchLine."lbt Source Document Line No." := PurchLine."Line No.";
+                            PurchLine."LBT Source Document Line No." := PurchLine."Line No.";
                             PurchLine.modify();
                         until PurchLine.Next() = 0;
                 end;
@@ -711,7 +711,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
                     PurchRcptLine.SetRange("Document No.", FromDocumentNo);
                     IF PurchRcptLine.FindSet() then
                         repeat
-                            PurchRcptLine."lbt Source Document Line No." := PurchRcptLine."Line No.";
+                            PurchRcptLine."LBT Source Document Line No." := PurchRcptLine."Line No.";
                             PurchRcptLine.modify();
                         until PurchRcptLine.Next() = 0;
                 end;
@@ -720,7 +720,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
                     PurchInvLine.SetRange("Document No.", FromDocumentNo);
                     IF PurchInvLine.FindSet() then
                         repeat
-                            PurchInvLine."lbt Source Document Line No." := PurchInvLine."Line No.";
+                            PurchInvLine."LBT Source Document Line No." := PurchInvLine."Line No.";
                             PurchInvLine.modify();
                         until PurchInvLine.Next() = 0;
                 end;
@@ -729,7 +729,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
                     ReturnShipmentLine.SetRange("Document No.", FromDocumentNo);
                     IF ReturnShipmentLine.FindSet() then
                         repeat
-                            ReturnShipmentLine."lbt Source Document Line No." := ReturnShipmentLine."Line No.";
+                            ReturnShipmentLine."LBT Source Document Line No." := ReturnShipmentLine."Line No.";
                             ReturnShipmentLine.modify();
                         until ReturnShipmentLine.Next() = 0;
                 end;
@@ -738,7 +738,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
                     PurchCrMemoLine.SetRange("Document No.", FromDocumentNo);
                     IF PurchCrMemoLine.FindSet() then
                         repeat
-                            PurchCrMemoLine."lbt Source Document Line No." := PurchCrMemoLine."Line No.";
+                            PurchCrMemoLine."LBT Source Document Line No." := PurchCrMemoLine."Line No.";
                             PurchCrMemoLine.modify();
                         until PurchCrMemoLine.Next() = 0;
                 end;
@@ -760,7 +760,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
                     PurchLineArchive.SetRange("Document No.", FromDocumentNo);
                     IF PurchLineArchive.FindSet() then
                         repeat
-                            PurchLineArchive."lbt Source Document Line No." := PurchLineArchive."Line No.";
+                            PurchLineArchive."LBT Source Document Line No." := PurchLineArchive."Line No.";
                             PurchLineArchive.modify();
                         until PurchLineArchive.Next() = 0;
                 end;

@@ -1,13 +1,13 @@
-pageextension 5272783 "lbt Posted Return Receipt" extends "Posted Return Receipt"
+pageextension 5272783 "LBT Posted Return Receipt" extends "Posted Return Receipt"
 {
     actions
     {
         addafter("&Return Rcpt.")
         {
-            group("lbt correspondence documents")
+            group("LBT correspondence documents")
             {
                 Caption = 'LeBit365 Correspondence layout';
-                action("lbt Header Text")
+                action("LBT Header Text")
                 {
                     ApplicationArea = All;
                     Caption = 'Header Text';
@@ -16,7 +16,7 @@ pageextension 5272783 "lbt Posted Return Receipt" extends "Posted Return Receipt
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                     begin
@@ -24,7 +24,7 @@ pageextension 5272783 "lbt Posted Return Receipt" extends "Posted Return Receipt
                         LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Header);
                     end;
                 }
-                action("lbt Footer Text")
+                action("LBT Footer Text")
                 {
                     ApplicationArea = All;
                     Caption = 'Footer Text';
@@ -33,7 +33,7 @@ pageextension 5272783 "lbt Posted Return Receipt" extends "Posted Return Receipt
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                     begin

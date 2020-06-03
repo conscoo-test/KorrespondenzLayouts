@@ -1,4 +1,4 @@
-codeunit 5272722 "lbt Corresp. Doc. SingleInst"
+codeunit 5272722 "LBT Corresp. Doc. SingleInst"
 {
     // version LBCOR1.00
 
@@ -9,7 +9,7 @@ codeunit 5272722 "lbt Corresp. Doc. SingleInst"
     end;
 
     var
-        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
         ProcessingPostDropOrderShipment: Boolean;
         ProcessingPostCombineSalesOrderShipment: Boolean;
         WithSalesHeader: Boolean;

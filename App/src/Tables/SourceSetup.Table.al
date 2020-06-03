@@ -1,10 +1,10 @@
-table 5272726 "lbt Source Setup"
+table 5272726 "LBT Source Setup"
 {
     // version LBCOR1.00
 
     // LBIS00     211218 MH   ERSTELLT   H19/0780
 
-    Caption = 'lbt Source Setup';
+    Caption = 'LBT Source Setup';
 
     fields
     {

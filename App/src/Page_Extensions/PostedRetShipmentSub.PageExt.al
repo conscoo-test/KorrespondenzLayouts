@@ -1,14 +1,14 @@
-pageextension 5272781 "lbt Posted Ret. Shipment Sub." extends "Posted Return Shipment Subform"
+pageextension 5272781 "LBT Posted Ret. Shipment Sub." extends "Posted Return Shipment Subform"
 {
     layout
     {
         modify(Description)
         {
-            StyleExpr = "lbt Printoption StyleExpr";
+            StyleExpr = "LBT Printoption StyleExpr";
         }
         addfirst(Control1)
         {
-            field("lbt Pos. No."; "lbt Pos. No.")
+            field("LBT Pos. No."; "LBT Pos. No.")
             {
                 ToolTip = 'Here you can fill in position numbers.';
                 ApplicationArea = All;
@@ -16,7 +16,7 @@ pageextension 5272781 "lbt Posted Ret. Shipment Sub." extends "Posted Return Shi
         }
         addafter(Type)
         {
-            field("lbt Printoption"; "lbt Printoption")
+            field("LBT Printoption"; "LBT Printoption")
             {
                 ToolTip = 'Here you can choose the Printoptions.';
                 ApplicationArea = All;
@@ -24,7 +24,7 @@ pageextension 5272781 "lbt Posted Ret. Shipment Sub." extends "Posted Return Shi
         }
         addafter(Correction)
         {
-            field("lbt Long Text"; "lbt Long Text")
+            field("LBT Long Text"; "LBT Long Text")
             {
                 ToolTip = 'Here you can insert long texts. ';
                 ApplicationArea = All;
@@ -35,7 +35,7 @@ pageextension 5272781 "lbt Posted Ret. Shipment Sub." extends "Posted Return Shi
     {
         addafter(ItemCreditMemoLines)
         {
-            action("lbt LongText")
+            action("LBT LongText")
             {
                 ApplicationArea = Suite;
                 Caption = 'Long Text';
@@ -43,7 +43,7 @@ pageextension 5272781 "lbt Posted Ret. Shipment Sub." extends "Posted Return Shi
                 Image = Import;
                 trigger OnAction()
                 var
-                    LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                    LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                     SourceRecRef: RecordRef;
                     Position: Option Header,Footer,Longtext;
                 begin
@@ -55,9 +55,9 @@ pageextension 5272781 "lbt Posted Ret. Shipment Sub." extends "Posted Return Shi
     }
     trigger OnAfterGetRecord()
     var
-        LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
+        LeBitCorrespDocMgt: Codeunit "LBT Corresp. Doc. Mgt";
     begin
-        "lbt Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr("lbt Printoption");
+        "LBT Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr("LBT Printoption");
     end;
 }
 

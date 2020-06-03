@@ -1,13 +1,13 @@
-pageextension 5272754 "lbt Blanket Purchase Order" extends "Blanket Purchase Order"
+pageextension 5272754 "LBT Blanket Purchase Order" extends "Blanket Purchase Order"
 {
     actions
     {
         addafter("O&rder")
         {
-            group("lbt correspondence documents")
+            group("LBT correspondence documents")
             {
                 Caption = 'LeBit365 Correspondence layout';
-                action("lbt Tot&aling")
+                action("LBT Tot&aling")
                 {
                     ApplicationArea = All;
                     Caption = 'Tot&aling';
@@ -15,12 +15,12 @@ pageextension 5272754 "lbt Blanket Purchase Order" extends "Blanket Purchase Ord
                     Image = Totals;
                     trigger OnAction()
                     var
-                        LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
+                        LeBitCorrespDocMgt: Codeunit "LBT Corresp. Doc. Mgt";
                     begin
                         LeBitCorrespDocMgt.PurchLineIndentTotaling(Rec);
                     end;
                 }
-                action("lbt Num&bering")
+                action("LBT Num&bering")
                 {
                     ApplicationArea = All;
                     Caption = 'Num&bering';
@@ -28,12 +28,12 @@ pageextension 5272754 "lbt Blanket Purchase Order" extends "Blanket Purchase Ord
                     Image = NumberGroup;
                     trigger OnAction()
                     var
-                        LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
+                        LeBitCorrespDocMgt: Codeunit "LBT Corresp. Doc. Mgt";
                     begin
                         LeBitCorrespDocMgt.PurchLinePosNumber(Rec);
                     end;
                 }
-                action("lbt Header Text")
+                action("LBT Header Text")
                 {
                     ApplicationArea = All;
                     Caption = 'Header Text';
@@ -42,7 +42,7 @@ pageextension 5272754 "lbt Blanket Purchase Order" extends "Blanket Purchase Ord
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                     begin
@@ -51,7 +51,7 @@ pageextension 5272754 "lbt Blanket Purchase Order" extends "Blanket Purchase Ord
                     end;
 
                 }
-                action("lbt Footer Text")
+                action("LBT Footer Text")
                 {
                     ApplicationArea = All;
                     Caption = 'Footer Text';
@@ -60,7 +60,7 @@ pageextension 5272754 "lbt Blanket Purchase Order" extends "Blanket Purchase Ord
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                     begin

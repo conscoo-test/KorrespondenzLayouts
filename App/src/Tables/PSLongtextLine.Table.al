@@ -1,10 +1,10 @@
-table 5272720 "lbt PS Longtext Line"
+table 5272720 "LBT PS Longtext Line"
 {
     // version LBCOR1.00
 
     Caption = 'Purch/Sales Longtext Line';
-    DrillDownPageID = "lbt PS Longtext Lines";
-    LookupPageID = "lbt PS Longtext Lines";
+    DrillDownPageID = "LBT PS Longtext Lines";
+    LookupPageID = "LBT PS Longtext Lines";
     PasteIsValid = false;
 
     fields
@@ -146,9 +146,9 @@ table 5272720 "lbt PS Longtext Line"
 
     procedure DBOpenMemo()
     var
-        PSLongtextLine: Record "lbt PS Longtext Line";
-        tempMemo: Record "lbt PS Longtext Line" temporary;
-        DBTextEdit: Page "lbt DBTextEdit";
+        PSLongtextLine: Record "LBT PS Longtext Line";
+        tempMemo: Record "LBT PS Longtext Line" temporary;
+        DBTextEdit: Page "LBT DBTextEdit";
         i: Integer;
         Txt: Text;
         c: Integer;
@@ -231,7 +231,7 @@ table 5272720 "lbt PS Longtext Line"
 
     end;
 
-    local procedure SplitText(Text: Text; Delimiter: Text; var SplitBuffer: Record "lbt PS Longtext Line"; maxlen: Integer)
+    local procedure SplitText(Text: Text; Delimiter: Text; var SplitBuffer: Record "LBT PS Longtext Line"; maxlen: Integer)
     var
         NewString: Text;
         SplitArray: List of [Text];

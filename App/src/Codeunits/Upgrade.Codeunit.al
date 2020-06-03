@@ -1,4 +1,4 @@
-codeunit 5272726 "lbt Upgrade"
+codeunit 5272726 "LBT Upgrade"
 {
     Subtype = Upgrade;
 

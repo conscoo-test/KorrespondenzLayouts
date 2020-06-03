@@ -1,4 +1,4 @@
-page 5272722 "lbt Arch. PS Longtext Lines"
+page 5272722 "LBT Arch. PS Longtext Lines"
 {
     AutoSplitKey = true;
     Caption = 'Archive PS Longtext Lines';
@@ -6,7 +6,7 @@ page 5272722 "lbt Arch. PS Longtext Lines"
     InsertAllowed = false;
     ModifyAllowed = false;
     PageType = List;
-    SourceTable = "lbt Archive PS Longtext Line";
+    SourceTable = "LBT Archive PS Longtext Line";
     // UsageCategory = History;
     // ApplicationArea = All;
 

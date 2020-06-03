@@ -1,4 +1,4 @@
-tableextension 5272739 "lbt Sales Header Archive" extends "Sales Header Archive"
+tableextension 5272739 "LBT Sales Header Archive" extends "Sales Header Archive"
 {
     fields
     {
@@ -6,7 +6,7 @@ tableextension 5272739 "lbt Sales Header Archive" extends "Sales Header Archive"
 
     trigger OnDelete()
     var
-        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
         SourceRecRef: RecordRef;
     begin
         SourceRecRef.GETTABLE(Rec);

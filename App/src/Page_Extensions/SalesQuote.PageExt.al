@@ -1,4 +1,4 @@
-pageextension 5272742 "lbt Sales Quote" extends "Sales Quote"
+pageextension 5272742 "LBT Sales Quote" extends "Sales Quote"
 {
     layout
     {
@@ -14,10 +14,10 @@ pageextension 5272742 "lbt Sales Quote" extends "Sales Quote"
     {
         addafter("&Quote")
         {
-            group("lbt correspondence documents")
+            group("LBT correspondence documents")
             {
                 Caption = 'LeBit365 Correspondence layout';
-                action("lbt Tot&aling")
+                action("LBT Tot&aling")
                 {
                     ApplicationArea = All;
                     Caption = 'Totaling';
@@ -25,12 +25,12 @@ pageextension 5272742 "lbt Sales Quote" extends "Sales Quote"
                     Image = Totals;
                     trigger OnAction()
                     var
-                        LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
+                        LeBitCorrespDocMgt: Codeunit "LBT Corresp. Doc. Mgt";
                     begin
                         LeBitCorrespDocMgt.SalesLineIndentTotaling(Rec);
                     end;
                 }
-                action("lbt Num&bering")
+                action("LBT Num&bering")
                 {
                     ApplicationArea = All;
                     Caption = 'Numbering';
@@ -38,12 +38,12 @@ pageextension 5272742 "lbt Sales Quote" extends "Sales Quote"
                     Image = NumberGroup;
                     trigger OnAction()
                     var
-                        LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
+                        LeBitCorrespDocMgt: Codeunit "LBT Corresp. Doc. Mgt";
                     begin
                         LeBitCorrespDocMgt.SalesLinePosNumber(Rec);
                     end;
                 }
-                action("lbt Header Text")
+                action("LBT Header Text")
                 {
                     ApplicationArea = All;
                     Caption = 'Header Text';
@@ -52,7 +52,7 @@ pageextension 5272742 "lbt Sales Quote" extends "Sales Quote"
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                     begin
@@ -60,7 +60,7 @@ pageextension 5272742 "lbt Sales Quote" extends "Sales Quote"
                         LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Header);
                     end;
                 }
-                action("lbt Footer Text")
+                action("LBT Footer Text")
                 {
                     ApplicationArea = All;
                     Caption = 'Footer Text';
@@ -69,7 +69,7 @@ pageextension 5272742 "lbt Sales Quote" extends "Sales Quote"
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                     begin

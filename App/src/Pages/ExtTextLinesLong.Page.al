@@ -1,10 +1,10 @@
-page 5272723 "lbt Ext. Text Lines Long"
+page 5272723 "LBT Ext. Text Lines Long"
 {
     AutoSplitKey = true;
     Caption = 'Ext. Text Lines Long';
     MultipleNewLines = true;
     PageType = ListPart;
-    SourceTable = "lbt Extended Text Line Long";
+    SourceTable = "LBT Extended Text Line Long";
     // UsageCategory = None;
 
     layout

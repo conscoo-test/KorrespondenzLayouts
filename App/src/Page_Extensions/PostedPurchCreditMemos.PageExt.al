@@ -1,13 +1,13 @@
-pageextension 5272738 "lbt Posted Purch. Credit Memos" extends "Posted Purchase Credit Memos"
+pageextension 5272738 "LBT Posted Purch. Credit Memos" extends "Posted Purchase Credit Memos"
 {
     actions
     {
         addafter("&Cr. Memo")
         {
-            group("lbt correspondence documents")
+            group("LBT correspondence documents")
             {
                 Caption = 'LeBit365 Correspondence layout';
-                action("lbt Header Text")
+                action("LBT Header Text")
                 {
                     ApplicationArea = All;
                     Caption = 'Header Text';
@@ -16,7 +16,7 @@ pageextension 5272738 "lbt Posted Purch. Credit Memos" extends "Posted Purchase 
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                     begin
@@ -24,7 +24,7 @@ pageextension 5272738 "lbt Posted Purch. Credit Memos" extends "Posted Purchase 
                         LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Header);
                     end;
                 }
-                action("lbt Footer Text")
+                action("LBT Footer Text")
                 {
                     ApplicationArea = All;
                     Caption = 'Footer Text';
@@ -33,7 +33,7 @@ pageextension 5272738 "lbt Posted Purch. Credit Memos" extends "Posted Purchase 
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                     begin

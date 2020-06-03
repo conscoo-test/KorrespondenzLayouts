@@ -1,4 +1,4 @@
-report 5272721 "lbt Order Confirmation"
+report 5272721 "LBT Order Confirmation"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './src/Reports/OrderConfirmation.Report.rdlc';
@@ -90,19 +90,19 @@ report 5272721 "lbt Order Confirmation"
                     column(CompanyInfo__Home_Page; CompanyInfo."Home Page")
                     {
                     }
-                    column(CompanyInfo__LeBit_CEO1; CompanyInfo."lbt CEO1")
+                    column(CompanyInfo__LeBit_CEO1; CompanyInfo."LBT CEO1")
                     {
                     }
-                    column(CompanyInfo__LeBit_CEO2; CompanyInfo."lbt CEO2")
+                    column(CompanyInfo__LeBit_CEO2; CompanyInfo."LBT CEO2")
                     {
                     }
-                    column(CompanyInfo__LeBit_CEO3; CompanyInfo."lbt CEO3")
+                    column(CompanyInfo__LeBit_CEO3; CompanyInfo."LBT CEO3")
                     {
                     }
-                    column(CompanyInfo__LeBit_Commercial_Register_No; CompanyInfo."lbt Commercial Register No.")
+                    column(CompanyInfo__LeBit_Commercial_Register_No; CompanyInfo."LBT Commercial Register No.")
                     {
                     }
-                    column(CompanyInfo__LeBit_Trade_Register_Name; CompanyInfo."lbt Trade Register Name")
+                    column(CompanyInfo__LeBit_Trade_Register_Name; CompanyInfo."LBT Trade Register Name")
                     {
                     }
                     column(CompanyInfo__Bank_Name; CompanyInfo."Bank Name")
@@ -114,22 +114,22 @@ report 5272721 "lbt Order Confirmation"
                     column(CompanyInfo__SWIFT_Code; CompanyInfo."SWIFT Code")
                     {
                     }
-                    column(CompanyInfo__LeBit_Bank_Name_2; CompanyInfo."lbt Bank Name 2")
+                    column(CompanyInfo__LeBit_Bank_Name_2; CompanyInfo."LBT Bank Name 2")
                     {
                     }
-                    column(CompanyInfo__LeBit_IBAN_2; CompanyInfo."lbt IBAN 2")
+                    column(CompanyInfo__LeBit_IBAN_2; CompanyInfo."LBT IBAN 2")
                     {
                     }
-                    column(CompanyInfo__LeBit_SWIFT_Code_2; CompanyInfo."lbt SWIFT Code 2")
+                    column(CompanyInfo__LeBit_SWIFT_Code_2; CompanyInfo."LBT SWIFT Code 2")
                     {
                     }
-                    column(CompanyInfo__LeBit_Bank_Name_3; CompanyInfo."lbt Bank Name 3")
+                    column(CompanyInfo__LeBit_Bank_Name_3; CompanyInfo."LBT Bank Name 3")
                     {
                     }
-                    column(CompanyInfo__LeBit_IBAN_3; CompanyInfo."lbt IBAN 3")
+                    column(CompanyInfo__LeBit_IBAN_3; CompanyInfo."LBT IBAN 3")
                     {
                     }
-                    column(CompanyInfo__LeBit_SWIFT_Code_3; CompanyInfo."lbt SWIFT Code 3")
+                    column(CompanyInfo__LeBit_SWIFT_Code_3; CompanyInfo."LBT SWIFT Code 3")
                     {
                     }
                     column(Sales_Header___Shipment_Date_; FORMAT("Sales Header"."Shipment Date"))
@@ -315,7 +315,7 @@ report 5272721 "lbt Order Confirmation"
                                 CurrReport.Break();
                         end;
                     }
-                    dataitem(LBKopf; "lbt PS Longtext Line")
+                    dataitem(LBKopf; "LBT PS Longtext Line")
                     {
                         DataItemLink = "Document No." = FIELD("No."), "Document Type" = FIELD("Document Type");
                         DataItemLinkReference = "Sales Header";
@@ -591,13 +591,13 @@ report 5272721 "lbt Order Confirmation"
                         column(VATDiscountAmountCaption; VATDiscountAmountCaptionLbl)
                         {
                         }
-                        column(SalesLineLeBitPrintoption; FORMAT("Sales Line"."lbt Printoption", 0, 2))
+                        column(SalesLineLeBitPrintoption; FORMAT("Sales Line"."LBT Printoption", 0, 2))
                         {
                         }
-                        column(SalesLine__LeBit_Balance; SalesLine."lbt Balance")
+                        column(SalesLine__LeBit_Balance; SalesLine."LBT Balance")
                         {
                         }
-                        column(Sales_Line___LeBit_Pos_No; "Sales Line"."lbt Pos. No.")
+                        column(Sales_Line___LeBit_Pos_No; "Sales Line"."LBT Pos. No.")
                         {
                         }
                         column(Alternativposition_Caption; Alternativposition_CaptionLbl)
@@ -645,7 +645,7 @@ report 5272721 "lbt Order Confirmation"
                                 SETRANGE(Number, 1, InfoRowNo);
                             end;
                         }
-                        dataitem(LBLang; "lbt PS Longtext Line")
+                        dataitem(LBLang; "LBT PS Longtext Line")
                         {
                             DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("Document No."), "Document Line No." = FIELD("Line No.");
                             DataItemLinkReference = "Sales Line";
@@ -840,7 +840,7 @@ report 5272721 "lbt Order Confirmation"
                             NNC_VatAmt2 := VATAmount;
                             NNC_TotalExclVAT2 := VATBaseAmount;
 
-                            if SalesLine."lbt Printoption" = SalesLine."lbt Printoption"::"New Page" then
+                            if SalesLine."LBT Printoption" = SalesLine."LBT Printoption"::"New Page" then
                                 NewPageGroup += 1;
 
                             ItemUnitCode := '';
@@ -860,7 +860,7 @@ report 5272721 "lbt Order Confirmation"
                             else
                                 UnitPrice := 0;
 
-                            SalesLine.CALCFIELDS("lbt Balance");
+                            SalesLine.CALCFIELDS("LBT Balance");
                             if SalesLine.Type = SalesLine.Type::Item then begin
                                 Item.Get("Sales Line"."No.");
                                 ItemPictureExist := Item.Picture.Count() > 0;
@@ -1552,7 +1552,7 @@ report 5272721 "lbt Order Confirmation"
                                 CurrReport.Break();
                         end;
                     }
-                    dataitem(LBFuss; "lbt PS Longtext Line")
+                    dataitem(LBFuss; "LBT PS Longtext Line")
                     {
                         DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("No.");
                         DataItemLinkReference = "Sales Header";
@@ -1672,10 +1672,10 @@ report 5272721 "lbt Order Confirmation"
                     NNC_SalesLineInvDiscAmt := 0;
 
                     if Number = 1 then begin
-                        SalesLine.SETRANGE("lbt Printoption", SalesLine."lbt Printoption"::Alternative, SalesLine."lbt Printoption"::Optional);
+                        SalesLine.SETRANGE("LBT Printoption", SalesLine."LBT Printoption"::Alternative, SalesLine."LBT Printoption"::Optional);
                         if not SalesLine.IsEmpty() then
                             MESSAGE(AlternativeNotAllowedErr);
-                        SalesLine.SETRANGE("lbt Printoption");
+                        SalesLine.SETRANGE("LBT Printoption");
                     end;
                 end;
 
@@ -1866,7 +1866,7 @@ report 5272721 "lbt Order Confirmation"
         AsmHeader: Record "Assembly Header";
         AsmLine: Record "Assembly Line";
         Item: Record Item;
-        TempLeBitPSLongtextLine: Record "lbt PS Longtext Line" temporary;
+        TempLeBitPSLongtextLine: Record "LBT PS Longtext Line" temporary;
         Language: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         SegManagement: Codeunit SegManagement;
@@ -1874,7 +1874,7 @@ report 5272721 "lbt Order Confirmation"
         FormatDocument: Codeunit "Format Document";
         SalesPostPrepmt: Codeunit "Sales-Post Prepayments";
         DimMgt: Codeunit DimensionManagement;
-        LeBitReportFunctions: Codeunit "lbt Report Functions";
+        LeBitReportFunctions: Codeunit "LBT Report Functions";
         CustAddr: array[8] of Text[50];
         ShipToAddr: array[8] of Text[50];
         CompanyAddr: array[8] of Text[50];
@@ -2094,7 +2094,7 @@ report 5272721 "lbt Order Confirmation"
     begin
     end;
 
-    local procedure Createlbtext(LeBitPSLongtextLine: Record "lbt PS Longtext Line")
+    local procedure Createlbtext(LeBitPSLongtextLine: Record "LBT PS Longtext Line")
     var
         lbtext: Text;
         Streamin: InStream;

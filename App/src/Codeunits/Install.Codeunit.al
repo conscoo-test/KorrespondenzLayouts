@@ -1,4 +1,4 @@
-codeunit 5272725 "lbt Install"
+codeunit 5272725 "LBT Install"
 {
     Subtype = Install;
 

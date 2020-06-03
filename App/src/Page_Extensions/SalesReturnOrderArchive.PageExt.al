@@ -1,4 +1,4 @@
-pageextension 5272768 "lbt Sales Return Order Archive" extends "Sales Return Order Archive"
+pageextension 5272768 "LBT Sales Return Order Archive" extends "Sales Return Order Archive"
 {
     // version NAVW111.00.00.19846,LBCOR1.00
 
@@ -6,10 +6,10 @@ pageextension 5272768 "lbt Sales Return Order Archive" extends "Sales Return Ord
     {
         addafter("Ver&sion")
         {
-            group("lbt correspondence documents")
+            group("LBT correspondence documents")
             {
                 Caption = 'LeBit365 Correspondence layout';
-                action("lbt Header Text")
+                action("LBT Header Text")
                 {
                     ToolTip = 'Here you can define the Header Text.';
                     ApplicationArea = All;
@@ -18,7 +18,7 @@ pageextension 5272768 "lbt Sales Return Order Archive" extends "Sales Return Ord
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                     begin
@@ -26,7 +26,7 @@ pageextension 5272768 "lbt Sales Return Order Archive" extends "Sales Return Ord
                         LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Header);
                     end;
                 }
-                action("lbt &Footer Text")
+                action("LBT &Footer Text")
                 {
                     ToolTip = 'Here you can define the Footer Text.';
                     ApplicationArea = All;
@@ -35,7 +35,7 @@ pageextension 5272768 "lbt Sales Return Order Archive" extends "Sales Return Ord
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
                     begin

@@ -1,16 +1,16 @@
-pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
+pageextension 5272747 "LBT Sales Order Subform" extends "Sales Order Subform"
 {
     layout
     {
         modify(Description)
         {
-            StyleExpr = "lbt Printoption StyleExpr";
+            StyleExpr = "LBT Printoption StyleExpr";
         }
 
 
         addfirst(Control1)
         {
-            field("lbt Pos. No."; "lbt Pos. No.")
+            field("LBT Pos. No."; "LBT Pos. No.")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specified the Position No.';
@@ -18,7 +18,7 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
         }
         addafter(FilteredTypeField)
         {
-            field("lbt Printoption"; "lbt Printoption")
+            field("LBT Printoption"; "LBT Printoption")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specified the Printoption';
@@ -26,7 +26,7 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
         }
         addafter("Line No.")
         {
-            field("lbt Long Text"; "lbt Long Text")
+            field("LBT Long Text"; "LBT Long Text")
             {
                 ApplicationArea = All;
                 ToolTip = 'Long Text';
@@ -37,7 +37,7 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
     {
         addafter(DeferralSchedule)
         {
-            action("lbt LongText")
+            action("LBT LongText")
             {
                 ApplicationArea = Suite;
                 Caption = 'Long Text';
@@ -45,7 +45,7 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
                 Image = Import;
                 trigger OnAction()
                 var
-                    LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                    LeBitLongtextMgt: Codeunit "LBT Longtext Mgt.";
                     SourceRecRef: RecordRef;
                     Position: Option Header,Footer,Longtext;
                 begin
@@ -57,8 +57,8 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
     }
     trigger OnAfterGetRecord()
     var
-        LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
+        LeBitCorrespDocMgt: Codeunit "LBT Corresp. Doc. Mgt";
     begin
-        "lbt Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr("lbt Printoption");
+        "LBT Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr("LBT Printoption");
     end;
 }

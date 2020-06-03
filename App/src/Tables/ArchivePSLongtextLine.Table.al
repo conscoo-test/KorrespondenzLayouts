@@ -1,9 +1,9 @@
-table 5272722 "lbt Archive PS Longtext Line"
+table 5272722 "LBT Archive PS Longtext Line"
 {
     // version LBCOR1.00
 
-    DrillDownPageID = "lbt Arch. PS Longtext Lines";
-    LookupPageID = "lbt Arch. PS Longtext Lines";
+    DrillDownPageID = "LBT Arch. PS Longtext Lines";
+    LookupPageID = "LBT Arch. PS Longtext Lines";
     PasteIsValid = false;
 
     fields
