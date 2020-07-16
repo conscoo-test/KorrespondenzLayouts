@@ -2,6 +2,17 @@ pageextension 5272745 "LBT Sales Credit Memo" extends "Sales Credit Memo"
 {
     // version NAVW111.00.00.19846,LBCOR1.00
 
+    layout
+    {
+        addlast(General)
+        {
+            field("LBT Correction"; Correction)
+            {
+                ApplicationArea = All;
+                Importance = Additional;
+            }
+        }
+    }
     actions
     {
         addafter("&Credit Memo")
@@ -72,5 +83,6 @@ pageextension 5272745 "LBT Sales Credit Memo" extends "Sales Credit Memo"
             }
         }
     }
+
 }
 

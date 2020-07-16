@@ -1697,7 +1697,7 @@
         </trans-unit>
         <trans-unit id="Report 3847066561 - NamedType 1582893390" size-unit="char" translate="yes" xml:space="preserve">
           <source>Blanket Sales Order %1</source>
-          <target>Rahmenauftragsnr. %1</target>
+          <target>Rahmenauftrag %1</target>
           <note from="Developer" annotates="general" priority="2">%1 - Document No.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report LBT Blanket Sales Order - NamedType TitleLbl</note>
         </trans-unit>
@@ -4614,7 +4614,7 @@
         </trans-unit>
         <trans-unit id="Report 590078612 - NamedType 3694251867" size-unit="char" translate="yes" xml:space="preserve">
           <source>Corrective Invoice %1</source>
-          <target>Vorauszahlungsgutschrift %1</target>
+          <target>Korrekturrechnung %1</target>
           <note from="Developer" annotates="general" priority="2">%1 - Document No.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report LBT Sales - Credit Memo - NamedType DocDECapLbl</note>
         </trans-unit>

@@ -1603,7 +1603,8 @@ report 5272723 "LBT Sales - Credit Memo"
         OnBeforeGetDocumentCaption("Sales Cr.Memo Header", Caption);
         if Caption <> '' then
             exit(Caption);
-        if CompanyInfo."Country/Region Code" = 'DE' then begin
+
+        if IsCorrection() then begin
             if "Sales Cr.Memo Header"."Prepayment Credit Memo" then
                 Caption := DocDEPrepmtCapLbl
             else
@@ -1755,6 +1756,12 @@ report 5272723 "LBT Sales - Credit Memo"
             TempLeBitPostedPSLongtextLine.Type := TempLeBitPostedPSLongtextLine.Type::Text;
             TempLeBitPostedPSLongtextLine.Insert();
         end;
+    end;
+
+    local procedure IsCorrection(): Boolean
+    begin
+        "Sales Cr.Memo Header".CalcFields(Corrective);
+        exit("Sales Cr.Memo Header".Correction or "Sales Cr.Memo Header".Corrective);
     end;
 
     [IntegrationEvent(false, false)]
