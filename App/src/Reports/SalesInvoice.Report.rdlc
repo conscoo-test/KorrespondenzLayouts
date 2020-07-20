@@ -7227,6 +7227,7 @@
                                             </Style>
                                           </Textbox>
                                           <ColSpan>2</ColSpan>
+                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell />
@@ -7333,7 +7334,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!LineAmt_SalesInvoiceLine.Value</Value>
+                                                    <Value>=Code.BlankZero(Fields!LineAmt_SalesInvoiceLine.Value)</Value>
                                                     <Style>
                                                       <FontSize>9pt</FontSize>
                                                       <Format>=Fields!LineAmt_SalesInvoiceLineFormat.Value</Format>
@@ -7346,9 +7347,6 @@
                                               </Paragraph>
                                             </Paragraphs>
                                             <ZIndex>129</ZIndex>
-                                            <Visibility>
-                                              <Hidden>=Fields!LineAmt_SalesInvoiceLine.Value=0</Hidden>
-                                            </Visibility>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -7454,6 +7452,7 @@
                                             </Style>
                                           </Textbox>
                                           <ColSpan>2</ColSpan>
+                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell />
@@ -7668,6 +7667,7 @@
                                             </Style>
                                           </Textbox>
                                           <ColSpan>2</ColSpan>
+                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell />
