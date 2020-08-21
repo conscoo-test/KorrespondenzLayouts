@@ -28,6 +28,12 @@
     "name":  "Test Runner",
     "version":  "16.0.0.0"
     },
+        {
+      "appId": "5d86850b-0d76-4eca-bd7b-951ad998e997",
+      "publisher": "Microsoft",
+      "name": "Tests-TestLibraries",
+      "version": "16.0.0.0"
+    },
    
     {
       "appId": "ae7eef02-bb60-436c-856d-d815600787b0",
@@ -38,7 +44,7 @@
   ],
   "screenshots": [],
   "platform": "16.0.0.0",
- 
+  "application": "16.0.0.0",
   "idRanges": [
     {
       "from": 5272720,
