@@ -33,7 +33,7 @@ report 5272721 "LBT Order Confirmation"
                     column(CompanyInfo1_Picture; CompanyInfo1.Picture)
                     {
                     }
-                    column(DocumentConfirmCopyCaption; STRSUBSTNO(TitleLbl, CopyText))
+                    column(DocumentConfirmCopyCaption; STRSUBSTNO(DocumentCaption(), CopyText))
                     {
                     }
                     column(CompanyAddressLine; CompanyAddressLine)
@@ -2186,6 +2186,21 @@ report 5272721 "LBT Order Confirmation"
         RepType: Option " ","Sales Quote","Sales Order","Sales Pro Forma Inv","Blanket Sales Order","Purchase Quote","Purchase Order","Blanket Purchase Order";
     begin
         LeBitReportFunctions.GetSourceType(TypeVar::Sales, RepType::"Sales Order", CustSource);
+    end;
+
+    local procedure DocumentCaption(): Text[250]
+    var
+        DocCaption: text;
+    begin
+        OnBeforeGetDocumentCaption("Sales Header", DocCaption);
+        if DocCaption <> '' then
+            exit(DocCaption);
+        exit(TitleLbl);
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeGetDocumentCaption(SalesHeader: Record "Sales Header"; var DocCaption: text);
+    begin
     end;
 }
 
