@@ -589,7 +589,7 @@
           <source>Setup LeBit365</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt AssistedSetup - NamedType SetupLbl</note>
-          <target>LeBit365-Belegset einrichten</target>
+          <target>LeBit365 Belegset einrichten</target>
         </trans-unit>
         <trans-unit id="Codeunit 1539813029 - NamedType 1433001484" size-unit="char" translate="yes" xml:space="preserve">
           <source>e6947c77-ec45-40c2-8c7e-01295de6efe4</source>
