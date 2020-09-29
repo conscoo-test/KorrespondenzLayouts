@@ -462,7 +462,7 @@ page 5272724 "lbt Wizard"
         DefaultReports[7] := GetReportSelection(ReportSelections.Usage::"Pro Forma S. Invoice", Report::"lbt Sales pro forma Invoice");
         DefaultReports[8] := GetReportSelection(ReportSelections.Usage::"P.Quote", Report::"lbt Purchase - Quote");
         DefaultReports[9] := GetReportSelection(ReportSelections.Usage::"P.Order", Report::"lbt Order");
-        DefaultReports[10] := GetReportSelection(ReportSelections.Usage::"S.Quote", Report::"lbt Blanket Purchase Order");
+        DefaultReports[10] := GetReportSelection(ReportSelections.Usage::"P.Blanket", Report::"lbt Blanket Purchase Order");
         DefaultReports[11] := GetReportSelection(ReportSelections.Usage::"P.Return", Report::"lbt Return Order");
         DefaultReports[12] := GetReportSelection(ReportSelections.Usage::Reminder, Report::"lbt Reminder");
     end;
@@ -490,7 +490,7 @@ page 5272724 "lbt Wizard"
         SetReportSelection(DefaultReports[7], ReportSelections.Usage::"Pro Forma S. Invoice", Report::"lbt Sales pro forma Invoice");
         SetReportSelection(DefaultReports[8], ReportSelections.Usage::"P.Quote", Report::"lbt Purchase - Quote");
         SetReportSelection(DefaultReports[9], ReportSelections.Usage::"P.Order", Report::"lbt Order");
-        SetReportSelection(DefaultReports[10], ReportSelections.Usage::"S.Quote", Report::"lbt Blanket Purchase Order");
+        SetReportSelection(DefaultReports[10], ReportSelections.Usage::"P.Blanket", Report::"lbt Blanket Purchase Order");
         SetReportSelection(DefaultReports[11], ReportSelections.Usage::"P.Return", Report::"lbt Return Order");
         SetReportSelection(DefaultReports[12], ReportSelections.Usage::Reminder, Report::"lbt Reminder");
     end;
