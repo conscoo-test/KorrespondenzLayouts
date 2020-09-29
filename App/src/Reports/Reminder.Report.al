@@ -245,7 +245,7 @@ report 5272731 "lbt Reminder"
                 column(PhoneNoCaption; PhoneNoCaptionLbl)
                 {
                 }
-                column(ReminderCaption; ReminderCaptionLbl)
+                column(ReminderCaption; DocumentCaption())
                 {
                 }
                 column(CustNo_IssuedReminderHdrCaption; "Issued Reminder Header".FIELDCAPTION("Customer No."))
@@ -910,5 +910,20 @@ report 5272731 "lbt Reminder"
         SubtotalCaptionLbl: Label 'Subtotal';
         HideCompanyInfo: Boolean;
         VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
+
+    local procedure DocumentCaption(): Text[250]
+    var
+        DocCaption: text;
+    begin
+        OnBeforeGetDocumentCaption("Issued Reminder Header", DocCaption);
+        if DocCaption <> '' then
+            exit(DocCaption);
+        exit(ReminderCaptionLbl);
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeGetDocumentCaption(IssuedReminderHeader: Record "Issued Reminder Header"; var DocCaption: text);
+    begin
+    end;
 }
 

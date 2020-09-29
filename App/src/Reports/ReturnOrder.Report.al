@@ -48,7 +48,7 @@ report 5272730 "lbt Return Order"
                     column(CompanyInfo3Picture; CompanyInfo3.Picture)
                     {
                     }
-                    column(DocumentConfirmCopyCaption; STRSUBSTNO(DocCaptionLbl, CopyText))
+                    column(DocumentConfirmCopyCaption; STRSUBSTNO(DocumentCaption(), CopyText))
                     {
                     }
                     column(BuyFromAddr1; BuyFromAddr[1])
@@ -1600,6 +1600,21 @@ report 5272730 "lbt Return Order"
             TempLeBitPSLongtextLine.Type := TempLeBitPSLongtextLine.Type::Text;
             TempLeBitPSLongtextLine.Insert();
         end;
+    end;
+
+    local procedure DocumentCaption(): Text[250]
+    var
+        DocCaption: text;
+    begin
+        OnBeforeGetDocumentCaption("Purchase Header", DocCaption);
+        if DocCaption <> '' then
+            exit(DocCaption);
+        exit(DocCaptionLbl);
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeGetDocumentCaption(PurchaseHeader: Record "Purchase Header"; var DocCaption: text);
+    begin
     end;
 }
 

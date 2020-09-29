@@ -34,7 +34,7 @@ report 5272724 "lbt Sales - Shipment"
                     column(CompanyInfo3Picture; CompanyInfo3.Picture)
                     {
                     }
-                    column(DocumentConfirmCopyCaption; STRSUBSTNO(TitleLbl, CopyText))
+                    column(DocumentConfirmCopyCaption; STRSUBSTNO(DocumentCaption(), CopyText))
                     {
                     }
                     column(ShipToAddr1; ShipToAddr[1])
@@ -1309,6 +1309,21 @@ report 5272724 "lbt Sales - Shipment"
             TempLeBitPostedPSLongtextLine.Type := TempLeBitPostedPSLongtextLine.Type::Text;
             TempLeBitPostedPSLongtextLine.Insert();
         end;
+    end;
+
+    local procedure DocumentCaption(): Text[250]
+    var
+        DocCaption: text;
+    begin
+        OnBeforeGetDocumentCaption("Sales Shipment Header", DocCaption);
+        if DocCaption <> '' then
+            exit(DocCaption);
+        exit(TitleLbl);
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeGetDocumentCaption(SalesShipmentHeader: Record "Sales Shipment Header"; var DocCaption: text);
+    begin
     end;
 }
 
