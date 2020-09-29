@@ -879,6 +879,7 @@ codeunit 5272723 "lbt Longtext Mgt."
             repeat
                 if FirstLine then begin
                     PurchSalesTextRec.Description := TempExtTextLineLongRec2.Description;
+                    PurchSalesTextRec.Type := ToPurchSalesTextRec.Type::"Text + Line break";
                     PurchSalesTextRec.Modify();
                     FirstLine := false;
                 end else begin
