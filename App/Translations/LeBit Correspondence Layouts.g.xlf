@@ -5738,11 +5738,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Extended Text - Control lbt LongTextSUB - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 135027988 - Control 2071004875 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1997869518">
-          <source>Here you can insert long texts.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Extended Text - Control lbt LongTextSUB - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="PageExtension 2540382516 - Action 2738780584 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 339140622">
           <source>LeBit365 Correspondence layout</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -7944,7 +7939,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purchase Line - Field lbt Printoption - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2301185401 - Field 2971227444 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
-          <source>Standard,Title,,Price Invisible,Line Invisible,Alternative,Optional,New Page,Begin Total,End Total</source>
+          <source>Standard,Title,Total,Price Invisible,Line Invisible,Alternative,Optional,New Page</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purchase Line - Field lbt Printoption - Property OptionCaption</note>
         </trans-unit>
@@ -7987,6 +7982,11 @@
           <source>--- New Page ---</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purchase Line - NamedType NewPageLbl</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2301185401 - NamedType 634245381" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
+          <source>If Type is %1 then you can only use printoptions "%2" and "%3"</source>
+          <note from="Developer" annotates="general" priority="2">%1 - Type, %2 - Printoption, %3 - Printoption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purchase Line - NamedType PrintOptionTypeMismatchErr</note>
         </trans-unit>
         <trans-unit id="TableExtension 1167243623 - Field 3218478807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2809873457">
           <source>Long Text</source>
@@ -8359,7 +8359,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Line - Field lbt Printoption - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 962502568 - Field 2971227444 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
-          <source>Standard,Title,,Price Invisible,Line Invisible,Alternative,Optional,New Page,Begin Total,End Total</source>
+          <source>Standard,Title,Total,Price Invisible,Line Invisible,Alternative,Optional,New Page</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Line - Field lbt Printoption - Property OptionCaption</note>
         </trans-unit>
@@ -8492,6 +8492,41 @@
           <source>lbt Printoption StyleExpr</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Shipment Line - Field lbt Printoption StyleExpr - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 4017407393 - EnumValue 2651433103 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 691140679">
+          <source>Begin Total</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension lbt Purchase Line Type - EnumValue Begin Total - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 4017407393 - EnumValue 2406352535 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 691140679">
+          <source>End Total</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension lbt Purchase Line Type - EnumValue End Total - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 4017407393 - EnumValue 2432313913 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 691140679">
+          <source>Pack Sample</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension lbt Purchase Line Type - EnumValue Pack Sample - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 387248199 - EnumValue 2604455405 - Property 2879900210" size-unit="char" translate="no" xml:space="preserve" al-object-target="Enum 3710813537">
+          <source>Shipment/Receipt</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension lbt Sales Document Type - EnumValue Shipment/Receipt - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 3036464616 - EnumValue 2651433103 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 1710557762">
+          <source>Begin Total</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension lbt Sales Line Type - EnumValue Begin Total - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 3036464616 - EnumValue 2406352535 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 1710557762">
+          <source>End Total</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension lbt Sales Line Type - EnumValue End Total - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 3036464616 - EnumValue 2432313913 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 1710557762">
+          <source>Pack Sample</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension lbt Sales Line Type - EnumValue Pack Sample - Property Caption</note>
         </trans-unit>
       </group>
     </body>
