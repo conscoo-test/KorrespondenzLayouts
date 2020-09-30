@@ -751,7 +751,6 @@ report 5272725 "lbt Blanket Sales Order"
                             if (SalesLine.Type = SalesLine.Type::"G/L Account") and (not ShowInternalInfo) then
                                 "Sales Line"."No." := '';
 
-                            SalesLineTypeInt := SalesLine.Type;
                             TotalSalesLineAmount += SalesLine."Line Amount";
                             TotalSalesInvDiscAmount += SalesLine."Inv. Discount Amount";
 
@@ -1495,7 +1494,6 @@ report 5272725 "lbt Blanket Sales Order"
         MoreLines: Boolean;
         NoOfCopies: Integer;
         NoOfLoops: Integer;
-        SalesLineTypeInt: Integer;
         OutputNo: Integer;
         CopyText: Text;
         ShowShippingAddr: Boolean;

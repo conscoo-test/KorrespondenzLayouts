@@ -467,7 +467,7 @@ page 5272724 "lbt Wizard"
         DefaultReports[12] := GetReportSelection(ReportSelections.Usage::Reminder, Report::"lbt Reminder");
     end;
 
-    local procedure GetReportSelection(Usage: Integer; ReportId: Integer): Boolean
+    local procedure GetReportSelection(Usage: Enum "Report Selection Usage"; ReportId: Integer): Boolean
     var
         ReportSelections: Record "Report Selections";
     begin
@@ -495,7 +495,7 @@ page 5272724 "lbt Wizard"
         SetReportSelection(DefaultReports[12], ReportSelections.Usage::Reminder, Report::"lbt Reminder");
     end;
 
-    local procedure SetReportSelection(UseLeBit365Report: Boolean; Usage: Integer; ReportId: Integer)
+    local procedure SetReportSelection(UseLeBit365Report: Boolean; Usage: Enum "Report Selection Usage"; ReportId: Integer)
     var
         ReportSelections: Record "Report Selections";
     begin

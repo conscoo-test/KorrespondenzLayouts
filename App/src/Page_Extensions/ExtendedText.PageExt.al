@@ -16,7 +16,6 @@ pageextension 5272741 "lbt Extended Text" extends "Extended Text"
             {
                 ApplicationArea = All;
                 Caption = 'Long Text';
-                ToolTip = 'Here you can insert long texts.';
                 SubPageLink = Table_ID = FIELD("Table Name"),
                               "No." = FIELD("No."),
                               "Language Code" = FIELD("Language Code"),

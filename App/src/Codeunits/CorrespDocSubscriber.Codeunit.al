@@ -17,45 +17,45 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
             SetFilter("lbt Printoption", '<>%1&<>%2', "lbt Printoption"::Alternative, "lbt Printoption"::Optional);
     end;
 
-    [EventSubscriber(ObjectType::Table, 36, 'OnAfterCreateSalesLine', '', false, false)]
+    [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnAfterCreateSalesLine', '', false, false)]
     local procedure "Table Sales Header - OnAfterCreateSalesLine"(var SalesLine: Record "Sales Line"; var TempSalesLine: Record "Sales Line" temporary)
     begin
         LeBitLongtextMgt.CopyFieldInfoAfterCreateSalesLine(SalesLine, TempSalesLine, true);
     end;
 
-    [EventSubscriber(ObjectType::Table, 37, 'OnValidateTypeOnCopyFromTempSalesLine', '', false, false)]
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnValidateTypeOnCopyFromTempSalesLine', '', false, false)]
     local procedure "Table Sales Line - OnValidateTypeOnCopyFromTempSalesLine"(var SalesLine: Record "Sales Line"; var TempSalesLine: Record "Sales Line" temporary)
     begin
         SalesLine."lbt Printoption" := TempSalesLine."lbt Printoption";
     end;
 
-    [EventSubscriber(ObjectType::Table, 37, 'OnValidateNoOnCopyFromTempSalesLine', '', false, false)]
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnValidateNoOnCopyFromTempSalesLine', '', false, false)]
     local procedure "Table Sales Line - OnValidateNoOnCopyFromTempSalesLine"(var SalesLine: Record "Sales Line"; var TempSalesLine: Record "Sales Line" temporary)
     begin
         SalesLine."lbt Printoption" := TempSalesLine."lbt Printoption";
         SalesLine."lbt Pos. No." := TempSalesLine."lbt Pos. No.";
     end;
 
-    [EventSubscriber(ObjectType::Table, 38, 'OnAfterCreatePurchLine', '', false, false)]
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterCreatePurchLine', '', false, false)]
     local procedure "Table Purchase Header - OnAfterCreatePurchLine"(var PurchaseLine: Record "Purchase Line"; var TempPurchaseLine: Record "Purchase Line" temporary)
     begin
         LeBitLongtextMgt.CopyFieldInfoAfterCreatePurchLine(PurchaseLine, TempPurchaseLine, true);
     end;
 
-    [EventSubscriber(ObjectType::Table, 39, 'OnValidateTypeOnCopyFromTempPurchLine', '', false, false)]
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnValidateTypeOnCopyFromTempPurchLine', '', false, false)]
     local procedure "Table Purchase Line - OnValidateTypeOnCopyFromTempPurchLine"(var PurchLine: Record "Purchase Line"; TempPurchaseLine: Record "Purchase Line" temporary)
     begin
         PurchLine."lbt Printoption" := TempPurchaseLine."lbt Printoption";
     end;
 
-    [EventSubscriber(ObjectType::Table, 39, 'OnValidateNoOnCopyFromTempPurchLine', '', false, false)]
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnValidateNoOnCopyFromTempPurchLine', '', false, false)]
     local procedure "Table Purchase Line - OnValidateNoOnCopyFromTempPurchLine"(var PurchLine: Record "Purchase Line"; TempPurchaseLine: Record "Purchase Line" temporary)
     begin
         PurchLine."lbt Printoption" := TempPurchaseLine."lbt Printoption";
         PurchLine."lbt Pos. No." := TempPurchaseLine."lbt Pos. No.";
     end;
 
-    [EventSubscriber(ObjectType::Table, 111, 'OnBeforeInsertInvLineFromShptLine', '', false, false)]
+    [EventSubscriber(ObjectType::Table, Database::"Sales Shipment Line", 'OnBeforeInsertInvLineFromShptLine', '', false, false)]
     local procedure "Table Sales Shipment Line - OnBeforeInsertInvLineFromShptLine"(var SalesShptLine: Record "Sales Shipment Line"; var SalesLine: Record "Sales Line")
     begin
         LeBitLongtextMgt.CopyLongTextForGetShipmentLines(SalesShptLine, SalesLine);
@@ -67,7 +67,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitLongtextMgt.CopyLongTextForGetPurchRcptLines(PurchRcptLine, PurchLine);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 80, 'OnBeforePostSalesDoc', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforePostSalesDoc', '', false, false)]
     local procedure OnBeforePostSalesDoc_Codeunit80(var SalesHeader: Record "Sales Header")
     var
         PurchRcptHeader: Record "Purch. Rcpt. Header";
@@ -76,7 +76,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitCorrespDocSingleInst.CopyLongTextForPostDropOrderShipment(PurchRcptHeader, PurchRcptLine, 0, 0);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 80, 'OnAfterPostSalesDoc', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnAfterPostSalesDoc', '', false, false)]
     local procedure OnAfterPostSalesDoc_Codeunit80(var SalesHeader: Record "Sales Header"; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; SalesShptHdrNo: Code[20]; RetRcpHdrNo: Code[20]; SalesInvHdrNo: Code[20]; SalesCrMemoHdrNo: Code[20])
     var
         PurchRcptHeader: Record "Purch. Rcpt. Header";
@@ -85,7 +85,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitCorrespDocSingleInst.CopyLongTextForPostDropOrderShipment(PurchRcptHeader, PurchRcptLine, 2, 0);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 80, 'OnBeforeSalesInvLineInsert', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforeSalesInvLineInsert', '', false, false)]
     local procedure OnBeforeSalesInvLineInsert_Codeunit80(var SalesInvLine: Record "Sales Invoice Line"; SalesInvHeader: Record "Sales Invoice Header"; SalesLine: Record "Sales Line")
     var
         SourceRecRef: RecordRef;
@@ -96,7 +96,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 80, 'OnBeforeSalesCrMemoLineInsert', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforeSalesCrMemoLineInsert', '', false, false)]
     local procedure OnBeforeSalesCrMemoLineInsert_Codeunit80(var SalesCrMemoLine: Record "Sales Cr.Memo Line"; SalesCrMemoHeader: Record "Sales Cr.Memo Header"; SalesLine: Record "Sales Line")
     var
         SourceRecRef: RecordRef;
@@ -107,7 +107,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 80, 'OnBeforeSalesShptHeaderInsert', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforeSalesShptHeaderInsert', '', false, false)]
     local procedure OnBeforeSalesShptHeaderInsert_Codeunit80(var SalesShptHeader: Record "Sales Shipment Header"; SalesHeader: Record "Sales Header")
     var
         SourceRecRef: RecordRef;
@@ -118,7 +118,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 80, 'OnBeforeReturnRcptHeaderInsert', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforeReturnRcptHeaderInsert', '', false, false)]
     local procedure OnBeforeReturnRcptHeaderInsert_Codeunit80(var ReturnRcptHeader: Record "Return Receipt Header"; SalesHeader: Record "Sales Header")
     var
         SourceRecRef: RecordRef;
@@ -129,7 +129,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 80, 'OnBeforeSalesInvHeaderInsert', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforeSalesInvHeaderInsert', '', false, false)]
     local procedure OnBeforeSalesInvHeaderInsert_Codeunit80(var SalesInvHeader: Record "Sales Invoice Header"; SalesHeader: Record "Sales Header")
     var
         SourceRecRef: RecordRef;
@@ -140,7 +140,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 80, 'OnBeforeSalesCrMemoHeaderInsert', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforeSalesCrMemoHeaderInsert', '', false, false)]
     local procedure OnBeforeSalesCrMemoHeaderInsert_Codeunit80(var SalesCrMemoHeader: Record "Sales Cr.Memo Header"; SalesHeader: Record "Sales Header")
     var
         SourceRecRef: RecordRef;
@@ -151,7 +151,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 80, 'OnBeforeSalesShptLineInsert', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforeSalesShptLineInsert', '', false, false)]
     local procedure OnBeforeSalesShptLineInsert_Codeunit80(var SalesShptLine: Record "Sales Shipment Line"; SalesShptHeader: Record "Sales Shipment Header"; SalesLine: Record "Sales Line")
     var
         SourceRecRef: RecordRef;
@@ -162,7 +162,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 80, 'OnBeforeReturnRcptLineInsert', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforeReturnRcptLineInsert', '', false, false)]
     local procedure OnBeforeReturnRcptLineInsert_Codeunit80(var ReturnRcptLine: Record "Return Receipt Line"; ReturnRcptHeader: Record "Return Receipt Header"; SalesLine: Record "Sales Line")
     var
         SourceRecRef: RecordRef;
@@ -184,7 +184,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 86, 'OnBeforeInsertSalesOrderLine', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Quote to Order", 'OnBeforeInsertSalesOrderLine', '', false, false)]
     local procedure OnBeforeInsertSalesOrderLine_Codeunit86(var SalesOrderLine: Record "Sales Line"; SalesOrderHeader: Record "Sales Header"; SalesQuoteLine: Record "Sales Line"; SalesQuoteHeader: Record "Sales Header")
     var
         SourceRecRef: RecordRef;
@@ -195,7 +195,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 87, 'OnBeforeInsertSalesOrderHeader', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Blanket Sales Order to Order", 'OnBeforeInsertSalesOrderHeader', '', false, false)]
     local procedure OnBeforeInsertSalesOrderHeader_Codeunit87(var SalesOrderHeader: Record "Sales Header"; BlanketOrderSalesHeader: Record "Sales Header")
     var
         SourceRecRef: RecordRef;
@@ -206,7 +206,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 87, 'OnBeforeInsertSalesOrderLine', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Blanket Sales Order to Order", 'OnBeforeInsertSalesOrderLine', '', false, false)]
     local procedure OnBeforeInsertSalesOrderLine_Codeunit87(var SalesOrderLine: Record "Sales Line"; SalesOrderHeader: Record "Sales Header"; BlanketOrderSalesLine: Record "Sales Line"; BlanketOrderSalesHeader: Record "Sales Header")
     var
         SourceRecRef: RecordRef;
@@ -217,7 +217,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 90, 'OnBeforePostPurchaseDoc', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePostPurchaseDoc', '', false, false)]
     local procedure OnBeforePostPurchaseDoc_Codeunit90(var PurchaseHeader: Record "Purchase Header")
     var
         SalesShipmentHeader: Record "Sales Shipment Header";
@@ -226,7 +226,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitCorrespDocSingleInst.CopyLongTextForPostCombineSalesOrderShipment(SalesShipmentHeader, SalesShipmentLine, 0, 0);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 90, 'OnAfterPostPurchaseDoc', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterPostPurchaseDoc', '', false, false)]
     local procedure OnAfterPostPurchaseDoc_Codeunit90(var PurchaseHeader: Record "Purchase Header"; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; PurchRcpHdrNo: Code[20]; RetShptHdrNo: Code[20]; PurchInvHdrNo: Code[20]; PurchCrMemoHdrNo: Code[20])
     var
         SalesShipmentHeader: Record "Sales Shipment Header";
@@ -235,7 +235,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitCorrespDocSingleInst.CopyLongTextForPostCombineSalesOrderShipment(SalesShipmentHeader, SalesShipmentLine, 2, 0);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 90, 'OnBeforePurchCrMemoHeaderInsert', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePurchCrMemoHeaderInsert', '', false, false)]
     local procedure OnBeforePurchCrMemoHeaderInsert_Codeunit90(var PurchCrMemoHdr: Record "Purch. Cr. Memo Hdr."; var PurchHeader: Record "Purchase Header")
     var
         SourceRecRef: RecordRef;
@@ -246,7 +246,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 90, 'OnBeforePurchCrMemoLineInsert', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePurchCrMemoLineInsert', '', false, false)]
     local procedure OnBeforePurchCrMemoLineInsert_Codeunit90(var PurchCrMemoLine: Record "Purch. Cr. Memo Line"; var PurchCrMemoHdr: Record "Purch. Cr. Memo Hdr."; var PurchLine: Record "Purchase Line")
     var
         SourceRecRef: RecordRef;
@@ -257,7 +257,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 90, 'OnBeforePurchInvHeaderInsert', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePurchInvHeaderInsert', '', false, false)]
     local procedure OnBeforePurchInvHeaderInsert_Codeunit90(var PurchInvHeader: Record "Purch. Inv. Header"; var PurchHeader: Record "Purchase Header")
     var
         SourceRecRef: RecordRef;
@@ -268,7 +268,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 90, 'OnBeforePurchInvLineInsert', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePurchInvLineInsert', '', false, false)]
     local procedure OnBeforePurchInvLineInsert_Codeunit90(var PurchInvLine: Record "Purch. Inv. Line"; var PurchInvHeader: Record "Purch. Inv. Header"; var PurchaseLine: Record "Purchase Line")
     var
         SourceRecRef: RecordRef;
@@ -279,7 +279,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 90, 'OnBeforePurchRcptHeaderInsert', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePurchRcptHeaderInsert', '', false, false)]
     local procedure OnBeforePurchRcptHeaderInsert_Codeunit90(var PurchRcptHeader: Record "Purch. Rcpt. Header"; var PurchaseHeader: Record "Purchase Header")
     var
         SourceRecRef: RecordRef;
@@ -290,7 +290,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 90, 'OnBeforePurchRcptLineInsert', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePurchRcptLineInsert', '', false, false)]
     local procedure OnBeforePurchRcptLineInsert_Codeunit90(var PurchRcptLine: Record "Purch. Rcpt. Line"; var PurchRcptHeader: Record "Purch. Rcpt. Header"; var PurchLine: Record "Purchase Line")
     var
         SourceRecRef: RecordRef;
@@ -301,7 +301,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 90, 'OnBeforeReturnShptHeaderInsert', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforeReturnShptHeaderInsert', '', false, false)]
     local procedure OnBeforeReturnShptHeaderInsert_Codeunit90(var ReturnShptHeader: Record "Return Shipment Header"; var PurchHeader: Record "Purchase Header")
     var
         SourceRecRef: RecordRef;
@@ -312,7 +312,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 90, 'OnBeforeReturnShptLineInsert', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforeReturnShptLineInsert', '', false, false)]
     local procedure OnBeforeReturnShptLineInsert_Codeunit90(var ReturnShptLine: Record "Return Shipment Line"; var ReturnShptHeader: Record "Return Shipment Header"; var PurchLine: Record "Purchase Line")
     var
         SourceRecRef: RecordRef;
@@ -323,18 +323,18 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 96, 'OnBeforeInsertPurchOrderHeader', '', false, false)]
-    local procedure OnBeforeInsertPurchOrderHeader_Codeunit96(var PurchOrderHeader: Record "Purchase Header"; PurchQuoteHeader: Record "Purchase Header")
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Quote to Order", 'OnCreatePurchHeaderOnBeforePurchOrderHeaderModify', '', false, false)]
+    local procedure OnCreatePurchHeaderOnBeforePurchOrderHeaderModify_Codeunit96(var PurchOrderHeader: Record "Purchase Header"; PurchHeader: Record "Purchase Header")
     var
         SourceRecRef: RecordRef;
         TargetRecRef: RecordRef;
     begin
-        SourceRecRef.GETTABLE(PurchQuoteHeader);
+        SourceRecRef.GETTABLE(PurchHeader);
         TargetRecRef.GETTABLE(PurchOrderHeader);
         LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 96, 'OnBeforeInsertPurchOrderLine', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Quote to Order", 'OnBeforeInsertPurchOrderLine', '', false, false)]
     local procedure OnBeforeInsertPurchOrderLine_Codeunit96(var PurchOrderLine: Record "Purchase Line"; PurchOrderHeader: Record "Purchase Header"; PurchQuoteLine: Record "Purchase Line"; PurchQuoteHeader: Record "Purchase Header")
     var
         SourceRecRef: RecordRef;
@@ -356,7 +356,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 97, 'OnBeforeInsertPurchOrderLine', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Blanket Purch. Order to Order", 'OnBeforeInsertPurchOrderLine', '', false, false)]
     local procedure OnBeforeInsertPurchOrderLine_Codeunit97(var PurchOrderLine: Record "Purchase Line"; PurchOrderHeader: Record "Purchase Header"; BlanketOrderPurchLine: Record "Purchase Line"; BlanketOrderPurchHeader: Record "Purchase Header")
     var
         SourceRecRef: RecordRef;
@@ -367,51 +367,51 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 5063, 'OnAfterStoreSalesLineArchive', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"ArchiveManagement", 'OnAfterStoreSalesLineArchive', '', false, false)]
     local procedure OnAfterStoreSalesLineArchive_Codeunit5063(var SalesHeader: Record "Sales Header"; var SalesLine: Record "Sales Line"; var SalesHeaderArchive: Record "Sales Header Archive"; var SalesLineArchive: Record "Sales Line Archive")
     begin
         LeBitLongtextMgt.CopyLongTextForSalesArchivMgt(SalesHeader, SalesLine, SalesHeaderArchive, SalesLineArchive);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 5063, 'OnAfterStorePurchLineArchive', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"ArchiveManagement", 'OnAfterStorePurchLineArchive', '', false, false)]
     local procedure OnAfterStorePurchLineArchive_Codeunit5063(var PurchHeader: Record "Purchase Header"; var PurchLine: Record "Purchase Line"; var PurchHeaderArchive: Record "Purchase Header Archive"; var PurchLineArchive: Record "Purchase Line Archive")
     begin
         LeBitLongtextMgt.CopyLongTextForPurchArchivMgt(PurchHeader, PurchLine, PurchHeaderArchive, PurchLineArchive);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 6620, 'OnCopySalesDocWithHeader', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnCopySalesDocWithHeader', '', false, false)]
     local procedure OnCopySalesDocWithHeader_Codeunit6620(FromDocType: Option; FromDocNo: Code[20]; var ToSalesHeader: Record "Sales Header")
     begin
         LeBitCorrespDocSingleInst.SetWithSalesHeader(true);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 6620, 'OnAfterUpdateSalesLine', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterUpdateSalesLine', '', false, false)]
     local procedure OnAfterUpdateSalesLine_Codeunit6620(var ToSalesHeader: Record "Sales Header"; var ToSalesLine: Record "Sales Line"; var FromSalesHeader: Record "Sales Header"; var FromSalesLine: Record "Sales Line"; var CopyThisLine: Boolean; RecalculateAmount: Boolean; FromSalesDocType: Option; var CopyPostedDeferral: Boolean)
     begin
         LeBitLongtextMgt.CopyLongTextForSalesCopyMgt(ToSalesHeader, ToSalesLine, FromSalesHeader, FromSalesLine, CopyThisLine, FromSalesDocType, LeBitCorrespDocSingleInst.GetWithSalesHeader());
         LeBitCorrespDocSingleInst.SetWithSalesHeader(false);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 6620, 'OnBeforeModifyPurchHeader', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnBeforeModifyPurchHeader', '', false, false)]
     local procedure OnBeforeModifyPurchHeader_Codeunit6620(var ToPurchHeader: Record "Purchase Header"; FromDocType: Option; FromDocNo: Code[20]; IncludeHeader: Boolean)
     begin
         LeBitCorrespDocSingleInst.SetWithPurchHeader(true);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 6620, 'OnAfterUpdatePurchLine', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterUpdatePurchLine', '', false, false)]
     local procedure OnAfterUpdatePurchLine_Codeunit6620(var ToPurchHeader: Record "Purchase Header"; var ToPurchLine: Record "Purchase Line"; var FromPurchHeader: Record "Purchase Header"; var FromPurchLine: Record "Purchase Line"; var CopyThisLine: Boolean; RecalculateAmount: Boolean; FromPurchDocType: Option; var CopyPostedDeferral: Boolean)
     begin
         LeBitLongtextMgt.CopyLongTextForPurchCopyMgt(ToPurchHeader, ToPurchLine, FromPurchHeader, FromPurchLine, CopyThisLine, FromPurchDocType, LeBitCorrespDocSingleInst.GetWithPurchHeader());
         LeBitCorrespDocSingleInst.SetWithPurchHeader(false);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 6620, 'OnAfterCopySalesDocument', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopySalesDocument', '', false, false)]
     local procedure OnAfterCopySalesDocument_Codeunit6620(FromDocumentType: Option; FromDocumentNo: Code[20]; var ToSalesHeader: Record "Sales Header")
     begin
         LeBitCorrespDocMgt.SalesLineIndentTotaling(ToSalesHeader);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 6620, 'OnAfterCopyPurchaseDocument', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopyPurchaseDocument', '', false, false)]
     local procedure OnAfterCopyPurchaseDocument_Codeunit6620(FromDocumentType: Option; FromDocumentNo: Code[20]; var ToPurchaseHeader: Record "Purchase Header")
     begin
         LeBitCorrespDocMgt.PurchLineIndentTotaling(ToPurchaseHeader);

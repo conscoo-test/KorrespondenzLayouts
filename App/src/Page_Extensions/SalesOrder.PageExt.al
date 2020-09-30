@@ -122,7 +122,7 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                         LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
-                        DocType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order","Shipment/Receipt";
+                        DocType: Enum "Sales Document Type";
                     begin
                         SalesHeaderLRec.TransferFields(Rec);
                         SalesHeaderLRec."Document Type" := DocType::"Shipment/Receipt";
@@ -143,7 +143,7 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                         LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
-                        DocType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order","Shipment/Receipt";
+                        DocType: Enum "Sales Document Type";
                     begin
                         SalesHeaderLRec.TransferFields(Rec);
                         SalesHeaderLRec."Document Type" := DocType::"Shipment/Receipt";

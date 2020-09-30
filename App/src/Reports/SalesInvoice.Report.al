@@ -1783,7 +1783,7 @@ report 5272722 "lbt Sales - Invoice"
         end;
     end;
 
-    local procedure DocumentCaption(): Text[250]
+    local procedure DocumentCaption(): Text
     var
         DocCaption: text;
     begin

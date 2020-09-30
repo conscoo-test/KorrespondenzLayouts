@@ -22,8 +22,9 @@
 	],
 	"settings": {
 		"al.enableCodeAnalysis": true,
+		"al.ruleSetPath": "lebit.ruleset.json",
 		"CRS.ObjectNamePrefix": "lbt ",
-		"CRS.OnSaveAlFileAction": "Rename",
+		// "CRS.OnSaveAlFileAction": "Rename",
 		"CRS.RemovePrefixFromFilename": true,
 		"al.codeAnalyzers": [
 			"${AppSourceCop}",

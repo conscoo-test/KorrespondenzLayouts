@@ -7,17 +7,14 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
         {
             trigger OnAfterValidate()
             begin
-                if Type <> Type::" " then begin
-                    if "lbt Printoption" in ["lbt Printoption"::"Begin Total",
-                                                   "lbt Printoption"::"End Total",
-                                                   "lbt Printoption"::Title,
-                                                   "lbt Printoption"::"New Page"]
-                    then
-                        VALIDATE("lbt Printoption", "lbt Printoption"::Standard);
-                end else
-                    if "lbt Printoption" <> "lbt Printoption"::"New Page" then
-                        VALIDATE("lbt Printoption", "lbt Printoption"::Standard);
-
+                case Type of
+                    Type::"Begin Total":
+                        "lbt Printoption" := "lbt Printoption"::Title;
+                    Type::"End Total":
+                        "lbt Printoption" := "lbt Printoption"::Total;
+                    Type::"Pack Sample":
+                        "lbt Printoption" := "lbt Printoption"::Title;
+                end;
             end;
         }
 
@@ -35,8 +32,8 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
         field(5272721; "lbt Printoption"; Option)
         {
             Caption = 'Printoption';
-            OptionCaption = 'Standard,Title,,Price Invisible,Line Invisible,Alternative,Optional,New Page,Begin Total,End Total';
-            OptionMembers = Standard,Title,,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total";
+            OptionCaption = 'Standard,Title,Total,Price Invisible,Line Invisible,Alternative,Optional,New Page';
+            OptionMembers = Standard,Title,Total,"Price Invisible","Line Invisible",Alternative,Optional,"New Page";
             DataClassification = CustomerContent;
 
             trigger OnValidate()
@@ -82,7 +79,7 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
 
             trigger OnValidate()
             begin
-                if Type <> 9 then
+                if Type <> Type::"End Total" then
                     FIELDERROR(Type);
                 CALCFIELDS("lbt Balance");
             end;

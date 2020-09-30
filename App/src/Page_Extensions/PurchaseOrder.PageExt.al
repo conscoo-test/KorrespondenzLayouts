@@ -82,7 +82,7 @@ pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
                         LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
-                        DocType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order";
+                        DocType: Enum "Purchase Document Type";
                     begin
                         PurchaseHeaderRec.TransferFields(Rec);
                         PurchaseHeaderRec."Document Type" := DocType::Invoice;
@@ -103,7 +103,7 @@ pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
                         LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
-                        DocType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order";
+                        DocType: Enum "Purchase Document Type";
                     begin
                         PurchaseHeaderRec.TransferFields(Rec);
                         PurchaseHeaderRec."Document Type" := DocType::Invoice;
@@ -124,7 +124,7 @@ pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
                         LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
-                        DocType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order";
+                        DocType: Enum "Purchase Document Type";
                     begin
                         PurchaseHeaderRec.TransferFields(Rec);
                         PurchaseHeaderRec."Document Type" := DocType::"Return Order";
@@ -145,7 +145,7 @@ pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
                         LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
-                        DocType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order";
+                        DocType: Enum "Purchase Document Type";
                     begin
                         PurchaseHeaderRec.TransferFields(Rec);
                         PurchaseHeaderRec."Document Type" := DocType::"Return Order";

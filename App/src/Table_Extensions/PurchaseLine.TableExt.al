@@ -6,16 +6,14 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
         {
             trigger OnAfterValidate()
             begin
-                if Type <> Type::" " then begin
-                    if "lbt Printoption" in ["lbt Printoption"::"Begin Total",
-                                                   "lbt Printoption"::"End Total",
-                                                   "lbt Printoption"::Title,
-                                                   "lbt Printoption"::"New Page"]
-                    then
-                        VALIDATE("lbt Printoption", "lbt Printoption"::Standard);
-                end else
-                    if "lbt Printoption" <> "lbt Printoption"::"New Page" then
-                        VALIDATE("lbt Printoption", "lbt Printoption"::Standard);
+                case Type of
+                    Type::"Begin Total":
+                        "lbt Printoption" := "lbt Printoption"::Title;
+                    Type::"End Total":
+                        "lbt Printoption" := "lbt Printoption"::Total;
+                    Type::"Pack Sample":
+                        "lbt Printoption" := "lbt Printoption"::Title;
+                end;
             end;
         }
         modify("No.")
@@ -41,14 +39,13 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
         field(5272721; "lbt Printoption"; Option)
         {
             Caption = 'Printoption';
-            OptionCaption = 'Standard,Title,,Price Invisible,Line Invisible,Alternative,Optional,New Page,Begin Total,End Total';
-            OptionMembers = Standard,Title,,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total";
+            OptionCaption = 'Standard,Title,Total,Price Invisible,Line Invisible,Alternative,Optional,New Page';
+            OptionMembers = Standard,Title,Total,"Price Invisible","Line Invisible",Alternative,Optional,"New Page";
             DataClassification = CustomerContent;
 
             trigger OnValidate()
             var
                 LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
-                Printoption: Integer;
             begin
                 if ("lbt Printoption" = "lbt Printoption"::Alternative) or ("lbt Printoption" = "lbt Printoption"::Optional) then begin
                     VALIDATE(Quantity, 0);
@@ -58,20 +55,17 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
                 if "lbt Printoption" = "lbt Printoption"::"New Page" then begin
                     if "No." <> '' then
                         ERROR(NewPageErr);
-                    Printoption := "lbt Printoption";
                     VALIDATE(Type, Type::" ");
                     Description := NewPageLbl;
-                    "lbt Printoption" := Printoption;
                 end;
 
-                if "lbt Printoption" in ["lbt Printoption"::"Begin Total",
-                                           "lbt Printoption"::"End Total",
-                                           "lbt Printoption"::Title]
-                then begin
-                    Printoption := "lbt Printoption";
-                    VALIDATE(Type, Type::" ");
-                    "lbt Printoption" := Printoption;
-                end;
+                if "lbt Printoption" = "lbt Printoption"::"Total" then
+                    VALIDATE(Type, Type::"End Total");
+
+                if (Type = Type::"Begin Total") and not ("lbt Printoption" in ["lbt Printoption"::Title, "lbt Printoption"::"Line Invisible"]) then
+                    Error(PrintOptionTypeMismatchErr, Type, "lbt Printoption"::Title, "lbt Printoption"::"Line Invisible");
+                if (Type = Type::"End Total") and not ("lbt Printoption" in ["lbt Printoption"::Total, "lbt Printoption"::"Line Invisible"]) then
+                    Error(PrintOptionTypeMismatchErr, Type, "lbt Printoption"::Total, "lbt Printoption"::"Line Invisible");
 
                 "lbt Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr("lbt Printoption");
             end;
@@ -86,7 +80,7 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
 
             trigger OnValidate()
             begin
-                if Type <> 9 then
+                if Type <> Type::"End Total" then
                     FIELDERROR(Type);
                 CALCFIELDS("lbt Balance");
             end;
@@ -139,5 +133,6 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
     var
         NewPageErr: Label 'New Pages can only be set in blank lines.';
         NewPageLbl: Label '--- New Page ---';
+        PrintOptionTypeMismatchErr: Label 'If Type is %1 then you can only use printoptions "%2" and "%3"', Comment = '%1 - Type, %2 - Printoption, %3 - Printoption';
 }
 
