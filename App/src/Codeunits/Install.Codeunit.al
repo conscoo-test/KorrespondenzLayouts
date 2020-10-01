@@ -4,8 +4,14 @@ codeunit 5272725 "lbt Install"
 
     trigger OnInstallAppPerCompany()
     var
+        CorrSetup: Record "lbt Corr Setup";
         lbtModuleInfo: ModuleInfo;
     begin
+        with CorrSetup do
+            if IsEmpty() then begin
+                Init();
+                Insert();
+            end;
         NavApp.GetCurrentModuleInfo(lbtModuleInfo);
         if lbtModuleInfo.DataVersion() = Version.Create(0, 0, 0, 0) then begin
             //new installation

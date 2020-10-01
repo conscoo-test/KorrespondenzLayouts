@@ -4,7 +4,7 @@ pageextension 5272742 "lbt Sales Quote" extends "Sales Quote"
     {
         modify(SalesLines)
         {
-            Enabled = ("Sell-to Customer No." <> '') OR ("Sell-to Customer Template Code" <> '');
+            Enabled = (Rec."Sell-to Customer No." <> '') OR (Rec."Sell-to Customer Template Code" <> '');
             //PZA
             //Editable = ("Sell-to Customer No." <> '') OR ("Sell-to Customer Template Code" <> '');
             //PZA

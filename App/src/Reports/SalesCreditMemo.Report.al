@@ -14,6 +14,7 @@ report 5272723 "lbt Sales - Credit Memo"
             DataItemTableView = SORTING("No.");
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
             RequestFilterHeading = 'Posted Sales Credit Memo';
+            column(AlwaysPrintVat_CorrSetup; CorrSetup."Always print VAT") { }
             column(No_SalesCrMemoHeader; "No.")
             {
             }
@@ -1270,6 +1271,7 @@ report 5272723 "lbt Sales - Credit Memo"
         GLSetup.Get();
         CompanyInfo.Get();
         SalesSetup.Get();
+        CorrSetup.Get();
         FormatDocument.SetLogoPosition(SalesSetup."Logo Position on Documents", CompanyInfo1, CompanyInfo2, CompanyInfo3);
     end;
 
@@ -1299,6 +1301,7 @@ report 5272723 "lbt Sales - Credit Memo"
         PaymentTerms: Record "Payment Terms";
         PaymentMethod: Record "Payment Method";
         ShipmentMethod: Record "Shipment Method";
+        CorrSetup: Record "lbt Corr Setup";
         Language: Codeunit Language;
         LeBitReportFunctions: Codeunit "lbt Report Functions";
         FormatAddr: Codeunit "Format Address";

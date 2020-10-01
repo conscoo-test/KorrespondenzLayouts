@@ -17,10 +17,7 @@ codeunit 5272727 "lbt AssistedSetup"
         AssistedSetup: Codeunit "Assisted Setup";
         AssistedSetupGroup: Enum "Assisted Setup Group";
     begin
-        if AssistedSetup.Exists(Page::"lbt Wizard") then
-            exit;
         AssistedSetup.Add(GetAppId(), Page::"lbt Wizard", SetupLbl, AssistedSetupGroup::Extensions);
-        Commit();
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Role Center Notification Mgt.", 'OnBeforeShowNotifications', '', true, true)]
@@ -48,6 +45,7 @@ codeunit 5272727 "lbt AssistedSetup"
         AssistedSetup: Codeunit "Assisted Setup";
     begin
         RegisterAssistedSetup();
+        Commit();
         AssistedSetup.Run(Page::"lbt Wizard");
     end;
 

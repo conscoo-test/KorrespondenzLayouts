@@ -10749,55 +10749,55 @@
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=Sum(Fields!AmtInclVAT_SalesInvLine.Value) &lt;&gt; Sum(Fields!Amount_SalesInvoiceLine.Value)</Hidden>
+                                      <Hidden>=Sum(Fields!AmtInclVAT_SalesInvLine.Value) &lt;&gt; Sum(Fields!Amount_SalesInvoiceLine.Value) or Fields!AlwaysPrintVat_CorrSetup.Value</Hidden>
                                     </Visibility>
                                     <KeepWithGroup>Before</KeepWithGroup>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=Sum(Fields!AmtInclVAT_SalesInvLine.Value) &lt;&gt; Sum(Fields!Amount_SalesInvoiceLine.Value)</Hidden>
-                                    </Visibility>
-                                    <KeepWithGroup>Before</KeepWithGroup>
-                                  </TablixMember>
-                                  <TablixMember>
-                                    <Visibility>
-                                      <Hidden>=Not(Fields!PricesInclVAT_SalesInvHdr.Value = false and 
-(Sum(Fields!AmtInclVAT_SalesInvLine.Value) &lt;&gt; Sum(Fields!Amount_SalesInvoiceLine.Value)))</Hidden>
+                                      <Hidden>=Sum(Fields!AmtInclVAT_SalesInvLine.Value) &lt;&gt; Sum(Fields!Amount_SalesInvoiceLine.Value) or Fields!AlwaysPrintVat_CorrSetup.Value</Hidden>
                                     </Visibility>
                                     <KeepWithGroup>Before</KeepWithGroup>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
                                       <Hidden>=Not(Fields!PricesInclVAT_SalesInvHdr.Value = false and 
-(Sum(Fields!AmtInclVAT_SalesInvLine.Value) &lt;&gt; Sum(Fields!Amount_SalesInvoiceLine.Value)))</Hidden>
+(Sum(Fields!AmtInclVAT_SalesInvLine.Value) &lt;&gt; Sum(Fields!Amount_SalesInvoiceLine.Value) or Fields!AlwaysPrintVat_CorrSetup.Value))</Hidden>
                                     </Visibility>
                                     <KeepWithGroup>Before</KeepWithGroup>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
                                       <Hidden>=Not(Fields!PricesInclVAT_SalesInvHdr.Value = false and 
-(Sum(Fields!AmtInclVAT_SalesInvLine.Value) &lt;&gt; Sum(Fields!Amount_SalesInvoiceLine.Value)))</Hidden>
+(Sum(Fields!AmtInclVAT_SalesInvLine.Value) &lt;&gt; Sum(Fields!Amount_SalesInvoiceLine.Value) or Fields!AlwaysPrintVat_CorrSetup.Value))</Hidden>
                                     </Visibility>
                                     <KeepWithGroup>Before</KeepWithGroup>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
                                       <Hidden>=Not(Fields!PricesInclVAT_SalesInvHdr.Value = false and 
-(Sum(Fields!AmtInclVAT_SalesInvLine.Value) &lt;&gt; Sum(Fields!Amount_SalesInvoiceLine.Value)))</Hidden>
+(Sum(Fields!AmtInclVAT_SalesInvLine.Value) &lt;&gt; Sum(Fields!Amount_SalesInvoiceLine.Value) or Fields!AlwaysPrintVat_CorrSetup.Value))</Hidden>
                                     </Visibility>
                                     <KeepWithGroup>Before</KeepWithGroup>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
                                       <Hidden>=Not(Fields!PricesInclVAT_SalesInvHdr.Value = false and 
-(Sum(Fields!AmtInclVAT_SalesInvLine.Value) &lt;&gt; Sum(Fields!Amount_SalesInvoiceLine.Value)))</Hidden>
+(Sum(Fields!AmtInclVAT_SalesInvLine.Value) &lt;&gt; Sum(Fields!Amount_SalesInvoiceLine.Value) or Fields!AlwaysPrintVat_CorrSetup.Value))</Hidden>
+                                    </Visibility>
+                                    <KeepWithGroup>Before</KeepWithGroup>
+                                  </TablixMember>
+                                  <TablixMember>
+                                    <Visibility>
+                                      <Hidden>=Not(Fields!PricesInclVAT_SalesInvHdr.Value = false and 
+(Sum(Fields!AmtInclVAT_SalesInvLine.Value) &lt;&gt; Sum(Fields!Amount_SalesInvoiceLine.Value) or Fields!AlwaysPrintVat_CorrSetup.Value))</Hidden>
                                     </Visibility>
                                     <KeepWithGroup>Before</KeepWithGroup>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
                                       <Hidden>=not((Fields!PricesInclVAT_SalesInvHdr.Value = true) and 
-(Sum(Fields!AmtInclVAT_SalesInvLine.Value) &lt;&gt; Sum(Fields!Amount_SalesInvoiceLine.Value)) and
+(Sum(Fields!AmtInclVAT_SalesInvLine.Value) &lt;&gt; Sum(Fields!Amount_SalesInvoiceLine.Value) or Fields!AlwaysPrintVat_CorrSetup.Value) and
 (Fields!VATBaseDisc_SalesInvHdr.Value &lt;&gt; 0))</Hidden>
                                     </Visibility>
                                     <KeepWithGroup>Before</KeepWithGroup>
@@ -10805,28 +10805,28 @@
                                   <TablixMember>
                                     <Visibility>
                                       <Hidden>=Not(Fields!PricesInclVAT_SalesInvHdr.Value = true and 
-(Sum(Fields!AmtInclVAT_SalesInvLine.Value) &lt;&gt; Sum(Fields!Amount_SalesInvoiceLine.Value)))</Hidden>
+(Sum(Fields!AmtInclVAT_SalesInvLine.Value) &lt;&gt; Sum(Fields!Amount_SalesInvoiceLine.Value) or Fields!AlwaysPrintVat_CorrSetup.Value))</Hidden>
                                     </Visibility>
                                     <KeepWithGroup>Before</KeepWithGroup>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
                                       <Hidden>=Not(Fields!PricesInclVAT_SalesInvHdr.Value = true and 
-(Sum(Fields!AmtInclVAT_SalesInvLine.Value) &lt;&gt; Sum(Fields!Amount_SalesInvoiceLine.Value)))</Hidden>
+(Sum(Fields!AmtInclVAT_SalesInvLine.Value) &lt;&gt; Sum(Fields!Amount_SalesInvoiceLine.Value) or Fields!AlwaysPrintVat_CorrSetup.Value))</Hidden>
                                     </Visibility>
                                     <KeepWithGroup>Before</KeepWithGroup>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
                                       <Hidden>=Not(Fields!PricesInclVAT_SalesInvHdr.Value = true and 
-(Sum(Fields!AmtInclVAT_SalesInvLine.Value) &lt;&gt; Sum(Fields!Amount_SalesInvoiceLine.Value)))</Hidden>
+(Sum(Fields!AmtInclVAT_SalesInvLine.Value) &lt;&gt; Sum(Fields!Amount_SalesInvoiceLine.Value) or Fields!AlwaysPrintVat_CorrSetup.Value))</Hidden>
                                     </Visibility>
                                     <KeepWithGroup>Before</KeepWithGroup>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
                                       <Hidden>=Not(Fields!PricesInclVAT_SalesInvHdr.Value = true and 
-(Sum(Fields!AmtInclVAT_SalesInvLine.Value) &lt;&gt; Sum(Fields!Amount_SalesInvoiceLine.Value)))</Hidden>
+(Sum(Fields!AmtInclVAT_SalesInvLine.Value) &lt;&gt; Sum(Fields!Amount_SalesInvoiceLine.Value) or Fields!AlwaysPrintVat_CorrSetup.Value))</Hidden>
                                     </Visibility>
                                     <KeepWithGroup>Before</KeepWithGroup>
                                   </TablixMember>
@@ -12181,6 +12181,9 @@ End Function
   <DataSets>
     <DataSet Name="DataSet_Result">
       <Fields>
+        <Field Name="AlwaysPrintVat_CorrSetup">
+          <DataField>AlwaysPrintVat_CorrSetup</DataField>
+        </Field>
         <Field Name="No_SalesInvHdr">
           <DataField>No_SalesInvHdr</DataField>
         </Field>

@@ -12,6 +12,7 @@ report 5272726 "lbt Sales pro forma Invoice"
             DataItemTableView = SORTING("Document Type", "No.") WHERE("Document Type" = FILTER(Invoice | Order));
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
             RequestFilterHeading = 'Pro Forma Invoice';
+            column(AlwaysPrintVat_CorrSetup; CorrSetup."Always print VAT") { }
             column(DocType_SalesHeader; "Document Type")
             {
             }
@@ -1904,6 +1905,7 @@ report 5272726 "lbt Sales pro forma Invoice"
         GLSetup.Get();
         CompanyInfo.Get();
         SalesSetup.Get();
+        CorrSetup.Get();
 
         case SalesSetup."Logo Position on Documents" of
             SalesSetup."Logo Position on Documents"::"No Logo":
@@ -1950,6 +1952,7 @@ report 5272726 "lbt Sales pro forma Invoice"
         Item: Record Item;
         TempLeBitPSLongtextLine: Record "lbt PS Longtext Line" temporary;
         SalesLineRec: Record "Sales Line";
+        CorrSetup: Record "lbt Corr Setup";
         Language: Codeunit Language;
         LeBitReportFunctions: Codeunit "lbt Report Functions";
         FormatAddr: Codeunit "Format Address";

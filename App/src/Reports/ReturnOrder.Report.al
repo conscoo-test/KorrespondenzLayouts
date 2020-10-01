@@ -12,6 +12,7 @@ report 5272730 "lbt Return Order"
             DataItemTableView = SORTING("Document Type", "No.") WHERE("Document Type" = CONST("Return Order"));
             RequestFilterFields = "No.", "Buy-from Vendor No.", "No. Printed";
             RequestFilterHeading = 'Purchase Return Order';
+            column(AlwaysPrintVat_CorrSetup; CorrSetup."Always print VAT") { }
             column(Purchase_Header_Document_Type; "Document Type")
             {
             }
@@ -1321,6 +1322,7 @@ report 5272730 "lbt Return Order"
         GLSetup.Get();
         CompanyInfo.Get();
         PurchSetup.Get();
+        CorrSetup.Get();
         FormatDocument.SetLogoPosition(PurchSetup."lbt Logo Position on Documents", CompanyInfo1, CompanyInfo2, CompanyInfo3);
     end;
 
@@ -1347,6 +1349,7 @@ report 5272730 "lbt Return Order"
         CompanyInfo3: Record "Company Information";
         TempLeBitPSLongtextLine: Record "lbt PS Longtext Line" temporary;
         Vendor: Record Vendor;
+        CorrSetup: Record "lbt Corr Setup";
         Language: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";

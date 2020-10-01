@@ -14,6 +14,7 @@ report 5272722 "lbt Sales - Invoice"
             DataItemTableView = SORTING("No.");
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
             RequestFilterHeading = 'Posted Sales Invoice';
+            column(AlwaysPrintVat_CorrSetup; CorrSetup."Always print VAT") { }
             column(No_SalesInvHdr; "No.")
             {
             }
@@ -1447,6 +1448,7 @@ report 5272722 "lbt Sales - Invoice"
     begin
         GLSetup.Get();
         SalesSetup.Get();
+        CorrSetup.Get();
         CompanyInfo.Get();
         CompanyInfo.VerifyAndSetPaymentInfo();
         FormatDocument.SetLogoPosition(SalesSetup."Logo Position on Documents", CompanyInfo1, CompanyInfo2, CompanyInfo3);
@@ -1481,6 +1483,7 @@ report 5272722 "lbt Sales - Invoice"
         Item: Record Item;
         TempLeBitPostedPSLongtextLine: Record "lbt Posted PS Longtext Line" temporary;
         SalesInvoiceLine: Record "Sales Invoice Line";
+        CorrSetup: Record "lbt Corr Setup";
         LeBitReportFunctions: Codeunit "lbt Report Functions";
         Language: Codeunit Language;
         FormatAddr: Codeunit "Format Address";

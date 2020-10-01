@@ -13,6 +13,7 @@ report 5272720 "lbt Sales - Quote"
             DataItemTableView = SORTING("Document Type", "No.") WHERE("Document Type" = CONST(Quote));
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
             RequestFilterHeading = 'Sales Quote';
+            column(AlwaysPrintVat_CorrSetup; CorrSetup."Always print VAT") { }
             column(Sales_Header_Document_Type; "Document Type")
             {
             }
@@ -1412,6 +1413,7 @@ report 5272720 "lbt Sales - Quote"
         GLSetup.Get();
         CompanyInfo.Get();
         SalesSetup.Get();
+        CorrSetup.Get();
 
         if not HideCompanyInfo then
             case SalesSetup."Logo Position on Documents" of
@@ -1449,6 +1451,7 @@ report 5272720 "lbt Sales - Quote"
         DimSetEntry2: Record "Dimension Set Entry";
         RespCenter: Record "Responsibility Center";
         CurrExchRate: Record "Currency Exchange Rate";
+        CorrSetup: Record "lbt Corr Setup";
         Language: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         SegManagement: Codeunit SegManagement;

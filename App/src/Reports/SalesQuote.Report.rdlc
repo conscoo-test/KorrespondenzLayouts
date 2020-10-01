@@ -5489,24 +5489,24 @@
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=IIF(Last(Fields!VATAmount.Value = 0),FALSE,TRUE)</Hidden>
+                                      <Hidden>=IIF(Last(Fields!VATAmount.Value = 0 and not Fields!AlwaysPrintVat_CorrSetup.Value),FALSE,TRUE)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=IIF((Last(Fields!VATAmount.Value &lt;&gt; 0)) And (Not Fields!Sales_Header___Prices_Including_VAT_.Value),FALSE,TRUE)</Hidden>
+                                      <Hidden>=IIF((Last(Fields!VATAmount.Value &lt;&gt; 0 or Fields!AlwaysPrintVat_CorrSetup.Value)) And (Not Fields!Sales_Header___Prices_Including_VAT_.Value),FALSE,TRUE)</Hidden>
                                     </Visibility>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=IIF((Last(Fields!VATAmount.Value &lt;&gt; 0)) And (Not Fields!Sales_Header___Prices_Including_VAT_.Value),FALSE,TRUE)</Hidden>
+                                      <Hidden>=IIF((Last(Fields!VATAmount.Value &lt;&gt; 0 or Fields!AlwaysPrintVat_CorrSetup.Value)) And (Not Fields!Sales_Header___Prices_Including_VAT_.Value),FALSE,TRUE)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=IIF((Last(Fields!VATAmount.Value) &lt;&gt; 0) And (Not Fields!Sales_Header___Prices_Including_VAT_.Value),FALSE,TRUE)</Hidden>
+                                      <Hidden>=IIF((Last(Fields!VATAmount.Value) &lt;&gt; 0 or Fields!AlwaysPrintVat_CorrSetup.Value) And (Not Fields!Sales_Header___Prices_Including_VAT_.Value),FALSE,TRUE)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
@@ -5518,31 +5518,31 @@
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=IIF((Last(Fields!VATAmount.Value) &lt;&gt; 0) And (Not Fields!Sales_Header___Prices_Including_VAT_.Value),FALSE,TRUE)</Hidden>
+                                      <Hidden>=IIF((Last(Fields!VATAmount.Value) &lt;&gt; 0 or Fields!AlwaysPrintVat_CorrSetup.Value) And (Not Fields!Sales_Header___Prices_Including_VAT_.Value),FALSE,TRUE)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=IIF((Last(Fields!VATAmount.Value) &lt;&gt; 0) And (Fields!Sales_Header___Prices_Including_VAT_.Value),FALSE,TRUE)</Hidden>
+                                      <Hidden>=IIF((Last(Fields!VATAmount.Value) &lt;&gt; 0 or Fields!AlwaysPrintVat_CorrSetup.Value) And (Fields!Sales_Header___Prices_Including_VAT_.Value),FALSE,TRUE)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=IIF((Last(Fields!VATAmount.Value) &lt;&gt; 0) And (Fields!Sales_Header___Prices_Including_VAT_.Value),FALSE,TRUE)</Hidden>
+                                      <Hidden>=IIF((Last(Fields!VATAmount.Value) &lt;&gt; 0 or Fields!AlwaysPrintVat_CorrSetup.Value) And (Fields!Sales_Header___Prices_Including_VAT_.Value),FALSE,TRUE)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=IIF((Last(Fields!VATAmount.Value) &lt;&gt; 0) And (Fields!Sales_Header___Prices_Including_VAT_.Value),FALSE,TRUE)</Hidden>
+                                      <Hidden>=IIF((Last(Fields!VATAmount.Value) &lt;&gt; 0 or Fields!AlwaysPrintVat_CorrSetup.Value) And (Fields!Sales_Header___Prices_Including_VAT_.Value),FALSE,TRUE)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=IIF((Last(Fields!VATAmount.Value) &lt;&gt; 0) And (Fields!Sales_Header___Prices_Including_VAT_.Value),FALSE,TRUE)</Hidden>
+                                      <Hidden>=IIF((Last(Fields!VATAmount.Value) &lt;&gt; 0 or Fields!AlwaysPrintVat_CorrSetup.Value) And (Fields!Sales_Header___Prices_Including_VAT_.Value),FALSE,TRUE)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
@@ -10728,6 +10728,9 @@ End Function
   <DataSets>
     <DataSet Name="DataSet_Result">
       <Fields>
+        <Field Name="AlwaysPrintVat_CorrSetup">
+          <DataField>AlwaysPrintVat_CorrSetup</DataField>
+        </Field>
         <Field Name="Sales_Header_Document_Type">
           <DataField>Sales_Header_Document_Type</DataField>
         </Field>

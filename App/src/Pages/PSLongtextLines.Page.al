@@ -15,7 +15,7 @@ page 5272720 "lbt PS Longtext Lines"
             {
                 ShowCaption = false;
 
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies a unique number';
@@ -25,12 +25,12 @@ page 5272720 "lbt PS Longtext Lines"
                     end;
                 }
 
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies a unique description';
                 }
-                field(Type; Type)
+                field(Type; Rec.Type)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies a unique description the type';
@@ -54,7 +54,7 @@ page 5272720 "lbt PS Longtext Lines"
 
                 trigger OnAction()
                 begin
-                    DBOpenMemo();
+                    Rec.DBOpenMemo();
 
                     CurrPage.UPDATE(false);
                 end;
@@ -87,7 +87,7 @@ page 5272720 "lbt PS Longtext Lines"
         SourceFieldRef := SourceRecRef.Field(3);
         SourceDocumentNo := SourceFieldRef.Value();
 
-        if "Table ID" in [36, 37] then begin
+        if Rec."Table ID" in [36, 37] then begin
             SalesHeaderRec.Reset();
             SalesHeaderRec.SetRange("Document Type", SourceDocumentType);
             SalesHeaderRec.SetRange("No.", SourceDocumentNo);
@@ -97,7 +97,7 @@ page 5272720 "lbt PS Longtext Lines"
             end;
         end;
 
-        if "Table ID" in [38, 39] then begin
+        if Rec."Table ID" in [38, 39] then begin
             PurchHeaderRec.Reset();
             PurchHeaderRec.SetRange("Document Type", SourceDocumentType);
             PurchHeaderRec.SetRange("No.", SourceDocumentNo);
@@ -108,12 +108,12 @@ page 5272720 "lbt PS Longtext Lines"
         end;
 
         ExtTextHeadRec.SetRange("Table Name", ExtTextHeadRec."Table Name"::"Standard Text");
-        ExtTextHeadRec.SetRange("No.", "No.");
+        ExtTextHeadRec.SetRange("No.", Rec."No.");
 
         CurrPage.SaveRecord();
 
         if LeBitLongtextMgt.LongTextCheckIfAnyExtText(ExtTextHeadRec, LanguageCode, Belegdatum) then
-            LeBitLongtextMgt.InsertLongTextExtText(Rec, "Document Type");
+            LeBitLongtextMgt.InsertLongTextExtText(Rec, Rec."Document Type");
 
         CurrPage.UPDATE(false);
     end;

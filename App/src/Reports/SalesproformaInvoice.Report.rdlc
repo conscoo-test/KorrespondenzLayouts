@@ -6230,67 +6230,67 @@
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=iif(last(Fields!NNC_VATAmt.Value)=0,false,true)</Hidden>
+                                      <Hidden>=iif(last(Fields!NNC_VATAmt.Value)=0 and not Fields!AlwaysPrintVat_CorrSetup.Value,false,true)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=iif(last(Fields!NNC_VATAmt.Value)=0,false,true)</Hidden>
+                                      <Hidden>=iif(last(Fields!NNC_VATAmt.Value)=0 and not Fields!AlwaysPrintVat_CorrSetup.Value,false,true)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=IIF((last(Fields!NNC_VATAmt.Value) &lt;&gt; 0) And (Not Fields!PricesInclVAT_SalesHeader.Value),FALSE,TRUE)</Hidden>
+                                      <Hidden>=IIF((last(Fields!NNC_VATAmt.Value) &lt;&gt; 0 or Fields!AlwaysPrintVat_CorrSetup.Value) And (Not Fields!PricesInclVAT_SalesHeader.Value),FALSE,TRUE)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=IIF((last(Fields!NNC_VATAmt.Value) &lt;&gt; 0) And (Not Fields!PricesInclVAT_SalesHeader.Value),FALSE,TRUE)</Hidden>
+                                      <Hidden>=IIF((last(Fields!NNC_VATAmt.Value) &lt;&gt; 0 or Fields!AlwaysPrintVat_CorrSetup.Value) And (Not Fields!PricesInclVAT_SalesHeader.Value),FALSE,TRUE)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=IIF((last(Fields!NNC_VATAmt.Value) &lt;&gt; 0) And (Not Fields!PricesInclVAT_SalesHeader.Value),FALSE,TRUE)</Hidden>
+                                      <Hidden>=IIF((last(Fields!NNC_VATAmt.Value) &lt;&gt; 0 or Fields!AlwaysPrintVat_CorrSetup.Value) And (Not Fields!PricesInclVAT_SalesHeader.Value),FALSE,TRUE)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=IIF((last(Fields!NNC_VATAmt.Value) &lt;&gt; 0) And (Not Fields!PricesInclVAT_SalesHeader.Value),FALSE,TRUE)</Hidden>
+                                      <Hidden>=IIF((last(Fields!NNC_VATAmt.Value) &lt;&gt; 0 or Fields!AlwaysPrintVat_CorrSetup.Value) And (Not Fields!PricesInclVAT_SalesHeader.Value),FALSE,TRUE)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=iif((last(Fields!NNC_PmtDiscOnVAT.Value) &lt;&gt; 0) and (last(Fields!NNC_VATAmt.Value) &lt;&gt; 0) and (Fields!PricesInclVAT_SalesHeader.Value) and (Fields!VATBaseDisc_SalesHeader.Value &lt;&gt; 0),false,true)</Hidden>
+                                      <Hidden>=iif((last(Fields!NNC_PmtDiscOnVAT.Value) &lt;&gt; 0) and (last(Fields!NNC_VATAmt.Value) &lt;&gt; 0 or Fields!AlwaysPrintVat_CorrSetup.Value) and (Fields!PricesInclVAT_SalesHeader.Value) and (Fields!VATBaseDisc_SalesHeader.Value &lt;&gt; 0),false,true)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=iif(Fields!PricesInclVAT_SalesHeader.Value and (last(Fields!NNC_VATAmt.Value) &lt;&gt; 0),false,true)</Hidden>
+                                      <Hidden>=iif(Fields!PricesInclVAT_SalesHeader.Value and (last(Fields!NNC_VATAmt.Value) &lt;&gt; 0 or Fields!AlwaysPrintVat_CorrSetup.Value),false,true)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=iif(Fields!PricesInclVAT_SalesHeader.Value and (last(Fields!NNC_VATAmt.Value) &lt;&gt; 0),false,true)</Hidden>
+                                      <Hidden>=iif(Fields!PricesInclVAT_SalesHeader.Value and (last(Fields!NNC_VATAmt.Value) &lt;&gt; 0 or Fields!AlwaysPrintVat_CorrSetup.Value),false,true)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=iif(Fields!PricesInclVAT_SalesHeader.Value and (last(Fields!NNC_VATAmt.Value) &lt;&gt; 0),false,true)</Hidden>
+                                      <Hidden>=iif(Fields!PricesInclVAT_SalesHeader.Value and (last(Fields!NNC_VATAmt.Value) &lt;&gt; 0 or Fields!AlwaysPrintVat_CorrSetup.Value),false,true)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=iif(Fields!PricesInclVAT_SalesHeader.Value and (last(Fields!NNC_VATAmt.Value) &lt;&gt; 0),false,true)</Hidden>
+                                      <Hidden>=iif(Fields!PricesInclVAT_SalesHeader.Value and (last(Fields!NNC_VATAmt.Value) &lt;&gt; 0 or Fields!AlwaysPrintVat_CorrSetup.Value),false,true)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
@@ -15070,6 +15070,9 @@ End Function
   <DataSets>
     <DataSet Name="DataSet_Result">
       <Fields>
+        <Field Name="AlwaysPrintVat_CorrSetup">
+          <DataField>AlwaysPrintVat_CorrSetup</DataField>
+        </Field>
         <Field Name="DocType_SalesHeader">
           <DataField>DocType_SalesHeader</DataField>
         </Field>

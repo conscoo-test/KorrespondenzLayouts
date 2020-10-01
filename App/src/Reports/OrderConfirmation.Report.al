@@ -18,6 +18,7 @@ report 5272721 "lbt Order Confirmation"
             column(No_SalesHeader; "No.")
             {
             }
+            column(AlwaysPrintVat_CorrSetup; CorrSetup."Always print VAT") { }
             dataitem(CopyLoop; "Integer")
             {
                 DataItemTableView = SORTING(Number);
@@ -151,9 +152,6 @@ report 5272721 "lbt Order Confirmation"
                     {
                     }
                     column(PricesInclVAT_SalesHeader; "Sales Header"."Prices Including VAT")
-                    {
-                    }
-                    column(PricesInclVATYesNo_SalesHeader; FORMAT("Sales Header"."Prices Including VAT"))
                     {
                     }
                     column(VATNoText; VATNoText)
@@ -1824,6 +1822,7 @@ report 5272721 "lbt Order Confirmation"
         GLSetup.Get();
         CompanyInfo.Get();
         SalesSetup.Get();
+        CorrSetup.Get();
 
         case SalesSetup."Logo Position on Documents" of
             SalesSetup."Logo Position on Documents"::"No Logo":
@@ -2025,6 +2024,7 @@ report 5272721 "lbt Order Confirmation"
         ReportType: Option Purchase,Sales,QA,Production,Delivery,"Report";
         UnitPrice: Decimal;
         VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
+        CorrSetup: Record "lbt Corr Setup";
         CustSource: Option Default,"Bill-to Customer","Sell-to Customer";
 
     procedure InitializeRequest(NoOfCopiesFrom: Integer; ShowInternalInfoFrom: Boolean; ArchiveDocumentFrom: Boolean; LogInteractionFrom: Boolean; PrintFrom: Boolean; DisplayAsmInfo: Boolean)
@@ -2173,7 +2173,6 @@ report 5272721 "lbt Order Confirmation"
         end;
         if NewLine then begin
             TempLeBitPSLongtextLine.Init();
-            ;
             TempLeBitPSLongtextLine."Line No." := TempLeBitPSLongtextLine."Line No." + 10000;
             TempLeBitPSLongtextLine.Type := TempLeBitPSLongtextLine.Type::Text;
             TempLeBitPSLongtextLine.Insert();

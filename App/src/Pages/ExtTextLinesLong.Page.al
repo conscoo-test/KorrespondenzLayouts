@@ -14,7 +14,7 @@ page 5272723 "lbt Ext. Text Lines Long"
             repeater(Control5272721)
             {
                 ShowCaption = false;
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies a unique description';

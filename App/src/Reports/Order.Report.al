@@ -12,6 +12,7 @@ report 5272728 "lbt Order"
             DataItemTableView = SORTING("Document Type", "No.") WHERE("Document Type" = CONST(Order));
             RequestFilterFields = "No.", "Buy-from Vendor No.", "No. Printed";
             RequestFilterHeading = 'Purchase Order';
+            column(AlwaysPrintVat_CorrSetup; CorrSetup."Always print VAT") { }
             column(Purchase_Header_Document_Type; "Document Type")
             {
             }
@@ -1783,10 +1784,12 @@ report 5272728 "lbt Order"
         GLSetup.Get();
         CompanyInfo.Get();
         PurchSetup.Get();
+        CorrSetup.Get();
         FormatDocument.SetLogoPosition(PurchSetup."lbt Logo Position on Documents", CompanyInfo1, CompanyInfo2, CompanyInfo3);
     end;
 
     var
+        CorrSetup: Record "lbt Corr Setup";
         GLSetup: Record "General Ledger Setup";
         CompanyInfo: Record "Company Information";
         ShipmentMethod: Record "Shipment Method";

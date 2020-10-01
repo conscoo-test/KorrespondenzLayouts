@@ -4,11 +4,11 @@ pageextension 5272758 "lbt Sales Order Archive Sub." extends "Sales Order Archiv
     {
         modify(Description)
         {
-            StyleExpr = "lbt Printoption StyleExpr";
+            StyleExpr = Rec."lbt Printoption StyleExpr";
         }
         addfirst(Control1)
         {
-            field("lbt Pos. No."; "lbt Pos. No.")
+            field("lbt Pos. No."; Rec."lbt Pos. No.")
             {
                 ToolTip = 'Here you can fill in position numbers.';
                 ApplicationArea = All;
@@ -16,7 +16,7 @@ pageextension 5272758 "lbt Sales Order Archive Sub." extends "Sales Order Archiv
         }
         addafter(Type)
         {
-            field("lbt Printoption"; "lbt Printoption")
+            field("lbt Printoption"; Rec."lbt Printoption")
             {
                 ToolTip = 'Here you can choose the Printoptions.';
                 ApplicationArea = All;
@@ -24,7 +24,7 @@ pageextension 5272758 "lbt Sales Order Archive Sub." extends "Sales Order Archiv
         }
         addafter("Shortcut Dimension 2 Code")
         {
-            field("lbt Long Text"; "lbt Long Text")
+            field("lbt Long Text"; Rec."lbt Long Text")
             {
                 ToolTip = 'Here you can insert long texts. ';
                 ApplicationArea = All;
@@ -57,7 +57,7 @@ pageextension 5272758 "lbt Sales Order Archive Sub." extends "Sales Order Archiv
     var
         LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
     begin
-        "lbt Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr("lbt Printoption");
+        Rec."lbt Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."lbt Printoption");
     end;
 }
 

@@ -78,6 +78,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table lbt Archive PS Longtext Line - Field Text - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 214935587 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Primary Key</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field Primary Key - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 214935587 - Field 4201137821 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Always print VAT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field Always print VAT - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Correspondence Setup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 4201137821 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>If selected VAT will be printed in reports even if it is 0.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control Always print VAT - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Table 359883904 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Extended Text Line Long</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -653,11 +678,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Wizard - Control Welcome - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 935603355 - Control 203669508 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Wizard - Control Introduction - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 935603355 - Control 203669508 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve">
           <source>You can set the type of correspondence documents with which you want to use the comfort functions and where any existing company logo should appear on the documents.</source>
           <note from="Developer" annotates="general" priority="2">DEU="Sie können einstellen mit welche Art von Korrespondenzbelegen Sie die Komfortfunktionen nutzen möchten und an welcher Stelle ein evtl. vorhandenes Firmenlogo auf den Belegen erscheinen soll"</note>
@@ -668,20 +688,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Wizard - Control LetsGo - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 935603355 - Control 1235620153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Wizard - Control Next - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 935603355 - Control 1235620153 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve">
           <source>Choose Next so you can set up.</source>
           <note from="Developer" annotates="general" priority="2">DEU="Wählen Sie \"Weiter\" damit Sie die Korrespondenzbelege auswählen können."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Wizard - Control Next - Property InstructionalText</note>
-        </trans-unit>
-        <trans-unit id="Page 935603355 - Control 1383905037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Wizard - Control Default - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 935603355 - Control 1924145123 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Select all</source>
@@ -813,11 +823,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Wizard - Control report12 - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 935603355 - Control 27561757 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Wizard - Control PictureGroup - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 935603355 - Control 1594621544 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the logo file</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -853,11 +858,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Wizard - Control Purchase Logo Position - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="Page 935603355 - Control 3577866785 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Wizard - Control Bank1 - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 935603355 - Control 4248640148 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Please enter your bank account number here</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -877,11 +877,6 @@
           <source>Please enter your IBAN code here</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Wizard - Control IBAN - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 935603355 - Control 2940170168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Wizard - Control Bank2 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 935603355 - Control 3022415612 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Please enter your 2. bank account number here</source>
@@ -903,11 +898,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Wizard - Control lbt IBAN 2 - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 935603355 - Control 2302473551 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Wizard - Control Bank3 - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 935603355 - Control 2384718995 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Please enter your 3. bank account number here</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -927,11 +917,6 @@
           <source>Please enter your 3. IBAN code here</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Wizard - Control lbt IBAN 3 - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 935603355 - Control 3883758224 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Wizard - Control other - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 935603355 - Control 973842661 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Enter the district court here</source>
@@ -962,6 +947,21 @@
           <source>Enter your trade register name.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Wizard - Control lbt Trade Register Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 935603355 - Control 1384298989 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve">
+          <source>If selected VAT will be printed in reports even if it is 0.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Wizard - Control CorrSetupInstruction - Property InstructionalText</note>
+        </trans-unit>
+        <trans-unit id="Page 935603355 - Control 1693591093 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Always Print VAT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Wizard - Control AlwaysPrintVat - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 935603355 - Control 1693591093 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>If selected VAT will be printed in reports even if it is 0.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Wizard - Control AlwaysPrintVat - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 935603355 - Action 2438272767 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>One record back</source>
@@ -8507,11 +8507,6 @@
           <source>Pack Sample</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension lbt Purchase Line Type - EnumValue Pack Sample - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="EnumExtension 387248199 - EnumValue 2604455405 - Property 2879900210" size-unit="char" translate="no" xml:space="preserve" al-object-target="Enum 3710813537">
-          <source>Shipment/Receipt</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension lbt Sales Document Type - EnumValue Shipment/Receipt - Property Caption</note>
         </trans-unit>
         <trans-unit id="EnumExtension 3036464616 - EnumValue 2651433103 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 1710557762">
           <source>Begin Total</source>

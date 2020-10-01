@@ -4246,64 +4246,64 @@
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=NOT(Last(Fields!NNCTotalAmtInclVat.Value) = Last(Fields!NNCTotalAmt.Value))</Hidden>
+                                      <Hidden>=NOT(Last(Fields!NNCTotalAmtInclVat.Value) = Last(Fields!NNCTotalAmt.Value) and not Fields!AlwaysPrintVat_CorrSetup.Value)</Hidden>
                                     </Visibility>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=NOT(Last(Fields!NNCTotalAmtInclVat.Value) = Last(Fields!NNCTotalAmt.Value))</Hidden>
-                                    </Visibility>
-                                    <KeepTogether>true</KeepTogether>
-                                  </TablixMember>
-                                  <TablixMember>
-                                    <Visibility>
-                                      <Hidden>=NOT(NOT (Fields!PricesIncVAT_SalesCrMemoHeader.Value) AND (Last(Fields!NNCTotalAmtInclVat.Value) &lt;&gt; Last(Fields!NNCTotalAmt.Value)))</Hidden>
+                                      <Hidden>=NOT(Last(Fields!NNCTotalAmtInclVat.Value) = Last(Fields!NNCTotalAmt.Value) and not Fields!AlwaysPrintVat_CorrSetup.Value)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=NOT(NOT (Fields!PricesIncVAT_SalesCrMemoHeader.Value) AND (Last(Fields!NNCTotalAmtInclVat.Value) &lt;&gt; Last(Fields!NNCTotalAmt.Value)))</Hidden>
+                                      <Hidden>=NOT(NOT (Fields!PricesIncVAT_SalesCrMemoHeader.Value) AND (Last(Fields!NNCTotalAmtInclVat.Value) &lt;&gt; Last(Fields!NNCTotalAmt.Value) or Fields!AlwaysPrintVat_CorrSetup.Value))</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=NOT(NOT (Fields!PricesIncVAT_SalesCrMemoHeader.Value) AND (Last(Fields!NNCTotalAmtInclVat.Value) &lt;&gt; Last(Fields!NNCTotalAmt.Value)))</Hidden>
-                                    </Visibility>
-                                  </TablixMember>
-                                  <TablixMember>
-                                    <Visibility>
-                                      <Hidden>=NOT(NOT (Fields!PricesIncVAT_SalesCrMemoHeader.Value) AND (Last(Fields!NNCTotalAmtInclVat.Value) &lt;&gt; Last(Fields!NNCTotalAmt.Value)))</Hidden>
+                                      <Hidden>=NOT(NOT (Fields!PricesIncVAT_SalesCrMemoHeader.Value) AND (Last(Fields!NNCTotalAmtInclVat.Value) &lt;&gt; Last(Fields!NNCTotalAmt.Value) or Fields!AlwaysPrintVat_CorrSetup.Value))</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=NOT(Fields!PricesIncVAT_SalesCrMemoHeader.Value AND (Last(Fields!NNCTotalAmtInclVat.Value) &lt;&gt; Last(Fields!NNCTotalAmt.Value)) AND (Fields!VATBaseDiscPercentage.Value &lt;&gt;0))</Hidden>
+                                      <Hidden>=NOT(NOT (Fields!PricesIncVAT_SalesCrMemoHeader.Value) AND (Last(Fields!NNCTotalAmtInclVat.Value) &lt;&gt; Last(Fields!NNCTotalAmt.Value) or Fields!AlwaysPrintVat_CorrSetup.Value))</Hidden>
+                                    </Visibility>
+                                  </TablixMember>
+                                  <TablixMember>
+                                    <Visibility>
+                                      <Hidden>=NOT(NOT (Fields!PricesIncVAT_SalesCrMemoHeader.Value) AND (Last(Fields!NNCTotalAmtInclVat.Value) &lt;&gt; Last(Fields!NNCTotalAmt.Value) or Fields!AlwaysPrintVat_CorrSetup.Value))</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=NOT(Fields!PricesIncVAT_SalesCrMemoHeader.Value AND (Last(Fields!NNCTotalAmtInclVat.Value) &lt;&gt; Last(Fields!NNCTotalAmt.Value)))</Hidden>
-                                    </Visibility>
-                                  </TablixMember>
-                                  <TablixMember>
-                                    <Visibility>
-                                      <Hidden>=NOT(Fields!PricesIncVAT_SalesCrMemoHeader.Value AND (Last(Fields!NNCTotalAmtInclVat.Value) &lt;&gt; Last(Fields!NNCTotalAmt.Value)))</Hidden>
+                                      <Hidden>=NOT(Fields!PricesIncVAT_SalesCrMemoHeader.Value AND (Last(Fields!NNCTotalAmtInclVat.Value) &lt;&gt; Last(Fields!NNCTotalAmt.Value) or Fields!AlwaysPrintVat_CorrSetup.Value) AND (Fields!VATBaseDiscPercentage.Value &lt;&gt;0))</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=NOT(Fields!PricesIncVAT_SalesCrMemoHeader.Value AND (Last(Fields!NNCTotalAmtInclVat.Value) &lt;&gt; Last(Fields!NNCTotalAmt.Value)))</Hidden>
+                                      <Hidden>=NOT(Fields!PricesIncVAT_SalesCrMemoHeader.Value AND (Last(Fields!NNCTotalAmtInclVat.Value) &lt;&gt; Last(Fields!NNCTotalAmt.Value) or Fields!AlwaysPrintVat_CorrSetup.Value))</Hidden>
+                                    </Visibility>
+                                  </TablixMember>
+                                  <TablixMember>
+                                    <Visibility>
+                                      <Hidden>=NOT(Fields!PricesIncVAT_SalesCrMemoHeader.Value AND (Last(Fields!NNCTotalAmtInclVat.Value) &lt;&gt; Last(Fields!NNCTotalAmt.Value) or Fields!AlwaysPrintVat_CorrSetup.Value))</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=NOT(Fields!PricesIncVAT_SalesCrMemoHeader.Value AND (Last(Fields!NNCTotalAmtInclVat.Value) &lt;&gt; Last(Fields!NNCTotalAmt.Value)))</Hidden>
+                                      <Hidden>=NOT(Fields!PricesIncVAT_SalesCrMemoHeader.Value AND (Last(Fields!NNCTotalAmtInclVat.Value) &lt;&gt; Last(Fields!NNCTotalAmt.Value) or Fields!AlwaysPrintVat_CorrSetup.Value))</Hidden>
+                                    </Visibility>
+                                    <KeepTogether>true</KeepTogether>
+                                  </TablixMember>
+                                  <TablixMember>
+                                    <Visibility>
+                                      <Hidden>=NOT(Fields!PricesIncVAT_SalesCrMemoHeader.Value AND (Last(Fields!NNCTotalAmtInclVat.Value) &lt;&gt; Last(Fields!NNCTotalAmt.Value) or Fields!AlwaysPrintVat_CorrSetup.Value))</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
@@ -10637,6 +10637,9 @@ End Function
   <DataSets>
     <DataSet Name="DataSet_Result">
       <Fields>
+        <Field Name="AlwaysPrintVat_CorrSetup">
+          <DataField>AlwaysPrintVat_CorrSetup</DataField>
+        </Field>
         <Field Name="No_SalesCrMemoHeader">
           <DataField>No_SalesCrMemoHeader</DataField>
         </Field>

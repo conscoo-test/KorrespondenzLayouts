@@ -5,7 +5,7 @@ pageextension 5272767 "lbt Purch. Invoice Subform" extends "Purch. Invoice Subfo
 
         addfirst(Content)
         {
-            field("lbt Pos. No."; "lbt Pos. No.")
+            field("lbt Pos. No."; Rec."lbt Pos. No.")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specified the Position No.';
@@ -13,7 +13,7 @@ pageextension 5272767 "lbt Purch. Invoice Subform" extends "Purch. Invoice Subfo
         }
         addafter(FilteredTypeField)
         {
-            field("lbt Printoption"; "lbt Printoption")
+            field("lbt Printoption"; Rec."lbt Printoption")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specified the Printoption';
@@ -21,7 +21,7 @@ pageextension 5272767 "lbt Purch. Invoice Subform" extends "Purch. Invoice Subfo
         }
         addafter("Line No.")
         {
-            field("lbt Long Text"; "lbt Long Text")
+            field("lbt Long Text"; Rec."lbt Long Text")
             {
                 ApplicationArea = All;
                 ToolTip = 'Here you can insert long texts.';
@@ -54,7 +54,7 @@ pageextension 5272767 "lbt Purch. Invoice Subform" extends "Purch. Invoice Subfo
     var
         LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
     begin
-        "lbt Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr("lbt Printoption");
+        Rec."lbt Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."lbt Printoption");
     end;
 }
 
