@@ -1215,7 +1215,6 @@
                                             </Style>
                                           </Textbox>
                                           <ColSpan>2</ColSpan>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell />
@@ -1452,7 +1451,6 @@
                                             </Style>
                                           </Textbox>
                                           <ColSpan>2</ColSpan>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell />
@@ -1674,7 +1672,6 @@
                                             </Style>
                                           </Textbox>
                                           <ColSpan>2</ColSpan>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell />
@@ -1814,7 +1811,6 @@
                                             </Style>
                                           </Textbox>
                                           <ColSpan>2</ColSpan>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell />
@@ -1955,7 +1951,6 @@
                                             </Style>
                                           </Textbox>
                                           <ColSpan>2</ColSpan>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell />
@@ -2095,7 +2090,6 @@
                                             </Style>
                                           </Textbox>
                                           <ColSpan>2</ColSpan>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell />
@@ -2235,7 +2229,6 @@
                                             </Style>
                                           </Textbox>
                                           <ColSpan>2</ColSpan>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell />
@@ -3888,7 +3881,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=(Fields!TotalText.Value)</Value>
+                                                    <Value>=Fields!TotalText.Value</Value>
                                                     <Style>
                                                       <FontSize>9pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
@@ -3903,6 +3896,10 @@
                                               <Border>
                                                 <Style>None</Style>
                                               </Border>
+                                              <TopBorder>
+                                                <Color>Black</Color>
+                                                <Style>Solid</Style>
+                                              </TopBorder>
                                               <BottomBorder>
                                                 <Color>Black</Color>
                                                 <Style>Solid</Style>
@@ -3948,6 +3945,10 @@
                                               <Border>
                                                 <Style>None</Style>
                                               </Border>
+                                              <TopBorder>
+                                                <Color>Black</Color>
+                                                <Style>Solid</Style>
+                                              </TopBorder>
                                               <BottomBorder>
                                                 <Color>Black</Color>
                                                 <Style>Solid</Style>

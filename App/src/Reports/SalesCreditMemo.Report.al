@@ -1645,23 +1645,23 @@ report 5272723 "lbt Sales - Credit Memo"
     end;
 
     local procedure FormatDocumentFields(SalesCrMemoHeader: Record "Sales Cr.Memo Header")
+    var
+        lbtFormatDocument: Codeunit "lbt Format Document";
     begin
-        with SalesCrMemoHeader do begin
-            FormatDocument.SetTotalLabels("Currency Code", TotalText, TotalInclVATText, TotalExclVATText);
-            FormatDocument.SetSalesPerson(SalesPurchPerson, "Salesperson Code", SalesPersonText);
+        lbtFormatDocument.SetTotalLabels(SalesCrMemoHeader."Currency Code", TotalText, TotalInclVATText, TotalExclVATText);
+        FormatDocument.SetSalesPerson(SalesPurchPerson, SalesCrMemoHeader."Salesperson Code", SalesPersonText);
 
-            ReturnOrderNoText := FormatDocument.SetText("Return Order No." <> '', CopyStr(FIELDCAPTION("Return Order No."), 1, 80));
-            ReferenceText := FormatDocument.SetText("Your Reference" <> '', CopyStr(FIELDCAPTION("Your Reference"), 1, 80));
-            VATNoText := FormatDocument.SetText("VAT Registration No." <> '', CopyStr(FIELDCAPTION("VAT Registration No."), 1, 80));
-            AppliedToText :=
-              FormatDocument.SetText(
-                "Applies-to Doc. No." <> '', FORMAT(STRSUBSTNO(AppliesLbl, FORMAT("Applies-to Doc. Type"), "Applies-to Doc. No.")));
-            FormatDocument.SetPaymentTerms(PaymentTerms, "Payment Terms Code", "Language Code");
-            FormatDocument.SetPaymentMethod(PaymentMethod, "Payment Method Code", "Language Code");
-            FormatDocument.SetShipmentMethod(ShipmentMethod, "Shipment Method Code", "Language Code");
-            if SalesPersonText <> '' then
-                SalesPersonText := SalesPersonText_CaptionLbl;
-        end;
+        ReturnOrderNoText := FormatDocument.SetText(SalesCrMemoHeader."Return Order No." <> '', CopyStr(SalesCrMemoHeader.FIELDCAPTION("Return Order No."), 1, 80));
+        ReferenceText := FormatDocument.SetText(SalesCrMemoHeader."Your Reference" <> '', CopyStr(SalesCrMemoHeader.FIELDCAPTION("Your Reference"), 1, 80));
+        VATNoText := FormatDocument.SetText(SalesCrMemoHeader."VAT Registration No." <> '', CopyStr(SalesCrMemoHeader.FIELDCAPTION("VAT Registration No."), 1, 80));
+        AppliedToText :=
+          FormatDocument.SetText(
+            SalesCrMemoHeader."Applies-to Doc. No." <> '', FORMAT(STRSUBSTNO(AppliesLbl, FORMAT(SalesCrMemoHeader."Applies-to Doc. Type"), SalesCrMemoHeader."Applies-to Doc. No.")));
+        FormatDocument.SetPaymentTerms(PaymentTerms, SalesCrMemoHeader."Payment Terms Code", SalesCrMemoHeader."Language Code");
+        FormatDocument.SetPaymentMethod(PaymentMethod, SalesCrMemoHeader."Payment Method Code", SalesCrMemoHeader."Language Code");
+        FormatDocument.SetShipmentMethod(ShipmentMethod, SalesCrMemoHeader."Shipment Method Code", SalesCrMemoHeader."Language Code");
+        if SalesPersonText <> '' then
+            SalesPersonText := SalesPersonText_CaptionLbl;
     end;
 
     local procedure GetDocumentNoLbl(): Text
@@ -1669,10 +1669,6 @@ report 5272723 "lbt Sales - Credit Memo"
         if CompanyInfo."Country/Region Code" = 'DE' then
             exit(DESalesHeaderNoLbl);
         exit(SalesHeaderNoLbl);
-    end;
-
-    local procedure "### Lebit Correspondence Functions ###"()
-    begin
     end;
 
     local procedure Createlbtext(LeBitPostedPSLongtextLine: Record "lbt Posted PS Longtext Line")

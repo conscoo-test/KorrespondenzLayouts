@@ -2005,23 +2005,19 @@ report 5272728 "lbt Order"
     end;
 
     local procedure FormatDocumentFields(PurchaseHeader: Record "Purchase Header")
+    var
+        lbtFormatDocument: Codeunit "lbt Format Document";
     begin
-        with PurchaseHeader do begin
-            FormatDocument.SetTotalLabels("Currency Code", TotalText, TotalInclVATText, TotalExclVATText);
-            FormatDocument.SetPurchaser(SalesPurchPerson, "Purchaser Code", PurchaserText);
-            FormatDocument.SetPaymentTerms(PaymentTerms, "Payment Terms Code", "Language Code");
-            FormatDocument.SetPaymentTerms(PrepmtPaymentTerms, "Prepmt. Payment Terms Code", "Language Code");
-            FormatDocument.SetShipmentMethod(ShipmentMethod, "Shipment Method Code", "Language Code");
+        lbtFormatDocument.SetTotalLabels(PurchaseHeader."Currency Code", TotalText, TotalInclVATText, TotalExclVATText);
+        FormatDocument.SetPurchaser(SalesPurchPerson, PurchaseHeader."Purchaser Code", PurchaserText);
+        FormatDocument.SetPaymentTerms(PaymentTerms, PurchaseHeader."Payment Terms Code", PurchaseHeader."Language Code");
+        FormatDocument.SetPaymentTerms(PrepmtPaymentTerms, PurchaseHeader."Prepmt. Payment Terms Code", PurchaseHeader."Language Code");
+        FormatDocument.SetShipmentMethod(ShipmentMethod, PurchaseHeader."Shipment Method Code", PurchaseHeader."Language Code");
 
-            ReferenceText := FormatDocument.SetText("Your Reference" <> '', CopyStr(FIELDCAPTION("Your Reference"), 1, 80));
-            VATNoText := FormatDocument.SetText("VAT Registration No." <> '', CopyStr(FIELDCAPTION("VAT Registration No."), 1, 80));
-            if PurchaserText <> '' then
-                PurchaserText := PurchPersonText_CaptionLbl;
-        end;
-    end;
-
-    local procedure "### Lebit Correspondence Functions ###"()
-    begin
+        ReferenceText := FormatDocument.SetText(PurchaseHeader."Your Reference" <> '', CopyStr(PurchaseHeader.FIELDCAPTION("Your Reference"), 1, 80));
+        VATNoText := FormatDocument.SetText(PurchaseHeader."VAT Registration No." <> '', CopyStr(PurchaseHeader.FIELDCAPTION("VAT Registration No."), 1, 80));
+        if PurchaserText <> '' then
+            PurchaserText := PurchPersonText_CaptionLbl;
     end;
 
     local procedure Createlbtext(LeBitPSLongtextLine: Record "lbt PS Longtext Line")

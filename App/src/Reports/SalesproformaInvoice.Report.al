@@ -408,7 +408,7 @@ report 5272726 "lbt Sales pro forma Invoice"
                         column(ItemPictureExist; ItemPictureExist)
                         {
                         }
-                        column(SalesLineAmt; SalesLine."Line Amount")
+                        column(SalesLineAmt; TempSalesLine."Line Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
@@ -495,17 +495,17 @@ report 5272726 "lbt Sales pro forma Invoice"
                         column(AllowInvDiscountYesNo_SalesLine; FORMAT("Sales Line"."Allow Invoice Disc."))
                         {
                         }
-                        column(SalesLine__Line_Amount__Control84; SalesLine."Line Amount")
+                        column(SalesLine__Line_Amount__Control84; TempSalesLine."Line Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(SalesLine__Inv__Discount_Amount_; SalesLine."Inv. Discount Amount")
+                        column(SalesLine__Inv__Discount_Amount_; TempSalesLine."Inv. Discount Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(SalesLine__Line_Amount__Control70; SalesLine."Line Amount")
+                        column(SalesLine__Line_Amount__Control70; TempSalesLine."Line Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
@@ -513,7 +513,7 @@ report 5272726 "lbt Sales pro forma Invoice"
                         column(TotalText; TotalText)
                         {
                         }
-                        column(SalsLinAmtExclLineDiscAmt; SalesLine."Line Amount" - SalesLine."Inv. Discount Amount")
+                        column(SalsLinAmtExclLineDiscAmt; TempSalesLine."Line Amount" - TempSalesLine."Inv. Discount Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
@@ -521,13 +521,13 @@ report 5272726 "lbt Sales pro forma Invoice"
                         column(TotalExclVATText; TotalExclVATText)
                         {
                         }
-                        column(VATAmtLineVATAmtText3; VATAmountLine.VATAmountText())
+                        column(VATAmtLineVATAmtText3; TempVATAmountLine.VATAmountText())
                         {
                         }
                         column(TotalInclVATText; TotalInclVATText)
                         {
                         }
-                        column(SalesLine__Line_Amount__SalesLine__Inv__Discount_Amount__Control88; SalesLine."Line Amount" - VATAmountLine."Invoice Discount Amount")
+                        column(SalesLine__Line_Amount__SalesLine__Inv__Discount_Amount__Control88; TempSalesLine."Line Amount" - TempVATAmountLine."Invoice Discount Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
@@ -537,7 +537,7 @@ report 5272726 "lbt Sales pro forma Invoice"
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(SalesLineAmtExclLineDisc; SalesLine."Line Amount" - SalesLine."Inv. Discount Amount" + VATAmount)
+                        column(SalesLineAmtExclLineDisc; TempSalesLine."Line Amount" - TempSalesLine."Inv. Discount Amount" + VATAmount)
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
@@ -555,7 +555,7 @@ report 5272726 "lbt Sales pro forma Invoice"
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLine_VATAmountText_Control133; VATAmountLine.VATAmountText())
+                        column(VATAmountLine_VATAmountText_Control133; TempVATAmountLine.VATAmountText())
                         {
                         }
                         column(VATAmount_Control134; VATAmount)
@@ -598,7 +598,7 @@ report 5272726 "lbt Sales pro forma Invoice"
                         column(SalesLineLeBitPrintoption; FORMAT("Sales Line"."lbt Printoption", 0, 2))
                         {
                         }
-                        column(SalesLine__LeBit_Balance; SalesLine."lbt Balance")
+                        column(SalesLine__LeBit_Balance; TempSalesLine."lbt Balance")
                         {
                         }
                         column(Sales_Line___LeBit_Pos_No; "Sales Line"."lbt Pos. No.")
@@ -813,23 +813,23 @@ report 5272726 "lbt Sales pro forma Invoice"
                             Counter: Integer;
                         begin
                             if Number = 1 then
-                                SalesLine.FIND('-')
+                                TempSalesLine.FIND('-')
                             else
-                                SalesLine.Next();
-                            "Sales Line" := SalesLine;
+                                TempSalesLine.Next();
+                            "Sales Line" := TempSalesLine;
                             if DisplayAssemblyInfo then
-                                AsmInfoExistsForLine := SalesLine.AsmToOrderExists(AsmHeader);
+                                AsmInfoExistsForLine := TempSalesLine.AsmToOrderExists(AsmHeader);
 
                             if not "Sales Header"."Prices Including VAT" and
-                               (SalesLine."VAT Calculation Type" = SalesLine."VAT Calculation Type"::"Full VAT")
+                               (TempSalesLine."VAT Calculation Type" = TempSalesLine."VAT Calculation Type"::"Full VAT")
                             then
-                                SalesLine."Line Amount" := 0;
+                                TempSalesLine."Line Amount" := 0;
 
-                            if (SalesLine.Type = SalesLine.Type::"G/L Account") and (not ShowInternalInfo) then
+                            if (TempSalesLine.Type = TempSalesLine.Type::"G/L Account") and (not ShowInternalInfo) then
                                 "Sales Line"."No." := '';
 
-                            NNC_SalesLineLineAmt += SalesLine."Line Amount";
-                            NNC_SalesLineInvDiscAmt += SalesLine."Inv. Discount Amount";
+                            NNC_SalesLineLineAmt += TempSalesLine."Line Amount";
+                            NNC_SalesLineInvDiscAmt += TempSalesLine."Inv. Discount Amount";
 
                             NNC_TotalLCY := NNC_SalesLineLineAmt - NNC_SalesLineInvDiscAmt;
 
@@ -844,10 +844,9 @@ report 5272726 "lbt Sales pro forma Invoice"
                             NNC_VatAmt2 := VATAmount;
                             NNC_TotalExclVAT2 := VATBaseAmount;
 
-                            if SalesLine."lbt Printoption" = SalesLine."lbt Printoption"::"New Page" then
+                            if TempSalesLine."lbt Printoption" = TempSalesLine."lbt Printoption"::"New Page" then
                                 NewPageGroup += 1;
 
-                            ItemUnitCode := '';
                             ItemUnitDescription := '';
                             ItemUnitQty := '';
                             CLEAR(InfoRowNo);
@@ -859,13 +858,13 @@ report 5272726 "lbt Sales pro forma Invoice"
                             CLEAR(Item);
                             ItemPictureExist := false;
 
-                            if SalesLine.Quantity <> 0 then
-                                UnitPrice := SalesLine."Unit Price" - SalesLine."Line Discount Amount" / SalesLine.Quantity
+                            if TempSalesLine.Quantity <> 0 then
+                                UnitPrice := TempSalesLine."Unit Price" - TempSalesLine."Line Discount Amount" / TempSalesLine.Quantity
                             else
                                 UnitPrice := 0;
 
-                            SalesLine.CALCFIELDS("lbt Balance");
-                            if SalesLine.Type = SalesLine.Type::Item then begin
+                            TempSalesLine.CALCFIELDS("lbt Balance");
+                            if TempSalesLine.Type = TempSalesLine.Type::Item then begin
                                 Item.Get("Sales Line"."No.");
                                 ItemPictureExist := Item.Picture.Count() > 0;
                                 if not ItemPicturePrint then
@@ -888,8 +887,7 @@ report 5272726 "lbt Sales pro forma Invoice"
                                     COMPRESSARRAY(ItemUnitDescriptionArry);
                                     COMPRESSARRAY(ItemUnitQtyArry);
                                 end;
-                                if SalesLine."Description 2" <> '' then begin
-                                    ItemUnitCode := ItemUnitCodeArry[1];
+                                if TempSalesLine."Description 2" <> '' then begin
                                     ItemUnitDescription := ItemUnitDescriptionArry[1];
                                     ItemUnitQty := ItemUnitQtyArry[1];
                                     ItemUnitCodeArry[1] := '';
@@ -902,7 +900,7 @@ report 5272726 "lbt Sales pro forma Invoice"
                                 //zusätzliche Infos
                                 //Auftragsnummer
                                 if OrderNoText = '' then
-                                    if SalesShipmentLine.Get(SalesLine."Shipment No.", SalesLine."Shipment Line No.") then
+                                    if SalesShipmentLine.Get(TempSalesLine."Shipment No.", TempSalesLine."Shipment Line No.") then
                                         if SalesShipmentLine."Order No." <> '' then begin
                                             Counter := 0;
                                             repeat
@@ -927,129 +925,129 @@ report 5272726 "lbt Sales pro forma Invoice"
 
                         trigger OnPostDataItem()
                         begin
-                            SalesLine.DeleteAll();
+                            TempSalesLine.DeleteAll();
                         end;
 
                         trigger OnPreDataItem()
                         begin
-                            MoreLines := SalesLine.FIND('+');
-                            while MoreLines and (SalesLine.Description = '') and (SalesLine."Description 2" = '') and
-                                  (SalesLine."No." = '') and (SalesLine.Quantity = 0) and
-                                  (SalesLine.Amount = 0)
+                            MoreLines := TempSalesLine.FIND('+');
+                            while MoreLines and (TempSalesLine.Description = '') and (TempSalesLine."Description 2" = '') and
+                                  (TempSalesLine."No." = '') and (TempSalesLine.Quantity = 0) and
+                                  (TempSalesLine.Amount = 0)
                             do
-                                MoreLines := SalesLine.Next(-1) <> 0;
+                                MoreLines := TempSalesLine.Next(-1) <> 0;
                             if not MoreLines then
                                 CurrReport.Break();
-                            SalesLine.SETRANGE("Line No.", 0, SalesLine."Line No.");
-                            SETRANGE(Number, 1, SalesLine.Count());
+                            TempSalesLine.SETRANGE("Line No.", 0, TempSalesLine."Line No.");
+                            SETRANGE(Number, 1, TempSalesLine.Count());
                         end;
                     }
                     dataitem(VATCounter; "Integer")
                     {
                         DataItemTableView = SORTING(Number);
-                        column(VATAmountLineVATBase; VATAmountLine."VAT Base")
+                        column(VATAmountLineVATBase; TempVATAmountLine."VAT Base")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmtLineVATAmt; VATAmountLine."VAT Amount")
+                        column(VATAmtLineVATAmt; TempVATAmountLine."VAT Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmtLineLineAmt; VATAmountLine."Line Amount")
+                        column(VATAmtLineLineAmt; TempVATAmountLine."Line Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmtLineInvDiscBaseAmt; VATAmountLine."Inv. Disc. Base Amount")
+                        column(VATAmtLineInvDiscBaseAmt; TempVATAmountLine."Inv. Disc. Base Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(SalesLineInvDiscAmt; VATAmountLine."Invoice Discount Amount")
+                        column(SalesLineInvDiscAmt; TempVATAmountLine."Invoice Discount Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLine__VAT___; VATAmountLine."VAT %")
+                        column(VATAmountLine__VAT___; TempVATAmountLine."VAT %")
                         {
                             DecimalPlaces = 0 : 5;
                         }
-                        column(VATAmountLine__VAT_Base__Control106; VATAmountLine."VAT Base")
+                        column(VATAmountLine__VAT_Base__Control106; TempVATAmountLine."VAT Base")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLine__VAT_Amount__Control107; VATAmountLine."VAT Amount")
+                        column(VATAmountLine__VAT_Amount__Control107; TempVATAmountLine."VAT Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmtLineVATIdentifier; VATAmountLine."VAT Identifier")
+                        column(VATAmtLineVATIdentifier; TempVATAmountLine."VAT Identifier")
                         {
                         }
-                        column(VATAmountLine__Line_Amount__Control72; VATAmountLine."Line Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(VATAmountLine__Inv__Disc__Base_Amount__Control73; VATAmountLine."Inv. Disc. Base Amount")
+                        column(VATAmountLine__Line_Amount__Control72; TempVATAmountLine."Line Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLine__Invoice_Discount_Amount__Control74; VATAmountLine."Invoice Discount Amount")
+                        column(VATAmountLine__Inv__Disc__Base_Amount__Control73; TempVATAmountLine."Inv. Disc. Base Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLine__VAT_Base__Control110; VATAmountLine."VAT Base")
+                        column(VATAmountLine__Invoice_Discount_Amount__Control74; TempVATAmountLine."Invoice Discount Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLine__VAT_Amount__Control111; VATAmountLine."VAT Amount")
+                        column(VATAmountLine__VAT_Base__Control110; TempVATAmountLine."VAT Base")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLine__Line_Amount__Control100; VATAmountLine."Line Amount")
+                        column(VATAmountLine__VAT_Amount__Control111; TempVATAmountLine."VAT Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLine__Inv__Disc__Base_Amount__Control104; VATAmountLine."Inv. Disc. Base Amount")
+                        column(VATAmountLine__Line_Amount__Control100; TempVATAmountLine."Line Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLine__Invoice_Discount_Amount__Control108; VATAmountLine."Invoice Discount Amount")
+                        column(VATAmountLine__Inv__Disc__Base_Amount__Control104; TempVATAmountLine."Inv. Disc. Base Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLine__VAT_Base__Control114; VATAmountLine."VAT Base")
+                        column(VATAmountLine__Invoice_Discount_Amount__Control108; TempVATAmountLine."Invoice Discount Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLine__VAT_Amount__Control115; VATAmountLine."VAT Amount")
+                        column(VATAmountLine__VAT_Base__Control114; TempVATAmountLine."VAT Base")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLine__Line_Amount__Control112; VATAmountLine."Line Amount")
+                        column(VATAmountLine__VAT_Amount__Control115; TempVATAmountLine."VAT Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLine__Inv__Disc__Base_Amount__Control116; VATAmountLine."Inv. Disc. Base Amount")
+                        column(VATAmountLine__Line_Amount__Control112; TempVATAmountLine."Line Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLine__Invoice_Discount_Amount__Control130; VATAmountLine."Invoice Discount Amount")
+                        column(VATAmountLine__Inv__Disc__Base_Amount__Control116; TempVATAmountLine."Inv. Disc. Base Amount")
+                        {
+                            AutoFormatExpression = "Sales Header"."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(VATAmountLine__Invoice_Discount_Amount__Control130; TempVATAmountLine."Invoice Discount Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
@@ -1093,25 +1091,25 @@ report 5272726 "lbt Sales pro forma Invoice"
 
                         trigger OnAfterGetRecord()
                         begin
-                            VATAmountLine.GetLine(Number);
+                            TempVATAmountLine.GetLine(Number);
                         end;
 
                         trigger OnPreDataItem()
                         begin
-                            if VATAmountLine.Count() < 2 then
+                            if TempVATAmountLine.Count() < 2 then
                                 CurrReport.Break();
                             if VATAmount = 0 then
                                 CurrReport.Break();
-                            SETRANGE(Number, 1, VATAmountLine.Count());
+                            SETRANGE(Number, 1, TempVATAmountLine.Count());
                         end;
                     }
                     dataitem(VATClauseEntryCounter; "Integer")
                     {
                         DataItemTableView = SORTING(Number);
-                        column(VATClauseVATIdentifier; VATAmountLine."VAT Identifier")
+                        column(VATClauseVATIdentifier; TempVATAmountLine."VAT Identifier")
                         {
                         }
-                        column(VATClauseCode; VATAmountLine."VAT Clause Code")
+                        column(VATClauseCode; TempVATAmountLine."VAT Clause Code")
                         {
                         }
                         column(VATClauseDescription; VATClause.Description)
@@ -1120,7 +1118,7 @@ report 5272726 "lbt Sales pro forma Invoice"
                         column(VATClauseDescription2; VATClause."Description 2")
                         {
                         }
-                        column(VATClauseAmount; VATAmountLine."VAT Amount")
+                        column(VATClauseAmount; TempVATAmountLine."VAT Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
@@ -1137,8 +1135,8 @@ report 5272726 "lbt Sales pro forma Invoice"
 
                         trigger OnAfterGetRecord()
                         begin
-                            VATAmountLine.GetLine(Number);
-                            if not VATClause.Get(VATAmountLine."VAT Clause Code") then
+                            TempVATAmountLine.GetLine(Number);
+                            if not VATClause.Get(TempVATAmountLine."VAT Clause Code") then
                                 CurrReport.Skip();
                             VATClause.TranslateDescription("Sales Header"."Language Code");
                         end;
@@ -1146,7 +1144,7 @@ report 5272726 "lbt Sales pro forma Invoice"
                         trigger OnPreDataItem()
                         begin
                             CLEAR(VATClause);
-                            SETRANGE(Number, 1, VATAmountLine.Count());
+                            SETRANGE(Number, 1, TempVATAmountLine.Count());
                         end;
                     }
                     dataitem(VATCounterLCY; "Integer")
@@ -1174,11 +1172,11 @@ report 5272726 "lbt Sales pro forma Invoice"
                         {
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLine__VAT____Control151; VATAmountLine."VAT %")
+                        column(VATAmountLine__VAT____Control151; TempVATAmountLine."VAT %")
                         {
                             DecimalPlaces = 0 : 5;
                         }
-                        column(VATAmountLine__VAT_Identifier__Control152; VATAmountLine."VAT Identifier")
+                        column(VATAmountLine__VAT_Identifier__Control152; TempVATAmountLine."VAT Identifier")
                         {
                         }
                         column(VALVATAmountLCY_Control156; VALVATAmountLCY)
@@ -1224,26 +1222,26 @@ report 5272726 "lbt Sales pro forma Invoice"
 
                         trigger OnAfterGetRecord()
                         begin
-                            VATAmountLine.GetLine(Number);
+                            TempVATAmountLine.GetLine(Number);
                             VALVATBaseLCY :=
-                              VATAmountLine.GetBaseLCY(
+                              TempVATAmountLine.GetBaseLCY(
                                 "Sales Header"."Posting Date", "Sales Header"."Currency Code", "Sales Header"."Currency Factor");
                             VALVATAmountLCY :=
-                              VATAmountLine.GetAmountLCY(
+                              TempVATAmountLine.GetAmountLCY(
                                 "Sales Header"."Posting Date", "Sales Header"."Currency Code", "Sales Header"."Currency Factor");
                         end;
 
                         trigger OnPreDataItem()
                         begin
-                            if VATAmountLine.Count() < 2 then
+                            if TempVATAmountLine.Count() < 2 then
                                 CurrReport.Break();
                             if (not GLSetup."Print VAT specification in LCY") or
                                ("Sales Header"."Currency Code" = '') or
-                               (VATAmountLine.GetTotalVATAmount() = 0)
+                               (TempVATAmountLine.GetTotalVATAmount() = 0)
                             then
                                 CurrReport.Break();
 
-                            SETRANGE(Number, 1, VATAmountLine.Count());
+                            SETRANGE(Number, 1, TempVATAmountLine.Count());
 
                             if GLSetup."LCY Code" = '' then
                                 VALSpecLCYHeader := VatAmountLbl + LCYLbl
@@ -1331,10 +1329,10 @@ report 5272726 "lbt Sales pro forma Invoice"
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                         }
-                        column(PrepmtInvBufDesc; PrepmtInvBuf.Description)
+                        column(PrepmtInvBufDesc; TempPrepmtInvBuf.Description)
                         {
                         }
-                        column(PrepmtInvBufGLAccNo; PrepmtInvBuf."G/L Account No.")
+                        column(PrepmtInvBufGLAccNo; TempPrepmtInvBuf."G/L Account No.")
                         {
                         }
                         column(PrepmtLineAmount_Control172; PrepmtLineAmount)
@@ -1345,13 +1343,13 @@ report 5272726 "lbt Sales pro forma Invoice"
                         column(TotalExclVATText_Control175; TotalExclVATText)
                         {
                         }
-                        column(PrepmtVATAmtLineVATAmtTxt; PrepmtVATAmountLine.VATAmountText())
+                        column(PrepmtVATAmtLineVATAmtTxt; TempPrepmtVATAmountLine.VATAmountText())
                         {
                         }
                         column(TotalInclVATText_Control177; TotalInclVATText)
                         {
                         }
-                        column(PrepmtInvAmount; PrepmtInvBuf.Amount)
+                        column(PrepmtInvAmount; TempPrepmtInvBuf.Amount)
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
@@ -1361,7 +1359,7 @@ report 5272726 "lbt Sales pro forma Invoice"
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(PrepmtInvAmtInclVATAmt; PrepmtInvBuf.Amount + PrepmtVATAmount)
+                        column(PrepmtInvAmtInclVATAmt; TempPrepmtInvBuf.Amount + PrepmtVATAmount)
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
@@ -1369,7 +1367,7 @@ report 5272726 "lbt Sales pro forma Invoice"
                         column(TotalInclVATText_Control181; TotalInclVATText)
                         {
                         }
-                        column(VATAmountLine_VATAmountText_Control182; VATAmountLine.VATAmountText())
+                        column(VATAmountLine_VATAmountText_Control182; TempVATAmountLine.VATAmountText())
                         {
                         }
                         column(PrepmtVATAmount_Control183; PrepmtVATAmount)
@@ -1460,19 +1458,19 @@ report 5272726 "lbt Sales pro forma Invoice"
                         trigger OnAfterGetRecord()
                         begin
                             if Number = 1 then begin
-                                if not PrepmtInvBuf.FIND('-') then
+                                if not TempPrepmtInvBuf.FIND('-') then
                                     CurrReport.Break();
                             end else
-                                if PrepmtInvBuf.Next() = 0 then
+                                if TempPrepmtInvBuf.Next() = 0 then
                                     CurrReport.Break();
 
                             if ShowInternalInfo then
-                                DimMgt.GetDimensionSet(TempPrepmtDimSetEntry, PrepmtInvBuf."Dimension Set ID");
+                                DimMgt.GetDimensionSet(TempPrepmtDimSetEntry, TempPrepmtInvBuf."Dimension Set ID");
 
                             if "Sales Header"."Prices Including VAT" then
-                                PrepmtLineAmount := PrepmtInvBuf."Amount Incl. VAT"
+                                PrepmtLineAmount := TempPrepmtInvBuf."Amount Incl. VAT"
                             else
-                                PrepmtLineAmount := PrepmtInvBuf.Amount;
+                                PrepmtLineAmount := TempPrepmtInvBuf.Amount;
                         end;
 
                         trigger OnPreDataItem()
@@ -1482,77 +1480,77 @@ report 5272726 "lbt Sales pro forma Invoice"
                     dataitem(PrepmtVATCounter; "Integer")
                     {
                         DataItemTableView = SORTING(Number);
-                        column(PrepmtVATAmtLineVATAmt; PrepmtVATAmountLine."VAT Amount")
+                        column(PrepmtVATAmtLineVATAmt; TempPrepmtVATAmountLine."VAT Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(PrepmtVATAmtLineVATBase; PrepmtVATAmountLine."VAT Base")
+                        column(PrepmtVATAmtLineVATBase; TempPrepmtVATAmountLine."VAT Base")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(PrepmtVATAmtLineLineAmt; PrepmtVATAmountLine."Line Amount")
+                        column(PrepmtVATAmtLineLineAmt; TempPrepmtVATAmountLine."Line Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(PrepmtVATAmountLine__VAT___; PrepmtVATAmountLine."VAT %")
+                        column(PrepmtVATAmountLine__VAT___; TempPrepmtVATAmountLine."VAT %")
                         {
                             DecimalPlaces = 0 : 5;
                         }
-                        column(PrepmtVATAmtLineVATIdent; PrepmtVATAmountLine."VAT Identifier")
+                        column(PrepmtVATAmtLineVATIdent; TempPrepmtVATAmountLine."VAT Identifier")
                         {
                         }
-                        column(PrepmtVATAmountLine__VAT_Amount__Control194; PrepmtVATAmountLine."VAT Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(PrepmtVATAmountLine__VAT_Base__Control195; PrepmtVATAmountLine."VAT Base")
+                        column(PrepmtVATAmountLine__VAT_Amount__Control194; TempPrepmtVATAmountLine."VAT Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(PrepmtVATAmountLine__Line_Amount__Control196; PrepmtVATAmountLine."Line Amount")
+                        column(PrepmtVATAmountLine__VAT_Base__Control195; TempPrepmtVATAmountLine."VAT Base")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(PrepmtVATAmountLine__VAT____Control197; PrepmtVATAmountLine."VAT %")
+                        column(PrepmtVATAmountLine__Line_Amount__Control196; TempPrepmtVATAmountLine."Line Amount")
+                        {
+                            AutoFormatExpression = "Sales Header"."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(PrepmtVATAmountLine__VAT____Control197; TempPrepmtVATAmountLine."VAT %")
                         {
                             DecimalPlaces = 0 : 5;
                         }
-                        column(PrepmtVATAmountLine__VAT_Amount__Control203; PrepmtVATAmountLine."VAT Amount")
+                        column(PrepmtVATAmountLine__VAT_Amount__Control203; TempPrepmtVATAmountLine."VAT Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(PrepmtVATAmountLine__VAT_Base__Control204; PrepmtVATAmountLine."VAT Base")
+                        column(PrepmtVATAmountLine__VAT_Base__Control204; TempPrepmtVATAmountLine."VAT Base")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(PrepmtVATAmountLine__Line_Amount__Control205; PrepmtVATAmountLine."Line Amount")
+                        column(PrepmtVATAmountLine__Line_Amount__Control205; TempPrepmtVATAmountLine."Line Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(PrepmtVATAmountLine__VAT____Control206; PrepmtVATAmountLine."VAT %")
+                        column(PrepmtVATAmountLine__VAT____Control206; TempPrepmtVATAmountLine."VAT %")
                         {
                             DecimalPlaces = 0 : 5;
                         }
-                        column(PrepmtVATAmountLine__VAT_Base__Control208; PrepmtVATAmountLine."VAT Base")
+                        column(PrepmtVATAmountLine__VAT_Base__Control208; TempPrepmtVATAmountLine."VAT Base")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(PrepmtVATAmountLine__VAT_Amount__Control209; PrepmtVATAmountLine."VAT Amount")
+                        column(PrepmtVATAmountLine__VAT_Amount__Control209; TempPrepmtVATAmountLine."VAT Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(PrepmtVATAmountLine__Line_Amount__Control210; PrepmtVATAmountLine."Line Amount")
+                        column(PrepmtVATAmountLine__Line_Amount__Control210; TempPrepmtVATAmountLine."Line Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
@@ -1590,12 +1588,12 @@ report 5272726 "lbt Sales pro forma Invoice"
 
                         trigger OnAfterGetRecord()
                         begin
-                            PrepmtVATAmountLine.GetLine(Number);
+                            TempPrepmtVATAmountLine.GetLine(Number);
                         end;
 
                         trigger OnPreDataItem()
                         begin
-                            SETRANGE(Number, 1, PrepmtVATAmountLine.Count());
+                            SETRANGE(Number, 1, TempPrepmtVATAmountLine.Count());
                         end;
                     }
                     dataitem(PrepmtTotal; "Integer")
@@ -1613,7 +1611,7 @@ report 5272726 "lbt Sales pro forma Invoice"
 
                         trigger OnPreDataItem()
                         begin
-                            if not PrepmtInvBuf.FIND('-') then
+                            if not TempPrepmtInvBuf.FIND('-') then
                                 CurrReport.Break();
                         end;
                     }
@@ -1687,38 +1685,38 @@ report 5272726 "lbt Sales pro forma Invoice"
 
                 trigger OnAfterGetRecord()
                 var
-                    PrepmtSalesLine: Record "Sales Line" temporary;
+                    TempPrepmtSalesLine: Record "Sales Line" temporary;
                     TempSalesLine: Record "Sales Line" temporary;
                     SalesPost: Codeunit "Sales-Post";
                 begin
-                    CLEAR(SalesLine);
+                    CLEAR(TempSalesLine);
                     CLEAR(SalesPost);
-                    VATAmountLine.DeleteAll();
-                    SalesLine.DeleteAll();
-                    SalesPost.GetSalesLines("Sales Header", SalesLine, 0);
-                    SalesLine.CalcVATAmountLines(0, "Sales Header", SalesLine, VATAmountLine);
-                    SalesLine.UpdateVATOnLines(0, "Sales Header", SalesLine, VATAmountLine);
-                    VATAmount := VATAmountLine.GetTotalVATAmount();
-                    VATBaseAmount := VATAmountLine.GetTotalVATBase();
+                    TempVATAmountLine.DeleteAll();
+                    TempSalesLine.DeleteAll();
+                    SalesPost.GetSalesLines("Sales Header", TempSalesLine, 0);
+                    TempSalesLine.CalcVATAmountLines(0, "Sales Header", TempSalesLine, TempVATAmountLine);
+                    TempSalesLine.UpdateVATOnLines(0, "Sales Header", TempSalesLine, TempVATAmountLine);
+                    VATAmount := TempVATAmountLine.GetTotalVATAmount();
+                    VATBaseAmount := TempVATAmountLine.GetTotalVATBase();
                     VATDiscountAmount :=
-                      VATAmountLine.GetTotalVATDiscount("Sales Header"."Currency Code", "Sales Header"."Prices Including VAT");
-                    TotalAmountInclVAT := VATAmountLine.GetTotalAmountInclVAT();
+                      TempVATAmountLine.GetTotalVATDiscount("Sales Header"."Currency Code", "Sales Header"."Prices Including VAT");
+                    TotalAmountInclVAT := TempVATAmountLine.GetTotalAmountInclVAT();
 
-                    PrepmtInvBuf.DeleteAll();
-                    SalesPostPrepmt.GetSalesLines("Sales Header", 0, PrepmtSalesLine);
+                    TempPrepmtInvBuf.DeleteAll();
+                    SalesPostPrepmt.GetSalesLines("Sales Header", 0, TempPrepmtSalesLine);
 
-                    if not PrepmtSalesLine.IsEmpty() then begin
+                    if not TempPrepmtSalesLine.IsEmpty() then begin
                         SalesPostPrepmt.GetSalesLinesToDeduct("Sales Header", TempSalesLine);
                         if not TempSalesLine.IsEmpty() then
-                            SalesPostPrepmt.CalcVATAmountLines("Sales Header", TempSalesLine, PrepmtVATAmountLineDeduct, 1);
+                            SalesPostPrepmt.CalcVATAmountLines("Sales Header", TempSalesLine, TempPrepmtVATAmountLineDeduct, 1);
                     end;
-                    SalesPostPrepmt.CalcVATAmountLines("Sales Header", PrepmtSalesLine, PrepmtVATAmountLine, 0);
-                    PrepmtVATAmountLine.DeductVATAmountLine(PrepmtVATAmountLineDeduct);
-                    SalesPostPrepmt.UpdateVATOnLines("Sales Header", PrepmtSalesLine, PrepmtVATAmountLine, 0);
-                    SalesPostPrepmt.BuildInvLineBuffer("Sales Header", PrepmtSalesLine, 0, PrepmtInvBuf);
-                    PrepmtVATAmount := PrepmtVATAmountLine.GetTotalVATAmount();
-                    PrepmtVATBaseAmount := PrepmtVATAmountLine.GetTotalVATBase();
-                    PrepmtTotalAmountInclVAT := PrepmtVATAmountLine.GetTotalAmountInclVAT();
+                    SalesPostPrepmt.CalcVATAmountLines("Sales Header", TempPrepmtSalesLine, TempPrepmtVATAmountLine, 0);
+                    TempPrepmtVATAmountLine.DeductVATAmountLine(TempPrepmtVATAmountLineDeduct);
+                    SalesPostPrepmt.UpdateVATOnLines("Sales Header", TempPrepmtSalesLine, TempPrepmtVATAmountLine, 0);
+                    SalesPostPrepmt.BuildInvLineBuffer("Sales Header", TempPrepmtSalesLine, 0, TempPrepmtInvBuf);
+                    PrepmtVATAmount := TempPrepmtVATAmountLine.GetTotalVATAmount();
+                    PrepmtVATBaseAmount := TempPrepmtVATAmountLine.GetTotalVATBase();
+                    PrepmtTotalAmountInclVAT := TempPrepmtVATAmountLine.GetTotalAmountInclVAT();
 
                     if Number > 1 then begin
                         CopyText := FormatDocument.GetCOPYText();
@@ -1737,10 +1735,10 @@ report 5272726 "lbt Sales pro forma Invoice"
                     NNC_SalesLineInvDiscAmt := 0;
 
                     if Number = 1 then begin
-                        SalesLine.SETRANGE("lbt Printoption", SalesLine."lbt Printoption"::Alternative, SalesLine."lbt Printoption"::Optional);
-                        if not SalesLine.IsEmpty() then
+                        TempSalesLine.SETRANGE("lbt Printoption", TempSalesLine."lbt Printoption"::Alternative, TempSalesLine."lbt Printoption"::Optional);
+                        if not TempSalesLine.IsEmpty() then
                             MESSAGE(AlternativeNotAllowedErr);
-                        SalesLine.SETRANGE("lbt Printoption");
+                        TempSalesLine.SETRANGE("lbt Printoption");
                     end;
                 end;
 
@@ -1937,14 +1935,14 @@ report 5272726 "lbt Sales pro forma Invoice"
         VATClause: Record "VAT Clause";
         CompanyInfo2: Record "Company Information";
         SalesSetup: Record "Sales & Receivables Setup";
-        VATAmountLine: Record "VAT Amount Line" temporary;
-        PrepmtVATAmountLine: Record "VAT Amount Line" temporary;
-        PrepmtVATAmountLineDeduct: Record "VAT Amount Line" temporary;
-        SalesLine: Record "Sales Line" temporary;
+        TempVATAmountLine: Record "VAT Amount Line" temporary;
+        TempPrepmtVATAmountLine: Record "VAT Amount Line" temporary;
+        TempPrepmtVATAmountLineDeduct: Record "VAT Amount Line" temporary;
+        TempSalesLine: Record "Sales Line" temporary;
         DimSetEntry1: Record "Dimension Set Entry";
         DimSetEntry2: Record "Dimension Set Entry";
         TempPrepmtDimSetEntry: Record "Dimension Set Entry" temporary;
-        PrepmtInvBuf: Record "Prepayment Inv. Line Buffer" temporary;
+        TempPrepmtInvBuf: Record "Prepayment Inv. Line Buffer" temporary;
         RespCenter: Record "Responsibility Center";
         CurrExchRate: Record "Currency Exchange Rate";
         AsmHeader: Record "Assembly Header";
@@ -2074,7 +2072,6 @@ report 5272726 "lbt Sales pro forma Invoice"
         ItemUnitDescriptionArry: array[50] of Text;
         ItemUnitQtyArry: array[50] of Text;
         InfoRowNo: Integer;
-        ItemUnitCode: Code[20];
         ItemUnitDescription: Text;
         ItemUnitQty: Text;
         HideCompanyInfo: Boolean;
@@ -2152,20 +2149,20 @@ report 5272726 "lbt Sales pro forma Invoice"
     end;
 
     local procedure FormatDocumentFields(SalesHeader: Record "Sales Header")
+    var
+        lbtFormatDocument: Codeunit "lbt Format Document";
     begin
-        with SalesHeader do begin
-            FormatDocument.SetTotalLabels("Currency Code", TotalText, TotalInclVATText, TotalExclVATText);
-            FormatDocument.SetSalesPerson(SalesPurchPerson, "Salesperson Code", SalesPersonText);
-            FormatDocument.SetPaymentTerms(PaymentTerms, "Payment Terms Code", "Language Code");
-            FormatDocument.SetPaymentTerms(PrepmtPaymentTerms, "Prepmt. Payment Terms Code", "Language Code");
-            FormatDocument.SetShipmentMethod(ShipmentMethod, "Shipment Method Code", "Language Code");
+        lbtFormatDocument.SetTotalLabels(SalesHeader."Currency Code", TotalText, TotalInclVATText, TotalExclVATText);
+        FormatDocument.SetSalesPerson(SalesPurchPerson, SalesHeader."Salesperson Code", SalesPersonText);
+        FormatDocument.SetPaymentTerms(PaymentTerms, SalesHeader."Payment Terms Code", SalesHeader."Language Code");
+        FormatDocument.SetPaymentTerms(PrepmtPaymentTerms, SalesHeader."Prepmt. Payment Terms Code", SalesHeader."Language Code");
+        FormatDocument.SetShipmentMethod(ShipmentMethod, SalesHeader."Shipment Method Code", SalesHeader."Language Code");
 
-            ReferenceText := FormatDocument.SetText("Your Reference" <> '', CopyStr(FIELDCAPTION("Your Reference"), 1, 80));
-            VATNoText := FormatDocument.SetText("VAT Registration No." <> '', CopyStr(FIELDCAPTION("VAT Registration No."), 1, 80));
-            OrderNoText := FormatDocument.SetText(OrderNo <> '', OrderNoCaptionLbl);
-            if SalesPersonText <> '' then
-                SalesPersonText := SalesPersonText_CaptionLbl;
-        end;
+        ReferenceText := FormatDocument.SetText(SalesHeader."Your Reference" <> '', CopyStr(SalesHeader.FIELDCAPTION("Your Reference"), 1, 80));
+        VATNoText := FormatDocument.SetText(SalesHeader."VAT Registration No." <> '', CopyStr(SalesHeader.FIELDCAPTION("VAT Registration No."), 1, 80));
+        OrderNoText := FormatDocument.SetText(OrderNo <> '', OrderNoCaptionLbl);
+        if SalesPersonText <> '' then
+            SalesPersonText := SalesPersonText_CaptionLbl;
     end;
 
     local procedure GetUnitOfMeasureDescr(UOMCode: Code[10]): Text
@@ -2180,10 +2177,6 @@ report 5272726 "lbt Sales pro forma Invoice"
     procedure BlanksForIndent(): Text[10]
     begin
         exit(PADSTR('', 2, ' '));
-    end;
-
-    local procedure "### Lebit Correspondence Functions ###"()
-    begin
     end;
 
     local procedure Createlbtext(LeBitPSLongtextLine: Record "lbt PS Longtext Line")

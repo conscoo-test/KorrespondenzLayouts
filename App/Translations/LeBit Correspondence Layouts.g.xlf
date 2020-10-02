@@ -553,6 +553,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt Corresp. Doc. Mgt - NamedType TotalTxt</note>
         </trans-unit>
+        <trans-unit id="Codeunit 951705066 - NamedType 620735958" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt Format Document - NamedType TranslatedTotalLbl</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1968274535 - NamedType 3317835502" size-unit="char" translate="yes" xml:space="preserve">
           <source>Header/footer texts already exists. Do you want to delete this?</source>
           <note from="Developer" annotates="general" priority="2"></note>

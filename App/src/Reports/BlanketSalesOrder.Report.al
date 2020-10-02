@@ -1592,18 +1592,18 @@ report 5272725 "lbt Blanket Sales Order"
     end;
 
     local procedure FormatDocumentFields(SalesHeader: Record "Sales Header")
+    var
+        lbtFormatDocument: Codeunit "lbt Format Document";
     begin
-        with SalesHeader do begin
-            FormatDocument.SetTotalLabels("Currency Code", TotalText, TotalInclVATText, TotalExclVATText);
-            FormatDocument.SetSalesPerson(SalesPurchPerson, "Salesperson Code", SalesPersonText);
-            FormatDocument.SetPaymentTerms(PaymentTerms, "Payment Terms Code", "Language Code");
-            FormatDocument.SetShipmentMethod(ShipmentMethod, "Shipment Method Code", "Language Code");
+        lbtFormatDocument.SetTotalLabels(SalesHeader."Currency Code", TotalText, TotalInclVATText, TotalExclVATText);
+        FormatDocument.SetSalesPerson(SalesPurchPerson, SalesHeader."Salesperson Code", SalesPersonText);
+        FormatDocument.SetPaymentTerms(PaymentTerms, SalesHeader."Payment Terms Code", SalesHeader."Language Code");
+        FormatDocument.SetShipmentMethod(ShipmentMethod, SalesHeader."Shipment Method Code", SalesHeader."Language Code");
 
-            ReferenceText := FormatDocument.SetText("Your Reference" <> '', CopyStr(FIELDCAPTION("Your Reference"), 1, 80));
-            VATNoText := FormatDocument.SetText("VAT Registration No." <> '', CopyStr(FIELDCAPTION("VAT Registration No."), 1, 80));
-            if SalesPersonText <> '' then
-                SalesPersonText := SalesPersonText_CaptionLbl;
-        end;
+        ReferenceText := FormatDocument.SetText(SalesHeader."Your Reference" <> '', CopyStr(SalesHeader.FIELDCAPTION("Your Reference"), 1, 80));
+        VATNoText := FormatDocument.SetText(SalesHeader."VAT Registration No." <> '', CopyStr(SalesHeader.FIELDCAPTION("VAT Registration No."), 1, 80));
+        if SalesPersonText <> '' then
+            SalesPersonText := SalesPersonText_CaptionLbl;
     end;
 
     local procedure Createlbtext(LeBitPSLongtextLine: Record "lbt PS Longtext Line")
