@@ -1716,7 +1716,7 @@ report 5272728 "lbt Order"
         LeBitReportFunctions.GetSourceType(TypeVar::Purchase, RepType::"Purchase Order", VendSource);
     end;
 
-    local procedure DocumentCaption(): Text[250]
+    local procedure DocumentCaption(): Text
     var
         DocCaption: text;
     begin

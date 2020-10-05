@@ -1135,7 +1135,7 @@ report 5272724 "lbt Sales - Shipment"
         end;
     end;
 
-    local procedure DocumentCaption(): Text[250]
+    local procedure DocumentCaption(): Text
     var
         DocCaption: text;
     begin

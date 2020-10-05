@@ -1403,7 +1403,7 @@ report 5272720 "lbt Sales - Quote"
         LeBitReportFunctions.GetSourceType(TypeVar::Sales, RepType::"Sales Quote", CustSource);
     end;
 
-    local procedure DocumentCaption(): Text[250]
+    local procedure DocumentCaption(): Text
     var
         DocCaption: text;
     begin

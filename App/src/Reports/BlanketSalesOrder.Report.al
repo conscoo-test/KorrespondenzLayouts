@@ -1374,7 +1374,7 @@ report 5272725 "lbt Blanket Sales Order"
         LeBitReportFunctions.GetSourceType(TypeVar::Sales, RepType::"Blanket Sales Order", CustSource);
     end;
 
-    local procedure DocumentCaption(): Text[250]
+    local procedure DocumentCaption(): Text
     var
         DocCaption: text;
     begin

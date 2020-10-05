@@ -61,7 +61,7 @@ report 5272729 "lbt Blanket Purchase Order"
                     column(VendAddr8; VendAddr[8])
                     {
                     }
-column(DocDate_PurchHdr; FORMAT("Purchase Header"."Document Date", 0, 4))
+                    column(DocDate_PurchHdr; FORMAT("Purchase Header"."Document Date", 0, 4))
                     {
                     }
                     column(VatTRegNo_PurchHdr; "Purchase Header"."VAT Registration No.")
@@ -1050,7 +1050,7 @@ column(DocDate_PurchHdr; FORMAT("Purchase Header"."Document Date", 0, 4))
         LeBitReportFunctions.GetSourceType(TypeVar::Purchase, RepType::"Blanket Purchase Order", VendSource);
     end;
 
-    local procedure DocumentCaption(): Text[250]
+    local procedure DocumentCaption(): Text
     var
         DocCaption: text;
     begin

@@ -1371,7 +1371,7 @@ report 5272730 "lbt Return Order"
         end;
     end;
 
-    local procedure DocumentCaption(): Text[250]
+    local procedure DocumentCaption(): Text
     var
         DocCaption: text;
     begin

@@ -1065,7 +1065,7 @@ report 5272727 "lbt Purchase - Quote"
         LeBitReportFunctions.GetSourceType(TypeVar::Purchase, RepType::"Purchase Quote", VendSource);
     end;
 
-    local procedure DocumentCaption(): Text[250]
+    local procedure DocumentCaption(): Text
     var
         DocCaption: text;
     begin
