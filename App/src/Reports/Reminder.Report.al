@@ -108,7 +108,7 @@ report 5272731 "lbt Reminder"
                 column(ReminderHeaderNoCaption; ReminderHeaderNoCaptionLbl)
                 {
                 }
-                column(ReminderCaption; ReminderCaptionLbl)
+                column(ReminderCaption; DocumentCaption())
                 {
                 }
                 column(CustNo_IssuedReminderHdrCaption; "Issued Reminder Header".FIELDCAPTION("Customer No."))
@@ -754,6 +754,21 @@ report 5272731 "lbt Reminder"
         Footer: Text;
         DimLbl: Label '%1 - %2', Locked = true;
         CombinedDimLbl: Label '%1; %2 - %3', Locked = true;
+
+    local procedure DocumentCaption(): Text
+    var
+        DocCaption: text;
+    begin
+        OnBeforeGetDocumentCaption("Issued Reminder Header", DocCaption);
+        if DocCaption <> '' then
+            exit(DocCaption);
+        exit(ReminderCaptionLbl);
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeGetDocumentCaption(IssuedReminderHeader: Record "Issued Reminder Header"; var DocCaption: text);
+    begin
+    end;
 }
 
 

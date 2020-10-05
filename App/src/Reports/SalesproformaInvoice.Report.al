@@ -35,7 +35,7 @@ report 5272726 "lbt Sales pro forma Invoice"
                     column(CompanyInfo1_Picture; CompanyInfo1.Picture)
                     {
                     }
-                    column(DocumentConfirmCopyCaption; STRSUBSTNO(TitleLbl, CopyText))
+                    column(DocumentConfirmCopyCaption; STRSUBSTNO(DocumentCaption(), CopyText))
                     {
                     }
                     column(CompanyAddressLine; CompanyAddressLine)
@@ -1895,6 +1895,21 @@ report 5272726 "lbt Sales pro forma Invoice"
         RepType: Option " ","Sales Quote","Sales Order","Sales Pro Forma Inv","Blanket Sales Order","Purchase Quote","Purchase Order","Blanket Purchase Order";
     begin
         LeBitReportFunctions.GetSourceType(TypeVar::Sales, RepType::"Sales Pro Forma Inv", CustSource);
+    end;
+
+    local procedure DocumentCaption(): Text
+    var
+        DocCaption: text;
+    begin
+        OnBeforeGetDocumentCaption("Sales Header", DocCaption);
+        IF DocCaption <> '' THEN
+            EXIT(DocCaption);
+        exit(TitleLbl);
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeGetDocumentCaption(SalesHeader: Record "Sales Header"; var DocCaption: text);
+    begin
     end;
 }
 

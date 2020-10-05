@@ -34,7 +34,7 @@ report 5272727 "lbt Purchase - Quote"
                     column(CompanyInfo3Picture; CompanyInfo3.Picture)
                     {
                     }
-                    column(DocumentConfirmCopyCaption; STRSUBSTNO(DocCaptionLbl, CopyText))
+                    column(DocumentConfirmCopyCaption; STRSUBSTNO(DocumentCaption(), CopyText))
                     {
                     }
                     column(VendAddr1; VendAddr[1])
@@ -1063,6 +1063,21 @@ report 5272727 "lbt Purchase - Quote"
         RepType: Option " ","Sales Quote","Sales Order","Sales Pro Forma Inv","Blanket Sales Order","Purchase Quote","Purchase Order","Blanket Purchase Order";
     begin
         LeBitReportFunctions.GetSourceType(TypeVar::Purchase, RepType::"Purchase Quote", VendSource);
+    end;
+
+    local procedure DocumentCaption(): Text[250]
+    var
+        DocCaption: text;
+    begin
+        OnBeforeGetDocumentCaption("Purchase Header", DocCaption);
+        if DocCaption <> '' then
+            exit(DocCaption);
+        exit(DocCaptionLbl);
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeGetDocumentCaption(PurchaseHeader: Record "Purchase Header"; var DocCaption: text);
+    begin
     end;
 }
 
