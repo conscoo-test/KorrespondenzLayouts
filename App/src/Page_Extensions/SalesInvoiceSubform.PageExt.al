@@ -4,7 +4,7 @@ pageextension 5272749 "lbt Sales Invoice Subform" extends "Sales Invoice Subform
     {
         modify(Description)
         {
-            StyleExpr = Rec."lbt Printoption StyleExpr";
+            StyleExpr = lbtStyle;
         }
 
 
@@ -55,7 +55,10 @@ pageextension 5272749 "lbt Sales Invoice Subform" extends "Sales Invoice Subform
     var
         LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
     begin
-        Rec."lbt Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."lbt Printoption");
+        lbtStyle := LeBitCorrespDocMgt.GetStyleExpr(Rec."lbt Printoption");
     end;
+
+    var
+        lbtStyle: Text;
 }
 

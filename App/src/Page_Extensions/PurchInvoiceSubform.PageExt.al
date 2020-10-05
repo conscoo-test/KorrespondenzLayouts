@@ -50,11 +50,5 @@ pageextension 5272767 "lbt Purch. Invoice Subform" extends "Purch. Invoice Subfo
             }
         }
     }
-    trigger OnAfterGetRecord()
-    var
-        LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
-    begin
-        Rec."lbt Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."lbt Printoption");
-    end;
 }
 

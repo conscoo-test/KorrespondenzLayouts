@@ -4,7 +4,7 @@ pageextension 5272772 "lbt Sales Return Order Subform" extends "Sales Return Ord
     {
         modify(Description)
         {
-            StyleExpr = Rec."lbt Printoption StyleExpr";
+            StyleExpr = lbtStyle;
         }
 
         modify("Invoice Disc. Pct.")
@@ -64,7 +64,10 @@ pageextension 5272772 "lbt Sales Return Order Subform" extends "Sales Return Ord
     var
         LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
     begin
-        Rec."lbt Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."lbt Printoption");
+        lbtStyle := LeBitCorrespDocMgt.GetStyleExpr(Rec."lbt Printoption");
     end;
+
+    var
+        lbtStyle: Text;
 }
 

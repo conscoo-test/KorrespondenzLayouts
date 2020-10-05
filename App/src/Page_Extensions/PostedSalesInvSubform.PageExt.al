@@ -4,7 +4,7 @@ pageextension 5272724 "lbt Posted Sales Inv. Subform" extends "Posted Sales Invo
     {
         modify(Description)
         {
-            StyleExpr = Rec."lbt Printoption StyleExpr";
+            StyleExpr = lbtStyle;
         }
         addfirst(Control1)
         {
@@ -57,7 +57,10 @@ pageextension 5272724 "lbt Posted Sales Inv. Subform" extends "Posted Sales Invo
     var
         LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
     begin
-        Rec."lbt Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."lbt Printoption");
+        lbtStyle := LeBitCorrespDocMgt.GetStyleExpr(Rec."lbt Printoption");
     end;
+
+    var
+        lbtStyle: Text;
 }
 

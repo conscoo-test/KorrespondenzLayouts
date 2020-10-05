@@ -13,10 +13,8 @@ report 5272724 "lbt Sales - Shipment"
             DataItemTableView = SORTING("No.");
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
             RequestFilterHeading = 'Posted Sales Shipment';
+            column(Footer; Footer) { }
             column(No_SalesShptHeader; "No.")
-            {
-            }
-            column(PageCaption; PageCaptionCapLbl)
             {
             }
             dataitem(CopyLoop; "Integer")
@@ -61,82 +59,10 @@ report 5272724 "lbt Sales - Shipment"
                     column(ShipToAddr8; ShipToAddr[8])
                     {
                     }
-                    column(CompanyInfo_Name; CompanyInfo.Name)
-                    {
-                    }
-                    column(CompanyInfo__VAT_Registration_No__; CompanyInfo."VAT Registration No.")
-                    {
-                    }
-                    column(CompanyInfo_Address; CompanyInfo.Address)
-                    {
-                    }
-                    column(CompanyInfo__Post_Code; CompanyInfo."Post Code")
-                    {
-                    }
-                    column(CompanyInfo_City; CompanyInfo.City)
-                    {
-                    }
-                    column(CompanyInfo__Phone_No; CompanyInfo."Phone No.")
-                    {
-                    }
-                    column(CompanyInfo__Fax_No; CompanyInfo."Fax No.")
-                    {
-                    }
-                    column(CompanyInfo_E_Mail; CompanyInfo."E-Mail")
-                    {
-                    }
-                    column(CompanyInfo__Home_Page; CompanyInfo."Home Page")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO1; CompanyInfo."lbt CEO1")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO2; CompanyInfo."lbt CEO2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO3; CompanyInfo."lbt CEO3")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Commercial_Register_No; CompanyInfo."lbt Commercial Register No.")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Trade_Register_Name; CompanyInfo."lbt Trade Register Name")
-                    {
-                    }
-                    column(CompanyInfo__Bank_Name; CompanyInfo."Bank Name")
-                    {
-                    }
-                    column(CompanyInfo_IBAN; CompanyInfo.IBAN)
-                    {
-                    }
-                    column(CompanyInfo__SWIFT_Code; CompanyInfo."SWIFT Code")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Bank_Name_2; CompanyInfo."lbt Bank Name 2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_IBAN_2; CompanyInfo."lbt IBAN 2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_SWIFT_Code_2; CompanyInfo."lbt SWIFT Code 2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Bank_Name_3; CompanyInfo."lbt Bank Name 3")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_IBAN_3; CompanyInfo."lbt IBAN 3")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_SWIFT_Code_3; CompanyInfo."lbt SWIFT Code 3")
-                    {
-                    }
                     column(DocDate_SalesShptHeader; FORMAT("Sales Shipment Header"."Document Date", 0, 4))
                     {
                     }
                     column(YourRef_SalesShptHeader; "Sales Shipment Header"."Your Reference")
-                    {
-                    }
-                    column(ShptDate_SalesShptHeader; FORMAT("Sales Shipment Header"."Shipment Date", 0, 4))
                     {
                     }
                     column(SelltoCustNo_SalesShptHeader; "Sales Shipment Header"."Sell-to Customer No.")
@@ -157,70 +83,10 @@ report 5272724 "lbt Sales - Shipment"
                     column(OutputNo; OutputNo)
                     {
                     }
-                    column(ItemTrackingAppendixCaption; ItemTrackingAppendixCaptionLbl)
-                    {
-                    }
-                    column(PhoneNoCaption; PhoneNoCaptionLbl)
-                    {
-                    }
-                    column(VATRegNoCaption; VATRegNoCaptionLbl)
-                    {
-                    }
-                    column(GiroNoCaption; GiroNoCaptionLbl)
-                    {
-                    }
-                    column(BankNameCaption; BankNameCaptionLbl)
-                    {
-                    }
-                    column(BankAccNoCaption; BankAccNoCaptionLbl)
-                    {
-                    }
                     column(ShipmentNoCaption; ShipmentNoCaptionLbl)
                     {
                     }
-                    column(ShipmentDateCaption; ShipmentDateCaptionLbl)
-                    {
-                    }
-                    column(HomePageCaption; HomePageCaptionLbl)
-                    {
-                    }
-                    column(EmailCaption; EmailCaptionLbl)
-                    {
-                    }
-                    column(DocumentDateCaption; DocumentDateCaptionLbl)
-                    {
-                    }
                     column(SelltoCustNo_SalesShptHeaderCaption; "Sales Shipment Header".FIELDCAPTION("Sell-to Customer No."))
-                    {
-                    }
-                    column(CompanyInfo__VAT_Registration_No__Caption; VATRegNoCaptionLbl)
-                    {
-                    }
-                    column(CompanyInfo__Phone_No__Caption; PhoneNoCaptionLbl)
-                    {
-                    }
-                    column(CompanyInfo__Fax_No__Caption; FaxNoCaptionLbl)
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Trade_Register_Name_Caption; CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO_Caption; CompanyInfo__LeBit_CEO_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__Bank_Name_Caption; CompanyInfo__Bank_Name_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo_IBAN_Caption; CompanyInfo_IBAN_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__SWIFT_Code_Caption; CompanyInfo__SWIFT_Code_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo_E_Mail_Caption; CompanyInfo_E_Mail_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__Home_Page_Caption; CompanyInfo__Home_Page_Caption_Lbl)
                     {
                     }
                     column(PagefromPageCaption; PagefromPageCaptionLbl)
@@ -356,11 +222,11 @@ report 5272724 "lbt Sales - Shipment"
                             repeat
                                 OldDimText := DimText;
                                 if DimText = '' then
-                                    DimText := STRSUBSTNO('%1 - %2', DimSetEntry1."Dimension Code", DimSetEntry1."Dimension Value Code")
+                                    DimText := STRSUBSTNO(DimLbl, DimSetEntry1."Dimension Code", DimSetEntry1."Dimension Value Code")
                                 else
                                     DimText :=
                                       STRSUBSTNO(
-                                        '%1; %2 - %3', DimText,
+                                        CombinedDimLbl, DimText,
                                         DimSetEntry1."Dimension Code", DimSetEntry1."Dimension Value Code");
                                 if STRLEN(DimText) > MAXSTRLEN(OldDimText) then begin
                                     DimText := OldDimText;
@@ -387,16 +253,10 @@ report 5272724 "lbt Sales - Shipment"
                         column(ShowInternalInfo; ShowInternalInfo)
                         {
                         }
-                        column(ShowCorrectionLines; ShowCorrectionLines)
-                        {
-                        }
                         column(SalesLineType; FORMAT(Type, 0, 2))
                         {
                         }
                         column(AsmHeaderExists; AsmHeaderExists)
-                        {
-                        }
-                        column(DocumentNo_SalesShptLine; "Document No.")
                         {
                         }
                         column(LinNo; LinNo)
@@ -408,16 +268,7 @@ report 5272724 "lbt Sales - Shipment"
                         column(UOM_SalesShptLine; "Unit of Measure")
                         {
                         }
-                        column(No_SalesShptLine; "No.")
-                        {
-                        }
                         column(LineNo_SalesShptLine; "Line No.")
-                        {
-                        }
-                        column(UOM_SalesShptLineCaption; FIELDCAPTION("Unit of Measure"))
-                        {
-                        }
-                        column(No_SalesShptLineCaption; FIELDCAPTION("No."))
                         {
                         }
                         column(Item_Picture; Item.Picture)
@@ -558,11 +409,11 @@ report 5272724 "lbt Sales - Shipment"
                                 repeat
                                     OldDimText := DimText;
                                     if DimText = '' then
-                                        DimText := STRSUBSTNO('%1 - %2', DimSetEntry2."Dimension Code", DimSetEntry2."Dimension Value Code")
+                                        DimText := STRSUBSTNO(DimLbl, DimSetEntry2."Dimension Code", DimSetEntry2."Dimension Value Code")
                                     else
                                         DimText :=
                                           STRSUBSTNO(
-                                            '%1; %2 - %3', DimText,
+                                            CombinedDimLbl, DimText,
                                             DimSetEntry2."Dimension Code", DimSetEntry2."Dimension Value Code");
                                     if STRLEN(DimText) > MAXSTRLEN(OldDimText) then begin
                                         DimText := OldDimText;
@@ -640,7 +491,6 @@ report 5272724 "lbt Sales - Shipment"
                             if "lbt Printoption" = "lbt Printoption"::"New Page" then
                                 NewPageGroup += 1;
 
-                            ItemUnitCode := '';
                             ItemUnitDescription := '';
                             ItemUnitQty := '';
                             CLEAR(InfoRowNo);
@@ -676,7 +526,6 @@ report 5272724 "lbt Sales - Shipment"
                                     COMPRESSARRAY(ItemUnitQtyArry);
                                 end;
                                 if "Description 2" <> '' then begin
-                                    ItemUnitCode := ItemUnitCodeArry[1];
                                     ItemUnitDescription := ItemUnitDescriptionArry[1];
                                     ItemUnitQty := ItemUnitQtyArry[1];
                                     ItemUnitCodeArry[1] := '';
@@ -686,7 +535,7 @@ report 5272724 "lbt Sales - Shipment"
                                     COMPRESSARRAY(ItemUnitDescriptionArry);
                                     COMPRESSARRAY(ItemUnitQtyArry);
                                 end;
-                                ///Prüfung auf MaxRowNo
+                                ///Pr�fung auf MaxRowNo
                                 Counter := 0;
                                 repeat
                                     Counter += 1;
@@ -704,7 +553,7 @@ report 5272724 "lbt Sales - Shipment"
                             if ShowLotSN then begin
                                 ItemTrackingDocMgt.SetRetrieveAsmItemTracking(true);
                                 TrackingSpecCount :=
-                                  ItemTrackingDocMgt.RetrieveDocumentItemTracking(TrackingSpecBuffer,
+                                  ItemTrackingDocMgt.RetrieveDocumentItemTracking(TempTrackingSpecBuffer,
                                     "Sales Shipment Header"."No.", DATABASE::"Sales Shipment Header", 0);
                                 ItemTrackingDocMgt.SetRetrieveAsmItemTracking(false);
                             end;
@@ -770,19 +619,19 @@ report 5272724 "lbt Sales - Shipment"
                     dataitem(ItemTrackingLine; "Integer")
                     {
                         DataItemTableView = SORTING(Number);
-                        column(TrackingSpecBufferNo; TrackingSpecBuffer."Item No.")
+                        column(TrackingSpecBufferNo; TempTrackingSpecBuffer."Item No.")
                         {
                         }
-                        column(TrackingSpecBufferDesc; TrackingSpecBuffer.Description)
+                        column(TrackingSpecBufferDesc; TempTrackingSpecBuffer.Description)
                         {
                         }
-                        column(TrackingSpecBufferLotNo; TrackingSpecBuffer."Lot No.")
+                        column(TrackingSpecBufferLotNo; TempTrackingSpecBuffer."Lot No.")
                         {
                         }
-                        column(TrackingSpecBufferSerNo; TrackingSpecBuffer."Serial No.")
+                        column(TrackingSpecBufferSerNo; TempTrackingSpecBuffer."Serial No.")
                         {
                         }
-                        column(TrackingSpecBufferQty; TrackingSpecBuffer."Quantity (Base)")
+                        column(TrackingSpecBufferQty; TempTrackingSpecBuffer."Quantity (Base)")
                         {
                         }
                         column(ShowTotal; ShowTotal)
@@ -803,9 +652,6 @@ report 5272724 "lbt Sales - Shipment"
                         column(DescriptionCaption; DescriptionCaptionLbl)
                         {
                         }
-                        column(NoCaption1; NoCaptionLbl)
-                        {
-                        }
                         dataitem(TotalItemTracking; "Integer")
                         {
                             DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
@@ -817,29 +663,29 @@ report 5272724 "lbt Sales - Shipment"
                         trigger OnAfterGetRecord()
                         begin
                             if Number = 1 then
-                                TrackingSpecBuffer.FindSet()
+                                TempTrackingSpecBuffer.FindSet()
                             else
-                                TrackingSpecBuffer.Next();
+                                TempTrackingSpecBuffer.Next();
 
-                            if not ShowCorrectionLines and TrackingSpecBuffer.Correction then
+                            if not ShowCorrectionLines and TempTrackingSpecBuffer.Correction then
                                 CurrReport.Skip();
-                            if TrackingSpecBuffer.Correction then
-                                TrackingSpecBuffer."Quantity (Base)" := -TrackingSpecBuffer."Quantity (Base)";
+                            if TempTrackingSpecBuffer.Correction then
+                                TempTrackingSpecBuffer."Quantity (Base)" := -TempTrackingSpecBuffer."Quantity (Base)";
 
                             ShowTotal := false;
-                            if ItemTrackingAppendix.IsStartNewGroup(TrackingSpecBuffer) then
+                            if ItemTrackingAppendix.IsStartNewGroup(TempTrackingSpecBuffer) then
                                 ShowTotal := true;
 
                             ShowGroup := false;
-                            if (TrackingSpecBuffer."Source Ref. No." <> OldRefNo) or
-                               (TrackingSpecBuffer."Item No." <> OldNo)
+                            if (TempTrackingSpecBuffer."Source Ref. No." <> OldRefNo) or
+                               (TempTrackingSpecBuffer."Item No." <> OldNo)
                             then begin
-                                OldRefNo := TrackingSpecBuffer."Source Ref. No.";
-                                OldNo := TrackingSpecBuffer."Item No.";
+                                OldRefNo := TempTrackingSpecBuffer."Source Ref. No.";
+                                OldNo := TempTrackingSpecBuffer."Item No.";
                                 TotalQty := 0;
                             end else
                                 ShowGroup := true;
-                            TotalQty += TrackingSpecBuffer."Quantity (Base)";
+                            TotalQty += TempTrackingSpecBuffer."Quantity (Base)";
                         end;
 
                         trigger OnPreDataItem()
@@ -847,7 +693,7 @@ report 5272724 "lbt Sales - Shipment"
                             if TrackingSpecCount = 0 then
                                 CurrReport.Break();
                             SETRANGE(Number, 1, TrackingSpecCount);
-                            TrackingSpecBuffer.SETCURRENTKEY("Source ID", "Source Type", "Source Subtype", "Source Batch Name",
+                            TempTrackingSpecBuffer.SETCURRENTKEY("Source ID", "Source Type", "Source Subtype", "Source Batch Name",
                               "Source Prod. Order Line", "Source Ref. No.");
                         end;
                     }
@@ -958,6 +804,7 @@ report 5272724 "lbt Sales - Shipment"
                 CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
                 FormatAddressFields("Sales Shipment Header");
                 FormatDocumentFields("Sales Shipment Header");
+                CompanyInfo."lbt SetReportFooter"(Footer);
 
                 DimSetEntry1.SETRANGE("Dimension Set ID", "Dimension Set ID");
 
@@ -1078,7 +925,7 @@ report 5272724 "lbt Sales - Shipment"
         DimSetEntry1: Record "Dimension Set Entry";
         DimSetEntry2: Record "Dimension Set Entry";
         Item: Record Item;
-        TrackingSpecBuffer: Record "Tracking Specification" temporary;
+        TempTrackingSpecBuffer: Record "Tracking Specification" temporary;
         PostedAsmHeader: Record "Posted Assembly Header";
         PostedAsmLine: Record "Posted Assembly Line";
         RespCenter: Record "Responsibility Center";
@@ -1119,18 +966,8 @@ report 5272724 "lbt Sales - Shipment"
         DisplayAssemblyInformation: Boolean;
         AsmHeaderExists: Boolean;
         LinNo: Integer;
-        ItemTrackingAppendixCaptionLbl: Label 'Item Tracking - Appendix';
-        PhoneNoCaptionLbl: Label 'Phone No.';
-        VATRegNoCaptionLbl: Label 'VAT Reg. No.';
-        GiroNoCaptionLbl: Label 'Giro No.';
-        BankNameCaptionLbl: Label 'Bank';
         TitleLbl: Label 'Sales - Shipment %1', Comment = '%1 - Document No.';
-        BankAccNoCaptionLbl: Label 'Account No.';
         ShipmentNoCaptionLbl: Label 'Shipment No.';
-        ShipmentDateCaptionLbl: Label 'Shipment Date';
-        HomePageCaptionLbl: Label 'Home Page';
-        EmailCaptionLbl: Label 'Email';
-        DocumentDateCaptionLbl: Label 'Document Date';
         HeaderDimensionsCaptionLbl: Label 'Header Dimensions';
         LineDimensionsCaptionLbl: Label 'Line Dimensions';
         BilltoAddressCaptionLbl: Label 'Bill-to Address';
@@ -1139,20 +976,11 @@ report 5272724 "lbt Sales - Shipment"
         LotNoCaptionLbl: Label 'Lot No.';
         DescriptionCaptionLbl: Label 'Description';
         NoCaptionLbl: Label 'No.';
-        PageCaptionCapLbl: Label 'Page %1 of %2', Comment = '%1 - Current Page, %2 - Total Pages';
         PageFromPageCaptionLbl: Label 'Page %1 of %2', Comment = '%1 - Current Page, %2 - Total Pages';
         FromCaptionLbl: Label 'from';
         DatumCaptionLbl: Label 'Date';
         PosNo_CaptionLbl: Label 'Pos.';
         UOM_CaptionLbl: Label 'Unit';
-        CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl: Label 'Registered in:';
-        CompanyInfo__LeBit_CEO_Caption_Lbl: Label 'Chief Executive Officer';
-        CompanyInfo__Bank_Name_Caption_Lbl: Label 'Bank';
-        CompanyInfo_IBAN_Caption_Lbl: Label 'IBAN';
-        CompanyInfo__SWIFT_Code_Caption_Lbl: Label 'SWIFT-BIC';
-        CompanyInfo_E_Mail_Caption_Lbl: Label 'Mail:';
-        CompanyInfo__Home_Page_Caption_Lbl: Label 'Homepage:';
-        FaxNoCaptionLbl: Label 'Telefax no.';
         CompanyAddressLine: Text;
         InfoCaptionArry: array[99] of Text;
         InfoValueArry: array[99] of Text;
@@ -1160,7 +988,6 @@ report 5272724 "lbt Sales - Shipment"
         ItemUnitDescriptionArry: array[50] of Text;
         ItemUnitQtyArry: array[50] of Text;
         InfoRowNo: Integer;
-        ItemUnitCode: Code[20];
         ItemUnitDescription: Text;
         ItemUnitQty: Text;
         HideCompanyInfo: Boolean;
@@ -1175,7 +1002,10 @@ report 5272724 "lbt Sales - Shipment"
         NewPageLBFuss: Integer;
         ReportType: Option Purchase,Sales,QA,Production,Delivery,"Report";
         OrderNoText: Text;
+        Footer: Text;
         VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
+        DimLbl: Label '%1 - %2', Locked = true;
+        CombinedDimLbl: Label '%1; %2 - %3', Locked = true;
 
     procedure InitLogInteraction()
     begin
@@ -1201,11 +1031,9 @@ report 5272724 "lbt Sales - Shipment"
 
     local procedure FormatDocumentFields(SalesShipmentHeader: Record "Sales Shipment Header")
     begin
-        with SalesShipmentHeader do begin
-            FormatDocument.SetSalesPerson(SalesPurchPerson, "Salesperson Code", SalesPersonText);
-            ReferenceText := FormatDocument.SetText("Your Reference" <> '', CopyStr(FIELDCAPTION("Your Reference"), 1, 80));
-            OrderNoText := FormatDocument.SetText("Order No." <> '', CopyStr(FIELDCAPTION("Order No."), 1, 80));
-        end;
+        FormatDocument.SetSalesPerson(SalesPurchPerson, SalesShipmentHeader."Salesperson Code", SalesPersonText);
+        ReferenceText := FormatDocument.SetText(SalesShipmentHeader."Your Reference" <> '', CopyStr(SalesShipmentHeader.FIELDCAPTION("Your Reference"), 1, 80));
+        OrderNoText := FormatDocument.SetText(SalesShipmentHeader."Order No." <> '', CopyStr(SalesShipmentHeader.FIELDCAPTION("Order No."), 1, 80));
     end;
 
     local procedure GetUnitOfMeasureDescr(UOMCode: Code[10]): Text
@@ -1220,10 +1048,6 @@ report 5272724 "lbt Sales - Shipment"
     procedure BlanksForIndent(): Text[10]
     begin
         exit(PADSTR('', 2, ' '));
-    end;
-
-    local procedure "### Lebit Correspondence Functions ###"()
-    begin
     end;
 
     local procedure Createlbtext(LeBitPostedPSLongtextLine: Record "lbt Posted PS Longtext Line")
@@ -1311,4 +1135,5 @@ report 5272724 "lbt Sales - Shipment"
         end;
     end;
 }
+
 

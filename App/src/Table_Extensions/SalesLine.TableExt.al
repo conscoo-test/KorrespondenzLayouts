@@ -20,7 +20,7 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
 
         field(5272720; "lbt Long Text"; Boolean)
         {
-            CalcFormula = Exist ("lbt PS Longtext Line" WHERE("Table ID" = CONST(37),
+            CalcFormula = Exist("lbt PS Longtext Line" WHERE("Table ID" = CONST(37),
                                                                 "Document Type" = FIELD("Document Type"),
                                                                 "Document No." = FIELD("Document No."),
                                                                 Position = CONST(Longtext),
@@ -38,8 +38,7 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
 
             trigger OnValidate()
             var
-                LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
-                Printoption: Option Standard,Title,,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total";
+                Printoption: Option Standard,Title,Total,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total";
             begin
                 if ("Printoption" = "Printoption"::Alternative) or
                   ("Printoption" = "Printoption"::Optional)
@@ -65,8 +64,6 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
                     VALIDATE(Type, Type::" ");
                     "Printoption" := Printoption;
                 end;
-
-                "lbt Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr("Printoption");
             end;
         }
         field(5272722; "lbt Summation"; Text[250])
@@ -87,7 +84,7 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
         field(5272723; "lbt Balance"; Decimal)
         {
             AutoFormatType = 1;
-            CalcFormula = Sum ("Sales Line"."Line Amount" WHERE("Document Type" = FIELD("Document Type"),
+            CalcFormula = Sum("Sales Line"."Line Amount" WHERE("Document Type" = FIELD("Document Type"),
                                                                 "Document No." = FIELD("Document No."),
                                                                 "Line No." = FIELD(FILTER("lbt Summation"))));
             Caption = 'Balance';
@@ -114,6 +111,8 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
         }
         field(5272727; "lbt Printoption StyleExpr"; Text[30])
         {
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Removed';
             Caption = 'lbt Printoption StyleExpr';
             DataClassification = CustomerContent;
         }

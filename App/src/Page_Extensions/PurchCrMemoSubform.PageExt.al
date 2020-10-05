@@ -4,7 +4,7 @@ pageextension 5272806 "lbt Purch. Cr. Memo Subform" extends "Purch. Cr. Memo Sub
     {
         modify(Description)
         {
-            StyleExpr = Rec."lbt Printoption StyleExpr";
+            StyleExpr = lbtStyle;
         }
         addfirst(Control1)
         {
@@ -57,7 +57,10 @@ pageextension 5272806 "lbt Purch. Cr. Memo Subform" extends "Purch. Cr. Memo Sub
     var
         LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
     begin
-        Rec."lbt Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr(Rec."lbt Printoption");
+        lbtStyle := LeBitCorrespDocMgt.GetStyleExpr(Rec."lbt Printoption");
     end;
+
+    var
+        lbtStyle: Text;
 }
 

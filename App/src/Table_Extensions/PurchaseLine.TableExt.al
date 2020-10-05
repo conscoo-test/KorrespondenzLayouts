@@ -27,7 +27,7 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
 
         field(5272720; "lbt Long Text"; Boolean)
         {
-            CalcFormula = Exist ("lbt PS Longtext Line" WHERE("Table ID" = CONST(39),
+            CalcFormula = Exist("lbt PS Longtext Line" WHERE("Table ID" = CONST(39),
                                                                 "Document Type" = FIELD("Document Type"),
                                                                 "Document No." = FIELD("Document No."),
                                                                 Position = CONST(Longtext),
@@ -44,8 +44,6 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
             DataClassification = CustomerContent;
 
             trigger OnValidate()
-            var
-                LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
             begin
                 if ("lbt Printoption" = "lbt Printoption"::Alternative) or ("lbt Printoption" = "lbt Printoption"::Optional) then begin
                     VALIDATE(Quantity, 0);
@@ -66,8 +64,6 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
                     Error(PrintOptionTypeMismatchErr, Type, "lbt Printoption"::Title, "lbt Printoption"::"Line Invisible");
                 if (Type = Type::"End Total") and not ("lbt Printoption" in ["lbt Printoption"::Total, "lbt Printoption"::"Line Invisible"]) then
                     Error(PrintOptionTypeMismatchErr, Type, "lbt Printoption"::Total, "lbt Printoption"::"Line Invisible");
-
-                "lbt Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr("lbt Printoption");
             end;
         }
         field(5272722; "lbt Summation"; Text[250])
@@ -88,7 +84,7 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
         field(5272723; "lbt Balance"; Decimal)
         {
             AutoFormatType = 1;
-            CalcFormula = Sum ("Purchase Line"."Line Amount" WHERE("Document Type" = FIELD("Document Type"),
+            CalcFormula = Sum("Purchase Line"."Line Amount" WHERE("Document Type" = FIELD("Document Type"),
                                                                    "Document No." = FIELD("Document No."),
                                                                    "Line No." = FIELD(FILTER("lbt Summation"))));
             Caption = 'Balance';
@@ -113,8 +109,11 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
             Caption = 'Source Document Line No.';
             DataClassification = CustomerContent;
         }
+
         field(5272727; "lbt Printoption StyleExpr"; Text[30])
         {
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Removed';
             Caption = 'lbt Printoption StyleExpr';
             DataClassification = CustomerContent;
 

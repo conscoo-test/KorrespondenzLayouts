@@ -12,6 +12,7 @@ report 5272725 "lbt Blanket Sales Order"
             DataItemTableView = SORTING("Document Type", "No.") WHERE("Document Type" = CONST("Blanket Order"));
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
             RequestFilterHeading = 'Blanket Sales Order';
+            column(Footer; Footer) { }
             column(DocType_SalesHeader; "Document Type")
             {
             }
@@ -63,78 +64,6 @@ report 5272725 "lbt Blanket Sales Order"
                     column(CustAddr8; CustAddr[8])
                     {
                     }
-                    column(CompanyInfo_Name; CompanyInfo.Name)
-                    {
-                    }
-                    column(CompanyInfo__VAT_Registration_No__; CompanyInfo."VAT Registration No.")
-                    {
-                    }
-                    column(CompanyInfo_Address; CompanyInfo.Address)
-                    {
-                    }
-                    column(CompanyInfo__Post_Code; CompanyInfo."Post Code")
-                    {
-                    }
-                    column(CompanyInfo_City; CompanyInfo.City)
-                    {
-                    }
-                    column(CompanyInfo__Phone_No; CompanyInfo."Phone No.")
-                    {
-                    }
-                    column(CompanyInfo__Fax_No; CompanyInfo."Fax No.")
-                    {
-                    }
-                    column(CompanyInfo_E_Mail; CompanyInfo."E-Mail")
-                    {
-                    }
-                    column(CompanyInfo__Home_Page; CompanyInfo."Home Page")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO1; CompanyInfo."lbt CEO1")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO2; CompanyInfo."lbt CEO2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO3; CompanyInfo."lbt CEO3")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Commercial_Register_No; CompanyInfo."lbt Commercial Register No.")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Trade_Register_Name; CompanyInfo."lbt Trade Register Name")
-                    {
-                    }
-                    column(CompanyInfo__Bank_Name; CompanyInfo."Bank Name")
-                    {
-                    }
-                    column(CompanyInfo_IBAN; CompanyInfo.IBAN)
-                    {
-                    }
-                    column(CompanyInfo__SWIFT_Code; CompanyInfo."SWIFT Code")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Bank_Name_2; CompanyInfo."lbt Bank Name 2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_IBAN_2; CompanyInfo."lbt IBAN 2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_SWIFT_Code_2; CompanyInfo."lbt SWIFT Code 2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Bank_Name_3; CompanyInfo."lbt Bank Name 3")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_IBAN_3; CompanyInfo."lbt IBAN 3")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_SWIFT_Code_3; CompanyInfo."lbt SWIFT Code 3")
-                    {
-                    }
-                    column(Sales_Header___Shipment_Date_; FORMAT("Sales Header"."Shipment Date"))
-                    {
-                    }
                     column(Sales_Header___Document_Date; FORMAT("Sales Header"."Document Date", 0, 4))
                     {
                     }
@@ -153,12 +82,6 @@ report 5272725 "lbt Blanket Sales Order"
                     column(Sales_Header___Prices_Including_VAT_; "Sales Header"."Prices Including VAT")
                     {
                     }
-                    column(PricesInclVATYesNo_SalesHeader; FORMAT("Sales Header"."Prices Including VAT"))
-                    {
-                    }
-                    column(VATNoText; VATNoText)
-                    {
-                    }
                     column(SalesPersonText; SalesPersonText)
                     {
                     }
@@ -174,34 +97,10 @@ report 5272725 "lbt Blanket Sales Order"
                     column(HideCompanyInfo; HideCompanyInfo)
                     {
                     }
-                    column(DimensionLoop1Number; Number)
-                    {
-                    }
                     column(Sales_Header___Bill_to_Customer_No__Caption; "Sales Header".FIELDCAPTION("Bill-to Customer No."))
                     {
                     }
-                    column(Sales_Header___Shipment_Date_Caption; Sales_Header___Shipment_Date_CaptionLbl)
-                    {
-                    }
                     column(Sales_Header___No__Caption; Order_No_CaptionLbl)
-                    {
-                    }
-                    column(Sales_Header___Prices_Including_VAT_Caption; "Sales Header".FIELDCAPTION("Prices Including VAT"))
-                    {
-                    }
-                    column(Order_No_Caption; Order_No_CaptionLbl)
-                    {
-                    }
-                    column(PagefromPageCaption; PagefromPageCaptionLbl)
-                    {
-                    }
-                    column(PageCaption; PageCaptionLbl)
-                    {
-                    }
-                    column(NoCaption; NoCaptionLbl)
-                    {
-                    }
-                    column(FromCaption; FromCaptionLbl)
                     {
                     }
                     column(DatumCaption; DatumCaptionLbl)
@@ -225,40 +124,7 @@ report 5272725 "lbt Blanket Sales Order"
                     column(AmountCaption; AmountCaptionLbl)
                     {
                     }
-                    column(CarryForwardText; STRSUBSTNO(CarryForwardCaptionLbl, GLSetup."LCY Code"))
-                    {
-                    }
                     column(SubtotalCaption; SubtotalCaptionLbl)
-                    {
-                    }
-                    column(CompanyInfo__VAT_Registration_No__Caption; CompanyInfo__VAT_Registration_No__CaptionLbl)
-                    {
-                    }
-                    column(CompanyInfo__Phone_No__Caption; CompanyInfo__Phone_No__CaptionLbl)
-                    {
-                    }
-                    column(CompanyInfo__Fax_No__Caption; CompanyInfo__Fax_No__CaptionLbl)
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Trade_Register_Name_Caption; CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO_Caption; CompanyInfo__LeBit_CEO_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__Bank_Name_Caption; CompanyInfo__Bank_Name_CaptionLbl)
-                    {
-                    }
-                    column(CompanyInfo_IBAN_Caption; CompanyInfo_IBAN_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__SWIFT_Code_Caption; CompanyInfo__SWIFT_Code_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo_E_Mail_Caption; CompanyInfo_E_Mail_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__Home_Page_Caption; CompanyInfo__Home_Page_Caption_Lbl)
                     {
                     }
                     column(VAT_Registration_No__Caption; VAT_Registration_No__CaptionLbl)
@@ -272,9 +138,6 @@ report 5272725 "lbt Blanket Sales Order"
                         {
                         }
                         column(DimensionLoop1_Number; DimensionLoop1.Number)
-                        {
-                        }
-                        column(DimText_Control80; DimText)
                         {
                         }
                         column(Header_DimensionsCaption; Header_DimensionsCaptionLbl)
@@ -295,11 +158,11 @@ report 5272725 "lbt Blanket Sales Order"
                             repeat
                                 OldDimText := DimText;
                                 if DimText = '' then
-                                    DimText := STRSUBSTNO('%1 %2', DimSetEntry1."Dimension Code", DimSetEntry1."Dimension Value Code")
+                                    DimText := STRSUBSTNO(DimLbl, DimSetEntry1."Dimension Code", DimSetEntry1."Dimension Value Code")
                                 else
                                     DimText :=
                                       STRSUBSTNO(
-                                        '%1, %2 %3', DimText,
+                                        CombinedDimLbl, DimText,
                                         DimSetEntry1."Dimension Code", DimSetEntry1."Dimension Value Code");
                                 if STRLEN(DimText) > MAXSTRLEN(OldDimText) then begin
                                     DimText := OldDimText;
@@ -407,21 +270,12 @@ report 5272725 "lbt Blanket Sales Order"
                         column(ItemPictureExist; ItemPictureExist)
                         {
                         }
-                        column(SalesLineAmt; SalesLine."Line Amount")
+                        column(SalesLineAmt; TempSalesLine."Line Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
                         column(Desc_SalesLine; "Sales Line".Description)
-                        {
-                        }
-                        column(VATBaseDisc_SalesHeader; "Sales Header"."VAT Base Discount %")
-                        {
-                        }
-                        column(No2_SalesLine; "Sales Line"."No.")
-                        {
-                        }
-                        column(Sales_Line__Description_Control63; "Sales Line".Description)
                         {
                         }
                         column(Qty_SalesLine; "Sales Line".Quantity)
@@ -435,19 +289,10 @@ report 5272725 "lbt Blanket Sales Order"
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 2;
                         }
-                        column(LineDisc_SalesLine; "Sales Line"."Line Discount %")
-                        {
-                        }
                         column(LineAmt_SalesLine; "Sales Line"."Line Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
-                        }
-                        column(AllowInvDisc_SalesLine; "Sales Line"."Allow Invoice Disc.")
-                        {
-                        }
-                        column(VATIdentifier_SalesLine; "Sales Line"."VAT Identifier")
-                        {
                         }
                         column(SalesLineType; FORMAT("Sales Line".Type, 0, 2))
                         {
@@ -455,20 +300,7 @@ report 5272725 "lbt Blanket Sales Order"
                         column(No_SalesLine; "Sales Line"."Line No.")
                         {
                         }
-                        column(AllowInvDiscountYesNo_SalesLine; FORMAT("Sales Line"."Allow Invoice Disc."))
-                        {
-                        }
-                        column(SalesLine__Line_Amount__Control84; SalesLine."Line Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(SalesLine__Inv__Discount_Amount_; SalesLine."Inv. Discount Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(SalesLine__Line_Amount__Control70; SalesLine."Line Amount")
+                        column(SalesLine__Inv__Discount_Amount_; TempSalesLine."Inv. Discount Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
@@ -476,7 +308,7 @@ report 5272725 "lbt Blanket Sales Order"
                         column(TotalText; TotalText)
                         {
                         }
-                        column(SalsLinAmtExclLineDiscAmt; SalesLine."Line Amount" - SalesLine."Inv. Discount Amount")
+                        column(SalsLinAmtExclLineDiscAmt; TempSalesLine."Line Amount" - TempSalesLine."Inv. Discount Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
@@ -484,23 +316,13 @@ report 5272725 "lbt Blanket Sales Order"
                         column(TotalExclVATText; TotalExclVATText)
                         {
                         }
-                        column(VATAmtLineVATAmtText3; VATAmountLine.VATAmountText())
+                        column(VATAmtLineVATAmtText3; TempVATAmountLine.VATAmountText())
                         {
                         }
                         column(TotalInclVATText; TotalInclVATText)
                         {
                         }
-                        column(SalesLine__Line_Amount__SalesLine__Inv__Discount_Amount__Control88; SalesLine."Line Amount" - VATAmountLine."Invoice Discount Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
                         column(VATAmount; VATAmount)
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(SalesLineAmtExclLineDisc; SalesLine."Line Amount" - SalesLine."Inv. Discount Amount" + VATAmount)
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
@@ -510,47 +332,15 @@ report 5272725 "lbt Blanket Sales Order"
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(TotalExclVATText_Control131; TotalExclVATText)
-                        {
-                        }
                         column(VATBaseAmount; VATBaseAmount)
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLine_VATAmountText_Control133; VATAmountLine.VATAmountText())
-                        {
-                        }
-                        column(VATAmount_Control134; VATAmount)
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(TotalInclVATText_Control135; TotalInclVATText)
-                        {
-                        }
                         column(TotalAmountInclVAT; TotalAmountInclVAT)
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
-                        }
-                        column(RoundLoop_Number; Number)
-                        {
-                        }
-                        column(Sales_Line___Line_Discount___Caption; Sales_Line___Line_Discount___CaptionLbl)
-                        {
-                        }
-                        column(VATIdentifier_SalesLineCaption; "Sales Line".FIELDCAPTION("VAT Identifier"))
-                        {
-                        }
-                        column(Sales_Line___Allow_Invoice_Disc__Caption; "Sales Line".FIELDCAPTION("Allow Invoice Disc."))
-                        {
-                        }
-                        column(ContinuedCaption; ContinuedCaptionLbl)
-                        {
-                        }
-                        column(ContinuedCaption_Control83; ContinuedCaption_Control83Lbl)
-                        {
                         }
                         column(SalesLine__Inv__Discount_Amount_Caption; SalesLine__Inv__Discount_Amount_CaptionLbl)
                         {
@@ -561,7 +351,7 @@ report 5272725 "lbt Blanket Sales Order"
                         column(SalesLineLeBitPrintoption; FORMAT("Sales Line"."lbt Printoption", 0, 2))
                         {
                         }
-                        column(SalesLine__LeBit_Balance; SalesLine."lbt Balance")
+                        column(SalesLine__LeBit_Balance; TempSalesLine."lbt Balance")
                         {
                         }
                         column(Sales_Line___LeBit_Pos_No; "Sales Line"."lbt Pos. No.")
@@ -634,9 +424,6 @@ report 5272725 "lbt Blanket Sales Order"
                         dataitem(TempLBLang; "Integer")
                         {
                             DataItemTableView = SORTING(Number);
-                            column(LBLang_LineNo; FORMAT(TempLeBitPSLongtextLine."Line No."))
-                            {
-                            }
                             column(LBLang_Description; LBLang_Description)
                             {
                             }
@@ -684,16 +471,6 @@ report 5272725 "lbt Blanket Sales Order"
                         dataitem(DimensionLoop2; "Integer")
                         {
                             DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
-                            column(DimText_Control82; DimText)
-                            {
-                            }
-                            column(DimensionLoop2_Number; Number)
-                            {
-                            }
-                            column(Line_DimensionsCaption; Line_DimensionsCaptionLbl)
-                            {
-                            }
-
                             trigger OnAfterGetRecord()
                             begin
                                 if Number = 1 then begin
@@ -708,11 +485,11 @@ report 5272725 "lbt Blanket Sales Order"
                                 repeat
                                     OldDimText := DimText;
                                     if DimText = '' then
-                                        DimText := STRSUBSTNO('%1 %2', DimSetEntry2."Dimension Code", DimSetEntry2."Dimension Value Code")
+                                        DimText := STRSUBSTNO(DimLbl, DimSetEntry2."Dimension Code", DimSetEntry2."Dimension Value Code")
                                     else
                                         DimText :=
                                           STRSUBSTNO(
-                                            '%1, %2 %3', DimText,
+                                            CombinedDimLbl, DimText,
                                             DimSetEntry2."Dimension Code", DimSetEntry2."Dimension Value Code");
                                     if STRLEN(DimText) > MAXSTRLEN(OldDimText) then begin
                                         DimText := OldDimText;
@@ -738,31 +515,30 @@ report 5272725 "lbt Blanket Sales Order"
                             Counter: Integer;
                         begin
                             if Number = 1 then
-                                SalesLine.FIND('-')
+                                TempSalesLine.FIND('-')
                             else
-                                SalesLine.Next();
-                            "Sales Line" := SalesLine;
+                                TempSalesLine.Next();
+                            "Sales Line" := TempSalesLine;
 
                             if not "Sales Header"."Prices Including VAT" and
-                               (SalesLine."VAT Calculation Type" = SalesLine."VAT Calculation Type"::"Full VAT")
+                               (TempSalesLine."VAT Calculation Type" = TempSalesLine."VAT Calculation Type"::"Full VAT")
                             then
-                                SalesLine."Line Amount" := 0;
+                                TempSalesLine."Line Amount" := 0;
 
-                            if (SalesLine.Type = SalesLine.Type::"G/L Account") and (not ShowInternalInfo) then
+                            if (TempSalesLine.Type = TempSalesLine.Type::"G/L Account") and (not ShowInternalInfo) then
                                 "Sales Line"."No." := '';
 
-                            TotalSalesLineAmount += SalesLine."Line Amount";
-                            TotalSalesInvDiscAmount += SalesLine."Inv. Discount Amount";
+                            TotalSalesLineAmount += TempSalesLine."Line Amount";
+                            TotalSalesInvDiscAmount += TempSalesLine."Inv. Discount Amount";
 
-                            if ((SalesLine."lbt Printoption" = SalesLine."lbt Printoption"::Alternative) or
-                                (SalesLine."lbt Printoption" = SalesLine."lbt Printoption"::Optional))
+                            if ((TempSalesLine."lbt Printoption" = TempSalesLine."lbt Printoption"::Alternative) or
+                                (TempSalesLine."lbt Printoption" = TempSalesLine."lbt Printoption"::Optional))
                             then
                                 MESSAGE(AlternativePositionsNotAllowedErr);
 
-                            if SalesLine."lbt Printoption" = SalesLine."lbt Printoption"::"New Page" then
+                            if TempSalesLine."lbt Printoption" = TempSalesLine."lbt Printoption"::"New Page" then
                                 NewPageGroup += 1;
 
-                            ItemUnitCode := '';
                             ItemUnitDescription := '';
                             ItemUnitQty := '';
                             CLEAR(InfoRowNo);
@@ -774,13 +550,13 @@ report 5272725 "lbt Blanket Sales Order"
                             CLEAR(Item);
                             ItemPictureExist := false;
 
-                            if SalesLine.Quantity <> 0 then
-                                UnitPrice := SalesLine."Unit Price" - SalesLine."Line Discount Amount" / SalesLine.Quantity
+                            if TempSalesLine.Quantity <> 0 then
+                                UnitPrice := TempSalesLine."Unit Price" - TempSalesLine."Line Discount Amount" / TempSalesLine.Quantity
                             else
                                 UnitPrice := 0;
 
-                            SalesLine.CALCFIELDS("lbt Balance");
-                            if SalesLine.Type = SalesLine.Type::Item then begin
+                            TempSalesLine.CALCFIELDS("lbt Balance");
+                            if TempSalesLine.Type = TempSalesLine.Type::Item then begin
                                 Item.Get("Sales Line"."No.");
                                 ItemPictureExist := Item.Picture.Count() > 0;
                                 if not ItemPicturePrint then
@@ -803,8 +579,7 @@ report 5272725 "lbt Blanket Sales Order"
                                     COMPRESSARRAY(ItemUnitDescriptionArry);
                                     COMPRESSARRAY(ItemUnitQtyArry);
                                 end;
-                                if SalesLine."Description 2" <> '' then begin
-                                    ItemUnitCode := ItemUnitCodeArry[1];
+                                if TempSalesLine."Description 2" <> '' then begin
                                     ItemUnitDescription := ItemUnitDescriptionArry[1];
                                     ItemUnitQty := ItemUnitQtyArry[1];
                                     ItemUnitCodeArry[1] := '';
@@ -825,21 +600,21 @@ report 5272725 "lbt Blanket Sales Order"
 
                         trigger OnPostDataItem()
                         begin
-                            SalesLine.DeleteAll();
+                            TempSalesLine.DeleteAll();
                         end;
 
                         trigger OnPreDataItem()
                         begin
-                            MoreLines := SalesLine.FIND('+');
-                            while MoreLines and (SalesLine.Description = '') and (SalesLine."Description 2" = '') and
-                                  (SalesLine."No." = '') and (SalesLine.Quantity = 0) and
-                                  (SalesLine.Amount = 0)
+                            MoreLines := TempSalesLine.FIND('+');
+                            while MoreLines and (TempSalesLine.Description = '') and (TempSalesLine."Description 2" = '') and
+                                  (TempSalesLine."No." = '') and (TempSalesLine.Quantity = 0) and
+                                  (TempSalesLine.Amount = 0)
                             do
-                                MoreLines := SalesLine.Next(-1) <> 0;
+                                MoreLines := TempSalesLine.Next(-1) <> 0;
                             if not MoreLines then
                                 CurrReport.Break();
-                            SalesLine.SETRANGE("Line No.", 0, SalesLine."Line No.");
-                            SETRANGE(Number, 1, SalesLine.Count());
+                            TempSalesLine.SETRANGE("Line No.", 0, TempSalesLine."Line No.");
+                            SETRANGE(Number, 1, TempSalesLine.Count());
 
                             TotalSalesLineAmount := 0;
                             TotalSalesInvDiscAmount := 0;
@@ -848,115 +623,67 @@ report 5272725 "lbt Blanket Sales Order"
                     dataitem(VATCounter; "Integer")
                     {
                         DataItemTableView = SORTING(Number);
-                        column(VATAmountLineVATBase; VATAmountLine."VAT Base")
+                        column(VATAmountLineVATBase; TempVATAmountLine."VAT Base")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmtLineVATAmt; VATAmountLine."VAT Amount")
+                        column(VATAmtLineVATAmt; TempVATAmountLine."VAT Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmtLineLineAmt; VATAmountLine."Line Amount")
+                        column(VATAmtLineLineAmt; TempVATAmountLine."Line Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmtLineInvDiscBaseAmt; VATAmountLine."Inv. Disc. Base Amount")
+                        column(VATAmtLineInvDiscBaseAmt; TempVATAmountLine."Inv. Disc. Base Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(SalesLineInvDiscAmt; VATAmountLine."Invoice Discount Amount")
+                        column(SalesLineInvDiscAmt; TempVATAmountLine."Invoice Discount Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLine__VAT___; VATAmountLine."VAT %")
+                        column(VATAmountLine__VAT___; TempVATAmountLine."VAT %")
                         {
                             DecimalPlaces = 0 : 5;
                         }
-                        column(VATAmountLine__VAT_Base__Control106; VATAmountLine."VAT Base")
+                        column(VATAmountLine__VAT_Base__Control106; TempVATAmountLine."VAT Base")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLine__VAT_Amount__Control107; VATAmountLine."VAT Amount")
+                        column(VATAmountLine__VAT_Amount__Control107; TempVATAmountLine."VAT Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmtLineVATIdentifier; VATAmountLine."VAT Identifier")
+                        column(VATAmtLineVATIdentifier; TempVATAmountLine."VAT Identifier")
                         {
                         }
-                        column(VATAmountLine__Line_Amount__Control72; VATAmountLine."Line Amount")
+                        column(VATAmountLine__Line_Amount__Control72; TempVATAmountLine."Line Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLine__Inv__Disc__Base_Amount__Control73; VATAmountLine."Inv. Disc. Base Amount")
+                        column(VATAmountLine__Inv__Disc__Base_Amount__Control73; TempVATAmountLine."Inv. Disc. Base Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLine__Invoice_Discount_Amount__Control74; VATAmountLine."Invoice Discount Amount")
+                        column(VATAmountLine__Invoice_Discount_Amount__Control74; TempVATAmountLine."Invoice Discount Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLine__VAT_Base__Control110; VATAmountLine."VAT Base")
+                        column(VATAmountLine__VAT_Base__Control114; TempVATAmountLine."VAT Base")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
-                        }
-                        column(VATAmountLine__VAT_Amount__Control111; VATAmountLine."VAT Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(VATAmountLine__Line_Amount__Control100; VATAmountLine."Line Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(VATAmountLine__Inv__Disc__Base_Amount__Control104; VATAmountLine."Inv. Disc. Base Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(VATAmountLine__Invoice_Discount_Amount__Control108; VATAmountLine."Invoice Discount Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(VATAmountLine__VAT_Base__Control114; VATAmountLine."VAT Base")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(VATAmountLine__VAT_Amount__Control115; VATAmountLine."VAT Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(VATAmountLine__Line_Amount__Control112; VATAmountLine."Line Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(VATAmountLine__Inv__Disc__Base_Amount__Control116; VATAmountLine."Inv. Disc. Base Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(VATAmountLine__Invoice_Discount_Amount__Control130; VATAmountLine."Invoice Discount Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(VATCounter_Number; Number)
-                        {
                         }
                         column(VATAmountLine__VAT___Caption; VATAmountLine__VAT___CaptionLbl)
                         {
@@ -982,28 +709,22 @@ report 5272725 "lbt Blanket Sales Order"
                         column(VATAmountLine__VAT_Identifier_Caption; VATAmountLine__VAT_Identifier_CaptionLbl)
                         {
                         }
-                        column(VATAmountLine__VAT_Base_Caption; VATAmountLine__VAT_Base_CaptionLbl)
-                        {
-                        }
-                        column(VATAmountLine__VAT_Base__Control110Caption; VATAmountLine__VAT_Base__Control110CaptionLbl)
-                        {
-                        }
                         column(VATAmountLine__VAT_Base__Control114Caption; VATAmountLine__VAT_Base__Control114CaptionLbl)
                         {
                         }
 
                         trigger OnAfterGetRecord()
                         begin
-                            VATAmountLine.GetLine(Number);
+                            TempVATAmountLine.GetLine(Number);
                         end;
 
                         trigger OnPreDataItem()
                         begin
-                            if VATAmountLine.Count() < 2 then
+                            if TempVATAmountLine.Count() < 2 then
                                 CurrReport.Break();
                             if VATAmount = 0 then
                                 CurrReport.Break();
-                            SETRANGE(Number, 1, VATAmountLine.Count());
+                            SETRANGE(Number, 1, TempVATAmountLine.Count());
                         end;
                     }
                     dataitem(VATCounterLCY; "Integer")
@@ -1031,31 +752,16 @@ report 5272725 "lbt Blanket Sales Order"
                         {
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLine__VAT____Control151; VATAmountLine."VAT %")
+                        column(VATAmountLine__VAT____Control151; TempVATAmountLine."VAT %")
                         {
                             DecimalPlaces = 0 : 5;
                         }
-                        column(VATAmountLine__VAT_Identifier__Control152; VATAmountLine."VAT Identifier")
+                        column(VATAmountLine__VAT_Identifier__Control152; TempVATAmountLine."VAT Identifier")
                         {
-                        }
-                        column(VALVATAmountLCY_Control156; VALVATAmountLCY)
-                        {
-                            AutoFormatType = 1;
-                        }
-                        column(VALVATBaseLCY_Control157; VALVATBaseLCY)
-                        {
-                            AutoFormatType = 1;
-                        }
-                        column(VALVATAmountLCY_Control159; VALVATAmountLCY)
-                        {
-                            AutoFormatType = 1;
                         }
                         column(VALVATBaseLCY_Control160; VALVATBaseLCY)
                         {
                             AutoFormatType = 1;
-                        }
-                        column(VATCounterLCY_Number; Number)
-                        {
                         }
                         column(VALVATAmountLCY_Control149Caption; VALVATAmountLCY_Control149CaptionLbl)
                         {
@@ -1069,38 +775,32 @@ report 5272725 "lbt Blanket Sales Order"
                         column(VATAmountLine__VAT_Identifier__Control152Caption; VATAmountLine__VAT_Identifier__Control152CaptionLbl)
                         {
                         }
-                        column(VALVATBaseLCYCaption; VALVATBaseLCYCaptionLbl)
-                        {
-                        }
-                        column(VALVATBaseLCY_Control157Caption; VALVATBaseLCY_Control157CaptionLbl)
-                        {
-                        }
                         column(VALVATBaseLCY_Control160Caption; VALVATBaseLCY_Control160CaptionLbl)
                         {
                         }
 
                         trigger OnAfterGetRecord()
                         begin
-                            VATAmountLine.GetLine(Number);
+                            TempVATAmountLine.GetLine(Number);
                             VALVATBaseLCY :=
-                              VATAmountLine.GetBaseLCY(
+                              TempVATAmountLine.GetBaseLCY(
                                 "Sales Header"."Posting Date", "Sales Header"."Currency Code", "Sales Header"."Currency Factor");
                             VALVATAmountLCY :=
-                              VATAmountLine.GetAmountLCY(
+                              TempVATAmountLine.GetAmountLCY(
                                 "Sales Header"."Posting Date", "Sales Header"."Currency Code", "Sales Header"."Currency Factor");
                         end;
 
                         trigger OnPreDataItem()
                         begin
-                            if VATAmountLine.Count() < 2 then
+                            if TempVATAmountLine.Count() < 2 then
                                 CurrReport.Break();
                             if (not GLSetup."Print VAT specification in LCY") or
                                ("Sales Header"."Currency Code" = '') or
-                               (VATAmountLine.GetTotalVATAmount() = 0)
+                               (TempVATAmountLine.GetTotalVATAmount() = 0)
                             then
                                 CurrReport.Break();
 
-                            SETRANGE(Number, 1, VATAmountLine.Count());
+                            SETRANGE(Number, 1, TempVATAmountLine.Count());
 
                             if GLSetup."LCY Code" = '' then
                                 VALSpecLCYHeader := VatAmountTxt + LCYLbl
@@ -1118,9 +818,6 @@ report 5272725 "lbt Blanket Sales Order"
                         {
                         }
                         column(ShptMethodDesc; ShipmentMethod.Description)
-                        {
-                        }
-                        column(Total_Number; Number)
                         {
                         }
                         column(PaymentTerms_DescriptionCaption; PaymentTerms_DescriptionCaptionLbl)
@@ -1158,9 +855,6 @@ report 5272725 "lbt Blanket Sales Order"
                         {
                         }
                         column(ShipToAddr1; ShipToAddr[1])
-                        {
-                        }
-                        column(Total2_Number; Number)
                         {
                         }
                         column(Ship_to_AddressCaption; Ship_to_AddressCaptionLbl)
@@ -1248,18 +942,18 @@ report 5272725 "lbt Blanket Sales Order"
                 var
                     SalesPost: Codeunit "Sales-Post";
                 begin
-                    CLEAR(SalesLine);
+                    CLEAR(TempSalesLine);
                     CLEAR(SalesPost);
-                    SalesLine.DeleteAll();
-                    VATAmountLine.DeleteAll();
-                    SalesPost.GetSalesLines("Sales Header", SalesLine, 0);
-                    SalesLine.CalcVATAmountLines(0, "Sales Header", SalesLine, VATAmountLine);
-                    SalesLine.UpdateVATOnLines(0, "Sales Header", SalesLine, VATAmountLine);
-                    VATAmount := VATAmountLine.GetTotalVATAmount();
-                    VATBaseAmount := VATAmountLine.GetTotalVATBase();
+                    TempSalesLine.DeleteAll();
+                    TempVATAmountLine.DeleteAll();
+                    SalesPost.GetSalesLines("Sales Header", TempSalesLine, 0);
+                    TempSalesLine.CalcVATAmountLines(0, "Sales Header", TempSalesLine, TempVATAmountLine);
+                    TempSalesLine.UpdateVATOnLines(0, "Sales Header", TempSalesLine, TempVATAmountLine);
+                    VATAmount := TempVATAmountLine.GetTotalVATAmount();
+                    VATBaseAmount := TempVATAmountLine.GetTotalVATBase();
                     VATDiscountAmount :=
-                      VATAmountLine.GetTotalVATDiscount("Sales Header"."Currency Code", "Sales Header"."Prices Including VAT");
-                    TotalAmountInclVAT := VATAmountLine.GetTotalAmountInclVAT();
+                      TempVATAmountLine.GetTotalVATDiscount("Sales Header"."Currency Code", "Sales Header"."Prices Including VAT");
+                    TotalAmountInclVAT := TempVATAmountLine.GetTotalAmountInclVAT();
 
                     if Number > 1 then begin
                         CopyText := FormatDocument.GetCOPYText();
@@ -1398,6 +1092,7 @@ report 5272725 "lbt Blanket Sales Order"
         GLSetup.Get();
         CompanyInfo.Get();
         SalesSetup.Get();
+        CompanyInfo."lbt SetReportFooter"(Footer);
 
         case SalesSetup."Logo Position on Documents" of
             SalesSetup."Logo Position on Documents"::"No Logo":
@@ -1425,8 +1120,8 @@ report 5272725 "lbt Blanket Sales Order"
         CompanyInfo: Record "Company Information";
         CompanyInfo1: Record "Company Information";
         CompanyInfo2: Record "Company Information";
-        VATAmountLine: Record "VAT Amount Line" temporary;
-        SalesLine: Record "Sales Line" temporary;
+        TempVATAmountLine: Record "VAT Amount Line" temporary;
+        TempSalesLine: Record "Sales Line" temporary;
         DimSetEntry1: Record "Dimension Set Entry";
         DimSetEntry2: Record "Dimension Set Entry";
         RespCenter: Record "Responsibility Center";
@@ -1444,22 +1139,13 @@ report 5272725 "lbt Blanket Sales Order"
         VatAmountTxt: Label 'VAT Amount Specification in ';
         LCYLbl: Label 'Local Currency';
         ExchangeRateLbl: Label 'Exchange rate: %1/%2', Comment = '%1 - Rel. Amount, %2 - Amount';
-        CompanyInfo__Phone_No__CaptionLbl: Label 'Phone No.';
-        CompanyInfo__Fax_No__CaptionLbl: Label 'Fax No.';
-        CompanyInfo__VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
-        CompanyInfo__Bank_Name_CaptionLbl: Label 'Bank';
-        Sales_Header___Shipment_Date_CaptionLbl: Label 'Shipment Date';
         Order_No_CaptionLbl: Label 'Order No.';
         Header_DimensionsCaptionLbl: Label 'Header Dimensions';
         Unit_PriceCaptionLbl: Label 'Unit Price';
-        Sales_Line___Line_Discount___CaptionLbl: Label 'Disc. %';
         AmountCaptionLbl: Label 'Amount';
-        ContinuedCaptionLbl: Label 'Continued';
-        ContinuedCaption_Control83Lbl: Label 'Continued';
         SalesLine__Inv__Discount_Amount_CaptionLbl: Label 'Inv. Discount Amount';
         SubtotalCaptionLbl: Label 'Subtotal';
         VATDiscountAmountCaptionLbl: Label 'Payment Discount on VAT';
-        Line_DimensionsCaptionLbl: Label 'Line Dimensions';
         VATAmountLine__VAT___CaptionLbl: Label 'VAT %';
         VATAmountLine__VAT_Base__Control106CaptionLbl: Label 'VAT Base';
         VATAmountLine__VAT_Amount__Control107CaptionLbl: Label 'VAT Amount';
@@ -1468,19 +1154,18 @@ report 5272725 "lbt Blanket Sales Order"
         VATAmountLine__Line_Amount__Control72CaptionLbl: Label 'Line Amount';
         VATAmountLine__Invoice_Discount_Amount__Control74CaptionLbl: Label 'Invoice Discount Amount';
         VATAmountLine__VAT_Identifier_CaptionLbl: Label 'VAT Identifier';
-        VATAmountLine__VAT_Base_CaptionLbl: Label 'Continued';
-        VATAmountLine__VAT_Base__Control110CaptionLbl: Label 'Continued';
         VATAmountLine__VAT_Base__Control114CaptionLbl: Label 'Total';
         VALVATAmountLCY_Control149CaptionLbl: Label 'VAT Amount';
         VALVATBaseLCY_Control150CaptionLbl: Label 'VAT Base';
         VATAmountLine__VAT____Control151CaptionLbl: Label 'VAT %';
         VATAmountLine__VAT_Identifier__Control152CaptionLbl: Label 'VAT Identifier';
-        VALVATBaseLCYCaptionLbl: Label 'Continued';
-        VALVATBaseLCY_Control157CaptionLbl: Label 'Continued';
         VALVATBaseLCY_Control160CaptionLbl: Label 'Total';
         PaymentTerms_DescriptionCaptionLbl: Label 'Payment Terms';
         ShipmentMethod_DescriptionCaptionLbl: Label 'Shipment Method';
         Ship_to_AddressCaptionLbl: Label 'Ship-to Address';
+        DimLbl: Label '%1 - %2', Locked = true;
+        CombinedDimLbl: Label '%1; %2 - %3', Locked = true;
+
         CustAddr: array[8] of Text[50];
         ShipToAddr: array[8] of Text[50];
         CompanyAddr: array[8] of Text[50];
@@ -1523,7 +1208,6 @@ report 5272725 "lbt Blanket Sales Order"
         ItemUnitDescriptionArry: array[50] of Text;
         ItemUnitQtyArry: array[50] of Text;
         InfoRowNo: Integer;
-        ItemUnitCode: Code[20];
         ItemUnitDescription: Text;
         ItemUnitQty: Text;
         HideCompanyInfo: Boolean;
@@ -1536,28 +1220,18 @@ report 5272725 "lbt Blanket Sales Order"
         NewPageLBLang: Integer;
         LBFuss_Description: Text;
         NewPageLBFuss: Integer;
-        PageFromPageCaptionLbl: Label 'Page %1 of %2', Comment = '%1 - Current Page, %2 - Total Pages';
-        PageCaptionLbl: Label 'Page %1', Comment = '%1 - Current Page';
-        NoCaptionLbl: Label 'No.';
-        FromCaptionLbl: Label 'from';
         DatumCaptionLbl: Label 'Date';
         Alternativposition_CaptionLbl: Label 'Alternative position';
         Bedarfposition_CaptionLbl: Label 'Position requirements';
         BitteAndern_CaptionLbl: Label 'please change!';
         PosNo_SalesLineCaptionLbl: Label 'Pos.';
         UOM_SalesLineCaptionLbl: Label 'Unit';
-        CarryForwardCaptionLbl: Label 'Carry-forward %1', Comment = '%1 - Amount';
-        CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl: Label 'Registered in:';
-        CompanyInfo__LeBit_CEO_Caption_Lbl: Label 'Chief Executive Officer';
-        CompanyInfo_IBAN_Caption_Lbl: Label 'IBAN';
-        CompanyInfo__SWIFT_Code_Caption_Lbl: Label 'SWIFT-BIC';
         SalesPersonText_CaptionLbl: Label 'Salesperson';
-        CompanyInfo_E_Mail_Caption_Lbl: Label 'Mail:';
-        CompanyInfo__Home_Page_Caption_Lbl: Label 'Homepage:';
         AlternativePositionsNotAllowedErr: Label 'At orders no alternative positions and demand positions are allowed!';
         ReportType: Option Purchase,Sales,QA,Production,Delivery,"Report";
         UnitPrice: Decimal;
         VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
+        Footer: Text;
         CustSource: Option Default,"Bill-to Customer","Sell-to Customer";
 
     procedure InitializeRequest(NewNoOfCopies: Integer; NewShowInternalInfo: Boolean; NewArchiveDocument: Boolean; NewLogInteraction: Boolean)
@@ -1700,4 +1374,8 @@ report 5272725 "lbt Blanket Sales Order"
         LeBitReportFunctions.GetSourceType(TypeVar::Sales, RepType::"Blanket Sales Order", CustSource);
     end;
 }
+
+
+
+
 

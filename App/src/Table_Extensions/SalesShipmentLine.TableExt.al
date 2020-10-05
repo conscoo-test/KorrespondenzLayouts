@@ -5,7 +5,7 @@ tableextension 5272720 "lbt Sales Shipment Line" extends "Sales Shipment Line"
     {
         field(5272720; "lbt Long Text"; Boolean)
         {
-            CalcFormula = Exist ("lbt Posted PS Longtext Line" WHERE("Table ID" = CONST(111),
+            CalcFormula = Exist("lbt Posted PS Longtext Line" WHERE("Table ID" = CONST(111),
                                                                        "Document No." = FIELD("Document No."),
                                                                        Position = CONST(Longtext),
                                                                        "Document Line No." = FIELD("Line No.")));
@@ -52,6 +52,8 @@ tableextension 5272720 "lbt Sales Shipment Line" extends "Sales Shipment Line"
         }
         field(5272727; "lbt Printoption StyleExpr"; Text[30])
         {
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Removed';
             Caption = 'lbt Printoption StyleExpr';
             DataClassification = CustomerContent;
         }

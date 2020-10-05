@@ -13,6 +13,7 @@ report 5272720 "lbt Sales - Quote"
             DataItemTableView = SORTING("Document Type", "No.") WHERE("Document Type" = CONST(Quote));
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
             RequestFilterHeading = 'Sales Quote';
+            column(Footer; Footer) { }
             column(AlwaysPrintVat_CorrSetup; CorrSetup."Always print VAT") { }
             column(Sales_Header_Document_Type; "Document Type")
             {
@@ -65,78 +66,6 @@ report 5272720 "lbt Sales - Quote"
                     column(CustAddr8; CustAddr[8])
                     {
                     }
-                    column(CompanyInfo_Name; CompanyInfo.Name)
-                    {
-                    }
-                    column(CompanyInfo__VAT_Registration_No__; CompanyInfo."VAT Registration No.")
-                    {
-                    }
-                    column(CompanyInfo_Address; CompanyInfo.Address)
-                    {
-                    }
-                    column(CompanyInfo__Post_Code; CompanyInfo."Post Code")
-                    {
-                    }
-                    column(CompanyInfo_City; CompanyInfo.City)
-                    {
-                    }
-                    column(CompanyInfo__Phone_No; CompanyInfo."Phone No.")
-                    {
-                    }
-                    column(CompanyInfo__Fax_No; CompanyInfo."Fax No.")
-                    {
-                    }
-                    column(CompanyInfo_E_Mail; CompanyInfo."E-Mail")
-                    {
-                    }
-                    column(CompanyInfo__Home_Page; CompanyInfo."Home Page")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO1; CompanyInfo."lbt CEO1")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO2; CompanyInfo."lbt CEO2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO3; CompanyInfo."lbt CEO3")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Commercial_Register_No; CompanyInfo."lbt Commercial Register No.")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Trade_Register_Name; CompanyInfo."lbt Trade Register Name")
-                    {
-                    }
-                    column(CompanyInfo__Bank_Name; CompanyInfo."Bank Name")
-                    {
-                    }
-                    column(CompanyInfo_IBAN; CompanyInfo.IBAN)
-                    {
-                    }
-                    column(CompanyInfo__SWIFT_Code; CompanyInfo."SWIFT Code")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Bank_Name_2; CompanyInfo."lbt Bank Name 2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_IBAN_2; CompanyInfo."lbt IBAN 2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_SWIFT_Code_2; CompanyInfo."lbt SWIFT Code 2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Bank_Name_3; CompanyInfo."lbt Bank Name 3")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_IBAN_3; CompanyInfo."lbt IBAN 3")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_SWIFT_Code_3; CompanyInfo."lbt SWIFT Code 3")
-                    {
-                    }
-                    column(Sales_Header___Shipment_Date_; FORMAT("Sales Header"."Shipment Date", 0, 4))
-                    {
-                    }
                     column(Sales_Header___Document_Date; FORMAT("Sales Header"."Document Date", 0, 4))
                     {
                     }
@@ -155,12 +84,6 @@ report 5272720 "lbt Sales - Quote"
                     column(Sales_Header___Prices_Including_VAT_; "Sales Header"."Prices Including VAT")
                     {
                     }
-                    column(PricesInclVAT_YesNo; FORMAT("Sales Header"."Prices Including VAT"))
-                    {
-                    }
-                    column(VATNoText; VATNoText)
-                    {
-                    }
                     column(SalesPersonText; SalesPersonText)
                     {
                     }
@@ -176,25 +99,13 @@ report 5272720 "lbt Sales - Quote"
                     column(HideCompanyInfo; HideCompanyInfo)
                     {
                     }
-                    column(PageLoop_Number; Number)
-                    {
-                    }
                     column(Sales_Header___Bill_to_Customer_No__Caption; Sales_Header___Bill_to_Customer_No__CaptionLbl)
-                    {
-                    }
-                    column(Sales_Header___Shipment_Date_Caption; Sales_Header___Shipment_Date_CaptionLbl)
                     {
                     }
                     column(Sales_Header___No__Caption; Sales_Header___No__CaptionLbl)
                     {
                     }
-                    column(Sales_Header___Prices_Including_VAT_Caption; "Sales Header".FIELDCAPTION("Prices Including VAT"))
-                    {
-                    }
                     column(PagefromPageCaption; PagefromPageCaptionLbl)
-                    {
-                    }
-                    column(PageCaption; PageCaptionLbl)
                     {
                     }
                     column(NoCaption; NoCaptionLbl)
@@ -230,36 +141,6 @@ report 5272720 "lbt Sales - Quote"
                     column(SubtotalCaption; SubtotalCaptionLbl)
                     {
                     }
-                    column(CompanyInfo__VAT_Registration_No__Caption; CompanyInfo__VAT_Registration_No__CaptionLbl)
-                    {
-                    }
-                    column(CompanyInfo__Phone_No__Caption; CompanyInfo__Phone_No__CaptionLbl)
-                    {
-                    }
-                    column(CompanyInfo__Fax_No__Caption; CompanyInfo__Fax_No__CaptionLbl)
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Trade_Register_Name_Caption; CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO_Caption; CompanyInfo__LeBit_CEO_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__Bank_Name_Caption; CompanyInfo__Bank_Name_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo_IBAN_Caption; CompanyInfo_IBAN_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__SWIFT_Code_Caption; CompanyInfo__SWIFT_Code_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo_E_Mail_Caption; CompanyInfo_E_Mail_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__Home_Page_Caption; CompanyInfo__Home_Page_Caption_Lbl)
-                    {
-                    }
                     column(VAT_Registration_No__Caption; VAT_Registration_No__CaptionLbl)
                     {
                     }
@@ -268,12 +149,6 @@ report 5272720 "lbt Sales - Quote"
                         DataItemLinkReference = "Sales Header";
                         DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
                         column(DimText; DimText)
-                        {
-                        }
-                        column(DimText_Control80; DimText)
-                        {
-                        }
-                        column(DimensionLoop1_Number; Number)
                         {
                         }
                         column(Header_DimensionsCaption; Header_DimensionsCaptionLbl)
@@ -294,11 +169,11 @@ report 5272720 "lbt Sales - Quote"
                             repeat
                                 OldDimText := DimText;
                                 if DimText = '' then
-                                    DimText := STRSUBSTNO('%1 %2', DimSetEntry1."Dimension Code", DimSetEntry1."Dimension Value Code")
+                                    DimText := STRSUBSTNO(DimLbl, DimSetEntry1."Dimension Code", DimSetEntry1."Dimension Value Code")
                                 else
                                     DimText :=
                                       STRSUBSTNO(
-                                        '%1, %2 %3', DimText, DimSetEntry1."Dimension Code", DimSetEntry1."Dimension Value Code");
+                                        CombinedDimLbl, DimText, DimSetEntry1."Dimension Code", DimSetEntry1."Dimension Value Code");
                                 if STRLEN(DimText) > MAXSTRLEN(OldDimText) then begin
                                     DimText := OldDimText;
                                     Continue := true;
@@ -341,10 +216,6 @@ report 5272720 "lbt Sales - Quote"
                         column(NewPageLBKopf; NewPageLBKopf)
                         {
                         }
-                        column(LBKopfNumber; Number)
-                        {
-                        }
-
                         trigger OnAfterGetRecord()
                         var
                             Streamin: InStream;
@@ -402,17 +273,6 @@ report 5272720 "lbt Sales - Quote"
                         column(ItemPictureExist; ItemPictureExist)
                         {
                         }
-                        column(SalesLine__Line_Amount_; TempSalesLine."Line Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(SalesLine_Description; TempSalesLine.Description)
-                        {
-                        }
-                        column(Sales_Line___No__; "Sales Line"."No.")
-                        {
-                        }
                         column(Sales_Line__Description; "Sales Line".Description)
                         {
                         }
@@ -435,46 +295,19 @@ report 5272720 "lbt Sales - Quote"
                         column(UnitPrice; UnitPrice)
                         {
                         }
-                        column(Sales_Line___Line_Discount___; "Sales Line"."Line Discount %")
-                        {
-                        }
-                        column(Sales_Line___Allow_Invoice_Disc__; "Sales Line"."Allow Invoice Disc.")
-                        {
-                        }
-                        column(Sales_Line___VAT_Identifier_; "Sales Line"."VAT Identifier")
-                        {
-                        }
                         column(SalesLineType; FORMAT("Sales Line".Type, 0, 2))
                         {
                         }
                         column(SalesLineNo; "Sales Line"."Line No.")
                         {
                         }
-                        column(AllowInvoiceDis_YesNo; FORMAT("Sales Line"."Allow Invoice Disc."))
-                        {
-                        }
-                        column(SalesLine__Line_Amount__Control84; TempSalesLine."Line Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
                         column(SalesLine__Inv__Discount_Amount_; -TempSalesLine."Inv. Discount Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(SalesLine__Line_Amount__Control61; TempSalesLine."Line Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
                         column(TotalText; TotalText)
                         {
-                        }
-                        column(SalesLine__Line_Amount__SalesLine__Inv__Discount_Amount_; TempSalesLine."Line Amount" - TempSalesLine."Inv. Discount Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
                         }
                         column(VATAmountLine_VATAmountText; TempVATAmountLine.VATAmountText())
                         {
@@ -485,17 +318,7 @@ report 5272720 "lbt Sales - Quote"
                         column(TotalInclVATText; TotalInclVATText)
                         {
                         }
-                        column(SalesLine__Line_Amount__SalesLine__Inv__Discount_Amount__Control88; TempSalesLine."Line Amount" - TempSalesLine."Inv. Discount Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
                         column(VATAmount; VATAmount)
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(SalesLine__Line_Amount__SalesLine__Inv__Discount_Amount____VATAmount; TempSalesLine."Line Amount" - TempSalesLine."Inv. Discount Amount" + VATAmount)
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
@@ -505,21 +328,7 @@ report 5272720 "lbt Sales - Quote"
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(TotalExclVATText_Control131; TotalExclVATText)
-                        {
-                        }
-                        column(VATAmountLine_VATAmountText_Control132; TempVATAmountLine.VATAmountText())
-                        {
-                        }
-                        column(TotalInclVATText_Control133; TotalInclVATText)
-                        {
-                        }
                         column(TotalAmountInclVAT; TotalAmountInclVAT)
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(VATAmount_Control135; VATAmount)
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
@@ -528,30 +337,6 @@ report 5272720 "lbt Sales - Quote"
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
-                        }
-                        column(RoundLoop_Number; Number)
-                        {
-                        }
-                        column(Sales_Line___No__Caption; "Sales Line".FIELDCAPTION("No."))
-                        {
-                        }
-                        column(Sales_Line___Unit_of_Measure_Caption; "Sales Line".FIELDCAPTION("Unit of Measure"))
-                        {
-                        }
-                        column(Sales_Line___Line_Discount___Caption; Sales_Line___Line_Discount___CaptionLbl)
-                        {
-                        }
-                        column(Sales_Line___Allow_Invoice_Disc__Caption; "Sales Line".FIELDCAPTION("Allow Invoice Disc."))
-                        {
-                        }
-                        column(Sales_Line___VAT_Identifier_Caption; Sales_Line___VAT_Identifier_CaptionLbl)
-                        {
-                        }
-                        column(ContinuedCaption; ContinuedCaptionLbl)
-                        {
-                        }
-                        column(ContinuedCaption_Control83; ContinuedCaption_Control83Lbl)
-                        {
                         }
                         column(SalesLine__Inv__Discount_Amount_Caption; SalesLine__Inv__Discount_Amount_CaptionLbl)
                         {
@@ -685,9 +470,6 @@ report 5272720 "lbt Sales - Quote"
                             column(DimText_Control81; DimText)
                             {
                             }
-                            column(DimensionLoop2_Number; Number)
-                            {
-                            }
                             column(Line_DimensionsCaption; Line_DimensionsCaptionLbl)
                             {
                             }
@@ -706,11 +488,11 @@ report 5272720 "lbt Sales - Quote"
                                 repeat
                                     OldDimText := DimText;
                                     if DimText = '' then
-                                        DimText := STRSUBSTNO('%1 %2', DimSetEntry2."Dimension Code", DimSetEntry2."Dimension Value Code")
+                                        DimText := STRSUBSTNO(DimLbl, DimSetEntry2."Dimension Code", DimSetEntry2."Dimension Value Code")
                                     else
                                         DimText :=
                                           STRSUBSTNO(
-                                            '%1, %2 %3', DimText,
+                                            CombinedDimLbl, DimText,
                                             DimSetEntry2."Dimension Code", DimSetEntry2."Dimension Value Code");
                                     if STRLEN(DimText) > MAXSTRLEN(OldDimText) then begin
                                         DimText := OldDimText;
@@ -890,58 +672,10 @@ report 5272720 "lbt Sales - Quote"
                         column(VATAmountLine__VAT_Identifier_; TempVATAmountLine."VAT Identifier")
                         {
                         }
-                        column(VATAmountLine__VAT_Base__Control110; TempVATAmountLine."VAT Base")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(VATAmountLine__VAT_Amount__Control111; TempVATAmountLine."VAT Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(VATAmountLine__Line_Amount__Control97; TempVATAmountLine."Line Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(VATAmountLine__Inv__Disc__Base_Amount__Control98; TempVATAmountLine."Inv. Disc. Base Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(VATAmountLine__Invoice_Discount_Amount__Control99; TempVATAmountLine."Invoice Discount Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
                         column(VATAmountLine__VAT_Base__Control114; TempVATAmountLine."VAT Base")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
-                        }
-                        column(VATAmountLine__VAT_Amount__Control115; TempVATAmountLine."VAT Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(VATAmountLine__Line_Amount__Control100; TempVATAmountLine."Line Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(VATAmountLine__Inv__Disc__Base_Amount__Control104; TempVATAmountLine."Inv. Disc. Base Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(VATAmountLine__Invoice_Discount_Amount__Control105; TempVATAmountLine."Invoice Discount Amount")
-                        {
-                            AutoFormatExpression = "Sales Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(VATCounter_Number; Number)
-                        {
                         }
                         column(VATAmountLine__VAT___Caption; VATAmountLine__VAT___CaptionLbl)
                         {
@@ -965,12 +699,6 @@ report 5272720 "lbt Sales - Quote"
                         {
                         }
                         column(VATAmountLine__VAT_Identifier_Caption; VATAmountLine__VAT_Identifier_CaptionLbl)
-                        {
-                        }
-                        column(VATAmountLine__VAT_Base_Caption; VATAmountLine__VAT_Base_CaptionLbl)
-                        {
-                        }
-                        column(VATAmountLine__VAT_Base__Control110Caption; VATAmountLine__VAT_Base__Control110CaptionLbl)
                         {
                         }
                         column(VATAmountLine__VAT_Base__Control114Caption; VATAmountLine__VAT_Base__Control114CaptionLbl)
@@ -1023,24 +751,9 @@ report 5272720 "lbt Sales - Quote"
                         column(VATAmountLine__VAT_Identifier__Control155; TempVATAmountLine."VAT Identifier")
                         {
                         }
-                        column(VALVATAmountLCY_Control156; VALVATAmountLCY)
-                        {
-                            AutoFormatType = 1;
-                        }
-                        column(VALVATBaseLCY_Control157; VALVATBaseLCY)
-                        {
-                            AutoFormatType = 1;
-                        }
-                        column(VALVATAmountLCY_Control159; VALVATAmountLCY)
-                        {
-                            AutoFormatType = 1;
-                        }
                         column(VALVATBaseLCY_Control160; VALVATBaseLCY)
                         {
                             AutoFormatType = 1;
-                        }
-                        column(VATCounterLCY_Number; Number)
-                        {
                         }
                         column(VALVATAmountLCY_Control152Caption; VALVATAmountLCY_Control152CaptionLbl)
                         {
@@ -1052,12 +765,6 @@ report 5272720 "lbt Sales - Quote"
                         {
                         }
                         column(VATAmountLine__VAT_Identifier__Control155Caption; VATAmountLine__VAT_Identifier__Control155CaptionLbl)
-                        {
-                        }
-                        column(VALVATBaseLCYCaption; VALVATBaseLCYCaptionLbl)
-                        {
-                        }
-                        column(VALVATBaseLCY_Control157Caption; VALVATBaseLCY_Control157CaptionLbl)
                         {
                         }
                         column(VALVATBaseLCY_Control160Caption; VALVATBaseLCY_Control160CaptionLbl)
@@ -1105,9 +812,6 @@ report 5272720 "lbt Sales - Quote"
                         column(ShipmentMethod_Description; ShipmentMethod.Description)
                         {
                         }
-                        column(Total_Number; Number)
-                        {
-                        }
                         column(PaymentTerms_DescriptionCaption; PaymentTerms_DescriptionCaptionLbl)
                         {
                         }
@@ -1119,9 +823,6 @@ report 5272720 "lbt Sales - Quote"
                     {
                         DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                         column(Sales_Header___Sell_to_Customer_No__; "Sales Header"."Sell-to Customer No.")
-                        {
-                        }
-                        column(Total2_Number; Number)
                         {
                         }
                         column(Ship_to_AddressCaption; Ship_to_AddressCaptionLbl)
@@ -1273,6 +974,7 @@ report 5272720 "lbt Sales - Quote"
                 CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
                 FormatAddressFields("Sales Header");
                 FormatDocumentFields("Sales Header");
+                CompanyInfo."lbt SetReportFooter"(Footer);
 
                 DimSetEntry1.SETRANGE("Dimension Set ID", "Dimension Set ID");
 
@@ -1493,18 +1195,10 @@ report 5272720 "lbt Sales - Quote"
         Print: Boolean;
         [InDataSet]
         LogInteractionEnable: Boolean;
-        CompanyInfo__Phone_No__CaptionLbl: Label 'Pho:';
-        CompanyInfo__Fax_No__CaptionLbl: Label 'Fax:';
-        CompanyInfo__VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
-        Sales_Header___Shipment_Date_CaptionLbl: Label 'Shipment Date';
         Sales_Header___No__CaptionLbl: Label 'Quote No.';
         Header_DimensionsCaptionLbl: Label 'Header Dimensions';
         Unit_PriceCaptionLbl: Label 'Unit Price';
-        Sales_Line___Line_Discount___CaptionLbl: Label 'Disc. %';
         AmountCaptionLbl: Label 'Amount';
-        Sales_Line___VAT_Identifier_CaptionLbl: Label 'VAT Identifier';
-        ContinuedCaptionLbl: Label 'Continued';
-        ContinuedCaption_Control83Lbl: Label 'Continued';
         SalesLine__Inv__Discount_Amount_CaptionLbl: Label 'Inv. Discount Amount';
         SubtotalCaptionLbl: Label 'Subtotal';
         VATDiscountAmountCaptionLbl: Label 'Payment Discount on VAT';
@@ -1517,15 +1211,11 @@ report 5272720 "lbt Sales - Quote"
         VATAmountLine__Inv__Disc__Base_Amount__Control72CaptionLbl: Label 'Inv. Disc. Base Amount';
         VATAmountLine__Invoice_Discount_Amount__Control71CaptionLbl: Label 'Invoice Discount Amount';
         VATAmountLine__VAT_Identifier_CaptionLbl: Label 'VAT Identifier';
-        VATAmountLine__VAT_Base_CaptionLbl: Label 'Continued';
-        VATAmountLine__VAT_Base__Control110CaptionLbl: Label 'Continued';
         VATAmountLine__VAT_Base__Control114CaptionLbl: Label 'Total';
         VALVATAmountLCY_Control152CaptionLbl: Label 'VAT Amount';
         VALVATBaseLCY_Control153CaptionLbl: Label 'VAT Base';
         VATAmountLine__VAT____Control154CaptionLbl: Label 'VAT %';
         VATAmountLine__VAT_Identifier__Control155CaptionLbl: Label 'VAT Identifier';
-        VALVATBaseLCYCaptionLbl: Label 'Continued';
-        VALVATBaseLCY_Control157CaptionLbl: Label 'Continued';
         VALVATBaseLCY_Control160CaptionLbl: Label 'Total';
         PaymentTerms_DescriptionCaptionLbl: Label 'Payment Terms';
         ShipmentMethod_DescriptionCaptionLbl: Label 'Shipment Method';
@@ -1533,7 +1223,6 @@ report 5272720 "lbt Sales - Quote"
         CompanyAddressLine: Text;
         DocCaptionLbl: Label 'Quote %1', Comment = '%1 - Document No.';
         PageFromPageCaptionLbl: Label 'Page %1 of %2', Comment = '%1 - Current Page, %2 - Total Pages';
-        PageCaptionLbl: Label 'Page %1', Comment = '%1 - Current Page';
         NoCaptionLbl: Label 'No.';
         FromCaptionLbl: Label 'from';
         Sales_Header___Bill_to_Customer_No__CaptionLbl: Label 'Customer ID';
@@ -1554,11 +1243,6 @@ report 5272720 "lbt Sales - Quote"
         UOM_SalesLineCaptionLbl: Label 'Unit';
         CarryForwardCaptionLbl: Label 'Carry-forward %1', Comment = '%1 - Amount';
         NewPageGroup: Integer;
-        CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl: Label 'Registered in:';
-        CompanyInfo__LeBit_CEO_Caption_Lbl: Label 'Chief Executive Officer';
-        CompanyInfo__Bank_Name_Caption_Lbl: Label 'Bank';
-        CompanyInfo_IBAN_Caption_Lbl: Label 'IBAN';
-        CompanyInfo__SWIFT_Code_Caption_Lbl: Label 'SWIFT-BIC';
         ItemPictureExist: Boolean;
         ItemPicturePrint: Boolean;
         LBKopf_Description: Text;
@@ -1568,12 +1252,13 @@ report 5272720 "lbt Sales - Quote"
         LBFuss_Description: Text;
         NewPageLBFuss: Integer;
         SalesPersonText_CaptionLbl: Label 'Salesperson';
-        CompanyInfo_E_Mail_Caption_Lbl: Label 'Mail:';
-        CompanyInfo__Home_Page_Caption_Lbl: Label 'Homepage:';
         ReportType: Option Purchase,Sales,QA,Production,Delivery,"Report";
         UnitPrice: Decimal;
         VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
+        Footer: Text;
         CustSource: Option Default,"Bill-to Customer","Sell-to Customer";
+        DimLbl: Label '%1 - %2', Locked = true;
+        CombinedDimLbl: Label '%1; %2 - %3', Locked = true;
 
     procedure InitializeRequest(NoOfCopiesFrom: Integer; ShowInternalInfoFrom: Boolean; ArchiveDocumentFrom: Boolean; LogInteractionFrom: Boolean; PrintFrom: Boolean)
     begin
@@ -1718,4 +1403,5 @@ report 5272720 "lbt Sales - Quote"
         LeBitReportFunctions.GetSourceType(TypeVar::Sales, RepType::"Sales Quote", CustSource);
     end;
 }
+
 

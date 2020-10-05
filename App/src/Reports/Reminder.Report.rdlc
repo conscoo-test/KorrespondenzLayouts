@@ -7790,70 +7790,6 @@
                 </Rectangle>
                 <Rectangle Name="FooterCompanyInfo">
                   <ReportItems>
-                    <Textbox Name="FooterLine1">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value EvaluationMode="Auto">=Fields!CompanyInfo_Name.Value</Value>
-                              <Style>
-                                <FontSize>6pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Left</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <Top>0.21357cm</Top>
-                      <Left>2.5cm</Left>
-                      <Height>0.3cm</Height>
-                      <Width>16.87941cm</Width>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                      </Style>
-                    </Textbox>
-                    <Textbox Name="FooterLine2">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value EvaluationMode="Auto">=Fields!CompanyInfo_Address.Value &amp; " | " &amp; 
-Fields!CompanyInfo__Post_Code.Value &amp; " " &amp; Fields!CompanyInfo_City.Value &amp; " | " &amp; 
-Fields!CompanyInfo__Phone_No__Caption.Value &amp; " " &amp; Fields!CompanyInfo__Phone_No.Value &amp; " | " &amp; 
-Fields!CompanyInfo__Fax_No__Caption.Value &amp; " " &amp; Fields!CompanyInfo__Fax_No.Value &amp; " | " &amp; 
-Fields!CompanyInfo_E_Mail_Caption.Value &amp; " " &amp; Fields!CompanyInfo_E_Mail.Value &amp; " | " &amp; 
-Fields!CompanyInfo__Home_Page_Caption.Value &amp; " " &amp; Fields!CompanyInfo__Home_Page.Value</Value>
-                              <Style>
-                                <FontSize>6pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Left</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <Top>0.51357cm</Top>
-                      <Left>2.5cm</Left>
-                      <Height>0.3cm</Height>
-                      <Width>16.87941cm</Width>
-                      <ZIndex>1</ZIndex>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                      </Style>
-                    </Textbox>
                     <Textbox Name="FooterLine3">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -7861,11 +7797,7 @@ Fields!CompanyInfo__Home_Page_Caption.Value &amp; " " &amp; Fields!CompanyInfo__
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Label>HRB_CEO_VAT</Label>
-                              <Value EvaluationMode="Auto">="&lt;b&gt;" &amp; Fields!CompanyInfo__LeBit_Trade_Register_Name_Caption.Value &amp; "&lt;/b&gt;" &amp; " " &amp; Fields!CompanyInfo__LeBit_Trade_Register_Name.Value &amp; " " &amp; Fields!NoCaption.Value &amp;
- " " &amp; Fields!CompanyInfo__LeBit_Commercial_Register_No.Value &amp; " | " &amp; "&lt;b&gt;" &amp; Fields!CompanyInfo__LeBit_CEO_Caption.Value &amp; "&lt;/b&gt;" &amp; " " &amp; Fields!CompanyInfo__LeBit_CEO1.Value &amp;
- IIF(Fields!CompanyInfo__LeBit_CEO2.Value = "","",", " &amp; Fields!CompanyInfo__LeBit_CEO2.Value) &amp; IIF(Fields!CompanyInfo__LeBit_CEO3.Value = "","",", " &amp; Fields!CompanyInfo__LeBit_CEO3.Value) &amp;
- " | " &amp; "&lt;b&gt;" &amp; Fields!CompanyInfo__VAT_Registration_No__Caption.Value &amp; "&lt;/b&gt;" &amp; " " &amp; Fields!CompanyInfo__VAT_Registration_No__.Value</Value>
+                              <Value>=Fields!Footer.Value</Value>
                               <MarkupType>HTML</MarkupType>
                               <Style>
                                 <FontSize>6pt</FontSize>
@@ -7877,113 +7809,10 @@ Fields!CompanyInfo__Home_Page_Caption.Value &amp; " " &amp; Fields!CompanyInfo__
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <Top>0.81357cm</Top>
-                      <Left>2.5cm</Left>
-                      <Height>0.3cm</Height>
+                      <Top>0.17857cm</Top>
+                      <Left>2.43663cm</Left>
+                      <Height>1.84518cm</Height>
                       <Width>16.87941cm</Width>
-                      <ZIndex>2</ZIndex>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                      </Style>
-                    </Textbox>
-                    <Textbox Name="FooterLine4">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Label>BANK</Label>
-                              <Value EvaluationMode="Auto">="&lt;b&gt;" &amp; Fields!CompanyInfo__Bank_Name_Caption.Value &amp; "&lt;/b&gt; " &amp; Fields!CompanyInfo__Bank_Name.Value &amp; " | &lt;b&gt;" &amp; Fields!CompanyInfo_IBAN_Caption.Value &amp; "&lt;/b&gt; " &amp; Fields!CompanyInfo_IBAN.Value &amp;
- " | &lt;b&gt;" &amp; Fields!CompanyInfo__SWIFT_Code_Caption.Value &amp; "&lt;/b&gt; " &amp; Fields!CompanyInfo__SWIFT_Code.Value</Value>
-                              <MarkupType>HTML</MarkupType>
-                              <Style>
-                                <FontSize>6pt</FontSize>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Left</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <Top>1.11357cm</Top>
-                      <Left>2.5cm</Left>
-                      <Height>0.3cm</Height>
-                      <Width>16.87941cm</Width>
-                      <ZIndex>3</ZIndex>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                      </Style>
-                    </Textbox>
-                    <Textbox Name="FooterLine5">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Label>BANK2</Label>
-                              <Value EvaluationMode="Auto">="&lt;b&gt;" &amp; Fields!CompanyInfo__Bank_Name_Caption.Value &amp; "&lt;/b&gt; " &amp; Fields!CompanyInfo__LeBit_Bank_Name_2.Value &amp; " | &lt;b&gt;" &amp; Fields!CompanyInfo_IBAN_Caption.Value &amp; "&lt;/b&gt; " &amp; Fields!CompanyInfo__LeBit_IBAN_2.Value &amp;
- " | &lt;b&gt;" &amp; Fields!CompanyInfo__SWIFT_Code_Caption.Value &amp; "&lt;/b&gt; " &amp; Fields!CompanyInfo__LeBit_SWIFT_Code_2.Value</Value>
-                              <MarkupType>HTML</MarkupType>
-                              <Style>
-                                <FontSize>6pt</FontSize>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Left</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <Top>1.41357cm</Top>
-                      <Left>2.5cm</Left>
-                      <Height>0.3cm</Height>
-                      <Width>16.87941cm</Width>
-                      <ZIndex>4</ZIndex>
-                      <Visibility>
-                        <Hidden>=Fields!CompanyInfo__LeBit_Bank_Name_2.Value = ""</Hidden>
-                      </Visibility>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                      </Style>
-                    </Textbox>
-                    <Textbox Name="FooterLine6">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Label>BANK3</Label>
-                              <Value EvaluationMode="Auto">="&lt;b&gt;" &amp; Fields!CompanyInfo__Bank_Name_Caption.Value &amp; "&lt;/b&gt; " &amp; Fields!CompanyInfo__LeBit_Bank_Name_3.Value &amp; " | &lt;b&gt;" &amp; Fields!CompanyInfo_IBAN_Caption.Value &amp; "&lt;/b&gt; " &amp; Fields!CompanyInfo__LeBit_IBAN_3.Value &amp;
- " | &lt;b&gt;" &amp; Fields!CompanyInfo__SWIFT_Code_Caption.Value &amp; "&lt;/b&gt; " &amp; Fields!CompanyInfo__LeBit_SWIFT_Code_3.Value</Value>
-                              <MarkupType>HTML</MarkupType>
-                              <Style>
-                                <FontSize>6pt</FontSize>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Left</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <Top>1.71357cm</Top>
-                      <Left>2.5cm</Left>
-                      <Height>0.3cm</Height>
-                      <Width>16.87941cm</Width>
-                      <ZIndex>5</ZIndex>
-                      <Visibility>
-                        <Hidden>=Fields!CompanyInfo__LeBit_Bank_Name_3.Value = ""</Hidden>
-                      </Visibility>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -8240,6 +8069,9 @@ End Function
   <DataSets>
     <DataSet Name="DataSet_Result">
       <Fields>
+        <Field Name="Footer">
+          <DataField>Footer</DataField>
+        </Field>
         <Field Name="No_IssuedReminderHeader">
           <DataField>No_IssuedReminderHeader</DataField>
         </Field>
@@ -8254,15 +8086,6 @@ End Function
         </Field>
         <Field Name="TotalCaption">
           <DataField>TotalCaption</DataField>
-        </Field>
-        <Field Name="PageCaption">
-          <DataField>PageCaption</DataField>
-        </Field>
-        <Field Name="HomePageCaption">
-          <DataField>HomePageCaption</DataField>
-        </Field>
-        <Field Name="EMailCaption">
-          <DataField>EMailCaption</DataField>
         </Field>
         <Field Name="DocDateCaption">
           <DataField>DocDateCaption</DataField>
@@ -8321,81 +8144,6 @@ End Function
         <Field Name="CustAddr8">
           <DataField>CustAddr8</DataField>
         </Field>
-        <Field Name="CompanyInfo_Name">
-          <DataField>CompanyInfo_Name</DataField>
-        </Field>
-        <Field Name="CompanyInfo__VAT_Registration_No__">
-          <DataField>CompanyInfo__VAT_Registration_No__</DataField>
-        </Field>
-        <Field Name="CompanyInfo_Address">
-          <DataField>CompanyInfo_Address</DataField>
-        </Field>
-        <Field Name="CompanyInfo__Post_Code">
-          <DataField>CompanyInfo__Post_Code</DataField>
-        </Field>
-        <Field Name="CompanyInfo_City">
-          <DataField>CompanyInfo_City</DataField>
-        </Field>
-        <Field Name="CompanyInfo__Phone_No">
-          <DataField>CompanyInfo__Phone_No</DataField>
-        </Field>
-        <Field Name="CompanyInfo__Fax_No">
-          <DataField>CompanyInfo__Fax_No</DataField>
-        </Field>
-        <Field Name="CompanyInfo_E_Mail">
-          <DataField>CompanyInfo_E_Mail</DataField>
-        </Field>
-        <Field Name="CompanyInfo__Home_Page">
-          <DataField>CompanyInfo__Home_Page</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_CEO1">
-          <DataField>CompanyInfo__LeBit_CEO1</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_CEO2">
-          <DataField>CompanyInfo__LeBit_CEO2</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_CEO3">
-          <DataField>CompanyInfo__LeBit_CEO3</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_Commercial_Register_No">
-          <DataField>CompanyInfo__LeBit_Commercial_Register_No</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_Trade_Register_Name">
-          <DataField>CompanyInfo__LeBit_Trade_Register_Name</DataField>
-        </Field>
-        <Field Name="CompanyInfo__Bank_Name">
-          <DataField>CompanyInfo__Bank_Name</DataField>
-        </Field>
-        <Field Name="CompanyInfo_IBAN">
-          <DataField>CompanyInfo_IBAN</DataField>
-        </Field>
-        <Field Name="CompanyInfo__SWIFT_Code">
-          <DataField>CompanyInfo__SWIFT_Code</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_Bank_Name_2">
-          <DataField>CompanyInfo__LeBit_Bank_Name_2</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_IBAN_2">
-          <DataField>CompanyInfo__LeBit_IBAN_2</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_SWIFT_Code_2">
-          <DataField>CompanyInfo__LeBit_SWIFT_Code_2</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_Bank_Name_3">
-          <DataField>CompanyInfo__LeBit_Bank_Name_3</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_IBAN_3">
-          <DataField>CompanyInfo__LeBit_IBAN_3</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_SWIFT_Code_3">
-          <DataField>CompanyInfo__LeBit_SWIFT_Code_3</DataField>
-        </Field>
-        <Field Name="DueDate_IssuedReminderHdr">
-          <DataField>DueDate_IssuedReminderHdr</DataField>
-        </Field>
-        <Field Name="PostingDate_IssuedReminderHdr">
-          <DataField>PostingDate_IssuedReminderHdr</DataField>
-        </Field>
         <Field Name="DocDate_IssuedReminderHdr">
           <DataField>DocDate_IssuedReminderHdr</DataField>
         </Field>
@@ -8411,65 +8159,11 @@ End Function
         <Field Name="ReferenceText">
           <DataField>ReferenceText</DataField>
         </Field>
-        <Field Name="VATNoText">
-          <DataField>VATNoText</DataField>
-        </Field>
-        <Field Name="TextPage">
-          <DataField>TextPage</DataField>
-        </Field>
-        <Field Name="CompanyInfo__VAT_Registration_No__Caption">
-          <DataField>CompanyInfo__VAT_Registration_No__Caption</DataField>
-        </Field>
-        <Field Name="CompanyInfo__Phone_No__Caption">
-          <DataField>CompanyInfo__Phone_No__Caption</DataField>
-        </Field>
-        <Field Name="CompanyInfo__Fax_No__Caption">
-          <DataField>CompanyInfo__Fax_No__Caption</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_Trade_Register_Name_Caption">
-          <DataField>CompanyInfo__LeBit_Trade_Register_Name_Caption</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_CEO_Caption">
-          <DataField>CompanyInfo__LeBit_CEO_Caption</DataField>
-        </Field>
-        <Field Name="CompanyInfo__Bank_Name_Caption">
-          <DataField>CompanyInfo__Bank_Name_Caption</DataField>
-        </Field>
-        <Field Name="CompanyInfo_IBAN_Caption">
-          <DataField>CompanyInfo_IBAN_Caption</DataField>
-        </Field>
-        <Field Name="CompanyInfo__SWIFT_Code_Caption">
-          <DataField>CompanyInfo__SWIFT_Code_Caption</DataField>
-        </Field>
-        <Field Name="CompanyInfo_E_Mail_Caption">
-          <DataField>CompanyInfo_E_Mail_Caption</DataField>
-        </Field>
-        <Field Name="CompanyInfo__Home_Page_Caption">
-          <DataField>CompanyInfo__Home_Page_Caption</DataField>
-        </Field>
         <Field Name="DatumCaption">
           <DataField>DatumCaption</DataField>
         </Field>
         <Field Name="ReminderHeaderNoCaption">
           <DataField>ReminderHeaderNoCaption</DataField>
-        </Field>
-        <Field Name="PostingDateCaption">
-          <DataField>PostingDateCaption</DataField>
-        </Field>
-        <Field Name="BankAccountNoCaption">
-          <DataField>BankAccountNoCaption</DataField>
-        </Field>
-        <Field Name="BankNameCaption">
-          <DataField>BankNameCaption</DataField>
-        </Field>
-        <Field Name="GiroNoCaption">
-          <DataField>GiroNoCaption</DataField>
-        </Field>
-        <Field Name="VATRegNoCaption">
-          <DataField>VATRegNoCaption</DataField>
-        </Field>
-        <Field Name="PhoneNoCaption">
-          <DataField>PhoneNoCaption</DataField>
         </Field>
         <Field Name="ReminderCaption">
           <DataField>ReminderCaption</DataField>
@@ -8617,12 +8311,6 @@ End Function
         </Field>
         <Field Name="VALVATBaseFormat">
           <DataField>VALVATBaseFormat</DataField>
-        </Field>
-        <Field Name="VALVATBaseVALVATAmount">
-          <DataField>VALVATBaseVALVATAmount</DataField>
-        </Field>
-        <Field Name="VALVATBaseVALVATAmountFormat">
-          <DataField>VALVATBaseVALVATAmountFormat</DataField>
         </Field>
         <Field Name="VATAmountLineVAT">
           <DataField>VATAmountLineVAT</DataField>

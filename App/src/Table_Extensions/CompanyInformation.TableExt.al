@@ -100,5 +100,12 @@ tableextension 5272736 "lbt Company Information" extends "Company Information"
 
         }
     }
+
+    procedure "lbt SetReportFooter"(var Footer: Text)
+    var
+        FormatDocument: Codeunit "lbt Format Document";
+    begin
+        FormatDocument.SetReportFooter(Footer);
+    end;
 }
 
