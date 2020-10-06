@@ -3673,7 +3673,7 @@
           <source>VAT Amount</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales - Credit Memo - NamedType VATAmountCaptionLbl</note>
-          <target>MwSt.-Bemessungsgrundlage</target>
+          <target>MwSt.-Betrag</target>
         </trans-unit>
         <trans-unit id="Report 2085745012 - NamedType 563704494" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Amount Specification</source>
