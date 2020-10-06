@@ -3597,18 +3597,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales - Credit Memo - NamedType DocCreditMemoPrepmtCapLbl</note>
           
         </trans-unit>
-        <trans-unit id="Report 2085745012 - NamedType 3694251867" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Corrective Invoice %1</source>
-          <note from="Developer" annotates="general" priority="2">%1 - Document No.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales - Credit Memo - NamedType DocDECapLbl</note>
-          <target>Vorauszahlungsgutschrift %1</target>
-        </trans-unit>
-        <trans-unit id="Report 2085745012 - NamedType 3739308641" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Prepmt. Corrective Invoice %1</source>
-          <note from="Developer" annotates="general" priority="2">%1 - Document No.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales - Credit Memo - NamedType DocDEPrepmtCapLbl</note>
-          <target>Korrekturrechnung Vorauszahlung %1</target>
-        </trans-unit>
         <trans-unit id="Report 2085745012 - NamedType 1072493840" size-unit="char" translate="yes" xml:space="preserve">
           <source>Credit Memo No.</source>
           <note from="Developer" annotates="general" priority="2"></note>

@@ -1149,8 +1149,6 @@ report 5272723 "lbt Sales - Credit Memo"
         LogInteractionEnable: Boolean;
         DocCreditMemoCapLbl: Label 'Credit Memo %1', Comment = '%1 - Document No.';
         DocCreditMemoPrepmtCapLbl: Label 'Prepmt. Credit Memo %1', Comment = '%1 - Document No.';
-        DocDECapLbl: Label 'Corrective Invoice %1', Comment = '%1 - Document No.';
-        DocDEPrepmtCapLbl: Label 'Prepmt. Corrective Invoice %1', Comment = '%1 - Document No.';
         SalesHeaderNoLbl: Label 'Credit Memo No.';
         HeaderDimCaptionLbl: Label 'Header Dimensions';
         UnitPriceCaptionLbl: Label 'Unit Price';
@@ -1388,16 +1386,11 @@ report 5272723 "lbt Sales - Credit Memo"
         OnBeforeGetDocumentCaption("Sales Cr.Memo Header", Caption);
         if Caption <> '' then
             exit(Caption);
-        if CompanyInfo."Country/Region Code" = 'DE' then begin
-            if "Sales Cr.Memo Header"."Prepayment Credit Memo" then
-                Caption := DocDEPrepmtCapLbl
-            else
-                Caption := DocDECapLbl;
-        end else
-            if "Sales Cr.Memo Header"."Prepayment Credit Memo" then
-                Caption := DocCreditMemoPrepmtCapLbl
-            else
-                Caption := DocCreditMemoCapLbl;
+
+        if "Sales Cr.Memo Header"."Prepayment Credit Memo" then
+            Caption := DocCreditMemoPrepmtCapLbl
+        else
+            Caption := DocCreditMemoCapLbl;
 
         exit(STRSUBSTNO(Caption, CopyText));
     end;
