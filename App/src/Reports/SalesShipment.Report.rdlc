@@ -2965,7 +2965,6 @@
                                               <PaddingRight>2pt</PaddingRight>
                                             </Style>
                                           </Textbox>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell>
@@ -3089,7 +3088,6 @@
                                               <PaddingRight>2pt</PaddingRight>
                                             </Style>
                                           </Textbox>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell>
@@ -5088,6 +5086,7 @@
                                       <TablixCell>
                                         <CellContents>
                                           <Textbox Name="textbox754">
+                                            <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
@@ -6221,7 +6220,7 @@
           <Style />
         </PageHeader>
         <PageFooter>
-          <Height>2.02375cm</Height>
+          <Height>2.82375cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -6262,7 +6261,6 @@
               <Left>0.02059cm</Left>
               <Height>2.02375cm</Height>
               <Width>19.45879cm</Width>
-              <ZIndex>1</ZIndex>
               <Visibility>
                 <Hidden>=First(Fields!HideCompanyInfo.Value, "DataSet_Result")</Hidden>
               </Visibility>
