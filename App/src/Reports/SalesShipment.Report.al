@@ -1023,10 +1023,20 @@ report 5272724 "lbt Sales - Shipment"
     end;
 
     local procedure FormatAddressFields(SalesShipmentHeader: Record "Sales Shipment Header")
+    var
+        i: Integer;
     begin
         FormatAddr.GetCompanyAddr(SalesShipmentHeader."Responsibility Center", RespCenter, CompanyInfo, CompanyAddr);
         FormatAddr.SalesShptShipTo(ShipToAddr, SalesShipmentHeader);
         ShowCustAddr := FormatAddr.SalesShptBillTo(CustAddr, ShipToAddr, SalesShipmentHeader);
+        CLEAR(CompanyAddressLine);
+
+        for i := 1 to 6 do
+            if CompanyAddr[i] <> '' then begin
+                if CompanyAddressLine <> '' then
+                    CompanyAddressLine := CompanyAddressLine + ', ';
+                CompanyAddressLine := CompanyAddressLine + CompanyAddr[i];
+            end;
     end;
 
     local procedure FormatDocumentFields(SalesShipmentHeader: Record "Sales Shipment Header")

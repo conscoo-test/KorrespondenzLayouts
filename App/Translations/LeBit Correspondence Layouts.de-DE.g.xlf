@@ -5058,7 +5058,7 @@
           <source>Sales - Shipment %1</source>
           <note from="Developer" annotates="general" priority="2">%1 - Document No.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales - Shipment - NamedType TitleLbl</note>
-          <target>Verkauf - Lieferscheinnr. %1</target>
+          <target>Verkauf - Lieferschein. %1</target>
         </trans-unit>
         <trans-unit id="Report 3691972257 - NamedType 2259602087" size-unit="char" translate="yes" xml:space="preserve">
           <source>Shipment No.</source>
