@@ -1377,11 +1377,29 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Blanket Purchase Order - NamedType DocCaptionLbl</note>
           <target>Einkauf Rahmenbestellung Nr.</target>
         </trans-unit>
+        <trans-unit id="Report 3134870048 - NamedType 3345444166" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Page %1 of %2</source>
+          <target>Seite %1 von %2</target>
+          <note from="Developer" annotates="general" priority="2">%1 - Current Page, %2 - Total Pages</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report lbt Blanket Purchase Order - NamedType PagefromPageCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3134870048 - NamedType 2775446918" size-unit="char" translate="yes" xml:space="preserve">
+          <source>from</source>
+          <target>vom</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report lbt Blanket Purchase Order - NamedType FromCaptionLbl</note>
+        </trans-unit>
         <trans-unit id="Report 3134870048 - NamedType 492004031" size-unit="char" translate="yes" xml:space="preserve">
           <source>Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Blanket Purchase Order - NamedType DatumCaptionLbl</note>
           <target>Datum</target>
+        </trans-unit>
+        <trans-unit id="Report 3134870048 - NamedType 1292293871" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <target>Nr.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report lbt Blanket Purchase Order - NamedType NoCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3134870048 - NamedType 3186069386" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pos.</source>
@@ -2866,7 +2884,7 @@
           <source>No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Purchase - Quote - NamedType NoCaptionLbl</note>
-          <target>Nr. </target>
+          <target>Nr.</target>
         </trans-unit>
         <trans-unit id="Report 2627732418 - NamedType 2775446918" size-unit="char" translate="yes" xml:space="preserve">
           <source>from</source>
@@ -4552,7 +4570,7 @@
           <source>Order No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales pro forma Invoice - NamedType OrderNoCaptionLbl</note>
-          <target>Bestellnr. </target>
+          <target>Bestellnr.</target>
         </trans-unit>
         <trans-unit id="Report 1113867451 - NamedType 1424416391" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Clause</source>

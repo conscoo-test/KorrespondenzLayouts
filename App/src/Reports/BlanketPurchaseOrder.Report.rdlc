@@ -4261,7 +4261,6 @@
                                               <VerticalAlign>Middle</VerticalAlign>
                                             </Style>
                                           </Textbox>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                     </TablixCells>
@@ -4754,9 +4753,6 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <PageBreak>
-              <BreakLocation>End</BreakLocation>
-            </PageBreak>
             <Top>0cm</Top>
             <Left>0.02168cm</Left>
             <Height>21.89321cm</Height>
@@ -5479,6 +5475,15 @@ End Function
         </Field>
         <Field Name="DatumCaption">
           <DataField>DatumCaption</DataField>
+        </Field>
+        <Field Name="FromCaption">
+          <DataField>FromCaption</DataField>
+        </Field>
+        <Field Name="NoCaption">
+          <DataField>NoCaption</DataField>
+        </Field>
+        <Field Name="PagefromPageCaption">
+          <DataField>PagefromPageCaption</DataField>
         </Field>
         <Field Name="PosNo_Caption">
           <DataField>PosNo_Caption</DataField>

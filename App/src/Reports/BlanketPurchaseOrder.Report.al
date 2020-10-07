@@ -94,6 +94,15 @@ report 5272729 "lbt Blanket Purchase Order"
                     column(DatumCaption; DatumCaptionLbl)
                     {
                     }
+                    column(FromCaption; FromCaptionLbl)
+                    {
+                    }
+                    column(NoCaption; NoCaptionLbl)
+                    {
+                    }
+                    column(PagefromPageCaption; PagefromPageCaptionLbl)
+                    {
+                    }
                     column(PosNo_Caption; PosNo_CaptionLbl)
                     {
                     }
@@ -584,6 +593,7 @@ report 5272729 "lbt Blanket Purchase Order"
                     }
                     dataitem(Total3; "Integer")
                     {
+                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                         column(ShipToAddr1; ShipToAddr[1])
                         {
                         }
@@ -895,7 +905,10 @@ report 5272729 "lbt Blanket Purchase Order"
         LBFuss_Description: Text;
         NewPageLBFuss: Integer;
         DocCaptionLbl: Label 'Blanket Purchase Order %1', Comment = '%1 - Document No.';
+        PagefromPageCaptionLbl: Label 'Page %1 of %2', Comment = '%1 - Current Page, %2 - Total Pages';
+        FromCaptionLbl: Label 'from';
         DatumCaptionLbl: Label 'Date';
+        NoCaptionLbl: Label 'No.';
         PosNo_CaptionLbl: Label 'Pos.';
         UOM_CaptionLbl: Label 'Unit';
         PurchPersonText_CaptionLbl: Label 'Salesperson';
