@@ -49,6 +49,8 @@ tableextension 5272722 "lbt Sales Cr.Memo Line" extends "Sales Cr.Memo Line"
         }
         field(5272726; "lbt Source Document Line No."; Integer)
         {
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Removed';
             Caption = 'Source Document Line No.';
             DataClassification = CustomerContent;
         }

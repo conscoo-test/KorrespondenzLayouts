@@ -56,6 +56,8 @@ tableextension 5272733 "lbt Purchase Line Archive" extends "Purchase Line Archiv
 
         field(5272726; "lbt Source Document Line No."; Integer)
         {
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Removed';
             Caption = 'Source Document Line No.';
             DataClassification = CustomerContent;
         }
@@ -69,11 +71,9 @@ tableextension 5272733 "lbt Purchase Line Archive" extends "Purchase Line Archiv
     }
     trigger OnDelete()
     var
-        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
-        SourceRecRef: RecordRef;
+        LongtextMgt: Codeunit "lbt Longtext Mgt.";
     begin
-        SourceRecRef.GETTABLE(Rec);
-        LeBitLongtextMgt.DelLongtext(SourceRecRef);
+        LongtextMgt.DelLongtext(Rec);
     end;
 }
 

@@ -43,12 +43,12 @@ pageextension 5272724 "lbt Posted Sales Inv. Subform" extends "Posted Sales Invo
                 Image = Import;
                 trigger OnAction()
                 var
-                    LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                    LongtextMgt: Codeunit "lbt Longtext Mgt.";
                     SourceRecRef: RecordRef;
                     Position: Option Header,Footer,Longtext;
                 begin
                     SourceRecRef.GETTABLE(Rec);
-                    LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Longtext);
+                    LongtextMgt.ShowLongtextLines(Rec, Position::Longtext);
                 end;
             }
         }

@@ -46,6 +46,8 @@ tableextension 5272735 "lbt Return Receipt Line" extends "Return Receipt Line"
         }
         field(5272726; "lbt Source Document Line No."; Integer)
         {
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Removed';
             Caption = 'Source Document Line No.';
             DataClassification = CustomerContent;
         }

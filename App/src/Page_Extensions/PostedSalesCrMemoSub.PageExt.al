@@ -43,12 +43,12 @@ pageextension 5272726 "lbt Posted Sales Cr. Memo Sub." extends "Posted Sales Cr.
                 Image = Import;
                 trigger OnAction()
                 var
-                    LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                    LongtextMgt: Codeunit "lbt Longtext Mgt.";
                     SourceRecRef: RecordRef;
                     Position: Option Header,Footer,Longtext;
                 begin
                     SourceRecRef.GETTABLE(Rec);
-                    LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Longtext);
+                    LongtextMgt.ShowLongtextLines(Rec, Position::Longtext);
                 end;
             }
         }

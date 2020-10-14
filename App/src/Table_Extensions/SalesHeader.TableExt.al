@@ -1,28 +1,21 @@
 tableextension 5272728 "lbt Sales Header" extends "Sales Header"
 {
-    fields
-    {
-    }
-
     trigger OnDelete()
     var
-        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
-        SourceRecRef: RecordRef;
+        LongtextMgt: Codeunit "lbt Longtext Mgt.";
     begin
-        SourceRecRef.GETTABLE(Rec);
-        LeBitLongtextMgt.DelLongtext(SourceRecRef);
+        LongtextMgt.DelLongtext(Rec);
     end;
 
-    procedure LeBitTransferPSLongtextLineToTemp(var LeBitPSLongtextLine: Record "lbt PS Longtext Line"; var TempLeBitPSLongtextLine: Record "lbt PS Longtext Line" temporary)
+    procedure lbtTransferPSLongtextLineToTemp(var PSLongtextLine: Record "lbt PS Longtext Line"; var TempPSLongtextLine: Record "lbt PS Longtext Line" temporary)
     begin
-        if LeBitPSLongtextLine.FindSet() then
+        if PSLongtextLine.FindSet() then
             repeat
-                TempLeBitPSLongtextLine.Init();
-                ;
-                TempLeBitPSLongtextLine := LeBitPSLongtextLine;
-                TempLeBitPSLongtextLine.Insert();
-            until LeBitPSLongtextLine.Next() = 0;
-        LeBitPSLongtextLine.DeleteAll();
+                TempPSLongtextLine.Init();
+                TempPSLongtextLine := PSLongtextLine;
+                TempPSLongtextLine.Insert();
+            until PSLongtextLine.Next() = 0;
+        PSLongtextLine.DeleteAll();
     end;
 }
 

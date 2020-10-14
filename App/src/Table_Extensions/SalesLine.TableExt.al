@@ -106,6 +106,8 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
         }
         field(5272726; "lbt Source Document Line No."; Integer)
         {
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Removed';
             Caption = 'Source Document Line No.';
             DataClassification = CustomerContent;
         }
@@ -120,11 +122,9 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
 
     trigger OnDelete()
     var
-        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
-        SourceRecRef: RecordRef;
+        LongtextMgt: Codeunit "lbt Longtext Mgt.";
     begin
-        SourceRecRef.GETTABLE(Rec);
-        LeBitLongtextMgt.DelLongtext(SourceRecRef);
+        LongtextMgt.DelLongtext(Rec);
     end;
 
     var

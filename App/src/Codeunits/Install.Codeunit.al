@@ -7,20 +7,23 @@ codeunit 5272725 "lbt Install"
         CorrSetup: Record "lbt Corr Setup";
         lbtModuleInfo: ModuleInfo;
     begin
-        with CorrSetup do
-            if IsEmpty() then begin
-                Init();
-                Insert();
-            end;
+        if CorrSetup.IsEmpty() then begin
+            CorrSetup.Init();
+            CorrSetup.Insert();
+        end;
         NavApp.GetCurrentModuleInfo(lbtModuleInfo);
         if lbtModuleInfo.DataVersion() = Version.Create(0, 0, 0, 0) then begin
             //new installation
+            ;
+            ;
         end
         else begin
             //reinstallation
             // case lbtModuleInfo.DataVersion() of
             // //add reinstallation code for each version
             // end;
+            ;
+            ;
         end;
     end;
 
@@ -31,12 +34,16 @@ codeunit 5272725 "lbt Install"
         NavApp.GetCurrentModuleInfo(lbtModuleInfo);
         if lbtModuleInfo.DataVersion() = Version.Create(0, 0, 0, 0) then begin
             //new installation
+            ;
+            ;
         end
         else begin
             //reinstallation
             // case lbtModuleInfo.DataVersion() of
             // //add reinstallation code for each version
             // end;
+            ;
+            ;
         end;
     end;
 }

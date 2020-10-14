@@ -43,12 +43,12 @@ pageextension 5272806 "lbt Purch. Cr. Memo Subform" extends "Purch. Cr. Memo Sub
                 Image = Import;
                 trigger OnAction()
                 var
-                    LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                    LongtextMgt: Codeunit "lbt Longtext Mgt.";
                     SourceRecRef: RecordRef;
                     Position: Option Header,Footer,Longtext;
                 begin
                     SourceRecRef.GETTABLE(Rec);
-                    LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Longtext);
+                    LongtextMgt.ShowLongtextLines(Rec, Position::Longtext);
                 end;
             }
         }

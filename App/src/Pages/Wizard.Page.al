@@ -24,7 +24,7 @@ page 5272724 "lbt Wizard"
             {
                 Editable = false;
                 Visible = TopBannerVisible and (CurrentStep = MaxStep);
-                field("Media Resources Done"; MediaResourcesDone."Media Reference")
+                field("Media Resources Done"; DoneMediaResources."Media Reference")
                 {
                     ApplicationArea = All;
                     ShowCaption = false;
@@ -446,19 +446,19 @@ page 5272724 "lbt Wizard"
     local procedure GetLogoPosition()
     var
         SalesReceivablesSetup: Record "Sales & Receivables Setup";
-        PurchPayablesSetup: Record "Purchases & Payables Setup";
+        PurchasesPayablesSetup: Record "Purchases & Payables Setup";
     begin
         SalesReceivablesSetup.Get();
         SalesLogoPosition := SalesReceivablesSetup."Logo Position on Documents";
 
-        PurchPayablesSetup.Get();
-        PurchaseLogoPosition := PurchPayablesSetup."lbt Logo Position on Documents";
+        PurchasesPayablesSetup.Get();
+        PurchaseLogoPosition := PurchasesPayablesSetup."lbt Logo Position on Documents";
     end;
 
     local procedure SetLogoPosition()
     var
         SalesReceivablesSetup: Record "Sales & Receivables Setup";
-        PurchPayablesSetup: Record "Purchases & Payables Setup";
+        PurchasesPayablesSetup: Record "Purchases & Payables Setup";
     begin
         SalesReceivablesSetup.Get();
         if SalesReceivablesSetup."Logo Position on Documents" <> SalesLogoPosition then begin
@@ -466,10 +466,10 @@ page 5272724 "lbt Wizard"
             SalesReceivablesSetup.Modify();
         end;
 
-        PurchPayablesSetup.Get();
-        if PurchPayablesSetup."lbt Logo Position on Documents" <> PurchaseLogoPosition then begin
-            PurchPayablesSetup."lbt Logo Position on Documents" := PurchaseLogoPosition;
-            PurchPayablesSetup.Modify();
+        PurchasesPayablesSetup.Get();
+        if PurchasesPayablesSetup."lbt Logo Position on Documents" <> PurchaseLogoPosition then begin
+            PurchasesPayablesSetup."lbt Logo Position on Documents" := PurchaseLogoPosition;
+            PurchasesPayablesSetup.Modify();
         end;
     end;
 
@@ -537,9 +537,9 @@ page 5272724 "lbt Wizard"
         if MediaRepository.GET('AssistedSetup-NoText-400px.png', Format(CurrentClientType())) then
             if MediaResources.GET(MediaRepository."Media Resources Ref") then
                 TopBannerVisible := MediaResources."Media Reference".HasValue();
-        if MediaRepositoryDone.Get('AssistedSetupDone-NoText-400px.png', Format(CurrentClientType())) then
-            if MediaResourcesDone.Get(MediaRepositoryDone."Media Resources Ref") then
-                TopBannerVisible := TopBannerVisible or MediaResourcesDone."Media Reference".HasValue();
+        if DoneMediaRepository.Get('AssistedSetupDone-NoText-400px.png', Format(CurrentClientType())) then
+            if DoneMediaResources.Get(DoneMediaRepository."Media Resources Ref") then
+                TopBannerVisible := TopBannerVisible or DoneMediaResources."Media Reference".HasValue();
     end;
 
     local procedure GetAlwaysPrintVat()
@@ -562,8 +562,8 @@ page 5272724 "lbt Wizard"
     var
         MediaRepository: Record "Media Repository";
         MediaResources: Record "Media Resources";
-        MediaRepositoryDone: Record "Media Repository";
-        MediaResourcesDone: Record "Media Resources";
+        DoneMediaRepository: Record "Media Repository";
+        DoneMediaResources: Record "Media Resources";
 
         TopBannerVisible: Boolean;
         NextEnabled: Boolean;

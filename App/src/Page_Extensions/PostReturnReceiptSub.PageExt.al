@@ -43,12 +43,12 @@ pageextension 5272784 "lbt Post. Return Receipt Sub." extends "Posted Return Rec
                 Image = Import;
                 trigger OnAction()
                 var
-                    LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                    LongtextMgt: Codeunit "lbt Longtext Mgt.";
                     SourceRecRef: RecordRef;
                     Position: Option Header,Footer,Longtext;
                 begin
                     SourceRecRef.GETTABLE(Rec);
-                    LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Longtext);
+                    LongtextMgt.ShowLongtextLines(Rec, Position::Longtext);
                 end;
             }
         }

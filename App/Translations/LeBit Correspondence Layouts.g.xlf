@@ -588,20 +588,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt Format Document - NamedType RegNoCaptionLbl</note>
         </trans-unit>
-        <trans-unit id="Codeunit 1968274535 - NamedType 3317835502" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Header/footer texts already exists. Do you want to delete this?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt Longtext Mgt. - NamedType HeaderExistsErr</note>
-        </trans-unit>
         <trans-unit id="Codeunit 1968274535 - NamedType 1336088190" size-unit="char" translate="yes" xml:space="preserve">
           <source>There is not enough space to insert extended text lines.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt Longtext Mgt. - NamedType NotEnoughSpaceErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1968274535 - NamedType 1414188967" size-unit="char" translate="yes" xml:space="preserve">
-          <source>This Message ist for Developer:\\\ Table %1 %2 is not exist.</source>
-          <note from="Developer" annotates="general" priority="2">%1 - Table No., %2 - Table Caption</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt Longtext Mgt. - NamedType NotTableExistErr</note>
         </trans-unit>
         <trans-unit id="Page 4224219719 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Archive PS Longtext Lines</source>
@@ -6838,11 +6828,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purchase Line - Field lbt Indentation - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 2301185401 - Field 2076267547 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
-          <source>Source Document Line No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purchase Line - Field lbt Source Document Line No. - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 2301185401 - NamedType 2473355334" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
           <source>New Pages can only be set in blank lines.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6893,11 +6878,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purchase Line Archive - Field lbt Indentation - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 1167243623 - Field 2076267547 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2809873457">
-          <source>Source Document Line No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purchase Line Archive - Field lbt Source Document Line No. - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 3961252845 - Field 3218478807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 518488723">
           <source>Long Text</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6932,11 +6912,6 @@
           <source>Indentation</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purch. Cr. Memo Line - Field lbt Indentation - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 3961252845 - Field 2076267547 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 518488723">
-          <source>Source Document Line No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purch. Cr. Memo Line - Field lbt Source Document Line No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2515814195 - Field 3218478807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
           <source>Long Text</source>
@@ -6973,11 +6948,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purch. Inv. Line - Field lbt Indentation - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 2515814195 - Field 2076267547 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
-          <source>Source Document Line No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purch. Inv. Line - Field lbt Source Document Line No. - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 588896087 - Field 3218478807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 959319265">
           <source>Long Text</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -7012,11 +6982,6 @@
           <source>Indentation</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purch. Rcpt. Line - Field lbt Indentation - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 588896087 - Field 2076267547 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 959319265">
-          <source>Source Document Line No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purch. Rcpt. Line - Field lbt Source Document Line No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1947958654 - Field 3218478807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1173465396">
           <source>Long Text</source>
@@ -7053,11 +7018,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Return Receipt Line - Field lbt Indentation - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 1947958654 - Field 2076267547 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1173465396">
-          <source>Source Document Line No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Return Receipt Line - Field lbt Source Document Line No. - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 2909024994 - Field 3218478807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4118213496">
           <source>Long Text</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -7092,11 +7052,6 @@
           <source>Indentation</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Return Shipment Line - Field lbt Indentation - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2909024994 - Field 2076267547 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4118213496">
-          <source>Source Document Line No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Return Shipment Line - Field lbt Source Document Line No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1439991867 - Field 3218478807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3059602325">
           <source>Long Text</source>
@@ -7133,11 +7088,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Cr.Memo Line - Field lbt Indentation - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 1439991867 - Field 2076267547 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3059602325">
-          <source>Source Document Line No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Cr.Memo Line - Field lbt Source Document Line No. - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 584848631 - Field 3218478807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
           <source>Long Text</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -7173,11 +7123,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Invoice Line - Field lbt Indentation - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 584848631 - Field 2076267547 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
-          <source>Source Document Line No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Invoice Line - Field lbt Source Document Line No. - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 962502568 - Field 3218478807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
           <source>Long Text</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -7212,11 +7157,6 @@
           <source>Indentation</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Line - Field lbt Indentation - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 962502568 - Field 2076267547 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
-          <source>Source Document Line No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Line - Field lbt Source Document Line No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 962502568 - NamedType 2473355334" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
           <source>New Pages can only be set in blank lines.</source>
@@ -7263,11 +7203,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Line Archive - Field lbt Indentation - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 4262640906 - Field 2076267547 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2903552224">
-          <source>Source Document Line No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Line Archive - Field lbt Source Document Line No. - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 688316136 - Field 3218478807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1114148978">
           <source>Long Text</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -7302,11 +7237,6 @@
           <source>Indentation</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Shipment Line - Field lbt Indentation - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 688316136 - Field 2076267547 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1114148978">
-          <source>Source Document Line No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Shipment Line - Field lbt Source Document Line No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="EnumExtension 4017407393 - EnumValue 2651433103 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 691140679">
           <source>Begin Total</source>

@@ -9,7 +9,7 @@ codeunit 5272722 "lbt Corresp. Doc. SingleInst"
     end;
 
     var
-        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+        LongtextMgt: Codeunit "lbt Longtext Mgt.";
         ProcessingPostDropOrderShipment: Boolean;
         ProcessingPostCombineSalesOrderShipment: Boolean;
         WithSalesHeader: Boolean;
@@ -33,14 +33,14 @@ codeunit 5272722 "lbt Corresp. Doc. SingleInst"
                                 PurchaseOrderHeader.GET(PurchaseOrderHeader."Document Type"::Order, PurchRcptHeader."Order No.");
                                 SourceRecRef.GETTABLE(PurchaseOrderHeader);
                                 TargetRecRef.GETTABLE(PurchRcptHeader);
-                                LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+                                LongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
                             end;
                         Type::Lines:
                             begin
                                 PurchaseOrderLine.GET(PurchaseOrderLine."Document Type"::Order, PurchRcptLine."Order No.", PurchRcptLine."Order Line No.");
                                 SourceRecRef.GETTABLE(PurchaseOrderLine);
                                 TargetRecRef.GETTABLE(PurchRcptLine);
-                                LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+                                LongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
                             end;
                     end;
 
@@ -67,14 +67,14 @@ codeunit 5272722 "lbt Corresp. Doc. SingleInst"
                                 SalesOrderHeader.GET(SalesOrderHeader."Document Type"::Order, SalesShipmentHeader."Order No.");
                                 SourceRecRef.GETTABLE(SalesOrderHeader);
                                 TargetRecRef.GETTABLE(SalesShipmentHeader);
-                                LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+                                LongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
                             end;
                         Type::Lines:
                             begin
                                 SalesOrderLine.GET(SalesOrderLine."Document Type"::Order, SalesShipmentLine."Order No.", SalesShipmentLine."Order Line No.");
                                 SourceRecRef.GETTABLE(SalesOrderLine);
                                 TargetRecRef.GETTABLE(SalesShipmentLine);
-                                LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+                                LongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
                             end;
                     end;
 

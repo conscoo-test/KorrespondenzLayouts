@@ -15,12 +15,10 @@ pageextension 5272793 "lbt Purchase Quotes" extends "Purchase Quotes"
                     Image = BeginningText;
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
-                        SourceRecRef: RecordRef;
+                        LongtextMgt: Codeunit "lbt Longtext Mgt.";
                         Position: Option Header,Footer,Longtext;
                     begin
-                        SourceRecRef.GETTABLE(Rec);
-                        LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Header);
+                        LongtextMgt.ShowLongtextLines(Rec, Position::Header);
                     end;
                 }
                 action("lbt Footer Text")
@@ -31,12 +29,10 @@ pageextension 5272793 "lbt Purchase Quotes" extends "Purchase Quotes"
                     Image = EndingText;
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
-                        SourceRecRef: RecordRef;
+                        LongtextMgt: Codeunit "lbt Longtext Mgt.";
                         Position: Option Header,Footer,Longtext;
                     begin
-                        SourceRecRef.GETTABLE(Rec);
-                        LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Footer);
+                        LongtextMgt.ShowLongtextLines(Rec, Position::Footer);
                     end;
                 }
             }

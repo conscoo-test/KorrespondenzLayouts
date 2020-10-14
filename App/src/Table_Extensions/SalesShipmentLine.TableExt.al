@@ -47,6 +47,8 @@ tableextension 5272720 "lbt Sales Shipment Line" extends "Sales Shipment Line"
         }
         field(5272726; "lbt Source Document Line No."; Integer)
         {
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Removed';
             Caption = 'Source Document Line No.';
             DataClassification = CustomerContent;
         }

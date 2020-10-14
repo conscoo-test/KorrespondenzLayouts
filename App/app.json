@@ -11,15 +11,15 @@
   "url": "https://www.lebit.net/#kontakt",
   "logo": "..\\Appendix\\Logo\\LB18.jpg",
   "screenshots": [],
-  "platform": "16.0.0.0",
-  "application": "16.0.0.0",
+  "platform": "17.0.0.0",
+  "application": "17.0.0.0",
   "idRanges": [
     {
       "from": 5272720,
       "to": 5272810
     }
   ],
-  "runtime": "5.0",
+  "runtime": "6.0",
   "features": [
     "TranslationFile"
   ],

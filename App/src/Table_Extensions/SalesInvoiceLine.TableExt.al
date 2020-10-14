@@ -49,6 +49,8 @@ tableextension 5272721 "lbt Sales Invoice Line" extends "Sales Invoice Line"
         }
         field(5272726; "lbt Source Document Line No."; Integer)
         {
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Removed';
             Caption = 'Source Document Line No.';
             DataClassification = CustomerContent;
         }

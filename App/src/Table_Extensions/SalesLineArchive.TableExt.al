@@ -2,8 +2,6 @@ tableextension 5272732 "lbt Sales Line Archive" extends "Sales Line Archive"
 {
     fields
     {
-
-
         field(5272720; "lbt Long Text"; Boolean)
         {
             CalcFormula = Exist("lbt Archive PS Longtext Line" WHERE("Table ID" = CONST(5108),
@@ -59,6 +57,8 @@ tableextension 5272732 "lbt Sales Line Archive" extends "Sales Line Archive"
         }
         field(5272726; "lbt Source Document Line No."; Integer)
         {
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Removed';
             Caption = 'Source Document Line No.';
             DataClassification = CustomerContent;
         }
@@ -72,11 +72,9 @@ tableextension 5272732 "lbt Sales Line Archive" extends "Sales Line Archive"
     }
     trigger OnDelete()
     var
-        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
-        SourceRecRef: RecordRef;
+        LongtextMgt: Codeunit "lbt Longtext Mgt.";
     begin
-        SourceRecRef.GETTABLE(Rec);
-        LeBitLongtextMgt.DelLongtext(SourceRecRef);
+        LongtextMgt.DelLongtext(Rec);
     end;
 }
 
