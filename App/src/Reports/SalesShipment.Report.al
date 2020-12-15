@@ -955,7 +955,7 @@ report 5272724 "lbt Sales - Shipment"
 
             trigger OnAfterGetRecord()
             begin
-                CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
+                CurrReport.Language := Language.GetLanguageId("Language Code");
                 FormatAddressFields("Sales Shipment Header");
                 FormatDocumentFields("Sales Shipment Header");
 
@@ -1084,7 +1084,7 @@ report 5272724 "lbt Sales - Shipment"
         RespCenter: Record "Responsibility Center";
         TempLeBitPostedPSLongtextLine: Record "lbt Posted PS Longtext Line" temporary;
         ItemTrackingAppendix: Report "Item Tracking Appendix";
-        Language: Codeunit Language;
+        Language: Record Language;
         LeBitReportFunctions: Codeunit "lbt Report Functions";
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";

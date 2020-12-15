@@ -4,8 +4,10 @@ codeunit 5272725 "lbt Install"
 
     trigger OnInstallAppPerCompany()
     var
+        AssistedSetup: Codeunit "lbt AssistedSetup";
         lbtModuleInfo: ModuleInfo;
     begin
+        AssistedSetup.RegisterAssistedSetup();
         NavApp.GetCurrentModuleInfo(lbtModuleInfo);
         if lbtModuleInfo.DataVersion() = Version.Create(0, 0, 0, 0) then begin
             //new installation

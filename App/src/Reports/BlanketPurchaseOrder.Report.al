@@ -901,7 +901,7 @@ report 5272729 "lbt Blanket Purchase Order"
 
             trigger OnAfterGetRecord()
             begin
-                CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
+                CurrReport.Language := Language.GetLanguageId("Language Code");
                 FormatAddressFields("Purchase Header");
                 FormatDocumentFields("Purchase Header");
 
@@ -1025,7 +1025,7 @@ report 5272729 "lbt Blanket Purchase Order"
         GLSetup: Record "General Ledger Setup";
         TempLeBitPSLongtextLine: Record "lbt PS Longtext Line" temporary;
         Vendor: Record Vendor;
-        Language: Codeunit Language;
+        Language: Record Language;
         PurchPost: Codeunit "Purch.-Post";
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";

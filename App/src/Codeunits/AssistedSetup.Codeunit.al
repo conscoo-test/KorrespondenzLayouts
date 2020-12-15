@@ -1,31 +1,42 @@
 codeunit 5272727 "lbt AssistedSetup"
 {
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Assisted Setup", 'OnRegister', '', true, true)]
+    [EventSubscriber(ObjectType::Table, Database::"Aggregated Assisted Setup", 'OnRegisterAssistedSetup', '', true, true)]
     local procedure AggregatedSetup_OnRegisterAssistedSetup()
     begin
         RegisterAssistedSetup();
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Assisted Setup", 'OnRegister', '', true, true)]
-    local procedure AssistedSetup_OnRegister()
-    begin
-        RegisterAssistedSetup();
-    end;
-
-    local procedure RegisterAssistedSetup()
+    procedure RegisterAssistedSetup()
     var
-        AssistedSetup: Codeunit "Assisted Setup";
-        AssistedSetupGroup: Enum "Assisted Setup Group";
+        AssistedSetup: Record "Assisted Setup";
+        NewOrderNumber: Integer;
     begin
-        AssistedSetup.Add(GetAppId(), Page::"lbt Wizard", SetupLbl, AssistedSetupGroup::Extensions);
+        if AssistedSetup.Get(Page::"lbt Wizard") then
+            exit;
+        AssistedSetup.LockTable();
+        AssistedSetup.SetCurrentKey(Order, Visible);
+        if AssistedSetup.FindLast() then
+            NewOrderNumber := AssistedSetup.Order + 1
+        else
+            NewOrderNumber := 1;
+
+        Clear(AssistedSetup);
+        AssistedSetup.Init();
+        AssistedSetup.Validate("Page ID", Page::"lbt Wizard");
+        AssistedSetup.Validate(Name, SetupLbl);
+        AssistedSetup.Validate(Order, NewOrderNumber);
+        AssistedSetup.Validate(Status, AssistedSetup.Status::"Not Completed");
+        AssistedSetup.Validate(Visible, true);
+        AssistedSetup.Validate("Assisted Setup Page ID", Page::"lbt Wizard");
+        AssistedSetup.Insert(true);
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Role Center Notification Mgt.", 'OnBeforeShowNotifications', '', true, true)]
     local procedure MyProcedure()
     var
-        AssistedSetup: Codeunit "Assisted Setup";
+        AssistedSetup: Record "Assisted Setup";
     begin
-        if not AssistedSetup.IsComplete(Page::"lbt Wizard") then
+        if not (AssistedSetup.GetStatus(Page::"lbt Wizard") = AssistedSetup.Status::Completed) then
             CreateNotification();
     end;
 
@@ -42,10 +53,11 @@ codeunit 5272727 "lbt AssistedSetup"
 
     procedure HandleNotification(Note: Notification)
     var
-        AssistedSetup: Codeunit "Assisted Setup";
+        AssistedSetup: Record "Assisted Setup";
     begin
         RegisterAssistedSetup();
-        AssistedSetup.Run(Page::"lbt Wizard");
+        AssistedSetup.Get(Page::"lbt Wizard");
+        AssistedSetup.Run();
     end;
 
     local procedure GetNotificationId(): Guid

@@ -899,7 +899,7 @@ report 5272727 "lbt Purchase - Quote"
 
             trigger OnAfterGetRecord()
             begin
-                CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
+                CurrReport.Language := Language.GetLanguageId("Language Code");
                 FormatAddressFields("Purchase Header");
                 FormatDocumentFields("Purchase Header");
 
@@ -1029,7 +1029,7 @@ report 5272727 "lbt Purchase - Quote"
         GLSetup: Record "General Ledger Setup";
         TempLeBitPSLongtextLine: Record "lbt PS Longtext Line" temporary;
         Vendor: Record Vendor;
-        Language: Codeunit Language;
+        Language: Record Language;
         LeBitReportFunctions: Codeunit "lbt Report Functions";
         PurchPost: Codeunit "Purch.-Post";
         FormatAddr: Codeunit "Format Address";

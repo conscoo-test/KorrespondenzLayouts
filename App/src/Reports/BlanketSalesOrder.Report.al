@@ -1286,7 +1286,7 @@ report 5272725 "lbt Blanket Sales Order"
 
             trigger OnAfterGetRecord()
             begin
-                CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
+                CurrReport.Language := Language.GetLanguageId("Language Code");
                 FormatAddressFields("Sales Header");
                 FormatDocumentFields("Sales Header");
 
@@ -1435,7 +1435,7 @@ report 5272725 "lbt Blanket Sales Order"
         SalesSetup: Record "Sales & Receivables Setup";
         Item: Record Item;
         TempLeBitPSLongtextLine: Record "lbt PS Longtext Line" temporary;
-        Language: Codeunit Language;
+        Language: Record Language;
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
         SegManagement: Codeunit SegManagement;
