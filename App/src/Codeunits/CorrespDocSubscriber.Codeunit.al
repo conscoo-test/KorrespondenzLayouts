@@ -766,5 +766,33 @@ codeunit 5272721 "LBT Corresp. Doc. Subscriber"
                 end;
         end;
     end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post Prepayments", 'OnAfterFillInvLineBuffer', '', false, false)]
+    local procedure OnAfterFillInvLineBuffer(var PrepmtInvLineBuf: Record "Prepayment Inv. Line Buffer"; SalesLine: Record "Sales Line");
+    begin
+        PrepmtInvLineBuf."lbt Indentation" := SalesLine."lbt Indentation";
+        PrepmtInvLineBuf."lbt Pos. No." := SalesLine."lbt Pos. No.";
+        PrepmtInvLineBuf."lbt Printoption" := SalesLine."lbt Printoption";
+        PrepmtInvLineBuf."lbt Summation" := SalesLine."lbt Summation";
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post Prepayments", 'OnBeforeSalesInvLineInsert', '', false, false)]
+    local procedure OnBeforeSalesInvLineInsert(var SalesInvLine: Record "Sales Invoice Line"; SalesInvHeader: Record "Sales Invoice Header"; PrepmtInvLineBuffer: Record "Prepayment Inv. Line Buffer"; CommitIsSuppressed: Boolean);
+    begin
+        SalesInvLine."lbt Indentation" := PrepmtInvLineBuffer."lbt Indentation";
+        SalesInvLine."lbt Pos. No." := PrepmtInvLineBuffer."lbt Pos. No.";
+        SalesInvLine."lbt Printoption" := PrepmtInvLineBuffer."lbt Printoption";
+        SalesInvLine."lbt Summation" := PrepmtInvLineBuffer."lbt Summation";
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post Prepayments", 'OnBeforeSalesCrMemoLineInsert', '', false, false)]
+    local procedure OnBeforeSalesCrMemoLineInsert(var SalesCrMemoLine: Record "Sales Cr.Memo Line"; SalesCrMemoHeader: Record "Sales Cr.Memo Header"; PrepmtInvLineBuffer: Record "Prepayment Inv. Line Buffer"; CommitIsSuppressed: Boolean);
+    begin
+        SalesCrMemoLine."lbt Indentation" := PrepmtInvLineBuffer."lbt Indentation";
+        SalesCrMemoLine."lbt Pos. No." := PrepmtInvLineBuffer."lbt Pos. No.";
+        SalesCrMemoLine."lbt Printoption" := PrepmtInvLineBuffer."lbt Printoption";
+        SalesCrMemoLine."lbt Summation" := PrepmtInvLineBuffer."lbt Summation";
+    end;
+
 }
 
