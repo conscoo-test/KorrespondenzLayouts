@@ -7933,6 +7933,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension LBT Extended Text Header - Field LBT Textchoice - Property OptionCaption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3307296258 - Field 2971227444 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2061696816">
+          <source>lbt Printoption</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Prepayment Inv.Line Buffer - Field lbt Printoption - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3307296258 - Field 3967709435 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2061696816">
+          <source>lbt Summation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Prepayment Inv.Line Buffer - Field lbt Summation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3307296258 - Field 1169954937 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2061696816">
+          <source>lbt Pos. No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Prepayment Inv.Line Buffer - Field lbt Pos. No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3307296258 - Field 3380591293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2061696816">
+          <source>lbt Indentation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Prepayment Inv.Line Buffer - Field lbt Indentation - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 569077593 - Field 4091883319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
           <source>Long Text</source>
           <note from="Developer" annotates="general" priority="2"></note>
