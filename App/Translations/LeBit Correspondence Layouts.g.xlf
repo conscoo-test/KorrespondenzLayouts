@@ -7978,12 +7978,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purchase Line - Field lbt Printoption StyleExpr - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 2301185401 - NamedType 2473355334" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
+        <trans-unit id="TableExtension 2301185401 - NamedType 2473355334" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 2301185401">
           <source>New Pages can only be set in blank lines.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purchase Line - NamedType NewPageErr</note>
         </trans-unit>
-        <trans-unit id="TableExtension 2301185401 - NamedType 3360582807" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
+        <trans-unit id="TableExtension 2301185401 - NamedType 3360582807" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 2301185401">
           <source>--- New Page ---</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purchase Line - NamedType NewPageLbl</note>
@@ -8393,12 +8393,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Line - Field lbt Printoption StyleExpr - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 962502568 - NamedType 2473355334" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
+        <trans-unit id="TableExtension 962502568 - NamedType 2473355334" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 962502568">
           <source>New Pages can only be set in blank lines.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Line - NamedType NewPageErr</note>
         </trans-unit>
-        <trans-unit id="TableExtension 962502568 - NamedType 3360582807" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
+        <trans-unit id="TableExtension 962502568 - NamedType 3360582807" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 962502568">
           <source>--- New Page ---</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Line - NamedType NewPageLbl</note>
