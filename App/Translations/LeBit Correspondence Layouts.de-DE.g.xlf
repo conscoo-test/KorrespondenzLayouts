@@ -1652,6 +1652,7 @@
         </trans-unit>
         <trans-unit id="Report 1741165601 - NamedType 3543188745" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Amount Specification in </source>
+          <target>MwSt.-Betrag Spezifikation in </target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Blanket Sales Order - NamedType VatAmountTxt</note>
           <target>MwSt.-Betrag Spezifikation in </target>
@@ -2157,6 +2158,7 @@
         </trans-unit>
         <trans-unit id="Report 3114178208 - NamedType 817323887" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Amount Specification in </source>
+          <target>MwSt.-Betrag Spezifikation in </target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Order - NamedType VatAmountLbl</note>
           <target>MwSt.-Betrag Spezifikation in</target>
@@ -2739,6 +2741,7 @@
         </trans-unit>
         <trans-unit id="Report 21379005 - NamedType 817323887" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Amount Specification in </source>
+          <target>MwSt.-Betrag Spezifikation in </target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Order Confirmation - NamedType VatAmountLbl</note>
           <target>MwSt.-Betrag Spezifikation in</target>
@@ -3562,6 +3565,7 @@
         </trans-unit>
         <trans-unit id="Report 1039479552 - NamedType 817323887" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Amount Specification in </source>
+          <target>MwSt.-Betrag Spezifikation in </target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Reminder - NamedType VatAmountLbl</note>
           <target>MwSt.-Betrag Spezifikation in </target>
@@ -3929,6 +3933,7 @@
         </trans-unit>
         <trans-unit id="Report 1098254834 - NamedType 817323887" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Amount Specification in </source>
+          <target>MwSt.-Betrag Spezifikation in </target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Return Order - NamedType VatAmountLbl</note>
           <target>MwSt.-Betrag Spezifikation in </target>
@@ -4063,6 +4068,7 @@
         </trans-unit>
         <trans-unit id="Report 1098254834 - NamedType 1378777375" size-unit="char" translate="yes" xml:space="preserve">
           <source>Invoice Discount Base Amount</source>
+          <target>Rechnungsrab.-Bem.grundlage</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Return Order - NamedType InvDiscBaseAmtCaptionLbl</note>
           <target>Rechnungsrab.-Bem.grundlage</target>
@@ -4327,6 +4333,7 @@
         </trans-unit>
         <trans-unit id="Report 2085745012 - NamedType 817323887" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Amount Specification in </source>
+          <target>MwSt.-Betrag Spezifikation in </target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales - Credit Memo - NamedType VatAmountLbl</note>
           <target>VAT Amount Specification in </target>
@@ -4515,6 +4522,7 @@
         </trans-unit>
         <trans-unit id="Report 2085745012 - NamedType 1378777375" size-unit="char" translate="yes" xml:space="preserve">
           <source>Invoice Discount Base Amount</source>
+          <target>Rechnungsrab.-Bem.grundlage</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales - Credit Memo - NamedType InvDiscBaseAmtCaptionLbl</note>
           <target>Rechnungsrab.-Bem.grundlage</target>
@@ -4785,6 +4793,7 @@
         </trans-unit>
         <trans-unit id="Report 443349154 - NamedType 817323887" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Amount Specification in </source>
+          <target>MwSt.-Betrag Spezifikation in </target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales - Invoice - NamedType VatAmountLbl</note>
           <target>MwSt.-Betrag Spezifikation in </target>
@@ -4942,6 +4951,7 @@
         </trans-unit>
         <trans-unit id="Report 443349154 - NamedType 1378777375" size-unit="char" translate="yes" xml:space="preserve">
           <source>Invoice Discount Base Amount</source>
+          <target>Rechnungsrab.-Bem.grundlage</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales - Invoice - NamedType InvDiscBaseAmtCaptionLbl</note>
           <target>Rechnungsrab.-Bem.grundlage</target>
@@ -5230,6 +5240,7 @@
         </trans-unit>
         <trans-unit id="Report 1113867451 - NamedType 817323887" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Amount Specification in </source>
+          <target>MwSt.-Betrag Spezifikation in </target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales pro forma Invoice - NamedType VatAmountLbl</note>
           <target>MwSt.-Betrag Spezifikation in </target>
@@ -5821,6 +5832,7 @@
         </trans-unit>
         <trans-unit id="Report 1862130663 - NamedType 817323887" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Amount Specification in </source>
+          <target>MwSt.-Betrag Spezifikation in </target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales - Quote - NamedType VatAmountLbl</note>
           <target>MwSt.-Betrag Spezifikation in</target>
@@ -10102,7 +10114,7 @@
           <source>--- New Page ---</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Line - NamedType NewPageLbl</note>
-          <target>>--- Seitenwechsel ---</target>
+          <target>--- Seitenwechsel ---</target>
         </trans-unit>
         <trans-unit id="TableExtension 4262640906 - Field 3218478807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2903552224">
           <source>Long Text</source>
