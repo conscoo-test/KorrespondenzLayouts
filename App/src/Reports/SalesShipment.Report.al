@@ -351,23 +351,7 @@ report 5272724 "lbt Sales - Shipment"
                                 if not Continue then
                                     CurrReport.Break();
 
-                            CLEAR(DimText);
-                            Continue := false;
-                            repeat
-                                OldDimText := DimText;
-                                if DimText = '' then
-                                    DimText := STRSUBSTNO('%1 - %2', DimSetEntry1."Dimension Code", DimSetEntry1."Dimension Value Code")
-                                else
-                                    DimText :=
-                                      STRSUBSTNO(
-                                        '%1; %2 - %3', DimText,
-                                        DimSetEntry1."Dimension Code", DimSetEntry1."Dimension Value Code");
-                                if STRLEN(DimText) > MAXSTRLEN(OldDimText) then begin
-                                    DimText := OldDimText;
-                                    Continue := true;
-                                    exit;
-                                end;
-                            until DimSetEntry1.Next() = 0;
+                            LeBitReportFunctions.GetDimTextFromDimSetEntry(DimSetEntry1, DimText, Continue);
                         end;
 
                         trigger OnPreDataItem()
@@ -553,23 +537,7 @@ report 5272724 "lbt Sales - Shipment"
                                     if not Continue then
                                         CurrReport.Break();
 
-                                CLEAR(DimText);
-                                Continue := false;
-                                repeat
-                                    OldDimText := DimText;
-                                    if DimText = '' then
-                                        DimText := STRSUBSTNO('%1 - %2', DimSetEntry2."Dimension Code", DimSetEntry2."Dimension Value Code")
-                                    else
-                                        DimText :=
-                                          STRSUBSTNO(
-                                            '%1; %2 - %3', DimText,
-                                            DimSetEntry2."Dimension Code", DimSetEntry2."Dimension Value Code");
-                                    if STRLEN(DimText) > MAXSTRLEN(OldDimText) then begin
-                                        DimText := OldDimText;
-                                        Continue := true;
-                                        exit;
-                                    end;
-                                until DimSetEntry2.Next() = 0;
+                                LeBitReportFunctions.GetDimTextFromDimSetEntry(DimSetEntry2, DimText, Continue);
                             end;
 
                             trigger OnPreDataItem()
@@ -640,7 +608,6 @@ report 5272724 "lbt Sales - Shipment"
                             if "lbt Printoption" = "lbt Printoption"::"New Page" then
                                 NewPageGroup += 1;
 
-                            ItemUnitCode := '';
                             ItemUnitDescription := '';
                             ItemUnitQty := '';
                             CLEAR(InfoRowNo);
@@ -676,7 +643,6 @@ report 5272724 "lbt Sales - Shipment"
                                     COMPRESSARRAY(ItemUnitQtyArry);
                                 end;
                                 if "Description 2" <> '' then begin
-                                    ItemUnitCode := ItemUnitCodeArry[1];
                                     ItemUnitDescription := ItemUnitDescriptionArry[1];
                                     ItemUnitQty := ItemUnitQtyArry[1];
                                     ItemUnitCodeArry[1] := '';
@@ -704,7 +670,7 @@ report 5272724 "lbt Sales - Shipment"
                             if ShowLotSN then begin
                                 ItemTrackingDocMgt.SetRetrieveAsmItemTracking(true);
                                 TrackingSpecCount :=
-                                  ItemTrackingDocMgt.RetrieveDocumentItemTracking(TrackingSpecBuffer,
+                                  ItemTrackingDocMgt.RetrieveDocumentItemTracking(TempTrackingSpecBuffer,
                                     "Sales Shipment Header"."No.", DATABASE::"Sales Shipment Header", 0);
                                 ItemTrackingDocMgt.SetRetrieveAsmItemTracking(false);
                             end;
@@ -770,19 +736,19 @@ report 5272724 "lbt Sales - Shipment"
                     dataitem(ItemTrackingLine; "Integer")
                     {
                         DataItemTableView = SORTING(Number);
-                        column(TrackingSpecBufferNo; TrackingSpecBuffer."Item No.")
+                        column(TrackingSpecBufferNo; TempTrackingSpecBuffer."Item No.")
                         {
                         }
-                        column(TrackingSpecBufferDesc; TrackingSpecBuffer.Description)
+                        column(TrackingSpecBufferDesc; TempTrackingSpecBuffer.Description)
                         {
                         }
-                        column(TrackingSpecBufferLotNo; TrackingSpecBuffer."Lot No.")
+                        column(TrackingSpecBufferLotNo; TempTrackingSpecBuffer."Lot No.")
                         {
                         }
-                        column(TrackingSpecBufferSerNo; TrackingSpecBuffer."Serial No.")
+                        column(TrackingSpecBufferSerNo; TempTrackingSpecBuffer."Serial No.")
                         {
                         }
-                        column(TrackingSpecBufferQty; TrackingSpecBuffer."Quantity (Base)")
+                        column(TrackingSpecBufferQty; TempTrackingSpecBuffer."Quantity (Base)")
                         {
                         }
                         column(ShowTotal; ShowTotal)
@@ -817,29 +783,29 @@ report 5272724 "lbt Sales - Shipment"
                         trigger OnAfterGetRecord()
                         begin
                             if Number = 1 then
-                                TrackingSpecBuffer.FindSet()
+                                TempTrackingSpecBuffer.FindSet()
                             else
-                                TrackingSpecBuffer.Next();
+                                TempTrackingSpecBuffer.Next();
 
-                            if not ShowCorrectionLines and TrackingSpecBuffer.Correction then
+                            if not ShowCorrectionLines and TempTrackingSpecBuffer.Correction then
                                 CurrReport.Skip();
-                            if TrackingSpecBuffer.Correction then
-                                TrackingSpecBuffer."Quantity (Base)" := -TrackingSpecBuffer."Quantity (Base)";
+                            if TempTrackingSpecBuffer.Correction then
+                                TempTrackingSpecBuffer."Quantity (Base)" := -TempTrackingSpecBuffer."Quantity (Base)";
 
                             ShowTotal := false;
-                            if ItemTrackingAppendix.IsStartNewGroup(TrackingSpecBuffer) then
+                            if ItemTrackingAppendix.IsStartNewGroup(TempTrackingSpecBuffer) then
                                 ShowTotal := true;
 
                             ShowGroup := false;
-                            if (TrackingSpecBuffer."Source Ref. No." <> OldRefNo) or
-                               (TrackingSpecBuffer."Item No." <> OldNo)
+                            if (TempTrackingSpecBuffer."Source Ref. No." <> OldRefNo) or
+                               (TempTrackingSpecBuffer."Item No." <> OldNo)
                             then begin
-                                OldRefNo := TrackingSpecBuffer."Source Ref. No.";
-                                OldNo := TrackingSpecBuffer."Item No.";
+                                OldRefNo := TempTrackingSpecBuffer."Source Ref. No.";
+                                OldNo := TempTrackingSpecBuffer."Item No.";
                                 TotalQty := 0;
                             end else
                                 ShowGroup := true;
-                            TotalQty += TrackingSpecBuffer."Quantity (Base)";
+                            TotalQty += TempTrackingSpecBuffer."Quantity (Base)";
                         end;
 
                         trigger OnPreDataItem()
@@ -847,7 +813,7 @@ report 5272724 "lbt Sales - Shipment"
                             if TrackingSpecCount = 0 then
                                 CurrReport.Break();
                             SETRANGE(Number, 1, TrackingSpecCount);
-                            TrackingSpecBuffer.SETCURRENTKEY("Source ID", "Source Type", "Source Subtype", "Source Batch Name",
+                            TempTrackingSpecBuffer.SETCURRENTKEY("Source ID", "Source Type", "Source Subtype", "Source Batch Name",
                               "Source Prod. Order Line", "Source Ref. No.");
                         end;
                     }
@@ -1078,7 +1044,7 @@ report 5272724 "lbt Sales - Shipment"
         DimSetEntry1: Record "Dimension Set Entry";
         DimSetEntry2: Record "Dimension Set Entry";
         Item: Record Item;
-        TrackingSpecBuffer: Record "Tracking Specification" temporary;
+        TempTrackingSpecBuffer: Record "Tracking Specification" temporary;
         PostedAsmHeader: Record "Posted Assembly Header";
         PostedAsmLine: Record "Posted Assembly Line";
         RespCenter: Record "Responsibility Center";
@@ -1104,8 +1070,7 @@ report 5272724 "lbt Sales - Shipment"
         OldNo: Code[20];
         CopyText: Text[30];
         ShowCustAddr: Boolean;
-        DimText: Text;
-        OldDimText: Text;
+        DimText: Text[120];
         ShowInternalInfo: Boolean;
         Continue: Boolean;
         LogInteraction: Boolean;
@@ -1160,7 +1125,6 @@ report 5272724 "lbt Sales - Shipment"
         ItemUnitDescriptionArry: array[50] of Text;
         ItemUnitQtyArry: array[50] of Text;
         InfoRowNo: Integer;
-        ItemUnitCode: Code[20];
         ItemUnitDescription: Text;
         ItemUnitQty: Text;
         HideCompanyInfo: Boolean;
@@ -1201,11 +1165,9 @@ report 5272724 "lbt Sales - Shipment"
 
     local procedure FormatDocumentFields(SalesShipmentHeader: Record "Sales Shipment Header")
     begin
-        with SalesShipmentHeader do begin
-            FormatDocument.SetSalesPerson(SalesPurchPerson, "Salesperson Code", SalesPersonText);
-            ReferenceText := FormatDocument.SetText("Your Reference" <> '', CopyStr(FIELDCAPTION("Your Reference"), 1, 80));
-            OrderNoText := FormatDocument.SetText("Order No." <> '', CopyStr(FIELDCAPTION("Order No."), 1, 80));
-        end;
+        FormatDocument.SetSalesPerson(SalesPurchPerson, SalesShipmentHeader."Salesperson Code", SalesPersonText);
+        ReferenceText := FormatDocument.SetText(SalesShipmentHeader."Your Reference" <> '', CopyStr(SalesShipmentHeader.FIELDCAPTION("Your Reference"), 1, 80));
+        OrderNoText := FormatDocument.SetText(SalesShipmentHeader."Order No." <> '', CopyStr(SalesShipmentHeader.FIELDCAPTION("Order No."), 1, 80));
     end;
 
     local procedure GetUnitOfMeasureDescr(UOMCode: Code[10]): Text
@@ -1220,10 +1182,6 @@ report 5272724 "lbt Sales - Shipment"
     procedure BlanksForIndent(): Text[10]
     begin
         exit(PADSTR('', 2, ' '));
-    end;
-
-    local procedure "### Lebit Correspondence Functions ###"()
-    begin
     end;
 
     local procedure Createlbtext(LeBitPostedPSLongtextLine: Record "lbt Posted PS Longtext Line")
@@ -1311,7 +1269,7 @@ report 5272724 "lbt Sales - Shipment"
         end;
     end;
 
-    local procedure DocumentCaption(): Text[250]
+    local procedure DocumentCaption(): Text
     var
         DocCaption: text;
     begin

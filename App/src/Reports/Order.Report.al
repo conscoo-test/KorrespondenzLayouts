@@ -293,23 +293,7 @@ report 5272728 "lbt Order"
                                 if not Continue then
                                     CurrReport.Break();
 
-                            CLEAR(DimText);
-                            Continue := false;
-                            repeat
-                                OldDimText := DimText;
-                                if DimText = '' then
-                                    DimText := STRSUBSTNO('%1 %2', DimSetEntry1."Dimension Code", DimSetEntry1."Dimension Value Code")
-                                else
-                                    DimText :=
-                                      STRSUBSTNO(
-                                        '%1, %2 %3', DimText,
-                                        DimSetEntry1."Dimension Code", DimSetEntry1."Dimension Value Code");
-                                if STRLEN(DimText) > MAXSTRLEN(OldDimText) then begin
-                                    DimText := OldDimText;
-                                    Continue := true;
-                                    exit;
-                                end;
-                            until DimSetEntry1.Next() = 0;
+                            LeBitReportFunctions.GetDimTextFromDimSetEntry(DimSetEntry1, DimText, Continue);
                         end;
 
                         trigger OnPreDataItem()
@@ -724,23 +708,7 @@ report 5272728 "lbt Order"
                                     if not Continue then
                                         CurrReport.Break();
 
-                                CLEAR(DimText);
-                                Continue := false;
-                                repeat
-                                    OldDimText := DimText;
-                                    if DimText = '' then
-                                        DimText := STRSUBSTNO('%1 %2', DimSetEntry2."Dimension Code", DimSetEntry2."Dimension Value Code")
-                                    else
-                                        DimText :=
-                                          STRSUBSTNO(
-                                            '%1, %2 %3', DimText,
-                                            DimSetEntry2."Dimension Code", DimSetEntry2."Dimension Value Code");
-                                    if STRLEN(DimText) > MAXSTRLEN(OldDimText) then begin
-                                        DimText := OldDimText;
-                                        Continue := true;
-                                        exit;
-                                    end;
-                                until DimSetEntry2.Next() = 0;
+                                LeBitReportFunctions.GetDimTextFromDimSetEntry(DimSetEntry2, DimText, Continue);
                             end;
 
                             trigger OnPreDataItem()
