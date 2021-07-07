@@ -2,7 +2,7 @@ pageextension 5272744 "lbt Sales Invoice" extends "Sales Invoice"
 {
     actions
     {
-        addafter(Release)
+        addafter("&Invoice")
         {
             group("lbt correspondence documents")
             {

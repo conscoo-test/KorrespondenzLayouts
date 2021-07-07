@@ -24,8 +24,11 @@
 		"al.enableCodeAnalysis": true,
 		"al.ruleSetPath": "lebit.ruleset.json",
 		"CRS.ObjectNamePrefix": "lbt ",
-		// "CRS.OnSaveAlFileAction": "Rename",
+		"CRS.OnSaveAlFileAction": "DoNothing",
 		"CRS.RemovePrefixFromFilename": true,
+		"CRS.FileNamePattern": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+		"CRS.FileNamePatternExtensions": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+		"CRS.FileNamePatternPageCustomizations": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
 		"al.codeAnalyzers": [
 			"${AppSourceCop}",
 			"${CodeCop}",

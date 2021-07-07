@@ -526,5 +526,31 @@ codeunit 5272724 "lbt Report Functions"
             end;
 
     end;
+
+    procedure GetDimTextFromDimSetEntry(var DimSetEntry: Record "Dimension Set Entry"; var DimText: Text[120]; var Continue: Boolean)
+    var
+        DimensionCodeAndValueTok: Label '%1 - %2', Locked = true;
+        DimensionAndDimensionCodeAndValueTok: Label '%1; %2 - %3', Locked = true;
+
+        OldDimText: Text[75];
+    begin
+        CLEAR(DimText);
+        Continue := false;
+        repeat
+            OldDimText := DimText;
+            if DimText = '' then
+                DimText := STRSUBSTNO(DimensionCodeAndValueTok, DimSetEntry."Dimension Code", DimSetEntry."Dimension Value Code")
+            else
+                DimText :=
+                  STRSUBSTNO(
+                    DimensionAndDimensionCodeAndValueTok, DimText,
+                    DimSetEntry."Dimension Code", DimSetEntry."Dimension Value Code");
+            if STRLEN(DimText) > MAXSTRLEN(OldDimText) then begin
+                DimText := OldDimText;
+                Continue := true;
+                exit;
+            end;
+        until DimSetEntry.Next() = 0;
+    end;
 }
 

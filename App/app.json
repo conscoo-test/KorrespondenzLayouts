@@ -4,7 +4,7 @@
   "publisher": "LeBit Software & Consult GmbH",
   "brief": "Komfort Belegset und Komfort Funktionen für Korrespondenzbelege",
   "description": "Komfort Belegset und Komfort Funktionen für Korrespondenzbelege",
-  "version": "1.3.0.0",
+  "version": "1.4.0.0",
   "privacyStatement": "https://www.lebit.net/impressum#datenschutz",
   "EULA": "https://www.lebit.net/impressum#datenschutz",
   "help": "https://www.lebit.net/#support",
@@ -25,5 +25,6 @@
   ],
   "target": "Cloud",
   "contextSensitiveHelpUrl": "https://ALProject11.com/help/",
-  "showMyCode": false
+  "showMyCode": false,
+  "suppressWarnings": ["AA0072"]
 }

@@ -4,7 +4,7 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
 
     actions
     {
-        addafter(ActionGroupCRM)
+        addafter("O&rder")
         {
             group("lbt correspondence documents")
             {

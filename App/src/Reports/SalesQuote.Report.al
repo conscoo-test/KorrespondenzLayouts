@@ -483,23 +483,7 @@ report 5272720 "lbt Sales - Quote"
                                     if not Continue then
                                         CurrReport.Break();
 
-                                CLEAR(DimText);
-                                Continue := false;
-                                repeat
-                                    OldDimText := DimText;
-                                    if DimText = '' then
-                                        DimText := STRSUBSTNO(DimLbl, DimSetEntry2."Dimension Code", DimSetEntry2."Dimension Value Code")
-                                    else
-                                        DimText :=
-                                          STRSUBSTNO(
-                                            CombinedDimLbl, DimText,
-                                            DimSetEntry2."Dimension Code", DimSetEntry2."Dimension Value Code");
-                                    if STRLEN(DimText) > MAXSTRLEN(OldDimText) then begin
-                                        DimText := OldDimText;
-                                        Continue := true;
-                                        exit;
-                                    end;
-                                until DimSetEntry2.Next() = 0;
+                                LeBitReportFunctions.GetDimTextFromDimSetEntry(DimSetEntry2, DimText, Continue);
                             end;
 
                             trigger OnPreDataItem()
