@@ -45,6 +45,7 @@ codeunit 5272727 "lbt AssistedSetup"
         AssistedSetup: Codeunit "Assisted Setup";
     begin
         RegisterAssistedSetup();
+        Commit();
         AssistedSetup.Run(Page::"lbt Wizard");
     end;
 

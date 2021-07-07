@@ -16,12 +16,10 @@ pageextension 5272800 "lbt Purchase Order Archives" extends "Purchase Order Arch
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
-                        SourceRecRef: RecordRef;
+                        LongtextMgt: Codeunit "lbt Longtext Mgt.";
                         Position: Option Header,Footer,Longtext;
                     begin
-                        SourceRecRef.GETTABLE(Rec);
-                        LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Header);
+                        LongtextMgt.ShowLongtextLines(Rec, Position::Header);
                     end;
 
                 }
@@ -34,12 +32,10 @@ pageextension 5272800 "lbt Purchase Order Archives" extends "Purchase Order Arch
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
-                        SourceRecRef: RecordRef;
+                        LongtextMgt: Codeunit "lbt Longtext Mgt.";
                         Position: Option Header,Footer,Longtext;
                     begin
-                        SourceRecRef.GETTABLE(Rec);
-                        LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Footer);
+                        LongtextMgt.ShowLongtextLines(Rec, Position::Footer);
                     end;
                 }
             }

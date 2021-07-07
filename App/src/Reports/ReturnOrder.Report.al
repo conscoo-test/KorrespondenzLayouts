@@ -12,6 +12,8 @@ report 5272730 "lbt Return Order"
             DataItemTableView = SORTING("Document Type", "No.") WHERE("Document Type" = CONST("Return Order"));
             RequestFilterFields = "No.", "Buy-from Vendor No.", "No. Printed";
             RequestFilterHeading = 'Purchase Return Order';
+            column(Footer; Footer) { }
+            column(AlwaysPrintVat_CorrSetup; CorrSetup."Always print VAT") { }
             column(Purchase_Header_Document_Type; "Document Type")
             {
             }
@@ -75,75 +77,6 @@ report 5272730 "lbt Return Order"
                     column(BuyFromAddr8; BuyFromAddr[8])
                     {
                     }
-                    column(CompanyInfo_Name; CompanyInfo.Name)
-                    {
-                    }
-                    column(CompanyInfo__VAT_Registration_No__; CompanyInfo."VAT Registration No.")
-                    {
-                    }
-                    column(CompanyInfo_Address; CompanyInfo.Address)
-                    {
-                    }
-                    column(CompanyInfo__Post_Code; CompanyInfo."Post Code")
-                    {
-                    }
-                    column(CompanyInfo_City; CompanyInfo.City)
-                    {
-                    }
-                    column(CompanyInfo__Phone_No; CompanyInfo."Phone No.")
-                    {
-                    }
-                    column(CompanyInfo__Fax_No; CompanyInfo."Fax No.")
-                    {
-                    }
-                    column(CompanyInfo_E_Mail; CompanyInfo."E-Mail")
-                    {
-                    }
-                    column(CompanyInfo__Home_Page; CompanyInfo."Home Page")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO1; CompanyInfo."lbt CEO1")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO2; CompanyInfo."lbt CEO2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO3; CompanyInfo."lbt CEO3")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Commercial_Register_No; CompanyInfo."lbt Commercial Register No.")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Trade_Register_Name; CompanyInfo."lbt Trade Register Name")
-                    {
-                    }
-                    column(CompanyInfo__Bank_Name; CompanyInfo."Bank Name")
-                    {
-                    }
-                    column(CompanyInfo_IBAN; CompanyInfo.IBAN)
-                    {
-                    }
-                    column(CompanyInfo__SWIFT_Code; CompanyInfo."SWIFT Code")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Bank_Name_2; CompanyInfo."lbt Bank Name 2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_IBAN_2; CompanyInfo."lbt IBAN 2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_SWIFT_Code_2; CompanyInfo."lbt SWIFT Code 2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Bank_Name_3; CompanyInfo."lbt Bank Name 3")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_IBAN_3; CompanyInfo."lbt IBAN 3")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_SWIFT_Code_3; CompanyInfo."lbt SWIFT Code 3")
-                    {
-                    }
                     column(FORMAT__Purchase_Header___Document_Date__0_4_; FORMAT("Purchase Header"."Document Date", 0, 4))
                     {
                     }
@@ -162,16 +95,10 @@ report 5272730 "lbt Return Order"
                     column(Purchase_Header___VAT_Base_Discount___; "Purchase Header"."VAT Base Discount %")
                     {
                     }
-                    column(VATNoText; VATNoText)
-                    {
-                    }
                     column(PurchaserText; PurchaserText)
                     {
                     }
                     column(SalesPurchPerson_Name; SalesPurchPerson.Name)
-                    {
-                    }
-                    column(Purchase_Header___No__; "Purchase Header"."No.")
                     {
                     }
                     column(ReferenceText; ReferenceText)
@@ -180,55 +107,13 @@ report 5272730 "lbt Return Order"
                     column(OutputNo; OutputNo)
                     {
                     }
-                    column(PricesInclVATtxt; PricesInclVATtxt)
-                    {
-                    }
                     column(ShowInternalInfo; ShowInternalInfo)
-                    {
-                    }
-                    column(PageLoop_Number; Number)
                     {
                     }
                     column(ReturnOrderNoCaption; ReturnOrderNoCaptionLbl)
                     {
                     }
                     column(Purchase_Header___Buy_from_Vendor_No__Caption; "Purchase Header".FIELDCAPTION("Buy-from Vendor No."))
-                    {
-                    }
-                    column(Purchase_Header___Prices_Including_VAT_Caption; "Purchase Header".FIELDCAPTION("Prices Including VAT"))
-                    {
-                    }
-                    column(PageCaption; PageCaptionLbl)
-                    {
-                    }
-                    column(CompanyInfo__VAT_Registration_No__Caption; CompanyInfo__VAT_Registration_No__CaptionLbl)
-                    {
-                    }
-                    column(CompanyInfo__Phone_No__Caption; CompanyInfo__Phone_No__CaptionLbl)
-                    {
-                    }
-                    column(CompanyInfo__Fax_No__Caption; CompanyInfo__Fax_No__CaptionLbl)
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Trade_Register_Name_Caption; CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO_Caption; CompanyInfo__LeBit_CEO_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__Bank_Name_Caption; CompanyInfo__Bank_Name_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo_IBAN_Caption; CompanyInfo_IBAN_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__SWIFT_Code_Caption; CompanyInfo__SWIFT_Code_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo_E_Mail_Caption; CompanyInfo_E_Mail_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__Home_Page_Caption; CompanyInfo__Home_Page_Caption_Lbl)
                     {
                     }
                     column(PagefromPageCaption; PagefromPageCaptionLbl)
@@ -289,12 +174,6 @@ report 5272730 "lbt Return Order"
                         column(DimText; DimText)
                         {
                         }
-                        column(DimText_Control72; DimText)
-                        {
-                        }
-                        column(DimensionLoop1_Number; Number)
-                        {
-                        }
                         column(Header_DimensionsCaption; Header_DimensionsCaptionLbl)
                         {
                         }
@@ -345,10 +224,6 @@ report 5272730 "lbt Return Order"
                         column(NewPageLBKopf; NewPageLBKopf)
                         {
                         }
-                        column(LBKopfNumber; Number)
-                        {
-                        }
-
                         trigger OnAfterGetRecord()
                         var
                             Streamin: InStream;
@@ -400,7 +275,7 @@ report 5272730 "lbt Return Order"
                     dataitem(RoundLoop; "Integer")
                     {
                         DataItemTableView = SORTING(Number);
-                        column(PurchLine__Line_Amount_; PurchLine."Line Amount")
+                        column(PurchLine__Line_Amount_; TempPurchLine."Line Amount")
                         {
                             AutoFormatExpression = "Purchase Line"."Currency Code";
                             AutoFormatType = 1;
@@ -411,16 +286,7 @@ report 5272730 "lbt Return Order"
                         column(Purchase_Line___Line_No__; "Purchase Line"."Line No.")
                         {
                         }
-                        column(AllowInvDisctxt; AllowInvDisctxt)
-                        {
-                        }
                         column(PurchaseLineType; FORMAT("Purchase Line".Type, 0, 2))
-                        {
-                        }
-                        column(Purchase_Line___No__; "Purchase Line"."No.")
-                        {
-                        }
-                        column(Purchase_Line__Description_Control63; "Purchase Line".Description)
                         {
                         }
                         column(Purchase_Line__Quantity; "Purchase Line".Quantity)
@@ -434,39 +300,20 @@ report 5272730 "lbt Return Order"
                             AutoFormatExpression = "Purchase Header"."Currency Code";
                             AutoFormatType = 2;
                         }
-                        column(Purchase_Line___Line_Discount___; "Purchase Line"."Line Discount %")
-                        {
-                        }
                         column(Purchase_Line___Line_Amount_; "Purchase Line"."Line Amount")
                         {
                             AutoFormatExpression = "Purchase Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(Purchase_Line___Allow_Invoice_Disc__; "Purchase Line"."Allow Invoice Disc.")
-                        {
-                        }
-                        column(Purchase_Line___VAT_Identifier_; "Purchase Line"."VAT Identifier")
-                        {
-                        }
-                        column(PurchLine__Line_Amount__Control77; PurchLine."Line Amount")
-                        {
-                            AutoFormatExpression = "Purchase Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(PurchLine__Inv__Discount_Amount_; -PurchLine."Inv. Discount Amount")
+                        column(PurchLine__Inv__Discount_Amount_; -TempPurchLine."Inv. Discount Amount")
                         {
                             AutoFormatExpression = "Purchase Line"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(PurchLine__Line_Amount__Control109; PurchLine."Line Amount")
-                        {
-                            AutoFormatExpression = "Purchase Header"."Currency Code";
                             AutoFormatType = 1;
                         }
                         column(TotalText; TotalText)
                         {
                         }
-                        column(PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount_; PurchLine."Line Amount" - PurchLine."Inv. Discount Amount")
+                        column(PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount_; TempPurchLine."Line Amount" - TempPurchLine."Inv. Discount Amount")
                         {
                             AutoFormatExpression = "Purchase Header"."Currency Code";
                             AutoFormatType = 1;
@@ -474,7 +321,7 @@ report 5272730 "lbt Return Order"
                         column(TotalInclVATText; TotalInclVATText)
                         {
                         }
-                        column(VATAmountLine_VATAmountText; VATAmountLine.VATAmountText())
+                        column(VATAmountLine_VATAmountText; TempVATAmountLine.VATAmountText())
                         {
                         }
                         column(VATAmount; VATAmount)
@@ -482,39 +329,15 @@ report 5272730 "lbt Return Order"
                             AutoFormatExpression = "Purchase Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount____VATAmount; PurchLine."Line Amount" - PurchLine."Inv. Discount Amount" + VATAmount)
-                        {
-                            AutoFormatExpression = "Purchase Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
                         column(TotalExclVATText; TotalExclVATText)
                         {
-                        }
-                        column(PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount__Control147; PurchLine."Line Amount" - PurchLine."Inv. Discount Amount")
-                        {
-                            AutoFormatExpression = "Purchase Header"."Currency Code";
-                            AutoFormatType = 1;
                         }
                         column(VATDiscountAmount; -VATDiscountAmount)
                         {
                             AutoFormatExpression = "Purchase Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLine_VATAmountText_Control32; VATAmountLine.VATAmountText())
-                        {
-                        }
-                        column(TotalExclVATText_Control51; TotalExclVATText)
-                        {
-                        }
-                        column(TotalInclVATText_Control69; TotalInclVATText)
-                        {
-                        }
                         column(VATBaseAmount; VATBaseAmount)
-                        {
-                            AutoFormatExpression = "Purchase Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
-                        column(VATAmount_Control83; VATAmount)
                         {
                             AutoFormatExpression = "Purchase Header"."Currency Code";
                             AutoFormatType = 1;
@@ -523,9 +346,6 @@ report 5272730 "lbt Return Order"
                         {
                             AutoFormatExpression = "Purchase Header"."Currency Code";
                             AutoFormatType = 1;
-                        }
-                        column(RoundLoop_Number; Number)
-                        {
                         }
                         column(TotalSubTotal; TotalSubTotal)
                         {
@@ -542,33 +362,6 @@ report 5272730 "lbt Return Order"
                             AutoFormatExpression = "Purchase Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(Purchase_Line___No__Caption; "Purchase Line".FIELDCAPTION("No."))
-                        {
-                        }
-                        column(Purchase_Line__Description_Control63Caption; "Purchase Line".FIELDCAPTION(Description))
-                        {
-                        }
-                        column(Purchase_Line__QuantityCaption; "Purchase Line".FIELDCAPTION(Quantity))
-                        {
-                        }
-                        column(Purchase_Line___Unit_of_Measure_Caption; "Purchase Line".FIELDCAPTION("Unit of Measure"))
-                        {
-                        }
-                        column(Purchase_Line___Line_Discount___Caption; Purchase_Line___Line_Discount___CaptionLbl)
-                        {
-                        }
-                        column(Purchase_Line___Allow_Invoice_Disc__Caption; "Purchase Line".FIELDCAPTION("Allow Invoice Disc."))
-                        {
-                        }
-                        column(Purchase_Line___VAT_Identifier_Caption; "Purchase Line".FIELDCAPTION("VAT Identifier"))
-                        {
-                        }
-                        column(ContinuedCaption; ContinuedCaptionLbl)
-                        {
-                        }
-                        column(ContinuedCaption_Control76; ContinuedCaption_Control76Lbl)
-                        {
-                        }
                         column(PurchLine__Inv__Discount_Amount_Caption; PurchLine__Inv__Discount_Amount_CaptionLbl)
                         {
                         }
@@ -584,7 +377,7 @@ report 5272730 "lbt Return Order"
                         column(LeBitPosNo_PurchaseLine; "Purchase Line"."lbt Pos. No.")
                         {
                         }
-                        column(LeBitBalance_PurchaseLine; PurchLine."lbt Balance")
+                        column(LeBitBalance_PurchaseLine; TempPurchLine."lbt Balance")
                         {
                         }
                         column(Alternativposition_Caption; Alternativposition_CaptionLbl)
@@ -707,9 +500,6 @@ report 5272730 "lbt Return Order"
                             column(DimText_Control74; DimText)
                             {
                             }
-                            column(DimensionLoop2_Number; Number)
-                            {
-                            }
                             column(Line_DimensionsCaption; Line_DimensionsCaptionLbl)
                             {
                             }
@@ -742,27 +532,26 @@ report 5272730 "lbt Return Order"
                             Counter: Integer;
                         begin
                             if Number = 1 then
-                                PurchLine.FIND('-')
+                                TempPurchLine.FIND('-')
                             else
-                                PurchLine.Next();
-                            "Purchase Line" := PurchLine;
+                                TempPurchLine.Next();
+                            "Purchase Line" := TempPurchLine;
 
                             if not "Purchase Header"."Prices Including VAT" and
-                               (PurchLine."VAT Calculation Type" = PurchLine."VAT Calculation Type"::"Full VAT")
+                               (TempPurchLine."VAT Calculation Type" = TempPurchLine."VAT Calculation Type"::"Full VAT")
                             then
-                                PurchLine."Line Amount" := 0;
+                                TempPurchLine."Line Amount" := 0;
 
-                            if (PurchLine.Type = PurchLine.Type::"G/L Account") and (not ShowInternalInfo) then
+                            if (TempPurchLine.Type = TempPurchLine.Type::"G/L Account") and (not ShowInternalInfo) then
                                 "Purchase Line"."No." := '';
                             AllowInvDisctxt := FORMAT("Purchase Line"."Allow Invoice Disc.");
                             TotalSubTotal += "Purchase Line"."Line Amount";
                             TotalInvoiceDiscountAmount -= "Purchase Line"."Inv. Discount Amount";
                             TotalAmount += "Purchase Line".Amount;
 
-                            if PurchLine."lbt Printoption" = PurchLine."lbt Printoption"::"New Page" then
+                            if TempPurchLine."lbt Printoption" = TempPurchLine."lbt Printoption"::"New Page" then
                                 NewPageGroup += 1;
 
-                            ItemUnitCode := '';
                             ItemUnitDescription := '';
                             ItemUnitQty := '';
                             CLEAR(InfoRowNo);
@@ -779,9 +568,9 @@ report 5272730 "lbt Return Order"
                             else
                                 DirectUnitCost := 0;
 
-                            PurchLine.CALCFIELDS("lbt Balance");
-                            if PurchLine.Type = PurchLine.Type::Item then begin
-                                Item.Get(PurchLine."No.");
+                            TempPurchLine.CALCFIELDS("lbt Balance");
+                            if TempPurchLine.Type = TempPurchLine.Type::Item then begin
+                                Item.Get(TempPurchLine."No.");
                                 ItemPictureExist := Item.Picture.Count() > 0;
                                 if not ItemPicturePrint then
                                     ItemPictureExist := false;
@@ -793,7 +582,7 @@ report 5272730 "lbt Return Order"
                                 Counter := 0;
                                 repeat
                                     Counter += 1;
-                                until (ItemUnitCodeArry[Counter] = PurchLine."Unit of Measure Code") or
+                                until (ItemUnitCodeArry[Counter] = TempPurchLine."Unit of Measure Code") or
                                   (ItemUnitCodeArry[Counter] = '');
                                 if ItemUnitCodeArry[Counter] <> '' then begin
                                     ItemUnitCodeArry[Counter] := '';
@@ -803,8 +592,7 @@ report 5272730 "lbt Return Order"
                                     COMPRESSARRAY(ItemUnitDescriptionArry);
                                     COMPRESSARRAY(ItemUnitQtyArry);
                                 end;
-                                if PurchLine."Description 2" <> '' then begin
-                                    ItemUnitCode := ItemUnitCodeArry[1];
+                                if TempPurchLine."Description 2" <> '' then begin
                                     ItemUnitDescription := ItemUnitDescriptionArry[1];
                                     ItemUnitQty := ItemUnitQtyArry[1];
                                     ItemUnitCodeArry[1] := '';
@@ -814,16 +602,16 @@ report 5272730 "lbt Return Order"
                                     COMPRESSARRAY(ItemUnitDescriptionArry);
                                     COMPRESSARRAY(ItemUnitQtyArry);
                                 end;
-                                //zusätzliche Infos
+                                //zus�tzliche Infos
                                 Counter := 0;
                                 repeat
                                     Counter += 1;
                                 until InfoCaptionArry[Counter] = '';
                                 Counter -= 1;
-                                if PurchLine."Vendor Item No." <> '' then begin
+                                if TempPurchLine."Vendor Item No." <> '' then begin
                                     Counter += 1;
                                     InfoCaptionArry[Counter] := Purchase_Line___Vendor_Item_No__CaptionLbl;
-                                    InfoValueArry[Counter] := PurchLine."Vendor Item No.";
+                                    InfoValueArry[Counter] := TempPurchLine."Vendor Item No.";
                                 end;
                                 /*
                                 IF PurchLine."Expected Receipt Date" <> 0D THEN BEGIN
@@ -848,56 +636,56 @@ report 5272730 "lbt Return Order"
 
                         trigger OnPostDataItem()
                         begin
-                            PurchLine.DeleteAll();
+                            TempPurchLine.DeleteAll();
                         end;
 
                         trigger OnPreDataItem()
                         begin
-                            MoreLines := PurchLine.FIND('+');
-                            while MoreLines and (PurchLine.Description = '') and (PurchLine."Description 2" = '') and
-                                  (PurchLine."No." = '') and (PurchLine.Quantity = 0) and
-                                  (PurchLine.Amount = 0)
+                            MoreLines := TempPurchLine.FIND('+');
+                            while MoreLines and (TempPurchLine.Description = '') and (TempPurchLine."Description 2" = '') and
+                                  (TempPurchLine."No." = '') and (TempPurchLine.Quantity = 0) and
+                                  (TempPurchLine.Amount = 0)
                             do
-                                MoreLines := PurchLine.Next(-1) <> 0;
+                                MoreLines := TempPurchLine.Next(-1) <> 0;
                             if not MoreLines then
                                 CurrReport.Break();
-                            PurchLine.SETRANGE("Line No.", 0, PurchLine."Line No.");
-                            SETRANGE(Number, 1, PurchLine.Count());
+                            TempPurchLine.SETRANGE("Line No.", 0, TempPurchLine."Line No.");
+                            SETRANGE(Number, 1, TempPurchLine.Count());
                         end;
                     }
                     dataitem(VATCounter; "Integer")
                     {
                         DataItemTableView = SORTING(Number);
-                        column(VATAmtLineVATBase; VATAmountLine."VAT Base")
+                        column(VATAmtLineVATBase; TempVATAmountLine."VAT Base")
                         {
                             AutoFormatExpression = "Purchase Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmtLineVATAmt; VATAmountLine."VAT Amount")
+                        column(VATAmtLineVATAmt; TempVATAmountLine."VAT Amount")
                         {
                             AutoFormatExpression = "Purchase Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmtLineLineAmt; VATAmountLine."Line Amount")
+                        column(VATAmtLineLineAmt; TempVATAmountLine."Line Amount")
                         {
                             AutoFormatExpression = "Purchase Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmtLineInvDiscBaseAmt; VATAmountLine."Inv. Disc. Base Amount")
+                        column(VATAmtLineInvDiscBaseAmt; TempVATAmountLine."Inv. Disc. Base Amount")
                         {
                             AutoFormatExpression = "Purchase Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmtLineInvDiscAmt; VATAmountLine."Invoice Discount Amount")
+                        column(VATAmtLineInvDiscAmt; TempVATAmountLine."Invoice Discount Amount")
                         {
                             AutoFormatExpression = "Purchase Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmtLineVAT; VATAmountLine."VAT %")
+                        column(VATAmtLineVAT; TempVATAmountLine."VAT %")
                         {
                             DecimalPlaces = 0 : 5;
                         }
-                        column(VATAmtLineVATIdentifier; VATAmountLine."VAT Identifier")
+                        column(VATAmtLineVATIdentifier; TempVATAmountLine."VAT Identifier")
                         {
                         }
                         column(VATPercentCaption; VATPercentCaptionLbl)
@@ -930,16 +718,16 @@ report 5272730 "lbt Return Order"
 
                         trigger OnAfterGetRecord()
                         begin
-                            VATAmountLine.GetLine(Number);
+                            TempVATAmountLine.GetLine(Number);
                         end;
 
                         trigger OnPreDataItem()
                         begin
-                            if VATAmountLine.Count() < 2 then
+                            if TempVATAmountLine.Count() < 2 then
                                 CurrReport.Break();
                             if VATAmount = 0 then
                                 CurrReport.Break();
-                            SETRANGE(Number, 1, VATAmountLine.Count());
+                            SETRANGE(Number, 1, TempVATAmountLine.Count());
                         end;
                     }
                     dataitem(VATCounterLCY; "Integer")
@@ -959,37 +747,37 @@ report 5272730 "lbt Return Order"
                         {
                             AutoFormatType = 1;
                         }
-                        column(VATAmtLineVAT1; VATAmountLine."VAT %")
+                        column(VATAmtLineVAT1; TempVATAmountLine."VAT %")
                         {
                             DecimalPlaces = 0 : 5;
                         }
-                        column(VATAmtLineVATIdentifier1; VATAmountLine."VAT Identifier")
+                        column(VATAmtLineVATIdentifier1; TempVATAmountLine."VAT Identifier")
                         {
                         }
 
                         trigger OnAfterGetRecord()
                         begin
-                            VATAmountLine.GetLine(Number);
+                            TempVATAmountLine.GetLine(Number);
 
                             VALVATBaseLCY := ROUND(CurrExchRate.ExchangeAmtFCYToLCY(
                                   "Purchase Header"."Posting Date", "Purchase Header"."Currency Code",
-                                  VATAmountLine."VAT Base", "Purchase Header"."Currency Factor"));
+                                  TempVATAmountLine."VAT Base", "Purchase Header"."Currency Factor"));
                             VALVATAmountLCY := ROUND(CurrExchRate.ExchangeAmtFCYToLCY(
                                   "Purchase Header"."Posting Date", "Purchase Header"."Currency Code",
-                                  VATAmountLine."VAT Amount", "Purchase Header"."Currency Factor"));
+                                  TempVATAmountLine."VAT Amount", "Purchase Header"."Currency Factor"));
                         end;
 
                         trigger OnPreDataItem()
                         begin
-                            if VATAmountLine.Count() < 2 then
+                            if TempVATAmountLine.Count() < 2 then
                                 CurrReport.Break();
                             if (not GLSetup."Print VAT specification in LCY") or
                                ("Purchase Header"."Currency Code" = '') or
-                               (VATAmountLine.GetTotalVATAmount() = 0)
+                               (TempVATAmountLine.GetTotalVATAmount() = 0)
                             then
                                 CurrReport.Break();
 
-                            SETRANGE(Number, 1, VATAmountLine.Count());
+                            SETRANGE(Number, 1, TempVATAmountLine.Count());
 
                             if GLSetup."LCY Code" = '' then
                                 VALSpecLCYHeader := VatAmountLbl + LCYLbl
@@ -1123,36 +911,33 @@ report 5272730 "lbt Return Order"
 
                 trigger OnAfterGetRecord()
                 var
-                    PrepmtPurchLine: Record "Purchase Line" temporary;
-                    TempPurchLine: Record "Purchase Line" temporary;
+                    TempPrepmtPurchLine: Record "Purchase Line" temporary;
+                    TempPurchLine2: Record "Purchase Line" temporary;
                 begin
-                    CLEAR(PurchLine);
+                    CLEAR(TempPurchLine);
                     CLEAR(PurchPost);
-                    PurchLine.DeleteAll();
-                    VATAmountLine.DeleteAll();
-                    PurchPost.GetPurchLines("Purchase Header", PurchLine, 0);
-                    PurchLine.CalcVATAmountLines(0, "Purchase Header", PurchLine, VATAmountLine);
-                    PurchLine.UpdateVATOnLines(0, "Purchase Header", PurchLine, VATAmountLine);
-                    VATAmount := VATAmountLine.GetTotalVATAmount();
-                    VATBaseAmount := VATAmountLine.GetTotalVATBase();
+                    TempPurchLine.DeleteAll();
+                    TempVATAmountLine.DeleteAll();
+                    PurchPost.GetPurchLines("Purchase Header", TempPurchLine, 0);
+                    TempPurchLine.CalcVATAmountLines(0, "Purchase Header", TempPurchLine, TempVATAmountLine);
+                    TempPurchLine.UpdateVATOnLines(0, "Purchase Header", TempPurchLine, TempVATAmountLine);
+                    VATAmount := TempVATAmountLine.GetTotalVATAmount();
+                    VATBaseAmount := TempVATAmountLine.GetTotalVATBase();
                     VATDiscountAmount :=
-                      VATAmountLine.GetTotalVATDiscount("Purchase Header"."Currency Code", "Purchase Header"."Prices Including VAT");
-                    TotalAmountInclVAT := VATAmountLine.GetTotalAmountInclVAT();
+                      TempVATAmountLine.GetTotalVATDiscount("Purchase Header"."Currency Code", "Purchase Header"."Prices Including VAT");
+                    TotalAmountInclVAT := TempVATAmountLine.GetTotalAmountInclVAT();
 
-                    PrepmtInvBuf.DeleteAll();
-                    PurchPostPrepmt.GetPurchLines("Purchase Header", 0, PrepmtPurchLine);
-                    if not PrepmtPurchLine.IsEmpty() then begin
-                        PurchPostPrepmt.GetPurchLinesToDeduct("Purchase Header", TempPurchLine);
-                        if not TempPurchLine.IsEmpty() then
-                            PurchPostPrepmt.CalcVATAmountLines("Purchase Header", TempPurchLine, PrePmtVATAmountLineDeduct, 1);
+                    TempPrepmtInvBuf.DeleteAll();
+                    PurchPostPrepmt.GetPurchLines("Purchase Header", 0, TempPrepmtPurchLine);
+                    if not TempPrepmtPurchLine.IsEmpty() then begin
+                        PurchPostPrepmt.GetPurchLinesToDeduct("Purchase Header", TempPurchLine2);
+                        if not TempPurchLine2.IsEmpty() then
+                            PurchPostPrepmt.CalcVATAmountLines("Purchase Header", TempPurchLine2, TempPrePmtVATAmountLineDeduct, 1);
                     end;
-                    PurchPostPrepmt.CalcVATAmountLines("Purchase Header", PrepmtPurchLine, PrepmtVATAmountLine, 0);
-                    PrepmtVATAmountLine.DeductVATAmountLine(PrePmtVATAmountLineDeduct);
-                    PurchPostPrepmt.UpdateVATOnLines("Purchase Header", PrepmtPurchLine, PrepmtVATAmountLine, 0);
-                    PurchPostPrepmt.BuildInvLineBuffer("Purchase Header", PrepmtPurchLine, 0, PrepmtInvBuf);
-                    PrepmtVATAmount := PrepmtVATAmountLine.GetTotalVATAmount();
-                    PrepmtVATBaseAmount := PrepmtVATAmountLine.GetTotalVATBase();
-                    PrepmtTotalAmountInclVAT := PrepmtVATAmountLine.GetTotalAmountInclVAT();
+                    PurchPostPrepmt.CalcVATAmountLines("Purchase Header", TempPrepmtPurchLine, TempPrepmtVATAmountLine, 0);
+                    TempPrepmtVATAmountLine.DeductVATAmountLine(TempPrePmtVATAmountLineDeduct);
+                    PurchPostPrepmt.UpdateVATOnLines("Purchase Header", TempPrepmtPurchLine, TempPrepmtVATAmountLine, 0);
+                    PurchPostPrepmt.BuildInvLineBuffer("Purchase Header", TempPrepmtPurchLine, 0, TempPrepmtInvBuf);
 
                     if Number > 1 then
                         CopyText := FormatDocument.GetCOPYText();
@@ -1183,6 +968,7 @@ report 5272730 "lbt Return Order"
                 CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
                 FormatAddressFields("Purchase Header");
                 FormatDocumentFields("Purchase Header");
+                CompanyInfo."lbt SetReportFooter"(Footer);
                 PricesInclVATtxt := FORMAT("Prices Including VAT");
 
                 DimSetEntry1.SETRANGE("Dimension Set ID", "Dimension Set ID");
@@ -1289,6 +1075,7 @@ report 5272730 "lbt Return Order"
         GLSetup.Get();
         CompanyInfo.Get();
         PurchSetup.Get();
+        CorrSetup.Get();
         FormatDocument.SetLogoPosition(PurchSetup."lbt Logo Position on Documents", CompanyInfo1, CompanyInfo2, CompanyInfo3);
     end;
 
@@ -1299,13 +1086,13 @@ report 5272730 "lbt Return Order"
         PaymentTerms: Record "Payment Terms";
         PrepmtPaymentTerms: Record "Payment Terms";
         SalesPurchPerson: Record "Salesperson/Purchaser";
-        VATAmountLine: Record "VAT Amount Line" temporary;
-        PrepmtVATAmountLine: Record "VAT Amount Line" temporary;
-        PrePmtVATAmountLineDeduct: Record "VAT Amount Line" temporary;
-        PurchLine: Record "Purchase Line" temporary;
+        TempVATAmountLine: Record "VAT Amount Line" temporary;
+        TempPrepmtVATAmountLine: Record "VAT Amount Line" temporary;
+        TempPrePmtVATAmountLineDeduct: Record "VAT Amount Line" temporary;
+        TempPurchLine: Record "Purchase Line" temporary;
         DimSetEntry1: Record "Dimension Set Entry";
         DimSetEntry2: Record "Dimension Set Entry";
-        PrepmtInvBuf: Record "Prepayment Inv. Line Buffer" temporary;
+        TempPrepmtInvBuf: Record "Prepayment Inv. Line Buffer" temporary;
         RespCenter: Record "Responsibility Center";
         CurrExchRate: Record "Currency Exchange Rate";
         PurchSetup: Record "Purchases & Payables Setup";
@@ -1315,6 +1102,7 @@ report 5272730 "lbt Return Order"
         CompanyInfo3: Record "Company Information";
         TempLeBitPSLongtextLine: Record "lbt PS Longtext Line" temporary;
         Vendor: Record Vendor;
+        CorrSetup: Record "lbt Corr Setup";
         Language: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
@@ -1355,9 +1143,6 @@ report 5272730 "lbt Return Order"
         VatAmountLbl: Label 'VAT Amount Specification in ';
         LCYLbl: Label 'Local Currency';
         ExchangeRateLbl: Label 'Exchange rate: %1/%2', Comment = '%1 - Rel. Amount, %2 - Amount';
-        PrepmtVATAmount: Decimal;
-        PrepmtVATBaseAmount: Decimal;
-        PrepmtTotalAmountInclVAT: Decimal;
         PricesInclVATtxt: Text[30];
         AllowInvDisctxt: Text[30];
         [InDataSet]
@@ -1365,16 +1150,10 @@ report 5272730 "lbt Return Order"
         TotalSubTotal: Decimal;
         TotalAmount: Decimal;
         TotalInvoiceDiscountAmount: Decimal;
-        CompanyInfo__Phone_No__CaptionLbl: Label 'Phone No.';
-        CompanyInfo__Fax_No__CaptionLbl: Label 'Fax No.';
-        CompanyInfo__VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
         ReturnOrderNoCaptionLbl: Label 'Return Order No.';
         Header_DimensionsCaptionLbl: Label 'Header Dimensions';
         Direct_Unit_CostCaptionLbl: Label 'Direct Unit Cost';
-        Purchase_Line___Line_Discount___CaptionLbl: Label 'Disc. %';
         AmountCaptionLbl: Label 'Amount';
-        ContinuedCaptionLbl: Label 'Continued';
-        ContinuedCaption_Control76Lbl: Label 'Continued';
         PurchLine__Inv__Discount_Amount_CaptionLbl: Label 'Inv. Discount Amount';
         SubtotalCaptionLbl: Label 'Subtotal';
         VATDiscountAmountCaptionLbl: Label 'Payment Discount on VAT';
@@ -1386,7 +1165,6 @@ report 5272730 "lbt Return Order"
         ItemUnitDescriptionArry: array[50] of Text;
         ItemUnitQtyArry: array[50] of Text;
         InfoRowNo: Integer;
-        ItemUnitCode: Code[20];
         ItemUnitDescription: Text;
         ItemUnitQty: Text;
         HideCompanyInfo: Boolean;
@@ -1416,27 +1194,22 @@ report 5272730 "lbt Return Order"
         TotalCaption1Lbl: Label 'Total';
         DocCaptionLbl: Label 'Return Order %1', Comment = '%1 - Document No.';
         PageFromPageCaptionLbl: Label 'Page %1 of %2', Comment = '%1 - Current Page, %2 - Total Pages';
-        PageCaptionLbl: Label 'Page %1', Comment = '%1 - Current Page';
         NoCaptionLbl: Label 'No.';
         FromCaptionLbl: Label 'from';
         DatumCaptionLbl: Label 'Date';
         PosNo_CaptionLbl: Label 'Pos.';
         UOM_CaptionLbl: Label 'Unit';
-        CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl: Label 'Registered in:';
-        CompanyInfo__LeBit_CEO_Caption_Lbl: Label 'Chief Executive Officer';
-        CompanyInfo__Bank_Name_Caption_Lbl: Label 'Bank';
-        CompanyInfo_IBAN_Caption_Lbl: Label 'IBAN';
-        CompanyInfo__SWIFT_Code_Caption_Lbl: Label 'SWIFT-BIC';
         PurchPersonText_CaptionLbl: Label 'Salesperson';
-        CompanyInfo_E_Mail_Caption_Lbl: Label 'Mail:';
-        CompanyInfo__Home_Page_Caption_Lbl: Label 'Homepage:';
         CarryForwardCaptionLbl: Label 'Carry-forward %1', Comment = '%1 - Amount';
         Alternativposition_CaptionLbl: Label 'Alternative position';
         Bedarfposition_CaptionLbl: Label 'Position requirements';
         BitteAndern_CaptionLbl: Label 'please change!';
         Purchase_Line___Vendor_Item_No__CaptionLbl: Label 'No.';
         DirectUnitCost: Decimal;
+        Footer: Text;
         VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
+        DimLbl: Label '%1 - %2', Locked = true;
+        CombinedDimLbl: Label '%1; %2 - %3', Locked = true;
 
     procedure InitializeRequest(NewNoOfCopies: Integer; NewShowInternalInfo: Boolean; NewArchiveDocument: Boolean; NewLogInteraction: Boolean)
     begin
@@ -1466,23 +1239,19 @@ report 5272730 "lbt Return Order"
     end;
 
     local procedure FormatDocumentFields(PurchaseHeader: Record "Purchase Header")
+    var
+        lbtFormatDocument: Codeunit "lbt Format Document";
     begin
-        with PurchaseHeader do begin
-            FormatDocument.SetTotalLabels("Currency Code", TotalText, TotalInclVATText, TotalExclVATText);
-            FormatDocument.SetPurchaser(SalesPurchPerson, "Purchaser Code", PurchaserText);
-            FormatDocument.SetPaymentTerms(PaymentTerms, "Payment Terms Code", "Language Code");
-            FormatDocument.SetPaymentTerms(PrepmtPaymentTerms, "Prepmt. Payment Terms Code", "Language Code");
-            FormatDocument.SetShipmentMethod(ShipmentMethod, "Shipment Method Code", "Language Code");
+        lbtFormatDocument.SetTotalLabels(PurchaseHeader."Currency Code", TotalText, TotalInclVATText, TotalExclVATText);
+        FormatDocument.SetPurchaser(SalesPurchPerson, PurchaseHeader."Purchaser Code", PurchaserText);
+        FormatDocument.SetPaymentTerms(PaymentTerms, PurchaseHeader."Payment Terms Code", PurchaseHeader."Language Code");
+        FormatDocument.SetPaymentTerms(PrepmtPaymentTerms, PurchaseHeader."Prepmt. Payment Terms Code", PurchaseHeader."Language Code");
+        FormatDocument.SetShipmentMethod(ShipmentMethod, PurchaseHeader."Shipment Method Code", PurchaseHeader."Language Code");
 
-            ReferenceText := FormatDocument.SetText("Your Reference" <> '', CopyStr(FIELDCAPTION("Your Reference"), 1, 80));
-            VATNoText := FormatDocument.SetText("VAT Registration No." <> '', CopyStr(FIELDCAPTION("VAT Registration No."), 1, 80));
-            if PurchaserText <> '' then
-                PurchaserText := PurchPersonText_CaptionLbl;
-        end;
-    end;
-
-    local procedure "### Lebit Correspondence Functions ###"()
-    begin
+        ReferenceText := FormatDocument.SetText(PurchaseHeader."Your Reference" <> '', CopyStr(PurchaseHeader.FIELDCAPTION("Your Reference"), 1, 80));
+        VATNoText := FormatDocument.SetText(PurchaseHeader."VAT Registration No." <> '', CopyStr(PurchaseHeader.FIELDCAPTION("VAT Registration No."), 1, 80));
+        if PurchaserText <> '' then
+            PurchaserText := PurchPersonText_CaptionLbl;
     end;
 
     local procedure Createlbtext(LeBitPSLongtextLine: Record "lbt PS Longtext Line")
@@ -1570,7 +1339,7 @@ report 5272730 "lbt Return Order"
         end;
     end;
 
-    local procedure DocumentCaption(): Text[250]
+    local procedure DocumentCaption(): Text
     var
         DocCaption: text;
     begin

@@ -10,12 +10,9 @@
   "help": "https://www.lebit.net/#support",
   "url": "https://www.lebit.net/#kontakt",
   "logo": "..\\Appendix\\Logo\\LB18.jpg",
-  "dependencies": [
-   
-  ],
   "screenshots": [],
-  "platform": "15.0.0.0",
-  "application": "15.0.0.0",
+  "platform": "17.0.0.0",
+  "application": "17.0.0.0",
   "idRanges": [
     {
       "from": 5272720,

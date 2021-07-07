@@ -5,7 +5,7 @@ tableextension 5272723 "lbt Purch. Rcpt. Line" extends "Purch. Rcpt. Line"
     {
         field(5272720; "lbt Long Text"; Boolean)
         {
-            CalcFormula = Exist ("lbt Posted PS Longtext Line" WHERE("Table ID" = CONST(121),
+            CalcFormula = Exist("lbt Posted PS Longtext Line" WHERE("Table ID" = CONST(121),
                                                                        "Document No." = FIELD("Document No."),
                                                                        Position = CONST(Longtext),
                                                                        "Document Line No." = FIELD("Line No.")));
@@ -47,11 +47,15 @@ tableextension 5272723 "lbt Purch. Rcpt. Line" extends "Purch. Rcpt. Line"
         }
         field(5272726; "lbt Source Document Line No."; Integer)
         {
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Removed';
             Caption = 'Source Document Line No.';
             DataClassification = CustomerContent;
         }
         field(5272727; "lbt Printoption StyleExpr"; Text[30])
         {
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Removed';
             Caption = 'lbt Printoption StyleExpr';
             DataClassification = CustomerContent;
         }

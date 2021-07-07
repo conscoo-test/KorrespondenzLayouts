@@ -16,12 +16,10 @@ pageextension 5272761 "lbt Purchase Quote Archive" extends "Purchase Quote Archi
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
-                        SourceRecRef: RecordRef;
+                        LongtextMgt: Codeunit "lbt Longtext Mgt.";
                         Position: Option Header,Footer,Longtext;
                     begin
-                        SourceRecRef.GETTABLE(Rec);
-                        LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Header);
+                        LongtextMgt.ShowLongtextLines(Rec, Position::Header);
                     end;
 
                 }
@@ -34,12 +32,10 @@ pageextension 5272761 "lbt Purchase Quote Archive" extends "Purchase Quote Archi
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
-                        SourceRecRef: RecordRef;
+                        LongtextMgt: Codeunit "lbt Longtext Mgt.";
                         Position: Option Header,Footer,Longtext;
                     begin
-                        SourceRecRef.GETTABLE(Rec);
-                        LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Footer);
+                        LongtextMgt.ShowLongtextLines(Rec, Position::Footer);
                     end;
                 }
             }

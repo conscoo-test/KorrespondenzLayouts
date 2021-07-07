@@ -96,8 +96,8 @@ table 5272720 "lbt PS Longtext Line"
                     Type::Text,
                     Type::"Text + Line break":
                         begin
-                            StandardTextRec.GET("No.");
-                            Description := StandardTextRec.Description;
+                            StandardText.GET("No.");
+                            Description := StandardText.Description;
                         end;
                 end;
             end;
@@ -140,18 +140,16 @@ table 5272720 "lbt PS Longtext Line"
     end;
 
     var
-        StandardTextRec: Record "Standard Text";
+        StandardText: Record "Standard Text";
         NewPageLbl: Label '--- New Page ---';
         CantChangeTxt: Label 'You can not change this text.'; //TODO: ??
 
     procedure DBOpenMemo()
     var
         PSLongtextLine: Record "lbt PS Longtext Line";
-        tempMemo: Record "lbt PS Longtext Line" temporary;
+        TempPSLongtextLine: Record "lbt PS Longtext Line" temporary;
         DBTextEdit: Page "lbt DBTextEdit";
-        i: Integer;
         Txt: Text;
-        c: Integer;
         delimiter: Text;
         LineNo: Integer;
         filled: Boolean;
@@ -188,40 +186,30 @@ table 5272720 "lbt PS Longtext Line"
         if DBTextEdit.RUNMODAL() = ACTION::OK then begin
             PSLongtextLine.DELETEALL();
             Txt := DBTextEdit.GetText();
-            for i := 1 to STRLEN(Txt) do
-                c := Txt[i];
             CLEAR(delimiter);
-            SplitText(Txt, delimiter, tempMemo, 120);
-            if tempMemo.FindSet() then
+            SplitText(Txt, delimiter, TempPSLongtextLine, 120);
+            if TempPSLongtextLine.FindSet() then
                 repeat
-                    if tempMemo.Description <> '' then
+                    if TempPSLongtextLine.Description <> '' then
                         filled := true;
 
-                until tempMemo.Next() = 0;
+                until TempPSLongtextLine.Next() = 0;
             if filled then begin
-                if tempMemo.FindSet() then
+                if TempPSLongtextLine.FindSet() then
                     repeat
                         LineNo += 10000;
                         PSLongtextLine.Init();
-                        ;
-                        /*
-                        PSLongtextLine."Table ID" := "Table ID";
-                        PSLongtextLine."Document Type" := "Document Type";
-                        PSLongtextLine."Document No." := "Document No.";
-                        PSLongtextLine.Position := Position;
-                        PSLongtextLine."Document Line No." := "Document Line No.";
-                        */
                         EVALUATE(PSLongtextLine."Table ID", Rec.GETFILTER("Table ID"));
                         EVALUATE(PSLongtextLine."Document Type", Rec.GETFILTER("Document Type"));
                         PSLongtextLine."Document No." := CopyStr(Rec.GETFILTER("Document No."), 1, 20);
                         EVALUATE(PSLongtextLine.Position, GETFILTER(Position));
                         EVALUATE(PSLongtextLine."Document Line No.", Rec.GETFILTER("Document Line No."));
 
-                        PSLongtextLine.Description := tempMemo.Description;
+                        PSLongtextLine.Description := TempPSLongtextLine.Description;
                         PSLongtextLine."Line No." := LineNo;
-                        PSLongtextLine.Type := tempMemo.Type;
+                        PSLongtextLine.Type := TempPSLongtextLine.Type;
                         PSLongtextLine.Insert();
-                    until tempMemo.Next() = 0;
+                    until TempPSLongtextLine.Next() = 0;
                 if PSLongtextLine.Type <> PSLongtextLine.Type::"New Page" then begin
                     PSLongtextLine.Type := PSLongtextLine.Type::Text;
                     PSLongtextLine.Modify();
@@ -231,7 +219,7 @@ table 5272720 "lbt PS Longtext Line"
 
     end;
 
-    local procedure SplitText(Text: Text; Delimiter: Text; var SplitBuffer: Record "lbt PS Longtext Line"; maxlen: Integer)
+    local procedure SplitText(Text: Text; Delimiter: Text; var PSLongtextLine: Record "lbt PS Longtext Line"; maxlen: Integer)
     var
         NewString: Text;
         SplitArray: List of [Text];
@@ -247,8 +235,8 @@ table 5272720 "lbt PS Longtext Line"
             ende := false;
             repeat
                 LineNo += 1;
-                SplitBuffer.Init();
-                SplitBuffer."Line No." := LineNo;
+                PSLongtextLine.Init();
+                PSLongtextLine."Line No." := LineNo;
                 if StrLen(NewString) > maxlen then begin
                     NewLen := maxlen;
                     TestString := NewString;
@@ -257,14 +245,14 @@ table 5272720 "lbt PS Longtext Line"
                     if NewLen = 1 then
                         NewLen := maxlen;
                     newstring1 := CopyStr(NewString, 1, NewLen);
-                    SplitBuffer.Description := CopyStr(newstring1, 1, 120);
+                    PSLongtextLine.Description := CopyStr(newstring1, 1, 120);
                     NewString := CopyStr(NewString, NewLen + 1);
                 end else begin
-                    SplitBuffer.Description := CopyStr(NewString, 1, 120);
-                    SplitBuffer.Type := SplitBuffer.Type::"Text + Line break";
+                    PSLongtextLine.Description := CopyStr(NewString, 1, 120);
+                    PSLongtextLine.Type := PSLongtextLine.Type::"Text + Line break";
                     ende := true;
                 end;
-                SplitBuffer.Insert();
+                PSLongtextLine.Insert();
             until ende;
         end;
     end;

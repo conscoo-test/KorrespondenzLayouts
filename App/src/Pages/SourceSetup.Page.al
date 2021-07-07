@@ -89,30 +89,30 @@ page 5272727 "lbt Source Setup"
 
     trigger OnOpenPage()
     begin
-        FILTERGROUP := 3;
-        case GETFILTER(Type) of
-            FORMAT(Type::Sales):
+        Rec.FILTERGROUP := 3;
+        case Rec.GETFILTER(Type) of
+            FORMAT(Rec.Type::Sales):
                 begin
                     SalesVisible := true;
-                    if IsEmpty() then begin
-                        Type := Type::Sales;
-                        "Report Type" := "Report Type"::General;
-                        "Source Type" := "Source Type"::Default;
-                        Insert();
+                    if Rec.IsEmpty() then begin
+                        Rec.Type := Rec.Type::Sales;
+                        Rec."Report Type" := Rec."Report Type"::General;
+                        Rec."Source Type" := Rec."Source Type"::Default;
+                        Rec.Insert();
                     end;
                 end;
-            FORMAT(Type::Purchase):
+            FORMAT(Rec.Type::Purchase):
                 begin
                     PurchVisible := true;
-                    if IsEmpty() then begin
-                        Type := Type::Purchase;
-                        "Report Type" := "Report Type"::General;
-                        "Source Type" := "Source Type"::Default;
-                        Insert();
+                    if Rec.IsEmpty() then begin
+                        Rec.Type := Rec.Type::Purchase;
+                        Rec."Report Type" := Rec."Report Type"::General;
+                        Rec."Source Type" := Rec."Source Type"::Default;
+                        Rec.Insert();
                     end;
                 end;
         end;
-        FILTERGROUP := 0;
+        Rec.FILTERGROUP := 0;
     end;
 
     var
@@ -125,94 +125,94 @@ page 5272727 "lbt Source Setup"
 
     local procedure SetReportType()
     begin
-        case Type of
-            Type::Sales:
+        case Rec.Type of
+            Rec.Type::Sales:
                 case SalesReportTypeOption of
                     SalesReportTypeOption::"Sales Quote":
-                        "Report Type" := "Report Type"::"Sales Quote";
+                        Rec."Report Type" := Rec."Report Type"::"Sales Quote";
                     SalesReportTypeOption::"Sales Order":
-                        "Report Type" := "Report Type"::"Sales Order";
+                        Rec."Report Type" := Rec."Report Type"::"Sales Order";
                     SalesReportTypeOption::"Sales Pro Forma Inv":
-                        "Report Type" := "Report Type"::"Sales Pro Forma Inv";
+                        Rec."Report Type" := Rec."Report Type"::"Sales Pro Forma Inv";
                     SalesReportTypeOption::"Blanket Sales Order":
-                        "Report Type" := "Report Type"::"Blanket Sales Order";
+                        Rec."Report Type" := Rec."Report Type"::"Blanket Sales Order";
                 end;
-            Type::Purchase:
+            Rec.Type::Purchase:
                 case PurchReportTypeOption of
                     PurchReportTypeOption::"Purchase Quote":
-                        "Report Type" := "Report Type"::"Purchase Quote";
+                        Rec."Report Type" := Rec."Report Type"::"Purchase Quote";
                     PurchReportTypeOption::"Purchase Order":
-                        "Report Type" := "Report Type"::"Purchase Order";
+                        Rec."Report Type" := Rec."Report Type"::"Purchase Order";
                     PurchReportTypeOption::"Blanket Purchase Order":
-                        "Report Type" := "Report Type"::"Blanket Purchase Order";
+                        Rec."Report Type" := Rec."Report Type"::"Blanket Purchase Order";
                 end;
         end;
     end;
 
     local procedure SetSourceType()
     begin
-        case Type of
-            Type::Sales:
+        case Rec.Type of
+            Rec.Type::Sales:
                 case SalesSourceTypeOption of
                     SalesSourceTypeOption::Default:
-                        "Source Type" := "Source Type"::Default;
+                        Rec."Source Type" := Rec."Source Type"::Default;
                     SalesSourceTypeOption::"Bill-to Customer":
-                        "Source Type" := "Source Type"::"Bill-to Customer";
+                        Rec."Source Type" := Rec."Source Type"::"Bill-to Customer";
                     SalesSourceTypeOption::"Sell-to Customer":
-                        "Source Type" := "Source Type"::"Sell-to Customer";
+                        Rec."Source Type" := Rec."Source Type"::"Sell-to Customer";
                 end;
-            Type::Purchase:
+            Rec.Type::Purchase:
                 case PurchSourceTypeOption of
                     PurchSourceTypeOption::Default:
-                        "Source Type" := "Source Type"::Default;
+                        Rec."Source Type" := Rec."Source Type"::Default;
                     PurchSourceTypeOption::"Buy-from Vendor":
-                        "Source Type" := "Source Type"::"Buy-from Vendor";
+                        Rec."Source Type" := Rec."Source Type"::"Buy-from Vendor";
                     PurchSourceTypeOption::"Pay-to Vendor":
-                        "Source Type" := "Source Type"::"Pay-to Vendor";
+                        Rec."Source Type" := Rec."Source Type"::"Pay-to Vendor";
                 end;
         end;
     end;
 
     local procedure SetReportVar()
     begin
-        case "Report Type" of
-            "Report Type"::General:
+        case Rec."Report Type" of
+            Rec."Report Type"::General:
                 begin
                     SalesReportTypeOption := SalesReportTypeOption::General;
                     PurchReportTypeOption := PurchReportTypeOption::General;
                 end;
-            "Report Type"::"Sales Quote":
+            Rec."Report Type"::"Sales Quote":
                 SalesReportTypeOption := SalesReportTypeOption::"Sales Quote";
-            "Report Type"::"Sales Order":
+            Rec."Report Type"::"Sales Order":
                 SalesReportTypeOption := SalesReportTypeOption::"Sales Order";
-            "Report Type"::"Sales Pro Forma Inv":
+            Rec."Report Type"::"Sales Pro Forma Inv":
                 SalesReportTypeOption := SalesReportTypeOption::"Sales Pro Forma Inv";
-            "Report Type"::"Blanket Sales Order":
+            Rec."Report Type"::"Blanket Sales Order":
                 SalesReportTypeOption := SalesReportTypeOption::"Blanket Sales Order";
-            "Report Type"::"Purchase Quote":
+            Rec."Report Type"::"Purchase Quote":
                 PurchReportTypeOption := PurchReportTypeOption::"Purchase Quote";
-            "Report Type"::"Purchase Order":
+            Rec."Report Type"::"Purchase Order":
                 PurchReportTypeOption := PurchReportTypeOption::"Purchase Order";
-            "Report Type"::"Blanket Purchase Order":
+            Rec."Report Type"::"Blanket Purchase Order":
                 PurchReportTypeOption := PurchReportTypeOption::"Blanket Purchase Order";
         end;
     end;
 
     local procedure SetSourceVar()
     begin
-        case "Source Type" of
-            "Source Type"::Default:
+        case Rec."Source Type" of
+            Rec."Source Type"::Default:
                 begin
                     SalesSourceTypeOption := SalesSourceTypeOption::Default;
                     PurchSourceTypeOption := PurchSourceTypeOption::Default;
                 end;
-            "Source Type"::"Bill-to Customer":
+            Rec."Source Type"::"Bill-to Customer":
                 SalesSourceTypeOption := SalesSourceTypeOption::"Bill-to Customer";
-            "Source Type"::"Sell-to Customer":
+            Rec."Source Type"::"Sell-to Customer":
                 SalesSourceTypeOption := SalesSourceTypeOption::"Sell-to Customer";
-            "Source Type"::"Buy-from Vendor":
+            Rec."Source Type"::"Buy-from Vendor":
                 PurchSourceTypeOption := PurchSourceTypeOption::"Buy-from Vendor";
-            "Source Type"::"Pay-to Vendor":
+            Rec."Source Type"::"Pay-to Vendor":
                 PurchSourceTypeOption := PurchSourceTypeOption::"Pay-to Vendor";
         end;
     end;

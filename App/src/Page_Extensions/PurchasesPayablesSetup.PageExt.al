@@ -4,7 +4,7 @@ pageextension 5272748 "lbt Purchases & Payables Setup" extends "Purchases & Paya
     {
         addafter("Appln. between Currencies")
         {
-            field("lbt Logo Position on Documents"; "lbt Logo Position on Documents")
+            field("lbt Logo Position on Documents"; Rec."lbt Logo Position on Documents")
             {
                 ApplicationArea = Basic, Suite;
                 ToolTip = 'Specifies the position of your company logo on business letters and documents.';

@@ -12,6 +12,7 @@ report 5272727 "lbt Purchase - Quote"
             DataItemTableView = SORTING("Document Type", "No.") WHERE("Document Type" = CONST(Quote));
             RequestFilterFields = "No.", "Buy-from Vendor No.", "No. Printed";
             RequestFilterHeading = 'Purchase Quote';
+            column(Footer; Footer) { }
             column(DocType_PurchHead; "Document Type")
             {
             }
@@ -60,79 +61,7 @@ report 5272727 "lbt Purchase - Quote"
                     column(VendAddr8; VendAddr[8])
                     {
                     }
-                    column(CompanyInfo_Name; CompanyInfo.Name)
-                    {
-                    }
-                    column(CompanyInfo__VAT_Registration_No__; CompanyInfo."VAT Registration No.")
-                    {
-                    }
-                    column(CompanyInfo_Address; CompanyInfo.Address)
-                    {
-                    }
-                    column(CompanyInfo__Post_Code; CompanyInfo."Post Code")
-                    {
-                    }
-                    column(CompanyInfo_City; CompanyInfo.City)
-                    {
-                    }
-                    column(CompanyInfo__Phone_No; CompanyInfo."Phone No.")
-                    {
-                    }
-                    column(CompanyInfo__Fax_No; CompanyInfo."Fax No.")
-                    {
-                    }
-                    column(CompanyInfo_E_Mail; CompanyInfo."E-Mail")
-                    {
-                    }
-                    column(CompanyInfo__Home_Page; CompanyInfo."Home Page")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO1; CompanyInfo."lbt CEO1")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO2; CompanyInfo."lbt CEO2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO3; CompanyInfo."lbt CEO3")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Commercial_Register_No; CompanyInfo."lbt Commercial Register No.")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Trade_Register_Name; CompanyInfo."lbt Trade Register Name")
-                    {
-                    }
-                    column(CompanyInfo__Bank_Name; CompanyInfo."Bank Name")
-                    {
-                    }
-                    column(CompanyInfo_IBAN; CompanyInfo.IBAN)
-                    {
-                    }
-                    column(CompanyInfo__SWIFT_Code; CompanyInfo."SWIFT Code")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Bank_Name_2; CompanyInfo."lbt Bank Name 2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_IBAN_2; CompanyInfo."lbt IBAN 2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_SWIFT_Code_2; CompanyInfo."lbt SWIFT Code 2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Bank_Name_3; CompanyInfo."lbt Bank Name 3")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_IBAN_3; CompanyInfo."lbt IBAN 3")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_SWIFT_Code_3; CompanyInfo."lbt SWIFT Code 3")
-                    {
-                    }
                     column(DocDate_PurchHdr; FORMAT("Purchase Header"."Document Date", 0, 4))
-                    {
-                    }
-                    column(ExpctRecpDt_PurchHdr; FORMAT("Purchase Header"."Expected Receipt Date", 0, 4))
                     {
                     }
                     column(VatTRegNo_PurchHdr; "Purchase Header"."VAT Registration No.")
@@ -142,12 +71,6 @@ report 5272727 "lbt Purchase - Quote"
                     {
                     }
                     column(YourRef_PurchHdr; "Purchase Header"."Your Reference")
-                    {
-                    }
-                    column(No1_PurchaseHdr; "Purchase Header"."No.")
-                    {
-                    }
-                    column(VatNoText; VATNoText)
                     {
                     }
                     column(PurchaserText; PurchaserText)
@@ -162,46 +85,10 @@ report 5272727 "lbt Purchase - Quote"
                     column(OutputNo; OutputNo)
                     {
                     }
-                    column(PageLoop_Number; Number)
-                    {
-                    }
                     column(PaytoVendNo_PurchHdrCaption; "Purchase Header".FIELDCAPTION("Pay-to Vendor No."))
                     {
                     }
-                    column(Expected_DateCaption; Expected_DateCaptionLbl)
-                    {
-                    }
                     column(Quote_No_Caption; Quote_No_CaptionLbl)
-                    {
-                    }
-                    column(CompanyInfo__VAT_Registration_No__Caption; CompanyInfo__VAT_Registration_No__CaptionLbl)
-                    {
-                    }
-                    column(CompanyInfo__Phone_No__Caption; CompanyInfo__Phone_No__CaptionLbl)
-                    {
-                    }
-                    column(CompanyInfo__Fax_No__Caption; CompanyInfo__Fax_No__CaptionLbl)
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Trade_Register_Name_Caption; CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO_Caption; CompanyInfo__LeBit_CEO_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__Bank_Name_Caption; CompanyInfo__Bank_Name_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo_IBAN_Caption; CompanyInfo_IBAN_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__SWIFT_Code_Caption; CompanyInfo__SWIFT_Code_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo_E_Mail_Caption; CompanyInfo_E_Mail_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__Home_Page_Caption; CompanyInfo__Home_Page_Caption_Lbl)
                     {
                     }
                     column(PagefromPageCaption; PagefromPageCaptionLbl)
@@ -222,16 +109,7 @@ report 5272727 "lbt Purchase - Quote"
                     column(UOM_Caption; UOM_CaptionLbl)
                     {
                     }
-                    column(CarryForwardText; STRSUBSTNO(CarryForwardCaptionLbl, GLSetup."LCY Code"))
-                    {
-                    }
-                    column(SubtotalCaption; SubtotalCaptionLbl)
-                    {
-                    }
                     column(CompanyAddressLine; CompanyAddressLine)
-                    {
-                    }
-                    column(AmountCaption; AmountCaptionLbl)
                     {
                     }
                     column(HideCompanyInfo; HideCompanyInfo)
@@ -260,9 +138,6 @@ report 5272727 "lbt Purchase - Quote"
                         {
                         }
                         column(DimensionLoop1_Number; DimensionLoop1.Number)
-                        {
-                        }
-                        column(DimText_Control58; DimText)
                         {
                         }
                         column(Header_DimensionsCaption; Header_DimensionsCaptionLbl)
@@ -315,10 +190,6 @@ report 5272727 "lbt Purchase - Quote"
                         column(NewPageLBKopf; NewPageLBKopf)
                         {
                         }
-                        column(LBKopfNumber; Number)
-                        {
-                        }
-
                         trigger OnAfterGetRecord()
                         var
                             Streamin: InStream;
@@ -373,12 +244,6 @@ report 5272727 "lbt Purchase - Quote"
                         column(ShowInternalInfo; ShowInternalInfo)
                         {
                         }
-                        column(ArchiveDocument; ArchiveDocument)
-                        {
-                        }
-                        column(LogInteraction; LogInteraction)
-                        {
-                        }
                         column(PurchaseLineType; FORMAT("Purchase Line".Type, 0, 2))
                         {
                         }
@@ -397,25 +262,7 @@ report 5272727 "lbt Purchase - Quote"
                         column(Purchase_Line___Expected_Receipt_Date_; FORMAT("Purchase Line"."Expected Receipt Date"))
                         {
                         }
-                        column(No_PurchaseLine; "Purchase Line"."No.")
-                        {
-                        }
-                        column(Purchase_Line___Vendor_Item_No__; "Purchase Line"."Vendor Item No.")
-                        {
-                        }
-                        column(RoundLoop_Number; Number)
-                        {
-                        }
                         column(Purchase_Line___Expected_Receipt_Date__Caption; Purchase_Line___Expected_Receipt_Date__CaptionLbl)
-                        {
-                        }
-                        column(Purchase_Line___Unit_of_Measure__Caption; "Purchase Line".FIELDCAPTION("Unit of Measure"))
-                        {
-                        }
-                        column(Purchase_Line___No__Caption; Purchase_Line___No__CaptionLbl)
-                        {
-                        }
-                        column(Purchase_Line___Vendor_Item_No__Caption; Purchase_Line___Vendor_Item_No__CaptionLbl)
                         {
                         }
                         column(NewPageGroup; NewPageGroup)
@@ -550,9 +397,6 @@ report 5272727 "lbt Purchase - Quote"
                             column(DimensionLoop2_Number; DimensionLoop2.Number)
                             {
                             }
-                            column(DimText_Control80; DimText)
-                            {
-                            }
                             column(Line_DimensionsCaption; Line_DimensionsCaptionLbl)
                             {
                             }
@@ -583,17 +427,16 @@ report 5272727 "lbt Purchase - Quote"
                             Counter: Integer;
                         begin
                             if Number = 1 then
-                                PurchLine.FIND('-')
+                                TempPurchLine.FIND('-')
                             else
-                                PurchLine.Next();
-                            "Purchase Line" := PurchLine;
+                                TempPurchLine.Next();
+                            "Purchase Line" := TempPurchLine;
 
                             DimSetEntry2.SETRANGE("Dimension Set ID", "Purchase Line"."Dimension Set ID");
 
-                            if PurchLine."lbt Printoption" = PurchLine."lbt Printoption"::"New Page" then
+                            if TempPurchLine."lbt Printoption" = TempPurchLine."lbt Printoption"::"New Page" then
                                 NewPageGroup += 1;
 
-                            ItemUnitCode := '';
                             ItemUnitDescription := '';
                             ItemUnitQty := '';
                             CLEAR(InfoRowNo);
@@ -605,9 +448,9 @@ report 5272727 "lbt Purchase - Quote"
                             CLEAR(Item);
                             ItemPictureExist := false;
 
-                            PurchLine.CALCFIELDS("lbt Balance");
-                            if PurchLine.Type = PurchLine.Type::Item then begin
-                                Item.Get(PurchLine."No.");
+                            TempPurchLine.CALCFIELDS("lbt Balance");
+                            if TempPurchLine.Type = TempPurchLine.Type::Item then begin
+                                Item.Get(TempPurchLine."No.");
                                 ItemPictureExist := Item.Picture.Count() > 0;
                                 if not ItemPicturePrint then
                                     ItemPictureExist := false;
@@ -619,7 +462,7 @@ report 5272727 "lbt Purchase - Quote"
                                 Counter := 0;
                                 repeat
                                     Counter += 1;
-                                until (ItemUnitCodeArry[Counter] = PurchLine."Unit of Measure Code") or
+                                until (ItemUnitCodeArry[Counter] = TempPurchLine."Unit of Measure Code") or
                                   (ItemUnitCodeArry[Counter] = '');
                                 if ItemUnitCodeArry[Counter] <> '' then begin
                                     ItemUnitCodeArry[Counter] := '';
@@ -629,8 +472,7 @@ report 5272727 "lbt Purchase - Quote"
                                     COMPRESSARRAY(ItemUnitDescriptionArry);
                                     COMPRESSARRAY(ItemUnitQtyArry);
                                 end;
-                                if PurchLine."Description 2" <> '' then begin
-                                    ItemUnitCode := ItemUnitCodeArry[1];
+                                if TempPurchLine."Description 2" <> '' then begin
                                     ItemUnitDescription := ItemUnitDescriptionArry[1];
                                     ItemUnitQty := ItemUnitQtyArry[1];
                                     ItemUnitCodeArry[1] := '';
@@ -640,16 +482,16 @@ report 5272727 "lbt Purchase - Quote"
                                     COMPRESSARRAY(ItemUnitDescriptionArry);
                                     COMPRESSARRAY(ItemUnitQtyArry);
                                 end;
-                                //zusätzliche Infos
+                                //zus?tzliche Infos
                                 Counter := 0;
                                 repeat
                                     Counter += 1;
                                 until InfoCaptionArry[Counter] = '';
                                 Counter -= 1;
-                                if PurchLine."Vendor Item No." <> '' then begin
+                                if TempPurchLine."Vendor Item No." <> '' then begin
                                     Counter += 1;
                                     InfoCaptionArry[Counter] := Purchase_Line___Vendor_Item_No__CaptionLbl;
-                                    InfoValueArry[Counter] := PurchLine."Vendor Item No.";
+                                    InfoValueArry[Counter] := TempPurchLine."Vendor Item No.";
                                 end;
                                 /*
                                 IF PurchLine."Expected Receipt Date" <> 0D THEN BEGIN
@@ -673,30 +515,27 @@ report 5272727 "lbt Purchase - Quote"
 
                         trigger OnPostDataItem()
                         begin
-                            PurchLine.DeleteAll();
+                            TempPurchLine.DeleteAll();
                         end;
 
                         trigger OnPreDataItem()
                         begin
-                            MoreLines := PurchLine.FIND('+');
-                            while MoreLines and (PurchLine.Description = '') and (PurchLine."Description 2" = '') and
-                                  (PurchLine."No." = '') and (PurchLine.Quantity = 0) and
-                                  (PurchLine.Amount = 0)
+                            MoreLines := TempPurchLine.FIND('+');
+                            while MoreLines and (TempPurchLine.Description = '') and (TempPurchLine."Description 2" = '') and
+                                  (TempPurchLine."No." = '') and (TempPurchLine.Quantity = 0) and
+                                  (TempPurchLine.Amount = 0)
                             do
-                                MoreLines := PurchLine.Next(-1) <> 0;
+                                MoreLines := TempPurchLine.Next(-1) <> 0;
                             if not MoreLines then
                                 CurrReport.Break();
-                            PurchLine.SETRANGE("Line No.", 0, PurchLine."Line No.");
-                            SETRANGE(Number, 1, PurchLine.Count());
+                            TempPurchLine.SETRANGE("Line No.", 0, TempPurchLine."Line No.");
+                            SETRANGE(Number, 1, TempPurchLine.Count());
                         end;
                     }
                     dataitem(Total; "Integer")
                     {
                         DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                         column(ShipmentMethod_Description; ShipmentMethod.Description)
-                        {
-                        }
-                        column(Total_Number; Number)
                         {
                         }
                         column(ShipmentMethod_DescriptionCaption; ShipmentMethod_DescriptionCaptionLbl)
@@ -707,9 +546,6 @@ report 5272727 "lbt Purchase - Quote"
                     {
                         DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                         column(Purchase_Header___Buy_from_Vendor_No__; "Purchase Header"."Buy-from Vendor No.")
-                        {
-                        }
-                        column(Total2_Number; Number)
                         {
                         }
                         column(Purchase_Header___Buy_from_Vendor_No__Caption; "Purchase Header".FIELDCAPTION("Buy-from Vendor No."))
@@ -725,9 +561,6 @@ report 5272727 "lbt Purchase - Quote"
                     dataitem(Total3; "Integer")
                     {
                         DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
-                        column(SelltoCustNo_PurchHdr; "Purchase Header"."Sell-to Customer No.")
-                        {
-                        }
                         column(ShipToAddr1; ShipToAddr[1])
                         {
                         }
@@ -752,16 +585,9 @@ report 5272727 "lbt Purchase - Quote"
                         column(ShipToAddr8; ShipToAddr[8])
                         {
                         }
-                        column(Total3_Number; Number)
-                        {
-                        }
                         column(Ship_to_AddressCaption; Ship_to_AddressCaptionLbl)
                         {
                         }
-                        column(Purchase_Header___Sell_to_Customer_No__Caption; "Purchase Header".FIELDCAPTION("Sell-to Customer No."))
-                        {
-                        }
-
                         trigger OnPreDataItem()
                         begin
                             if ("Purchase Header"."Sell-to Customer No." = '') and (ShipToAddr[1] = '') then
@@ -838,10 +664,10 @@ report 5272727 "lbt Purchase - Quote"
 
                 trigger OnAfterGetRecord()
                 begin
-                    CLEAR(PurchLine);
+                    CLEAR(TempPurchLine);
                     CLEAR(PurchPost);
-                    PurchLine.DeleteAll();
-                    PurchPost.GetPurchLines("Purchase Header", PurchLine, 0);
+                    TempPurchLine.DeleteAll();
+                    PurchPost.GetPurchLines("Purchase Header", TempPurchLine, 0);
 
                     if Number > 1 then begin
                         CopyText := FormatDocument.GetCOPYText();
@@ -870,6 +696,7 @@ report 5272727 "lbt Purchase - Quote"
                 CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
                 FormatAddressFields("Purchase Header");
                 FormatDocumentFields("Purchase Header");
+                CompanyInfo."lbt SetReportFooter"(Footer);
 
                 DimSetEntry1.SETRANGE("Dimension Set ID", "Dimension Set ID");
 
@@ -985,7 +812,7 @@ report 5272727 "lbt Purchase - Quote"
         ShipmentMethod: Record "Shipment Method";
         SalesPurchPerson: Record "Salesperson/Purchaser";
         CompanyInfo: Record "Company Information";
-        PurchLine: Record "Purchase Line" temporary;
+        TempPurchLine: Record "Purchase Line" temporary;
         DimSetEntry1: Record "Dimension Set Entry";
         DimSetEntry2: Record "Dimension Set Entry";
         RespCenter: Record "Responsibility Center";
@@ -994,7 +821,6 @@ report 5272727 "lbt Purchase - Quote"
         CompanyInfo1: Record "Company Information";
         CompanyInfo2: Record "Company Information";
         CompanyInfo3: Record "Company Information";
-        GLSetup: Record "General Ledger Setup";
         TempLeBitPSLongtextLine: Record "lbt PS Longtext Line" temporary;
         Vendor: Record Vendor;
         Language: Codeunit Language;
@@ -1023,14 +849,9 @@ report 5272727 "lbt Purchase - Quote"
         OutputNo: Integer;
         [InDataSet]
         LogInteractionEnable: Boolean;
-        CompanyInfo__Phone_No__CaptionLbl: Label 'Phone No.';
-        CompanyInfo__Fax_No__CaptionLbl: Label 'Fax No.';
-        CompanyInfo__VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
-        Expected_DateCaptionLbl: Label 'Expected Date';
         Quote_No_CaptionLbl: Label 'Quote No.';
         Header_DimensionsCaptionLbl: Label 'Header Dimensions';
         Purchase_Line___Expected_Receipt_Date__CaptionLbl: Label 'Expected Date';
-        Purchase_Line___No__CaptionLbl: Label 'Our No.';
         Purchase_Line___Vendor_Item_No__CaptionLbl: Label 'No.';
         Line_DimensionsCaptionLbl: Label 'Line Dimensions';
         ShipmentMethod_DescriptionCaptionLbl: Label 'Shipment Method';
@@ -1042,7 +863,6 @@ report 5272727 "lbt Purchase - Quote"
         ItemUnitDescriptionArry: array[50] of Text;
         ItemUnitQtyArry: array[50] of Text;
         InfoRowNo: Integer;
-        ItemUnitCode: Code[20];
         ItemUnitDescription: Text;
         ItemUnitQty: Text;
         HideCompanyInfo: Boolean;
@@ -1062,22 +882,15 @@ report 5272727 "lbt Purchase - Quote"
         DatumCaptionLbl: Label 'Date';
         PosNo_CaptionLbl: Label 'Pos.';
         UOM_CaptionLbl: Label 'Unit';
-        CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl: Label 'Registered in:';
-        CompanyInfo__LeBit_CEO_Caption_Lbl: Label 'Chief Executive Officer';
-        CompanyInfo__Bank_Name_Caption_Lbl: Label 'Bank';
-        CompanyInfo_IBAN_Caption_Lbl: Label 'IBAN';
-        CompanyInfo__SWIFT_Code_Caption_Lbl: Label 'SWIFT-BIC';
         PurchPersonText_CaptionLbl: Label 'Salesperson';
-        CompanyInfo_E_Mail_Caption_Lbl: Label 'Mail:';
-        CompanyInfo__Home_Page_Caption_Lbl: Label 'Homepage:';
-        CarryForwardCaptionLbl: Label 'Carry-forward %1', Comment = '%1 - Amount';
-        SubtotalCaptionLbl: Label 'Subtotal';
-        AmountCaptionLbl: Label 'Amount';
         Alternativposition_CaptionLbl: Label 'Alternative position';
         Bedarfposition_CaptionLbl: Label 'Position requirements';
         BitteAndern_CaptionLbl: Label 'please change!';
         ReportType: Option Purchase,Sales,QA,Production,Delivery,"Report";
         VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
+        DimLbl: Label '%1 - %2', Locked = true;
+        CombinedDimLbl: Label '%1; %2 - %3', Locked = true;
+        Footer: Text;
         VendSource: Option Default,"Pay-to Vendor","Buy-from Vendor";
 
     procedure IntializeRequest(NewNoOfCopies: Integer; NewShowInternalInfo: Boolean; NewArchiveDocument: Boolean; NewLogInteraction: Boolean)
@@ -1119,18 +932,12 @@ report 5272727 "lbt Purchase - Quote"
 
     local procedure FormatDocumentFields(PurchaseHeader: Record "Purchase Header")
     begin
-        with PurchaseHeader do begin
-            FormatDocument.SetPurchaser(SalesPurchPerson, "Purchaser Code", PurchaserText);
-            FormatDocument.SetShipmentMethod(ShipmentMethod, "Shipment Method Code", "Language Code");
-            ReferenceText := FormatDocument.SetText("Your Reference" <> '', CopyStr(FIELDCAPTION("Your Reference"), 1, 80));
-            VATNoText := FormatDocument.SetText("VAT Registration No." <> '', CopyStr(FIELDCAPTION("VAT Registration No."), 1, 80));
-            if PurchaserText <> '' then
-                PurchaserText := PurchPersonText_CaptionLbl;
-        end;
-    end;
-
-    local procedure "### Lebit Correspondence Functions ###"()
-    begin
+        FormatDocument.SetPurchaser(SalesPurchPerson, PurchaseHeader."Purchaser Code", PurchaserText);
+        FormatDocument.SetShipmentMethod(ShipmentMethod, PurchaseHeader."Shipment Method Code", PurchaseHeader."Language Code");
+        ReferenceText := FormatDocument.SetText(PurchaseHeader."Your Reference" <> '', CopyStr(PurchaseHeader.FIELDCAPTION("Your Reference"), 1, 80));
+        VATNoText := FormatDocument.SetText(PurchaseHeader."VAT Registration No." <> '', CopyStr(PurchaseHeader.FIELDCAPTION("VAT Registration No."), 1, 80));
+        if PurchaserText <> '' then
+            PurchaserText := PurchPersonText_CaptionLbl;
     end;
 
     local procedure Createlbtext(LeBitPSLongtextLine: Record "lbt PS Longtext Line")
@@ -1226,7 +1033,7 @@ report 5272727 "lbt Purchase - Quote"
         LeBitReportFunctions.GetSourceType(TypeVar::Purchase, RepType::"Purchase Quote", VendSource);
     end;
 
-    local procedure DocumentCaption(): Text[250]
+    local procedure DocumentCaption(): Text
     var
         DocCaption: text;
     begin
@@ -1241,4 +1048,6 @@ report 5272727 "lbt Purchase - Quote"
     begin
     end;
 }
+
+
 

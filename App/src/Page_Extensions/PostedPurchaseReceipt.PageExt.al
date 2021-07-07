@@ -18,12 +18,10 @@ pageextension 5272727 "lbt Posted Purchase Receipt" extends "Posted Purchase Rec
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
-                        SourceRecRef: RecordRef;
+                        LongtextMgt: Codeunit "lbt Longtext Mgt.";
                         Position: Option Header,Footer,Longtext;
                     begin
-                        SourceRecRef.GETTABLE(Rec);
-                        LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Header);
+                        LongtextMgt.ShowLongtextLines(Rec, Position::Header);
                     end;
                 }
                 action("lbt Footer Text")
@@ -35,12 +33,10 @@ pageextension 5272727 "lbt Posted Purchase Receipt" extends "Posted Purchase Rec
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
-                        SourceRecRef: RecordRef;
+                        LongtextMgt: Codeunit "lbt Longtext Mgt.";
                         Position: Option Header,Footer,Longtext;
                     begin
-                        SourceRecRef.GETTABLE(Rec);
-                        LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Footer);
+                        LongtextMgt.ShowLongtextLines(Rec, Position::Footer);
                     end;
                 }
             }

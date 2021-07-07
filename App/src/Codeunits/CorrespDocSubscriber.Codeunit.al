@@ -6,456 +6,497 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
     end;
 
     var
-        LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
-        LeBitCorrespDocSingleInst: Codeunit "lbt Corresp. Doc. SingleInst";
-        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+        CorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
+        CorrespDocSingleInst: Codeunit "lbt Corresp. Doc. SingleInst";
+        LongtextMgt: Codeunit "lbt Longtext Mgt.";
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Document Totals", 'OnCalculateSalesSubPageTotalsOnAfterSetFilters', '', true, true)]
     local procedure ExcludeAlternativeAndOptional(var SalesLine: Record "Sales Line"; SalesHeader: Record "Sales Header")
     begin
-        with SalesLine do
-            SetFilter("lbt Printoption", '<>%1&<>%2', "lbt Printoption"::Alternative, "lbt Printoption"::Optional);
+        SalesLine.SetFilter("lbt Printoption", '<>%1&<>%2', SalesLine."lbt Printoption"::Alternative, SalesLine."lbt Printoption"::Optional);
     end;
 
-    [EventSubscriber(ObjectType::Table, 36, 'OnAfterCreateSalesLine', '', false, false)]
+    [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnAfterCreateSalesLine', '', false, false)]
     local procedure "Table Sales Header - OnAfterCreateSalesLine"(var SalesLine: Record "Sales Line"; var TempSalesLine: Record "Sales Line" temporary)
     begin
-        LeBitLongtextMgt.CopyFieldInfoAfterCreateSalesLine(SalesLine, TempSalesLine, true);
+        LongtextMgt.CopyFieldInfoAfterCreateSalesLine(SalesLine, TempSalesLine, true);
     end;
 
-    [EventSubscriber(ObjectType::Table, 37, 'OnValidateTypeOnCopyFromTempSalesLine', '', false, false)]
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnValidateTypeOnCopyFromTempSalesLine', '', false, false)]
     local procedure "Table Sales Line - OnValidateTypeOnCopyFromTempSalesLine"(var SalesLine: Record "Sales Line"; var TempSalesLine: Record "Sales Line" temporary)
     begin
         SalesLine."lbt Printoption" := TempSalesLine."lbt Printoption";
     end;
 
-    [EventSubscriber(ObjectType::Table, 37, 'OnValidateNoOnCopyFromTempSalesLine', '', false, false)]
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnValidateNoOnCopyFromTempSalesLine', '', false, false)]
     local procedure "Table Sales Line - OnValidateNoOnCopyFromTempSalesLine"(var SalesLine: Record "Sales Line"; var TempSalesLine: Record "Sales Line" temporary)
     begin
         SalesLine."lbt Printoption" := TempSalesLine."lbt Printoption";
         SalesLine."lbt Pos. No." := TempSalesLine."lbt Pos. No.";
     end;
 
-    [EventSubscriber(ObjectType::Table, 38, 'OnAfterCreatePurchLine', '', false, false)]
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'lbtOnAfterCreatePurchLine', '', false, false)]
     local procedure "Table Purchase Header - OnAfterCreatePurchLine"(var PurchaseLine: Record "Purchase Line"; var TempPurchaseLine: Record "Purchase Line" temporary)
     begin
-        LeBitLongtextMgt.CopyFieldInfoAfterCreatePurchLine(PurchaseLine, TempPurchaseLine, true);
+        LongtextMgt.CopyFieldInfoAfterCreatePurchLine(PurchaseLine, TempPurchaseLine, true);
     end;
 
-    [EventSubscriber(ObjectType::Table, 39, 'OnValidateTypeOnCopyFromTempPurchLine', '', false, false)]
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnValidateTypeOnCopyFromTempPurchLine', '', false, false)]
     local procedure "Table Purchase Line - OnValidateTypeOnCopyFromTempPurchLine"(var PurchLine: Record "Purchase Line"; TempPurchaseLine: Record "Purchase Line" temporary)
     begin
         PurchLine."lbt Printoption" := TempPurchaseLine."lbt Printoption";
     end;
 
-    [EventSubscriber(ObjectType::Table, 39, 'OnValidateNoOnCopyFromTempPurchLine', '', false, false)]
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnValidateNoOnCopyFromTempPurchLine', '', false, false)]
     local procedure "Table Purchase Line - OnValidateNoOnCopyFromTempPurchLine"(var PurchLine: Record "Purchase Line"; TempPurchaseLine: Record "Purchase Line" temporary)
     begin
         PurchLine."lbt Printoption" := TempPurchaseLine."lbt Printoption";
         PurchLine."lbt Pos. No." := TempPurchaseLine."lbt Pos. No.";
     end;
 
-    [EventSubscriber(ObjectType::Table, 111, 'OnBeforeInsertInvLineFromShptLine', '', false, false)]
+    [EventSubscriber(ObjectType::Table, Database::"Sales Shipment Line", 'OnBeforeInsertInvLineFromShptLine', '', false, false)]
     local procedure "Table Sales Shipment Line - OnBeforeInsertInvLineFromShptLine"(var SalesShptLine: Record "Sales Shipment Line"; var SalesLine: Record "Sales Line")
     begin
-        LeBitLongtextMgt.CopyLongTextForGetShipmentLines(SalesShptLine, SalesLine);
+        LongtextMgt.CopyLongTextForGetShipmentLines(SalesShptLine, SalesLine);
     end;
 
     [EventSubscriber(ObjectType::Table, database::"Purch. Rcpt. Line", 'OnBeforeInsertInvLineFromRcptLine', '', false, false)]
     local procedure "Table Purch. Rcpt. Line - OnBeforeInsertInvLineFromRcptLine"(var PurchRcptLine: Record "Purch. Rcpt. Line"; var PurchLine: Record "Purchase Line")
     begin
-        LeBitLongtextMgt.CopyLongTextForGetPurchRcptLines(PurchRcptLine, PurchLine);
+        LongtextMgt.CopyLongTextForGetPurchRcptLines(PurchRcptLine, PurchLine);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 80, 'OnBeforePostSalesDoc', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforePostSalesDoc', '', false, false)]
     local procedure OnBeforePostSalesDoc_Codeunit80(var SalesHeader: Record "Sales Header")
     var
         PurchRcptHeader: Record "Purch. Rcpt. Header";
         PurchRcptLine: Record "Purch. Rcpt. Line";
     begin
-        LeBitCorrespDocSingleInst.CopyLongTextForPostDropOrderShipment(PurchRcptHeader, PurchRcptLine, 0, 0);
+        CorrespDocSingleInst.CopyLongTextForPostDropOrderShipment(PurchRcptHeader, PurchRcptLine, 0, 0);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 80, 'OnAfterPostSalesDoc', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnAfterPostSalesDoc', '', false, false)]
     local procedure OnAfterPostSalesDoc_Codeunit80(var SalesHeader: Record "Sales Header"; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; SalesShptHdrNo: Code[20]; RetRcpHdrNo: Code[20]; SalesInvHdrNo: Code[20]; SalesCrMemoHdrNo: Code[20])
     var
         PurchRcptHeader: Record "Purch. Rcpt. Header";
         PurchRcptLine: Record "Purch. Rcpt. Line";
     begin
-        LeBitCorrespDocSingleInst.CopyLongTextForPostDropOrderShipment(PurchRcptHeader, PurchRcptLine, 2, 0);
+        CorrespDocSingleInst.CopyLongTextForPostDropOrderShipment(PurchRcptHeader, PurchRcptLine, 2, 0);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 80, 'OnBeforeSalesInvLineInsert', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforeSalesInvLineInsert', '', false, false)]
     local procedure OnBeforeSalesInvLineInsert_Codeunit80(var SalesInvLine: Record "Sales Invoice Line"; SalesInvHeader: Record "Sales Invoice Header"; SalesLine: Record "Sales Line")
-    var
-        SourceRecRef: RecordRef;
-        TargetRecRef: RecordRef;
     begin
-        SourceRecRef.GETTABLE(SalesLine);
-        TargetRecRef.GETTABLE(SalesInvLine);
-        LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+        LongtextMgt.CopyLongtext(SalesLine, SalesInvLine);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 80, 'OnBeforeSalesCrMemoLineInsert', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforeSalesCrMemoLineInsert', '', false, false)]
     local procedure OnBeforeSalesCrMemoLineInsert_Codeunit80(var SalesCrMemoLine: Record "Sales Cr.Memo Line"; SalesCrMemoHeader: Record "Sales Cr.Memo Header"; SalesLine: Record "Sales Line")
-    var
-        SourceRecRef: RecordRef;
-        TargetRecRef: RecordRef;
     begin
-        SourceRecRef.GETTABLE(SalesLine);
-        TargetRecRef.GETTABLE(SalesCrMemoLine);
-        LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+        LongtextMgt.CopyLongtext(SalesLine, SalesCrMemoLine);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 80, 'OnBeforeSalesShptHeaderInsert', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforeSalesShptHeaderInsert', '', false, false)]
     local procedure OnBeforeSalesShptHeaderInsert_Codeunit80(var SalesShptHeader: Record "Sales Shipment Header"; SalesHeader: Record "Sales Header")
-    var
-        SourceRecRef: RecordRef;
-        TargetRecRef: RecordRef;
     begin
-        SourceRecRef.GETTABLE(SalesHeader);
-        TargetRecRef.GETTABLE(SalesShptHeader);
-        LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+        LongtextMgt.CopyLongtext(SalesHeader, SalesShptHeader);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 80, 'OnBeforeReturnRcptHeaderInsert', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforeReturnRcptHeaderInsert', '', false, false)]
     local procedure OnBeforeReturnRcptHeaderInsert_Codeunit80(var ReturnRcptHeader: Record "Return Receipt Header"; SalesHeader: Record "Sales Header")
-    var
-        SourceRecRef: RecordRef;
-        TargetRecRef: RecordRef;
     begin
-        SourceRecRef.GETTABLE(SalesHeader);
-        TargetRecRef.GETTABLE(ReturnRcptHeader);
-        LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+        LongtextMgt.CopyLongtext(SalesHeader, ReturnRcptHeader);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 80, 'OnBeforeSalesInvHeaderInsert', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforeSalesInvHeaderInsert', '', false, false)]
     local procedure OnBeforeSalesInvHeaderInsert_Codeunit80(var SalesInvHeader: Record "Sales Invoice Header"; SalesHeader: Record "Sales Header")
-    var
-        SourceRecRef: RecordRef;
-        TargetRecRef: RecordRef;
     begin
-        SourceRecRef.GETTABLE(SalesHeader);
-        TargetRecRef.GETTABLE(SalesInvHeader);
-        LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+        LongtextMgt.CopyLongtext(SalesHeader, SalesInvHeader);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 80, 'OnBeforeSalesCrMemoHeaderInsert', '', false, false)]
-    local procedure OnBeforeSalesCrMemoHeaderInsert_Codeunit80(var SalesCrMemoHeader: Record "Sales Cr.Memo Header"; SalesHeader: Record "Sales Header")
-    var
-        SourceRecRef: RecordRef;
-        TargetRecRef: RecordRef;
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforeSalesCrMemoHeaderInsert', '', false, false)]
+    local procedure OnBeforeSalesCrMemoHeaderInsert_Codeunit80(SalesCrMemoHeader: Record "Sales Cr.Memo Header"; SalesHeader: Record "Sales Header")
     begin
-        SourceRecRef.GETTABLE(SalesHeader);
-        TargetRecRef.GETTABLE(SalesCrMemoHeader);
-        LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+        LongtextMgt.CopyLongtext(SalesHeader, SalesCrMemoHeader);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 80, 'OnBeforeSalesShptLineInsert', '', false, false)]
-    local procedure OnBeforeSalesShptLineInsert_Codeunit80(var SalesShptLine: Record "Sales Shipment Line"; SalesShptHeader: Record "Sales Shipment Header"; SalesLine: Record "Sales Line")
-    var
-        SourceRecRef: RecordRef;
-        TargetRecRef: RecordRef;
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforeSalesShptLineInsert', '', false, false)]
+    local procedure OnBeforeSalesShptLineInsert_Codeunit80(SalesShptLine: Record "Sales Shipment Line"; SalesLine: Record "Sales Line")
     begin
-        SourceRecRef.GETTABLE(SalesLine);
-        TargetRecRef.GETTABLE(SalesShptLine);
-        LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+        LongtextMgt.CopyLongtext(SalesLine, SalesShptLine);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 80, 'OnBeforeReturnRcptLineInsert', '', false, false)]
-    local procedure OnBeforeReturnRcptLineInsert_Codeunit80(var ReturnRcptLine: Record "Return Receipt Line"; ReturnRcptHeader: Record "Return Receipt Header"; SalesLine: Record "Sales Line")
-    var
-        SourceRecRef: RecordRef;
-        TargetRecRef: RecordRef;
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforeReturnRcptLineInsert', '', false, false)]
+    local procedure OnBeforeReturnRcptLineInsert_Codeunit80(ReturnRcptLine: Record "Return Receipt Line"; SalesLine: Record "Sales Line")
     begin
-        SourceRecRef.GETTABLE(SalesLine);
-        TargetRecRef.GETTABLE(ReturnRcptLine);
-        LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+        LongtextMgt.CopyLongtext(SalesLine, ReturnRcptLine);
     end;
 
     [EventSubscriber(ObjectType::Codeunit, 86, 'OnAfterOnRun', '', false, false)]
-    local procedure OnAfterOnRun_Codeunit86(var SalesHeader: Record "Sales Header"; var SalesOrderHeader: Record "Sales Header")
-    var
-        SourceRecRef: RecordRef;
-        TargetRecRef: RecordRef;
+    local procedure OnAfterOnRun_Codeunit86(SalesHeader: Record "Sales Header"; SalesOrderHeader: Record "Sales Header")
     begin
-        SourceRecRef.GETTABLE(SalesHeader);
-        TargetRecRef.GETTABLE(SalesOrderHeader);
-        LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+        LongtextMgt.CopyLongtext(SalesHeader, SalesOrderHeader);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 86, 'OnBeforeInsertSalesOrderLine', '', false, false)]
-    local procedure OnBeforeInsertSalesOrderLine_Codeunit86(var SalesOrderLine: Record "Sales Line"; SalesOrderHeader: Record "Sales Header"; SalesQuoteLine: Record "Sales Line"; SalesQuoteHeader: Record "Sales Header")
-    var
-        SourceRecRef: RecordRef;
-        TargetRecRef: RecordRef;
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Quote to Order", 'OnBeforeInsertSalesOrderLine', '', false, false)]
+    local procedure OnBeforeInsertSalesOrderLine_Codeunit86(SalesOrderLine: Record "Sales Line"; SalesQuoteLine: Record "Sales Line")
     begin
-        SourceRecRef.GETTABLE(SalesQuoteLine);
-        TargetRecRef.GETTABLE(SalesOrderLine);
-        LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+        LongtextMgt.CopyLongtext(SalesQuoteLine, SalesOrderLine);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 87, 'OnBeforeInsertSalesOrderHeader', '', false, false)]
-    local procedure OnBeforeInsertSalesOrderHeader_Codeunit87(var SalesOrderHeader: Record "Sales Header"; BlanketOrderSalesHeader: Record "Sales Header")
-    var
-        SourceRecRef: RecordRef;
-        TargetRecRef: RecordRef;
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Blanket Sales Order to Order", 'OnBeforeInsertSalesOrderHeader', '', false, false)]
+    local procedure OnBeforeInsertSalesOrderHeader_Codeunit87(SalesOrderHeader: Record "Sales Header"; BlanketOrderSalesHeader: Record "Sales Header")
     begin
-        SourceRecRef.GETTABLE(BlanketOrderSalesHeader);
-        TargetRecRef.GETTABLE(SalesOrderHeader);
-        LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+        LongtextMgt.CopyLongtext(BlanketOrderSalesHeader, SalesOrderHeader);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 87, 'OnBeforeInsertSalesOrderLine', '', false, false)]
-    local procedure OnBeforeInsertSalesOrderLine_Codeunit87(var SalesOrderLine: Record "Sales Line"; SalesOrderHeader: Record "Sales Header"; BlanketOrderSalesLine: Record "Sales Line"; BlanketOrderSalesHeader: Record "Sales Header")
-    var
-        SourceRecRef: RecordRef;
-        TargetRecRef: RecordRef;
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Blanket Sales Order to Order", 'OnBeforeInsertSalesOrderLine', '', false, false)]
+    local procedure OnBeforeInsertSalesOrderLine_Codeunit87(SalesOrderLine: Record "Sales Line"; BlanketOrderSalesLine: Record "Sales Line")
     begin
-        SourceRecRef.GETTABLE(BlanketOrderSalesLine);
-        TargetRecRef.GETTABLE(SalesOrderLine);
-        LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+        LongtextMgt.CopyLongtext(BlanketOrderSalesLine, SalesOrderLine);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 90, 'OnBeforePostPurchaseDoc', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePostPurchaseDoc', '', false, false)]
     local procedure OnBeforePostPurchaseDoc_Codeunit90(var PurchaseHeader: Record "Purchase Header")
     var
         SalesShipmentHeader: Record "Sales Shipment Header";
         SalesShipmentLine: Record "Sales Shipment Line";
     begin
-        LeBitCorrespDocSingleInst.CopyLongTextForPostCombineSalesOrderShipment(SalesShipmentHeader, SalesShipmentLine, 0, 0);
+        CorrespDocSingleInst.CopyLongTextForPostCombineSalesOrderShipment(SalesShipmentHeader, SalesShipmentLine, 0, 0);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 90, 'OnAfterPostPurchaseDoc', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterPostPurchaseDoc', '', false, false)]
     local procedure OnAfterPostPurchaseDoc_Codeunit90(var PurchaseHeader: Record "Purchase Header"; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; PurchRcpHdrNo: Code[20]; RetShptHdrNo: Code[20]; PurchInvHdrNo: Code[20]; PurchCrMemoHdrNo: Code[20])
     var
         SalesShipmentHeader: Record "Sales Shipment Header";
         SalesShipmentLine: Record "Sales Shipment Line";
     begin
-        LeBitCorrespDocSingleInst.CopyLongTextForPostCombineSalesOrderShipment(SalesShipmentHeader, SalesShipmentLine, 2, 0);
+        CorrespDocSingleInst.CopyLongTextForPostCombineSalesOrderShipment(SalesShipmentHeader, SalesShipmentLine, 2, 0);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 90, 'OnBeforePurchCrMemoHeaderInsert', '', false, false)]
-    local procedure OnBeforePurchCrMemoHeaderInsert_Codeunit90(var PurchCrMemoHdr: Record "Purch. Cr. Memo Hdr."; var PurchHeader: Record "Purchase Header")
-    var
-        SourceRecRef: RecordRef;
-        TargetRecRef: RecordRef;
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePurchCrMemoHeaderInsert', '', false, false)]
+    local procedure OnBeforePurchCrMemoHeaderInsert_Codeunit90(PurchCrMemoHdr: Record "Purch. Cr. Memo Hdr."; PurchHeader: Record "Purchase Header")
     begin
-        SourceRecRef.GETTABLE(PurchHeader);
-        TargetRecRef.GETTABLE(PurchCrMemoHdr);
-        LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+        LongtextMgt.CopyLongtext(PurchHeader, PurchCrMemoHdr);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 90, 'OnBeforePurchCrMemoLineInsert', '', false, false)]
-    local procedure OnBeforePurchCrMemoLineInsert_Codeunit90(var PurchCrMemoLine: Record "Purch. Cr. Memo Line"; var PurchCrMemoHdr: Record "Purch. Cr. Memo Hdr."; var PurchLine: Record "Purchase Line")
-    var
-        SourceRecRef: RecordRef;
-        TargetRecRef: RecordRef;
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePurchCrMemoLineInsert', '', false, false)]
+    local procedure OnBeforePurchCrMemoLineInsert_Codeunit90(PurchCrMemoLine: Record "Purch. Cr. Memo Line"; PurchLine: Record "Purchase Line")
     begin
-        SourceRecRef.GETTABLE(PurchLine);
-        TargetRecRef.GETTABLE(PurchCrMemoLine);
-        LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+        LongtextMgt.CopyLongtext(PurchLine, PurchCrMemoLine);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 90, 'OnBeforePurchInvHeaderInsert', '', false, false)]
-    local procedure OnBeforePurchInvHeaderInsert_Codeunit90(var PurchInvHeader: Record "Purch. Inv. Header"; var PurchHeader: Record "Purchase Header")
-    var
-        SourceRecRef: RecordRef;
-        TargetRecRef: RecordRef;
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePurchInvHeaderInsert', '', false, false)]
+    local procedure OnBeforePurchInvHeaderInsert_Codeunit90(PurchInvHeader: Record "Purch. Inv. Header"; PurchHeader: Record "Purchase Header")
     begin
-        SourceRecRef.GETTABLE(PurchHeader);
-        TargetRecRef.GETTABLE(PurchInvHeader);
-        LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+        LongtextMgt.CopyLongtext(PurchHeader, PurchInvHeader);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 90, 'OnBeforePurchInvLineInsert', '', false, false)]
-    local procedure OnBeforePurchInvLineInsert_Codeunit90(var PurchInvLine: Record "Purch. Inv. Line"; var PurchInvHeader: Record "Purch. Inv. Header"; var PurchaseLine: Record "Purchase Line")
-    var
-        SourceRecRef: RecordRef;
-        TargetRecRef: RecordRef;
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePurchInvLineInsert', '', false, false)]
+    local procedure OnBeforePurchInvLineInsert_Codeunit90(PurchInvLine: Record "Purch. Inv. Line"; PurchaseLine: Record "Purchase Line")
     begin
-        SourceRecRef.GETTABLE(PurchaseLine);
-        TargetRecRef.GETTABLE(PurchInvLine);
-        LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+        LongtextMgt.CopyLongtext(PurchaseLine, PurchInvLine);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 90, 'OnBeforePurchRcptHeaderInsert', '', false, false)]
-    local procedure OnBeforePurchRcptHeaderInsert_Codeunit90(var PurchRcptHeader: Record "Purch. Rcpt. Header"; var PurchaseHeader: Record "Purchase Header")
-    var
-        SourceRecRef: RecordRef;
-        TargetRecRef: RecordRef;
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePurchRcptHeaderInsert', '', false, false)]
+    local procedure OnBeforePurchRcptHeaderInsert_Codeunit90(PurchRcptHeader: Record "Purch. Rcpt. Header"; PurchaseHeader: Record "Purchase Header")
     begin
-        SourceRecRef.GETTABLE(PurchaseHeader);
-        TargetRecRef.GETTABLE(PurchRcptHeader);
-        LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+        LongtextMgt.CopyLongtext(PurchaseHeader, PurchRcptHeader);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 90, 'OnBeforePurchRcptLineInsert', '', false, false)]
-    local procedure OnBeforePurchRcptLineInsert_Codeunit90(var PurchRcptLine: Record "Purch. Rcpt. Line"; var PurchRcptHeader: Record "Purch. Rcpt. Header"; var PurchLine: Record "Purchase Line")
-    var
-        SourceRecRef: RecordRef;
-        TargetRecRef: RecordRef;
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePurchRcptLineInsert', '', false, false)]
+    local procedure OnBeforePurchRcptLineInsert_Codeunit90(PurchRcptLine: Record "Purch. Rcpt. Line"; PurchLine: Record "Purchase Line")
     begin
-        SourceRecRef.GETTABLE(PurchLine);
-        TargetRecRef.GETTABLE(PurchRcptLine);
-        LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+        LongtextMgt.CopyLongtext(PurchLine, PurchRcptLine);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 90, 'OnBeforeReturnShptHeaderInsert', '', false, false)]
-    local procedure OnBeforeReturnShptHeaderInsert_Codeunit90(var ReturnShptHeader: Record "Return Shipment Header"; var PurchHeader: Record "Purchase Header")
-    var
-        SourceRecRef: RecordRef;
-        TargetRecRef: RecordRef;
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforeReturnShptHeaderInsert', '', false, false)]
+    local procedure OnBeforeReturnShptHeaderInsert_Codeunit90(ReturnShptHeader: Record "Return Shipment Header"; PurchHeader: Record "Purchase Header")
     begin
-        SourceRecRef.GETTABLE(PurchHeader);
-        TargetRecRef.GETTABLE(ReturnShptHeader);
-        LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+        LongtextMgt.CopyLongtext(PurchHeader, ReturnShptHeader);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 90, 'OnBeforeReturnShptLineInsert', '', false, false)]
-    local procedure OnBeforeReturnShptLineInsert_Codeunit90(var ReturnShptLine: Record "Return Shipment Line"; var ReturnShptHeader: Record "Return Shipment Header"; var PurchLine: Record "Purchase Line")
-    var
-        SourceRecRef: RecordRef;
-        TargetRecRef: RecordRef;
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforeReturnShptLineInsert', '', false, false)]
+    local procedure OnBeforeReturnShptLineInsert_Codeunit90(ReturnShptLine: Record "Return Shipment Line"; PurchLine: Record "Purchase Line")
     begin
-        SourceRecRef.GETTABLE(PurchLine);
-        TargetRecRef.GETTABLE(ReturnShptLine);
-        LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+        LongtextMgt.CopyLongtext(PurchLine, ReturnShptLine);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 96, 'OnBeforeInsertPurchOrderHeader', '', false, false)]
-    local procedure OnBeforeInsertPurchOrderHeader_Codeunit96(var PurchOrderHeader: Record "Purchase Header"; PurchQuoteHeader: Record "Purchase Header")
-    var
-        SourceRecRef: RecordRef;
-        TargetRecRef: RecordRef;
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Quote to Order", 'OnCreatePurchHeaderOnBeforePurchOrderHeaderModify', '', false, false)]
+    local procedure OnCreatePurchHeaderOnBeforePurchOrderHeaderModify_Codeunit96(PurchOrderHeader: Record "Purchase Header"; PurchHeader: Record "Purchase Header")
     begin
-        SourceRecRef.GETTABLE(PurchQuoteHeader);
-        TargetRecRef.GETTABLE(PurchOrderHeader);
-        LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+        LongtextMgt.CopyLongtext(PurchHeader, PurchOrderHeader);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 96, 'OnBeforeInsertPurchOrderLine', '', false, false)]
-    local procedure OnBeforeInsertPurchOrderLine_Codeunit96(var PurchOrderLine: Record "Purchase Line"; PurchOrderHeader: Record "Purchase Header"; PurchQuoteLine: Record "Purchase Line"; PurchQuoteHeader: Record "Purchase Header")
-    var
-        SourceRecRef: RecordRef;
-        TargetRecRef: RecordRef;
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Quote to Order", 'OnBeforeInsertPurchOrderLine', '', false, false)]
+    local procedure OnBeforeInsertPurchOrderLine_Codeunit96(PurchOrderLine: Record "Purchase Line"; PurchQuoteLine: Record "Purchase Line")
     begin
-        SourceRecRef.GETTABLE(PurchQuoteLine);
-        TargetRecRef.GETTABLE(PurchOrderLine);
-        LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+        LongtextMgt.CopyLongtext(PurchQuoteLine, PurchOrderLine);
     end;
 
     [EventSubscriber(ObjectType::Codeunit, 97, 'OnBeforeInsertPurchOrderHeader', '', false, false)]
-    local procedure OnBeforeInsertPurchOrderHeader_Codeunit97(var PurchOrderHeader: Record "Purchase Header"; BlanketOrderPurchHeader: Record "Purchase Header")
+    local procedure OnBeforeInsertPurchOrderHeader_Codeunit97(PurchOrderHeader: Record "Purchase Header"; BlanketOrderPurchHeader: Record "Purchase Header")
+    begin
+        LongtextMgt.CopyLongtext(BlanketOrderPurchHeader, PurchOrderHeader);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Blanket Purch. Order to Order", 'OnBeforeInsertPurchOrderLine', '', false, false)]
+    local procedure OnBeforeInsertPurchOrderLine_Codeunit97(PurchOrderLine: Record "Purchase Line"; BlanketOrderPurchLine: Record "Purchase Line")
+    begin
+        LongtextMgt.CopyLongtext(BlanketOrderPurchLine, PurchOrderLine);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"ArchiveManagement", 'OnAfterStoreSalesLineArchive', '', false, false)]
+    local procedure OnAfterStoreSalesLineArchive(SalesLine: Record "Sales Line"; SalesLineArchive: Record "Sales Line Archive")
+    begin
+        LongtextMgt.CopyLongtext(SalesLine, SalesLineArchive);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::ArchiveManagement, 'OnAfterStoreSalesDocument', '', false, false)]
+    local procedure OnAfterStoreSalesDocument(var SalesHeader: Record "Sales Header"; var SalesHeaderArchive: Record "Sales Header Archive");
+    begin
+        LongtextMgt.CopyLongtext(SalesHeader, SalesHeaderArchive);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"ArchiveManagement", 'OnAfterStorePurchLineArchive', '', false, false)]
+    local procedure OnAfterStorePurchLineArchive(PurchLine: Record "Purchase Line"; PurchLineArchive: Record "Purchase Line Archive")
+    begin
+        LongtextMgt.CopyLongtext(PurchLine, PurchLineArchive);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::ArchiveManagement, 'OnAfterStorePurchDocument', '', false, false)]
+    local procedure OnAfterStorePurchDocument(var PurchaseHeader: Record "Purchase Header"; var PurchaseHeaderArchive: Record "Purchase Header Archive");
+    begin
+        LongtextMgt.CopyLongtext(PurchaseHeader, PurchaseHeaderArchive);
+    end;
+
+    #region Copy Document Mgt
+    #region Copy Document Mgt - Header
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopySalesHeaderArchive', '', false, false)]
+    local procedure OnAfterCopySalesHeaderArchive(var ToSalesHeader: Record "Sales Header"; FromSalesHeaderArchive: Record "Sales Header Archive");
+    begin
+        LongtextMgt.CopyLongtext(FromSalesHeaderArchive, ToSalesHeader);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopyPostedReturnReceipt', '', false, false)]
+    local procedure OnAfterCopyPostedReturnReceipt(ToSalesHeader: Record "Sales Header"; ReturnReceiptHeader: Record "Return Receipt Header");
+    begin
+        LongtextMgt.CopyLongtext(ReturnReceiptHeader, ToSalesHeader);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterTransferFieldsFromCrMemoToInv', '', false, false)]
+    local procedure OnAfterTransferFieldsFromCrMemoToInv(ToSalesHeader: Record "Sales Header"; FromSalesCrMemoHeader: Record "Sales Cr.Memo Header");
+    begin
+        LongtextMgt.CopyLongtext(FromSalesCrMemoHeader, ToSalesHeader);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnCopySalesDocOnAfterTransferPostedInvoiceFields', '', false, false)]
+    local procedure OnCopySalesDocOnAfterTransferPostedInvoiceFields(ToSalesHeader: Record "Sales Header"; SalesInvoiceHeader: Record "Sales Invoice Header");
+    begin
+        LongtextMgt.CopyLongtext(SalesInvoiceHeader, ToSalesHeader);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopyPostedShipment', '', false, false)]
+    local procedure OnAfterCopyPostedShipment(ToSalesHeader: Record "Sales Header"; FromSalesShipmentHeader: Record "Sales Shipment Header");
+    begin
+        LongtextMgt.CopyLongtext(FromSalesShipmentHeader, ToSalesHeader);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopySalesHeader', '', false, false)]
+    local procedure OnAfterCopySalesHeader(ToSalesHeader: Record "Sales Header"; FromSalesHeader: Record "Sales Header");
+    begin
+        LongtextMgt.CopyLongtext(FromSalesHeader, ToSalesHeader);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnCopyPurchDocWithHeader', '', false, false)]
+    // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopyPurchaseHeader', '', false, false)] //TODO: use the specific event once MS changes it
+    local procedure OnAfterCopyPurchaseHeader(ToPurchHeader: Record "Purchase Header"; FromDocType: Option; FromDocNo: Code[20]);
     var
-        SourceRecRef: RecordRef;
-        TargetRecRef: RecordRef;
+        FromPurchaseHeader: Record "Purchase Header";
+        CopyDocumentMgt: Codeunit "Copy Document Mgt.";
+        FromDocType2: Enum "Purchase Document Type From";
     begin
-        SourceRecRef.GETTABLE(BlanketOrderPurchHeader);
-        TargetRecRef.GETTABLE(PurchOrderHeader);
-        LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
-    end;
-
-    [EventSubscriber(ObjectType::Codeunit, 97, 'OnBeforeInsertPurchOrderLine', '', false, false)]
-    local procedure OnBeforeInsertPurchOrderLine_Codeunit97(var PurchOrderLine: Record "Purchase Line"; PurchOrderHeader: Record "Purchase Header"; BlanketOrderPurchLine: Record "Purchase Line"; BlanketOrderPurchHeader: Record "Purchase Header")
-    var
-        SourceRecRef: RecordRef;
-        TargetRecRef: RecordRef;
-    begin
-        SourceRecRef.GETTABLE(BlanketOrderPurchLine);
-        TargetRecRef.GETTABLE(PurchOrderLine);
-        LeBitLongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
-    end;
-
-    [EventSubscriber(ObjectType::Codeunit, 5063, 'OnAfterStoreSalesLineArchive', '', false, false)]
-    local procedure OnAfterStoreSalesLineArchive_Codeunit5063(var SalesHeader: Record "Sales Header"; var SalesLine: Record "Sales Line"; var SalesHeaderArchive: Record "Sales Header Archive"; var SalesLineArchive: Record "Sales Line Archive")
-    begin
-        LeBitLongtextMgt.CopyLongTextForSalesArchivMgt(SalesHeader, SalesLine, SalesHeaderArchive, SalesLineArchive);
-    end;
-
-    [EventSubscriber(ObjectType::Codeunit, 5063, 'OnAfterStorePurchLineArchive', '', false, false)]
-    local procedure OnAfterStorePurchLineArchive_Codeunit5063(var PurchHeader: Record "Purchase Header"; var PurchLine: Record "Purchase Line"; var PurchHeaderArchive: Record "Purchase Header Archive"; var PurchLineArchive: Record "Purchase Line Archive")
-    begin
-        LeBitLongtextMgt.CopyLongTextForPurchArchivMgt(PurchHeader, PurchLine, PurchHeaderArchive, PurchLineArchive);
-    end;
-
-    [EventSubscriber(ObjectType::Codeunit, 6620, 'OnCopySalesDocWithHeader', '', false, false)]
-    local procedure OnCopySalesDocWithHeader_Codeunit6620(FromDocType: Option; FromDocNo: Code[20]; var ToSalesHeader: Record "Sales Header")
-    begin
-        LeBitCorrespDocSingleInst.SetWithSalesHeader(true);
-    end;
-
-    [EventSubscriber(ObjectType::Codeunit, 6620, 'OnAfterUpdateSalesLine', '', false, false)]
-    local procedure OnAfterUpdateSalesLine_Codeunit6620(var ToSalesHeader: Record "Sales Header"; var ToSalesLine: Record "Sales Line"; var FromSalesHeader: Record "Sales Header"; var FromSalesLine: Record "Sales Line"; var CopyThisLine: Boolean; RecalculateAmount: Boolean; FromSalesDocType: Option; var CopyPostedDeferral: Boolean)
-    begin
-        LeBitLongtextMgt.CopyLongTextForSalesCopyMgt(ToSalesHeader, ToSalesLine, FromSalesHeader, FromSalesLine, CopyThisLine, FromSalesDocType, LeBitCorrespDocSingleInst.GetWithSalesHeader());
-        LeBitCorrespDocSingleInst.SetWithSalesHeader(false);
-    end;
-
-    [EventSubscriber(ObjectType::Codeunit, 6620, 'OnBeforeModifyPurchHeader', '', false, false)]
-    local procedure OnBeforeModifyPurchHeader_Codeunit6620(var ToPurchHeader: Record "Purchase Header"; FromDocType: Option; FromDocNo: Code[20]; IncludeHeader: Boolean)
-    begin
-        LeBitCorrespDocSingleInst.SetWithPurchHeader(true);
-    end;
-
-    [EventSubscriber(ObjectType::Codeunit, 6620, 'OnAfterUpdatePurchLine', '', false, false)]
-    local procedure OnAfterUpdatePurchLine_Codeunit6620(var ToPurchHeader: Record "Purchase Header"; var ToPurchLine: Record "Purchase Line"; var FromPurchHeader: Record "Purchase Header"; var FromPurchLine: Record "Purchase Line"; var CopyThisLine: Boolean; RecalculateAmount: Boolean; FromPurchDocType: Option; var CopyPostedDeferral: Boolean)
-    begin
-        LeBitLongtextMgt.CopyLongTextForPurchCopyMgt(ToPurchHeader, ToPurchLine, FromPurchHeader, FromPurchLine, CopyThisLine, FromPurchDocType, LeBitCorrespDocSingleInst.GetWithPurchHeader());
-        LeBitCorrespDocSingleInst.SetWithPurchHeader(false);
-    end;
-
-    [EventSubscriber(ObjectType::Codeunit, 6620, 'OnAfterCopySalesDocument', '', false, false)]
-    local procedure OnAfterCopySalesDocument_Codeunit6620(FromDocumentType: Option; FromDocumentNo: Code[20]; var ToSalesHeader: Record "Sales Header")
-    begin
-        LeBitCorrespDocMgt.SalesLineIndentTotaling(ToSalesHeader);
-    end;
-
-    [EventSubscriber(ObjectType::Codeunit, 6620, 'OnAfterCopyPurchaseDocument', '', false, false)]
-    local procedure OnAfterCopyPurchaseDocument_Codeunit6620(FromDocumentType: Option; FromDocumentNo: Code[20]; var ToPurchaseHeader: Record "Purchase Header")
-    begin
-        LeBitCorrespDocMgt.PurchLineIndentTotaling(ToPurchaseHeader);
-    end;
-
-    [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnBeforeRecreateSalesLines', '', false, false)]
-    local procedure OnBeforeRecreateSalesLines_Table36(VAR SalesHeader: Record "Sales Header")
-    var
-        SalesLine: Record "Sales Line";
-        LeBitPSLongtextLine: Record "lbt PS Longtext Line";
-        TempLeBitPSLongtextLine: Record "lbt PS Longtext Line" temporary;
-    begin
-        with SalesHeader do begin
-            SalesLine.Reset();
-            SalesLine.SetRange("Document Type", "Document Type");
-            SalesLine.SetRange("Document No.", "No.");
-            if SalesLine.FindSet() then begin
-                LeBitPSLongtextLine.SetRange("Table ID", Database::"Sales Line");
-                LeBitPSLongtextLine.SetRange("Document Type", SalesLine."Document Type");
-                LeBitPSLongtextLine.SetRange("Document No.", SalesLine."Document No.");
-                LeBitPSLongtextLine.SetRange(Position, LeBitPSLongtextLine.Position::Longtext);
-                LeBitTransferPSLongtextLineToTemp(LeBitPSLongtextLine, TempLeBitPSLongtextLine);
-            end;
+        FromDocType2 := "Purchase Document Type From".FromInteger(FromDocType);
+        case FromDocType2 of
+            "Purchase Document Type From"::Quote,
+            "Purchase Document Type From"::"Blanket Order",
+            "Purchase Document Type From"::Order,
+            "Purchase Document Type From"::Invoice,
+            "Purchase Document Type From"::"Return Order",
+            "Purchase Document Type From"::"Credit Memo":
+                begin
+                    FromPurchaseHeader.Get(CopyDocumentMgt.GetPurchaseDocumentType(FromDocType2), FromDocNo);
+                    LongtextMgt.CopyLongtext(FromPurchaseHeader, ToPurchHeader);
+                end;
         end;
     end;
 
-    [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnAfterRecreateSalesLine', '', false, false)]
-    local procedure OnAfterRecreateSalesLine_Table36(var SalesLine: Record "Sales Line"; var TempSalesLine: Record "Sales Line")
-    var
-        LeBitPSLongtextLine: Record "lbt PS Longtext Line";
-        TempLeBitPSLongtextLine: Record "lbt PS Longtext Line" temporary;
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopyPostedReceipt', '', false, false)]
+    local procedure OnAfterCopyPostedReceipt(var ToPurchaseHeader: Record "Purchase Header"; FromPurchRcptHeader: Record "Purch. Rcpt. Header");
     begin
-        TempLeBitPSLongtextLine.SetRange("Table ID", Database::"Sales Line");
-        TempLeBitPSLongtextLine.SetRange("Document Type", TempSalesLine."Document Type");
-        TempLeBitPSLongtextLine.SetRange("Document No.", TempSalesLine."Document No.");
-        TempLeBitPSLongtextLine.SetRange(Position, TempLeBitPSLongtextLine.Position::Longtext);
-        TempLeBitPSLongtextLine.SetRange("Document Line No.", TempSalesLine."Line No.");
-        if TempLeBitPSLongtextLine.FindSet() then
+        LongtextMgt.CopyLongtext(FromPurchRcptHeader, ToPurchaseHeader);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopyPostedPurchInvoice', '', false, false)]
+    local procedure OnAfterCopyPostedPurchInvoice(ToPurchaseHeader: Record "Purchase Header"; FromPurchInvHeader: Record "Purch. Inv. Header");
+    begin
+        LongtextMgt.CopyLongtext(FromPurchInvHeader, ToPurchaseHeader);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopyPostedReturnShipment', '', false, false)]
+    local procedure OnAfterCopyPostedReturnShipment(var ToPurchaseHeader: Record "Purchase Header"; FromReturnShipmentHeader: Record "Return Shipment Header");
+    begin
+        LongtextMgt.CopyLongtext(FromReturnShipmentHeader, ToPurchaseHeader);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopyPurchHeaderFromPostedCreditMemo', '', false, false)]
+    local procedure OnAfterCopyPurchHeaderFromPostedCreditMemo(var ToPurchaseHeader: Record "Purchase Header"; FromPurchCrMemoHeader: Record "Purch. Cr. Memo Hdr.");
+    begin
+        LongtextMgt.CopyLongtext(FromPurchCrMemoHeader, ToPurchaseHeader);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopyPurchHeaderArchive', '', false, false)]
+    local procedure OnAfterCopyPurchHeaderArchive(var ToPurchaseHeader: Record "Purchase Header"; FromPurchaseHeaderArchive: Record "Purchase Header Archive");
+    begin
+        LongtextMgt.CopyLongtext(FromPurchaseHeaderArchive, ToPurchaseHeader);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopySalesDocument', '', false, false)]
+    local procedure OnAfterCopySalesDocument_Codeunit6620(FromDocumentType: Option; FromDocumentNo: Code[20]; var ToSalesHeader: Record "Sales Header")
+    begin
+        CorrespDocMgt.SalesLineIndentTotaling(ToSalesHeader);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopyPurchaseDocument', '', false, false)]
+    local procedure OnAfterCopyPurchaseDocument_Codeunit6620(FromDocumentType: Option; FromDocumentNo: Code[20]; var ToPurchaseHeader: Record "Purchase Header")
+    begin
+        CorrespDocMgt.PurchLineIndentTotaling(ToPurchaseHeader);
+    end;
+
+    #endregion
+    #region Copy Document Mgt - Lines
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopySalesLineFromSalesDocSalesLine', '', false, false)]
+    local procedure OnAfterCopySalesLineFromSalesDocSalesLine(ToSalesLine: Record "Sales Line"; FromSalesLine: Record "Sales Line");
+    begin
+        LongtextMgt.CopyLongtext(FromSalesLine, ToSalesLine);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopySalesLineFromSalesShptLineBuffer', '', false, false)]
+    local procedure OnAfterCopySalesLineFromSalesShptLineBuffer(ToSalesLine: Record "Sales Line"; FromSalesShipmentLine: Record "Sales Shipment Line");
+    begin
+        LongtextMgt.CopyLongtext(FromSalesShipmentLine, ToSalesLine);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopySalesLineFromSalesLineBuffer', '', false, false)]
+    local procedure OnAfterCopySalesLineFromSalesLineBuffer(ToSalesLine: Record "Sales Line"; FromSalesInvLine: Record "Sales Invoice Line");
+    begin
+        LongtextMgt.CopyLongtext(FromSalesInvLine, ToSalesLine);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopySalesLineFromReturnRcptLineBuffer', '', false, false)]
+    local procedure OnAfterCopySalesLineFromReturnRcptLineBuffer(ToSalesLine: Record "Sales Line"; FromReturnReceiptLine: Record "Return Receipt Line");
+    begin
+        LongtextMgt.CopyLongtext(FromReturnReceiptLine, ToSalesLine);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopySalesLineFromSalesCrMemoLineBuffer', '', false, false)]
+    local procedure OnAfterCopySalesLineFromSalesCrMemoLineBuffer(ToSalesLine: Record "Sales Line"; FromSalesCrMemoLine: Record "Sales Cr.Memo Line");
+    begin
+        LongtextMgt.CopyLongtext(FromSalesCrMemoLine, ToSalesLine);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopyArchSalesLine', '', false, false)]
+    local procedure OnAfterCopyArchSalesLine(ToSalesLine: Record "Sales Line"; FromSalesLineArchive: Record "Sales Line Archive");
+    begin
+        LongtextMgt.CopyLongtext(FromSalesLineArchive, ToSalesLine);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnCopyPurchDocPurchLineOnAfterCopyPurchLine', '', false, false)]
+    local procedure OnCopyPurchDocPurchLineOnAfterCopyPurchLine(ToPurchLine: Record "Purchase Line"; FromPurchLine: Record "Purchase Line");
+    begin
+        LongtextMgt.CopyLongtext(FromPurchLine, ToPurchLine);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopyPurchRcptLine', '', false, false)]
+    local procedure OnAfterCopyPurchRcptLine(ToPurchaseLine: Record "Purchase Line"; FromPurchRcptLine: Record "Purch. Rcpt. Line");
+    begin
+        LongtextMgt.CopyLongtext(FromPurchRcptLine, ToPurchaseLine);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopyPurchInvLine', '', false, false)]
+    local procedure OnAfterCopyPurchInvLine(FromPurchInvLine: Record "Purch. Inv. Line"; ToPurchaseLine: Record "Purchase Line");
+    begin
+        LongtextMgt.CopyLongtext(FromPurchInvLine, ToPurchaseLine);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopyReturnShptLine', '', false, false)]
+    local procedure OnAfterCopyReturnShptLine(FromReturnShipmentLine: Record "Return Shipment Line"; ToPurchaseLine: Record "Purchase Line");
+    begin
+        LongtextMgt.CopyLongtext(FromReturnShipmentLine, ToPurchaseLine);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopyPurchCrMemoLine', '', false, false)]
+    local procedure OnAfterCopyPurchCrMemoLine(FromPurchCrMemoLine: Record "Purch. Cr. Memo Line"; ToPurchaseLine: Record "Purchase Line");
+    begin
+        LongtextMgt.CopyLongtext(FromPurchCrMemoLine, ToPurchaseLine);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopyArchPurchLine', '', false, false)]
+    local procedure OnAfterCopyArchPurchLine(ToPurchaseLine: Record "Purchase Line"; FromPurchaseLineArchive: Record "Purchase Line Archive");
+    begin
+        LongtextMgt.CopyLongtext(FromPurchaseLineArchive, ToPurchaseLine);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterUpdateSalesLine', '', false, false)] //TODO:
+    local procedure OnAfterUpdateSalesLine_Codeunit6620(var ToSalesHeader: Record "Sales Header"; var ToSalesLine: Record "Sales Line"; var FromSalesHeader: Record "Sales Header"; var FromSalesLine: Record "Sales Line"; var CopyThisLine: Boolean; RecalculateAmount: Boolean; FromSalesDocType: Option; var CopyPostedDeferral: Boolean)
+    begin
+        LongtextMgt.CopyFieldInfoAfterCreateSalesLine(ToSalesLine, FromSalesLine, false);
+    end;
+
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterUpdatePurchLine', '', false, false)] //TODO
+    local procedure OnAfterUpdatePurchLine_Codeunit6620(var ToPurchHeader: Record "Purchase Header"; var ToPurchLine: Record "Purchase Line"; var FromPurchHeader: Record "Purchase Header"; var FromPurchLine: Record "Purchase Line"; var CopyThisLine: Boolean; RecalculateAmount: Boolean; FromPurchDocType: Option; var CopyPostedDeferral: Boolean)
+    begin
+        LongtextMgt.CopyFieldInfoAfterCreatePurchLine(ToPurchLine, FromPurchLine, false);
+    end;
+
+
+    #endregion
+    #endregion
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnBeforeRecreateSalesLines', '', false, false)]
+    local procedure OnBeforeRecreateSalesLines_Table36(SalesHeader: Record "Sales Header")
+    var
+        PSLongtextLine: Record "lbt PS Longtext Line";
+        TempPSLongtextLine: Record "lbt PS Longtext Line" temporary;
+    begin
+        PSLongtextLine.SetRange("Table ID", Database::"Sales Line");
+        PSLongtextLine.SetRange("Document Type", SalesHeader."Document Type");
+        PSLongtextLine.SetRange("Document No.", SalesHeader."No.");
+        PSLongtextLine.SetRange(Position, PSLongtextLine.Position::Longtext);
+        SalesHeader.lbtTransferPSLongtextLineToTemp(PSLongtextLine, TempPSLongtextLine);
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnAfterRecreateSalesLine', '', false, false)]
+    local procedure OnAfterRecreateSalesLine_Table36(SalesLine: Record "Sales Line"; TempSalesLine: Record "Sales Line")
+    var
+        PSLongtextLine: Record "lbt PS Longtext Line";
+        TempPSLongtextLine: Record "lbt PS Longtext Line" temporary;
+    begin
+        TempPSLongtextLine.SetRange("Table ID", Database::"Sales Line");
+        TempPSLongtextLine.SetRange("Document Type", TempSalesLine."Document Type");
+        TempPSLongtextLine.SetRange("Document No.", TempSalesLine."Document No.");
+        TempPSLongtextLine.SetRange(Position, TempPSLongtextLine.Position::Longtext);
+        TempPSLongtextLine.SetRange("Document Line No.", TempSalesLine."Line No.");
+        if TempPSLongtextLine.FindSet() then
             repeat
-                LeBitPSLongtextLine.Init();
-                LeBitPSLongtextLine := TempLeBitPSLongtextLine;
-                LeBitPSLongtextLine."Document Line No." := SalesLine."Line No.";
-                LeBitPSLongtextLine.Insert();
-            until TempLeBitPSLongtextLine.Next() = 0;
+                PSLongtextLine.Init();
+                PSLongtextLine := TempPSLongtextLine;
+                PSLongtextLine."Document Line No." := SalesLine."Line No.";
+                PSLongtextLine.Insert();
+            until TempPSLongtextLine.Next() = 0;
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnBeforeRecreatePurchLines', '', false, false)]
@@ -464,307 +505,67 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LeBitPSLongtextLine: Record "lbt PS Longtext Line";
         TempLeBitPSLongtextLine: Record "lbt PS Longtext Line" temporary;
     begin
-        with PurchHeader do begin
-            LeBitPSLongtextLine.SetRange("Table ID", Database::"Purchase Line");
-            LeBitPSLongtextLine.SetRange("Document Type", PurchHeader."Document Type");
-            LeBitPSLongtextLine.SetRange("Document No.", PurchHeader."No.");
-            LeBitPSLongtextLine.SetRange(Position, LeBitPSLongtextLine.Position::Longtext);
-            LeBitTransferPSLongtextLineToTemp(LeBitPSLongtextLine, TempLeBitPSLongtextLine);
-        end;
+        LeBitPSLongtextLine.SetRange("Table ID", Database::"Purchase Line");
+        LeBitPSLongtextLine.SetRange("Document Type", PurchHeader."Document Type");
+        LeBitPSLongtextLine.SetRange("Document No.", PurchHeader."No.");
+        LeBitPSLongtextLine.SetRange(Position, LeBitPSLongtextLine.Position::Longtext);
+        PurchHeader.lbtTransferPSLongtextLineToTemp(LeBitPSLongtextLine, TempLeBitPSLongtextLine);
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterRecreatePurchLine', '', false, false)]
     local procedure OnAfterRecreatePurchLine_Table38(var PurchLine: Record "Purchase Line"; var TempPurchLine: Record "Purchase Line")
     var
-        LeBitPSLongtextLine: Record "lbt PS Longtext Line";
-        TempLeBitPSLongtextLine: Record "lbt PS Longtext Line" temporary;
-        PurchHeader: Record "Purchase Header";
+        PSLongtextLine: Record "lbt PS Longtext Line";
+        TempPSLongtextLine: Record "lbt PS Longtext Line" temporary;
+        PurchaseHeader: Record "Purchase Header";
     begin
-        with TempPurchLine do begin
-            TempLeBitPSLongtextLine.SetRange("Table ID", Database::"Purchase Line");
-            TempLeBitPSLongtextLine.SetRange("Document Type", TempPurchLine."Document Type");
-            TempLeBitPSLongtextLine.SetRange("Document No.", TempPurchLine."Document No.");
-            TempLeBitPSLongtextLine.SetRange(Position, TempLeBitPSLongtextLine.Position::Longtext);
-            TempLeBitPSLongtextLine.SetRange("Document Line No.", TempPurchLine."Line No.");
-            if TempLeBitPSLongtextLine.FindSet() then
-                repeat
-                    LeBitPSLongtextLine.Init();
-                    LeBitPSLongtextLine := TempLeBitPSLongtextLine;
-                    LeBitPSLongtextLine."Document Line No." := PurchLine."Line No.";
-                    LeBitPSLongtextLine.Insert();
-                until TempLeBitPSLongtextLine.Next() = 0;
-            PurchHeader.OnAfterCreatePurchLine(PurchLine, TempPurchLine);
-        end;
+        TempPSLongtextLine.SetRange("Table ID", Database::"Purchase Line");
+        TempPSLongtextLine.SetRange("Document Type", TempPurchLine."Document Type");
+        TempPSLongtextLine.SetRange("Document No.", TempPurchLine."Document No.");
+        TempPSLongtextLine.SetRange(Position, TempPSLongtextLine.Position::Longtext);
+        TempPSLongtextLine.SetRange("Document Line No.", TempPurchLine."Line No.");
+        if TempPSLongtextLine.FindSet() then
+            repeat
+                PSLongtextLine.Init();
+                PSLongtextLine := TempPSLongtextLine;
+                PSLongtextLine."Document Line No." := PurchLine."Line No.";
+                PSLongtextLine.Insert();
+            until TempPSLongtextLine.Next() = 0;
+        PurchaseHeader.lbtOnAfterCreatePurchLine(PurchLine, TempPurchLine);
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterCalcVATAmountLines', '', false, false)]
     local procedure OnAfterCalcVATAmountLines_Table37(var SalesLine: Record "Sales Line"; var VATAmountLine: Record "VAT Amount Line")
     begin
-        with SalesLine do
-            VATAmountLine."VAT Clause Code" := "VAT Clause Code";
-
+        VATAmountLine."VAT Clause Code" := SalesLine."VAT Clause Code";
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnCopyArchSalesLineOnAfterToSalesLineInsert', '', false, false)]
-    local procedure OnCopyArchSalesLineOnAfterToSalesLineInsert_Codeunit6620(FromSalesLineArchive: Record "Sales Line Archive"; var ToSalesLine: Record "Sales Line")
-    var
-        FromSalesHeader: Record "Sales Header";
-        FromSalesLine: Record "Sales Line";
-        FromSalesHeaderArchive: Record "Sales Header Archive";
-        ToSalesHeader: Record "Sales Header";
-        SalesDocType: Option Quote,"Blanket Order","Order",Invoice,"Return Order","Credit Memo","Posted Shipment","Posted Invoice","Posted Return Receipt","Posted Credit Memo","Arch. Quote","Arch. Order","Arch. Blanket Order","Arch. Return Order";
-        DummyCopyThisLine: Boolean;
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post Prepayments", 'OnAfterFillInvLineBuffer', '', false, false)]
+    local procedure OnAfterFillInvLineBuffer(var PrepmtInvLineBuf: Record "Prepayment Inv. Line Buffer"; SalesLine: Record "Sales Line");
     begin
-        DummyCopyThisLine := true;
-        FromSalesHeaderArchive.Get(FromSalesLineArchive."Document Type", FromSalesLineArchive."document No.", FromSalesLineArchive."Doc. No. Occurrence", FromSalesLineArchive."Version No.");
-        ToSalesHeader.get(ToSalesLine."Document Type", ToSalesLine."Document No.");
-        FromSalesHeader.TransferFields(FromSalesHeaderArchive);
-        FromSalesLine.TransferFields(FromSalesLineArchive);
-        case FromSalesHeaderArchive."Document Type" of
-            FromSalesHeaderArchive."Document Type"::"Blanket Order":
-                SalesDocType := SalesDocType::"Arch. Blanket Order";
-            FromSalesHeaderArchive."Document Type"::Order:
-                SalesDocType := SalesDocType::"Arch. Order";
-            FromSalesHeaderArchive."Document Type"::Quote:
-                SalesDocType := SalesDocType::"Arch. Quote";
-            FromSalesHeaderArchive."Document Type"::"Return Order":
-                SalesDocType := SalesDocType::"Arch. Return Order";
-        end;
-        LeBitCorrespDocMgt.SetGetSalesArchivValues(FromSalesHeaderArchive."Doc. No. Occurrence", FromSalesHeaderArchive."Version No.");
-        LeBitLongtextMgt.CopyLongTextForSalesCopyMgt(ToSalesHeader, ToSalesLine, FromSalesHeader, FromSalesLine, DummyCopyThisLine, SalesDocType, LeBitCorrespDocSingleInst.GetWithSalesHeader());
-        LeBitCorrespDocSingleInst.SetWithSalesHeader(false);
+        PrepmtInvLineBuf."lbt Indentation" := SalesLine."lbt Indentation";
+        PrepmtInvLineBuf."lbt Pos. No." := SalesLine."lbt Pos. No.";
+        PrepmtInvLineBuf."lbt Printoption" := SalesLine."lbt Printoption";
+        PrepmtInvLineBuf."lbt Summation" := SalesLine."lbt Summation";
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, codeunit::"Copy Document Mgt.", 'OnCopyArchPurchLineOnAfterToPurchLineInsert', '', false, false)]
-    local procedure OnCopyArchPurchLineOnAfterToPurchLineInsert_Codeunit6620(FromPurchLineArchive: Record "Purchase Line Archive"; var ToPurchLine: Record "Purchase Line")
-    var
-        FromPurchaseHeader: Record "Purchase Header";
-        FromPurchaseLine: Record "Purchase Line";
-        FromPurchaseHeaderArchive: Record "Purchase Header Archive";
-        ToPurchHeader: Record "Purchase Header";
-        PurchDocType: Option Quote,"Blanket Order","Order",Invoice,"Return Order","Credit Memo","Posted Receipt","Posted Invoice","Posted Return Shipment","Posted Credit Memo","Arch. Quote","Arch. Order","Arch. Blanket Order","Arch. Return Order";
-        DummyCopyThisLine: Boolean;
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post Prepayments", 'OnBeforeSalesInvLineInsert', '', false, false)]
+    local procedure OnBeforeSalesInvLineInsert(var SalesInvLine: Record "Sales Invoice Line"; SalesInvHeader: Record "Sales Invoice Header"; PrepmtInvLineBuffer: Record "Prepayment Inv. Line Buffer"; CommitIsSuppressed: Boolean);
     begin
-        DummyCopyThisLine := true;
-        FromPurchaseHeaderArchive.Get(FromPurchLineArchive."Document Type", FromPurchLineArchive."document No.", FromPurchLineArchive."Doc. No. Occurrence", FromPurchLineArchive."Version No.");
-        ToPurchHeader.get(ToPurchLine."Document Type", ToPurchLine."Document No.");
-        FromPurchaseHeader.TransferFields(FromPurchaseHeaderArchive);
-        FromPurchaseLine.TransferFields(FromPurchLineArchive);
-        case FromPurchaseHeaderArchive."Document Type" of
-            FromPurchaseHeaderArchive."Document Type"::"Blanket Order":
-                PurchDocType := PurchDocType::"Arch. Blanket Order";
-            FromPurchaseHeaderArchive."Document Type"::Order:
-                PurchDocType := PurchDocType::"Arch. Order";
-            FromPurchaseHeaderArchive."Document Type"::Quote:
-                PurchDocType := PurchDocType::"Arch. Quote";
-            FromPurchaseHeaderArchive."Document Type"::"Return Order":
-                PurchDocType := PurchDocType::"Arch. Return Order";
-        end;
-        LeBitCorrespDocMgt.SetGetPurchArchivValues(FromPurchaseHeaderArchive."Doc. No. Occurrence", FromPurchaseHeaderArchive."Version No.");
-        LeBitLongtextMgt.CopyLongTextForPurchCopyMgt(ToPurchHeader, ToPurchLine, FromPurchaseHeader, FromPurchaseLine, DummyCopyThisLine, PurchDocType, LeBitCorrespDocSingleInst.GetWithPurchHeader());
-        LeBitCorrespDocSingleInst.SetWithPurchHeader(false);
+        SalesInvLine."lbt Indentation" := PrepmtInvLineBuffer."lbt Indentation";
+        SalesInvLine."lbt Pos. No." := PrepmtInvLineBuffer."lbt Pos. No.";
+        SalesInvLine."lbt Printoption" := PrepmtInvLineBuffer."lbt Printoption";
+        SalesInvLine."lbt Summation" := PrepmtInvLineBuffer."lbt Summation";
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnBeforeCopySalesDocument', '', false, false)]
-    local procedure OnBeforeCopySalesDocument_Codeunit6620(FromDocumentType: Option; FromDocumentNo: Code[20]; var ToSalesHeader: Record "Sales Header")
-    var
-        SalesLine: Record "Sales Line";
-        SalesShipmentLine: Record "Sales Shipment Line";
-        SalesInvoiceLine: Record "Sales Invoice Line";
-        ReturnReceiptLine: Record "Return Receipt Line";
-        SalesCrMemoLine: Record "Sales Cr.Memo Line";
-        SalesLineArchive: Record "Sales Line Archive";
-        SalesDocType: Option Quote,"Blanket Order","Order",Invoice,"Return Order","Credit Memo","Posted Shipment","Posted Invoice","Posted Return Receipt","Posted Credit Memo","Arch. Quote","Arch. Order","Arch. Blanket Order","Arch. Return Order";
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post Prepayments", 'OnBeforeSalesCrMemoLineInsert', '', false, false)]
+    local procedure OnBeforeSalesCrMemoLineInsert(var SalesCrMemoLine: Record "Sales Cr.Memo Line"; SalesCrMemoHeader: Record "Sales Cr.Memo Header"; PrepmtInvLineBuffer: Record "Prepayment Inv. Line Buffer"; CommitIsSuppressed: Boolean);
     begin
-        case FromDocumentType of
-            SalesDocType::Quote,
-            SalesDocType::"Blanket Order",
-            SalesDocType::Order,
-            SalesDocType::Invoice,
-            SalesDocType::"Return Order",
-            SalesDocType::"Credit Memo":
-                begin
-                    case FromDocumentType of
-                        SalesDocType::Quote:
-                            SalesLine.SetRange("Document Type", SalesLine."Document Type"::Quote);
-                        SalesDocType::"Blanket Order":
-                            SalesLine.SetRange("Document Type", SalesLine."Document Type"::"Blanket Order");
-                        SalesDocType::Order:
-                            SalesLine.SetRange("Document Type", SalesLine."Document Type"::Order);
-                        SalesDocType::Invoice:
-                            SalesLine.SetRange("Document Type", SalesLine."Document Type"::Invoice);
-                        SalesDocType::"Return Order":
-                            SalesLine.SetRange("Document Type", SalesLine."Document Type"::"Return Order");
-                        SalesDocType::"Credit Memo":
-                            SalesLine.SetRange("Document Type", SalesLine."Document Type"::"Credit Memo");
-                    end;
-                    SalesLine.SetRange("Document No.", FromDocumentNo);
-                    IF SalesLine.FindSet() then
-                        repeat
-                            SalesLine."lbt Source Document Line No." := SalesLine."Line No.";
-                            SalesLine.modify();
-                        until SalesLine.Next() = 0;
-                end;
-            SalesDocType::"Posted Shipment":
-                begin
-                    SalesShipmentLine.SetRange("Document No.", FromDocumentNo);
-                    IF SalesShipmentLine.FindSet() then
-                        repeat
-                            SalesShipmentLine."lbt Source Document Line No." := SalesShipmentLine."Line No.";
-                            SalesShipmentLine.modify();
-                        until SalesShipmentLine.Next() = 0;
-                end;
-            SalesDocType::"Posted Invoice":
-                begin
-                    SalesInvoiceLine.SetRange("Document No.", FromDocumentNo);
-                    IF SalesInvoiceLine.FindSet() then
-                        repeat
-                            SalesInvoiceLine."lbt Source Document Line No." := SalesInvoiceLine."Line No.";
-                            SalesInvoiceLine.modify();
-                        until SalesInvoiceLine.Next() = 0;
-                end;
-            SalesDocType::"Posted Return Receipt":
-                begin
-                    ReturnReceiptLine.SetRange("Document No.", FromDocumentNo);
-                    IF ReturnReceiptLine.FindSet() then
-                        repeat
-                            ReturnReceiptLine."lbt Source Document Line No." := ReturnReceiptLine."Line No.";
-                            ReturnReceiptLine.modify();
-                        until ReturnReceiptLine.Next() = 0;
-                end;
-            SalesDocType::"Posted Credit Memo":
-                begin
-                    SalesCrMemoLine.SetRange("Document No.", FromDocumentNo);
-                    IF SalesCrMemoLine.FindSet() then
-                        repeat
-                            SalesCrMemoLine."lbt Source Document Line No." := SalesCrMemoLine."Line No.";
-                            SalesCrMemoLine.modify();
-                        until SalesCrMemoLine.Next() = 0;
-                end;
-            SalesDocType::"Arch. Quote",
-            SalesDocType::"Arch. Order",
-            SalesDocType::"Arch. Blanket Order",
-            SalesDocType::"Arch. Return Order":
-                begin
-                    case FromDocumentType of
-                        SalesDocType::"Arch. Quote":
-                            SalesLineArchive.SetRange("Document Type", SalesLineArchive."Document Type"::Quote);
-                        SalesDocType::"Arch. Order":
-                            SalesLineArchive.SetRange("Document Type", SalesLineArchive."Document Type"::Order);
-                        SalesDocType::"Arch. Blanket Order":
-                            SalesLineArchive.SetRange("Document Type", SalesLineArchive."Document Type"::"Blanket Order");
-                        SalesDocType::"Arch. Return Order":
-                            SalesLineArchive.SetRange("Document Type", SalesLineArchive."Document Type"::"Return Order");
-                    end;
-                    SalesLineArchive.SetRange("Document No.", FromDocumentNo);
-                    IF SalesLineArchive.FindSet() then
-                        repeat
-                            SalesLineArchive."lbt Source Document Line No." := SalesLineArchive."Line No.";
-                            SalesLineArchive.modify();
-                        until SalesLineArchive.Next() = 0;
-                end;
-        end;
+        SalesCrMemoLine."lbt Indentation" := PrepmtInvLineBuffer."lbt Indentation";
+        SalesCrMemoLine."lbt Pos. No." := PrepmtInvLineBuffer."lbt Pos. No.";
+        SalesCrMemoLine."lbt Printoption" := PrepmtInvLineBuffer."lbt Printoption";
+        SalesCrMemoLine."lbt Summation" := PrepmtInvLineBuffer."lbt Summation";
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnBeforeCopyPurchaseDocument', '', false, false)]
-    local procedure OnBeforeCopyPurchaseDocument_Codeunit6620(FromDocumentType: Option; FromDocumentNo: Code[20]; var ToPurchaseHeader: Record "Purchase Header")
-    var
-        PurchLine: Record "Purchase Line";
-        PurchRcptLine: Record "Purch. Rcpt. Line";
-        PurchInvLine: Record "Purch. Inv. Line";
-        ReturnShipmentLine: Record "Return Shipment Line";
-        PurchCrMemoLine: Record "Purch. Cr. Memo Line";
-        PurchLineArchive: Record "Purchase Line Archive";
-        PurchDocType: Option Quote,"Blanket Order","Order",Invoice,"Return Order","Credit Memo","Posted Receipt","Posted Invoice","Posted Return Shipment","Posted Credit Memo","Arch. Quote","Arch. Order","Arch. Blanket Order","Arch. Return Order";
-    begin
-        case FromDocumentType of
-            PurchDocType::Quote,
-            PurchDocType::"Blanket Order",
-            PurchDocType::Order,
-            PurchDocType::Invoice,
-            PurchDocType::"Return Order",
-            PurchDocType::"Credit Memo":
-                begin
-                    case FromDocumentType of
-                        PurchDocType::Quote:
-                            PurchLine.SetRange("Document Type", PurchLine."Document Type"::Quote);
-                        PurchDocType::"Blanket Order":
-                            PurchLine.SetRange("Document Type", PurchLine."Document Type"::"Blanket Order");
-                        PurchDocType::Order:
-                            PurchLine.SetRange("Document Type", PurchLine."Document Type"::Order);
-                        PurchDocType::Invoice:
-                            PurchLine.SetRange("Document Type", PurchLine."Document Type"::Invoice);
-                        PurchDocType::"Return Order":
-                            PurchLine.SetRange("Document Type", PurchLine."Document Type"::"Return Order");
-                        PurchDocType::"Credit Memo":
-                            PurchLine.SetRange("Document Type", PurchLine."Document Type"::"Credit Memo");
-                    end;
-                    PurchLine.SetRange("Document No.", FromDocumentNo);
-                    IF PurchLine.FindSet() then
-                        repeat
-                            PurchLine."lbt Source Document Line No." := PurchLine."Line No.";
-                            PurchLine.modify();
-                        until PurchLine.Next() = 0;
-                end;
-            PurchDocType::"Posted Receipt":
-                begin
-                    PurchRcptLine.SetRange("Document No.", FromDocumentNo);
-                    IF PurchRcptLine.FindSet() then
-                        repeat
-                            PurchRcptLine."lbt Source Document Line No." := PurchRcptLine."Line No.";
-                            PurchRcptLine.modify();
-                        until PurchRcptLine.Next() = 0;
-                end;
-            PurchDocType::"Posted Invoice":
-                begin
-                    PurchInvLine.SetRange("Document No.", FromDocumentNo);
-                    IF PurchInvLine.FindSet() then
-                        repeat
-                            PurchInvLine."lbt Source Document Line No." := PurchInvLine."Line No.";
-                            PurchInvLine.modify();
-                        until PurchInvLine.Next() = 0;
-                end;
-            PurchDocType::"Posted Return Shipment":
-                begin
-                    ReturnShipmentLine.SetRange("Document No.", FromDocumentNo);
-                    IF ReturnShipmentLine.FindSet() then
-                        repeat
-                            ReturnShipmentLine."lbt Source Document Line No." := ReturnShipmentLine."Line No.";
-                            ReturnShipmentLine.modify();
-                        until ReturnShipmentLine.Next() = 0;
-                end;
-            PurchDocType::"Posted Credit Memo":
-                begin
-                    PurchCrMemoLine.SetRange("Document No.", FromDocumentNo);
-                    IF PurchCrMemoLine.FindSet() then
-                        repeat
-                            PurchCrMemoLine."lbt Source Document Line No." := PurchCrMemoLine."Line No.";
-                            PurchCrMemoLine.modify();
-                        until PurchCrMemoLine.Next() = 0;
-                end;
-            PurchDocType::"Arch. Quote",
-            PurchDocType::"Arch. Order",
-            PurchDocType::"Arch. Blanket Order",
-            PurchDocType::"Arch. Return Order":
-                begin
-                    case FromDocumentType of
-                        PurchDocType::"Arch. Quote":
-                            PurchLineArchive.SetRange("Document Type", PurchLineArchive."Document Type"::Quote);
-                        PurchDocType::"Arch. Order":
-                            PurchLineArchive.SetRange("Document Type", PurchLineArchive."Document Type"::Order);
-                        PurchDocType::"Arch. Blanket Order":
-                            PurchLineArchive.SetRange("Document Type", PurchLineArchive."Document Type"::"Blanket Order");
-                        PurchDocType::"Arch. Return Order":
-                            PurchLineArchive.SetRange("Document Type", PurchLineArchive."Document Type"::"Return Order");
-                    end;
-                    PurchLineArchive.SetRange("Document No.", FromDocumentNo);
-                    IF PurchLineArchive.FindSet() then
-                        repeat
-                            PurchLineArchive."lbt Source Document Line No." := PurchLineArchive."Line No.";
-                            PurchLineArchive.modify();
-                        until PurchLineArchive.Next() = 0;
-                end;
-        end;
-    end;
 }
 

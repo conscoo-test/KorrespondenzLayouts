@@ -11,7 +11,7 @@ page 5272724 "lbt Wizard"
             group(StandardBanner)
             {
                 Editable = false;
-                Visible = TopBannerVisible and (CurrentStep < 3);
+                Visible = TopBannerVisible and (CurrentStep < MaxStep);
                 field("Media Resources"; MediaResources."Media Reference")
                 {
                     ApplicationArea = All;
@@ -23,8 +23,8 @@ page 5272724 "lbt Wizard"
             group(FinishedBanner)
             {
                 Editable = false;
-                Visible = TopBannerVisible and (CurrentStep = 3);
-                field("Media Resources Done"; MediaResourcesDone."Media Reference")
+                Visible = TopBannerVisible and (CurrentStep = MaxStep);
+                field("Media Resources Done"; DoneMediaResources."Media Reference")
                 {
                     ApplicationArea = All;
                     ShowCaption = false;
@@ -42,7 +42,7 @@ page 5272724 "lbt Wizard"
 
                     group(Introduction)
                     {
-                        Caption = '';
+                        Caption = '', locked = true;
                         InstructionalText = 'You can set the type of correspondence documents with which you want to use the comfort functions and where any existing company logo should appear on the documents.',
                             Comment = 'DEU="Sie können einstellen mit welche Art von Korrespondenzbelegen Sie die Komfortfunktionen nutzen möchten und an welcher Stelle ein evtl. vorhandenes Firmenlogo auf den Belegen erscheinen soll"';
 
@@ -55,7 +55,7 @@ page 5272724 "lbt Wizard"
 
                     group("Next")
                     {
-                        Caption = '';
+                        Caption = '', locked = true;
                         InstructionalText = 'Choose Next so you can set up.',
                             Comment = 'DEU="Wählen Sie \"Weiter\" damit Sie die Korrespondenzbelege auswählen können."';
                     }
@@ -67,7 +67,7 @@ page 5272724 "lbt Wizard"
 
                 group(Default)
                 {
-                    Caption = '';
+                    Caption = '', locked = true;
                     field("Select All"; SelectAll)
                     {
                         Caption = 'Select all';
@@ -165,8 +165,8 @@ page 5272724 "lbt Wizard"
 
                 group(PictureGroup)
                 {
-                    Caption = '';
-                    field(Picture; Picture) //TODO: MediaSet
+                    Caption = '', locked = true;
+                    field(Picture; Rec.Picture) //TODO: MediaSet
                     {
                         ApplicationArea = All;
                         ToolTip = 'Specifies the logo file';
@@ -193,23 +193,23 @@ page 5272724 "lbt Wizard"
                 Visible = CurrentStep = 4;
                 group(Bank1)
                 {
-                    Caption = '';
-                    field("Bank Account No."; "Bank Account No.")
+                    Caption = '', locked = true;
+                    field("Bank Account No."; Rec."Bank Account No.")
                     {
                         ApplicationArea = All;
                         ToolTip = 'Please enter your bank account number here';
                     }
-                    field("Bank Name"; "Bank Name")
+                    field("Bank Name"; Rec."Bank Name")
                     {
                         ApplicationArea = All;
                         ToolTip = 'Please enter the Name of your bank  here';
                     }
-                    field("Bank Branch No."; "Bank Branch No.")
+                    field("Bank Branch No."; Rec."Bank Branch No.")
                     {
                         ApplicationArea = All;
                         ToolTip = 'Please enter the bank code here';
                     }
-                    field(IBAN; IBAN)
+                    field(IBAN; Rec.IBAN)
                     {
                         ApplicationArea = All;
                         ToolTip = 'Please enter your IBAN code here';
@@ -218,23 +218,23 @@ page 5272724 "lbt Wizard"
                 }
                 group(Bank2)
                 {
-                    Caption = '';
-                    field("lbt Bank Account No. 2"; "lbt Bank Account No. 2")
+                    Caption = '', locked = true;
+                    field("lbt Bank Account No. 2"; Rec."lbt Bank Account No. 2")
                     {
                         ApplicationArea = All;
                         ToolTip = 'Please enter your 2. bank account number here';
                     }
-                    field("lbt Bank Name 2"; "lbt Bank Name 2")
+                    field("lbt Bank Name 2"; Rec."lbt Bank Name 2")
                     {
                         ApplicationArea = All;
                         ToolTip = 'Please enter the Name of your 2. bank  here';
                     }
-                    field("lbt Bank Branch No. 2"; "lbt Bank Branch No. 2")
+                    field("lbt Bank Branch No. 2"; Rec."lbt Bank Branch No. 2")
                     {
                         ApplicationArea = All;
                         ToolTip = 'Please enter the 2. bank code here';
                     }
-                    field("lbt IBAN 2"; "lbt IBAN 2")
+                    field("lbt IBAN 2"; Rec."lbt IBAN 2")
                     {
                         ApplicationArea = All;
                         ToolTip = 'Please enter your 2. IBAN code here';
@@ -243,23 +243,23 @@ page 5272724 "lbt Wizard"
                 }
                 group(Bank3)
                 {
-                    Caption = '';
-                    field("lbt Bank Account No. 3"; "lbt Bank Account No. 3")
+                    Caption = '', locked = true;
+                    field("lbt Bank Account No. 3"; Rec."lbt Bank Account No. 3")
                     {
                         ApplicationArea = All;
                         ToolTip = 'Please enter your 3. bank account number here';
                     }
-                    field("lbt Bank Name 3"; "lbt Bank Name 3")
+                    field("lbt Bank Name 3"; Rec."lbt Bank Name 3")
                     {
                         ApplicationArea = All;
                         ToolTip = 'Please enter the Name of your 3. bank here';
                     }
-                    field("lbt Bank Branch No. 3"; "lbt Bank Branch No. 3")
+                    field("lbt Bank Branch No. 3"; Rec."lbt Bank Branch No. 3")
                     {
                         ApplicationArea = All;
                         ToolTip = 'Please enter the 3. bank code here';
                     }
-                    field("lbt IBAN 3"; "lbt IBAN 3")
+                    field("lbt IBAN 3"; Rec."lbt IBAN 3")
                     {
                         ApplicationArea = All;
                         ToolTip = 'Please enter your 3. IBAN code here';
@@ -273,38 +273,57 @@ page 5272724 "lbt Wizard"
                 Visible = CurrentStep = 5;
                 group(other)
                 {
-                    Caption = '';
-                    field("lbt District Court"; "lbt District Court")
+                    Caption = '', locked = true;
+                    field("lbt District Court"; Rec."lbt District Court")
                     {
                         ApplicationArea = All;
                         ToolTip = 'Enter the district court here';
                     }
-                    field("lbt CEO1"; "lbt CEO1")
+                    field("lbt CEO1"; Rec."lbt CEO1")
                     {
                         ApplicationArea = All;
                         ToolTip = 'Enter the Name of CEO';
                     }
-                    field("lbt CEO2"; "lbt CEO2")
+                    field("lbt CEO2"; Rec."lbt CEO2")
                     {
                         ApplicationArea = All;
                         ToolTip = 'Enter the Name of the 2. CEO';
                     }
-                    field("lbt CEO3"; "lbt CEO3")
+                    field("lbt CEO3"; Rec."lbt CEO3")
                     {
                         ApplicationArea = All;
                         ToolTip = 'Enter the Name of the 3. CEO';
                     }
-                    field("lbt Commercial Register No."; "lbt Commercial Register No.")
+                    field("lbt Commercial Register No."; Rec."lbt Commercial Register No.")
                     {
                         ApplicationArea = All;
                         ToolTip = 'Enter your commercial register number';
                     }
-                    field("lbt Trade Register Name"; "lbt Trade Register Name")
+                    field("lbt Trade Register Name"; Rec."lbt Trade Register Name")
                     {
                         ApplicationArea = All;
                         ToolTip = 'Enter your trade register name.';
                     }
 
+                }
+            }
+            group(Step6)
+            {
+                Visible = CurrentStep = 6;
+                group(CorrSetupInstruction)
+                {
+                    Caption = '', locked = true;
+                    InstructionalText = 'If selected VAT will be printed in reports even if it is 0.';
+                }
+                group(CorrSetupGroup)
+                {
+                    Caption = '', locked = true;
+                    field(AlwaysPrintVat; AlwaysPrintVat)
+                    {
+                        Caption = 'Always Print VAT';
+                        ToolTip = 'If selected VAT will be printed in reports even if it is 0.';
+                        ApplicationArea = All;
+                    }
                 }
             }
 
@@ -368,6 +387,7 @@ page 5272724 "lbt Wizard"
     trigger OnOpenPage()
     begin
         CurrentStep := 1;
+        MaxStep := 6;
         SetControls();
     end;
 
@@ -385,8 +405,8 @@ page 5272724 "lbt Wizard"
     var
         AssistedSetup: Codeunit "Assisted Setup";
     begin
-        "lbt Setup finished" := true;
-        Modify();
+        Rec."lbt Setup finished" := true;
+        Rec.Modify();
         Commit();
         AssistedSetup.Complete(Page::"lbt Wizard");
         CurrPage.Close();
@@ -395,8 +415,8 @@ page 5272724 "lbt Wizard"
     local procedure SetControls()
     begin
         BackEnabled := CurrentStep > 1;
-        NextEnabled := CurrentStep < 5;
-        FinishEnabled := CurrentStep = 5;
+        NextEnabled := CurrentStep < MaxStep;
+        FinishEnabled := CurrentStep = MaxStep;
     end;
 
     local procedure TakeStep(Step: Integer)
@@ -406,6 +426,8 @@ page 5272724 "lbt Wizard"
                 SetReportSelections();
             3:
                 SetLogoPosition();
+            6:
+                SetAlwayPrintVat();
         end;
 
         CurrentStep += Step;
@@ -415,6 +437,8 @@ page 5272724 "lbt Wizard"
                 GetReportSelections();
             3:
                 GetLogoPosition();
+            6:
+                GetAlwaysPrintVat();
 
         end;
     end;
@@ -422,19 +446,19 @@ page 5272724 "lbt Wizard"
     local procedure GetLogoPosition()
     var
         SalesReceivablesSetup: Record "Sales & Receivables Setup";
-        PurchPayablesSetup: Record "Purchases & Payables Setup";
+        PurchasesPayablesSetup: Record "Purchases & Payables Setup";
     begin
         SalesReceivablesSetup.Get();
         SalesLogoPosition := SalesReceivablesSetup."Logo Position on Documents";
 
-        PurchPayablesSetup.Get();
-        PurchaseLogoPosition := PurchPayablesSetup."lbt Logo Position on Documents";
+        PurchasesPayablesSetup.Get();
+        PurchaseLogoPosition := PurchasesPayablesSetup."lbt Logo Position on Documents";
     end;
 
     local procedure SetLogoPosition()
     var
         SalesReceivablesSetup: Record "Sales & Receivables Setup";
-        PurchPayablesSetup: Record "Purchases & Payables Setup";
+        PurchasesPayablesSetup: Record "Purchases & Payables Setup";
     begin
         SalesReceivablesSetup.Get();
         if SalesReceivablesSetup."Logo Position on Documents" <> SalesLogoPosition then begin
@@ -442,10 +466,10 @@ page 5272724 "lbt Wizard"
             SalesReceivablesSetup.Modify();
         end;
 
-        PurchPayablesSetup.Get();
-        if PurchPayablesSetup."lbt Logo Position on Documents" <> PurchaseLogoPosition then begin
-            PurchPayablesSetup."lbt Logo Position on Documents" := PurchaseLogoPosition;
-            PurchPayablesSetup.Modify();
+        PurchasesPayablesSetup.Get();
+        if PurchasesPayablesSetup."lbt Logo Position on Documents" <> PurchaseLogoPosition then begin
+            PurchasesPayablesSetup."lbt Logo Position on Documents" := PurchaseLogoPosition;
+            PurchasesPayablesSetup.Modify();
         end;
     end;
 
@@ -462,12 +486,12 @@ page 5272724 "lbt Wizard"
         DefaultReports[7] := GetReportSelection(ReportSelections.Usage::"Pro Forma S. Invoice", Report::"lbt Sales pro forma Invoice");
         DefaultReports[8] := GetReportSelection(ReportSelections.Usage::"P.Quote", Report::"lbt Purchase - Quote");
         DefaultReports[9] := GetReportSelection(ReportSelections.Usage::"P.Order", Report::"lbt Order");
-        DefaultReports[10] := GetReportSelection(ReportSelections.Usage::"S.Quote", Report::"lbt Blanket Purchase Order");
+        DefaultReports[10] := GetReportSelection(ReportSelections.Usage::"P.Blanket", Report::"lbt Blanket Purchase Order");
         DefaultReports[11] := GetReportSelection(ReportSelections.Usage::"P.Return", Report::"lbt Return Order");
         DefaultReports[12] := GetReportSelection(ReportSelections.Usage::Reminder, Report::"lbt Reminder");
     end;
 
-    local procedure GetReportSelection(Usage: Integer; ReportId: Integer): Boolean
+    local procedure GetReportSelection(Usage: Enum "Report Selection Usage"; ReportId: Integer): Boolean
     var
         ReportSelections: Record "Report Selections";
     begin
@@ -490,12 +514,12 @@ page 5272724 "lbt Wizard"
         SetReportSelection(DefaultReports[7], ReportSelections.Usage::"Pro Forma S. Invoice", Report::"lbt Sales pro forma Invoice");
         SetReportSelection(DefaultReports[8], ReportSelections.Usage::"P.Quote", Report::"lbt Purchase - Quote");
         SetReportSelection(DefaultReports[9], ReportSelections.Usage::"P.Order", Report::"lbt Order");
-        SetReportSelection(DefaultReports[10], ReportSelections.Usage::"S.Quote", Report::"lbt Blanket Purchase Order");
+        SetReportSelection(DefaultReports[10], ReportSelections.Usage::"P.Blanket", Report::"lbt Blanket Purchase Order");
         SetReportSelection(DefaultReports[11], ReportSelections.Usage::"P.Return", Report::"lbt Return Order");
         SetReportSelection(DefaultReports[12], ReportSelections.Usage::Reminder, Report::"lbt Reminder");
     end;
 
-    local procedure SetReportSelection(UseLeBit365Report: Boolean; Usage: Integer; ReportId: Integer)
+    local procedure SetReportSelection(UseLeBit365Report: Boolean; Usage: Enum "Report Selection Usage"; ReportId: Integer)
     var
         ReportSelections: Record "Report Selections";
     begin
@@ -513,16 +537,33 @@ page 5272724 "lbt Wizard"
         if MediaRepository.GET('AssistedSetup-NoText-400px.png', Format(CurrentClientType())) then
             if MediaResources.GET(MediaRepository."Media Resources Ref") then
                 TopBannerVisible := MediaResources."Media Reference".HasValue();
-        if MediaRepositoryDone.Get('AssistedSetupDone-NoText-400px.png', Format(CurrentClientType())) then
-            if MediaResourcesDone.Get(MediaRepositoryDone."Media Resources Ref") then
-                TopBannerVisible := TopBannerVisible or MediaResourcesDone."Media Reference".HasValue();
+        if DoneMediaRepository.Get('AssistedSetupDone-NoText-400px.png', Format(CurrentClientType())) then
+            if DoneMediaResources.Get(DoneMediaRepository."Media Resources Ref") then
+                TopBannerVisible := TopBannerVisible or DoneMediaResources."Media Reference".HasValue();
+    end;
+
+    local procedure GetAlwaysPrintVat()
+    var
+        CorrSetup: Record "lbt Corr Setup";
+    begin
+        CorrSetup.Get();
+        AlwaysPrintVat := CorrSetup."Always print VAT";
+    end;
+
+    local procedure SetAlwayPrintVat()
+    var
+        CorrSetup: Record "lbt Corr Setup";
+    begin
+        CorrSetup.Get();
+        CorrSetup.Validate("Always print VAT", AlwaysPrintVat);
+        CorrSetup.Modify();
     end;
 
     var
         MediaRepository: Record "Media Repository";
         MediaResources: Record "Media Resources";
-        MediaRepositoryDone: Record "Media Repository";
-        MediaResourcesDone: Record "Media Resources";
+        DoneMediaRepository: Record "Media Repository";
+        DoneMediaResources: Record "Media Resources";
 
         TopBannerVisible: Boolean;
         NextEnabled: Boolean;
@@ -536,4 +577,6 @@ page 5272724 "lbt Wizard"
         SalesLogoPosition: Option "No Logo",Left,Center,Right;
         PurchaseLogoPosition: Option "No Logo",Left,Center,Right;
 
+        AlwaysPrintVat: Boolean;
+        MaxStep: Integer;
 }

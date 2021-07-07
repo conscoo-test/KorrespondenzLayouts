@@ -2,11 +2,9 @@ tableextension 5272732 "lbt Sales Line Archive" extends "Sales Line Archive"
 {
     fields
     {
-
-
         field(5272720; "lbt Long Text"; Boolean)
         {
-            CalcFormula = Exist ("lbt Archive PS Longtext Line" WHERE("Table ID" = CONST(5108),
+            CalcFormula = Exist("lbt Archive PS Longtext Line" WHERE("Table ID" = CONST(5108),
                                                                         "Document Type" = FIELD("Document Type"),
                                                                         "Document No." = FIELD("Document No."),
                                                                         Position = CONST(Longtext),
@@ -35,7 +33,7 @@ tableextension 5272732 "lbt Sales Line Archive" extends "Sales Line Archive"
         field(5272723; "lbt Balance"; Decimal)
         {
             AutoFormatType = 1;
-            CalcFormula = Sum ("Sales Line Archive"."Line Amount" WHERE("Document Type" = FIELD("Document Type"),
+            CalcFormula = Sum("Sales Line Archive"."Line Amount" WHERE("Document Type" = FIELD("Document Type"),
                                                                         "Document No." = FIELD("Document No."),
                                                                         "Doc. No. Occurrence" = FIELD("Doc. No. Occurrence"),
                                                                         "Version No." = FIELD("Version No."),
@@ -59,22 +57,24 @@ tableextension 5272732 "lbt Sales Line Archive" extends "Sales Line Archive"
         }
         field(5272726; "lbt Source Document Line No."; Integer)
         {
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Removed';
             Caption = 'Source Document Line No.';
             DataClassification = CustomerContent;
         }
         field(5272727; "lbt Printoption StyleExpr"; Text[30])
         {
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Removed';
             Caption = 'lbt Printoption StyleExpr';
             DataClassification = CustomerContent;
         }
     }
     trigger OnDelete()
     var
-        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
-        SourceRecRef: RecordRef;
+        LongtextMgt: Codeunit "lbt Longtext Mgt.";
     begin
-        SourceRecRef.GETTABLE(Rec);
-        LeBitLongtextMgt.DelLongtext(SourceRecRef);
+        LongtextMgt.DelLongtext(Rec);
     end;
 }
 

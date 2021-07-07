@@ -87,7 +87,7 @@ OBJECT Page 5272720 LeBit PS Longtext Lines
     LOCAL PROCEDURE NoOnAfterValidate@5272720();
     VAR
       LeBitCorrespDocMgt@5272720 : Codeunit "LeBit Corresp. Doc. Mgt";
-      LeBitLongtextMgt@1000000000 : Codeunit "LeBit Longtext Mgt.";
+      LongtextMgt@1000000000 : Codeunit "LeBit Longtext Mgt.";
     BEGIN
       LanguageCode := '';
       Belegdatum := 0D;
@@ -123,8 +123,8 @@ OBJECT Page 5272720 LeBit PS Longtext Lines
 
       CurrPage.SAVERECORD;
 
-      if LeBitLongtextMgt.LongTextCheckIfAnyExtText(ExtTextHeadRec,LanguageCode,Belegdatum) then begin
-        LeBitLongtextMgt.InsertLongTextExtText(Rec,"Document Type");
+      if LongtextMgt.LongTextCheckIfAnyExtText(ExtTextHeadRec,LanguageCode,Belegdatum) then begin
+        LongtextMgt.InsertLongTextExtText(Rec,"Document Type");
       end;
 
       CurrPage.UPDATE(false);

@@ -7,15 +7,13 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
     var
         IndentTxt: Label 'Indenting the Document #1##########', Comment = '%1 - Document Name';
         MissingBeginTotalTxt: Label 'End-Total %1 is missing a matching Begin-Total.', Comment = '%1 - End-Total Name';
-        FromDocOccurrenceNo: Integer;
-        FromDocVersionNo: Integer;
+        RowIDTemplateTxt: Label '"%1";"%2";"%3";"%4";"%5";"%6"', Locked = true;
         TotalTxt: Label 'Total';
 
     procedure SalesLineIndentTotaling(var SalesHeader: Record "Sales Header")
     var
         SalesLine: Record "Sales Line";
-        SalesLine2: Record "Sales Line";
-        Window: Dialog;
+        WindowDialog: Dialog;
         AccNo: array[10] of Code[20];
         NewString: Text;
         NoString: Text[20];
@@ -33,59 +31,46 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
             if COPYSTR(SummText, STRLEN(SummText)) <> ' ' then
                 SummText := SummText + ' ';
         StrLength := STRLEN(SummText);
-        Window.OPEN(IndentTxt);
+        WindowDialog.OPEN(IndentTxt);
 
         SalesLine.SetRange("Document Type", SalesHeader."Document Type");
         SalesLine.SetFilter("Document No.", SalesHeader."No.");
-        with SalesLine do
-            if FindSet(true) then
-                repeat
-                    SalesLine2.Reset();
-                    SalesLine2.SetRange("Document Type", SalesHeader."Document Type");
-                    SalesLine2.SetRange("Document No.", SalesHeader."No.");
-                    SalesLine2.SetRange("lbt Indentation", i - 1);
-                    SalesLine2.SetFilter("Line No.", '<%1', SalesLine."Line No.");
-                    if SalesLine2.FindLast() then;
-                    if ("lbt Printoption" = "lbt Printoption"::"End Total") or
-                        ((SalesLine2.FindLast()) and
-                        (SalesLineGetParentLine(SalesLine2)) and
-                        (SalesLine."Attached to Line No." = 0))
-                    then begin
-                        if i < 1 then
-                            Error(MissingBeginTotalTxt, "No.");
-                        if ((SalesLine2.FindLast()) and
-                          (SalesLineGetParentLine(SalesLine2)) and
-                          (SalesLine."Attached to Line No." = 0))
-                        then
-                            i -= 1;
-                        if "lbt Printoption" = "lbt Printoption"::"End Total" then begin
-                            "lbt Summation" := AccNo[i] + '..' + Format("Line No.");
-                            Description := SummText + Header[i];
-                            i := i - 1;
-                        end;
-                    end;
+        if SalesLine.FindSet(true) then
+            repeat
+                if SalesLine.Type = SalesLine.Type::"Begin Total" then
+                    SalesLine."lbt Printoption" := SalesLine."lbt Printoption"::Title;
+                if SalesLine.Type = SalesLine.Type::"End Total" then
+                    SalesLine."lbt Printoption" := SalesLine."lbt Printoption"::Total;
+                SalesLine.Modify();
+                WindowDialog.Update(1, SalesLine."No.");
 
-                    "lbt Indentation" := i;
-                    Modify();
+                if SalesLine.Type = SalesLine.Type::"End Total" then begin
+                    if i < 1 then
+                        Error(MissingBeginTotalTxt);
+                    SalesLine."lbt Summation" := AccNo[i] + '..' + FORMAT(SalesLine."Line No.");
+                    SalesLine.Description := SummText + Header[i];
+                    i -= 1;
+                end;
 
-                    if ("lbt Printoption" = "lbt Printoption"::"Begin Total") or
-                      (SalesLineGetParentLine(SalesLine))
-                    then begin
-                        i += 1;
-                        NoString := Format("Line No.");
-                        AccNo[i] := NoString;
-                        DescLength := STRLEN(Description);
-                        if StrLength + DescLength > 50 then begin
-                            RestLength := StrLength + DescLength - 50;
-                            NewLength := DescLength - RestLength;
-                            NewString := DELSTR(Description, NewLength, 50);
-                            Header[i] := NewString;
-                        end else
-                            Header[i] := Description;
+                SalesLine."lbt Indentation" := i;
+                SalesLine.Modify();
 
-                    end;
-                until Next() = 0;
-        Window.Close();
+                if (SalesLine.Type = SalesLine.Type::"Begin Total") then begin
+                    i += 1;
+                    NoString := Format(SalesLine."Line No.");
+                    AccNo[i] := NoString;
+                    DescLength := STRLEN(SalesLine.Description);
+                    if StrLength + DescLength > 50 then begin
+                        RestLength := StrLength + DescLength - 50;
+                        NewLength := DescLength - RestLength;
+                        NewString := DELSTR(SalesLine.Description, NewLength, 50);
+                        Header[i] := NewString;
+                    end else
+                        Header[i] := SalesLine.Description;
+
+                end;
+            until SalesLine.Next() = 0;
+        WindowDialog.Close();
     end;
 
     procedure SalesLinePosNumber(var SalesHeader: Record "Sales Header")
@@ -111,6 +96,7 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
 
         SalesLine.SetRange("Document Type", SalesHeader."Document Type");
         SalesLine.SetRange("Document No.", SalesHeader."No.");
+        SalesLine.SetFilter(Type, '%1..%2', SalesLine.Type::"G/L Account", SalesLine.Type::"Begin Total");
         if SalesLine.IsEmpty() then
             exit;
 
@@ -121,44 +107,31 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
             SalesLine.SetRange("lbt Indentation", Merk1);
             if SalesLine.FindSet(true) then begin
                 repeat
-                    if not (((SalesLine.Type = SalesLine.Type::" ") and
-                              (SalesLine."lbt Printoption" = SalesLine."lbt Printoption"::Standard)) or
-                            ((SalesLine."lbt Printoption" = SalesLine."lbt Printoption"::"End Total") or
-                              (SalesLine."lbt Printoption" = SalesLine."lbt Printoption"::Title) or
-                              (SalesLine."lbt Printoption" = SalesLine."lbt Printoption"::"New Page")))
-                    then begin
-                        PosMerker := '';
-                        if SalesLine."lbt Indentation" > 0 then begin
-                            SalesLine2.Reset();
-                            SalesLine2.SetRange("Document Type", SalesHeader."Document Type");
-                            SalesLine2.SetRange("Document No.", SalesHeader."No.");
-                            SalesLine2.SetRange("lbt Indentation", SalesLine."lbt Indentation" - 1);
-                            SalesLine2.SetFilter("Line No.", '<%1', SalesLine."Line No.");
-                            if (SalesLine2.FindLast()) and
-                              (SalesLine2."lbt Printoption" <> SalesLine2."lbt Printoption"::"End Total")
-                            then begin
-                                PosMerker := SalesLine2."lbt Pos. No.";
-                                if (SalesLineGetParentLine(SalesLine2)) and
-                                  (SalesLine."Attached to Line No." = 0)
-                                then
-                                    PosMerker := '';
-                            end else
-                                PosMerker := '';
-                        end;
-                        SalesLine3.Reset();
-                        SalesLine3.SetRange("Document Type", SalesHeader."Document Type");
-                        SalesLine3.SetRange("Document No.", SalesHeader."No.");
-                        SalesLine3.SetFilter("Line No.", '<%1', SalesLine."Line No.");
-                        if SalesLine3.FindLast() then
-                            if (SalesLine3."lbt Printoption" = SalesLine3."lbt Printoption"::"Begin Total") or
-                              (SalesLineGetParentLine(SalesLine3))
-                            then
-                                Merk2 := 1;
-
-                        SalesLine."lbt Pos. No." := CopyStr(PosMerker + Format(Merk2) + '.', 1, 30);
-                        SalesLine.Modify();
-                        Merk2 += 1;
+                    PosMerker := '';
+                    if SalesLine."lbt Indentation" > 0 then begin
+                        SalesLine2.Reset();
+                        SalesLine2.SetRange("Document Type", SalesHeader."Document Type");
+                        SalesLine2.SetRange("Document No.", SalesHeader."No.");
+                        SalesLine2.SetFilter(Type, '%1..%2', SalesLine.Type::"G/L Account", SalesLine.Type::"Begin Total");
+                        SalesLine2.SetRange("lbt Indentation", SalesLine."lbt Indentation" - 1);
+                        SalesLine2.SetFilter("Line No.", '<%1', SalesLine."Line No.");
+                        if SalesLine2.FindLast() then
+                            PosMerker := SalesLine2."lbt Pos. No."
+                        else
+                            PosMerker := '';
                     end;
+                    SalesLine3.Reset();
+                    SalesLine3.SetRange("Document Type", SalesHeader."Document Type");
+                    SalesLine3.SetRange("Document No.", SalesHeader."No.");
+                    SalesLine3.SetFilter(Type, '%1..%2', SalesLine.Type::"G/L Account", SalesLine.Type::"Begin Total");
+                    SalesLine3.SetFilter("Line No.", '<%1', SalesLine."Line No.");
+                    if SalesLine3.FindLast() then
+                        if (SalesLine3.Type = SalesLine3.Type::"Begin Total") then
+                            Merk2 := 1;
+
+                    SalesLine."lbt Pos. No." := CopyStr(PosMerker + Format(Merk2) + '.', 1, 30);
+                    SalesLine.Modify();
+                    Merk2 += 1;
                 until SalesLine.Next() = 0;
                 Merk1 := Merk1 + 1;
                 Merk2 := 1;
@@ -168,13 +141,13 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
         SalesLine.Reset();
         SalesLine.SetRange("Document Type", SalesHeader."Document Type");
         SalesLine.SetRange("Document No.", SalesHeader."No.");
-        SalesLine.SetRange("lbt Printoption", SalesLine."lbt Printoption"::"End Total");
+        SalesLine.SetRange(Type, SalesLine.Type::"End Total");
         if SalesLine.FindSet(true) then
             repeat
                 SalesLine2.Reset();
                 SalesLine2.SetRange("Document Type", SalesHeader."Document Type");
                 SalesLine2.SetFilter("Document No.", SalesHeader."No.");
-                SalesLine2.SetRange("lbt Printoption", SalesLine2."lbt Printoption"::"Begin Total");
+                SalesLine2.SetRange(Type, SalesLine2.Type::"Begin Total");
                 SalesLine2.SetRange("lbt Indentation", SalesLine."lbt Indentation");
                 SalesLine2.SetFilter("Line No.", SalesLine."lbt Summation");
                 if SalesLine2.FindLast() then begin
@@ -182,25 +155,12 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
                     SalesLine.Modify();
                 end;
             until SalesLine.Next() = 0;
-
     end;
 
-    local procedure SalesLineGetParentLine(SalesLine: Record "Sales Line"): Boolean
+    procedure PurchLineIndentTotaling(var PurchaseHeader: Record "Purchase Header")
     var
-        SalesLine2: Record "Sales Line";
-    begin
-        SalesLine2.SetRange("Document Type", SalesLine."Document Type");
-        SalesLine2.SetRange("Document No.", SalesLine."Document No.");
-        SalesLine2.SetRange("Attached to Line No.", SalesLine."Line No.");
-        SalesLine2.SetFilter(Type, '<>%1', SalesLine2.Type::" ");
-        exit(not SalesLine2.IsEmpty());
-    end;
-
-    procedure PurchLineIndentTotaling(var PurchHeader: Record "Purchase Header")
-    var
-        PurchLine: Record "Purchase Line";
-        PurchLine2: Record "Purchase Line";
-        Window: Dialog;
+        PurchaseLine: Record "Purchase Line";
+        WindowDialog: Dialog;
         AccNo: array[10] of Code[20];
         NoString: Text[20];
         Header: array[10] of Text;
@@ -218,64 +178,50 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
             if COPYSTR(Summtext, STRLEN(Summtext)) <> ' ' then
                 Summtext := Summtext + ' ';
         StrLength := STRLEN(Summtext);
-        Window.OPEN(IndentTxt);
+        WindowDialog.OPEN(IndentTxt);
 
-        PurchLine.SetRange("Document Type", PurchHeader."Document Type");
-        PurchLine.SetFilter("Document No.", PurchHeader."No.");
-        with PurchLine do
-            if FindSet(true) then
-                repeat
-                    PurchLine2.Reset();
-                    PurchLine2.SetRange("Document Type", PurchHeader."Document Type");
-                    PurchLine2.SetRange("Document No.", PurchHeader."No.");
-                    PurchLine2.SetRange("lbt Indentation", i - 1);
-                    PurchLine2.SetFilter("Line No.", '<%1', PurchLine."Line No.");
-                    if PurchLine2.FindLast() then;
-                    if ("lbt Printoption" = "lbt Printoption"::"End Total") or
-                        ((PurchLine2.FindLast()) and
-                        (PurchLineGetParentLine(PurchLine2)) and
-                        (PurchLine."Attached to Line No." = 0))
-                    then begin
-                        if i < 1 then
-                            Error(MissingBeginTotalTxt, "No.");
-                        if ((PurchLine2.FindLast()) and
-                          (PurchLineGetParentLine(PurchLine2)) and
-                          (PurchLine."Attached to Line No." = 0))
-                        then
-                            i -= 1;
-                        if "lbt Printoption" = "lbt Printoption"::"End Total" then begin
-                            "lbt Summation" := AccNo[i] + '..' + Format("Line No.");
-                            Description := Summtext + Header[i];
-                            i := i - 1;
-                        end;
-                    end;
+        PurchaseLine.SetRange("Document Type", PurchaseHeader."Document Type");
+        PurchaseLine.SetFilter("Document No.", PurchaseHeader."No.");
+        if PurchaseLine.FindSet(true) then
+            repeat
+                if PurchaseLine.Type = PurchaseLine.Type::"Begin Total" then
+                    PurchaseLine."lbt Printoption" := PurchaseLine."lbt Printoption"::Title;
+                if PurchaseLine.Type = PurchaseLine.Type::"End Total" then
+                    PurchaseLine."lbt Printoption" := PurchaseLine."lbt Printoption"::Total;
+                PurchaseLine.Modify();
+                WindowDialog.Update(1, PurchaseLine."No.");
 
-                    "lbt Indentation" := i;
-                    Modify();
+                if PurchaseLine.Type = PurchaseLine.Type::"End Total" then begin
+                    if i < 1 then
+                        Error(MissingBeginTotalTxt, PurchaseLine."No.");
+                    PurchaseLine."lbt Summation" := AccNo[i] + '..' + Format(PurchaseLine."Line No.");
+                    PurchaseLine.Description := Summtext + Header[i];
+                    i -= 1;
+                end;
 
-                    if ("lbt Printoption" = "lbt Printoption"::"Begin Total") or
-                      (PurchLineGetParentLine(PurchLine))
-                    then begin
-                        i += 1;
-                        NoString := Format("Line No.");
-                        AccNo[i] := NoString;
-                        DescLength := STRLEN(Description);
-                        if StrLength + DescLength > 50 then begin
-                            RestLength := StrLength + DescLength - 50;
-                            NewLength := DescLength - RestLength;
-                            NewString := DELSTR(Description, NewLength, 50);
-                            Header[i] := NewString;
-                        end else
-                            Header[i] := Description;
+                PurchaseLine."lbt Indentation" := i;
+                PurchaseLine.Modify();
 
-                    end;
-                until Next() = 0;
-        Window.Close();
+                if (PurchaseLine.Type = PurchaseLine.Type::"Begin Total") then begin
+                    i += 1;
+                    NoString := Format(PurchaseLine."Line No.");
+                    AccNo[i] := NoString;
+                    DescLength := STRLEN(PurchaseLine.Description);
+                    if StrLength + DescLength > 50 then begin
+                        RestLength := StrLength + DescLength - 50;
+                        NewLength := DescLength - RestLength;
+                        NewString := DELSTR(PurchaseLine.Description, NewLength, 50);
+                        Header[i] := NewString;
+                    end else
+                        Header[i] := PurchaseLine.Description;
+                end;
+            until PurchaseLine.Next() = 0;
+        WindowDialog.Close();
     end;
 
-    procedure PurchLinePosNumber(var PurchHeader: Record "Purchase Header")
+    procedure PurchLinePosNumber(var PurchaseHeader: Record "Purchase Header")
     var
-        PurchLine: Record "Purchase Line";
+        PurchaseLine: Record "Purchase Line";
         PurchLine2: Record "Purchase Line";
         PurchLine3: Record "Purchase Line";
         MaxIndent: Integer;
@@ -283,102 +229,79 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
         Merk2: Integer;
         PosMerker: Text[30];
     begin
-        PurchLineIndentTotaling(PurchHeader);
+        PurchLineIndentTotaling(PurchaseHeader);
 
-        PurchLine.SetRange("Document Type", PurchHeader."Document Type");
-        PurchLine.SetRange("Document No.", PurchHeader."No.");
+        PurchaseLine.SetRange("Document Type", PurchaseHeader."Document Type");
+        PurchaseLine.SetRange("Document No.", PurchaseHeader."No.");
         MaxIndent := 0;
-        if PurchLine.FindSet() then
+        if PurchaseLine.FindSet() then
             repeat
-                if PurchLine."lbt Indentation" > MaxIndent then
-                    MaxIndent := PurchLine."lbt Indentation";
-            until PurchLine.Next() = 0;
+                if PurchaseLine."lbt Indentation" > MaxIndent then
+                    MaxIndent := PurchaseLine."lbt Indentation";
+            until PurchaseLine.Next() = 0;
 
-        PurchLine.SetRange("Document Type", PurchHeader."Document Type");
-        PurchLine.SetRange("Document No.", PurchHeader."No.");
-        if PurchLine.IsEmpty() then
+        PurchaseLine.SetRange("Document Type", PurchaseHeader."Document Type");
+        PurchaseLine.SetRange("Document No.", PurchaseHeader."No.");
+        PurchaseLine.SetFilter(Type, '%1..%2', PurchaseLine.Type::"G/L Account", PurchaseLine.Type::"Begin Total");
+        if PurchaseLine.IsEmpty() then
             exit;
 
         Merk1 := 0;
         Merk2 := 1;
 
         repeat
-            PurchLine.SetRange("lbt Indentation", Merk1);
-            if PurchLine.FindSet(true) then begin
+            PurchaseLine.SetRange("lbt Indentation", Merk1);
+            if PurchaseLine.FindSet(true) then begin
                 repeat
-                    if not (((PurchLine.Type = PurchLine.Type::" ") and
-                              (PurchLine."lbt Printoption" = PurchLine."lbt Printoption"::Standard)) or
-                            ((PurchLine."lbt Printoption" = PurchLine."lbt Printoption"::"End Total") or
-                              (PurchLine."lbt Printoption" = PurchLine."lbt Printoption"::Title) or
-                              (PurchLine."lbt Printoption" = PurchLine."lbt Printoption"::"New Page")))
-                    then begin
-                        PosMerker := '';
-                        if PurchLine."lbt Indentation" > 0 then begin
-                            PurchLine2.Reset();
-                            PurchLine2.SetRange("Document Type", PurchHeader."Document Type");
-                            PurchLine2.SetRange("Document No.", PurchHeader."No.");
-                            PurchLine2.SetRange("lbt Indentation", PurchLine."lbt Indentation" - 1);
-                            PurchLine2.SetFilter("Line No.", '<%1', PurchLine."Line No.");
-                            if (PurchLine2.FindLast()) and
-                              (PurchLine2."lbt Printoption" <> PurchLine2."lbt Printoption"::"End Total")
-                            then begin
-                                PosMerker := PurchLine2."lbt Pos. No.";
-                                if (PurchLineGetParentLine(PurchLine2)) and
-                                  (PurchLine."Attached to Line No." = 0)
-                                then
-                                    PosMerker := '';
-                            end else
-                                PosMerker := '';
-                        end;
-                        PurchLine3.Reset();
-                        PurchLine3.SetRange("Document Type", PurchHeader."Document Type");
-                        PurchLine3.SetRange("Document No.", PurchHeader."No.");
-                        PurchLine3.SetFilter("Line No.", '<%1', PurchLine."Line No.");
-                        if PurchLine3.FindLast() then
-                            if (PurchLine3."lbt Printoption" = PurchLine3."lbt Printoption"::"Begin Total") or
-                              (PurchLineGetParentLine(PurchLine3))
-                            then
-                                Merk2 := 1;
-
-                        PurchLine."lbt Pos. No." := CopyStr(PosMerker + Format(Merk2) + '.', 1, 30);
-                        PurchLine.Modify();
-                        Merk2 += 1;
+                    PosMerker := '';
+                    if PurchaseLine."lbt Indentation" > 0 then begin
+                        PurchLine2.Reset();
+                        PurchLine2.SetRange("Document Type", PurchaseHeader."Document Type");
+                        PurchLine2.SetRange("Document No.", PurchaseHeader."No.");
+                        PurchLine2.SETFILTER(Type, '%1..%2', PurchaseLine.Type::"G/L Account", PurchaseLine.Type::"Begin Total");
+                        PurchLine2.SetRange("lbt Indentation", PurchaseLine."lbt Indentation" - 1);
+                        PurchLine2.SetFilter("Line No.", '<%1', PurchaseLine."Line No.");
+                        if (PurchLine2.FindLast()) then
+                            PosMerker := PurchLine2."lbt Pos. No."
+                        else
+                            PosMerker := '';
                     end;
-                until PurchLine.Next() = 0;
+                    PurchLine3.Reset();
+                    PurchLine3.SetRange("Document Type", PurchaseHeader."Document Type");
+                    PurchLine3.SetRange("Document No.", PurchaseHeader."No.");
+                    PurchLine3.SETFILTER(Type, '%1..%2', PurchaseLine.Type::"G/L Account", PurchaseLine.Type::"Begin Total");
+                    PurchLine3.SetFilter("Line No.", '<%1', PurchaseLine."Line No.");
+                    if PurchLine3.FindLast() then
+                        if (PurchLine3.Type = PurchLine3.Type::"Begin Total") then
+                            Merk2 := 1;
+
+                    PurchaseLine."lbt Pos. No." := CopyStr(PosMerker + Format(Merk2) + '.', 1, 30);
+                    PurchaseLine.Modify();
+                    Merk2 += 1;
+                until PurchaseLine.Next() = 0;
                 Merk1 := Merk1 + 1;
                 Merk2 := 1;
             end;
         until Merk1 = MaxIndent + 1;
 
-        PurchLine.Reset();
-        PurchLine.SetRange("Document Type", PurchHeader."Document Type");
-        PurchLine.SetRange("Document No.", PurchHeader."No.");
-        PurchLine.SetRange("lbt Printoption", PurchLine."lbt Printoption"::"End Total");
-        if PurchLine.FindSet(true) then
+        PurchaseLine.Reset();
+        PurchaseLine.SetRange("Document Type", PurchaseHeader."Document Type");
+        PurchaseLine.SetRange("Document No.", PurchaseHeader."No.");
+        PurchaseLine.SetRange(Type, PurchaseLine.Type::"End Total");
+        if PurchaseLine.FindSet(true) then
             repeat
                 PurchLine2.Reset();
-                PurchLine2.SetRange("Document Type", PurchHeader."Document Type");
-                PurchLine2.SetFilter("Document No.", PurchHeader."No.");
-                PurchLine2.SetRange("lbt Printoption", PurchLine2."lbt Printoption"::"Begin Total");
-                PurchLine2.SetRange("lbt Indentation", PurchLine."lbt Indentation");
-                PurchLine2.SetFilter("Line No.", PurchLine."lbt Summation");
+                PurchLine2.SetRange("Document Type", PurchaseHeader."Document Type");
+                PurchLine2.SetFilter("Document No.", PurchaseHeader."No.");
+                PurchLine2.SetRange(Type, PurchLine2.Type::"Begin Total");
+                PurchLine2.SetRange("lbt Indentation", PurchaseLine."lbt Indentation");
+                PurchLine2.SetFilter("Line No.", PurchaseLine."lbt Summation");
                 if PurchLine2.FindLast() then begin
-                    PurchLine."lbt Pos. No." := PurchLine2."lbt Pos. No.";
-                    PurchLine.Modify();
+                    PurchaseLine."lbt Pos. No." := PurchLine2."lbt Pos. No.";
+                    PurchaseLine.Modify();
                 end;
-            until PurchLine.Next() = 0;
+            until PurchaseLine.Next() = 0;
 
-    end;
-
-    local procedure PurchLineGetParentLine(PurchLine: Record "Purchase Line"): Boolean
-    var
-        PurchLine2: Record "Purchase Line";
-    begin
-        PurchLine2.SetRange("Document Type", PurchLine."Document Type");
-        PurchLine2.SetRange("Document No.", PurchLine."Document No.");
-        PurchLine2.SetRange("Attached to Line No.", PurchLine."Line No.");
-        PurchLine2.SetFilter(Type, '<>%1', PurchLine2.Type::" ");
-        exit(not PurchLine2.IsEmpty());
     end;
 
     procedure DefragmentRowID(Type: Integer; Subtype: Integer; ID: Code[20]; BatchName: Code[20]; ProdOrderLine: Integer; RefNo: Integer): Text[250]
@@ -407,28 +330,7 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
                 until Pos > Len;
             end;
 
-        exit(STRSUBSTNO('"%1";"%2";"%3";"%4";"%5";"%6"', Type, Subtype, StrArray[1], StrArray[2], ProdOrderLine, RefNo));
-    end;
-
-    local procedure GetTypeFieldRef(var RecRef_L: RecordRef; FieldID: Integer) TextVar: Text
-    var
-        FieldRef_L: FieldRef;
-    begin
-        FieldRef_L := RecRef_L.FIELD(FieldID);
-        TextVar := Format(FieldRef_L.TYPE());
-        exit(TextVar);
-    end;
-
-    procedure SetGetSalesArchivValues(FromDocOccurrenceNoVar: Integer; FromDocVersionNoVar: Integer)
-    begin
-        FromDocOccurrenceNo := FromDocOccurrenceNoVar;
-        FromDocVersionNo := FromDocVersionNoVar;
-    end;
-
-    procedure SetGetPurchArchivValues(FromDocOccurrenceNoVar: Integer; FromDocVersionNoVar: Integer)
-    begin
-        FromDocOccurrenceNo := FromDocOccurrenceNoVar;
-        FromDocVersionNo := FromDocVersionNoVar;
+        exit(STRSUBSTNO(RowIDTemplateTxt, Type, Subtype, StrArray[1], StrArray[2], ProdOrderLine, RefNo));
     end;
 
     procedure GetStyleExpr(Printoption: Option Standard,Title,,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total") StyleExprText: Text[30]

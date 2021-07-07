@@ -14,10 +14,9 @@ report 5272722 "lbt Sales - Invoice"
             DataItemTableView = SORTING("No.");
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
             RequestFilterHeading = 'Posted Sales Invoice';
+            column(Footer; Footer) { }
+            column(AlwaysPrintVat_CorrSetup; CorrSetup."Always print VAT") { }
             column(No_SalesInvHdr; "No.")
-            {
-            }
-            column(EMailCaption; EMailCaptionLbl)
             {
             }
             column(InvDiscountAmountCaption; InvDiscountAmountCaptionLbl)
@@ -42,12 +41,6 @@ report 5272722 "lbt Sales - Invoice"
             {
             }
             column(ShipmentMethodCaption; ShipmentMethodCaptionLbl)
-            {
-            }
-            column(DisplayAdditionalFeeNote; DisplayAdditionalFeeNote)
-            {
-            }
-            column(DocumentDateCaption; DocumentDateCaptionLbl)
             {
             }
             dataitem(CopyLoop; "Integer")
@@ -92,81 +85,6 @@ report 5272722 "lbt Sales - Invoice"
                     column(CustAddr8; CustAddr[8])
                     {
                     }
-                    column(CompanyInfo_Name; CompanyInfo.Name)
-                    {
-                    }
-                    column(CompanyInfo__VAT_Registration_No__; CompanyInfo."VAT Registration No.")
-                    {
-                    }
-                    column(CompanyInfo_Address; CompanyInfo.Address)
-                    {
-                    }
-                    column(CompanyInfo__Post_Code; CompanyInfo."Post Code")
-                    {
-                    }
-                    column(CompanyInfo_City; CompanyInfo.City)
-                    {
-                    }
-                    column(CompanyInfo__Phone_No; CompanyInfo."Phone No.")
-                    {
-                    }
-                    column(CompanyInfo__Fax_No; CompanyInfo."Fax No.")
-                    {
-                    }
-                    column(CompanyInfo_E_Mail; CompanyInfo."E-Mail")
-                    {
-                    }
-                    column(CompanyInfo__Home_Page; CompanyInfo."Home Page")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO1; CompanyInfo."lbt CEO1")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO2; CompanyInfo."lbt CEO2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO3; CompanyInfo."lbt CEO3")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Commercial_Register_No; CompanyInfo."lbt Commercial Register No.")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Trade_Register_Name; CompanyInfo."lbt Trade Register Name")
-                    {
-                    }
-                    column(CompanyInfo__Bank_Name; CompanyInfo."Bank Name")
-                    {
-                    }
-                    column(CompanyInfo_IBAN; CompanyInfo.IBAN)
-                    {
-                    }
-                    column(CompanyInfo__SWIFT_Code; CompanyInfo."SWIFT Code")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Bank_Name_2; CompanyInfo."lbt Bank Name 2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_IBAN_2; CompanyInfo."lbt IBAN 2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_SWIFT_Code_2; CompanyInfo."lbt SWIFT Code 2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Bank_Name_3; CompanyInfo."lbt Bank Name 3")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_IBAN_3; CompanyInfo."lbt IBAN 3")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_SWIFT_Code_3; CompanyInfo."lbt SWIFT Code 3")
-                    {
-                    }
-                    column(PostingDate_SalesInvHdr; FORMAT("Sales Invoice Header"."Posting Date", 0, 4))
-                    {
-                    }
-                    column(DueDate_SalesInvHeader; FORMAT("Sales Invoice Header"."Due Date", 0, 4))
-                    {
-                    }
                     column(DocDate_SalesInvoiceHdr; FORMAT("Sales Invoice Header"."Document Date", 0, 4))
                     {
                     }
@@ -183,12 +101,6 @@ report 5272722 "lbt Sales - Invoice"
                     {
                     }
                     column(PricesInclVAT_SalesInvHdr; "Sales Invoice Header"."Prices Including VAT")
-                    {
-                    }
-                    column(PricesInclVATYesNo; FORMAT("Sales Invoice Header"."Prices Including VAT"))
-                    {
-                    }
-                    column(VATNoText; VATNoText)
                     {
                     }
                     column(SalesPersonText; SalesPersonText)
@@ -209,82 +121,16 @@ report 5272722 "lbt Sales - Invoice"
                     column(HideCompanyInfo; HideCompanyInfo)
                     {
                     }
-                    column(PageCaption; PageCaptionCapLbl)
-                    {
-                    }
-                    column(CompanyInfoRegNo; CompanyInfo.GetRegistrationNumber())
-                    {
-                    }
                     column(PmntTermsDesc; PaymentTerms.Description)
                     {
                     }
                     column(ShptMethodDesc; ShipmentMethod.Description)
                     {
                     }
-                    column(PhoneNoCaption; PhoneNoCaptionLbl)
-                    {
-                    }
-                    column(HomePageCaption; HomePageCaptionLbl)
-                    {
-                    }
-                    column(VATRegNoCaption; VATRegNoCaptionLbl)
-                    {
-                    }
-                    column(GiroNoCaption; GiroNoCaptionLbl)
-                    {
-                    }
-                    column(BankNameCaption; BankNameCaptionLbl)
-                    {
-                    }
-                    column(BankAccountNoCaption; BankAccountNoCaptionLbl)
-                    {
-                    }
-                    column(DueDateCaption; DueDateCaptionLbl)
-                    {
-                    }
                     column(InvoiceNoCaption; InvoiceNoCaptionLbl)
                     {
                     }
-                    column(PostingDateCaption; PostingDateCaptionLbl)
-                    {
-                    }
-                    column(RegNoCaption; CompanyInfo.GetRegistrationNumberLbl())
-                    {
-                    }
                     column(BillToCustNo_SalesInvHdrCaption; Bill_to_Customer_No__CaptionLbl)
-                    {
-                    }
-                    column(PricesInclVAT_SalesInvHdrCaption; "Sales Invoice Header".FIELDCAPTION("Prices Including VAT"))
-                    {
-                    }
-                    column(CompanyInfo__VAT_Registration_No__Caption; VATRegNoCaptionLbl)
-                    {
-                    }
-                    column(CompanyInfo__Phone_No__Caption; PhoneNoCaptionLbl)
-                    {
-                    }
-                    column(CompanyInfo__Fax_No__Caption; FaxNoCaptionLbl)
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Trade_Register_Name_Caption; CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO_Caption; CompanyInfo__LeBit_CEO_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__Bank_Name_Caption; CompanyInfo__Bank_Name_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo_IBAN_Caption; CompanyInfo_IBAN_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__SWIFT_Code_Caption; CompanyInfo__SWIFT_Code_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo_E_Mail_Caption; CompanyInfo_E_Mail_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__Home_Page_Caption; CompanyInfo__Home_Page_Caption_Lbl)
                     {
                     }
                     column(PagefromPageCaption; PagefromPageCaptionLbl)
@@ -446,9 +292,6 @@ report 5272722 "lbt Sales - Invoice"
                         column(Description_SalesInvLine; Description)
                         {
                         }
-                        column(No_SalesInvoiceLine; "No.")
-                        {
-                        }
                         column(Quantity_SalesInvoiceLine; Quantity)
                         {
                         }
@@ -459,15 +302,6 @@ report 5272722 "lbt Sales - Invoice"
                         {
                             AutoFormatExpression = "Sales Invoice Line".GetCurrencyCode();
                             AutoFormatType = 2;
-                        }
-                        column(LineDisc_SalesInvoiceLine; "Line Discount %")
-                        {
-                        }
-                        column(VATIdent_SalesInvLine; "VAT Identifier")
-                        {
-                        }
-                        column(PostedShipmentDate; FORMAT(PostedShipmentDate))
-                        {
                         }
                         column(SalesLineType; FORMAT("Sales Invoice Line".Type, 0, 2))
                         {
@@ -510,7 +344,7 @@ report 5272722 "lbt Sales - Invoice"
                             AutoFormatExpression = "Sales Invoice Line".GetCurrencyCode();
                             AutoFormatType = 1;
                         }
-                        column(VATAmtLineVATAmtText; VATAmountLine.VATAmountText())
+                        column(VATAmtLineVATAmtText; TempVATAmountLine.VATAmountText())
                         {
                         }
                         column(TotalExclVATText; TotalExclVATText)
@@ -540,28 +374,7 @@ report 5272722 "lbt Sales - Invoice"
                         column(LineNo_SalesInvoiceLine; "Line No.")
                         {
                         }
-                        column(UnitPriceCaption; UnitPriceCaptionLbl)
-                        {
-                        }
-                        column(DiscountCaption; DiscountCaptionLbl)
-                        {
-                        }
-                        column(PostedShipmentDateCaption; PostedShipmentDateCaptionLbl)
-                        {
-                        }
                         column(PaymentDiscVATCaption; PaymentDiscVATCaptionLbl)
-                        {
-                        }
-                        column(No_SalesInvoiceLineCaption; FIELDCAPTION("No."))
-                        {
-                        }
-                        column(UOM_SalesInvoiceLineCaption; FIELDCAPTION("Unit of Measure"))
-                        {
-                        }
-                        column(VATIdent_SalesInvLineCaption; FIELDCAPTION("VAT Identifier"))
-                        {
-                        }
-                        column(IsLineWithTotals; LineNoWithTotal = "Line No.")
                         {
                         }
                         column(SalesLineLeBitPrintoption; FORMAT("Sales Invoice Line"."lbt Printoption", 0, 2))
@@ -678,31 +491,20 @@ report 5272722 "lbt Sales - Invoice"
                         dataitem("Sales Shipment Buffer"; "Integer")
                         {
                             DataItemTableView = SORTING(Number);
-                            column(SalesShpBufferPostingDate; FORMAT(SalesShipmentBuffer."Posting Date"))
-                            {
-                            }
-                            column(SalesShpBufferQuantity; SalesShipmentBuffer.Quantity)
-                            {
-                                DecimalPlaces = 0 : 5;
-                            }
-                            column(ShipmentCaption; ShipmentCaptionLbl)
-                            {
-                            }
-
                             trigger OnAfterGetRecord()
                             begin
                                 if Number = 1 then
-                                    SalesShipmentBuffer.FIND('-')
+                                    TempSalesShipmentBuffer.FIND('-')
                                 else
-                                    SalesShipmentBuffer.Next();
+                                    TempSalesShipmentBuffer.Next();
                             end;
 
                             trigger OnPreDataItem()
                             begin
-                                SalesShipmentBuffer.SETRANGE("Document No.", "Sales Invoice Line"."Document No.");
-                                SalesShipmentBuffer.SETRANGE("Line No.", "Sales Invoice Line"."Line No.");
+                                TempSalesShipmentBuffer.SETRANGE("Document No.", "Sales Invoice Line"."Document No.");
+                                TempSalesShipmentBuffer.SETRANGE("Line No.", "Sales Invoice Line"."Line No.");
 
-                                SETRANGE(Number, 1, SalesShipmentBuffer.Count());
+                                SETRANGE(Number, 1, TempSalesShipmentBuffer.Count());
                             end;
                         }
                         dataitem(DimensionLoop2; "Integer")
@@ -743,9 +545,6 @@ report 5272722 "lbt Sales - Invoice"
                             column(TempPostedAsmLineQuantity; TempPostedAsmLine.Quantity)
                             {
                                 DecimalPlaces = 0 : 5;
-                            }
-                            column(TempPostedAsmLineVariantCode; BlanksForIndent() + TempPostedAsmLine."Variant Code")
-                            {
                             }
                             column(TempPostedAsmLineDesc; BlanksForIndent() + TempPostedAsmLine.Description)
                             {
@@ -794,20 +593,20 @@ report 5272722 "lbt Sales - Invoice"
                             if (Type = Type::"G/L Account") and (not ShowInternalInfo) then
                                 "No." := '';
 
-                            VATAmountLine.Init();
+                            TempVATAmountLine.Init();
                             ;
-                            VATAmountLine."VAT Identifier" := "VAT Identifier";
-                            VATAmountLine."VAT Calculation Type" := "VAT Calculation Type";
-                            VATAmountLine."Tax Group Code" := "Tax Group Code";
-                            VATAmountLine."VAT %" := "VAT %";
-                            VATAmountLine."VAT Base" := Amount;
-                            VATAmountLine."Amount Including VAT" := "Amount Including VAT";
-                            VATAmountLine."Line Amount" := "Line Amount";
+                            TempVATAmountLine."VAT Identifier" := "VAT Identifier";
+                            TempVATAmountLine."VAT Calculation Type" := "VAT Calculation Type";
+                            TempVATAmountLine."Tax Group Code" := "Tax Group Code";
+                            TempVATAmountLine."VAT %" := "VAT %";
+                            TempVATAmountLine."VAT Base" := Amount;
+                            TempVATAmountLine."Amount Including VAT" := "Amount Including VAT";
+                            TempVATAmountLine."Line Amount" := "Line Amount";
                             if "Allow Invoice Disc." then
-                                VATAmountLine."Inv. Disc. Base Amount" := "Line Amount";
-                            VATAmountLine."Invoice Discount Amount" := "Inv. Discount Amount";
-                            VATAmountLine."VAT Clause Code" := "VAT Clause Code";
-                            VATAmountLine.InsertLine();
+                                TempVATAmountLine."Inv. Disc. Base Amount" := "Line Amount";
+                            TempVATAmountLine."Invoice Discount Amount" := "Inv. Discount Amount";
+                            TempVATAmountLine."VAT Clause Code" := "VAT Clause Code";
+                            TempVATAmountLine.InsertLine();
 
                             TotalSubTotal += "Line Amount";
                             TotalInvoiceDiscountAmt -= "Inv. Discount Amount";
@@ -819,7 +618,6 @@ report 5272722 "lbt Sales - Invoice"
                             if "lbt Printoption" = "lbt Printoption"::"New Page" then
                                 NewPageGroup += 1;
 
-                            ItemUnitCode := '';
                             ItemUnitDescription := '';
                             ItemUnitQty := '';
                             CLEAR(InfoRowNo);
@@ -861,7 +659,6 @@ report 5272722 "lbt Sales - Invoice"
                                     COMPRESSARRAY(ItemUnitQtyArry);
                                 end;
                                 if "Description 2" <> '' then begin
-                                    ItemUnitCode := ItemUnitCodeArry[1];
                                     ItemUnitDescription := ItemUnitDescriptionArry[1];
                                     ItemUnitQty := ItemUnitQtyArry[1];
                                     ItemUnitCodeArry[1] := '';
@@ -871,7 +668,7 @@ report 5272722 "lbt Sales - Invoice"
                                     COMPRESSARRAY(ItemUnitDescriptionArry);
                                     COMPRESSARRAY(ItemUnitQtyArry);
                                 end;
-                                //zusätzliche Infos
+                                //zus�tzliche Infos
                                 if PostedShipmentDate <> 0D then begin
                                     Counter := 0;
                                     repeat
@@ -880,10 +677,10 @@ report 5272722 "lbt Sales - Invoice"
                                     InfoCaptionArry[Counter] := PostedShipmentDateCaptionLbl;
                                     InfoValueArry[Counter] := FORMAT(PostedShipmentDate);
                                 end else begin
-                                    SalesShipmentBuffer.Reset();
-                                    SalesShipmentBuffer.SETRANGE("Document No.", "Sales Invoice Line"."Document No.");
-                                    SalesShipmentBuffer.SETRANGE("Line No.", "Sales Invoice Line"."Line No.");
-                                    if SalesShipmentBuffer.FindSet() then begin
+                                    TempSalesShipmentBuffer.Reset();
+                                    TempSalesShipmentBuffer.SETRANGE("Document No.", "Sales Invoice Line"."Document No.");
+                                    TempSalesShipmentBuffer.SETRANGE("Line No.", "Sales Invoice Line"."Line No.");
+                                    if TempSalesShipmentBuffer.FindSet() then begin
                                         Counter := 0;
                                         repeat
                                             Counter += 1;
@@ -893,10 +690,10 @@ report 5272722 "lbt Sales - Invoice"
                                         repeat
                                             Counter += 1;
                                             InfoCaptionArry[Counter] := ShipmentCaptionLbl;
-                                            InfoValueArry[Counter] := FORMAT(SalesShipmentBuffer."Posting Date");
-                                            ItemUnitQtyArry[Counter] := FORMAT(SalesShipmentBuffer.Quantity);
+                                            InfoValueArry[Counter] := FORMAT(TempSalesShipmentBuffer."Posting Date");
+                                            ItemUnitQtyArry[Counter] := FORMAT(TempSalesShipmentBuffer.Quantity);
                                             ItemUnitDescriptionArry[Counter] := "Sales Invoice Line"."Unit of Measure";
-                                        until SalesShipmentBuffer.Next() = 0;
+                                        until TempSalesShipmentBuffer.Next() = 0;
                                     end;
                                 end;
 
@@ -911,7 +708,7 @@ report 5272722 "lbt Sales - Invoice"
                                         InfoValueArry[Counter] := "Sales Invoice Line"."Order No.";
                                     end;
 
-                                ///Prüfung auf MaxRowNo
+                                ///Pr�fung auf MaxRowNo
                                 Counter := 0;
                                 repeat
                                     Counter += 1;
@@ -926,12 +723,11 @@ report 5272722 "lbt Sales - Invoice"
 
                         trigger OnPreDataItem()
                         begin
-                            VATAmountLine.DeleteAll();
-                            SalesShipmentBuffer.Reset();
-                            SalesShipmentBuffer.DeleteAll();
+                            TempVATAmountLine.DeleteAll();
+                            TempSalesShipmentBuffer.Reset();
+                            TempSalesShipmentBuffer.DeleteAll();
                             FirstValueEntryNo := 0;
                             MoreLines := FIND('+');
-                            LineNoWithTotal := "Line No.";
                             while MoreLines and (Description = '') and ("No." = '') and (Quantity = 0) and (Amount = 0) do
                                 MoreLines := Next(-1) <> 0;
                             if not MoreLines then
@@ -942,36 +738,36 @@ report 5272722 "lbt Sales - Invoice"
                     dataitem(VATCounter; "Integer")
                     {
                         DataItemTableView = SORTING(Number);
-                        column(VATAmountLineVATBase; VATAmountLine."VAT Base")
+                        column(VATAmountLineVATBase; TempVATAmountLine."VAT Base")
                         {
                             AutoFormatExpression = "Sales Invoice Line".GetCurrencyCode();
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLineVATAmount; VATAmountLine."VAT Amount")
+                        column(VATAmountLineVATAmount; TempVATAmountLine."VAT Amount")
                         {
                             AutoFormatExpression = "Sales Invoice Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLineLineAmount; VATAmountLine."Line Amount")
+                        column(VATAmountLineLineAmount; TempVATAmountLine."Line Amount")
                         {
                             AutoFormatExpression = "Sales Invoice Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmtLineInvDiscBaseAmt; VATAmountLine."Inv. Disc. Base Amount")
+                        column(VATAmtLineInvDiscBaseAmt; TempVATAmountLine."Inv. Disc. Base Amount")
                         {
                             AutoFormatExpression = "Sales Invoice Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmtLineInvDiscountAmt; VATAmountLine."Invoice Discount Amount")
+                        column(VATAmtLineInvDiscountAmt; TempVATAmountLine."Invoice Discount Amount")
                         {
                             AutoFormatExpression = "Sales Invoice Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLineVAT; VATAmountLine."VAT %")
+                        column(VATAmountLineVAT; TempVATAmountLine."VAT %")
                         {
                             DecimalPlaces = 0 : 5;
                         }
-                        column(VATAmtLineVATIdentifier; VATAmountLine."VAT Identifier")
+                        column(VATAmtLineVATIdentifier; TempVATAmountLine."VAT Identifier")
                         {
                         }
                         column(VATAmntSpecificCaption; VATAmntSpecificCaptionLbl)
@@ -986,23 +782,23 @@ report 5272722 "lbt Sales - Invoice"
 
                         trigger OnAfterGetRecord()
                         begin
-                            VATAmountLine.GetLine(Number);
+                            TempVATAmountLine.GetLine(Number);
                         end;
 
                         trigger OnPreDataItem()
                         begin
-                            if VATAmountLine.Count() < 2 then
+                            if TempVATAmountLine.Count() < 2 then
                                 CurrReport.Break();
-                            SETRANGE(Number, 1, VATAmountLine.Count());
+                            SETRANGE(Number, 1, TempVATAmountLine.Count());
                         end;
                     }
                     dataitem(VATClauseEntryCounter; "Integer")
                     {
                         DataItemTableView = SORTING(Number);
-                        column(VATClauseVATIdentifier; VATAmountLine."VAT Identifier")
+                        column(VATClauseVATIdentifier; TempVATAmountLine."VAT Identifier")
                         {
                         }
-                        column(VATClauseCode; VATAmountLine."VAT Clause Code")
+                        column(VATClauseCode; TempVATAmountLine."VAT Clause Code")
                         {
                         }
                         column(VATClauseDescription; VATClause.Description)
@@ -1011,7 +807,7 @@ report 5272722 "lbt Sales - Invoice"
                         column(VATClauseDescription2; VATClause."Description 2")
                         {
                         }
-                        column(VATClauseAmount; VATAmountLine."VAT Amount")
+                        column(VATClauseAmount; TempVATAmountLine."VAT Amount")
                         {
                             AutoFormatExpression = "Sales Invoice Header"."Currency Code";
                             AutoFormatType = 1;
@@ -1028,8 +824,8 @@ report 5272722 "lbt Sales - Invoice"
 
                         trigger OnAfterGetRecord()
                         begin
-                            VATAmountLine.GetLine(Number);
-                            if not VATClause.Get(VATAmountLine."VAT Clause Code") then
+                            TempVATAmountLine.GetLine(Number);
+                            if not VATClause.Get(TempVATAmountLine."VAT Clause Code") then
                                 CurrReport.Skip();
                             VATClause.TranslateDescription("Sales Invoice Header"."Language Code");
                         end;
@@ -1037,7 +833,7 @@ report 5272722 "lbt Sales - Invoice"
                         trigger OnPreDataItem()
                         begin
                             CLEAR(VATClause);
-                            SETRANGE(Number, 1, VATAmountLine.Count());
+                            SETRANGE(Number, 1, TempVATAmountLine.Count());
                         end;
                     }
                     dataitem(VatCounterLCY; "Integer")
@@ -1057,37 +853,37 @@ report 5272722 "lbt Sales - Invoice"
                         {
                             AutoFormatType = 1;
                         }
-                        column(VATAmountLineVAT_VatCounterLCY; VATAmountLine."VAT %")
+                        column(VATAmountLineVAT_VatCounterLCY; TempVATAmountLine."VAT %")
                         {
                             DecimalPlaces = 0 : 5;
                         }
-                        column(VATAmtLineVATIdentifier_VatCounterLCY; VATAmountLine."VAT Identifier")
+                        column(VATAmtLineVATIdentifier_VatCounterLCY; TempVATAmountLine."VAT Identifier")
                         {
                         }
 
                         trigger OnAfterGetRecord()
                         begin
-                            VATAmountLine.GetLine(Number);
+                            TempVATAmountLine.GetLine(Number);
                             VALVATBaseLCY :=
-                              VATAmountLine.GetBaseLCY(
+                              TempVATAmountLine.GetBaseLCY(
                                 "Sales Invoice Header"."Posting Date", "Sales Invoice Header"."Currency Code",
                                 "Sales Invoice Header"."Currency Factor");
                             VALVATAmountLCY :=
-                              VATAmountLine.GetAmountLCY(
+                              TempVATAmountLine.GetAmountLCY(
                                 "Sales Invoice Header"."Posting Date", "Sales Invoice Header"."Currency Code",
                                 "Sales Invoice Header"."Currency Factor");
                         end;
 
                         trigger OnPreDataItem()
                         begin
-                            if VATAmountLine.Count() < 2 then
+                            if TempVATAmountLine.Count() < 2 then
                                 CurrReport.Break();
                             if (not GLSetup."Print VAT specification in LCY") or
                                ("Sales Invoice Header"."Currency Code" = '')
                             then
                                 CurrReport.Break();
 
-                            SETRANGE(Number, 1, VATAmountLine.Count());
+                            SETRANGE(Number, 1, TempVATAmountLine.Count());
 
                             if GLSetup."LCY Code" = '' then
                                 VALSpecLCYHeader := VatAmountLbl + LCYLbl
@@ -1103,16 +899,6 @@ report 5272722 "lbt Sales - Invoice"
                     {
                         DataItemTableView = SORTING(Key);
                         UseTemporary = true;
-                        column(PaymentServiceLogo; Logo)
-                        {
-                        }
-                        column(PaymentServiceURLText; "URL Caption")
-                        {
-                        }
-                        column(PaymentServiceURL; GetTargetURL())
-                        {
-                        }
-
                         trigger OnPreDataItem()
                         var
                             PaymentServiceSetup: Record "Payment Service Setup";
@@ -1294,6 +1080,7 @@ report 5272722 "lbt Sales - Invoice"
                 CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
                 FormatAddressFields("Sales Invoice Header");
                 FormatDocumentFields("Sales Invoice Header");
+                CompanyInfo."lbt SetReportFooter"(Footer);
 
                 if not Cust.Get("Bill-to Customer No.") then
                     CLEAR(Cust);
@@ -1415,6 +1202,7 @@ report 5272722 "lbt Sales - Invoice"
     begin
         GLSetup.Get();
         SalesSetup.Get();
+        CorrSetup.Get();
         CompanyInfo.Get();
         CompanyInfo.VerifyAndSetPaymentInfo();
         FormatDocument.SetLogoPosition(SalesSetup."Logo Position on Documents", CompanyInfo1, CompanyInfo2, CompanyInfo3);
@@ -1436,9 +1224,9 @@ report 5272722 "lbt Sales - Invoice"
         CompanyInfo2: Record "Company Information";
         CompanyInfo3: Record "Company Information";
         SalesSetup: Record "Sales & Receivables Setup";
-        SalesShipmentBuffer: Record "Sales Shipment Buffer" temporary;
+        TempSalesShipmentBuffer: Record "Sales Shipment Buffer" temporary;
         Cust: Record Customer;
-        VATAmountLine: Record "VAT Amount Line" temporary;
+        TempVATAmountLine: Record "VAT Amount Line" temporary;
         DimSetEntry1: Record "Dimension Set Entry";
         DimSetEntry2: Record "Dimension Set Entry";
         RespCenter: Record "Responsibility Center";
@@ -1449,6 +1237,7 @@ report 5272722 "lbt Sales - Invoice"
         Item: Record Item;
         TempLeBitPostedPSLongtextLine: Record "lbt Posted PS Longtext Line" temporary;
         SalesInvoiceLine: Record "Sales Invoice Line";
+        CorrSetup: Record "lbt Corr Setup";
         LeBitReportFunctions: Codeunit "lbt Report Functions";
         Language: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
@@ -1487,7 +1276,6 @@ report 5272722 "lbt Sales - Invoice"
         CalculatedExchRate: Decimal;
         PrepaymentTitleLbl: Label 'Prepayment Invoice %1', Comment = '%1 - Document No.';
         TitleLbl: Label 'Invoice %1', Comment = '%1 - Document No.';
-        PageCaptionCapLbl: Label 'Page %1 of %2', Comment = '%1 - Current Page, %2 - Total Pages';
         OutputNo: Integer;
         TotalSubTotal: Decimal;
         TotalAmount: Decimal;
@@ -1498,18 +1286,9 @@ report 5272722 "lbt Sales - Invoice"
         [InDataSet]
         LogInteractionEnable: Boolean;
         DisplayAssemblyInformation: Boolean;
-        PhoneNoCaptionLbl: Label 'Phone No.';
-        HomePageCaptionLbl: Label 'Home Page';
-        VATRegNoCaptionLbl: Label 'VAT Registration No.';
-        GiroNoCaptionLbl: Label 'Giro No.';
-        BankNameCaptionLbl: Label 'Bank';
-        BankAccountNoCaptionLbl: Label 'Account No.';
-        DueDateCaptionLbl: Label 'Due Date';
         InvoiceNoCaptionLbl: Label 'Invoice No.';
-        PostingDateCaptionLbl: Label 'Posting Date';
         DimensionsCaptionLbl: Label 'Header Dimensions';
         UnitPriceCaptionLbl: Label 'Unit Price';
-        DiscountCaptionLbl: Label 'Discount %';
         AmountCaptionLbl: Label 'Amount';
         VATClausesCapLbl: Label 'VAT Clause';
         PostedShipmentDateCaptionLbl: Label 'Posted Shipment Date';
@@ -1521,7 +1300,6 @@ report 5272722 "lbt Sales - Invoice"
         InvDiscBaseAmtCaptionLbl: Label 'Invoice Discount Base Amount';
         LineAmountCaptionLbl: Label 'Line Amount';
         ShipToAddressCaptionLbl: Label 'Ship-to Address';
-        EMailCaptionLbl: Label 'E-Mail';
         InvDiscountAmountCaptionLbl: Label 'Invoice Discount Amount';
         VATCaptionLbl: Label 'VAT %';
         VATBaseCaptionLbl: Label 'VAT Base';
@@ -1530,9 +1308,7 @@ report 5272722 "lbt Sales - Invoice"
         TotalCaptionLbl: Label 'Total';
         PaymentTermsCaptionLbl: Label 'Payment Terms';
         ShipmentMethodCaptionLbl: Label 'Shipment Method';
-        DocumentDateCaptionLbl: Label 'Document Date';
         DisplayAdditionalFeeNote: Boolean;
-        LineNoWithTotal: Integer;
         CompanyAddressLine: Text;
         InfoCaptionArry: array[99] of Text;
         InfoValueArry: array[99] of Text;
@@ -1540,7 +1316,6 @@ report 5272722 "lbt Sales - Invoice"
         ItemUnitDescriptionArry: array[50] of Text;
         ItemUnitQtyArry: array[50] of Text;
         InfoRowNo: Integer;
-        ItemUnitCode: Code[20];
         ItemUnitDescription: Text;
         ItemUnitQty: Text;
         HideCompanyInfo: Boolean;
@@ -1561,20 +1336,15 @@ report 5272722 "lbt Sales - Invoice"
         PosNo_CaptionLbl: Label 'Pos.';
         UOM_CaptionLbl: Label 'Unit';
         CarryForwardCaptionLbl: Label 'Carry-forward %1', Comment = '%1 - Amount';
-        CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl: Label 'Registered in:';
-        CompanyInfo__LeBit_CEO_Caption_Lbl: Label 'Chief Executive Officer';
-        CompanyInfo__Bank_Name_Caption_Lbl: Label 'Bank';
-        CompanyInfo_IBAN_Caption_Lbl: Label 'IBAN';
-        CompanyInfo__SWIFT_Code_Caption_Lbl: Label 'SWIFT-BIC';
         SalesPersonText_CaptionLbl: Label 'Salesperson';
-        CompanyInfo_E_Mail_Caption_Lbl: Label 'Mail:';
-        CompanyInfo__Home_Page_Caption_Lbl: Label 'Homepage:';
-        FaxNoCaptionLbl: Label 'Telefax no.';
         ReportType: Option Purchase,Sales,QA,Production,Delivery,"Report";
         UnitPrice: Decimal;
         OrderNo: Code[20];
         Counter: Integer;
         VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
+        Footer: Text;
+        DimLbl: Label '%1 - %2', Locked = true;
+        CombinedDimLbl: Label '%1; %2 - %3', Locked = true;
 
     procedure InitLogInteraction()
     begin
@@ -1584,7 +1354,7 @@ report 5272722 "lbt Sales - Invoice"
     procedure FindPostedShipmentDate(): Date
     var
         SalesShipmentHeader: Record "Sales Shipment Header";
-        SalesShipmentBuffer2: Record "Sales Shipment Buffer" temporary;
+        TempSalesShipmentBuffer2: Record "Sales Shipment Buffer" temporary;
     begin
         NextEntryNo := 1;
         if "Sales Invoice Line"."Shipment No." <> '' then
@@ -1604,20 +1374,20 @@ report 5272722 "lbt Sales - Invoice"
                 exit(0D);
         end;
 
-        SalesShipmentBuffer.Reset();
-        SalesShipmentBuffer.SETRANGE("Document No.", "Sales Invoice Line"."Document No.");
-        SalesShipmentBuffer.SETRANGE("Line No.", "Sales Invoice Line"."Line No.");
-        if SalesShipmentBuffer.FIND('-') then begin
-            SalesShipmentBuffer2 := SalesShipmentBuffer;
-            if SalesShipmentBuffer.Next() = 0 then begin
-                SalesShipmentBuffer.Get(
-                  SalesShipmentBuffer2."Document No.", SalesShipmentBuffer2."Line No.", SalesShipmentBuffer2."Entry No.");
-                SalesShipmentBuffer.Delete();
-                exit(SalesShipmentBuffer2."Posting Date");
+        TempSalesShipmentBuffer.Reset();
+        TempSalesShipmentBuffer.SETRANGE("Document No.", "Sales Invoice Line"."Document No.");
+        TempSalesShipmentBuffer.SETRANGE("Line No.", "Sales Invoice Line"."Line No.");
+        if TempSalesShipmentBuffer.FIND('-') then begin
+            TempSalesShipmentBuffer2 := TempSalesShipmentBuffer;
+            if TempSalesShipmentBuffer.Next() = 0 then begin
+                TempSalesShipmentBuffer.Get(
+                  TempSalesShipmentBuffer2."Document No.", TempSalesShipmentBuffer2."Line No.", TempSalesShipmentBuffer2."Entry No.");
+                TempSalesShipmentBuffer.Delete();
+                exit(TempSalesShipmentBuffer2."Posting Date");
             end;
-            SalesShipmentBuffer.CALCSUMS(Quantity);
-            if SalesShipmentBuffer.Quantity <> "Sales Invoice Line".Quantity then begin
-                SalesShipmentBuffer.DeleteAll();
+            TempSalesShipmentBuffer.CALCSUMS(Quantity);
+            if TempSalesShipmentBuffer.Quantity <> "Sales Invoice Line".Quantity then begin
+                TempSalesShipmentBuffer.DeleteAll();
                 exit("Sales Invoice Header"."Posting Date");
             end;
         end else
@@ -1729,29 +1499,27 @@ report 5272722 "lbt Sales - Invoice"
 
     procedure AddBufferEntry(SalesInvoiceLine: Record "Sales Invoice Line"; QtyOnShipment: Decimal; PostingDate: Date)
     begin
-        SalesShipmentBuffer.SETRANGE("Document No.", SalesInvoiceLine."Document No.");
-        SalesShipmentBuffer.SETRANGE("Line No.", SalesInvoiceLine."Line No.");
-        SalesShipmentBuffer.SETRANGE("Posting Date", PostingDate);
-        if SalesShipmentBuffer.FIND('-') then begin
-            SalesShipmentBuffer.Quantity := SalesShipmentBuffer.Quantity + QtyOnShipment;
-            SalesShipmentBuffer.Modify();
+        TempSalesShipmentBuffer.SETRANGE("Document No.", SalesInvoiceLine."Document No.");
+        TempSalesShipmentBuffer.SETRANGE("Line No.", SalesInvoiceLine."Line No.");
+        TempSalesShipmentBuffer.SETRANGE("Posting Date", PostingDate);
+        if TempSalesShipmentBuffer.FIND('-') then begin
+            TempSalesShipmentBuffer.Quantity := TempSalesShipmentBuffer.Quantity + QtyOnShipment;
+            TempSalesShipmentBuffer.Modify();
             exit;
         end;
 
-        with SalesShipmentBuffer do begin
-            "Document No." := SalesInvoiceLine."Document No.";
-            "Line No." := SalesInvoiceLine."Line No.";
-            "Entry No." := NextEntryNo;
-            Type := SalesInvoiceLine.Type;
-            "No." := SalesInvoiceLine."No.";
-            Quantity := QtyOnShipment;
-            "Posting Date" := PostingDate;
-            Insert();
-            NextEntryNo := NextEntryNo + 1
-        end;
+        TempSalesShipmentBuffer."Document No." := SalesInvoiceLine."Document No.";
+        TempSalesShipmentBuffer."Line No." := SalesInvoiceLine."Line No.";
+        TempSalesShipmentBuffer."Entry No." := NextEntryNo;
+        TempSalesShipmentBuffer.Type := SalesInvoiceLine.Type;
+        TempSalesShipmentBuffer."No." := SalesInvoiceLine."No.";
+        TempSalesShipmentBuffer.Quantity := QtyOnShipment;
+        TempSalesShipmentBuffer."Posting Date" := PostingDate;
+        TempSalesShipmentBuffer.Insert();
+        NextEntryNo := NextEntryNo + 1
     end;
 
-    local procedure DocumentCaption(): Text[250]
+    local procedure DocumentCaption(): Text
     var
         DocCaption: text;
     begin
@@ -1772,19 +1540,19 @@ report 5272722 "lbt Sales - Invoice"
     end;
 
     local procedure FormatDocumentFields(SalesInvoiceHeader: Record "Sales Invoice Header")
+    var
+        lbtFormatDocument: Codeunit "lbt Format Document";
     begin
-        with SalesInvoiceHeader do begin
-            FormatDocument.SetTotalLabels("Currency Code", TotalText, TotalInclVATText, TotalExclVATText);
-            FormatDocument.SetSalesPerson(SalesPurchPerson, "Salesperson Code", SalesPersonText);
-            FormatDocument.SetPaymentTerms(PaymentTerms, "Payment Terms Code", "Language Code");
-            FormatDocument.SetShipmentMethod(ShipmentMethod, "Shipment Method Code", "Language Code");
+        lbtFormatDocument.SetTotalLabels(SalesInvoiceHeader."Currency Code", TotalText, TotalInclVATText, TotalExclVATText);
+        FormatDocument.SetSalesPerson(SalesPurchPerson, SalesInvoiceHeader."Salesperson Code", SalesPersonText);
+        FormatDocument.SetPaymentTerms(PaymentTerms, SalesInvoiceHeader."Payment Terms Code", SalesInvoiceHeader."Language Code");
+        FormatDocument.SetShipmentMethod(ShipmentMethod, SalesInvoiceHeader."Shipment Method Code", SalesInvoiceHeader."Language Code");
 
-            OrderNoText := FormatDocument.SetText("Order No." <> '', CopyStr(FIELDCAPTION("Order No."), 1, 80));
-            ReferenceText := FormatDocument.SetText("Your Reference" <> '', CopyStr(FIELDCAPTION("Your Reference"), 1, 80));
-            VATNoText := FormatDocument.SetText("VAT Registration No." <> '', CopyStr(FIELDCAPTION("VAT Registration No."), 1, 80));
-            if SalesPersonText <> '' then
-                SalesPersonText := SalesPersonText_CaptionLbl;
-        end;
+        OrderNoText := FormatDocument.SetText(SalesInvoiceHeader."Order No." <> '', CopyStr(SalesInvoiceHeader.FIELDCAPTION("Order No."), 1, 80));
+        ReferenceText := FormatDocument.SetText(SalesInvoiceHeader."Your Reference" <> '', CopyStr(SalesInvoiceHeader.FIELDCAPTION("Your Reference"), 1, 80));
+        VATNoText := FormatDocument.SetText(SalesInvoiceHeader."VAT Registration No." <> '', CopyStr(SalesInvoiceHeader.FIELDCAPTION("VAT Registration No."), 1, 80));
+        if SalesPersonText <> '' then
+            SalesPersonText := SalesPersonText_CaptionLbl;
     end;
 
     local procedure FormatAddressFields(SalesInvoiceHeader: Record "Sales Invoice Header")
@@ -1815,15 +1583,13 @@ report 5272722 "lbt Sales - Invoice"
         TempPostedAsmLine.DeleteAll();
         if "Sales Invoice Line".Type <> "Sales Invoice Line".Type::Item then
             exit;
-        with ValueEntry do begin
-            SETCURRENTKEY("Document No.");
-            SETRANGE("Document No.", "Sales Invoice Line"."Document No.");
-            SETRANGE("Document Type", "Document Type"::"Sales Invoice");
-            SETRANGE("Document Line No.", "Sales Invoice Line"."Line No.");
-            SETRANGE(Adjustment, false);
-            if not FindSet() then
-                exit;
-        end;
+        ValueEntry.SETCURRENTKEY("Document No.");
+        ValueEntry.SETRANGE("Document No.", "Sales Invoice Line"."Document No.");
+        ValueEntry.SETRANGE("Document Type", ValueEntry."Document Type"::"Sales Invoice");
+        ValueEntry.SETRANGE("Document Line No.", "Sales Invoice Line"."Line No.");
+        ValueEntry.SETRANGE(Adjustment, false);
+        if not ValueEntry.FindSet() then
+            exit;
         repeat
             if ItemLedgerEntry.Get(ValueEntry."Item Ledger Entry No.") then
                 if ItemLedgerEntry."Document Type" = ItemLedgerEntry."Document Type"::"Sales Shipment" then begin
@@ -1906,10 +1672,6 @@ report 5272722 "lbt Sales - Invoice"
                     TempLineFeeNoteOnReportHist.Insert();
                 until LineFeeNoteOnReportHist.Next() = 0;
         end;
-    end;
-
-    local procedure "### Lebit Correspondence Functions ###"()
-    begin
     end;
 
     local procedure Createlbtext(LeBitPostedPSLongtextLine: Record "lbt Posted PS Longtext Line")
@@ -2003,4 +1765,5 @@ report 5272722 "lbt Sales - Invoice"
     begin
     end;
 }
+
 

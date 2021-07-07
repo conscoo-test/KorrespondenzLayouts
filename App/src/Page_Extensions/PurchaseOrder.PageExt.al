@@ -44,12 +44,10 @@ pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
-                        SourceRecRef: RecordRef;
+                        LongtextMgt: Codeunit "lbt Longtext Mgt.";
                         Position: Option Header,Footer,Longtext;
                     begin
-                        SourceRecRef.GETTABLE(Rec);
-                        LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Header);
+                        LongtextMgt.ShowLongtextLines(Rec, Position::Header);
                     end;
                 }
                 action("lbt Footer Text")
@@ -61,12 +59,10 @@ pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
-                        SourceRecRef: RecordRef;
+                        LongtextMgt: Codeunit "lbt Longtext Mgt.";
                         Position: Option Header,Footer,Longtext;
                     begin
-                        SourceRecRef.GETTABLE(Rec);
-                        LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Footer);
+                        LongtextMgt.ShowLongtextLines(Rec, Position::Footer);
                     end;
                 }
                 action("lbt Invoice Header Text")
@@ -79,15 +75,15 @@ pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
                     trigger OnAction()
                     var
                         PurchaseHeaderRec: Record "Purchase Header";
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LongtextMgt: Codeunit "lbt Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
-                        DocType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order";
+                        DocType: Enum "Purchase Document Type";
                     begin
                         PurchaseHeaderRec.TransferFields(Rec);
                         PurchaseHeaderRec."Document Type" := DocType::Invoice;
                         SourceRecRef.GETTABLE(PurchaseHeaderRec);
-                        LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Header);
+                        LongtextMgt.ShowLongtextLines(Rec, Position::Header);
                     end;
                 }
                 action("lbt Invoice Footer Text")
@@ -100,15 +96,15 @@ pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
                     trigger OnAction()
                     var
                         PurchaseHeaderRec: Record "Purchase Header";
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LongtextMgt: Codeunit "lbt Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
-                        DocType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order";
+                        DocType: Enum "Purchase Document Type";
                     begin
                         PurchaseHeaderRec.TransferFields(Rec);
                         PurchaseHeaderRec."Document Type" := DocType::Invoice;
                         SourceRecRef.GETTABLE(PurchaseHeaderRec);
-                        LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Footer);
+                        LongtextMgt.ShowLongtextLines(Rec, Position::Footer);
                     end;
                 }
                 action("lbt Shipment Header Text")
@@ -121,15 +117,15 @@ pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
                     trigger OnAction()
                     var
                         PurchaseHeaderRec: Record "Purchase Header";
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LongtextMgt: Codeunit "lbt Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
-                        DocType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order";
+                        DocType: Enum "Purchase Document Type";
                     begin
                         PurchaseHeaderRec.TransferFields(Rec);
                         PurchaseHeaderRec."Document Type" := DocType::"Return Order";
                         SourceRecRef.GETTABLE(PurchaseHeaderRec);
-                        LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Header);
+                        LongtextMgt.ShowLongtextLines(Rec, Position::Header);
                     end;
                 }
                 action("lbt Shipment Footer Text")
@@ -142,15 +138,15 @@ pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
                     trigger OnAction()
                     var
                         PurchaseHeaderRec: Record "Purchase Header";
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
+                        LongtextMgt: Codeunit "lbt Longtext Mgt.";
                         SourceRecRef: RecordRef;
                         Position: Option Header,Footer,Longtext;
-                        DocType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order";
+                        DocType: Enum "Purchase Document Type";
                     begin
                         PurchaseHeaderRec.TransferFields(Rec);
                         PurchaseHeaderRec."Document Type" := DocType::"Return Order";
                         SourceRecRef.GETTABLE(PurchaseHeaderRec);
-                        LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Footer);
+                        LongtextMgt.ShowLongtextLines(Rec, Position::Footer);
                     end;
                 }
             }

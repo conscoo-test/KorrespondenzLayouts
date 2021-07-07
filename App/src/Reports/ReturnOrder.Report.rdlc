@@ -1453,7 +1453,6 @@
                                             </Style>
                                           </Textbox>
                                           <ColSpan>2</ColSpan>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell />
@@ -1672,7 +1671,6 @@
                                             </Style>
                                           </Textbox>
                                           <ColSpan>2</ColSpan>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell />
@@ -1878,7 +1876,6 @@
                                             </Style>
                                           </Textbox>
                                           <ColSpan>2</ColSpan>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell />
@@ -2002,7 +1999,6 @@
                                             </Style>
                                           </Textbox>
                                           <ColSpan>2</ColSpan>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell />
@@ -2131,7 +2127,6 @@
                                             </Style>
                                           </Textbox>
                                           <ColSpan>2</ColSpan>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell />
@@ -2255,7 +2250,6 @@
                                             </Style>
                                           </Textbox>
                                           <ColSpan>2</ColSpan>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell />
@@ -2379,7 +2373,6 @@
                                             </Style>
                                           </Textbox>
                                           <ColSpan>2</ColSpan>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell />
@@ -5033,55 +5026,55 @@
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=IIF(SUM(Fields!VATAmount.Value)=0,FALSE,TRUE)</Hidden>
+                                      <Hidden>=IIF(SUM(Fields!VATAmount.Value)=0 and not Fields!AlwaysPrintVat_CorrSetup.Value,FALSE,TRUE)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=IIF(Fields!Purchase_Header___Prices_Including_VAT_.Value=FALSE AND SUM(Fields!VATAmount.Value)&lt;&gt;0,FALSE,TRUE)</Hidden>
+                                      <Hidden>=IIF(Fields!Purchase_Header___Prices_Including_VAT_.Value=FALSE AND (SUM(Fields!VATAmount.Value)&lt;&gt;0 or Fields!AlwaysPrintVat_CorrSetup.Value),FALSE,TRUE)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=IIF(Fields!Purchase_Header___Prices_Including_VAT_.Value=FALSE AND SUM(Fields!VATAmount.Value)&lt;&gt;0,FALSE,TRUE)</Hidden>
+                                      <Hidden>=IIF(Fields!Purchase_Header___Prices_Including_VAT_.Value=FALSE AND (SUM(Fields!VATAmount.Value)&lt;&gt;0 or Fields!AlwaysPrintVat_CorrSetup.Value),FALSE,TRUE)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=IIF(Fields!Purchase_Header___Prices_Including_VAT_.Value=FALSE AND SUM(Fields!VATAmount.Value)&lt;&gt;0,FALSE,TRUE)</Hidden>
+                                      <Hidden>=IIF(Fields!Purchase_Header___Prices_Including_VAT_.Value=FALSE AND (SUM(Fields!VATAmount.Value)&lt;&gt;0 or Fields!AlwaysPrintVat_CorrSetup.Value),FALSE,TRUE)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=IIF(SUM(Fields!VATDiscountAmount.Value)&lt;&gt;0 AND SUM(Fields!VATAmount.Value)&lt;&gt;0 AND Fields!Purchase_Header___Prices_Including_VAT_.Value=TRUE AND SUM(Fields!Purchase_Header___VAT_Base_Discount___.Value)&lt;&gt;0,FALSE,TRUE)</Hidden>
+                                      <Hidden>=IIF(SUM(Fields!VATDiscountAmount.Value)&lt;&gt;0 AND (SUM(Fields!VATAmount.Value)&lt;&gt;0 or Fields!AlwaysPrintVat_CorrSetup.Value) AND Fields!Purchase_Header___Prices_Including_VAT_.Value=TRUE AND SUM(Fields!Purchase_Header___VAT_Base_Discount___.Value)&lt;&gt;0,FALSE,TRUE)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=IIF(Fields!Purchase_Header___Prices_Including_VAT_.Value=TRUE AND SUM(Fields!VATAmount.Value)&lt;&gt;0,FALSE,TRUE)</Hidden>
+                                      <Hidden>=IIF(Fields!Purchase_Header___Prices_Including_VAT_.Value=TRUE AND (SUM(Fields!VATAmount.Value)&lt;&gt;0 or Fields!AlwaysPrintVat_CorrSetup.Value),FALSE,TRUE)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=IIF(Fields!Purchase_Header___Prices_Including_VAT_.Value=TRUE AND SUM(Fields!VATAmount.Value)&lt;&gt;0,FALSE,TRUE)</Hidden>
+                                      <Hidden>=IIF(Fields!Purchase_Header___Prices_Including_VAT_.Value=TRUE AND (SUM(Fields!VATAmount.Value)&lt;&gt;0 or Fields!AlwaysPrintVat_CorrSetup.Value),FALSE,TRUE)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=IIF(Fields!Purchase_Header___Prices_Including_VAT_.Value=TRUE AND SUM(Fields!VATAmount.Value)&lt;&gt;0,FALSE,TRUE)</Hidden>
+                                      <Hidden>=IIF(Fields!Purchase_Header___Prices_Including_VAT_.Value=TRUE AND (SUM(Fields!VATAmount.Value)&lt;&gt;0 or Fields!AlwaysPrintVat_CorrSetup.Value),FALSE,TRUE)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
-                                      <Hidden>=IIF(Fields!Purchase_Header___Prices_Including_VAT_.Value=TRUE AND SUM(Fields!VATAmount.Value)&lt;&gt;0,FALSE,TRUE)</Hidden>
+                                      <Hidden>=IIF(Fields!Purchase_Header___Prices_Including_VAT_.Value=TRUE AND (SUM(Fields!VATAmount.Value)&lt;&gt;0 or Fields!AlwaysPrintVat_CorrSetup.Value),FALSE,TRUE)</Hidden>
                                     </Visibility>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
@@ -6391,6 +6384,7 @@
                                       <TablixCell>
                                         <CellContents>
                                           <Textbox Name="textbox754">
+                                            <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
@@ -6416,6 +6410,7 @@
                                               <VerticalAlign>Middle</VerticalAlign>
                                             </Style>
                                           </Textbox>
+                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                     </TablixCells>
@@ -10984,65 +10979,6 @@
                 </Rectangle>
                 <Rectangle Name="FooterCompanyInfo">
                   <ReportItems>
-                    <Textbox Name="FooterLine1">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!CompanyInfo_Name.Value</Value>
-                              <Style>
-                                <FontSize>6pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Left</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <Top>0.21357cm</Top>
-                      <Left>2.43663cm</Left>
-                      <Height>0.3cm</Height>
-                      <Width>16.87941cm</Width>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                      </Style>
-                    </Textbox>
-                    <Textbox Name="FooterLine2">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!CompanyInfo_Address.Value &amp; " | " &amp; Fields!CompanyInfo__Post_Code.Value &amp; " " &amp; Fields!CompanyInfo_City.Value &amp; " | " &amp; Fields!CompanyInfo__Phone_No__Caption.Value &amp; " " &amp; Fields!CompanyInfo__Phone_No.Value &amp; " | " &amp; Fields!CompanyInfo__Fax_No__Caption.Value &amp; " " &amp; Fields!CompanyInfo__Fax_No.Value &amp; " | " &amp; Fields!CompanyInfo_E_Mail_Caption.Value &amp; " " &amp; Fields!CompanyInfo_E_Mail.Value &amp; " | " &amp; Fields!CompanyInfo__Home_Page_Caption.Value &amp; " " &amp; Fields!CompanyInfo__Home_Page.Value</Value>
-                              <Style>
-                                <FontSize>6pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Left</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <Top>0.51357cm</Top>
-                      <Left>2.43663cm</Left>
-                      <Height>0.3cm</Height>
-                      <Width>16.87941cm</Width>
-                      <ZIndex>1</ZIndex>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                      </Style>
-                    </Textbox>
                     <Textbox Name="FooterLine3">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -11050,8 +10986,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Label>HRB_CEO_VAT</Label>
-                              <Value>="&lt;b&gt;" &amp; Fields!CompanyInfo__LeBit_Trade_Register_Name_Caption.Value &amp; "&lt;/b&gt;" &amp; " " &amp; Fields!CompanyInfo__LeBit_Trade_Register_Name.Value &amp; " " &amp; Fields!NoCaption.Value &amp; " " &amp; Fields!CompanyInfo__LeBit_Commercial_Register_No.Value &amp; " | " &amp; "&lt;b&gt;" &amp; Fields!CompanyInfo__LeBit_CEO_Caption.Value &amp; "&lt;/b&gt;" &amp; " " &amp; Fields!CompanyInfo__LeBit_CEO1.Value &amp; Microsoft.VisualBasic.Interaction.IIF(Fields!CompanyInfo__LeBit_CEO2.Value = "", "", ", " &amp; Fields!CompanyInfo__LeBit_CEO2.Value) &amp; Microsoft.VisualBasic.Interaction.IIF(Fields!CompanyInfo__LeBit_CEO3.Value = "", "", ", " &amp; Fields!CompanyInfo__LeBit_CEO3.Value) &amp; " | " &amp; "&lt;b&gt;" &amp; Fields!CompanyInfo__VAT_Registration_No__Caption.Value &amp; "&lt;/b&gt;" &amp; " " &amp; Fields!CompanyInfo__VAT_Registration_No__.Value</Value>
+                              <Value>=Fields!Footer.Value</Value>
                               <MarkupType>HTML</MarkupType>
                               <Style>
                                 <FontSize>6pt</FontSize>
@@ -11063,110 +10998,10 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <Top>0.81357cm</Top>
+                      <Top>0.17857cm</Top>
                       <Left>2.43663cm</Left>
-                      <Height>0.3cm</Height>
+                      <Height>1.84518cm</Height>
                       <Width>16.87941cm</Width>
-                      <ZIndex>2</ZIndex>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                      </Style>
-                    </Textbox>
-                    <Textbox Name="FooterLine4">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Label>BANK</Label>
-                              <Value>="&lt;b&gt;" &amp; Fields!CompanyInfo__Bank_Name_Caption.Value &amp; "&lt;/b&gt; " &amp; Fields!CompanyInfo__Bank_Name.Value &amp; " | &lt;b&gt;" &amp; Fields!CompanyInfo_IBAN_Caption.Value &amp; "&lt;/b&gt; " &amp; Fields!CompanyInfo_IBAN.Value &amp; " | &lt;b&gt;" &amp; Fields!CompanyInfo__SWIFT_Code_Caption.Value &amp; "&lt;/b&gt; " &amp; Fields!CompanyInfo__SWIFT_Code.Value</Value>
-                              <MarkupType>HTML</MarkupType>
-                              <Style>
-                                <FontSize>6pt</FontSize>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Left</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <Top>1.11357cm</Top>
-                      <Left>2.43663cm</Left>
-                      <Height>0.3cm</Height>
-                      <Width>16.87941cm</Width>
-                      <ZIndex>3</ZIndex>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                      </Style>
-                    </Textbox>
-                    <Textbox Name="FooterLine5">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Label>BANK2</Label>
-                              <Value>="&lt;b&gt;" &amp; Fields!CompanyInfo__Bank_Name_Caption.Value &amp; "&lt;/b&gt; " &amp; Fields!CompanyInfo__LeBit_Bank_Name_2.Value &amp; " | &lt;b&gt;" &amp; Fields!CompanyInfo_IBAN_Caption.Value &amp; "&lt;/b&gt; " &amp; Fields!CompanyInfo__LeBit_IBAN_2.Value &amp; " | &lt;b&gt;" &amp; Fields!CompanyInfo__SWIFT_Code_Caption.Value &amp; "&lt;/b&gt; " &amp; Fields!CompanyInfo__LeBit_SWIFT_Code_2.Value</Value>
-                              <MarkupType>HTML</MarkupType>
-                              <Style>
-                                <FontSize>6pt</FontSize>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Left</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <Top>1.41357cm</Top>
-                      <Left>2.43663cm</Left>
-                      <Height>0.3cm</Height>
-                      <Width>16.87941cm</Width>
-                      <ZIndex>4</ZIndex>
-                      <Visibility>
-                        <Hidden>=Fields!CompanyInfo__LeBit_Bank_Name_2.Value = ""</Hidden>
-                      </Visibility>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                      </Style>
-                    </Textbox>
-                    <Textbox Name="FooterLine6">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Label>BANK3</Label>
-                              <Value>="&lt;b&gt;" &amp; Fields!CompanyInfo__Bank_Name_Caption.Value &amp; "&lt;/b&gt; " &amp; Fields!CompanyInfo__LeBit_Bank_Name_3.Value &amp; " | &lt;b&gt;" &amp; Fields!CompanyInfo_IBAN_Caption.Value &amp; "&lt;/b&gt; " &amp; Fields!CompanyInfo__LeBit_IBAN_3.Value &amp; " | &lt;b&gt;" &amp; Fields!CompanyInfo__SWIFT_Code_Caption.Value &amp; "&lt;/b&gt; " &amp; Fields!CompanyInfo__LeBit_SWIFT_Code_3.Value</Value>
-                              <MarkupType>HTML</MarkupType>
-                              <Style>
-                                <FontSize>6pt</FontSize>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Left</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <Top>1.71357cm</Top>
-                      <Left>2.43663cm</Left>
-                      <Height>0.3cm</Height>
-                      <Width>16.87941cm</Width>
-                      <ZIndex>5</ZIndex>
-                      <Visibility>
-                        <Hidden>=Fields!CompanyInfo__LeBit_Bank_Name_3.Value = ""</Hidden>
-                      </Visibility>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -11176,9 +11011,9 @@
                   </ReportItems>
                   <KeepTogether>true</KeepTogether>
                   <Top>0.8cm</Top>
-                  <Left>0.08396cm</Left>
+                  <Left>0.02059cm</Left>
                   <Height>2.02375cm</Height>
-                  <Width>19.34412cm</Width>
+                  <Width>19.45879cm</Width>
                   <ZIndex>1</ZIndex>
                   <Visibility>
                     <Hidden>=First(Fields!HideCompanyInfo.Value, "DataSet_Result")</Hidden>
@@ -11468,6 +11303,12 @@ End Function
   <DataSets>
     <DataSet Name="DataSet_Result">
       <Fields>
+        <Field Name="Footer">
+          <DataField>Footer</DataField>
+        </Field>
+        <Field Name="AlwaysPrintVat_CorrSetup">
+          <DataField>AlwaysPrintVat_CorrSetup</DataField>
+        </Field>
         <Field Name="Purchase_Header_Document_Type">
           <DataField>Purchase_Header_Document_Type</DataField>
         </Field>
@@ -11525,75 +11366,6 @@ End Function
         <Field Name="BuyFromAddr8">
           <DataField>BuyFromAddr8</DataField>
         </Field>
-        <Field Name="CompanyInfo_Name">
-          <DataField>CompanyInfo_Name</DataField>
-        </Field>
-        <Field Name="CompanyInfo__VAT_Registration_No__">
-          <DataField>CompanyInfo__VAT_Registration_No__</DataField>
-        </Field>
-        <Field Name="CompanyInfo_Address">
-          <DataField>CompanyInfo_Address</DataField>
-        </Field>
-        <Field Name="CompanyInfo__Post_Code">
-          <DataField>CompanyInfo__Post_Code</DataField>
-        </Field>
-        <Field Name="CompanyInfo_City">
-          <DataField>CompanyInfo_City</DataField>
-        </Field>
-        <Field Name="CompanyInfo__Phone_No">
-          <DataField>CompanyInfo__Phone_No</DataField>
-        </Field>
-        <Field Name="CompanyInfo__Fax_No">
-          <DataField>CompanyInfo__Fax_No</DataField>
-        </Field>
-        <Field Name="CompanyInfo_E_Mail">
-          <DataField>CompanyInfo_E_Mail</DataField>
-        </Field>
-        <Field Name="CompanyInfo__Home_Page">
-          <DataField>CompanyInfo__Home_Page</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_CEO1">
-          <DataField>CompanyInfo__LeBit_CEO1</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_CEO2">
-          <DataField>CompanyInfo__LeBit_CEO2</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_CEO3">
-          <DataField>CompanyInfo__LeBit_CEO3</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_Commercial_Register_No">
-          <DataField>CompanyInfo__LeBit_Commercial_Register_No</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_Trade_Register_Name">
-          <DataField>CompanyInfo__LeBit_Trade_Register_Name</DataField>
-        </Field>
-        <Field Name="CompanyInfo__Bank_Name">
-          <DataField>CompanyInfo__Bank_Name</DataField>
-        </Field>
-        <Field Name="CompanyInfo_IBAN">
-          <DataField>CompanyInfo_IBAN</DataField>
-        </Field>
-        <Field Name="CompanyInfo__SWIFT_Code">
-          <DataField>CompanyInfo__SWIFT_Code</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_Bank_Name_2">
-          <DataField>CompanyInfo__LeBit_Bank_Name_2</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_IBAN_2">
-          <DataField>CompanyInfo__LeBit_IBAN_2</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_SWIFT_Code_2">
-          <DataField>CompanyInfo__LeBit_SWIFT_Code_2</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_Bank_Name_3">
-          <DataField>CompanyInfo__LeBit_Bank_Name_3</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_IBAN_3">
-          <DataField>CompanyInfo__LeBit_IBAN_3</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_SWIFT_Code_3">
-          <DataField>CompanyInfo__LeBit_SWIFT_Code_3</DataField>
-        </Field>
         <Field Name="FORMAT__Purchase_Header___Document_Date__0_4_">
           <DataField>FORMAT__Purchase_Header___Document_Date__0_4_</DataField>
         </Field>
@@ -11615,17 +11387,11 @@ End Function
         <Field Name="Purchase_Header___VAT_Base_Discount___Format">
           <DataField>Purchase_Header___VAT_Base_Discount___Format</DataField>
         </Field>
-        <Field Name="VATNoText">
-          <DataField>VATNoText</DataField>
-        </Field>
         <Field Name="PurchaserText">
           <DataField>PurchaserText</DataField>
         </Field>
         <Field Name="SalesPurchPerson_Name">
           <DataField>SalesPurchPerson_Name</DataField>
-        </Field>
-        <Field Name="Purchase_Header___No__">
-          <DataField>Purchase_Header___No__</DataField>
         </Field>
         <Field Name="ReferenceText">
           <DataField>ReferenceText</DataField>
@@ -11633,56 +11399,14 @@ End Function
         <Field Name="OutputNo">
           <DataField>OutputNo</DataField>
         </Field>
-        <Field Name="PricesInclVATtxt">
-          <DataField>PricesInclVATtxt</DataField>
-        </Field>
         <Field Name="ShowInternalInfo">
           <DataField>ShowInternalInfo</DataField>
-        </Field>
-        <Field Name="PageLoop_Number">
-          <DataField>PageLoop_Number</DataField>
         </Field>
         <Field Name="ReturnOrderNoCaption">
           <DataField>ReturnOrderNoCaption</DataField>
         </Field>
         <Field Name="Purchase_Header___Buy_from_Vendor_No__Caption">
           <DataField>Purchase_Header___Buy_from_Vendor_No__Caption</DataField>
-        </Field>
-        <Field Name="Purchase_Header___Prices_Including_VAT_Caption">
-          <DataField>Purchase_Header___Prices_Including_VAT_Caption</DataField>
-        </Field>
-        <Field Name="PageCaption">
-          <DataField>PageCaption</DataField>
-        </Field>
-        <Field Name="CompanyInfo__VAT_Registration_No__Caption">
-          <DataField>CompanyInfo__VAT_Registration_No__Caption</DataField>
-        </Field>
-        <Field Name="CompanyInfo__Phone_No__Caption">
-          <DataField>CompanyInfo__Phone_No__Caption</DataField>
-        </Field>
-        <Field Name="CompanyInfo__Fax_No__Caption">
-          <DataField>CompanyInfo__Fax_No__Caption</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_Trade_Register_Name_Caption">
-          <DataField>CompanyInfo__LeBit_Trade_Register_Name_Caption</DataField>
-        </Field>
-        <Field Name="CompanyInfo__LeBit_CEO_Caption">
-          <DataField>CompanyInfo__LeBit_CEO_Caption</DataField>
-        </Field>
-        <Field Name="CompanyInfo__Bank_Name_Caption">
-          <DataField>CompanyInfo__Bank_Name_Caption</DataField>
-        </Field>
-        <Field Name="CompanyInfo_IBAN_Caption">
-          <DataField>CompanyInfo_IBAN_Caption</DataField>
-        </Field>
-        <Field Name="CompanyInfo__SWIFT_Code_Caption">
-          <DataField>CompanyInfo__SWIFT_Code_Caption</DataField>
-        </Field>
-        <Field Name="CompanyInfo_E_Mail_Caption">
-          <DataField>CompanyInfo_E_Mail_Caption</DataField>
-        </Field>
-        <Field Name="CompanyInfo__Home_Page_Caption">
-          <DataField>CompanyInfo__Home_Page_Caption</DataField>
         </Field>
         <Field Name="PagefromPageCaption">
           <DataField>PagefromPageCaption</DataField>
@@ -11738,12 +11462,6 @@ End Function
         <Field Name="DimText">
           <DataField>DimText</DataField>
         </Field>
-        <Field Name="DimText_Control72">
-          <DataField>DimText_Control72</DataField>
-        </Field>
-        <Field Name="DimensionLoop1_Number">
-          <DataField>DimensionLoop1_Number</DataField>
-        </Field>
         <Field Name="Header_DimensionsCaption">
           <DataField>Header_DimensionsCaption</DataField>
         </Field>
@@ -11755,9 +11473,6 @@ End Function
         </Field>
         <Field Name="NewPageLBKopf">
           <DataField>NewPageLBKopf</DataField>
-        </Field>
-        <Field Name="LBKopfNumber">
-          <DataField>LBKopfNumber</DataField>
         </Field>
         <Field Name="PurchLine__Line_Amount_">
           <DataField>PurchLine__Line_Amount_</DataField>
@@ -11771,17 +11486,8 @@ End Function
         <Field Name="Purchase_Line___Line_No__">
           <DataField>Purchase_Line___Line_No__</DataField>
         </Field>
-        <Field Name="AllowInvDisctxt">
-          <DataField>AllowInvDisctxt</DataField>
-        </Field>
         <Field Name="PurchaseLineType">
           <DataField>PurchaseLineType</DataField>
-        </Field>
-        <Field Name="Purchase_Line___No__">
-          <DataField>Purchase_Line___No__</DataField>
-        </Field>
-        <Field Name="Purchase_Line__Description_Control63">
-          <DataField>Purchase_Line__Description_Control63</DataField>
         </Field>
         <Field Name="Purchase_Line__Quantity">
           <DataField>Purchase_Line__Quantity</DataField>
@@ -11798,41 +11504,17 @@ End Function
         <Field Name="Purchase_Line___Direct_Unit_Cost_Format">
           <DataField>Purchase_Line___Direct_Unit_Cost_Format</DataField>
         </Field>
-        <Field Name="Purchase_Line___Line_Discount___">
-          <DataField>Purchase_Line___Line_Discount___</DataField>
-        </Field>
-        <Field Name="Purchase_Line___Line_Discount___Format">
-          <DataField>Purchase_Line___Line_Discount___Format</DataField>
-        </Field>
         <Field Name="Purchase_Line___Line_Amount_">
           <DataField>Purchase_Line___Line_Amount_</DataField>
         </Field>
         <Field Name="Purchase_Line___Line_Amount_Format">
           <DataField>Purchase_Line___Line_Amount_Format</DataField>
         </Field>
-        <Field Name="Purchase_Line___Allow_Invoice_Disc__">
-          <DataField>Purchase_Line___Allow_Invoice_Disc__</DataField>
-        </Field>
-        <Field Name="Purchase_Line___VAT_Identifier_">
-          <DataField>Purchase_Line___VAT_Identifier_</DataField>
-        </Field>
-        <Field Name="PurchLine__Line_Amount__Control77">
-          <DataField>PurchLine__Line_Amount__Control77</DataField>
-        </Field>
-        <Field Name="PurchLine__Line_Amount__Control77Format">
-          <DataField>PurchLine__Line_Amount__Control77Format</DataField>
-        </Field>
         <Field Name="PurchLine__Inv__Discount_Amount_">
           <DataField>PurchLine__Inv__Discount_Amount_</DataField>
         </Field>
         <Field Name="PurchLine__Inv__Discount_Amount_Format">
           <DataField>PurchLine__Inv__Discount_Amount_Format</DataField>
-        </Field>
-        <Field Name="PurchLine__Line_Amount__Control109">
-          <DataField>PurchLine__Line_Amount__Control109</DataField>
-        </Field>
-        <Field Name="PurchLine__Line_Amount__Control109Format">
-          <DataField>PurchLine__Line_Amount__Control109Format</DataField>
         </Field>
         <Field Name="TotalText">
           <DataField>TotalText</DataField>
@@ -11855,20 +11537,8 @@ End Function
         <Field Name="VATAmountFormat">
           <DataField>VATAmountFormat</DataField>
         </Field>
-        <Field Name="PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount____VATAmount">
-          <DataField>PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount____VATAmount</DataField>
-        </Field>
-        <Field Name="PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount____VATAmountFormat">
-          <DataField>PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount____VATAmountFormat</DataField>
-        </Field>
         <Field Name="TotalExclVATText">
           <DataField>TotalExclVATText</DataField>
-        </Field>
-        <Field Name="PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount__Control147">
-          <DataField>PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount__Control147</DataField>
-        </Field>
-        <Field Name="PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount__Control147Format">
-          <DataField>PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount__Control147Format</DataField>
         </Field>
         <Field Name="VATDiscountAmount">
           <DataField>VATDiscountAmount</DataField>
@@ -11876,35 +11546,17 @@ End Function
         <Field Name="VATDiscountAmountFormat">
           <DataField>VATDiscountAmountFormat</DataField>
         </Field>
-        <Field Name="VATAmountLine_VATAmountText_Control32">
-          <DataField>VATAmountLine_VATAmountText_Control32</DataField>
-        </Field>
-        <Field Name="TotalExclVATText_Control51">
-          <DataField>TotalExclVATText_Control51</DataField>
-        </Field>
-        <Field Name="TotalInclVATText_Control69">
-          <DataField>TotalInclVATText_Control69</DataField>
-        </Field>
         <Field Name="VATBaseAmount">
           <DataField>VATBaseAmount</DataField>
         </Field>
         <Field Name="VATBaseAmountFormat">
           <DataField>VATBaseAmountFormat</DataField>
         </Field>
-        <Field Name="VATAmount_Control83">
-          <DataField>VATAmount_Control83</DataField>
-        </Field>
-        <Field Name="VATAmount_Control83Format">
-          <DataField>VATAmount_Control83Format</DataField>
-        </Field>
         <Field Name="TotalAmountInclVAT">
           <DataField>TotalAmountInclVAT</DataField>
         </Field>
         <Field Name="TotalAmountInclVATFormat">
           <DataField>TotalAmountInclVATFormat</DataField>
-        </Field>
-        <Field Name="RoundLoop_Number">
-          <DataField>RoundLoop_Number</DataField>
         </Field>
         <Field Name="TotalSubTotal">
           <DataField>TotalSubTotal</DataField>
@@ -11923,33 +11575,6 @@ End Function
         </Field>
         <Field Name="TotalAmountFormat">
           <DataField>TotalAmountFormat</DataField>
-        </Field>
-        <Field Name="Purchase_Line___No__Caption">
-          <DataField>Purchase_Line___No__Caption</DataField>
-        </Field>
-        <Field Name="Purchase_Line__Description_Control63Caption">
-          <DataField>Purchase_Line__Description_Control63Caption</DataField>
-        </Field>
-        <Field Name="Purchase_Line__QuantityCaption">
-          <DataField>Purchase_Line__QuantityCaption</DataField>
-        </Field>
-        <Field Name="Purchase_Line___Unit_of_Measure_Caption">
-          <DataField>Purchase_Line___Unit_of_Measure_Caption</DataField>
-        </Field>
-        <Field Name="Purchase_Line___Line_Discount___Caption">
-          <DataField>Purchase_Line___Line_Discount___Caption</DataField>
-        </Field>
-        <Field Name="Purchase_Line___Allow_Invoice_Disc__Caption">
-          <DataField>Purchase_Line___Allow_Invoice_Disc__Caption</DataField>
-        </Field>
-        <Field Name="Purchase_Line___VAT_Identifier_Caption">
-          <DataField>Purchase_Line___VAT_Identifier_Caption</DataField>
-        </Field>
-        <Field Name="ContinuedCaption">
-          <DataField>ContinuedCaption</DataField>
-        </Field>
-        <Field Name="ContinuedCaption_Control76">
-          <DataField>ContinuedCaption_Control76</DataField>
         </Field>
         <Field Name="PurchLine__Inv__Discount_Amount_Caption">
           <DataField>PurchLine__Inv__Discount_Amount_Caption</DataField>
@@ -12022,9 +11647,6 @@ End Function
         </Field>
         <Field Name="DimText_Control74">
           <DataField>DimText_Control74</DataField>
-        </Field>
-        <Field Name="DimensionLoop2_Number">
-          <DataField>DimensionLoop2_Number</DataField>
         </Field>
         <Field Name="Line_DimensionsCaption">
           <DataField>Line_DimensionsCaption</DataField>

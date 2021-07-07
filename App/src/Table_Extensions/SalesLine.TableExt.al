@@ -7,23 +7,20 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
         {
             trigger OnAfterValidate()
             begin
-                if Type <> Type::" " then begin
-                    if "lbt Printoption" in ["lbt Printoption"::"Begin Total",
-                                                   "lbt Printoption"::"End Total",
-                                                   "lbt Printoption"::Title,
-                                                   "lbt Printoption"::"New Page"]
-                    then
-                        VALIDATE("lbt Printoption", "lbt Printoption"::Standard);
-                end else
-                    if "lbt Printoption" <> "lbt Printoption"::"New Page" then
-                        VALIDATE("lbt Printoption", "lbt Printoption"::Standard);
-
+                case Type of
+                    Type::"Begin Total":
+                        "lbt Printoption" := "lbt Printoption"::Title;
+                    Type::"End Total":
+                        "lbt Printoption" := "lbt Printoption"::Total;
+                    Type::"Pack Sample":
+                        "lbt Printoption" := "lbt Printoption"::Title;
+                end;
             end;
         }
 
         field(5272720; "lbt Long Text"; Boolean)
         {
-            CalcFormula = Exist ("lbt PS Longtext Line" WHERE("Table ID" = CONST(37),
+            CalcFormula = Exist("lbt PS Longtext Line" WHERE("Table ID" = CONST(37),
                                                                 "Document Type" = FIELD("Document Type"),
                                                                 "Document No." = FIELD("Document No."),
                                                                 Position = CONST(Longtext),
@@ -35,14 +32,13 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
         field(5272721; "lbt Printoption"; Option)
         {
             Caption = 'Printoption';
-            OptionCaption = 'Standard,Title,,Price Invisible,Line Invisible,Alternative,Optional,New Page,Begin Total,End Total';
-            OptionMembers = Standard,Title,,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total";
+            OptionCaption = 'Standard,Title,Total,Price Invisible,Line Invisible,Alternative,Optional,New Page';
+            OptionMembers = Standard,Title,Total,"Price Invisible","Line Invisible",Alternative,Optional,"New Page";
             DataClassification = CustomerContent;
 
             trigger OnValidate()
             var
-                LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
-                Printoption: Option Standard,Title,,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total";
+                Printoption: Option Standard,Title,Total,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total";
             begin
                 if ("Printoption" = "Printoption"::Alternative) or
                   ("Printoption" = "Printoption"::Optional)
@@ -68,8 +64,6 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
                     VALIDATE(Type, Type::" ");
                     "Printoption" := Printoption;
                 end;
-
-                "lbt Printoption StyleExpr" := LeBitCorrespDocMgt.GetStyleExpr("Printoption");
             end;
         }
         field(5272722; "lbt Summation"; Text[250])
@@ -82,7 +76,7 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
 
             trigger OnValidate()
             begin
-                if Type <> 9 then
+                if Type <> Type::"End Total" then
                     FIELDERROR(Type);
                 CALCFIELDS("lbt Balance");
             end;
@@ -90,7 +84,7 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
         field(5272723; "lbt Balance"; Decimal)
         {
             AutoFormatType = 1;
-            CalcFormula = Sum ("Sales Line"."Line Amount" WHERE("Document Type" = FIELD("Document Type"),
+            CalcFormula = Sum("Sales Line"."Line Amount" WHERE("Document Type" = FIELD("Document Type"),
                                                                 "Document No." = FIELD("Document No."),
                                                                 "Line No." = FIELD(FILTER("lbt Summation"))));
             Caption = 'Balance';
@@ -112,11 +106,15 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
         }
         field(5272726; "lbt Source Document Line No."; Integer)
         {
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Removed';
             Caption = 'Source Document Line No.';
             DataClassification = CustomerContent;
         }
         field(5272727; "lbt Printoption StyleExpr"; Text[30])
         {
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Removed';
             Caption = 'lbt Printoption StyleExpr';
             DataClassification = CustomerContent;
         }
@@ -124,11 +122,9 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
 
     trigger OnDelete()
     var
-        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
-        SourceRecRef: RecordRef;
+        LongtextMgt: Codeunit "lbt Longtext Mgt.";
     begin
-        SourceRecRef.GETTABLE(Rec);
-        LeBitLongtextMgt.DelLongtext(SourceRecRef);
+        LongtextMgt.DelLongtext(Rec);
     end;
 
     var

@@ -11,6 +11,7 @@ report 5272731 "lbt Reminder"
             DataItemTableView = SORTING("No.");
             RequestFilterFields = "No.";
             RequestFilterHeading = 'Reminder';
+            column(Footer; Footer) { }
             column(No_IssuedReminderHeader; "No.")
             {
             }
@@ -24,15 +25,6 @@ report 5272731 "lbt Reminder"
             {
             }
             column(TotalCaption; TotalCaptionLbl)
-            {
-            }
-            column(PageCaption; PageCaptionLbl)
-            {
-            }
-            column(HomePageCaption; HomePageCaptionLbl)
-            {
-            }
-            column(EMailCaption; EMailCaptionLbl)
             {
             }
             column(DocDateCaption; DocDateCaptionLbl)
@@ -95,81 +87,6 @@ report 5272731 "lbt Reminder"
                 column(CustAddr8; CustAddr[8])
                 {
                 }
-                column(CompanyInfo_Name; CompanyInfo.Name)
-                {
-                }
-                column(CompanyInfo__VAT_Registration_No__; CompanyInfo."VAT Registration No.")
-                {
-                }
-                column(CompanyInfo_Address; CompanyInfo.Address)
-                {
-                }
-                column(CompanyInfo__Post_Code; CompanyInfo."Post Code")
-                {
-                }
-                column(CompanyInfo_City; CompanyInfo.City)
-                {
-                }
-                column(CompanyInfo__Phone_No; CompanyInfo."Phone No.")
-                {
-                }
-                column(CompanyInfo__Fax_No; CompanyInfo."Fax No.")
-                {
-                }
-                column(CompanyInfo_E_Mail; CompanyInfo."E-Mail")
-                {
-                }
-                column(CompanyInfo__Home_Page; CompanyInfo."Home Page")
-                {
-                }
-                column(CompanyInfo__LeBit_CEO1; CompanyInfo."lbt CEO1")
-                {
-                }
-                column(CompanyInfo__LeBit_CEO2; CompanyInfo."lbt CEO2")
-                {
-                }
-                column(CompanyInfo__LeBit_CEO3; CompanyInfo."lbt CEO3")
-                {
-                }
-                column(CompanyInfo__LeBit_Commercial_Register_No; CompanyInfo."lbt Commercial Register No.")
-                {
-                }
-                column(CompanyInfo__LeBit_Trade_Register_Name; CompanyInfo."lbt Trade Register Name")
-                {
-                }
-                column(CompanyInfo__Bank_Name; CompanyInfo."Bank Name")
-                {
-                }
-                column(CompanyInfo_IBAN; CompanyInfo.IBAN)
-                {
-                }
-                column(CompanyInfo__SWIFT_Code; CompanyInfo."SWIFT Code")
-                {
-                }
-                column(CompanyInfo__LeBit_Bank_Name_2; CompanyInfo."lbt Bank Name 2")
-                {
-                }
-                column(CompanyInfo__LeBit_IBAN_2; CompanyInfo."lbt IBAN 2")
-                {
-                }
-                column(CompanyInfo__LeBit_SWIFT_Code_2; CompanyInfo."lbt SWIFT Code 2")
-                {
-                }
-                column(CompanyInfo__LeBit_Bank_Name_3; CompanyInfo."lbt Bank Name 3")
-                {
-                }
-                column(CompanyInfo__LeBit_IBAN_3; CompanyInfo."lbt IBAN 3")
-                {
-                }
-                column(CompanyInfo__LeBit_SWIFT_Code_3; CompanyInfo."lbt SWIFT Code 3")
-                {
-                }
-                column(DueDate_IssuedReminderHdr; FORMAT("Issued Reminder Header"."Due Date"))
-                {
-                }
-                column(PostingDate_IssuedReminderHdr; FORMAT("Issued Reminder Header"."Posting Date"))
-                {
-                }
                 column(DocDate_IssuedReminderHdr; FORMAT("Issued Reminder Header"."Document Date"))
                 {
                 }
@@ -185,64 +102,10 @@ report 5272731 "lbt Reminder"
                 column(ReferenceText; ReferenceText)
                 {
                 }
-                column(VATNoText; VATNoText)
-                {
-                }
-                column(TextPage; TextPageLbl)
-                {
-                }
-                column(CompanyInfo__VAT_Registration_No__Caption; CompanyInfo__VAT_Registration_No__CaptionLbl)
-                {
-                }
-                column(CompanyInfo__Phone_No__Caption; PhoneNoCaptionLbl)
-                {
-                }
-                column(CompanyInfo__Fax_No__Caption; FaxNoCaptionLbl)
-                {
-                }
-                column(CompanyInfo__LeBit_Trade_Register_Name_Caption; CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl)
-                {
-                }
-                column(CompanyInfo__LeBit_CEO_Caption; CompanyInfo__LeBit_CEO_Caption_Lbl)
-                {
-                }
-                column(CompanyInfo__Bank_Name_Caption; BankNameCaptionLbl)
-                {
-                }
-                column(CompanyInfo_IBAN_Caption; CompanyInfo_IBAN_Caption_Lbl)
-                {
-                }
-                column(CompanyInfo__SWIFT_Code_Caption; CompanyInfo__SWIFT_Code_Caption_Lbl)
-                {
-                }
-                column(CompanyInfo_E_Mail_Caption; CompanyInfo_E_Mail_Caption_Lbl)
-                {
-                }
-                column(CompanyInfo__Home_Page_Caption; CompanyInfo__Home_Page_Caption_Lbl)
-                {
-                }
                 column(DatumCaption; DatumCaptionLbl)
                 {
                 }
                 column(ReminderHeaderNoCaption; ReminderHeaderNoCaptionLbl)
-                {
-                }
-                column(PostingDateCaption; PostingDateCaptionLbl)
-                {
-                }
-                column(BankAccountNoCaption; BankAccountNoCaptionLbl)
-                {
-                }
-                column(BankNameCaption; BankNameCaptionLbl)
-                {
-                }
-                column(GiroNoCaption; GiroNoCaptionLbl)
-                {
-                }
-                column(VATRegNoCaption; VATRegNoCaptionLbl)
-                {
-                }
-                column(PhoneNoCaption; PhoneNoCaptionLbl)
                 {
                 }
                 column(ReminderCaption; DocumentCaption())
@@ -297,11 +160,11 @@ report 5272731 "lbt Reminder"
                         repeat
                             OldDimText := DimText;
                             if DimText = '' then
-                                DimText := STRSUBSTNO('%1 - %2', DimSetEntry."Dimension Code", DimSetEntry."Dimension Value Code")
+                                DimText := STRSUBSTNO(DimLbl, DimSetEntry."Dimension Code", DimSetEntry."Dimension Value Code")
                             else
                                 DimText :=
                                   STRSUBSTNO(
-                                    '%1; %2 - %3', DimText,
+                                    CombinedDimLbl, DimText,
                                     DimSetEntry."Dimension Code", DimSetEntry."Dimension Value Code");
                             if STRLEN(DimText) > MAXSTRLEN(OldDimText) then begin
                                 DimText := OldDimText;
@@ -395,16 +258,16 @@ report 5272731 "lbt Reminder"
 
                     trigger OnAfterGetRecord()
                     begin
-                        VATAmountLine.Init();
-                        VATAmountLine."VAT Identifier" := "VAT Identifier";
-                        VATAmountLine."VAT Calculation Type" := "VAT Calculation Type";
-                        VATAmountLine."Tax Group Code" := "Tax Group Code";
-                        VATAmountLine."VAT %" := "VAT %";
-                        VATAmountLine."VAT Base" := Amount;
-                        VATAmountLine."VAT Amount" := "VAT Amount";
-                        VATAmountLine."Amount Including VAT" := Amount + "VAT Amount";
-                        VATAmountLine."VAT Clause Code" := "VAT Clause Code";
-                        VATAmountLine.InsertLine();
+                        TempVATAmountLine.Init();
+                        TempVATAmountLine."VAT Identifier" := "VAT Identifier";
+                        TempVATAmountLine."VAT Calculation Type" := "VAT Calculation Type";
+                        TempVATAmountLine."Tax Group Code" := "Tax Group Code";
+                        TempVATAmountLine."VAT %" := "VAT %";
+                        TempVATAmountLine."VAT Base" := Amount;
+                        TempVATAmountLine."VAT Amount" := "VAT Amount";
+                        TempVATAmountLine."Amount Including VAT" := Amount + "VAT Amount";
+                        TempVATAmountLine."VAT Clause Code" := "VAT Clause Code";
+                        TempVATAmountLine.InsertLine();
 
                         case Type of
                             Type::"G/L Account":
@@ -448,7 +311,7 @@ report 5272731 "lbt Reminder"
                             until (Next(-1) = 0) or not Continue;
                         end;
 
-                        VATAmountLine.DeleteAll();
+                        TempVATAmountLine.DeleteAll();
                         SETFILTER("Line No.", '<%1', EndLineNo);
                     end;
                 }
@@ -483,7 +346,7 @@ report 5272731 "lbt Reminder"
                 dataitem(VATCounter; "Integer")
                 {
                     DataItemTableView = SORTING(Number);
-                    column(VATAmtLineAmtInclVAT; VATAmountLine."Amount Including VAT")
+                    column(VATAmtLineAmtInclVAT; TempVATAmountLine."Amount Including VAT")
                     {
                         AutoFormatExpression = "Issued Reminder Line".GetCurrencyCodeFromHeader();
                         AutoFormatType = 1;
@@ -498,12 +361,7 @@ report 5272731 "lbt Reminder"
                         AutoFormatExpression = "Issued Reminder Line".GetCurrencyCodeFromHeader();
                         AutoFormatType = 1;
                     }
-                    column(VALVATBaseVALVATAmount; VALVATBase + VALVATAmount)
-                    {
-                        AutoFormatExpression = "Issued Reminder Line".GetCurrencyCodeFromHeader();
-                        AutoFormatType = 1;
-                    }
-                    column(VATAmountLineVAT; VATAmountLine."VAT %")
+                    column(VATAmountLineVAT; TempVATAmountLine."VAT %")
                     {
                     }
                     column(AmountIncludingVATCaption; AmountIncludingVATCaptionLbl)
@@ -518,17 +376,17 @@ report 5272731 "lbt Reminder"
 
                     trigger OnAfterGetRecord()
                     begin
-                        VATAmountLine.GetLine(Number);
-                        VALVATBase := VATAmountLine."Amount Including VAT" / (1 + VATAmountLine."VAT %" / 100);
-                        VALVATAmount := VATAmountLine."Amount Including VAT" - VALVATBase;
+                        TempVATAmountLine.GetLine(Number);
+                        VALVATBase := TempVATAmountLine."Amount Including VAT" / (1 + TempVATAmountLine."VAT %" / 100);
+                        VALVATAmount := TempVATAmountLine."Amount Including VAT" - VALVATBase;
                     end;
 
                     trigger OnPreDataItem()
                     begin
-                        if VATAmountLine.GetTotalVATAmount() = 0 then
+                        if TempVATAmountLine.GetTotalVATAmount() = 0 then
                             CurrReport.Break();
 
-                        SETRANGE(Number, 1, VATAmountLine.Count());
+                        SETRANGE(Number, 1, TempVATAmountLine.Count());
 
                         VALVATBase := 0;
                         VALVATAmount := 0;
@@ -537,10 +395,10 @@ report 5272731 "lbt Reminder"
                 dataitem(VATClauseEntryCounter; "Integer")
                 {
                     DataItemTableView = SORTING(Number);
-                    column(VATClauseVATIdentifier; VATAmountLine."VAT Identifier")
+                    column(VATClauseVATIdentifier; TempVATAmountLine."VAT Identifier")
                     {
                     }
-                    column(VATClauseCode; VATAmountLine."VAT Clause Code")
+                    column(VATClauseCode; TempVATAmountLine."VAT Clause Code")
                     {
                     }
                     column(VATClauseDescription; VATClause.Description)
@@ -549,7 +407,7 @@ report 5272731 "lbt Reminder"
                     column(VATClauseDescription2; VATClause."Description 2")
                     {
                     }
-                    column(VATClauseAmount; VATAmountLine."VAT Amount")
+                    column(VATClauseAmount; TempVATAmountLine."VAT Amount")
                     {
                         AutoFormatExpression = "Issued Reminder Header"."Currency Code";
                         AutoFormatType = 1;
@@ -566,8 +424,8 @@ report 5272731 "lbt Reminder"
 
                     trigger OnAfterGetRecord()
                     begin
-                        VATAmountLine.GetLine(Number);
-                        if not VATClause.Get(VATAmountLine."VAT Clause Code") then
+                        TempVATAmountLine.GetLine(Number);
+                        if not VATClause.Get(TempVATAmountLine."VAT Clause Code") then
                             CurrReport.Skip();
                         VATClause.TranslateDescription("Issued Reminder Header"."Language Code");
                     end;
@@ -575,7 +433,7 @@ report 5272731 "lbt Reminder"
                     trigger OnPreDataItem()
                     begin
                         CLEAR(VATClause);
-                        SETRANGE(Number, 1, VATAmountLine.Count());
+                        SETRANGE(Number, 1, TempVATAmountLine.Count());
                     end;
                 }
                 dataitem(VATCounterLCY; "Integer")
@@ -601,20 +459,20 @@ report 5272731 "lbt Reminder"
 
                     trigger OnAfterGetRecord()
                     begin
-                        VATAmountLine.GetLine(Number);
+                        TempVATAmountLine.GetLine(Number);
 
-                        VALVATBaseLCY := ROUND(VATAmountLine."Amount Including VAT" / (1 + VATAmountLine."VAT %" / 100) / CurrFactor);
-                        VALVATAmountLCY := ROUND(VATAmountLine."Amount Including VAT" / CurrFactor - VALVATBaseLCY);
+                        VALVATBaseLCY := ROUND(TempVATAmountLine."Amount Including VAT" / (1 + TempVATAmountLine."VAT %" / 100) / CurrFactor);
+                        VALVATAmountLCY := ROUND(TempVATAmountLine."Amount Including VAT" / CurrFactor - VALVATBaseLCY);
                     end;
 
                     trigger OnPreDataItem()
                     begin
                         if (not GLSetup."Print VAT specification in LCY") or
                            ("Issued Reminder Header"."Currency Code" = '') or
-                           (VATAmountLine.GetTotalVATAmount() = 0) then
+                           (TempVATAmountLine.GetTotalVATAmount() = 0) then
                             CurrReport.Break();
 
-                        SETRANGE(Number, 1, VATAmountLine.Count());
+                        SETRANGE(Number, 1, TempVATAmountLine.Count());
 
                         VALVATBaseLCY := 0;
                         VALVATAmountLCY := 0;
@@ -647,6 +505,7 @@ report 5272731 "lbt Reminder"
                 VATPostingSetup: Record "VAT Posting Setup";
             begin
                 CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
+                CompanyInfo."lbt SetReportFooter"(Footer);
                 DimSetEntry.SETRANGE("Dimension Set ID", "Dimension Set ID");
 
                 FormatAddr.IssuedReminder(CustAddr, "Issued Reminder Header");
@@ -819,7 +678,7 @@ report 5272731 "lbt Reminder"
         CompanyInfo2: Record "Company Information";
         CompanyInfo3: Record "Company Information";
         SalesSetup: Record "Sales & Receivables Setup";
-        VATAmountLine: Record "VAT Amount Line" temporary;
+        TempVATAmountLine: Record "VAT Amount Line" temporary;
         VATClause: Record "VAT Clause";
         DimSetEntry: Record "Dimension Set Entry";
         CurrExchRate: Record "Currency Exchange Rate";
@@ -867,14 +726,7 @@ report 5272731 "lbt Reminder"
         [InDataSet]
         LogInteractionEnable: Boolean;
         ShowNotDueAmounts: Boolean;
-        TextPageLbl: Label 'Page';
-        PostingDateCaptionLbl: Label 'Posting Date';
         ReminderHeaderNoCaptionLbl: Label 'Reminder No.';
-        BankAccountNoCaptionLbl: Label 'Account No.';
-        BankNameCaptionLbl: Label 'Bank';
-        GiroNoCaptionLbl: Label 'Giro No.';
-        VATRegNoCaptionLbl: Label 'VAT Registration No.';
-        PhoneNoCaptionLbl: Label 'Phone No.';
         ReminderCaptionLbl: Label 'Reminder';
         HeaderDimensionsCaptionLbl: Label 'Header Dimensions';
         InterestAmountCaptionLbl: Label 'Interest Amount';
@@ -890,28 +742,20 @@ report 5272731 "lbt Reminder"
         VATBaseCaptionLbl: Label 'VAT Base';
         VATCaptionLbl: Label 'VAT %';
         TotalCaptionLbl: Label 'Total';
-        HomePageCaptionLbl: Label 'Home Page';
-        EMailCaptionLbl: Label 'Email';
         CompanyAddressLine: Text;
         PageFromPageCaptionLbl: Label 'Page %1 of %2', Comment = '%1 - Current Page, %2 - Total Pages';
-        PageCaptionLbl: Label 'Page %1', Comment = '%1 - Current Page';
         NoCaptionLbl: Label 'No.';
         FromCaptionLbl: Label 'from';
         DatumCaptionLbl: Label 'Date';
-        CompanyInfo__VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
-        CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl: Label 'Registered in:';
-        CompanyInfo__LeBit_CEO_Caption_Lbl: Label 'Chief Executive Officer';
-        CompanyInfo_IBAN_Caption_Lbl: Label 'IBAN';
-        CompanyInfo__SWIFT_Code_Caption_Lbl: Label 'SWIFT-BIC';
-        CompanyInfo_E_Mail_Caption_Lbl: Label 'Mail:';
-        CompanyInfo__Home_Page_Caption_Lbl: Label 'Homepage:';
-        FaxNoCaptionLbl: Label 'Telefax no.';
         CarryForwardCaptionLbl: Label 'Carry-forward %1', Comment = '%1 - Amount';
         SubtotalCaptionLbl: Label 'Subtotal';
         HideCompanyInfo: Boolean;
         VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
+        Footer: Text;
+        DimLbl: Label '%1 - %2', Locked = true;
+        CombinedDimLbl: Label '%1; %2 - %3', Locked = true;
 
-    local procedure DocumentCaption(): Text[250]
+    local procedure DocumentCaption(): Text
     var
         DocCaption: text;
     begin
@@ -926,4 +770,5 @@ report 5272731 "lbt Reminder"
     begin
     end;
 }
+
 

@@ -4,7 +4,7 @@ pageextension 5272742 "lbt Sales Quote" extends "Sales Quote"
     {
         modify(SalesLines)
         {
-            Enabled = ("Sell-to Customer No." <> '') OR ("Sell-to Customer Template Code" <> '');
+            Enabled = (Rec."Sell-to Customer No." <> '') OR (Rec."Sell-to Customer Template Code" <> '');
             //PZA
             //Editable = ("Sell-to Customer No." <> '') OR ("Sell-to Customer Template Code" <> '');
             //PZA
@@ -52,12 +52,10 @@ pageextension 5272742 "lbt Sales Quote" extends "Sales Quote"
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
-                        SourceRecRef: RecordRef;
+                        LongtextMgt: Codeunit "lbt Longtext Mgt.";
                         Position: Option Header,Footer,Longtext;
                     begin
-                        SourceRecRef.GETTABLE(Rec);
-                        LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Header);
+                        LongtextMgt.ShowLongtextLines(Rec, Position::Header);
                     end;
                 }
                 action("lbt Footer Text")
@@ -69,12 +67,10 @@ pageextension 5272742 "lbt Sales Quote" extends "Sales Quote"
 
                     trigger OnAction()
                     var
-                        LeBitLongtextMgt: Codeunit "lbt Longtext Mgt.";
-                        SourceRecRef: RecordRef;
+                        LongtextMgt: Codeunit "lbt Longtext Mgt.";
                         Position: Option Header,Footer,Longtext;
                     begin
-                        SourceRecRef.GETTABLE(Rec);
-                        LeBitLongtextMgt.ShowLongtextLines(SourceRecRef, Position::Footer);
+                        LongtextMgt.ShowLongtextLines(Rec, Position::Footer);
                     end;
                 }
             }

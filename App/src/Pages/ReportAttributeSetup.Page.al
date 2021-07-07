@@ -13,43 +13,43 @@ page 5272725 "lbt Report - Attribute Setup"
             repeater(Control5272730)
             {
                 ShowCaption = false;
-                field("Report-Type"; "Report-Type")
+                field("Report-Type"; Rec."Report-Type")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Please select the report type';
                 }
-                field("Report-ID"; "Report-ID")
+                field("Report-ID"; Rec."Report-ID")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Please select the report-id';
                     LookupPageID = Objects;
                 }
-                field(Position; Position)
+                field(Position; Rec.Position)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Select the position at which the attributes appear';
                 }
-                field(Priority; Priority)
+                field(Priority; Rec.Priority)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Please choose a priority';
                 }
-                field(ID; ID)
+                field(ID; Rec.ID)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Please choose a No.';
                 }
-                field("Additional Character"; "Additional Character")
+                field("Additional Character"; Rec."Additional Character")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Additional Character';
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Please enter a description';
                 }
-                field("Permit Description"; "Permit Description")
+                field("Permit Description"; Rec."Permit Description")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Allow description';
@@ -59,12 +59,12 @@ page 5272725 "lbt Report - Attribute Setup"
                         CurrPage.UPDATE();
                     end;
                 }
-                field("Control Unit of Measure Code"; "Control Unit of Measure Code")
+                field("Control Unit of Measure Code"; Rec."Control Unit of Measure Code")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Select a unit of measure code';
                 }
-                field("Decimal Places"; "Decimal Places")
+                field("Decimal Places"; Rec."Decimal Places")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the number of decimal places.';

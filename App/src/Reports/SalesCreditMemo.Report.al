@@ -14,16 +14,9 @@ report 5272723 "lbt Sales - Credit Memo"
             DataItemTableView = SORTING("No.");
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
             RequestFilterHeading = 'Posted Sales Credit Memo';
+            column(Footer; Footer) { }
+            column(AlwaysPrintVat_CorrSetup; CorrSetup."Always print VAT") { }
             column(No_SalesCrMemoHeader; "No.")
-            {
-            }
-            column(EMailCaption; EMailCaptionLbl)
-            {
-            }
-            column(HomePageCaption; HomePageCaptionLbl)
-            {
-            }
-            column(DocumentDateCaption; DocumentDateCaptionLbl)
             {
             }
             column(PaymentMethod_DescriptionCaption; PaymentMethod_DescriptionCaptionLbl)
@@ -74,78 +67,6 @@ report 5272723 "lbt Sales - Credit Memo"
                     column(CustAddr8; CustAddr[8])
                     {
                     }
-                    column(CompanyInfo_Name; CompanyInfo.Name)
-                    {
-                    }
-                    column(CompanyInfo__VAT_Registration_No__; CompanyInfo."VAT Registration No.")
-                    {
-                    }
-                    column(CompanyInfo_Address; CompanyInfo.Address)
-                    {
-                    }
-                    column(CompanyInfo__Post_Code; CompanyInfo."Post Code")
-                    {
-                    }
-                    column(CompanyInfo_City; CompanyInfo.City)
-                    {
-                    }
-                    column(CompanyInfo__Phone_No; CompanyInfo."Phone No.")
-                    {
-                    }
-                    column(CompanyInfo__Fax_No; CompanyInfo."Fax No.")
-                    {
-                    }
-                    column(CompanyInfo_E_Mail; CompanyInfo."E-Mail")
-                    {
-                    }
-                    column(CompanyInfo__Home_Page; CompanyInfo."Home Page")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO1; CompanyInfo."lbt CEO1")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO2; CompanyInfo."lbt CEO2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO3; CompanyInfo."lbt CEO3")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Commercial_Register_No; CompanyInfo."lbt Commercial Register No.")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Trade_Register_Name; CompanyInfo."lbt Trade Register Name")
-                    {
-                    }
-                    column(CompanyInfo__Bank_Name; CompanyInfo."Bank Name")
-                    {
-                    }
-                    column(CompanyInfo_IBAN; CompanyInfo.IBAN)
-                    {
-                    }
-                    column(CompanyInfo__SWIFT_Code; CompanyInfo."SWIFT Code")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Bank_Name_2; CompanyInfo."lbt Bank Name 2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_IBAN_2; CompanyInfo."lbt IBAN 2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_SWIFT_Code_2; CompanyInfo."lbt SWIFT Code 2")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Bank_Name_3; CompanyInfo."lbt Bank Name 3")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_IBAN_3; CompanyInfo."lbt IBAN 3")
-                    {
-                    }
-                    column(CompanyInfo__LeBit_SWIFT_Code_3; CompanyInfo."lbt SWIFT Code 3")
-                    {
-                    }
-                    column(PostingDate_SalesCrMemoHeader; FORMAT("Sales Cr.Memo Header"."Posting Date", 0, 4))
-                    {
-                    }
                     column(Date_SalesCrMemoHeader; FORMAT("Sales Cr.Memo Header"."Document Date", 0, 4))
                     {
                     }
@@ -155,28 +76,16 @@ report 5272723 "lbt Sales - Credit Memo"
                     column(VATRegNo_SalesCrMemoHeader; "Sales Cr.Memo Header"."VAT Registration No.")
                     {
                     }
-                    column(No1_SalesCrMemoHeader; "Sales Cr.Memo Header"."No.")
-                    {
-                    }
                     column(YourRef_SalesCrMemoHeader; "Sales Cr.Memo Header"."Your Reference")
                     {
                     }
                     column(PricesIncVAT_SalesCrMemoHeader; "Sales Cr.Memo Header"."Prices Including VAT")
                     {
                     }
-                    column(ReturnOrderNo_SalesCrMemoHeader; "Sales Cr.Memo Header"."Return Order No.")
-                    {
-                    }
-                    column(PricesInclVATYesNo; FORMAT("Sales Cr.Memo Header"."Prices Including VAT"))
-                    {
-                    }
                     column(VATBaseDiscPercentage; "Sales Cr.Memo Header"."VAT Base Discount %")
                     {
                     }
                     column(Applies_to_Doc_No_SalesCrMemoHeader; "Sales Cr.Memo Header"."Applies-to Doc. No.")
-                    {
-                    }
-                    column(VATNoText; VATNoText)
                     {
                     }
                     column(SalesPersonText; SalesPersonText)
@@ -191,25 +100,7 @@ report 5272723 "lbt Sales - Credit Memo"
                     column(ReferenceText; ReferenceText)
                     {
                     }
-                    column(ReturnOrderNoText; ReturnOrderNoText)
-                    {
-                    }
-                    column(PageCaption; PageCaptionCapLbl)
-                    {
-                    }
                     column(OutputNo; OutputNo)
-                    {
-                    }
-                    column(SalesCrMemoHeaderNoCaption; GetDocumentNoLbl())
-                    {
-                    }
-                    column(PostingDateCaption; PostingDateCaptionLbl)
-                    {
-                    }
-                    column(CompanyInfoRegNoCaption; CompanyInfo.GetRegistrationNumberLbl())
-                    {
-                    }
-                    column(PricesIncVAT_SalesCrMemoHeaderCaption; "Sales Cr.Memo Header".FIELDCAPTION("Prices Including VAT"))
                     {
                     }
                     column(BilltoCustNo_SalesCrMemoHeaderCaption; Bill_to_Customer_No__CaptionLbl)
@@ -219,36 +110,6 @@ report 5272723 "lbt Sales - Credit Memo"
                     {
                     }
                     column(Description_PaymentMethod; PaymentMethod.Description)
-                    {
-                    }
-                    column(CompanyInfo__VAT_Registration_No__Caption; CompanyInfoVATRegNoCaptionLbl)
-                    {
-                    }
-                    column(CompanyInfo__Phone_No__Caption; CompanyInfoPhoneNoCaptionLbl)
-                    {
-                    }
-                    column(CompanyInfo__Fax_No__Caption; CompanyInfoFaxNoCaptionLbl)
-                    {
-                    }
-                    column(CompanyInfo__LeBit_Trade_Register_Name_Caption; CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__LeBit_CEO_Caption; CompanyInfo__LeBit_CEO_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__Bank_Name_Caption; CompanyInfo__Bank_Name_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo_IBAN_Caption; CompanyInfo_IBAN_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__SWIFT_Code_Caption; CompanyInfo__SWIFT_Code_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo_E_Mail_Caption; CompanyInfo_E_Mail_Caption_Lbl)
-                    {
-                    }
-                    column(CompanyInfo__Home_Page_Caption; CompanyInfo__Home_Page_Caption_Lbl)
                     {
                     }
                     column(SalesHeaderNoCaption; SalesHeaderNoLbl)
@@ -410,9 +271,6 @@ report 5272723 "lbt Sales - Credit Memo"
                         column(Desc_SalesCrMemoLine; Description)
                         {
                         }
-                        column(No_SalesCrMemoLine; "No.")
-                        {
-                        }
                         column(Qty_SalesCrMemoLine; Quantity)
                         {
                         }
@@ -423,15 +281,6 @@ report 5272723 "lbt Sales - Credit Memo"
                         {
                             AutoFormatExpression = GetCurrencyCode();
                             AutoFormatType = 2;
-                        }
-                        column(LineDis_SalesCrMemoLine; "Line Discount %")
-                        {
-                        }
-                        column(VATId_SalesCrMemoLine; "VAT Identifier")
-                        {
-                        }
-                        column(PostedReceiptDate; FORMAT(PostedReceiptDate))
-                        {
                         }
                         column(SalesLineType; FORMAT(Type, 0, 2))
                         {
@@ -459,61 +308,22 @@ report 5272723 "lbt Sales - Credit Memo"
                         column(TotalText; TotalText)
                         {
                         }
-                        column(SalesCrMemoLineAmt; Amount)
-                        {
-                            AutoFormatExpression = GetCurrencyCode();
-                            AutoFormatType = 1;
-                        }
                         column(TotalExclVATText; TotalExclVATText)
                         {
                         }
                         column(TotalInclVATText; TotalInclVATText)
                         {
                         }
-                        column(AmtInclVAT_SalesCrMemoLine; "Amount Including VAT")
-                        {
-                            AutoFormatExpression = GetCurrencyCode();
-                            AutoFormatType = 1;
-                        }
-                        column(AmtInclVATAmt; "Amount Including VAT" - Amount)
-                        {
-                            AutoFormatExpression = GetCurrencyCode();
-                            AutoFormatType = 1;
-                        }
-                        column(VATAmtLineVATAmtText; VATAmountLine.VATAmountText())
-                        {
-                        }
-                        column(DocNo_SalesCrMemoLine; "Document No.")
+                        column(VATAmtLineVATAmtText; TempVATAmountLine.VATAmountText())
                         {
                         }
                         column(SalesCrMemoLineLineNo; "Line No.")
-                        {
-                        }
-                        column(UnitPriceCaption; UnitPriceCaptionLbl)
-                        {
-                        }
-                        column(DiscountCaption; DiscountCaptionLbl)
-                        {
-                        }
-                        column(PostedReceiptDateCaption; PostedReceiptDateCaptionLbl)
-                        {
-                        }
-                        column(ContinuedCaption; ContinuedCaptionLbl)
                         {
                         }
                         column(InvDiscAmtCaption; InvDiscAmtCaptionLbl)
                         {
                         }
                         column(PaymentDiscountVATCaption; PaymentDiscountVATCaptionLbl)
-                        {
-                        }
-                        column(No_SalesCrMemoLineCaption; FIELDCAPTION("No."))
-                        {
-                        }
-                        column(umo_SalesCrMemoLineCaption; FIELDCAPTION("Unit of Measure"))
-                        {
-                        }
-                        column(VATId_SalesCrMemoLineCaption; FIELDCAPTION("VAT Identifier"))
                         {
                         }
                         column(SalesLineLeBitPrintoption; FORMAT("lbt Printoption", 0, 2))
@@ -586,9 +396,6 @@ report 5272723 "lbt Sales - Credit Memo"
                         dataitem(TempLBLang; "Integer")
                         {
                             DataItemTableView = SORTING(Number);
-                            column(LBLang_LineNo; FORMAT(TempLeBitPostedPSLongtextLine."Line No."))
-                            {
-                            }
                             column(LBLang_Description; LBLang_Description)
                             {
                             }
@@ -636,22 +443,17 @@ report 5272723 "lbt Sales - Credit Memo"
                         dataitem("Sales Shipment Buffer"; "Integer")
                         {
                             DataItemTableView = SORTING(Number);
-                            column(SalesShipmentBufferQuantity; SalesShipmentBuffer.Quantity)
-                            {
-                                DecimalPlaces = 0 : 5;
-                            }
-
                             trigger OnAfterGetRecord()
                             begin
                                 if Number = 1 then
-                                    SalesShipmentBuffer.FIND('-')
+                                    TempSalesShipmentBuffer.FIND('-')
                                 else
-                                    SalesShipmentBuffer.Next();
+                                    TempSalesShipmentBuffer.Next();
                             end;
 
                             trigger OnPreDataItem()
                             begin
-                                SETRANGE(Number, 1, SalesShipmentBuffer.Count());
+                                SETRANGE(Number, 1, TempSalesShipmentBuffer.Count());
                             end;
                         }
                         dataitem(DimensionLoop2; "Integer")
@@ -696,7 +498,7 @@ report 5272723 "lbt Sales - Credit Memo"
                             NNC_TotalInvDiscAmount += "Inv. Discount Amount";
                             NNC_TotalAmount += Amount;
 
-                            SalesShipmentBuffer.DeleteAll();
+                            TempSalesShipmentBuffer.DeleteAll();
                             PostedReceiptDate := 0D;
                             if Quantity <> 0 then
                                 PostedReceiptDate := FindPostedShipmentDate();
@@ -704,24 +506,23 @@ report 5272723 "lbt Sales - Credit Memo"
                             if (Type = Type::"G/L Account") and (not ShowInternalInfo) then
                                 "No." := '';
 
-                            VATAmountLine.Init();
-                            VATAmountLine."VAT Identifier" := "VAT Identifier";
-                            VATAmountLine."VAT Calculation Type" := "VAT Calculation Type";
-                            VATAmountLine."Tax Group Code" := "Tax Group Code";
-                            VATAmountLine."VAT %" := "VAT %";
-                            VATAmountLine."VAT Base" := Amount;
-                            VATAmountLine."Amount Including VAT" := "Amount Including VAT";
-                            VATAmountLine."Line Amount" := "Line Amount";
+                            TempVATAmountLine.Init();
+                            TempVATAmountLine."VAT Identifier" := "VAT Identifier";
+                            TempVATAmountLine."VAT Calculation Type" := "VAT Calculation Type";
+                            TempVATAmountLine."Tax Group Code" := "Tax Group Code";
+                            TempVATAmountLine."VAT %" := "VAT %";
+                            TempVATAmountLine."VAT Base" := Amount;
+                            TempVATAmountLine."Amount Including VAT" := "Amount Including VAT";
+                            TempVATAmountLine."Line Amount" := "Line Amount";
                             if "Allow Invoice Disc." then
-                                VATAmountLine."Inv. Disc. Base Amount" := "Line Amount";
-                            VATAmountLine."Invoice Discount Amount" := "Inv. Discount Amount";
-                            VATAmountLine."VAT Clause Code" := "VAT Clause Code";
-                            VATAmountLine.InsertLine();
+                                TempVATAmountLine."Inv. Disc. Base Amount" := "Line Amount";
+                            TempVATAmountLine."Invoice Discount Amount" := "Inv. Discount Amount";
+                            TempVATAmountLine."VAT Clause Code" := "VAT Clause Code";
+                            TempVATAmountLine.InsertLine();
 
                             if "lbt Printoption" = "lbt Printoption"::"New Page" then
                                 NewPageGroup += 1;
 
-                            ItemUnitCode := '';
                             ItemUnitDescription := '';
                             ItemUnitQty := '';
                             CLEAR(InfoRowNo);
@@ -758,7 +559,6 @@ report 5272723 "lbt Sales - Credit Memo"
                                     COMPRESSARRAY(ItemUnitQtyArry);
                                 end;
                                 if "Description 2" <> '' then begin
-                                    ItemUnitCode := ItemUnitCodeArry[1];
                                     ItemUnitDescription := ItemUnitDescriptionArry[1];
                                     ItemUnitQty := ItemUnitQtyArry[1];
                                     ItemUnitCodeArry[1] := '';
@@ -768,7 +568,7 @@ report 5272723 "lbt Sales - Credit Memo"
                                     COMPRESSARRAY(ItemUnitDescriptionArry);
                                     COMPRESSARRAY(ItemUnitQtyArry);
                                 end;
-                                //zusätzliche Infos
+                                //zus�tzliche Infos
                                 if PostedReceiptDate <> 0D then begin
                                     Counter := 0;
                                     repeat
@@ -777,10 +577,10 @@ report 5272723 "lbt Sales - Credit Memo"
                                     InfoCaptionArry[Counter] := PostedReceiptDateCaptionLbl;
                                     InfoValueArry[Counter] := FORMAT(PostedReceiptDate);
                                 end else begin
-                                    SalesShipmentBuffer.Reset();
-                                    SalesShipmentBuffer.SETRANGE("Document No.", "Document No.");
-                                    SalesShipmentBuffer.SETRANGE("Line No.", "Line No.");
-                                    if SalesShipmentBuffer.FindSet() then begin
+                                    TempSalesShipmentBuffer.Reset();
+                                    TempSalesShipmentBuffer.SETRANGE("Document No.", "Document No.");
+                                    TempSalesShipmentBuffer.SETRANGE("Line No.", "Line No.");
+                                    if TempSalesShipmentBuffer.FindSet() then begin
                                         Counter := 0;
                                         repeat
                                             Counter += 1;
@@ -790,14 +590,14 @@ report 5272723 "lbt Sales - Credit Memo"
                                         repeat
                                             Counter += 1;
                                             InfoCaptionArry[Counter] := ShipmentLbl;
-                                            InfoValueArry[Counter] := FORMAT(SalesShipmentBuffer."Posting Date");
-                                            ItemUnitQtyArry[Counter] := FORMAT(SalesShipmentBuffer.Quantity);
+                                            InfoValueArry[Counter] := FORMAT(TempSalesShipmentBuffer."Posting Date");
+                                            ItemUnitQtyArry[Counter] := FORMAT(TempSalesShipmentBuffer.Quantity);
                                             ItemUnitDescriptionArry[Counter] := "Sales Cr.Memo Line"."Unit of Measure";
-                                        until SalesShipmentBuffer.Next() = 0;
+                                        until TempSalesShipmentBuffer.Next() = 0;
                                     end;
                                 end;
 
-                                ///Prüfung auf MaxRowNo
+                                ///Pr�fung auf MaxRowNo
                                 Counter := 0;
                                 repeat
                                     Counter += 1;
@@ -812,9 +612,9 @@ report 5272723 "lbt Sales - Credit Memo"
 
                         trigger OnPreDataItem()
                         begin
-                            VATAmountLine.DeleteAll();
-                            SalesShipmentBuffer.Reset();
-                            SalesShipmentBuffer.DeleteAll();
+                            TempVATAmountLine.DeleteAll();
+                            TempSalesShipmentBuffer.Reset();
+                            TempSalesShipmentBuffer.DeleteAll();
                             FirstValueEntryNo := 0;
                             MoreLines := FIND('+');
                             while MoreLines and (Description = '') and ("No." = '') and (Quantity = 0) and (Amount = 0) do
@@ -827,36 +627,36 @@ report 5272723 "lbt Sales - Credit Memo"
                     dataitem(VATCounter; "Integer")
                     {
                         DataItemTableView = SORTING(Number);
-                        column(VATAmtLineVATBase; VATAmountLine."VAT Base")
+                        column(VATAmtLineVATBase; TempVATAmountLine."VAT Base")
                         {
                             AutoFormatExpression = "Sales Cr.Memo Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmtLineVATAmt; VATAmountLine."VAT Amount")
+                        column(VATAmtLineVATAmt; TempVATAmountLine."VAT Amount")
                         {
                             AutoFormatExpression = "Sales Cr.Memo Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmtLineLineAmt; VATAmountLine."Line Amount")
+                        column(VATAmtLineLineAmt; TempVATAmountLine."Line Amount")
                         {
                             AutoFormatExpression = "Sales Cr.Memo Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmtLineInvDiscBaseAmt; VATAmountLine."Inv. Disc. Base Amount")
+                        column(VATAmtLineInvDiscBaseAmt; TempVATAmountLine."Inv. Disc. Base Amount")
                         {
                             AutoFormatExpression = "Sales Cr.Memo Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmtLineInvoiceDiscAmt; VATAmountLine."Invoice Discount Amount")
+                        column(VATAmtLineInvoiceDiscAmt; TempVATAmountLine."Invoice Discount Amount")
                         {
                             AutoFormatExpression = "Sales Cr.Memo Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATAmtLineVAT; VATAmountLine."VAT %")
+                        column(VATAmtLineVAT; TempVATAmountLine."VAT %")
                         {
                             DecimalPlaces = 0 : 5;
                         }
-                        column(VATAmtLineVATIdentifier; VATAmountLine."VAT Identifier")
+                        column(VATAmtLineVATIdentifier; TempVATAmountLine."VAT Identifier")
                         {
                         }
                         column(VATAmtLineVATCaption; VATAmtLineVATCaptionLbl)
@@ -889,23 +689,23 @@ report 5272723 "lbt Sales - Credit Memo"
 
                         trigger OnAfterGetRecord()
                         begin
-                            VATAmountLine.GetLine(Number);
+                            TempVATAmountLine.GetLine(Number);
                         end;
 
                         trigger OnPreDataItem()
                         begin
-                            if VATAmountLine.Count() < 2 then
+                            if TempVATAmountLine.Count() < 2 then
                                 CurrReport.Break();
-                            SETRANGE(Number, 1, VATAmountLine.Count());
+                            SETRANGE(Number, 1, TempVATAmountLine.Count());
                         end;
                     }
                     dataitem(VATClauseEntryCounter; "Integer")
                     {
                         DataItemTableView = SORTING(Number);
-                        column(VATClauseVATIdentifier; VATAmountLine."VAT Identifier")
+                        column(VATClauseVATIdentifier; TempVATAmountLine."VAT Identifier")
                         {
                         }
-                        column(VATClauseCode; VATAmountLine."VAT Clause Code")
+                        column(VATClauseCode; TempVATAmountLine."VAT Clause Code")
                         {
                         }
                         column(VATClauseDescription; VATClause.Description)
@@ -914,7 +714,7 @@ report 5272723 "lbt Sales - Credit Memo"
                         column(VATClauseDescription2; VATClause."Description 2")
                         {
                         }
-                        column(VATClauseAmount; VATAmountLine."VAT Amount")
+                        column(VATClauseAmount; TempVATAmountLine."VAT Amount")
                         {
                             AutoFormatExpression = "Sales Cr.Memo Header"."Currency Code";
                             AutoFormatType = 1;
@@ -931,8 +731,8 @@ report 5272723 "lbt Sales - Credit Memo"
 
                         trigger OnAfterGetRecord()
                         begin
-                            VATAmountLine.GetLine(Number);
-                            if not VATClause.Get(VATAmountLine."VAT Clause Code") then
+                            TempVATAmountLine.GetLine(Number);
+                            if not VATClause.Get(TempVATAmountLine."VAT Clause Code") then
                                 CurrReport.Skip();
                             VATClause.TranslateDescription("Sales Cr.Memo Header"."Language Code");
                         end;
@@ -940,7 +740,7 @@ report 5272723 "lbt Sales - Credit Memo"
                         trigger OnPreDataItem()
                         begin
                             CLEAR(VATClause);
-                            SETRANGE(Number, 1, VATAmountLine.Count());
+                            SETRANGE(Number, 1, TempVATAmountLine.Count());
                         end;
                     }
                     dataitem(VATCounterLCY; "Integer")
@@ -960,37 +760,37 @@ report 5272723 "lbt Sales - Credit Memo"
                         {
                             AutoFormatType = 1;
                         }
-                        column(VATAmtLineVATPercentage; VATAmountLine."VAT %")
+                        column(VATAmtLineVATPercentage; TempVATAmountLine."VAT %")
                         {
                             DecimalPlaces = 0 : 5;
                         }
-                        column(VATAmtLineVATIdr; VATAmountLine."VAT Identifier")
+                        column(VATAmtLineVATIdr; TempVATAmountLine."VAT Identifier")
                         {
                         }
 
                         trigger OnAfterGetRecord()
                         begin
-                            VATAmountLine.GetLine(Number);
+                            TempVATAmountLine.GetLine(Number);
                             VALVATBaseLCY :=
-                              VATAmountLine.GetBaseLCY(
+                              TempVATAmountLine.GetBaseLCY(
                                 "Sales Cr.Memo Header"."Posting Date", "Sales Cr.Memo Header"."Currency Code",
                                 "Sales Cr.Memo Header"."Currency Factor");
                             VALVATAmountLCY :=
-                              VATAmountLine.GetAmountLCY(
+                              TempVATAmountLine.GetAmountLCY(
                                 "Sales Cr.Memo Header"."Posting Date", "Sales Cr.Memo Header"."Currency Code",
                                 "Sales Cr.Memo Header"."Currency Factor");
                         end;
 
                         trigger OnPreDataItem()
                         begin
-                            if VATAmountLine.Count() < 2 then
+                            if TempVATAmountLine.Count() < 2 then
                                 CurrReport.Break();
                             if (not GLSetup."Print VAT specification in LCY") or
                                ("Sales Cr.Memo Header"."Currency Code" = '')
                             then
                                 CurrReport.Break();
 
-                            SETRANGE(Number, 1, VATAmountLine.Count());
+                            SETRANGE(Number, 1, TempVATAmountLine.Count());
 
                             if GLSetup."LCY Code" = '' then
                                 VALSpecLCYHeader := VatAmountLbl + LCYLbl
@@ -1150,6 +950,7 @@ report 5272723 "lbt Sales - Credit Memo"
                 CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
                 FormatAddressFields("Sales Cr.Memo Header");
                 FormatDocumentFields("Sales Cr.Memo Header");
+                CompanyInfo."lbt SetReportFooter"(Footer);
 
                 DimSetEntry1.SETRANGE("Dimension Set ID", "Dimension Set ID");
 
@@ -1238,6 +1039,7 @@ report 5272723 "lbt Sales - Credit Memo"
         GLSetup.Get();
         CompanyInfo.Get();
         SalesSetup.Get();
+        CorrSetup.Get();
         FormatDocument.SetLogoPosition(SalesSetup."Logo Position on Documents", CompanyInfo1, CompanyInfo2, CompanyInfo3);
     end;
 
@@ -1256,17 +1058,18 @@ report 5272723 "lbt Sales - Credit Memo"
         CompanyInfo1: Record "Company Information";
         CompanyInfo2: Record "Company Information";
         CompanyInfo3: Record "Company Information";
-        VATAmountLine: Record "VAT Amount Line" temporary;
+        TempVATAmountLine: Record "VAT Amount Line" temporary;
         VATClause: Record "VAT Clause";
         DimSetEntry1: Record "Dimension Set Entry";
         DimSetEntry2: Record "Dimension Set Entry";
-        SalesShipmentBuffer: Record "Sales Shipment Buffer" temporary;
+        TempSalesShipmentBuffer: Record "Sales Shipment Buffer" temporary;
         CurrExchRate: Record "Currency Exchange Rate";
         Item: Record Item;
         TempLeBitPostedPSLongtextLine: Record "lbt Posted PS Longtext Line" temporary;
         PaymentTerms: Record "Payment Terms";
         PaymentMethod: Record "Payment Method";
         ShipmentMethod: Record "Shipment Method";
+        CorrSetup: Record "lbt Corr Setup";
         Language: Codeunit Language;
         LeBitReportFunctions: Codeunit "lbt Report Functions";
         FormatAddr: Codeunit "Format Address";
@@ -1302,7 +1105,6 @@ report 5272723 "lbt Sales - Credit Memo"
         LCYLbl: Label 'Local Currency';
         ExchangeRateLbl: Label 'Exchange rate: %1/%2', Comment = '%1 - Rel. Amount, %2 - Amount';
         AppliesLbl: Label '(Applies to %1 %2)', Comment = '%1 - Doctype, %2 - DocNo';
-        PageCaptionCapLbl: Label 'Page %1 of %2', Comment = '%1 - Current Page, %2 - Total Pages';
         VALSpecLCYHeader: Text[80];
         VALExchRate: Text[50];
         CalculatedExchRate: Decimal;
@@ -1315,20 +1117,11 @@ report 5272723 "lbt Sales - Credit Memo"
         LogInteractionEnable: Boolean;
         DocCreditMemoCapLbl: Label 'Credit Memo %1', Comment = '%1 - Document No.';
         DocCreditMemoPrepmtCapLbl: Label 'Prepmt. Credit Memo %1', Comment = '%1 - Document No.';
-        DocDECapLbl: Label 'Corrective Invoice %1', Comment = '%1 - Document No.';
-        DocDEPrepmtCapLbl: Label 'Prepmt. Corrective Invoice %1', Comment = '%1 - Document No.';
-        CompanyInfoPhoneNoCaptionLbl: Label 'Phone No.';
-        CompanyInfoFaxNoCaptionLbl: Label 'Fax No.';
-        CompanyInfoVATRegNoCaptionLbl: Label 'VAT Reg. No.';
         SalesHeaderNoLbl: Label 'Credit Memo No.';
-        DESalesHeaderNoLbl: Label 'Corrective Invoice No.';
-        PostingDateCaptionLbl: Label 'Posting Date';
         HeaderDimCaptionLbl: Label 'Header Dimensions';
         UnitPriceCaptionLbl: Label 'Unit Price';
-        DiscountCaptionLbl: Label 'Discount %';
         AmountCaptionLbl: Label 'Amount';
         PostedReceiptDateCaptionLbl: Label 'Posted Return Receipt Date';
-        ContinuedCaptionLbl: Label 'Continued';
         InvDiscAmtCaptionLbl: Label 'Invoice Discount Amount';
         SubtotalCaptionLbl: Label 'Subtotal';
         PaymentDiscountVATCaptionLbl: Label 'Payment Discount on VAT';
@@ -1344,9 +1137,6 @@ report 5272723 "lbt Sales - Credit Memo"
         InvoiceDiscoutAmountCaptionLbl: Label 'Invoice Discount Amount';
         TotalCaptionLbl: Label 'Total';
         ShiptoAddressCaptionLbl: Label 'Ship-to Address';
-        EMailCaptionLbl: Label 'Email';
-        HomePageCaptionLbl: Label 'Home Page';
-        DocumentDateCaptionLbl: Label 'Document Date';
         CompanyAddressLine: Text;
         InfoCaptionArry: array[99] of Text;
         InfoValueArry: array[99] of Text;
@@ -1354,7 +1144,6 @@ report 5272723 "lbt Sales - Credit Memo"
         ItemUnitDescriptionArry: array[50] of Text;
         ItemUnitQtyArry: array[50] of Text;
         InfoRowNo: Integer;
-        ItemUnitCode: Code[20];
         ItemUnitDescription: Text;
         ItemUnitQty: Text;
         HideCompanyInfo: Boolean;
@@ -1375,19 +1164,15 @@ report 5272723 "lbt Sales - Credit Memo"
         PosNo_CaptionLbl: Label 'Pos.';
         UOM_CaptionLbl: Label 'Unit';
         CarryForwardCaptionLbl: Label 'Carry-forward %1', Comment = '%1 - Amount';
-        CompanyInfo__LeBit_Trade_Register_Name_Caption_Lbl: Label 'Registered in:';
-        CompanyInfo__LeBit_CEO_Caption_Lbl: Label 'Chief Executive Officer';
-        CompanyInfo__Bank_Name_Caption_Lbl: Label 'Bank';
-        CompanyInfo_IBAN_Caption_Lbl: Label 'IBAN';
-        CompanyInfo__SWIFT_Code_Caption_Lbl: Label 'SWIFT-BIC';
         SalesPersonText_CaptionLbl: Label 'Salesperson';
-        CompanyInfo_E_Mail_Caption_Lbl: Label 'Mail:';
-        CompanyInfo__Home_Page_Caption_Lbl: Label 'Homepage:';
         ShipmentLbl: Label 'Shipment';
         PaymentTerms_DescriptionCaptionLbl: Label 'Payment Terms';
         PaymentMethod_DescriptionCaptionLbl: Label 'Payment Method';
         ReportType: Option Purchase,Sales,QA,Production,Delivery,"Report";
+        Footer: Text;
         VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
+        DimLbl: Label '%1 - %2', Locked = true;
+        CombinedDimLbl: Label '%1; %2 - %3', Locked = true;
 
     procedure InitLogInteraction()
     begin
@@ -1397,7 +1182,7 @@ report 5272723 "lbt Sales - Credit Memo"
     local procedure FindPostedShipmentDate(): Date
     var
         ReturnReceiptHeader: Record "Return Receipt Header";
-        SalesShipmentBuffer2: Record "Sales Shipment Buffer" temporary;
+        TempSalesShipmentBuffer2: Record "Sales Shipment Buffer" temporary;
     begin
         NextEntryNo := 1;
         if "Sales Cr.Memo Line"."Return Receipt No." <> '' then
@@ -1416,21 +1201,21 @@ report 5272723 "lbt Sales - Credit Memo"
                 exit(0D);
         end;
 
-        SalesShipmentBuffer.Reset();
-        SalesShipmentBuffer.SETRANGE("Document No.", "Sales Cr.Memo Line"."Document No.");
-        SalesShipmentBuffer.SETRANGE("Line No.", "Sales Cr.Memo Line"."Line No.");
+        TempSalesShipmentBuffer.Reset();
+        TempSalesShipmentBuffer.SETRANGE("Document No.", "Sales Cr.Memo Line"."Document No.");
+        TempSalesShipmentBuffer.SETRANGE("Line No.", "Sales Cr.Memo Line"."Line No.");
 
-        if SalesShipmentBuffer.FIND('-') then begin
-            SalesShipmentBuffer2 := SalesShipmentBuffer;
-            if SalesShipmentBuffer.Next() = 0 then begin
-                SalesShipmentBuffer.Get(
-                  SalesShipmentBuffer2."Document No.", SalesShipmentBuffer2."Line No.", SalesShipmentBuffer2."Entry No.");
-                SalesShipmentBuffer.Delete();
-                exit(SalesShipmentBuffer2."Posting Date");
+        if TempSalesShipmentBuffer.FIND('-') then begin
+            TempSalesShipmentBuffer2 := TempSalesShipmentBuffer;
+            if TempSalesShipmentBuffer.Next() = 0 then begin
+                TempSalesShipmentBuffer.Get(
+                  TempSalesShipmentBuffer2."Document No.", TempSalesShipmentBuffer2."Line No.", TempSalesShipmentBuffer2."Entry No.");
+                TempSalesShipmentBuffer.Delete();
+                exit(TempSalesShipmentBuffer2."Posting Date");
             end;
-            SalesShipmentBuffer.CALCSUMS(Quantity);
-            if SalesShipmentBuffer.Quantity <> "Sales Cr.Memo Line".Quantity then begin
-                SalesShipmentBuffer.DeleteAll();
+            TempSalesShipmentBuffer.CALCSUMS(Quantity);
+            if TempSalesShipmentBuffer.Quantity <> "Sales Cr.Memo Line".Quantity then begin
+                TempSalesShipmentBuffer.DeleteAll();
                 exit("Sales Cr.Memo Header"."Posting Date");
             end;
         end else
@@ -1541,27 +1326,25 @@ report 5272723 "lbt Sales - Credit Memo"
 
     local procedure AddBufferEntry(SalesCrMemoLine: Record "Sales Cr.Memo Line"; QtyOnShipment: Decimal; PostingDate: Date)
     begin
-        SalesShipmentBuffer.SETRANGE("Document No.", SalesCrMemoLine."Document No.");
-        SalesShipmentBuffer.SETRANGE("Line No.", SalesCrMemoLine."Line No.");
-        SalesShipmentBuffer.SETRANGE("Posting Date", PostingDate);
-        if SalesShipmentBuffer.FIND('-') then begin
-            SalesShipmentBuffer.Quantity := SalesShipmentBuffer.Quantity - QtyOnShipment;
-            SalesShipmentBuffer.Modify();
+        TempSalesShipmentBuffer.SETRANGE("Document No.", SalesCrMemoLine."Document No.");
+        TempSalesShipmentBuffer.SETRANGE("Line No.", SalesCrMemoLine."Line No.");
+        TempSalesShipmentBuffer.SETRANGE("Posting Date", PostingDate);
+        if TempSalesShipmentBuffer.FIND('-') then begin
+            TempSalesShipmentBuffer.Quantity := TempSalesShipmentBuffer.Quantity - QtyOnShipment;
+            TempSalesShipmentBuffer.Modify();
             exit;
         end;
 
-        with SalesShipmentBuffer do begin
-            Init();
-            "Document No." := SalesCrMemoLine."Document No.";
-            "Line No." := SalesCrMemoLine."Line No.";
-            "Entry No." := NextEntryNo;
-            Type := SalesCrMemoLine.Type;
-            "No." := SalesCrMemoLine."No.";
-            Quantity := -QtyOnShipment;
-            "Posting Date" := PostingDate;
-            Insert();
-            NextEntryNo := NextEntryNo + 1
-        end;
+        TempSalesShipmentBuffer.Init();
+        TempSalesShipmentBuffer."Document No." := SalesCrMemoLine."Document No.";
+        TempSalesShipmentBuffer."Line No." := SalesCrMemoLine."Line No.";
+        TempSalesShipmentBuffer."Entry No." := NextEntryNo;
+        TempSalesShipmentBuffer.Type := SalesCrMemoLine.Type;
+        TempSalesShipmentBuffer."No." := SalesCrMemoLine."No.";
+        TempSalesShipmentBuffer.Quantity := -QtyOnShipment;
+        TempSalesShipmentBuffer."Posting Date" := PostingDate;
+        TempSalesShipmentBuffer.Insert();
+        NextEntryNo := NextEntryNo + 1
     end;
 
     local procedure GetDocumentCaption(): Text
@@ -1571,16 +1354,11 @@ report 5272723 "lbt Sales - Credit Memo"
         OnBeforeGetDocumentCaption("Sales Cr.Memo Header", Caption);
         if Caption <> '' then
             exit(Caption);
-        if CompanyInfo."Country/Region Code" = 'DE' then begin
-            if "Sales Cr.Memo Header"."Prepayment Credit Memo" then
-                Caption := DocDEPrepmtCapLbl
-            else
-                Caption := DocDECapLbl;
-        end else
-            if "Sales Cr.Memo Header"."Prepayment Credit Memo" then
-                Caption := DocCreditMemoPrepmtCapLbl
-            else
-                Caption := DocCreditMemoCapLbl;
+
+        if "Sales Cr.Memo Header"."Prepayment Credit Memo" then
+            Caption := DocCreditMemoPrepmtCapLbl
+        else
+            Caption := DocCreditMemoCapLbl;
 
         exit(STRSUBSTNO(Caption, CopyText));
     end;
@@ -1610,34 +1388,23 @@ report 5272723 "lbt Sales - Credit Memo"
     end;
 
     local procedure FormatDocumentFields(SalesCrMemoHeader: Record "Sales Cr.Memo Header")
+    var
+        lbtFormatDocument: Codeunit "lbt Format Document";
     begin
-        with SalesCrMemoHeader do begin
-            FormatDocument.SetTotalLabels("Currency Code", TotalText, TotalInclVATText, TotalExclVATText);
-            FormatDocument.SetSalesPerson(SalesPurchPerson, "Salesperson Code", SalesPersonText);
+        lbtFormatDocument.SetTotalLabels(SalesCrMemoHeader."Currency Code", TotalText, TotalInclVATText, TotalExclVATText);
+        FormatDocument.SetSalesPerson(SalesPurchPerson, SalesCrMemoHeader."Salesperson Code", SalesPersonText);
 
-            ReturnOrderNoText := FormatDocument.SetText("Return Order No." <> '', CopyStr(FIELDCAPTION("Return Order No."), 1, 80));
-            ReferenceText := FormatDocument.SetText("Your Reference" <> '', CopyStr(FIELDCAPTION("Your Reference"), 1, 80));
-            VATNoText := FormatDocument.SetText("VAT Registration No." <> '', CopyStr(FIELDCAPTION("VAT Registration No."), 1, 80));
-            AppliedToText :=
-              FormatDocument.SetText(
-                "Applies-to Doc. No." <> '', FORMAT(STRSUBSTNO(AppliesLbl, FORMAT("Applies-to Doc. Type"), "Applies-to Doc. No.")));
-            FormatDocument.SetPaymentTerms(PaymentTerms, "Payment Terms Code", "Language Code");
-            FormatDocument.SetPaymentMethod(PaymentMethod, "Payment Method Code", "Language Code");
-            FormatDocument.SetShipmentMethod(ShipmentMethod, "Shipment Method Code", "Language Code");
-            if SalesPersonText <> '' then
-                SalesPersonText := SalesPersonText_CaptionLbl;
-        end;
-    end;
-
-    local procedure GetDocumentNoLbl(): Text
-    begin
-        if CompanyInfo."Country/Region Code" = 'DE' then
-            exit(DESalesHeaderNoLbl);
-        exit(SalesHeaderNoLbl);
-    end;
-
-    local procedure "### Lebit Correspondence Functions ###"()
-    begin
+        ReturnOrderNoText := FormatDocument.SetText(SalesCrMemoHeader."Return Order No." <> '', CopyStr(SalesCrMemoHeader.FIELDCAPTION("Return Order No."), 1, 80));
+        ReferenceText := FormatDocument.SetText(SalesCrMemoHeader."Your Reference" <> '', CopyStr(SalesCrMemoHeader.FIELDCAPTION("Your Reference"), 1, 80));
+        VATNoText := FormatDocument.SetText(SalesCrMemoHeader."VAT Registration No." <> '', CopyStr(SalesCrMemoHeader.FIELDCAPTION("VAT Registration No."), 1, 80));
+        AppliedToText :=
+          FormatDocument.SetText(
+            SalesCrMemoHeader."Applies-to Doc. No." <> '', FORMAT(STRSUBSTNO(AppliesLbl, FORMAT(SalesCrMemoHeader."Applies-to Doc. Type"), SalesCrMemoHeader."Applies-to Doc. No.")));
+        FormatDocument.SetPaymentTerms(PaymentTerms, SalesCrMemoHeader."Payment Terms Code", SalesCrMemoHeader."Language Code");
+        FormatDocument.SetPaymentMethod(PaymentMethod, SalesCrMemoHeader."Payment Method Code", SalesCrMemoHeader."Language Code");
+        FormatDocument.SetShipmentMethod(ShipmentMethod, SalesCrMemoHeader."Shipment Method Code", SalesCrMemoHeader."Language Code");
+        if SalesPersonText <> '' then
+            SalesPersonText := SalesPersonText_CaptionLbl;
     end;
 
     local procedure Createlbtext(LeBitPostedPSLongtextLine: Record "lbt Posted PS Longtext Line")
@@ -1731,4 +1498,5 @@ report 5272723 "lbt Sales - Credit Memo"
     end;
 
 }
+
 
