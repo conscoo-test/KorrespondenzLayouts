@@ -5340,8 +5340,7 @@
                                           </TablixMember>
                                           <TablixMember>
                                             <Visibility>
-                                              <Hidden>=Iif((Fields!SalesLineType.Value &lt;&gt; "0") and
-         (Fields!SalesLineLeBitPrintoption.Value = "5"), false, true)</Hidden>
+                                              <Hidden>true</Hidden>
                                             </Visibility>
                                             <KeepTogether>true</KeepTogether>
                                           </TablixMember>
@@ -5354,8 +5353,7 @@
                                           </TablixMember>
                                           <TablixMember>
                                             <Visibility>
-                                              <Hidden>=Iif((Fields!SalesLineType.Value &lt;&gt; "0") and
-         (Fields!SalesLineLeBitPrintoption.Value = "6"), false, true)</Hidden>
+                                              <Hidden>true</Hidden>
                                             </Visibility>
                                             <KeepTogether>true</KeepTogether>
                                           </TablixMember>
