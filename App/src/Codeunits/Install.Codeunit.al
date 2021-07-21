@@ -7,7 +7,7 @@ codeunit 5272725 "lbt Install"
         CorrSetup: Record "lbt Corr Setup";
         lbtModuleInfo: ModuleInfo;
     begin
-        if CorrSetup.IsEmpty() then begin
+        if not CorrSetup.Get() then begin
             CorrSetup.Init();
             CorrSetup.Insert();
         end;

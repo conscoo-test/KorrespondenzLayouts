@@ -669,33 +669,8 @@ report 5272722 "lbt Sales - Invoice"
                                     COMPRESSARRAY(ItemUnitQtyArry);
                                 end;
                                 //zus�tzliche Infos
-                                if PostedShipmentDate <> 0D then begin
-                                    Counter := 0;
-                                    repeat
-                                        Counter += 1;
-                                    until InfoCaptionArry[Counter] = '';
-                                    InfoCaptionArry[Counter] := PostedShipmentDateCaptionLbl;
-                                    InfoValueArry[Counter] := FORMAT(PostedShipmentDate);
-                                end else begin
-                                    TempSalesShipmentBuffer.Reset();
-                                    TempSalesShipmentBuffer.SETRANGE("Document No.", "Sales Invoice Line"."Document No.");
-                                    TempSalesShipmentBuffer.SETRANGE("Line No.", "Sales Invoice Line"."Line No.");
-                                    if TempSalesShipmentBuffer.FindSet() then begin
-                                        Counter := 0;
-                                        repeat
-                                            Counter += 1;
-                                        until (InfoCaptionArry[Counter] = '') and
-                                          (ItemUnitDescriptionArry[Counter] = '');
-                                        Counter -= 1;
-                                        repeat
-                                            Counter += 1;
-                                            InfoCaptionArry[Counter] := ShipmentCaptionLbl;
-                                            InfoValueArry[Counter] := FORMAT(TempSalesShipmentBuffer."Posting Date");
-                                            ItemUnitQtyArry[Counter] := FORMAT(TempSalesShipmentBuffer.Quantity);
-                                            ItemUnitDescriptionArry[Counter] := "Sales Invoice Line"."Unit of Measure";
-                                        until TempSalesShipmentBuffer.Next() = 0;
-                                    end;
-                                end;
+                                if not HideShipmentDate then
+                                    PrintShipmentDate(Counter);
 
                                 //Auftragsnummer
                                 if OrderNoText = '' then
@@ -1174,6 +1149,12 @@ report 5272722 "lbt Sales - Invoice"
                         Caption = 'Print Item Picture';
                         ToolTip = 'Specifies that the images are printed ';
                     }
+                    field("Hide Shipment Date"; HideShipmentDate)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Hide Shipment Date';
+                        ToolTip = 'Hide Shipment Date in Lines';
+                    }
                 }
             }
         }
@@ -1261,8 +1242,7 @@ report 5272722 "lbt Sales - Invoice"
         ShowShippingAddr: Boolean;
         NextEntryNo: Integer;
         FirstValueEntryNo: Integer;
-        DimText: Text;
-        OldDimText: Text;
+        DimText: Text[120];
         ShowInternalInfo: Boolean;
         Continue: Boolean;
         LogInteraction: Boolean;
@@ -1343,8 +1323,7 @@ report 5272722 "lbt Sales - Invoice"
         Counter: Integer;
         VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
         Footer: Text;
-        DimLbl: Label '%1 - %2', Locked = true;
-        CombinedDimLbl: Label '%1; %2 - %3', Locked = true;
+        HideShipmentDate: Boolean;
 
     procedure InitLogInteraction()
     begin
@@ -1757,6 +1736,37 @@ report 5272722 "lbt Sales - Invoice"
             TempLeBitPostedPSLongtextLine."Line No." := TempLeBitPostedPSLongtextLine."Line No." + 10000;
             TempLeBitPostedPSLongtextLine.Type := TempLeBitPostedPSLongtextLine.Type::Text;
             TempLeBitPostedPSLongtextLine.Insert();
+        end;
+    end;
+
+    local procedure PrintShipmentDate(var Counter: Integer)
+    begin
+        if PostedShipmentDate <> 0D then begin
+            Counter := 0;
+            repeat
+                Counter += 1;
+            until InfoCaptionArry[Counter] = '';
+            InfoCaptionArry[Counter] := PostedShipmentDateCaptionLbl;
+            InfoValueArry[Counter] := FORMAT(PostedShipmentDate);
+        end else begin
+            TempSalesShipmentBuffer.Reset();
+            TempSalesShipmentBuffer.SETRANGE("Document No.", "Sales Invoice Line"."Document No.");
+            TempSalesShipmentBuffer.SETRANGE("Line No.", "Sales Invoice Line"."Line No.");
+            if TempSalesShipmentBuffer.FindSet() then begin
+                Counter := 0;
+                repeat
+                    Counter += 1;
+                until (InfoCaptionArry[Counter] = '') and
+                  (ItemUnitDescriptionArry[Counter] = '');
+                Counter -= 1;
+                repeat
+                    Counter += 1;
+                    InfoCaptionArry[Counter] := ShipmentCaptionLbl;
+                    InfoValueArry[Counter] := FORMAT(TempSalesShipmentBuffer."Posting Date");
+                    ItemUnitQtyArry[Counter] := FORMAT(TempSalesShipmentBuffer.Quantity);
+                    ItemUnitDescriptionArry[Counter] := "Sales Invoice Line"."Unit of Measure";
+                until TempSalesShipmentBuffer.Next() = 0;
+            end;
         end;
     end;
 

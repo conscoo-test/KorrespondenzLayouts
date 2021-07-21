@@ -1091,8 +1091,7 @@ report 5272723 "lbt Sales - Credit Memo"
         NoOfLoops: Integer;
         CopyText: Text[30];
         ShowShippingAddr: Boolean;
-        DimText: Text;
-        OldDimText: Text;
+        DimText: Text[120];
         ShowInternalInfo: Boolean;
         Continue: Boolean;
         LogInteraction: Boolean;
@@ -1104,7 +1103,7 @@ report 5272723 "lbt Sales - Credit Memo"
         VatAmountLbl: Label 'VAT Amount Specification in ';
         LCYLbl: Label 'Local Currency';
         ExchangeRateLbl: Label 'Exchange rate: %1/%2', Comment = '%1 - Rel. Amount, %2 - Amount';
-        AppliesLbl: Label '(Applies to %1 %2)', Comment = '%1 - Doctype, %2 - DocNo';
+        AppliesLbl: Label 'Applies to';
         VALSpecLCYHeader: Text[80];
         VALExchRate: Text[50];
         CalculatedExchRate: Decimal;
@@ -1171,8 +1170,6 @@ report 5272723 "lbt Sales - Credit Memo"
         ReportType: Option Purchase,Sales,QA,Production,Delivery,"Report";
         Footer: Text;
         VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
-        DimLbl: Label '%1 - %2', Locked = true;
-        CombinedDimLbl: Label '%1; %2 - %3', Locked = true;
 
     procedure InitLogInteraction()
     begin
@@ -1397,9 +1394,7 @@ report 5272723 "lbt Sales - Credit Memo"
         ReturnOrderNoText := FormatDocument.SetText(SalesCrMemoHeader."Return Order No." <> '', CopyStr(SalesCrMemoHeader.FIELDCAPTION("Return Order No."), 1, 80));
         ReferenceText := FormatDocument.SetText(SalesCrMemoHeader."Your Reference" <> '', CopyStr(SalesCrMemoHeader.FIELDCAPTION("Your Reference"), 1, 80));
         VATNoText := FormatDocument.SetText(SalesCrMemoHeader."VAT Registration No." <> '', CopyStr(SalesCrMemoHeader.FIELDCAPTION("VAT Registration No."), 1, 80));
-        AppliedToText :=
-          FormatDocument.SetText(
-            SalesCrMemoHeader."Applies-to Doc. No." <> '', FORMAT(STRSUBSTNO(AppliesLbl, FORMAT(SalesCrMemoHeader."Applies-to Doc. Type"), SalesCrMemoHeader."Applies-to Doc. No.")));
+        AppliedToText := FormatDocument.SetText(SalesCrMemoHeader."Applies-to Doc. No." <> '', AppliesLbl);
         FormatDocument.SetPaymentTerms(PaymentTerms, SalesCrMemoHeader."Payment Terms Code", SalesCrMemoHeader."Language Code");
         FormatDocument.SetPaymentMethod(PaymentMethod, SalesCrMemoHeader."Payment Method Code", SalesCrMemoHeader."Language Code");
         FormatDocument.SetShipmentMethod(ShipmentMethod, SalesCrMemoHeader."Shipment Method Code", SalesCrMemoHeader."Language Code");

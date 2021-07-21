@@ -2824,8 +2824,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales - Credit Memo - NamedType AmountCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 2085745012 - NamedType 50662524" size-unit="char" translate="yes" xml:space="preserve">
-          <source>(Applies to %1 %2)</source>
-          <note from="Developer" annotates="general" priority="2">%1 - Doctype, %2 - DocNo</note>
+          <source>Applies to</source>
+          <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales - Credit Memo - NamedType AppliesLbl</note>
         </trans-unit>
         <trans-unit id="Report 2085745012 - NamedType 3099667394" size-unit="char" translate="yes" xml:space="preserve">
@@ -3302,6 +3302,16 @@
           <source>Hide Company Info</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales - Invoice - Control Hide CompanyInfo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 443349154 - Control 2288612920 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Hide Shipment Date in Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales - Invoice - Control Hide Shipment Date - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 443349154 - Control 2288612920 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Hide Shipment Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales - Invoice - Control Hide Shipment Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 443349154 - Control 1612446244 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies that the images are printed </source>
