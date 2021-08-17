@@ -999,23 +999,7 @@ report 5272728 "lbt Order"
                                     if not Continue then
                                         CurrReport.Break();
 
-                                CLEAR(DimText);
-                                Continue := false;
-                                repeat
-                                    OldDimText := DimText;
-                                    if DimText = '' then
-                                        DimText := STRSUBSTNO(DimLbl, PrepmtDimSetEntry."Dimension Code", PrepmtDimSetEntry."Dimension Value Code")
-                                    else
-                                        DimText :=
-                                          STRSUBSTNO(
-                                            CombinedDimLbl, DimText,
-                                            PrepmtDimSetEntry."Dimension Code", PrepmtDimSetEntry."Dimension Value Code");
-                                    if STRLEN(DimText) > MAXSTRLEN(OldDimText) then begin
-                                        DimText := OldDimText;
-                                        Continue := true;
-                                        exit;
-                                    end;
-                                until PrepmtDimSetEntry.Next() = 0;
+                                LeBitReportFunctions.GetDimTextFromDimSetEntry(DimSetEntry1, DimText, Continue);
                             end;
                         }
 
@@ -1428,8 +1412,7 @@ report 5272728 "lbt Order"
         NoOfLoops: Integer;
         CopyText: Text[30];
         OutputNo: Integer;
-        DimText: Text;
-        OldDimText: Text;
+        DimText: Text[120];
         ShowInternalInfo: Boolean;
         Continue: Boolean;
         ArchiveDocument: Boolean;
@@ -1495,8 +1478,6 @@ report 5272728 "lbt Order"
         PrepmtVATAmountLine__VAT_Identifier_CaptionLbl: Label 'VAT Identifier';
         PrepmtVATAmountLine__VAT_Base__Control216CaptionLbl: Label 'Total';
         PrepmtPaymentTerms_DescriptionCaptionLbl: Label 'Prepmt. Payment Terms';
-        DimLbl: Label '%1 - %2', Locked = true;
-        CombinedDimLbl: Label '%1; %2 - %3', Locked = true;
         CompanyAddressLine: Text;
         InfoCaptionArry: array[99] of Text;
         InfoValueArry: array[99] of Text;

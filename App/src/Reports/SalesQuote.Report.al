@@ -164,22 +164,7 @@ report 5272720 "lbt Sales - Quote"
                                 if not Continue then
                                     CurrReport.Break();
 
-                            CLEAR(DimText);
-                            Continue := false;
-                            repeat
-                                OldDimText := DimText;
-                                if DimText = '' then
-                                    DimText := STRSUBSTNO(DimLbl, DimSetEntry1."Dimension Code", DimSetEntry1."Dimension Value Code")
-                                else
-                                    DimText :=
-                                      STRSUBSTNO(
-                                        CombinedDimLbl, DimText, DimSetEntry1."Dimension Code", DimSetEntry1."Dimension Value Code");
-                                if STRLEN(DimText) > MAXSTRLEN(OldDimText) then begin
-                                    DimText := OldDimText;
-                                    Continue := true;
-                                    exit;
-                                end;
-                            until DimSetEntry1.Next() = 0;
+                            LeBitReportFunctions.GetDimTextFromDimSetEntry(DimSetEntry1, DimText, Continue);
                         end;
 
                         trigger OnPreDataItem()
@@ -1156,8 +1141,7 @@ report 5272720 "lbt Sales - Quote"
         NoOfLoops: Integer;
         CopyText: Text[30];
         ShowShippingAddr: Boolean;
-        DimText: Text;
-        OldDimText: Text;
+        DimText: Text[120];
         ShowInternalInfo: Boolean;
         Continue: Boolean;
         ArchiveDocument: Boolean;
@@ -1241,8 +1225,6 @@ report 5272720 "lbt Sales - Quote"
         VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
         Footer: Text;
         CustSource: Option Default,"Bill-to Customer","Sell-to Customer";
-        DimLbl: Label '%1 - %2', Locked = true;
-        CombinedDimLbl: Label '%1; %2 - %3', Locked = true;
 
     procedure InitializeRequest(NoOfCopiesFrom: Integer; ShowInternalInfoFrom: Boolean; ArchiveDocumentFrom: Boolean; LogInteractionFrom: Boolean; PrintFrom: Boolean)
     begin

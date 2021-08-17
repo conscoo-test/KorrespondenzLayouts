@@ -1087,24 +1087,7 @@ report 5272726 "lbt Sales pro forma Invoice"
                                     if not Continue then
                                         CurrReport.Break();
 
-                                CLEAR(DimText);
-                                Continue := false;
-                                repeat
-                                    OldDimText := DimText;
-                                    if DimText = '' then
-                                        DimText :=
-                                          STRSUBSTNO(DimLbl, TempPrepmtDimSetEntry."Dimension Code", TempPrepmtDimSetEntry."Dimension Value Code")
-                                    else
-                                        DimText :=
-                                          STRSUBSTNO(
-                                            CombinedDimLbl, DimText,
-                                            TempPrepmtDimSetEntry."Dimension Code", TempPrepmtDimSetEntry."Dimension Value Code");
-                                    if STRLEN(DimText) > MAXSTRLEN(OldDimText) then begin
-                                        DimText := OldDimText;
-                                        Continue := true;
-                                        exit;
-                                    end;
-                                until TempPrepmtDimSetEntry.Next() = 0;
+                                LeBitReportFunctions.GetDimTextFromDimSetEntry(DimSetEntry1, DimText, Continue);
                             end;
                         }
 
@@ -1586,8 +1569,7 @@ report 5272726 "lbt Sales pro forma Invoice"
         NoOfLoops: Integer;
         CopyText: Text;
         ShowShippingAddr: Boolean;
-        DimText: Text;
-        OldDimText: Text;
+        DimText: Text[120];
         ShowInternalInfo: Boolean;
         Continue: Boolean;
         ArchiveDocument: Boolean;
@@ -1705,8 +1687,6 @@ report 5272726 "lbt Sales pro forma Invoice"
         VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
         Footer: Text;
         CustSource: Option Default,"Bill-to Customer","Sell-to Customer";
-        DimLbl: Label '%1 - %2', Locked = true;
-        CombinedDimLbl: Label '%1; %2 - %3', Locked = true;
 
     procedure InitializeRequest(NoOfCopiesFrom: Integer; ShowInternalInfoFrom: Boolean; ArchiveDocumentFrom: Boolean; LogInteractionFrom: Boolean; PrintFrom: Boolean; DisplayAsmInfo: Boolean)
     begin

@@ -1131,9 +1131,6 @@ report 5272725 "lbt Blanket Sales Order"
         PaymentTerms_DescriptionCaptionLbl: Label 'Payment Terms';
         ShipmentMethod_DescriptionCaptionLbl: Label 'Shipment Method';
         Ship_to_AddressCaptionLbl: Label 'Ship-to Address';
-        DimLbl: Label '%1 - %2', Locked = true;
-        CombinedDimLbl: Label '%1; %2 - %3', Locked = true;
-
         CustAddr: array[8] of Text[50];
         ShipToAddr: array[8] of Text[50];
         CompanyAddr: array[8] of Text[50];

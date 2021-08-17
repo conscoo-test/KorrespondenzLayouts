@@ -840,8 +840,7 @@ report 5272727 "lbt Purchase - Quote"
         NoOfCopies: Integer;
         NoOfLoops: Integer;
         CopyText: Text;
-        DimText: Text;
-        OldDimText: Text;
+        DimText: Text[120];
         ShowInternalInfo: Boolean;
         Continue: Boolean;
         ArchiveDocument: Boolean;
@@ -888,8 +887,6 @@ report 5272727 "lbt Purchase - Quote"
         BitteAndern_CaptionLbl: Label 'please change!';
         ReportType: Option Purchase,Sales,QA,Production,Delivery,"Report";
         VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
-        DimLbl: Label '%1 - %2', Locked = true;
-        CombinedDimLbl: Label '%1; %2 - %3', Locked = true;
         Footer: Text;
         VendSource: Option Default,"Pay-to Vendor","Buy-from Vendor";
 

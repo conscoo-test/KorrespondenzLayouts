@@ -971,8 +971,6 @@ report 5272724 "lbt Sales - Shipment"
         OrderNoText: Text;
         Footer: Text;
         VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
-        DimLbl: Label '%1 - %2', Locked = true;
-        CombinedDimLbl: Label '%1; %2 - %3', Locked = true;
 
     procedure InitLogInteraction()
     begin

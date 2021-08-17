@@ -1126,8 +1126,7 @@ report 5272730 "lbt Return Order"
         NoOfLoops: Integer;
         CopyText: Text;
         OutputNo: Integer;
-        DimText: Text;
-        OldDimText: Text;
+        DimText: Text[120];
         ShowInternalInfo: Boolean;
         Continue: Boolean;
         ArchiveDocument: Boolean;
@@ -1208,8 +1207,6 @@ report 5272730 "lbt Return Order"
         DirectUnitCost: Decimal;
         Footer: Text;
         VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
-        DimLbl: Label '%1 - %2', Locked = true;
-        CombinedDimLbl: Label '%1; %2 - %3', Locked = true;
 
     procedure InitializeRequest(NewNoOfCopies: Integer; NewShowInternalInfo: Boolean; NewArchiveDocument: Boolean; NewLogInteraction: Boolean)
     begin
