@@ -2,6 +2,14 @@ pageextension 5272803 "lbt Sales Quote Subform" extends "Sales Quote Subform"
 {
     layout
     {
+        modify(FilteredTypeField)
+        {
+            Visible = false;
+        }
+        modify(Type)
+        {
+            ApplicationArea = All;
+        }
         modify(Description)
         {
             StyleExpr = lbtStyle;

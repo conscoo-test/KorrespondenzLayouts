@@ -2,6 +2,14 @@ pageextension 5272805 "lbt Purchase Quote Subform" extends "Purchase Quote Subfo
 {
     layout
     {
+        modify(FilteredTypeField)
+        {
+            Visible = false;
+        }
+        modify(Type)
+        {
+            ApplicationArea = All;
+        }
         modify(Description)
         {
             StyleExpr = lbtStyle;

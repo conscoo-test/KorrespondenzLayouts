@@ -567,5 +567,12 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         SalesCrMemoLine."lbt Summation" := PrepmtInvLineBuffer."lbt Summation";
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnBeforeValidateDescription', '', false, false)]
+    local procedure OnBeforeValidateDescription(var SalesLine: Record "Sales Line"; xSalesLine: Record "Sales Line"; CurrentFieldNo: Integer; var InHandled: Boolean);
+    begin
+        if SalesLine.Type in [SalesLine.Type::"Begin Total", SalesLine.Type::"End Total", SalesLine.Type::"Pack Sample"] then
+            Inhandled := true;
+    end;
+
 }
 

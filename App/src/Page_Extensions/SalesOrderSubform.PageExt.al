@@ -2,6 +2,14 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
 {
     layout
     {
+        modify(FilteredTypeField)
+        {
+            Visible = false;
+        }
+        modify(Type)
+        {
+            ApplicationArea = All;
+        }
         modify(Description)
         {
             StyleExpr = lbtStyle;
