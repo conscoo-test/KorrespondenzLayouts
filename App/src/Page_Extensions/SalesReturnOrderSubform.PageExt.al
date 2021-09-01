@@ -2,6 +2,14 @@ pageextension 5272772 "lbt Sales Return Order Subform" extends "Sales Return Ord
 {
     layout
     {
+        modify(FilteredTypeField)
+        {
+            Visible = false;
+        }
+        modify(Type)
+        {
+            ApplicationArea = All;
+        }
         modify(Description)
         {
             StyleExpr = lbtStyle;
