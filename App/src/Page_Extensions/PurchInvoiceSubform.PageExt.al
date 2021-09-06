@@ -2,14 +2,7 @@ pageextension 5272767 "lbt Purch. Invoice Subform" extends "Purch. Invoice Subfo
 {
     layout
     {
-        modify(FilteredTypeField)
-        {
-            Visible = false;
-        }
-        modify(Type)
-        {
-            ApplicationArea = All;
-        }
+
         addfirst(Content)
         {
             field("lbt Pos. No."; Rec."lbt Pos. No.")

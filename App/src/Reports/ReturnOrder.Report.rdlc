@@ -4850,14 +4850,14 @@
                                           </TablixMember>
                                           <TablixMember>
                                             <Visibility>
-                                              <Hidden>=Iif((Fields!PurchaseLineType.Value = "5272720") and
-     (Fields!PurchaseLineLeBitPrintoption.Value &lt;&gt; "4"),false, true)</Hidden>
+                                              <Hidden>=Iif((Fields!PurchaseLineType.Value = "0") and
+     (Fields!PurchaseLineLeBitPrintoption.Value = "8"),false, true)</Hidden>
                                             </Visibility>
                                           </TablixMember>
                                           <TablixMember>
                                             <Visibility>
-                                              <Hidden>=Iif((Fields!PurchaseLineType.Value = "5272721") and
-     (Fields!PurchaseLineLeBitPrintoption.Value &lt;&gt; "4"),false, true)</Hidden>
+                                              <Hidden>=Iif((Fields!PurchaseLineType.Value = "0") and
+     (Fields!PurchaseLineLeBitPrintoption.Value = "9"),false, true)</Hidden>
                                             </Visibility>
                                           </TablixMember>
                                           <TablixMember>
@@ -6410,6 +6410,7 @@
                                               <VerticalAlign>Middle</VerticalAlign>
                                             </Style>
                                           </Textbox>
+                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                     </TablixCells>
