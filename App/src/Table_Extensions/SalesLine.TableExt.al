@@ -2,22 +2,6 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
 {
     fields
     {
-
-        modify(Type)
-        {
-            trigger OnAfterValidate()
-            begin
-                case Type of
-                    Type::"Begin Total":
-                        "lbt Printoption" := "lbt Printoption"::Title;
-                    Type::"End Total":
-                        "lbt Printoption" := "lbt Printoption"::Total;
-                    Type::"Pack Sample":
-                        "lbt Printoption" := "lbt Printoption"::Title;
-                end;
-            end;
-        }
-
         field(5272720; "lbt Long Text"; Boolean)
         {
             CalcFormula = Exist("lbt PS Longtext Line" WHERE("Table ID" = CONST(37),
@@ -32,8 +16,8 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
         field(5272721; "lbt Printoption"; Option)
         {
             Caption = 'Printoption';
-            OptionCaption = 'Standard,Title,Total,Price Invisible,Line Invisible,Alternative,Optional,New Page';
-            OptionMembers = Standard,Title,Total,"Price Invisible","Line Invisible",Alternative,Optional,"New Page";
+            OptionCaption = 'Standard,Title,Total,Price Invisible,Line Invisible,Alternative,Optional,New Page,Begin Total,End Total';
+            OptionMembers = Standard,Title,Total,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total";
             DataClassification = CustomerContent;
 
             trigger OnValidate()
@@ -76,8 +60,8 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
 
             trigger OnValidate()
             begin
-                if Type <> Type::"End Total" then
-                    FIELDERROR(Type);
+                if "lbt Printoption" <> "lbt Printoption"::"End Total" then
+                    FIELDERROR("lbt Printoption");
                 CALCFIELDS("lbt Balance");
             end;
         }

@@ -566,6 +566,5 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         SalesCrMemoLine."lbt Printoption" := PrepmtInvLineBuffer."lbt Printoption";
         SalesCrMemoLine."lbt Summation" := PrepmtInvLineBuffer."lbt Summation";
     end;
-
 }
 

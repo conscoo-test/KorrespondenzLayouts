@@ -37,14 +37,9 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
         SalesLine.SetFilter("Document No.", SalesHeader."No.");
         if SalesLine.FindSet(true) then
             repeat
-                if SalesLine.Type = SalesLine.Type::"Begin Total" then
-                    SalesLine."lbt Printoption" := SalesLine."lbt Printoption"::Title;
-                if SalesLine.Type = SalesLine.Type::"End Total" then
-                    SalesLine."lbt Printoption" := SalesLine."lbt Printoption"::Total;
-                SalesLine.Modify();
                 WindowDialog.Update(1, SalesLine."No.");
 
-                if SalesLine.Type = SalesLine.Type::"End Total" then begin
+                if SalesLine."lbt Printoption" = SalesLine."lbt Printoption"::"End Total" then begin
                     if i < 1 then
                         Error(MissingBeginTotalTxt);
                     SalesLine."lbt Summation" := AccNo[i] + '..' + FORMAT(SalesLine."Line No.");
@@ -55,7 +50,7 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
                 SalesLine."lbt Indentation" := i;
                 SalesLine.Modify();
 
-                if (SalesLine.Type = SalesLine.Type::"Begin Total") then begin
+                if (SalesLine."lbt Printoption" = SalesLine."lbt Printoption"::"Begin Total") then begin
                     i += 1;
                     NoString := Format(SalesLine."Line No.");
                     AccNo[i] := NoString;
@@ -96,7 +91,7 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
 
         SalesLine.SetRange("Document Type", SalesHeader."Document Type");
         SalesLine.SetRange("Document No.", SalesHeader."No.");
-        SalesLine.SetFilter(Type, '%1..%2', SalesLine.Type::"G/L Account", SalesLine.Type::"Begin Total");
+        SalesLine.SetFilter(Type, '%1..%2', SalesLine.Type::"G/L Account", SalesLine.Type::"Charge (Item)");
         if SalesLine.IsEmpty() then
             exit;
 
@@ -112,7 +107,7 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
                         SalesLine2.Reset();
                         SalesLine2.SetRange("Document Type", SalesHeader."Document Type");
                         SalesLine2.SetRange("Document No.", SalesHeader."No.");
-                        SalesLine2.SetFilter(Type, '%1..%2', SalesLine.Type::"G/L Account", SalesLine.Type::"Begin Total");
+                        SalesLine2.SetFilter(Type, '%1..%2', SalesLine.Type::"G/L Account", SalesLine.Type::"Charge (Item)");
                         SalesLine2.SetRange("lbt Indentation", SalesLine."lbt Indentation" - 1);
                         SalesLine2.SetFilter("Line No.", '<%1', SalesLine."Line No.");
                         if SalesLine2.FindLast() then
@@ -123,10 +118,10 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
                     SalesLine3.Reset();
                     SalesLine3.SetRange("Document Type", SalesHeader."Document Type");
                     SalesLine3.SetRange("Document No.", SalesHeader."No.");
-                    SalesLine3.SetFilter(Type, '%1..%2', SalesLine.Type::"G/L Account", SalesLine.Type::"Begin Total");
+                    SalesLine3.SetFilter(Type, '%1..%2', SalesLine.Type::"G/L Account", SalesLine.Type::"Charge (Item)");
                     SalesLine3.SetFilter("Line No.", '<%1', SalesLine."Line No.");
                     if SalesLine3.FindLast() then
-                        if (SalesLine3.Type = SalesLine3.Type::"Begin Total") then
+                        if (SalesLine3."lbt Printoption" = SalesLine3."lbt Printoption"::"Begin Total") then
                             Merk2 := 1;
 
                     SalesLine."lbt Pos. No." := CopyStr(PosMerker + Format(Merk2) + '.', 1, 30);
@@ -141,13 +136,13 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
         SalesLine.Reset();
         SalesLine.SetRange("Document Type", SalesHeader."Document Type");
         SalesLine.SetRange("Document No.", SalesHeader."No.");
-        SalesLine.SetRange(Type, SalesLine.Type::"End Total");
+        SalesLine.SetRange("lbt Printoption", SalesLine."lbt Printoption"::"End Total");
         if SalesLine.FindSet(true) then
             repeat
                 SalesLine2.Reset();
                 SalesLine2.SetRange("Document Type", SalesHeader."Document Type");
                 SalesLine2.SetFilter("Document No.", SalesHeader."No.");
-                SalesLine2.SetRange(Type, SalesLine2.Type::"Begin Total");
+                SalesLine2.SetRange("lbt Printoption", SalesLine2."lbt Printoption"::"Begin Total");
                 SalesLine2.SetRange("lbt Indentation", SalesLine."lbt Indentation");
                 SalesLine2.SetFilter("Line No.", SalesLine."lbt Summation");
                 if SalesLine2.FindLast() then begin
