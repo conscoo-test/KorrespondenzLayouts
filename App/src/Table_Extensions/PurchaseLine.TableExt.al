@@ -2,20 +2,6 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
 {
     fields
     {
-        modify(Type)
-        {
-            trigger OnAfterValidate()
-            begin
-                case Type of
-                    Type::"Begin Total":
-                        "lbt Printoption" := "lbt Printoption"::Title;
-                    Type::"End Total":
-                        "lbt Printoption" := "lbt Printoption"::Total;
-                    Type::"Pack Sample":
-                        "lbt Printoption" := "lbt Printoption"::Title;
-                end;
-            end;
-        }
         modify("No.")
         {
             trigger OnAfterValidate()
@@ -39,8 +25,8 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
         field(5272721; "lbt Printoption"; Option)
         {
             Caption = 'Printoption';
-            OptionCaption = 'Standard,Title,Total,Price Invisible,Line Invisible,Alternative,Optional,New Page';
-            OptionMembers = Standard,Title,Total,"Price Invisible","Line Invisible",Alternative,Optional,"New Page";
+            OptionCaption = 'Standard,Title,Total,Price Invisible,Line Invisible,Alternative,Optional,New Page,Begin Total,End Total';
+            OptionMembers = Standard,Title,Total,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total";
             DataClassification = CustomerContent;
 
             trigger OnValidate()
@@ -56,14 +42,6 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
                     VALIDATE(Type, Type::" ");
                     Description := NewPageLbl;
                 end;
-
-                if "lbt Printoption" = "lbt Printoption"::"Total" then
-                    VALIDATE(Type, Type::"End Total");
-
-                if (Type = Type::"Begin Total") and not ("lbt Printoption" in ["lbt Printoption"::Title, "lbt Printoption"::"Line Invisible"]) then
-                    Error(PrintOptionTypeMismatchErr, Type, "lbt Printoption"::Title, "lbt Printoption"::"Line Invisible");
-                if (Type = Type::"End Total") and not ("lbt Printoption" in ["lbt Printoption"::Total, "lbt Printoption"::"Line Invisible"]) then
-                    Error(PrintOptionTypeMismatchErr, Type, "lbt Printoption"::Total, "lbt Printoption"::"Line Invisible");
             end;
         }
         field(5272722; "lbt Summation"; Text[250])
@@ -76,8 +54,8 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
 
             trigger OnValidate()
             begin
-                if Type <> Type::"End Total" then
-                    FIELDERROR(Type);
+                if "lbt Printoption" <> "lbt Printoption"::"End Total" then
+                    FIELDERROR("lbt Printoption");
                 CALCFIELDS("lbt Balance");
             end;
         }

@@ -8350,8 +8350,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purchase Line - Field lbt Printoption - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2301185401 - Field 2971227444 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
-          <source>Standard,Title,Total,Price Invisible,Line Invisible,Alternative,Optional,New Page</source>
-          <target>Normal,Überschrift,Summe,Preis unsichtbar,Zeile unsichtbar,Alternativposition,Bedarfsposition,Seitenwechsel</target>
+          <source>Standard,Title,Total,Price Invisible,Line Invisible,Alternative,Optional,New Page,Begin Total,End Total</source>
+          <target>Normal,Überschrift,Summe,Preis unsichtbar,Zeile unsichtbar,Alternativposition,Bedarfsposition,Seitenwechsel,Von Summe,Bis Summe</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purchase Line - Field lbt Printoption - Property OptionCaption</note>
         </trans-unit>
@@ -8720,24 +8720,6 @@
           <target>Zusammenzählung</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Shipment Line - Field lbt Summation - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="EnumExtension 4017407393 - EnumValue 2651433103 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 691140679">
-          <source>Begin Total</source>
-          <target>Von Summe</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension lbt Purchase Line Type - EnumValue Begin Total - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="EnumExtension 4017407393 - EnumValue 2406352535 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 691140679">
-          <source>End Total</source>
-          <target>Bis Summe</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension lbt Purchase Line Type - EnumValue End Total - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="EnumExtension 4017407393 - EnumValue 2432313913 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 691140679">
-          <source>Pack Sample</source>
-          <target>Packmuster</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension lbt Purchase Line Type - EnumValue Pack Sample - Property Caption</note>
         </trans-unit>
       </group>
     </body>

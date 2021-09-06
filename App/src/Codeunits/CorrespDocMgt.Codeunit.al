@@ -179,14 +179,9 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
         PurchaseLine.SetFilter("Document No.", PurchaseHeader."No.");
         if PurchaseLine.FindSet(true) then
             repeat
-                if PurchaseLine.Type = PurchaseLine.Type::"Begin Total" then
-                    PurchaseLine."lbt Printoption" := PurchaseLine."lbt Printoption"::Title;
-                if PurchaseLine.Type = PurchaseLine.Type::"End Total" then
-                    PurchaseLine."lbt Printoption" := PurchaseLine."lbt Printoption"::Total;
-                PurchaseLine.Modify();
                 WindowDialog.Update(1, PurchaseLine."No.");
 
-                if PurchaseLine.Type = PurchaseLine.Type::"End Total" then begin
+                if PurchaseLine."lbt Printoption" = PurchaseLine."lbt Printoption"::"End Total" then begin
                     if i < 1 then
                         Error(MissingBeginTotalTxt, PurchaseLine."No.");
                     PurchaseLine."lbt Summation" := AccNo[i] + '..' + Format(PurchaseLine."Line No.");
@@ -197,7 +192,7 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
                 PurchaseLine."lbt Indentation" := i;
                 PurchaseLine.Modify();
 
-                if (PurchaseLine.Type = PurchaseLine.Type::"Begin Total") then begin
+                if (PurchaseLine."lbt Printoption" = PurchaseLine."lbt Printoption"::"Begin Total") then begin
                     i += 1;
                     NoString := Format(PurchaseLine."Line No.");
                     AccNo[i] := NoString;
@@ -237,7 +232,7 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
 
         PurchaseLine.SetRange("Document Type", PurchaseHeader."Document Type");
         PurchaseLine.SetRange("Document No.", PurchaseHeader."No.");
-        PurchaseLine.SetFilter(Type, '%1..%2', PurchaseLine.Type::"G/L Account", PurchaseLine.Type::"Begin Total");
+        PurchaseLine.SetFilter(Type, '%1..%2', PurchaseLine.Type::"G/L Account", PurchaseLine.Type::"Charge (Item)");
         if PurchaseLine.IsEmpty() then
             exit;
 
@@ -253,7 +248,7 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
                         PurchLine2.Reset();
                         PurchLine2.SetRange("Document Type", PurchaseHeader."Document Type");
                         PurchLine2.SetRange("Document No.", PurchaseHeader."No.");
-                        PurchLine2.SETFILTER(Type, '%1..%2', PurchaseLine.Type::"G/L Account", PurchaseLine.Type::"Begin Total");
+                        PurchLine2.SETFILTER(Type, '%1..%2', PurchaseLine.Type::"G/L Account", PurchaseLine.Type::"Charge (Item)");
                         PurchLine2.SetRange("lbt Indentation", PurchaseLine."lbt Indentation" - 1);
                         PurchLine2.SetFilter("Line No.", '<%1', PurchaseLine."Line No.");
                         if (PurchLine2.FindLast()) then
@@ -264,10 +259,10 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
                     PurchLine3.Reset();
                     PurchLine3.SetRange("Document Type", PurchaseHeader."Document Type");
                     PurchLine3.SetRange("Document No.", PurchaseHeader."No.");
-                    PurchLine3.SETFILTER(Type, '%1..%2', PurchaseLine.Type::"G/L Account", PurchaseLine.Type::"Begin Total");
+                    PurchLine3.SETFILTER(Type, '%1..%2', PurchaseLine.Type::"G/L Account", PurchaseLine.Type::"Charge (Item)");
                     PurchLine3.SetFilter("Line No.", '<%1', PurchaseLine."Line No.");
                     if PurchLine3.FindLast() then
-                        if (PurchLine3.Type = PurchLine3.Type::"Begin Total") then
+                        if (PurchLine3."lbt Printoption" = PurchLine3."lbt Printoption"::"Begin Total") then
                             Merk2 := 1;
 
                     PurchaseLine."lbt Pos. No." := CopyStr(PosMerker + Format(Merk2) + '.', 1, 30);
@@ -282,13 +277,13 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
         PurchaseLine.Reset();
         PurchaseLine.SetRange("Document Type", PurchaseHeader."Document Type");
         PurchaseLine.SetRange("Document No.", PurchaseHeader."No.");
-        PurchaseLine.SetRange(Type, PurchaseLine.Type::"End Total");
+        PurchaseLine.SetRange("lbt Printoption", PurchaseLine."lbt Printoption"::"End Total");
         if PurchaseLine.FindSet(true) then
             repeat
                 PurchLine2.Reset();
                 PurchLine2.SetRange("Document Type", PurchaseHeader."Document Type");
                 PurchLine2.SetFilter("Document No.", PurchaseHeader."No.");
-                PurchLine2.SetRange(Type, PurchLine2.Type::"Begin Total");
+                PurchLine2.SetRange("lbt Printoption", PurchLine2."lbt Printoption"::"Begin Total");
                 PurchLine2.SetRange("lbt Indentation", PurchaseLine."lbt Indentation");
                 PurchLine2.SetFilter("Line No.", PurchaseLine."lbt Summation");
                 if PurchLine2.FindLast() then begin
