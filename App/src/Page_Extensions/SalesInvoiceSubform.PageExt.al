@@ -2,18 +2,12 @@ pageextension 5272749 "lbt Sales Invoice Subform" extends "Sales Invoice Subform
 {
     layout
     {
-        modify(FilteredTypeField)
-        {
-            Visible = false;
-        }
-        modify(Type)
-        {
-            ApplicationArea = All;
-        }
         modify(Description)
         {
             StyleExpr = lbtStyle;
         }
+
+
         addfirst(Control1)
         {
             field("lbt Pos. No."; Rec."lbt Pos. No.")

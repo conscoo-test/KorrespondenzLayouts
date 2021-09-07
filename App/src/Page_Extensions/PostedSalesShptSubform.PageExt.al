@@ -2,14 +2,6 @@ pageextension 5272722 "lbt Posted Sales Shpt. Subform" extends "Posted Sales Shp
 {
     layout
     {
-        modify(FilteredTypeField)
-        {
-            Visible = false;
-        }
-        modify(Type)
-        {
-            ApplicationArea = All;
-        }
         modify(Description)
         {
             StyleExpr = lbtStyle;

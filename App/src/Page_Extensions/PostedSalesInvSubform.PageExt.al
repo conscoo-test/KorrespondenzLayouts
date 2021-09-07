@@ -2,14 +2,6 @@ pageextension 5272724 "lbt Posted Sales Inv. Subform" extends "Posted Sales Invo
 {
     layout
     {
-        modify(FilteredTypeField)
-        {
-            Visible = false;
-        }
-        modify(Type)
-        {
-            ApplicationArea = All;
-        }
         modify(Description)
         {
             StyleExpr = lbtStyle;

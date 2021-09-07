@@ -2,14 +2,6 @@ pageextension 5272766 "lbt Purchase Order Subform" extends "Purchase Order Subfo
 {
     layout
     {
-        modify(FilteredTypeField)
-        {
-            Visible = false;
-        }
-        modify(Type)
-        {
-            ApplicationArea = All;
-        }
         modify(Description)
         {
             StyleExpr = lbtStyle;

@@ -2,14 +2,6 @@ pageextension 5272806 "lbt Purch. Cr. Memo Subform" extends "Purch. Cr. Memo Sub
 {
     layout
     {
-        modify(FilteredTypeField)
-        {
-            Visible = false;
-        }
-        modify(Type)
-        {
-            ApplicationArea = All;
-        }
         modify(Description)
         {
             StyleExpr = lbtStyle;

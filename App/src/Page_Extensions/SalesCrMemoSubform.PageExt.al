@@ -2,14 +2,6 @@ pageextension 5272804 "lbt Sales Cr. Memo Subform" extends "Sales Cr. Memo Subfo
 {
     layout
     {
-        modify(FilteredTypeField)
-        {
-            Visible = false;
-        }
-        modify(Type)
-        {
-            ApplicationArea = All;
-        }
         modify(Description)
         {
             StyleExpr = lbtStyle;
