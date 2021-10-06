@@ -566,5 +566,17 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         SalesCrMemoLine."lbt Printoption" := PrepmtInvLineBuffer."lbt Printoption";
         SalesCrMemoLine."lbt Summation" := PrepmtInvLineBuffer."lbt Summation";
     end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Lines Instruction Mgt.", 'OnAfterSetSalesLineFilters', '', false, false)]
+    local procedure OnAfterSetSalesLineFilters(var SalesLine: Record "Sales Line"; SalesHeader: Record "Sales Header");
+    begin
+        SalesLine.SetFilter("lbt Printoption", '<>%1&<>%2', SalesLine."lbt Printoption"::Alternative, SalesLine."lbt Printoption"::Optional);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Lines Instruction Mgt.", 'OnAfterSetPurchaseLineFilters', '', false, false)]
+    local procedure OnAfterSetPurchaseLineFilters(var PurchaseLine: Record "Purchase Line"; PurchaseHeader: Record "Purchase Header");
+    begin
+        PurchaseLine.SetFilter("lbt Printoption", '<>%1&<>%2', PurchaseLine."lbt Printoption"::Alternative, PurchaseLine."lbt Printoption"::Optional);
+    end;
 }
 
