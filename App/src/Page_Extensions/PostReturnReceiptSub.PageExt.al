@@ -29,6 +29,16 @@ pageextension 5272784 "lbt Post. Return Receipt Sub." extends "Posted Return Rec
                 ApplicationArea = All;
                 ToolTip = 'Here you can insert long texts. ';
             }
+            field("Lbt Editor"; rec.lbtHasEditorValue())
+            {
+                ApplicationArea = all;
+                Editable = false;
+                ToolTip = 'Editor';
+                trigger OnAssistEdit()
+                begin
+                    rec.lbtEditData();
+                end;
+            }
         }
     }
     actions

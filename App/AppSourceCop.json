@@ -1,5 +1,5 @@
 {
-   "mandatoryPrefix": "lbt",
+    "mandatoryAffixes": ["lbt cl", "lbt"],
    "supportedCountries": [
        "DE"
    ]

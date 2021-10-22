@@ -29,6 +29,19 @@ pageextension 5272724 "lbt Posted Sales Inv. Subform" extends "Posted Sales Invo
                 ApplicationArea = All;
                 ToolTip = 'Here you can insert long texts.';
             }
+            field("Lbt Editor"; rec.lbtHasEditorValue())
+            {
+                ApplicationArea = all;
+                Editable = false;
+                ToolTip = 'Here you can insert Editor texts.';
+                Caption = 'Editor';
+                trigger OnAssistEdit()
+                begin
+                    rec.lbtEditData();
+                end;
+            }
+
+
         }
     }
     actions

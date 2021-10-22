@@ -282,6 +282,7 @@ codeunit 5272723 "lbt Longtext Mgt."
     var
         SourceLongtextRecordRef: RecordRef;
         TargetLongtextRecordRef: RecordRef;
+        TempBlob: Codeunit "Temp Blob";
         TargetFieldRef: FieldRef;
         SourceFieldRef: FieldRef;
         SourceDocumentType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order";
@@ -297,11 +298,16 @@ codeunit 5272723 "lbt Longtext Mgt."
         TargetVersionNo: Integer;
         TargetLineNo: Integer;
         LineNo: Integer;
+        handled: Boolean;
+
     begin
         // Funktion derzeit nur fürs Kopieren von Belegen, nicht das verbuchen/Archivieren von Belegen
         // Könnte jedoch bei beid Bedarf und Gelegenheit zusammengeführt werden
 
         // 1. Herkunft
+        onbeforeCopyLongtext(sourcerecordref, targetRecordref, handled);
+        if handled then
+            exit;
         SourceTableID := SourceRecordRef.Number();
         // Tabellen und Filterung über RecordRef's
         case SourceTableID of
@@ -320,6 +326,7 @@ codeunit 5272723 "lbt Longtext Mgt."
             DATABASE::"Sales Header Archive", DATABASE::"Sales Line Archive",
         DATABASE::"Purchase Header Archive", DATABASE::"Purchase Line Archive":
                 SourceLongtextRecordRef.OPEN(DATABASE::"lbt Archive PS Longtext Line");
+
         end;
         SourceFieldRef := SourceLongtextRecordRef.FIELD(1);
         SourceFieldRef.SetRange(SourceTableID);
@@ -335,12 +342,21 @@ codeunit 5272723 "lbt Longtext Mgt."
             SourceFieldRef := SourceLongtextRecordRef.FIELD(2);
             SourceFieldRef.SetRange(SourceDocumentType);
         end;
+        if SourceTableID in [DATABASE::"Service Header", database::"service line", database::"Service item Line"]
+        then begin
+            SourceFieldRef := SourceRecordRef.FIELD(43);
+            SourceDocumentType := SourceFieldRef.Value();
+            SourceFieldRef := SourceLongtextRecordRef.FIELD(43);
+            SourceFieldRef.SetRange(SourceDocumentType);
+        end;
+
 
         // Dokumenten Nr.
         SourceFieldRef := SourceRecordRef.FIELD(3);
         SourceDocumentNo := SourceFieldRef.Value();
         SourceFieldRef := SourceLongtextRecordRef.FIELD(3);
         SourceFieldRef.SetRange(SourceDocumentNo);
+
 
         //  Belegnr.-Häufigkeit + Versionsnr.
         if SourceTableID in [DATABASE::"Sales Header Archive", DATABASE::"Purchase Header Archive",
@@ -371,6 +387,7 @@ codeunit 5272723 "lbt Longtext Mgt."
             SourceFieldRef := SourceLongtextRecordRef.FIELD(5);
             SourceFieldRef.SetRange(SourceLineNo);
         end;
+
 
 
         // 2. Ziel
@@ -541,6 +558,12 @@ codeunit 5272723 "lbt Longtext Mgt."
                 SourceFieldRef := SourceLongtextRecordRef.FIELD(12); // Description
                 TargetFieldRef := TargetLongtextRecordRef.FIELD(12); // Description
                 TargetFieldRef.Value := SourceFieldRef.Value();
+
+                SourceFieldRef := SourceLongtextRecordRef.FIELD(21); // Editor
+                TargetFieldRef := TargetLongtextRecordRef.field(21); //Editor
+                clear(TempBlob);
+                TempBlob.FromFieldRef(SourceFieldRef);
+                TempBlob.ToFieldRef(TargetfieldRef);
 
                 if not TargetLongtextRecordRef.Insert() then
                     TargetLongtextRecordRef.Modify();
@@ -717,6 +740,11 @@ codeunit 5272723 "lbt Longtext Mgt."
                 until ExtendedTextHeader.Next() = 0;
             end;
 
+    end;
+
+    [BusinessEvent(true)]
+    local procedure onbeforeCopyLongText(Sourcerecref: recordref; targetRecRef: recordref; var handled: Boolean)
+    begin
     end;
 }
 

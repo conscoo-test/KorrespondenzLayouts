@@ -62,5 +62,22 @@ tableextension 5272724 "lbt Purch. Inv. Line" extends "Purch. Inv. Line"
             DataClassification = CustomerContent;
         }
     }
+    var
+        EditorHelper: Codeunit "lbt cl EditorHelper";
+
+    procedure lbtHasEditorValue() Result: Boolean
+    var
+
+    begin
+        exit(EditorHelper.hasEditorValue(rec, enum::"lbt Position"::EditorLine, 0));
+    end;
+
+    procedure lbtEditData()
+    var
+
+    begin
+        EditorHelper.editData(rec, enum::"lbt Position"::EditorLine, 0);
+    end;
+
 }
 

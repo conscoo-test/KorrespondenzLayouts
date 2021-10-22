@@ -1,0 +1,17 @@
+// reportextension 5272720 "lbt ServiceOrder" extends "service order"
+// {
+//     dataset
+//     {
+//         add("Service Header")
+//         {
+//             column(EditorHeader; "Service Header".lbtGetPrintData(enum::"lbt Position"::EditorHeader))
+//             {
+//             }
+//             column(EditorFooter; "Service Header".lbtGetPrintData(enum::"lbt Position"::EditorFooter))
+//             {
+//             }
+
+//         }
+
+//     }
+// }

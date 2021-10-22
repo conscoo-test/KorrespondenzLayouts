@@ -94,7 +94,7 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
         {
             ObsoleteState = Removed;
             ObsoleteReason = 'Removed';
-            Caption = 'lbt Printoption StyleExpr';
+            Caption = 'Printoption StyleExpr';
             DataClassification = CustomerContent;
 
         }
@@ -108,8 +108,29 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
     end;
 
     var
+        EditorHelper: Codeunit "lbt cl EditorHelper";
         NewPageErr: Label 'New Pages can only be set in blank lines.';
         NewPageLbl: Label '--- New Page ---';
         PrintOptionTypeMismatchErr: Label 'If Type is %1 then you can only use printoptions "%2" and "%3"', Comment = '%1 - Type, %2 - Printoption, %3 - Printoption';
+
+    procedure lbtHasEditorValue(docType: integer) Result: Boolean
+    var
+
+    begin
+        exit(EditorHelper.hasEditorValue(rec, enum::"lbt Position"::EditorLine, doctype));
+    end;
+
+    procedure lbtEditData(doctype: integer)
+    var
+
+    begin
+        EditorHelper.editData(rec, enum::"lbt Position"::EditorLine, doctype);
+    end;
+
+    procedure lbtGetPrintData(Position: enum "lbt Position"; docType: integer): Text
+    begin
+        exit(EditorHelper.getPrintData(rec, Position, docType));
+    end;
+
 }
 

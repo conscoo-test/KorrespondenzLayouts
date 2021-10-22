@@ -29,6 +29,16 @@ pageextension 5272758 "lbt Sales Order Archive Sub." extends "Sales Order Archiv
                 ToolTip = 'Here you can insert long texts. ';
                 ApplicationArea = All;
             }
+            field("Lbt Editor"; rec.lbtHasEditorValue(rec."Document Type".AsInteger()))
+            {
+                ApplicationArea = all;
+                Editable = false;
+                ToolTip = 'Editor';
+                trigger OnAssistEdit()
+                begin
+                    rec.lbtEditData(rec."Document Type".AsInteger());
+                end;
+            }
         }
     }
     actions

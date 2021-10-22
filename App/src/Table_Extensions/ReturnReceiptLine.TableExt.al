@@ -59,5 +59,21 @@ tableextension 5272735 "lbt Return Receipt Line" extends "Return Receipt Line"
             DataClassification = CustomerContent;
         }
     }
+    var
+        EditorHelper: Codeunit "lbt cl EditorHelper";
+
+    procedure lbtHasEditorValue() Result: Boolean
+    var
+
+    begin
+        exit(EditorHelper.hasEditorValue(rec, enum::"lbt Position"::EditorLine, 0));
+    end;
+
+    procedure lbtEditData()
+    var
+
+    begin
+        EditorHelper.editData(rec, enum::"lbt Position"::EditorLine, 0);
+    end;
 }
 

@@ -49,6 +49,7 @@ table 5272723 "lbt Extended Text Line Long"
             Caption = 'Description';
             DataClassification = CustomerContent;
         }
+
     }
 
     keys
@@ -61,5 +62,7 @@ table 5272723 "lbt Extended Text Line Long"
     fieldgroups
     {
     }
+
+
 }
 

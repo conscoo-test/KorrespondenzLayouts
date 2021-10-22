@@ -30,6 +30,16 @@ pageextension 5272760 "lbt Sales Quote Archive Sub." extends "Sales Quote Archiv
                 ToolTip = 'Here you can insert long texts. ';
                 ApplicationArea = All;
             }
+            field("Lbt Editor"; rec.lbtHasEditorValue(rec."Document Type".AsInteger()))
+            {
+                ApplicationArea = all;
+                Editable = false;
+                ToolTip = 'Editor';
+                trigger OnAssistEdit()
+                begin
+                    rec.lbtEditData(rec."Document Type".AsInteger());
+                end;
+            }
         }
     }
     actions

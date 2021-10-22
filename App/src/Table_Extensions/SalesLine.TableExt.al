@@ -112,7 +112,28 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
     end;
 
     var
+        EditorHelper: Codeunit "lbt cl EditorHelper";
         NewPageErr: Label 'New Pages can only be set in blank lines.';
         NewPageLbl: Label '--- New Page ---';
+
+    procedure lbtHasEditorValue(docType: integer) Result: Boolean
+    var
+
+    begin
+        exit(EditorHelper.hasEditorValue(rec, enum::"lbt Position"::EditorLine, doctype));
+    end;
+
+    procedure lbtEditData(doctype: integer)
+    var
+
+    begin
+        EditorHelper.editData(rec, enum::"lbt Position"::EditorLine, doctype);
+    end;
+
+    procedure lbtGetPrintData(Position: enum "lbt Position"; docType: integer): Text
+    begin
+        exit(EditorHelper.getPrintData(rec, Position, docType));
+    end;
+
 }
 

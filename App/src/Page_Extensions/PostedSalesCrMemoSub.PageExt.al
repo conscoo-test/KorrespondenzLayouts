@@ -29,6 +29,16 @@ pageextension 5272726 "lbt Posted Sales Cr. Memo Sub." extends "Posted Sales Cr.
                 ApplicationArea = All;
                 ToolTip = 'Here you can insert long texts.';
             }
+            field("Lbt Editor"; rec.lbtHasEditorValue())
+            {
+                ApplicationArea = all;
+                Editable = false;
+                ToolTip = 'Editor';
+                trigger OnAssistEdit()
+                begin
+                    rec.lbtEditData();
+                end;
+            }
         }
     }
     actions

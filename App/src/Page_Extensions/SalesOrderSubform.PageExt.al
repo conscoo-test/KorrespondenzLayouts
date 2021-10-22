@@ -31,7 +31,18 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
                 ApplicationArea = All;
                 ToolTip = 'Long Text';
             }
+            field("Lbt Editor"; rec.lbtHasEditorValue(rec."Document Type".asinteger()))
+            {
+                ApplicationArea = all;
+                Editable = false;
+                ToolTip = 'Editor';
+                trigger OnAssistEdit()
+                begin
+                    rec.lbtEditData(rec."Document Type".asinteger());
+                end;
+            }
         }
+
     }
     actions
     {
@@ -64,4 +75,6 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
 
     var
         lbtStyle: Text;
+
+
 }

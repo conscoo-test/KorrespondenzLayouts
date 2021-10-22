@@ -61,6 +61,25 @@ tableextension 5272721 "lbt Sales Invoice Line" extends "Sales Invoice Line"
             Caption = 'lbt Printoption StyleExpr';
             DataClassification = CustomerContent;
         }
+
     }
+
+    var
+        EditorHelper: Codeunit "lbt cl EditorHelper";
+
+    procedure lbtHasEditorValue() Result: Boolean
+    var
+
+    begin
+        exit(EditorHelper.hasEditorValue(rec, enum::"lbt Position"::EditorLine, 0));
+    end;
+
+    procedure lbtEditData()
+    var
+
+    begin
+        EditorHelper.editData(rec, enum::"lbt Position"::EditorLine, 0);
+    end;
+
 }
 

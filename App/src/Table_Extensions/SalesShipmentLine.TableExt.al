@@ -67,5 +67,23 @@ tableextension 5272720 "lbt Sales Shipment Line" extends "Sales Shipment Line"
     begin
         LeBitCorrespDocSingleInst.CopyLongTextForPostCombineSalesOrderShipment(SalesShipmentHeader, Rec, 1, 1);
     end;
+
+    var
+        EditorHelper: Codeunit "lbt cl EditorHelper";
+
+    procedure lbtHasEditorValue() Result: Boolean
+    var
+
+    begin
+        exit(EditorHelper.hasEditorValue(rec, enum::"lbt Position"::EditorLine, 0));
+    end;
+
+    procedure lbtEditData()
+    var
+
+    begin
+        EditorHelper.editData(rec, enum::"lbt Position"::EditorLine, 0);
+    end;
+
 }
 

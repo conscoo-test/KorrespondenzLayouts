@@ -1,5 +1,39 @@
 pageextension 5272771 "lbt Sales Return Order" extends "Sales Return Order"
 {
+    layout
+    {
+        addafter(SalesLines)
+        {
+            group(lbtEditor)
+            {
+                caption = 'Longtext';
+                visible = longtextvisible;
+                field("lbt Editor Header";
+                rec.lbtHasEditorValue(enum::"lbt Position"::EditorHeader, rec."Document Type".AsInteger()))
+                {
+                    ApplicationArea = all;
+                Editable = false;
+                ToolTip = 'Editor Header';
+                caption = 'Editor Header';
+                    trigger OnAssistEdit()
+    begin
+        rec.lbtEditData(enum::"lbt Position"::EditorHeader, rec."Document Type".AsInteger());
+    end;
+}
+                field("lbt Editor Footer"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorFooter, rec."Document Type".AsInteger()))
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    ToolTip = 'Editor Footer';
+                    caption = 'Editor Footer';
+                    trigger OnAssistEdit()
+                    begin
+                        rec.lbtEditData(enum::"lbt Position"::Editorfooter, rec."Document Type".AsInteger());
+                    end;
+                }
+            }
+        }
+    }
     actions
     {
         addafter("&Return Order")
@@ -66,5 +100,12 @@ pageextension 5272771 "lbt Sales Return Order" extends "Sales Return Order"
             }
         }
     }
+    var
+        longtextvisible: Boolean;
+
+    trigger OnOpenPage()
+    begin
+        longtextvisible := rec.lbtEditorVisible();
+    end;
 }
 

@@ -60,5 +60,21 @@ tableextension 5272734 "lbt Return Shipment Line" extends "Return Shipment Line"
             DataClassification = CustomerContent;
         }
     }
+    var
+        EditorHelper: Codeunit "lbt cl EditorHelper";
+
+    procedure lbtHasEditorValue() Result: Boolean
+    var
+
+    begin
+        exit(EditorHelper.hasEditorValue(rec, enum::"lbt Position"::EditorLine, 0));
+    end;
+
+    procedure lbtEditData()
+    var
+
+    begin
+        EditorHelper.editData(rec, enum::"lbt Position"::EditorLine, 0);
+    end;
 }
 

@@ -26,6 +26,16 @@ pageextension 5272767 "lbt Purch. Invoice Subform" extends "Purch. Invoice Subfo
                 ApplicationArea = All;
                 ToolTip = 'Here you can insert long texts.';
             }
+            field("Lbt Editor"; rec.lbtHasEditorValue(rec."Document Type".AsInteger()))
+            {
+                ApplicationArea = all;
+                Editable = false;
+                ToolTip = 'Editor';
+                trigger OnAssistEdit()
+                begin
+                    rec.lbtEditData(rec."Document Type".AsInteger());
+                end;
+            }
         }
     }
     actions

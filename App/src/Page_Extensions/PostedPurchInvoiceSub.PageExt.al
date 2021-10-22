@@ -29,6 +29,16 @@ pageextension 5272730 "lbt Posted Purch. Invoice Sub." extends "Posted Purch. In
                 ApplicationArea = All;
                 ToolTip = 'Here you can insert long texts.';
             }
+            field("Lbt Editor"; rec.lbtHasEditorValue())
+            {
+                ApplicationArea = all;
+                Editable = false;
+                ToolTip = 'Editor';
+                trigger OnAssistEdit()
+                begin
+                    rec.lbtEditData();
+                end;
+            }
         }
     }
     actions

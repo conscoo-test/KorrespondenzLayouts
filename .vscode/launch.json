@@ -1,0 +1,56 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Your own server",
+            "request": "launch",
+            "type": "al",
+            "environmentType": "OnPrem",
+            "server": "http://localhost",
+            "serverInstance": "BC170",
+            "authentication": "UserPassword",
+            "startupObjectId": 22,
+            "startupObjectType": "Page",
+            "breakOnError": true,
+            "launchBrowser": true,
+            "enableLongRunningSqlStatements": true,
+            "enableSqlInformationDebugger": true,
+            "tenant": "default"
+        },
+        {
+            "name": "Docker",
+            "type": "al",
+            "request": "launch",
+            "server": "http://BC15T",
+            "serverInstance": "BC",
+            "authentication": "UserPassword",
+            "startupObjectId": 40,
+            "breakOnError": true,
+            "breakOnRecordWrite": false,
+            "launchBrowser": true,
+            "enableSqlInformationDebugger": true,
+            "enableLongRunningSqlStatements": true,
+            "longRunningSqlStatementsThreshold": 500,
+            "numberOfSqlStatements": 10,
+            "schemaUpdateMode": "ForceSync"
+        },
+        {
+            "name": "1600Project",
+            "type": "al",
+            "request": "launch",
+            "server": "http://lvserver39.lebit.intranet",
+            "port": 16014,
+            "serverInstance": "1600Project365",
+            "authentication": "Windows",
+            "startupObjectId": 5266206,
+            "breakOnError": true,
+            "breakOnRecordWrite": false,
+            "launchBrowser": true,
+            "enableSqlInformationDebugger": true,
+            "enableLongRunningSqlStatements": true,
+            "longRunningSqlStatementsThreshold": 500,
+            "numberOfSqlStatements": 10,
+            "schemaUpdateMode": "ForceSync"
+        }
+    ]
+}

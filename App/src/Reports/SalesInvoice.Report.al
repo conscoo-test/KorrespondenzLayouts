@@ -175,26 +175,10 @@ report 5272722 "lbt Sales - Invoice"
                     column(VAT_Registration_No__Caption; VAT_Registration_No__CaptionLbl)
                     {
                     }
-                    dataitem(LBKopf; "lbt Posted PS Longtext Line")
-                    {
-                        DataItemLink = "Document No." = FIELD("No.");
-                        DataItemLinkReference = "Sales Invoice Header";
-                        DataItemTableView = SORTING("Table ID", "Document No.", Position, "Document Line No.", "Line No.") WHERE("Table ID" = CONST(112), Position = FILTER(Header));
-
-                        trigger OnAfterGetRecord()
-                        begin
-                            Createlbtext(LBKopf);
-                        end;
-
-                        trigger OnPreDataItem()
-                        begin
-                            TempLeBitPostedPSLongtextLine.DeleteAll();
-                        end;
-                    }
-                    dataitem(TempLBKopf; "Integer")
+                    dataitem(LBKopf; "Integer")
                     {
                         DataItemTableView = SORTING(Number);
-                        column(LBKopf_LineNo; FORMAT(TempLeBitPostedPSLongtextLine."Line No."))
+                        column(LBKopf_LineNo; '0')
                         {
                         }
                         column(LBKopf_Description; LBKopf_Description)
@@ -206,39 +190,22 @@ report 5272722 "lbt Sales - Invoice"
 
                         trigger OnAfterGetRecord()
                         var
+                            TempBlob: Codeunit "Temp Blob";
                             Streamin: InStream;
                         begin
-                            if TempLBKopf.Number = 1 then
-                                TempLeBitPostedPSLongtextLine.FindSet()
-                            else
-                                TempLeBitPostedPSLongtextLine.Next();
+                            TempBlobList.Get(LBKopf.Number, TempBlob);
+                            TempBlob.CreateInstream(Streamin, TextEncoding::UTF8);
 
-                            LBKopf_Description := '';
-
-                            case TempLeBitPostedPSLongtextLine.Type of
-                                TempLeBitPostedPSLongtextLine.Type::Text,
-                                TempLeBitPostedPSLongtextLine.Type::"Text + Line break":
-                                    begin
-                                        TempLeBitPostedPSLongtextLine.CALCFIELDS(Text);
-                                        if TempLeBitPostedPSLongtextLine.Text.HasValue() then begin
-                                            TempLeBitPostedPSLongtextLine.Text.CREATEINSTREAM(Streamin);
-                                            Streamin.READ(LBKopf_Description);
-                                        end;
-                                    end;
-                                TempLeBitPostedPSLongtextLine.Type::"New Page":
-                                    begin
-                                        NewPageLBKopf += 1;
-                                        LBKopf_Description := '';
-                                    end;
-                            end;
+                            Streamin.READ(LBKopf_Description);
+                            NewPageLBKopf += 1;
                         end;
 
                         trigger OnPreDataItem()
                         begin
-                            if TempLeBitPostedPSLongtextLine.IsEmpty() then
+                            PrintLongText.GetPrintText("Sales Invoice Header", Enum::"lbt Position"::Header, TempBlobList);
+                            if TempBlobList.IsEmpty() then
                                 CurrReport.Break();
-
-                            TempLBKopf.SETRANGE(Number, 1, TempLeBitPostedPSLongtextLine.Count());
+                            LBKopf.SETRANGE(Number, 1, TempBlobList.Count());
                         end;
                     }
                     dataitem(DimensionLoop1; "Integer")
@@ -422,28 +389,10 @@ report 5272722 "lbt Sales - Invoice"
                                 SETRANGE(Number, 1, InfoRowNo);
                             end;
                         }
-                        dataitem(LBLang; "lbt Posted PS Longtext Line")
-                        {
-                            DataItemLink = "Document No." = FIELD("Document No."), "Document Line No." = FIELD("Line No.");
-                            DataItemLinkReference = "Sales Invoice Line";
-                            DataItemTableView = SORTING("Table ID", "Document No.", Position, "Document Line No.", "Line No.") WHERE("Table ID" = CONST(113), Position = FILTER(Longtext));
-
-                            trigger OnAfterGetRecord()
-                            begin
-                                Createlbtext(LBLang);
-                            end;
-
-                            trigger OnPreDataItem()
-                            begin
-                                TempLeBitPostedPSLongtextLine.DeleteAll();
-                            end;
-                        }
-                        dataitem(TempLBLang; "Integer")
+                        dataitem(LBLang; Integer)
                         {
                             DataItemTableView = SORTING(Number);
-                            column(LBLang_LineNo; FORMAT(TempLeBitPostedPSLongtextLine."Line No."))
-                            {
-                            }
+                            column(LBLang_LineNo; '0') { }
                             column(LBLang_Description; LBLang_Description)
                             {
                             }
@@ -453,39 +402,22 @@ report 5272722 "lbt Sales - Invoice"
 
                             trigger OnAfterGetRecord()
                             var
+                                TempBlob: Codeunit "Temp Blob";
                                 Streamin: InStream;
                             begin
-                                if TempLBLang.Number = 1 then
-                                    TempLeBitPostedPSLongtextLine.FindSet()
-                                else
-                                    TempLeBitPostedPSLongtextLine.Next();
+                                TempBlobList.Get(LBLang.Number, TempBlob);
+                                TempBlob.CreateInstream(Streamin, TextEncoding::UTF8);
 
-                                LBLang_Description := '';
-
-                                case TempLeBitPostedPSLongtextLine.Type of
-                                    TempLeBitPostedPSLongtextLine.Type::Text,
-                                    TempLeBitPostedPSLongtextLine.Type::"Text + Line break":
-                                        begin
-                                            TempLeBitPostedPSLongtextLine.CALCFIELDS(Text);
-                                            if TempLeBitPostedPSLongtextLine.Text.HasValue() then begin
-                                                TempLeBitPostedPSLongtextLine.Text.CREATEINSTREAM(Streamin);
-                                                Streamin.READ(LBLang_Description);
-                                            end;
-                                        end;
-                                    TempLeBitPostedPSLongtextLine.Type::"New Page":
-                                        begin
-                                            NewPageLBLang += 1;
-                                            LBLang_Description := '';
-                                        end;
-                                end;
+                                Streamin.READ(LBLang_Description);
+                                NewPageLBLang += 1;
                             end;
 
                             trigger OnPreDataItem()
                             begin
-                                if TempLeBitPostedPSLongtextLine.IsEmpty() then
+                                PrintLongText.GetPrintText("Sales Invoice Line", Enum::"lbt Position"::Longtext, TempBlobList);
+                                if TempBlobList.IsEmpty() then
                                     CurrReport.Break();
-
-                                TempLBLang.SETRANGE(Number, 1, TempLeBitPostedPSLongtextLine.Count());
+                                LBLang.SETRANGE(Number, 1, TempBlobList.Count());
                             end;
                         }
                         dataitem("Sales Shipment Buffer"; "Integer")
@@ -950,26 +882,10 @@ report 5272722 "lbt Sales - Invoice"
                                     CurrReport.Break();
                         end;
                     }
-                    dataitem(LBFuss; "lbt Posted PS Longtext Line")
-                    {
-                        DataItemLink = "Document No." = FIELD("No.");
-                        DataItemLinkReference = "Sales Invoice Header";
-                        DataItemTableView = SORTING("Table ID", "Document No.", Position, "Document Line No.", "Line No.") WHERE("Table ID" = CONST(112), Position = FILTER(Footer));
-
-                        trigger OnAfterGetRecord()
-                        begin
-                            Createlbtext(LBFuss);
-                        end;
-
-                        trigger OnPreDataItem()
-                        begin
-                            TempLeBitPostedPSLongtextLine.DeleteAll();
-                        end;
-                    }
-                    dataitem(TempLBFuss; "Integer")
+                    dataitem(LBFuss; "Integer")
                     {
                         DataItemTableView = SORTING(Number);
-                        column(LBFuss_LineNo; FORMAT(TempLeBitPostedPSLongtextLine."Line No."))
+                        column(LBFuss_LineNo; '0')
                         {
                         }
                         column(LBFuss_Description; LBFuss_Description)
@@ -981,39 +897,22 @@ report 5272722 "lbt Sales - Invoice"
 
                         trigger OnAfterGetRecord()
                         var
+                            TempBlob: Codeunit "Temp Blob";
                             Streamin: InStream;
                         begin
-                            if TempLBFuss.Number = 1 then
-                                TempLeBitPostedPSLongtextLine.FindSet()
-                            else
-                                TempLeBitPostedPSLongtextLine.Next();
+                            TempBlobList.Get(LBFuss.Number, TempBlob);
+                            TempBlob.CreateInstream(Streamin, TextEncoding::UTF8);
 
-                            LBFuss_Description := '';
-
-                            case TempLeBitPostedPSLongtextLine.Type of
-                                TempLeBitPostedPSLongtextLine.Type::Text,
-                                TempLeBitPostedPSLongtextLine.Type::"Text + Line break":
-                                    begin
-                                        TempLeBitPostedPSLongtextLine.CALCFIELDS(Text);
-                                        if TempLeBitPostedPSLongtextLine.Text.HasValue() then begin
-                                            TempLeBitPostedPSLongtextLine.Text.CREATEINSTREAM(Streamin);
-                                            Streamin.READ(LBFuss_Description);
-                                        end;
-                                    end;
-                                TempLeBitPostedPSLongtextLine.Type::"New Page":
-                                    begin
-                                        NewPageLBFuss += 1;
-                                        LBFuss_Description := '';
-                                    end;
-                            end;
+                            Streamin.READ(LBFuss_Description);
+                            NewPageLBFuss += 1;
                         end;
 
                         trigger OnPreDataItem()
                         begin
-                            if TempLeBitPostedPSLongtextLine.IsEmpty() then
+                            PrintLongText.GetPrintText("Sales Invoice Header", Enum::"lbt Position"::Footer, TempBlobList);
+                            if TempBlobList.IsEmpty() then
                                 CurrReport.Break();
-
-                            TempLBFuss.SETRANGE(Number, 1, TempLeBitPostedPSLongtextLine.Count());
+                            LBFuss.SETRANGE(Number, 1, TempBlobList.Count());
                         end;
                     }
                 }
@@ -1216,11 +1115,12 @@ report 5272722 "lbt Sales - Invoice"
         VATClause: Record "VAT Clause";
         TempLineFeeNoteOnReportHist: Record "Line Fee Note on Report Hist." temporary;
         Item: Record Item;
-        TempLeBitPostedPSLongtextLine: Record "lbt Posted PS Longtext Line" temporary;
         SalesInvoiceLine: Record "Sales Invoice Line";
         CorrSetup: Record "lbt Corr Setup";
         LeBitReportFunctions: Codeunit "lbt Report Functions";
         Language: Codeunit Language;
+        PrintLongText: Codeunit "lbt cl Print Longtext";
+        TempBlobList: Codeunit "Temp Blob List";
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
         SegManagement: Codeunit SegManagement;
@@ -1650,92 +1550,6 @@ report 5272722 "lbt Sales - Invoice"
                     TempLineFeeNoteOnReportHist.COPY(LineFeeNoteOnReportHist);
                     TempLineFeeNoteOnReportHist.Insert();
                 until LineFeeNoteOnReportHist.Next() = 0;
-        end;
-    end;
-
-    local procedure Createlbtext(LeBitPostedPSLongtextLine: Record "lbt Posted PS Longtext Line")
-    var
-        lbtext: Text;
-        Streamin: InStream;
-        Streamout: OutStream;
-        LastSign: Text[10];
-        NewLine: Boolean;
-    begin
-        if TempLeBitPostedPSLongtextLine.IsEmpty() then begin
-            TempLeBitPostedPSLongtextLine := LeBitPostedPSLongtextLine;
-            TempLeBitPostedPSLongtextLine.Description := '';
-            TempLeBitPostedPSLongtextLine.Insert();
-        end;
-
-        TempLeBitPostedPSLongtextLine.FindLast();
-        NewLine := false;
-
-        TempLeBitPostedPSLongtextLine.CALCFIELDS(Text);
-        if TempLeBitPostedPSLongtextLine.Text.HasValue() then begin
-            TempLeBitPostedPSLongtextLine.Text.CREATEINSTREAM(Streamin);
-            Streamin.READ(lbtext);
-        end;
-
-        case LeBitPostedPSLongtextLine.Type of
-            LeBitPostedPSLongtextLine.Type::"New Page":
-                begin
-                    TempLeBitPostedPSLongtextLine := LeBitPostedPSLongtextLine;
-                    TempLeBitPostedPSLongtextLine."Line No." := TempLeBitPostedPSLongtextLine."Line No." + 10000;
-                    TempLeBitPostedPSLongtextLine.Insert();
-                    NewLine := true;
-                    lbtext := '';
-                end;
-            LeBitPostedPSLongtextLine.Type::Text:
-                if LeBitPostedPSLongtextLine.Description = '' then begin
-                    if STRLEN(lbtext) <> 0 then begin
-                        LastSign := COPYSTR(lbtext, STRLEN(lbtext) - 3, 4);
-                        if LastSign = '<br>' then
-                            lbtext := COPYSTR(lbtext, 1, STRLEN(lbtext) - 4);
-                    end;
-                    lbtext += '<br>';
-                    NewLine := true;
-                end else
-                    if STRLEN(lbtext) <> 0 then begin
-                        LastSign := COPYSTR(lbtext, STRLEN(lbtext), 1);
-                        if LastSign in ['>', ' '] then
-                            lbtext += LeBitPostedPSLongtextLine.Description
-                        else
-                            lbtext += (' ' + LeBitPostedPSLongtextLine.Description);
-                    end else
-                        lbtext += LeBitPostedPSLongtextLine.Description;
-
-            LeBitPostedPSLongtextLine.Type::"Text + Line break":
-                if LeBitPostedPSLongtextLine.Description = '' then begin
-                    if STRLEN(lbtext) <> 0 then begin
-                        LastSign := COPYSTR(lbtext, STRLEN(lbtext) - 3, 4);
-                        if LastSign = '<br>' then
-                            lbtext := COPYSTR(lbtext, 1, STRLEN(lbtext) - 4);
-                    end;
-                    lbtext += '<br>';
-                    NewLine := true;
-                end else
-                    if STRLEN(lbtext) <> 0 then begin
-                        LastSign := COPYSTR(lbtext, STRLEN(lbtext), 1);
-                        if LastSign in ['>', ' '] then
-                            lbtext += LeBitPostedPSLongtextLine.Description + '<br>'
-                        else
-                            lbtext += (' ' + LeBitPostedPSLongtextLine.Description) + '<br>';
-                    end else
-                        lbtext += LeBitPostedPSLongtextLine.Description + '<br>';
-
-        end;
-
-        if lbtext <> '' then begin
-            TempLeBitPostedPSLongtextLine.Text.CREATEOUTSTREAM(Streamout);
-            Streamout.WRITE(lbtext);
-            TempLeBitPostedPSLongtextLine.Modify();
-        end;
-        if NewLine then begin
-            TempLeBitPostedPSLongtextLine.Init();
-            ;
-            TempLeBitPostedPSLongtextLine."Line No." := TempLeBitPostedPSLongtextLine."Line No." + 10000;
-            TempLeBitPostedPSLongtextLine.Type := TempLeBitPostedPSLongtextLine.Type::Text;
-            TempLeBitPostedPSLongtextLine.Insert();
         end;
     end;
 

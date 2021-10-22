@@ -29,6 +29,16 @@ pageextension 5272781 "lbt Posted Ret. Shipment Sub." extends "Posted Return Shi
                 ToolTip = 'Here you can insert long texts. ';
                 ApplicationArea = All;
             }
+            field("Lbt Editor"; rec.lbtHasEditorValue())
+            {
+                ApplicationArea = all;
+                Editable = false;
+                ToolTip = 'Editor';
+                trigger OnAssistEdit()
+                begin
+                    rec.lbtEditData();
+                end;
+            }
         }
     }
     actions

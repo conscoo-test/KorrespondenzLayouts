@@ -2,6 +2,82 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
 {
     // version NAVW111.00.00.19846,LBCOR1.00
 
+    layout
+    {
+        addafter(SalesLines)
+        {
+            group(lbtEditor)
+            {
+                caption = 'Longtext';
+                field("lbt Editor Header"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorHeader, rec."Document Type".AsInteger()))
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    ToolTip = 'Editor Header';
+                    caption = 'Editor Header';
+                    trigger OnAssistEdit()
+                    begin
+                        rec.lbtEditData(enum::"lbt Position"::EditorHeader, rec."Document Type".AsInteger());
+                    end;
+                }
+                field("lbt Editor Footer"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorFooter, rec."Document Type".AsInteger()))
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    ToolTip = 'Editor Footer';
+                    caption = 'Editor Footer';
+                    trigger OnAssistEdit()
+                    begin
+                        rec.lbtEditData(enum::"lbt Position"::Editorfooter, rec."Document Type".AsInteger());
+                    end;
+                }
+                field("lbt Editor Shipment Header"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorHeader, rec."Document Type"::"Shipment/Receipt".AsInteger()))
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    ToolTip = 'Editor Shipment Header';
+                    caption = 'Editor Shipment Header';
+                    trigger OnAssistEdit()
+                    begin
+                        rec.lbtEditData(enum::"lbt Position"::EditorHeader, rec."Document Type"::"Shipment/Receipt".AsInteger());
+                    end;
+                }
+                field("lbt Editor Shipment Footer"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorFooter, rec."Document Type"::"Shipment/Receipt".AsInteger()))
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    ToolTip = 'Editor Shipment Footer';
+                    caption = 'Editor Shipment Footer';
+                    trigger OnAssistEdit()
+                    begin
+                        rec.lbtEditData(enum::"lbt Position"::Editorfooter, rec."Document Type"::"Shipment/Receipt".AsInteger());
+                    end;
+                }
+                field("lbt Editor Invoice Header"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorHeader, rec."Document Type"::Invoice.AsInteger()))
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    ToolTip = 'Editor Invoice Header';
+                    caption = 'Editor Invoice Header';
+                    trigger OnAssistEdit()
+                    begin
+                        rec.lbtEditData(enum::"lbt Position"::EditorHeader, rec."Document Type"::Invoice.AsInteger());
+                    end;
+                }
+                field("lbt Editor Invoice Footer"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorFooter, rec."Document Type"::Invoice.AsInteger()))
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    ToolTip = 'Editor Invoice Footer';
+                    caption = 'Editor Invoice Footer';
+                    trigger OnAssistEdit()
+                    begin
+                        rec.lbtEditData(enum::"lbt Position"::Editorfooter, rec."Document Type"::Invoice.AsInteger());
+                    end;
+                }
+            }
+        }
+    }
     actions
     {
         addafter("O&rder")

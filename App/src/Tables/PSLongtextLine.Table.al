@@ -38,13 +38,18 @@ table 5272720 "lbt PS Longtext Line"
             ValidateTableRelation = false;
             DataClassification = CustomerContent;
         }
-        field(4; Position; Option)
+        field(4; Position; Enum "lbt Position")
         {
             Caption = 'Position';
-            OptionCaption = 'Header,Footer,Longtext';
-            OptionMembers = Header,Footer,Longtext;
             DataClassification = CustomerContent;
         }
+        // field(4; Position; Option)
+        // {
+        //     Caption = 'Position';
+        //     OptionCaption = 'Header,Footer,Longtext,EditorHeader,EditorFooter,EditorLine';
+        //     OptionMembers = Header,Footer,Longtext,EditorHeader,EditorFooter,EditorLine;
+        //     DataClassification = CustomerContent;
+        // }
         field(5; "Document Line No."; Integer)
         {
             Caption = 'Document Line No.';
@@ -118,6 +123,12 @@ table 5272720 "lbt PS Longtext Line"
         field(13; "Text"; BLOB)
         {
             Caption = 'Text';
+            DataClassification = CustomerContent;
+        }
+
+        field(21; "Editor Content"; Blob)
+        {
+            caption = 'Editor Content';
             DataClassification = CustomerContent;
         }
     }
@@ -255,6 +266,50 @@ table 5272720 "lbt PS Longtext Line"
                 PSLongtextLine.Insert();
             until ende;
         end;
+    end;
+
+    procedure EditData()
+    var
+        EditorHelper: Codeunit "lbt cl EditorHelper";
+        data: text;
+    begin
+        data := ReadContentData(false);
+        if not editorhelper.TextEditor(data, true) then
+            exit;
+        if (data = '<p><br></p>') or (data = '<p></p>') then
+            delete(true)
+        else begin
+            WriteContentData(data);
+            modify();
+        end;
+
+    end;
+
+    procedure ReadContentData(show: Boolean) Result: text
+    var
+        EditorPreview: Page "lbt cl Editor Preview";
+        Buffer: Text;
+        is: instream;
+    begin
+        CalcFields("Editor Content");
+        "editor content".CreateInStream(is, TextEncoding::UTF8);
+        while not is.EOS do begin
+            is.Read(Buffer);
+            Result += Buffer;
+        end;
+        if show then begin
+            EditorPreview.SetData(result);
+            EditorPreview.run();
+        end;
+    end;
+
+    procedure WriteContentData(content: text)
+    var
+        os: OutStream;
+    begin
+        clear(Rec."Editor Content");
+        "Editor Content".CreateOutStream(os, TextEncoding::UTF8);
+        os.write(content);
     end;
 
 }

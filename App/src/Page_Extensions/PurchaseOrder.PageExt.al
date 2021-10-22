@@ -1,7 +1,34 @@
 pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
 {
     // version NAVW111.00.00.20348,NAVDACH11.00.00.20348,LBCOR1.00
-
+    layout
+    {
+        addlast(General)
+        {
+            field("lbt Editor Header"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorHeader, rec."Document Type".AsInteger()))
+            {
+                ApplicationArea = all;
+                Editable = false;
+                ToolTip = 'Editor Header';
+                caption = 'Editor Header';
+                trigger OnAssistEdit()
+                begin
+                    rec.lbtEditData(enum::"lbt Position"::EditorHeader, rec."Document Type".AsInteger());
+                end;
+            }
+            field("lbt Editor Footer"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorFooter, rec."Document Type".AsInteger()))
+            {
+                ApplicationArea = all;
+                Editable = false;
+                ToolTip = 'Editor Footer';
+                caption = 'Editor Footer';
+                trigger OnAssistEdit()
+                begin
+                    rec.lbtEditData(enum::"lbt Position"::Editorfooter, rec."Document Type".AsInteger());
+                end;
+            }
+        }
+    }
     actions
     {
         addafter("O&rder")

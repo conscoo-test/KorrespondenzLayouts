@@ -29,6 +29,16 @@ pageextension 5272732 "lbt Post. Purch. Cr. Memo Sub." extends "Posted Purch. Cr
                 ApplicationArea = All;
                 ToolTip = 'Here you can insert long texts.';
             }
+            field("Lbt Editor"; rec.lbtHasEditorValue())
+            {
+                ApplicationArea = all;
+                Editable = false;
+                ToolTip = 'Editor';
+                trigger OnAssistEdit()
+                begin
+                    rec.lbtEditData();
+                end;
+            }
         }
     }
     actions

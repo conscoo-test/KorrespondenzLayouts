@@ -69,11 +69,33 @@ tableextension 5272733 "lbt Purchase Line Archive" extends "Purchase Line Archiv
             DataClassification = CustomerContent;
         }
     }
+    var
+        EditorHelper: Codeunit "lbt cl EditorHelper";
+
     trigger OnDelete()
     var
         LongtextMgt: Codeunit "lbt Longtext Mgt.";
     begin
         LongtextMgt.DelLongtext(Rec);
+    end;
+
+    procedure lbtHasEditorValue(docType: integer) Result: Boolean
+    var
+
+    begin
+        exit(EditorHelper.hasEditorValue(rec, enum::"lbt Position"::EditorLine, doctype));
+    end;
+
+    procedure lbtEditData(doctype: integer)
+    var
+
+    begin
+        EditorHelper.editData(rec, enum::"lbt Position"::EditorLine, doctype);
+    end;
+
+    procedure lbtGetPrintData(Position: enum "lbt Position"; docType: integer): Text
+    begin
+        exit(EditorHelper.getPrintData(rec, Position, docType));
     end;
 }
 

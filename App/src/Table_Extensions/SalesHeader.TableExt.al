@@ -1,5 +1,8 @@
 tableextension 5272728 "lbt Sales Header" extends "Sales Header"
 {
+    var
+        EditorHelper: Codeunit "lbt cl EditorHelper";
+
     trigger OnDelete()
     var
         LongtextMgt: Codeunit "lbt Longtext Mgt.";
@@ -17,5 +20,33 @@ tableextension 5272728 "lbt Sales Header" extends "Sales Header"
             until PSLongtextLine.Next() = 0;
         PSLongtextLine.DeleteAll();
     end;
+
+    procedure lbtHasEditorValue(Position: enum "lbt Position"; docType: integer) Result: text
+    begin
+        exit(format(EditorHelper.hasEditorValue(rec, Position, doctype)));
+        //exit(EditorHelper.hasEditorValue(rec, Position));
+    end;
+
+    procedure lbtEditData(Position: enum "lbt Position"; docType: integer)
+    begin
+        EditorHelper.editData(rec, Position, docType);
+    end;
+
+    procedure lbtGetPrintData(Position: enum "lbt Position"; docType: integer): text
+    begin
+        exit(EditorHelper.getPrintData(rec, Position, docType));
+    end;
+
+    procedure lbtEditorVisible(): Boolean
+    begin
+        exit(EditorHelper.editorVisible(database::"sales header"));
+    end;
+
+    trigger OnAfterDelete()
+    begin
+        EditorHelper.deleteLongText(rec, rec."Document Type".AsInteger());
+    end;
+
+
 }
 

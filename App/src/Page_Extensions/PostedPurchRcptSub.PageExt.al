@@ -29,6 +29,16 @@ pageextension 5272728 "lbt Posted Purch. Rcpt. Sub." extends "Posted Purchase Rc
                 ApplicationArea = All;
                 ToolTip = 'Here you can insert long texts.';
             }
+            field("lbt Editor"; rec.lbtHasEditorValue())
+            {
+                ApplicationArea = all;
+                Editable = false;
+                ToolTip = 'Editor';
+                trigger OnAssistEdit()
+                begin
+                    rec.lbtEditData();
+                end;
+            }
         }
     }
     actions

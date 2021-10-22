@@ -389,6 +389,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LongtextMgt.CopyLongtext(FromSalesShipmentLine, ToSalesLine);
     end;
 
+
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopySalesLineFromSalesLineBuffer', '', false, false)]
     local procedure OnAfterCopySalesLineFromSalesLineBuffer(ToSalesLine: Record "Sales Line"; FromSalesInvLine: Record "Sales Invoice Line");
     begin

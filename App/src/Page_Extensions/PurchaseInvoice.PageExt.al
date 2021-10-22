@@ -1,7 +1,34 @@
 pageextension 5272755 "lbt Purchase Invoice" extends "Purchase Invoice"
 {
     // version NAVW111.00.00.20348,LBCOR1.00
-
+    layout
+    {
+        addlast(General)
+        {
+            field("lbt Editor Header"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorHeader, rec."Document Type".AsInteger()))
+            {
+                ApplicationArea = all;
+                Editable = false;
+                ToolTip = 'Editor Header';
+                caption = 'Editor Header';
+                trigger OnAssistEdit()
+                begin
+                    rec.lbtEditData(enum::"lbt Position"::EditorHeader, rec."Document Type".AsInteger());
+                end;
+            }
+            field("lbt Editor Footer"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorFooter, rec."Document Type".AsInteger()))
+            {
+                ApplicationArea = all;
+                Editable = false;
+                ToolTip = 'Editor Footer';
+                caption = 'Editor Footer';
+                trigger OnAssistEdit()
+                begin
+                    rec.lbtEditData(enum::"lbt Position"::Editorfooter, rec."Document Type".AsInteger());
+                end;
+            }
+        }
+    }
     actions
     {
         addafter("&Invoice")

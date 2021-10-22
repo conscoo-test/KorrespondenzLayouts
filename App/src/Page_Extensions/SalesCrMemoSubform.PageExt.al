@@ -29,6 +29,17 @@ pageextension 5272804 "lbt Sales Cr. Memo Subform" extends "Sales Cr. Memo Subfo
                 ApplicationArea = All;
                 ToolTip = 'Here you can insert long texts.';
             }
+            field("Lbt Editor"; rec.lbtHasEditorValue(rec."Document Type".AsInteger()))
+            {
+                ApplicationArea = all;
+                Editable = false;
+                ToolTip = 'Editor';
+                caption = 'Editor';
+                trigger OnAssistEdit()
+                begin
+                    rec.lbtEditData(rec."Document Type".AsInteger());
+                end;
+            }
         }
     }
     actions

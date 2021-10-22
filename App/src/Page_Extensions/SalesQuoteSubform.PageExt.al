@@ -29,6 +29,16 @@ pageextension 5272803 "lbt Sales Quote Subform" extends "Sales Quote Subform"
                 ApplicationArea = All;
                 ToolTip = 'Here you can insert long texts.';
             }
+            field("Lbt Editor"; rec.lbtHasEditorValue(rec."Document Type".asinteger()))
+            {
+                ApplicationArea = all;
+                Editable = false;
+                ToolTip = 'Editor';
+                trigger OnAssistEdit()
+                begin
+                    rec.lbtEditData(rec."Document Type".asinteger());
+                end;
+            }
         }
     }
     actions
