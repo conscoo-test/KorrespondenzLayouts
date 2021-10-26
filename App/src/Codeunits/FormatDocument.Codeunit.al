@@ -68,8 +68,10 @@ codeunit 5272728 "lbt Format Document"
     var
         CEOs: List of [Text];
         Fields: List of [Text];
+        TradeRegister: Text;
     begin
-        AddToList(Fields, StrSubstNo(FieldLbl, RegNoCaptionLbl, CompanyInformation."lbt Commercial Register No."));
+        TradeRegister := CompanyInformation."lbt Trade Register Name" + ' ' + CompanyInformation."lbt Commercial Register No.";
+        AddToList(Fields, StrSubstNo(FieldLbl, RegNoCaptionLbl, TradeRegister));
         AddToList(CEOs, CompanyInformation."lbt CEO1");
         AddToList(CEOs, CompanyInformation."lbt CEO2");
         AddToList(CEOs, CompanyInformation."lbt CEO3");
