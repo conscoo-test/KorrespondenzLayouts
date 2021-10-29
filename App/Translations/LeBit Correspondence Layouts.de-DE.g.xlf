@@ -5361,6 +5361,30 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Blanket Purchase Order - Action lbt Tot&amp;aling - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3134870048 - Control 3671457890 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2965669802">
+          <source>Editor Footer</source>
+          <target>Editor Fuss</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Blanket Purchase Order - Control lbt Editor Footer - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3134870048 - Control 3671457890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2965669802">
+          <source>Editor Footer</source>
+          <target>Editor Fuss</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Blanket Purchase Order - Control lbt Editor Footer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3134870048 - Control 4044143240 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2965669802">
+          <source>Editor Header</source>
+          <target>Editor Kopf</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Blanket Purchase Order - Control lbt Editor Header - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3134870048 - Control 4044143240 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2965669802">
+          <source>Editor Header</source>
+          <target>Editor Kopf</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Blanket Purchase Order - Control lbt Editor Header - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2137708449 - Action 2738780584 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1225303959">
           <source>LeBit365 Correspondence layout</source>
           <target>LeBit365 Korrespondenzbelege</target>
