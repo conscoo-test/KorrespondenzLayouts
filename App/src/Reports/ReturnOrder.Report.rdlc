@@ -5686,7 +5686,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!DocumentConfirmCopyCaption.Value</Value>
+                                                    <Value>=RTrim(Fields!DocumentConfirmCopyCaption.Value)</Value>
                                                     <Style>
                                                       <FontStyle>Italic</FontStyle>
                                                       <FontFamily>Times New Roman</FontFamily>

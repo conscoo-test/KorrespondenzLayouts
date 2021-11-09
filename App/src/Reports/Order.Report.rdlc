@@ -11407,13 +11407,13 @@
                               <TablixBody>
                                 <TablixColumns>
                                   <TablixColumn>
-                                    <Width>2.47674cm</Width>
+                                    <Width>2.37614cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>2.77326cm</Width>
+                                    <Width>2.67266cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>3.36326cm</Width>
+                                    <Width>3.26266cm</Width>
                                   </TablixColumn>
                                 </TablixColumns>
                                 <TablixRows>
@@ -11429,7 +11429,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!DocumentConfirmCopyCaption.Value</Value>
+                                                    <Value>=RTrim(Fields!DocumentConfirmCopyCaption.Value)</Value>
                                                     <Style>
                                                       <FontStyle>Italic</FontStyle>
                                                       <FontFamily>Times New Roman</FontFamily>
@@ -12153,7 +12153,6 @@
                                               <VerticalAlign>Middle</VerticalAlign>
                                             </Style>
                                           </Textbox>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                     </TablixCells>
@@ -12183,7 +12182,7 @@
                               <Top>0.0088cm</Top>
                               <Left>11.12634cm</Left>
                               <Height>4.98408cm</Height>
-                              <Width>8.61326cm</Width>
+                              <Width>8.31147cm</Width>
                               <ZIndex>12</ZIndex>
                               <Style>
                                 <Border>
