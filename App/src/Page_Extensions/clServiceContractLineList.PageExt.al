@@ -1,0 +1,21 @@
+pageextension 5272826 "lbt cl ServiceContractLineList" extends "Service Contract Line List"
+{
+    layout
+    {
+        addafter(Description)
+        {
+            field("lbt Editor"; rec.lbtHasEditorValue(rec."Contract Type"))
+            {
+                ApplicationArea = all;
+                Editable = false;
+                ToolTip = 'Editor';
+                caption = 'Editor';
+                trigger OnAssistEdit()
+                begin
+                    rec.lbtEditData(rec."Contract Type");
+                end;
+            }
+
+        }
+    }
+}

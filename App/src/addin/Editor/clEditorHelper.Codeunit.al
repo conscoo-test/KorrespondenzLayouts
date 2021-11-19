@@ -244,7 +244,7 @@ codeunit 5272729 "lbt cl EditorHelper"
     local procedure gettype(tableid: Integer) Result: Integer
     begin
         ///Unposted
-        if tableid in [36, 37, 38, 39, 5900, 5901, 5902, 5964] then
+        if tableid in [36, 37, 38, 39, 5900, 5901, 5902, 5964, 5965, 5968] then
             exit(1);
         ///Posted
         if tableid in [110, 111, 112, 113, 114, 115, 120, 121, 122, 123, 124, 125, 5989, 5990, 5991, 5992, 5993, 5994, 5995] then
@@ -271,8 +271,9 @@ codeunit 5272729 "lbt cl EditorHelper"
             lineNo_fieldNo := fields_No[3];
         end;
 
+
         PSLongtextLn.SetRange("Table ID", recref.Number);
-        if otherDocType = 0 then
+        if (otherDocType = 0) and (doctype_fieldno <> 0) then
             PSLongtextLn.SetRange("document type", recref.field(doctype_fieldno).value)
         else
             PSLongtextLn.SetRange("document type", otherdoctype);
@@ -287,7 +288,8 @@ codeunit 5272729 "lbt cl EditorHelper"
             exit;
         PSLongtextLn.init();
         PSLongtextLn."Table ID" := recref.number;
-        PSLongtextLn."document type" := otherdoctype;//recref.field(doctype_fieldno).Value;
+        if doctype_fieldno <> 0 then
+            PSLongtextLn."document type" := otherdoctype;//recref.field(doctype_fieldno).Value;
         PSLongtextLn."Document No." := recref.field(docno_fieldno).value;
         if lineNo_fieldNo <> 0 then
             PSLongtextLn."document Line No." := recref.field(lineNo_fieldNo).value;
@@ -315,7 +317,9 @@ codeunit 5272729 "lbt cl EditorHelper"
         //PstdPSLongtextLn.SetRange("document type", rec."Document Type");
         PstdPSLongtextLn.setrange("Document No.", recref.field(docNo_fieldno).value);
         PstdPSLongtextLn.setrange(Position, position);
-        PstdPSLongtextLn.SetRange("Document Line No.", recref.field(lineNo_fieldNo).value);
+        if lineNo_fieldNo <> 0 then
+            PstdPSLongtextLn.SetRange("Document Line No.", recref.field(lineNo_fieldNo).value);
+
         if not insertifempty then
             exit;
         if PstdPSLongtextLn.findfirst() then
@@ -358,7 +362,8 @@ codeunit 5272729 "lbt cl EditorHelper"
 
         ///TODO Archive Filter
         ArchivePSLongtextLn.SetRange("Table ID", recref.number);
-        ArchivePSLongtextLn.SetRange("document type", recref.field(docType_fieldno).value);
+        if doctype_fieldno <> 0 then
+            ArchivePSLongtextLn.SetRange("document type", recref.field(docType_fieldno).value);
         ArchivePSLongtextLn.setrange("Document No.", recref.field(docNo_fieldno).value);
         ArchivePSLongtextLn.setrange(Position, position);
         if lineNo_fieldNo <> 0 then
@@ -373,7 +378,8 @@ codeunit 5272729 "lbt cl EditorHelper"
             exit;
         ArchivePSLongtextLn.init();
         ArchivePSLongtextLn."Table ID" := recref.number;
-        ArchivePSLongtextLn."document type" := recref.field(docNo_fieldno).value;
+        if doctype_fieldno <> 0 then
+            ArchivePSLongtextLn."document type" := recref.field(docNo_fieldno).value;
         ArchivePSLongtextLn."Document No." := recref.field(docNo_fieldno).value;
         ArchivePSLongtextLn."document Line No." := recref.field(lineNo_fieldNo).value;
         ArchivePSLongtextLn.Position := position;
@@ -465,15 +471,16 @@ codeunit 5272729 "lbt cl EditorHelper"
 
     local procedure isserviceTable(TableId: integer; var field_No: array[10] of integer) result: integer
     begin
-        if tableid in [database::"service header"] then
+        if tableid in [database::"service header", database::"service contract Header", database::"Service Contract Template"] then
             result := 1;
-        if tableid in [database::"service line", database::"Service item Line"] then
+        if tableid in [database::"service line", database::"Service item Line", Database::"Service Contract Line"] then
             result := 2;
 
         if tableid in [database::"service invoice header", database::"Service Shipment Header", database::"Service Cr.Memo Header"] then
             result := 3;
         if tableid in [database::"service invoice line", database::"Service Shipment Line", database::"Service Cr.Memo Line", database::"Service Shipment Item Line"] then
             result := 4;
+
         case tableid of
             database::"Service item Line":
                 begin
@@ -509,6 +516,24 @@ codeunit 5272729 "lbt cl EditorHelper"
                 begin
                     field_No[1] := 0;
                     field_No[2] := 3;
+                    field_No[3] := 0;
+                end;
+            database::"Service Contract Header":
+                begin
+                    field_No[1] := 2;
+                    field_No[2] := 1;
+                    field_No[3] := 0;
+                end;
+            database::"Service Contract line":
+                begin
+                    field_No[1] := 1;
+                    field_No[2] := 2;
+                    field_No[3] := 3;
+                end;
+            database::"Service Contract template":
+                begin
+                    field_No[1] := 0;
+                    field_No[2] := 1;
                     field_No[3] := 0;
                 end;
 
