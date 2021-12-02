@@ -579,5 +579,19 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
     begin
         PurchaseLine.SetFilter("lbt Printoption", '<>%1&<>%2', PurchaseLine."lbt Printoption"::Alternative, PurchaseLine."lbt Printoption"::Optional);
     end;
+
+    // H21/0758
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post Prepayments", 'OnBeforeSalesInvHeaderInsert', '', false, false)]
+    local procedure OnBeforeSalesInvHeaderInsert_Codeunit442(var SalesInvHeader: Record "Sales Invoice Header"; SalesHeader: Record "Sales Header")
+    begin
+        LongtextMgt.CopyLongtext(SalesHeader, SalesInvHeader);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post Prepayments", 'OnBeforeSalesCrMemoHeaderInsert', '', false, false)]
+    local procedure OnBeforeSalesCrMemoHeaderInsert_Codeunit442(SalesCrMemoHeader: Record "Sales Cr.Memo Header"; SalesHeader: Record "Sales Header")
+    begin
+        LongtextMgt.CopyLongtext(SalesHeader, SalesCrMemoHeader);
+    end;
+
 }
 
