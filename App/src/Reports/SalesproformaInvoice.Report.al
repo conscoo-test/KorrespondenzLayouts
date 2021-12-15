@@ -431,7 +431,7 @@ report 5272726 "lbt Sales pro forma Invoice"
 
                             trigger OnPreDataItem()
                             begin
-                                PrintLongText.GetPrintText("Sales Line", Enum::"lbt Position"::Longtext, TempBlobList, "Sales Line"."Document Type"::Invoice.AsInteger());
+                                PrintLongText.GetPrintText("Sales Line", Enum::"lbt Position"::Longtext, TempBlobList, "Sales Line"."Document Type"::Order.AsInteger());
                                 if TempBlobList.IsEmpty() then
                                     CurrReport.Break();
                                 LBLang.SETRANGE(Number, 1, TempBlobList.Count());
