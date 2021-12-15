@@ -161,7 +161,6 @@ codeunit 5272729 "lbt cl EditorHelper"
         PSLongtextLn: Record "lbt PS Longtext Line";
         PstdPSLongtextLn: Record "lbt Posted PS Longtext Line";
         ArchivePSLongtextLn: Record "lbt Archive PS Longtext Line";
-        tableid: integer;
 
         Tabletype: integer;
 
@@ -174,21 +173,21 @@ codeunit 5272729 "lbt cl EditorHelper"
                     SetPsLongtextLineFilter(PSLongtextLn, position, otherDocType, recref, true);
                     PSLongtextLn.EditData();
                     if not PSLongtextLn."Editor Content".HasValue() then
-                        PSLongtextLn.delete(true);
+                        if PSLongtextLn.delete(true) then;
                 end;
             2:
                 begin
                     SetPstdPsLongtextLineFilter(pstdPSLongtextLn, position, recref, true);
                     pstdPSLongtextLn.EditData();
                     if not pstdPSLongtextLn."Editor Content".HasValue() then
-                        pstdPSLongtextLn.delete(true);
+                        if pstdPSLongtextLn.delete(true) then;
                 end;
             3:
                 begin
                     SetArchPsLongtextLineFilter(ArchivePSLongtextLn, position, recref, true);
                     ArchivePSLongtextLn.EditData();
                     if not ArchivePSLongtextLn."Editor Content".HasValue() then
-                        ArchivePSLongtextLn.delete(true);
+                        if ArchivePSLongtextLn.delete(true) then;
                 end;
         end;
     end;
