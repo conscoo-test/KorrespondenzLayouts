@@ -950,12 +950,14 @@ report 5272723 "lbt Sales - Credit Memo"
             InitLogInteraction();
     end;
 
+    protected var
+        CompanyInfo: Record "Company Information";
+
     var
         GLSetup: Record "General Ledger Setup";
         RespCenter: Record "Responsibility Center";
         SalesSetup: Record "Sales & Receivables Setup";
         SalesPurchPerson: Record "Salesperson/Purchaser";
-        CompanyInfo: Record "Company Information";
         CompanyInfo1: Record "Company Information";
         CompanyInfo2: Record "Company Information";
         CompanyInfo3: Record "Company Information";

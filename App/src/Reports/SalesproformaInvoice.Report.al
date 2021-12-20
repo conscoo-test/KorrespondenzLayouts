@@ -1420,13 +1420,15 @@ report 5272726 "lbt Sales pro forma Invoice"
         end;
     end;
 
+    protected var
+        CompanyInfo: Record "Company Information";
+
     var
         GLSetup: Record "General Ledger Setup";
         ShipmentMethod: Record "Shipment Method";
         PaymentTerms: Record "Payment Terms";
         PrepmtPaymentTerms: Record "Payment Terms";
         SalesPurchPerson: Record "Salesperson/Purchaser";
-        CompanyInfo: Record "Company Information";
         CompanyInfo1: Record "Company Information";
         SalesShipmentLine: Record "Sales Shipment Line";
         VATClause: Record "VAT Clause";

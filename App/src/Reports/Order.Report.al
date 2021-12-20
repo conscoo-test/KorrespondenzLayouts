@@ -1263,10 +1263,12 @@ report 5272728 "lbt Order"
         FormatDocument.SetLogoPosition(PurchSetup."lbt Logo Position on Documents", CompanyInfo1, CompanyInfo2, CompanyInfo3);
     end;
 
+    protected var
+        CompanyInfo: Record "Company Information";
+
     var
         CorrSetup: Record "lbt Corr Setup";
         GLSetup: Record "General Ledger Setup";
-        CompanyInfo: Record "Company Information";
         ShipmentMethod: Record "Shipment Method";
         PaymentTerms: Record "Payment Terms";
         PrepmtPaymentTerms: Record "Payment Terms";

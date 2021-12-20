@@ -1094,12 +1094,14 @@ report 5272722 "lbt Sales - Invoice"
             InitLogInteraction();
     end;
 
+    protected var
+        CompanyInfo: Record "Company Information";
+
     var
         GLSetup: Record "General Ledger Setup";
         ShipmentMethod: Record "Shipment Method";
         PaymentTerms: Record "Payment Terms";
         SalesPurchPerson: Record "Salesperson/Purchaser";
-        CompanyInfo: Record "Company Information";
         CompanyInfo1: Record "Company Information";
         CompanyInfo2: Record "Company Information";
         CompanyInfo3: Record "Company Information";

@@ -23,6 +23,7 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
             trigger OnValidate()
             var
                 Printoption: Option Standard,Title,Total,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total";
+                EndTime: Time;
             begin
                 if ("Printoption" = "Printoption"::Alternative) or
                   ("Printoption" = "Printoption"::Optional)
