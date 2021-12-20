@@ -782,9 +782,11 @@ report 5272724 "lbt Sales - Shipment"
         AsmHeaderExists := false;
     end;
 
+    protected var
+        CompanyInfo: Record "Company Information";
+
     var
         SalesPurchPerson: Record "Salesperson/Purchaser";
-        CompanyInfo: Record "Company Information";
         CompanyInfo1: Record "Company Information";
         CompanyInfo2: Record "Company Information";
         CompanyInfo3: Record "Company Information";
