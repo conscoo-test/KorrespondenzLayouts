@@ -4,7 +4,7 @@ tableextension 50727 "lbt Purchases & Payables Setup" extends "Purchases & Payab
 
     fields
     {
-        field(5272720; "lbt Logo Position on Documents"; Option)
+        field(50720; "lbt Logo Position on Documents"; Option)
         {
             Caption = 'Logo Position on Documents';
             Description = 'LBCOR';
@@ -13,13 +13,13 @@ tableextension 50727 "lbt Purchases & Payables Setup" extends "Purchases & Payab
             DataClassification = CustomerContent;
         }
 
-        // field(5272721; "lbt Archiving Purchase Quote"; Option)
+        // field(50721; "lbt Archiving Purchase Quote"; Option)
         // {
         //     Caption = 'Archiving Purchase Quote';
         //     DataClassification = CustomerContent;
         //     OptionMembers = Never,Question,Always;
         // }
-        // field(5272722; "lbt Arch. Orders and Ret. Orders"; Boolean)
+        // field(50722; "lbt Arch. Orders and Ret. Orders"; Boolean)
         // {
         //     Caption = 'Arch. Orders and Ret. Orders';
         //     DataClassification = CustomerContent;

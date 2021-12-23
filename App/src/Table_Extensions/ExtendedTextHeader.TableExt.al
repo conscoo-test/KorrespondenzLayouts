@@ -2,7 +2,7 @@ tableextension 50726 "lbt Extended Text Header" extends "Extended Text Header"
 {
     fields
     {
-        field(5272720; "lbt Textchoice"; Option)
+        field(50720; "lbt Textchoice"; Option)
         {
             Caption = 'Textchoice';
             OptionCaption = 'Standard,Longtext,Blob';
