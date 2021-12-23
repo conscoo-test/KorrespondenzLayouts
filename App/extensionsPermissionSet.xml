@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PermissionSets>
-  <PermissionSet RoleID="LEBIT CORRESPONDENCE LAYOUTS (CUSTOMER RANGE)" RoleName="LeBit Correspondence Layouts (Customer Range)">
+  <PermissionSet RoleID="LEBIT CORRESPONDENCE" RoleName="LeBit Correspondence Layouts (Customer Range)">
     <Permission>
       <ObjectID>50726</ObjectID>
       <ObjectType>0</ObjectType>
