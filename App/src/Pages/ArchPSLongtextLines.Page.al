@@ -1,4 +1,4 @@
-page 5272722 "lbt Arch. PS Longtext Lines"
+page 50722 "lbt Arch. PS Longtext Lines"
 {
     AutoSplitKey = true;
     Caption = 'Archive PS Longtext Lines';

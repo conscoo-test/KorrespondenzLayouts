@@ -1,4 +1,4 @@
-pageextension 5272769 "lbt Sales Return Ord. Arc Sub." extends "Sales Return Order Arc Subform"
+pageextension 50769 "lbt Sales Return Ord. Arc Sub." extends "Sales Return Order Arc Subform"
 {
     layout
     {

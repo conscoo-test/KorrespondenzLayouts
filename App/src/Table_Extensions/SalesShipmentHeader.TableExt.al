@@ -1,4 +1,4 @@
-tableextension 5272737 "lbt Sales Shipment Header" extends "Sales Shipment Header"
+tableextension 50737 "lbt Sales Shipment Header" extends "Sales Shipment Header"
 {
     fields
     {

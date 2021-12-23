@@ -1,4 +1,4 @@
-pageextension 5272804 "lbt Sales Cr. Memo Subform" extends "Sales Cr. Memo Subform"
+pageextension 50804 "lbt Sales Cr. Memo Subform" extends "Sales Cr. Memo Subform"
 {
     layout
     {

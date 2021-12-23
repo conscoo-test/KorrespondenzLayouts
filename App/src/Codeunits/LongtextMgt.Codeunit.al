@@ -1,4 +1,4 @@
-codeunit 5272723 "lbt Longtext Mgt."
+codeunit 50723 "lbt Longtext Mgt."
 {
     var
         TempExtendedTextLineLong: Record "lbt Extended Text Line Long" temporary;

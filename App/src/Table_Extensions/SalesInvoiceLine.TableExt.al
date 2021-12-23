@@ -1,4 +1,4 @@
-tableextension 5272721 "lbt Sales Invoice Line" extends "Sales Invoice Line"
+tableextension 50721 "lbt Sales Invoice Line" extends "Sales Invoice Line"
 {
 
     fields

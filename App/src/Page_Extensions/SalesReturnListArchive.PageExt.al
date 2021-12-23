@@ -1,4 +1,4 @@
-pageextension 5272770 "lbt Sales Return List Archive" extends "Sales Return List Archive"
+pageextension 50770 "lbt Sales Return List Archive" extends "Sales Return List Archive"
 {
     // version NAVW111.00.00.19846,LBCOR1.00
 

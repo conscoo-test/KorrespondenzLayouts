@@ -1,4 +1,4 @@
-tableextension 5272724 "lbt Purch. Inv. Line" extends "Purch. Inv. Line"
+tableextension 50724 "lbt Purch. Inv. Line" extends "Purch. Inv. Line"
 {
     fields
     {

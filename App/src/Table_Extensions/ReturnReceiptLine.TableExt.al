@@ -1,4 +1,4 @@
-tableextension 5272735 "lbt Return Receipt Line" extends "Return Receipt Line"
+tableextension 50735 "lbt Return Receipt Line" extends "Return Receipt Line"
 {
     fields
     {

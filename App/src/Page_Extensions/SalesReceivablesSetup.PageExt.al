@@ -1,4 +1,4 @@
-pageextension 5272746 "lbt Sales & Receivables Setup" extends "Sales & Receivables Setup"
+pageextension 50746 "lbt Sales & Receivables Setup" extends "Sales & Receivables Setup"
 {
     actions
     {

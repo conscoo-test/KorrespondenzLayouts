@@ -1,4 +1,4 @@
-page 5272725 "lbt Report - Attribute Setup"
+page 50725 "lbt Report - Attribute Setup"
 {
     Caption = 'Report - Attribute Setup';
     PageType = List;

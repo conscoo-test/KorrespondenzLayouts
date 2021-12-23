@@ -1,4 +1,4 @@
-page 5272723 "lbt Ext. Text Lines Long"
+page 50723 "lbt Ext. Text Lines Long"
 {
     AutoSplitKey = true;
     Caption = 'Ext. Text Lines Long';

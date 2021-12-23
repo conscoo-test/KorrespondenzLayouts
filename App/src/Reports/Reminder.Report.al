@@ -1,4 +1,4 @@
-report 5272731 "lbt Reminder"
+report 50731 "lbt Reminder"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './src/Reports/Reminder.Report.rdlc';

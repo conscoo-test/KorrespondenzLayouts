@@ -1,4 +1,4 @@
-tableextension 5272732 "lbt Sales Line Archive" extends "Sales Line Archive"
+tableextension 50732 "lbt Sales Line Archive" extends "Sales Line Archive"
 {
     fields
     {

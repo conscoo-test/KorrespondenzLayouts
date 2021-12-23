@@ -1,4 +1,4 @@
-report 5272721 "lbt Order Confirmation"
+report 50721 "lbt Order Confirmation"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './src/Reports/OrderConfirmation.Report.rdlc';

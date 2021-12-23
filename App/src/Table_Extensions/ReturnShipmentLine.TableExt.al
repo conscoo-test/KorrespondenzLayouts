@@ -1,4 +1,4 @@
-tableextension 5272734 "lbt Return Shipment Line" extends "Return Shipment Line"
+tableextension 50734 "lbt Return Shipment Line" extends "Return Shipment Line"
 {
     fields
     {

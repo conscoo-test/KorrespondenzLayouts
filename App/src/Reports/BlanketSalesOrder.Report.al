@@ -1,4 +1,4 @@
-report 5272725 "lbt Blanket Sales Order"
+report 50725 "lbt Blanket Sales Order"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './src/Reports/BlanketSalesOrder.Report.rdlc';

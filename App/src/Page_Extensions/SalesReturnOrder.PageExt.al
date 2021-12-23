@@ -1,4 +1,4 @@
-pageextension 5272771 "lbt Sales Return Order" extends "Sales Return Order"
+pageextension 50771 "lbt Sales Return Order" extends "Sales Return Order"
 {
     layout
     {

@@ -1,4 +1,4 @@
-pageextension 5272750 "lbt Purchase Quote" extends "Purchase Quote"
+pageextension 50750 "lbt Purchase Quote" extends "Purchase Quote"
 {
     // version NAVW111.00.00.20348,LBCOR1.00
     layout

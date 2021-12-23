@@ -1,4 +1,4 @@
-tableextension 5272726 "lbt Extended Text Header" extends "Extended Text Header"
+tableextension 50726 "lbt Extended Text Header" extends "Extended Text Header"
 {
     fields
     {

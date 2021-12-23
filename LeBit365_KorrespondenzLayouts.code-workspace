@@ -30,7 +30,7 @@
 		"CRS.FileNamePatternExtensions": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
 		"CRS.FileNamePatternPageCustomizations": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
 		"al.codeAnalyzers": [
-			"${AppSourceCop}",
+			// "${AppSourceCop}",
 			"${CodeCop}",
 			"${UICop}"
 		],

@@ -1,4 +1,4 @@
-table 5272726 "lbt Source Setup"
+table 50726 "lbt Source Setup"
 {
     // version LBCOR1.00
 

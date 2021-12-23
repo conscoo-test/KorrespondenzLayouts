@@ -1,4 +1,4 @@
-tableextension 5272736 "lbt Company Information" extends "Company Information"
+tableextension 50736 "lbt Company Information" extends "Company Information"
 {
     // version NAVW111.00,NAVDACH11.00,LBCOR1.00
 

@@ -1,4 +1,4 @@
-page 5272727 "lbt Source Setup"
+page 50727 "lbt Source Setup"
 {
     Caption = 'lbt Source Setup';
     PageType = List;

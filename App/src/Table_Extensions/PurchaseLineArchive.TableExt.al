@@ -1,4 +1,4 @@
-tableextension 5272733 "lbt Purchase Line Archive" extends "Purchase Line Archive"
+tableextension 50733 "lbt Purchase Line Archive" extends "Purchase Line Archive"
 {
     fields
     {

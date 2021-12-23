@@ -1,4 +1,4 @@
-codeunit 5272720 "lbt Corresp. Doc. Mgt"
+codeunit 50720 "lbt Corresp. Doc. Mgt"
 {
     trigger OnRun()
     begin

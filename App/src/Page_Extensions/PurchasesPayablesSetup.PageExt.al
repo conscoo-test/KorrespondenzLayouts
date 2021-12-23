@@ -1,4 +1,4 @@
-pageextension 5272748 "lbt Purchases & Payables Setup" extends "Purchases & Payables Setup"
+pageextension 50748 "lbt Purchases & Payables Setup" extends "Purchases & Payables Setup"
 {
     layout
     {

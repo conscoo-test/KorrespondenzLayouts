@@ -1,4 +1,4 @@
-report 5272720 "lbt Sales - Quote"
+report 50720 "lbt Sales - Quote"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './src/Reports/SalesQuote.Report.rdlc';

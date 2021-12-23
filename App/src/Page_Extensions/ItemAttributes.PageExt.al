@@ -1,4 +1,4 @@
-pageextension 5272786 "lbt Item Attributes" extends "Item Attributes"
+pageextension 50786 "lbt Item Attributes" extends "Item Attributes"
 {
     actions
     {

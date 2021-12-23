@@ -1,4 +1,4 @@
-pageextension 5272743 "lbt Sales Order" extends "Sales Order"
+pageextension 50743 "lbt Sales Order" extends "Sales Order"
 {
     // version NAVW111.00.00.19846,LBCOR1.00
 

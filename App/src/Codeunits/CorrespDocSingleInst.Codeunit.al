@@ -1,4 +1,4 @@
-codeunit 5272722 "lbt Corresp. Doc. SingleInst"
+codeunit 50722 "lbt Corresp. Doc. SingleInst"
 {
     // version LBCOR1.00
 

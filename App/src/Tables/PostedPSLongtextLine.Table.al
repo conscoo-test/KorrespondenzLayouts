@@ -1,4 +1,4 @@
-table 5272721 "lbt Posted PS Longtext Line"
+table 50721 "lbt Posted PS Longtext Line"
 {
     // version LBCOR1.00
 

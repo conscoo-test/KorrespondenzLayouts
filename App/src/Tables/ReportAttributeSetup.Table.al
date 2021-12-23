@@ -1,4 +1,4 @@
-table 5272725 "lbt Report - Attribute Setup"
+table 50725 "lbt Report - Attribute Setup"
 {
     // version LBCOR1.00
 

@@ -1,4 +1,4 @@
-tableextension 5272725 "lbt Purch. Cr. Memo Line" extends "Purch. Cr. Memo Line"
+tableextension 50725 "lbt Purch. Cr. Memo Line" extends "Purch. Cr. Memo Line"
 {
     fields
     {

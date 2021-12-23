@@ -1,4 +1,4 @@
-tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
+tableextension 50731 "lbt Purchase Line" extends "Purchase Line"
 {
     fields
     {

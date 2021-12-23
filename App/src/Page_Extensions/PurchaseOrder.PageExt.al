@@ -1,4 +1,4 @@
-pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
+pageextension 50751 "lbt Purchase Order" extends "Purchase Order"
 {
     // version NAVW111.00.00.20348,NAVDACH11.00.00.20348,LBCOR1.00
     layout

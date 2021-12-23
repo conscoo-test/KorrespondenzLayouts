@@ -1,4 +1,4 @@
-tableextension 5272741 "lbt Sales & Receivables Setup" extends "Sales & Receivables Setup" //311
+tableextension 50741 "lbt Sales & Receivables Setup" extends "Sales & Receivables Setup" //311
 {
     fields
     {

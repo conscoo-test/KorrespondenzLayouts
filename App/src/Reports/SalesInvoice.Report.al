@@ -1,4 +1,4 @@
-report 5272722 "lbt Sales - Invoice"
+report 50722 "lbt Sales - Invoice"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './src/Reports/SalesInvoice.Report.rdlc';

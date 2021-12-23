@@ -1,4 +1,4 @@
-pageextension 5272723 "lbt Posted Sales Invoice" extends "Posted Sales Invoice"
+pageextension 50723 "lbt Posted Sales Invoice" extends "Posted Sales Invoice"
 {
     actions
     {

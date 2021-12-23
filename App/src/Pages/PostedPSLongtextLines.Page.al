@@ -1,4 +1,4 @@
-page 5272721 "lbt Posted PS Longtext Lines"
+page 50721 "lbt Posted PS Longtext Lines"
 {
     Caption = 'Posted PS Longtext Lines';
     DeleteAllowed = false;

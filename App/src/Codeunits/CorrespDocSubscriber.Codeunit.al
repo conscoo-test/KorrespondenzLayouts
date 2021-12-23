@@ -1,4 +1,4 @@
-codeunit 5272721 "lbt Corresp. Doc. Subscriber"
+codeunit 50721 "lbt Corresp. Doc. Subscriber"
 {
     Permissions = TableData 111 = m, TableData 113 = m, TableData 115 = m, TableData 6661 = m, TableData 5108 = m, TableData 121 = m, TableData 123 = m, TableData 125 = m, TableData 6651 = m, TableData 5110 = m;
     trigger OnRun()

@@ -1,4 +1,4 @@
-tableextension 5272742 "lbt Prepayment Inv.Line Buffer" extends "Prepayment Inv. Line Buffer"
+tableextension 50742 "lbt Prepayment Inv.Line Buffer" extends "Prepayment Inv. Line Buffer"
 {
     fields
     {

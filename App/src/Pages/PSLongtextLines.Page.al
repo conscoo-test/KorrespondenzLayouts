@@ -1,4 +1,4 @@
-page 5272720 "lbt PS Longtext Lines"
+page 50720 "lbt PS Longtext Lines"
 {
     AutoSplitKey = true;
     Caption = 'PS Longtext Lines';

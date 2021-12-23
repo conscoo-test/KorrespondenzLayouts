@@ -1,4 +1,4 @@
-codeunit 5272727 "lbt AssistedSetup"
+codeunit 50727 "lbt AssistedSetup"
 {
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Assisted Setup", 'OnRegister', '', true, true)]
     local procedure AggregatedSetup_OnRegisterAssistedSetup()

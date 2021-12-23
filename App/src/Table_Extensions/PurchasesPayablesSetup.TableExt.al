@@ -1,4 +1,4 @@
-tableextension 5272727 "lbt Purchases & Payables Setup" extends "Purchases & Payables Setup"
+tableextension 50727 "lbt Purchases & Payables Setup" extends "Purchases & Payables Setup"
 {
     // version NAVW111.00,NAVDACH11.00,LBCOR1.00
 

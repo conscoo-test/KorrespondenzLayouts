@@ -1,4 +1,4 @@
-pageextension 5272778 "lbt Purch Ret. Order Arc Sub." extends "Purch Return Order Arc Subform"
+pageextension 50778 "lbt Purch Ret. Order Arc Sub." extends "Purch Return Order Arc Subform"
 {
     layout
     {

@@ -1,4 +1,4 @@
-pageextension 5272732 "lbt Post. Purch. Cr. Memo Sub." extends "Posted Purch. Cr. Memo Subform"
+pageextension 50732 "lbt Post. Purch. Cr. Memo Sub." extends "Posted Purch. Cr. Memo Subform"
 {
     layout
     {

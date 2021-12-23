@@ -1,4 +1,4 @@
-pageextension 5272739 "lbt Blanket Sales Order Arch." extends "Blanket Sales Order Archives"
+pageextension 50739 "lbt Blanket Sales Order Arch." extends "Blanket Sales Order Archives"
 {
         
     actions

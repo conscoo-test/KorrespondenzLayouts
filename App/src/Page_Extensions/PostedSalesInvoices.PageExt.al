@@ -1,4 +1,4 @@
-pageextension 5272734 "lbt Posted Sales Invoices" extends "Posted Sales Invoices"
+pageextension 50734 "lbt Posted Sales Invoices" extends "Posted Sales Invoices"
 {
     // version NAVW111.00.00.19846,LBCOR1.00
 

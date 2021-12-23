@@ -1,4 +1,4 @@
-report 5272723 "lbt Sales - Credit Memo"
+report 50723 "lbt Sales - Credit Memo"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './src/Reports/SalesCreditMemo.Report.rdlc';

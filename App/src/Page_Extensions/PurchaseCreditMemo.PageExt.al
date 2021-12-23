@@ -1,4 +1,4 @@
-pageextension 5272765 "lbt Purchase Credit Memo" extends "Purchase Credit Memo"
+pageextension 50765 "lbt Purchase Credit Memo" extends "Purchase Credit Memo"
 {
     // version NAVW111.00.00.19846,LBCOR1.00
     layout

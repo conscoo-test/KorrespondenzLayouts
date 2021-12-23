@@ -1,4 +1,4 @@
-table 5272722 "lbt Archive PS Longtext Line"
+table 50722 "lbt Archive PS Longtext Line"
 {
     // version LBCOR1.00
 

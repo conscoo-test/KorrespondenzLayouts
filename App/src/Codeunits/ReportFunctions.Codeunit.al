@@ -1,4 +1,4 @@
-codeunit 5272724 "lbt Report Functions"
+codeunit 50724 "lbt Report Functions"
 {
     // version LBCOR1.00
 

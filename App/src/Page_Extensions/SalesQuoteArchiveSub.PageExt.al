@@ -1,4 +1,4 @@
-pageextension 5272760 "lbt Sales Quote Archive Sub." extends "Sales Quote Archive Subform"
+pageextension 50760 "lbt Sales Quote Archive Sub." extends "Sales Quote Archive Subform"
 {
     layout
     {
