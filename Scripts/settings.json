@@ -1,7 +1,7 @@
 {
     "name": "LeBit365 Korrespondenz Layouts",
     "appFolders": "app",
-    "previousApps": "\\\\lbserver20\\Software_Business\\apps\\Correspondence Layouts\\Variante Customer Range\\latest.zip",
+    // "previousApps": "\\\\lbserver20\\Software_Business\\apps\\Correspondence Layouts\\Variante Customer Range\\latest.zip",
     "installTestRunner": true,
     "installTestFramework": true,
     "installTestLibraries": true,
