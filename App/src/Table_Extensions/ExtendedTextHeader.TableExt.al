@@ -9,7 +9,7 @@ tableextension 50726 "lbt Extended Text Header" extends "Extended Text Header"
             OptionMembers = standard,"long text","Blob";
             DataClassification = CustomerContent;
         }
-        field(5272721; "lbt Editor Blob"; blob)
+        field(50721; "lbt Editor Blob"; blob)
         {
             caption = 'Editor Blob';
             DataClassification = CustomerContent;

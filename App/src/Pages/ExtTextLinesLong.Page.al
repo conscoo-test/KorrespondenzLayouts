@@ -11,7 +11,7 @@ page 50723 "lbt Ext. Text Lines Long"
     {
         area(content)
         {
-            repeater(Control5272721)
+            repeater(Control50721)
             {
                 ShowCaption = false;
                 field(Description; Rec.Description)

@@ -1,4 +1,4 @@
-pageextension 5272814 "lbt cl Pstd Service Inv Subf" extends "Posted Service Invoice Subform"
+pageextension 50814 "lbt cl Pstd Service Inv Subf" extends "Posted Service Invoice Subform"
 {
     layout
     {

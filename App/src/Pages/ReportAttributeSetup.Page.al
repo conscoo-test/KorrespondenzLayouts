@@ -10,7 +10,7 @@ page 50725 "lbt Report - Attribute Setup"
     {
         area(content)
         {
-            repeater(Control5272730)
+            repeater(Control50730)
             {
                 ShowCaption = false;
                 field("Report-Type"; Rec."Report-Type")

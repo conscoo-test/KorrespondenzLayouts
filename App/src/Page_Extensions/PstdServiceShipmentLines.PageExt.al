@@ -1,4 +1,4 @@
-pageextension 5272813 "lbt cl Pstd Service Shpt Lines" extends "Posted Service Shipment Lines"
+pageextension 50813 "lbt cl Pstd Service Shpt Lines" extends "Posted Service Shipment Lines"
 {
     layout
     {

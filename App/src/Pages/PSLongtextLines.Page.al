@@ -11,7 +11,7 @@ page 50720 "lbt PS Longtext Lines"
     {
         area(content)
         {
-            repeater(Control5272723)
+            repeater(Control50723)
             {
                 ShowCaption = false;
 

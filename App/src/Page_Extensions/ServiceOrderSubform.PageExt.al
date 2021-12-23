@@ -1,4 +1,4 @@
-pageextension 5272807 "lbt cl ServiceOrderSubform" extends "Service Order Subform"
+pageextension 50807 "lbt cl ServiceOrderSubform" extends "Service Order Subform"
 {
     layout
     {

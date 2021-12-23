@@ -1,4 +1,4 @@
-tableextension 5272753 "lbt cl ServiceCRMemoHeader" extends "Service Cr.Memo Header"
+tableextension 50753 "lbt cl ServiceCRMemoHeader" extends "Service Cr.Memo Header"
 {
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";

@@ -1,4 +1,4 @@
-tableextension 5272748 "lbt cl ServiceShipmentLine" extends "Service Shipment Line"
+tableextension 50748 "lbt cl ServiceShipmentLine" extends "Service Shipment Line"
 {
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";

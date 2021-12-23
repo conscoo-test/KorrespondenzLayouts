@@ -1,4 +1,4 @@
-codeunit 5272731 "lbt cl Print Longtext"
+codeunit 50731 "lbt cl Print Longtext"
 {
     procedure GetPrintText(vari: Variant; Position: Enum "lbt Position"; var TempBlobList: Codeunit "Temp Blob List"; OtherDocType: Integer)
     var

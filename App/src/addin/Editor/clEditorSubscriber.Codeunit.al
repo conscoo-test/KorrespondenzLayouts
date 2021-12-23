@@ -1,4 +1,4 @@
-codeunit 5272730 "lbt cl EditorSubscriber"
+codeunit 50730 "lbt cl EditorSubscriber"
 {
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Serv-Documents Mgt.", 'OnAfterServShptItemLineInsert', '', true, true)]
     local procedure ServDocumentsMgt_OnAfterServShptItemLineInsert(ServiceItemLine: Record "Service Item Line"; var ServiceShptItemLine: Record "Service Shipment Item Line")

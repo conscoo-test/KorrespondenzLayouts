@@ -14,7 +14,7 @@ page 50722 "lbt Arch. PS Longtext Lines"
     {
         area(content)
         {
-            repeater(Control5272723)
+            repeater(Control50723)
             {
                 ShowCaption = false;
                 field("No."; Rec."No.")

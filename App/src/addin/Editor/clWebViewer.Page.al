@@ -1,4 +1,4 @@
-page 5272729 "lbt cl WebViewer"
+page 50729 "lbt cl WebViewer"
 {
     caption = 'Viewer';
     UsageCategory = Lists;
