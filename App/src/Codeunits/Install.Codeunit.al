@@ -4,13 +4,9 @@ codeunit 5272725 "lbt Install"
 
     trigger OnInstallAppPerCompany()
     var
-        CorrSetup: Record "lbt Corr Setup";
         lbtModuleInfo: ModuleInfo;
     begin
-        if not CorrSetup.Get() then begin
-            CorrSetup.Init();
-            CorrSetup.Insert();
-        end;
+        InitCorrSetup();
         NavApp.GetCurrentModuleInfo(lbtModuleInfo);
         if lbtModuleInfo.DataVersion() = Version.Create(0, 0, 0, 0) then begin
             //new installation
@@ -46,4 +42,21 @@ codeunit 5272725 "lbt Install"
             ;
         end;
     end;
+
+    local procedure InitCorrSetup()
+    var
+        CorrSetup: Record "lbt Corr Setup";
+    begin
+        if not CorrSetup.Get() then begin
+            CorrSetup.Init();
+            CorrSetup.Insert();
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Company-Initialize", 'OnCompanyInitialize', '', false, false)]
+    local procedure OnCompanyInitialize();
+    begin
+        InitCorrSetup();
+    end;
+
 }

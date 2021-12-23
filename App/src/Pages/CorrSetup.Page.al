@@ -23,4 +23,13 @@ page 5272728 "lbt Corr Setup"
         }
     }
 
+    trigger OnOpenPage()
+    begin
+        Rec.Reset();
+        if not Rec.Get() then begin
+            Rec.Init();
+            Rec.Insert();
+        end
+    end;
+
 }
