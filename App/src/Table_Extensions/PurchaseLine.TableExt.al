@@ -63,8 +63,9 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
         {
             AutoFormatType = 1;
             CalcFormula = Sum("Purchase Line"."Line Amount" WHERE("Document Type" = FIELD("Document Type"),
-                                                                   "Document No." = FIELD("Document No."),
-                                                                   "Line No." = FIELD(FILTER("lbt Summation"))));
+                                                                    "Document No." = FIELD("Document No."),
+                                                                    "Line No." = FIELD(FILTER("lbt Summation")),
+                                                                    "lbt Printoption" = filter(<> Alternative & <> Optional)));
             Caption = 'Balance';
             Editable = false;
             FieldClass = FlowField;
