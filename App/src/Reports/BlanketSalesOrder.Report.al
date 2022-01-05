@@ -9,7 +9,7 @@ report 5272725 "lbt Blanket Sales Order"
     {
         dataitem("Sales Header"; "Sales Header")
         {
-            DataItemTableView = SORTING("Document Type", "No.") WHERE("Document Type" = CONST("Blanket Order"));
+            DataItemTableView = sorting("Document Type", "No.") where("Document Type" = const("Blanket Order"));
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
             RequestFilterHeading = 'Blanket Sales Order';
             column(Footer; Footer) { }
@@ -21,10 +21,10 @@ report 5272725 "lbt Blanket Sales Order"
             }
             dataitem(CopyLoop; "Integer")
             {
-                DataItemTableView = SORTING(Number);
+                DataItemTableView = sorting(Number);
                 dataitem(PageLoop; "Integer")
                 {
-                    DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+                    DataItemTableView = sorting(Number) where(Number = const(1));
                     column(CompanyInfo2_Picture; CompanyInfo2.Picture)
                     {
                     }
@@ -34,7 +34,7 @@ report 5272725 "lbt Blanket Sales Order"
                     column(CompanyInfo1_Picture; CompanyInfo1.Picture)
                     {
                     }
-                    column(DocumentConfirmCopyCaption; STRSUBSTNO(DocumentCaption(), CopyText))
+                    column(DocumentConfirmCopyCaption; StrSubstNo(DocumentCaption(), CopyText))
                     {
                     }
                     column(CompanyAddressLine; CompanyAddressLine)
@@ -64,7 +64,7 @@ report 5272725 "lbt Blanket Sales Order"
                     column(CustAddr8; CustAddr[8])
                     {
                     }
-                    column(Sales_Header___Document_Date; FORMAT("Sales Header"."Document Date", 0, 4))
+                    column(Sales_Header___Document_Date; Format("Sales Header"."Document Date", 0, 4))
                     {
                     }
                     column(Sales_Header___No__; "Sales Header"."No.")
@@ -97,7 +97,7 @@ report 5272725 "lbt Blanket Sales Order"
                     column(HideCompanyInfo; HideCompanyInfo)
                     {
                     }
-                    column(Sales_Header___Bill_to_Customer_No__Caption; "Sales Header".FIELDCAPTION("Bill-to Customer No."))
+                    column(Sales_Header___Bill_to_Customer_No__Caption; "Sales Header".FieldCaption("Bill-to Customer No."))
                     {
                     }
                     column(Sales_Header___No__Caption; Order_No_CaptionLbl)
@@ -109,10 +109,10 @@ report 5272725 "lbt Blanket Sales Order"
                     column(Sales_Line_PosNo_Caption; PosNo_SalesLineCaptionLbl)
                     {
                     }
-                    column(Sales_Line__Description_Caption; "Sales Line".FIELDCAPTION(Description))
+                    column(Sales_Line__Description_Caption; "Sales Line".FieldCaption(Description))
                     {
                     }
-                    column(Sales_Line__Quantity_Caption; "Sales Line".FIELDCAPTION(Quantity))
+                    column(Sales_Line__Quantity_Caption; "Sales Line".FieldCaption(Quantity))
                     {
                     }
                     column(Sales_Line_UOM_Caption; UOM_SalesLineCaptionLbl)
@@ -133,7 +133,7 @@ report 5272725 "lbt Blanket Sales Order"
                     dataitem(DimensionLoop1; "Integer")
                     {
                         DataItemLinkReference = "Sales Header";
-                        DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
+                        DataItemTableView = sorting(Number) where(Number = filter(1 ..));
                         column(DimText; DimText)
                         {
                         }
@@ -147,7 +147,7 @@ report 5272725 "lbt Blanket Sales Order"
                         trigger OnAfterGetRecord()
                         begin
                             if Number = 1 then begin
-                                if not DimSetEntry1.FIND('-') then
+                                if not DimSetEntry1.Find('-') then
                                     CurrReport.Break();
                             end else
                                 if not Continue then
@@ -164,7 +164,7 @@ report 5272725 "lbt Blanket Sales Order"
                     }
                     dataitem(LBKopf; "Integer")
                     {
-                        DataItemTableView = SORTING(Number);
+                        DataItemTableView = sorting(Number);
                         column(LBKopf_LineNo; '0')
                         {
                         }
@@ -181,9 +181,9 @@ report 5272725 "lbt Blanket Sales Order"
                             Streamin: InStream;
                         begin
                             TempBlobList.Get(LBKopf.Number, TempBlob);
-                            TempBlob.CreateInstream(Streamin, TextEncoding::UTF8);
+                            TempBlob.CreateInStream(Streamin, TextEncoding::UTF8);
 
-                            Streamin.READ(LBKopf_Description);
+                            Streamin.Read(LBKopf_Description);
                             NewPageLBKopf += 1;
                         end;
 
@@ -192,14 +192,14 @@ report 5272725 "lbt Blanket Sales Order"
                             PrintLongText.GetPrintText("Sales Header", Enum::"lbt Position"::Header, TempBlobList);
                             if TempBlobList.IsEmpty() then
                                 CurrReport.Break();
-                            LBKopf.SETRANGE(Number, 1, TempBlobList.Count());
+                            LBKopf.SetRange(Number, 1, TempBlobList.Count());
                         end;
                     }
                     dataitem("Sales Line"; "Sales Line")
                     {
-                        DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("No.");
+                        DataItemLink = "Document Type" = field("Document Type"), "Document No." = field("No.");
                         DataItemLinkReference = "Sales Header";
-                        DataItemTableView = SORTING("Document Type", "Document No.", "Line No.");
+                        DataItemTableView = sorting("Document Type", "Document No.", "Line No.");
 
                         trigger OnPreDataItem()
                         begin
@@ -208,7 +208,7 @@ report 5272725 "lbt Blanket Sales Order"
                     }
                     dataitem(RoundLoop; "Integer")
                     {
-                        DataItemTableView = SORTING(Number);
+                        DataItemTableView = sorting(Number);
                         column(TotalSalesInvDiscAmount; TotalSalesInvDiscAmount)
                         {
                         }
@@ -245,7 +245,7 @@ report 5272725 "lbt Blanket Sales Order"
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(SalesLineType; FORMAT("Sales Line".Type, 0, 2))
+                        column(SalesLineType; Format("Sales Line".Type, 0, 2))
                         {
                         }
                         column(No_SalesLine; "Sales Line"."Line No.")
@@ -299,7 +299,7 @@ report 5272725 "lbt Blanket Sales Order"
                         column(VATDiscountAmountCaption; VATDiscountAmountCaptionLbl)
                         {
                         }
-                        column(SalesLineLeBitPrintoption; FORMAT("Sales Line"."lbt Printoption", 0, 2))
+                        column(SalesLineLeBitPrintoption; Format("Sales Line"."lbt Printoption", 0, 2))
                         {
                         }
                         column(SalesLine__LeBit_Balance; TempSalesLine."lbt Balance")
@@ -334,7 +334,7 @@ report 5272725 "lbt Blanket Sales Order"
                         }
                         dataitem(ParameterAndUnits; "Integer")
                         {
-                            DataItemTableView = SORTING(Number);
+                            DataItemTableView = sorting(Number);
                             column(RowNumber; Number)
                             {
                             }
@@ -353,12 +353,12 @@ report 5272725 "lbt Blanket Sales Order"
 
                             trigger OnPreDataItem()
                             begin
-                                SETRANGE(Number, 1, InfoRowNo);
+                                SetRange(Number, 1, InfoRowNo);
                             end;
                         }
                         dataitem(LBLang; Integer)
                         {
-                            DataItemTableView = SORTING(Number);
+                            DataItemTableView = sorting(Number);
                             column(LBLang_Description; LBLang_Description)
                             {
                             }
@@ -372,9 +372,9 @@ report 5272725 "lbt Blanket Sales Order"
                                 Streamin: InStream;
                             begin
                                 TempBlobList.Get(LBLang.Number, TempBlob);
-                                TempBlob.CreateInstream(Streamin, TextEncoding::UTF8);
+                                TempBlob.CreateInStream(Streamin, TextEncoding::UTF8);
 
-                                Streamin.READ(LBLang_Description);
+                                Streamin.Read(LBLang_Description);
                                 NewPageLBLang += 1;
                             end;
 
@@ -383,12 +383,12 @@ report 5272725 "lbt Blanket Sales Order"
                                 PrintLongText.GetPrintText("Sales Line", Enum::"lbt Position"::Longtext, TempBlobList);
                                 if TempBlobList.IsEmpty() then
                                     CurrReport.Break();
-                                LBLang.SETRANGE(Number, 1, TempBlobList.Count());
+                                LBLang.SetRange(Number, 1, TempBlobList.Count());
                             end;
                         }
                         dataitem(DimensionLoop2; "Integer")
                         {
-                            DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
+                            DataItemTableView = sorting(Number) where(Number = filter(1 ..));
                             trigger OnAfterGetRecord()
                             begin
                                 if Number = 1 then begin
@@ -406,7 +406,7 @@ report 5272725 "lbt Blanket Sales Order"
                                 if not ShowInternalInfo then
                                     CurrReport.Break();
 
-                                DimSetEntry2.SETRANGE("Dimension Set ID", "Sales Line"."Dimension Set ID");
+                                DimSetEntry2.SetRange("Dimension Set ID", "Sales Line"."Dimension Set ID");
                             end;
                         }
 
@@ -417,7 +417,7 @@ report 5272725 "lbt Blanket Sales Order"
                             Counter: Integer;
                         begin
                             if Number = 1 then
-                                TempSalesLine.FIND('-')
+                                TempSalesLine.Find('-')
                             else
                                 TempSalesLine.Next();
                             "Sales Line" := TempSalesLine;
@@ -443,13 +443,13 @@ report 5272725 "lbt Blanket Sales Order"
 
                             ItemUnitDescription := '';
                             ItemUnitQty := '';
-                            CLEAR(InfoRowNo);
-                            CLEAR(InfoCaptionArry);
-                            CLEAR(InfoValueArry);
-                            CLEAR(ItemUnitCodeArry);
-                            CLEAR(ItemUnitDescriptionArry);
-                            CLEAR(ItemUnitQtyArry);
-                            CLEAR(Item);
+                            Clear(InfoRowNo);
+                            Clear(InfoCaptionArry);
+                            Clear(InfoValueArry);
+                            Clear(ItemUnitCodeArry);
+                            Clear(ItemUnitDescriptionArry);
+                            Clear(ItemUnitQtyArry);
+                            Clear(Item);
                             ItemPictureExist := false;
 
                             if TempSalesLine.Quantity <> 0 then
@@ -457,15 +457,15 @@ report 5272725 "lbt Blanket Sales Order"
                             else
                                 UnitPrice := 0;
 
-                            TempSalesLine.CALCFIELDS("lbt Balance");
+                            TempSalesLine.CalcFields("lbt Balance");
                             if TempSalesLine.Type = TempSalesLine.Type::Item then begin
                                 Item.Get("Sales Line"."No.");
                                 ItemPictureExist := Item.Picture.Count() > 0;
                                 if not ItemPicturePrint then
                                     ItemPictureExist := false;
-                                TxtVar := CurrReport.OBJECTID(false);
-                                TxtVar := COPYSTR(TxtVar, STRPOS(TxtVar, ' '));
-                                EVALUATE(IntVar, TxtVar);
+                                TxtVar := CurrReport.ObjectId(false);
+                                TxtVar := CopyStr(TxtVar, StrPos(TxtVar, ' '));
+                                Evaluate(IntVar, TxtVar);
                                 LeBitReportFunctions.GetParameterArry(ReportType::Sales, IntVar, 5, "Sales Header"."Language Code", "Sales Line".RowID1(), '', "Sales Line"."No.", InfoCaptionArry, InfoValueArry);
                                 LeBitReportFunctions.GetItemUnitArry(2, "Sales Line".RowID1(), '', "Sales Header"."Language Code", ItemUnitCodeArry, ItemUnitDescriptionArry, ItemUnitQtyArry);
                                 Counter := 0;
@@ -477,9 +477,9 @@ report 5272725 "lbt Blanket Sales Order"
                                     ItemUnitCodeArry[Counter] := '';
                                     ItemUnitDescriptionArry[Counter] := '';
                                     ItemUnitQtyArry[Counter] := '';
-                                    COMPRESSARRAY(ItemUnitCodeArry);
-                                    COMPRESSARRAY(ItemUnitDescriptionArry);
-                                    COMPRESSARRAY(ItemUnitQtyArry);
+                                    CompressArray(ItemUnitCodeArry);
+                                    CompressArray(ItemUnitDescriptionArry);
+                                    CompressArray(ItemUnitQtyArry);
                                 end;
                                 if TempSalesLine."Description 2" <> '' then begin
                                     ItemUnitDescription := ItemUnitDescriptionArry[1];
@@ -487,9 +487,9 @@ report 5272725 "lbt Blanket Sales Order"
                                     ItemUnitCodeArry[1] := '';
                                     ItemUnitDescriptionArry[1] := '';
                                     ItemUnitQtyArry[1] := '';
-                                    COMPRESSARRAY(ItemUnitCodeArry);
-                                    COMPRESSARRAY(ItemUnitDescriptionArry);
-                                    COMPRESSARRAY(ItemUnitQtyArry);
+                                    CompressArray(ItemUnitCodeArry);
+                                    CompressArray(ItemUnitDescriptionArry);
+                                    CompressArray(ItemUnitQtyArry);
                                 end;
                                 Counter := 0;
                                 repeat
@@ -507,7 +507,7 @@ report 5272725 "lbt Blanket Sales Order"
 
                         trigger OnPreDataItem()
                         begin
-                            MoreLines := TempSalesLine.FIND('+');
+                            MoreLines := TempSalesLine.Find('+');
                             while MoreLines and (TempSalesLine.Description = '') and (TempSalesLine."Description 2" = '') and
                                   (TempSalesLine."No." = '') and (TempSalesLine.Quantity = 0) and
                                   (TempSalesLine.Amount = 0)
@@ -515,8 +515,8 @@ report 5272725 "lbt Blanket Sales Order"
                                 MoreLines := TempSalesLine.Next(-1) <> 0;
                             if not MoreLines then
                                 CurrReport.Break();
-                            TempSalesLine.SETRANGE("Line No.", 0, TempSalesLine."Line No.");
-                            SETRANGE(Number, 1, TempSalesLine.Count());
+                            TempSalesLine.SetRange("Line No.", 0, TempSalesLine."Line No.");
+                            SetRange(Number, 1, TempSalesLine.Count());
 
                             TotalSalesLineAmount := 0;
                             TotalSalesInvDiscAmount := 0;
@@ -524,7 +524,7 @@ report 5272725 "lbt Blanket Sales Order"
                     }
                     dataitem(VATCounter; "Integer")
                     {
-                        DataItemTableView = SORTING(Number);
+                        DataItemTableView = sorting(Number);
                         column(VATAmountLineVATBase; TempVATAmountLine."VAT Base")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
@@ -626,12 +626,12 @@ report 5272725 "lbt Blanket Sales Order"
                                 CurrReport.Break();
                             if VATAmount = 0 then
                                 CurrReport.Break();
-                            SETRANGE(Number, 1, TempVATAmountLine.Count());
+                            SetRange(Number, 1, TempVATAmountLine.Count());
                         end;
                     }
                     dataitem(VATCounterLCY; "Integer")
                     {
-                        DataItemTableView = SORTING(Number);
+                        DataItemTableView = sorting(Number);
                         column(VALExchRate; VALExchRate)
                         {
                         }
@@ -702,20 +702,20 @@ report 5272725 "lbt Blanket Sales Order"
                             then
                                 CurrReport.Break();
 
-                            SETRANGE(Number, 1, TempVATAmountLine.Count());
+                            SetRange(Number, 1, TempVATAmountLine.Count());
 
                             if GLSetup."LCY Code" = '' then
                                 VALSpecLCYHeader := VatAmountTxt + LCYLbl
                             else
-                                VALSpecLCYHeader := VatAmountTxt + FORMAT(GLSetup."LCY Code");
+                                VALSpecLCYHeader := VatAmountTxt + Format(GLSetup."LCY Code");
 
                             CurrExchRate.FindCurrency("Sales Header"."Posting Date", "Sales Header"."Currency Code", 1);
-                            VALExchRate := STRSUBSTNO(ExchangeRateLbl, CurrExchRate."Relational Exch. Rate Amount", CurrExchRate."Exchange Rate Amount");
+                            VALExchRate := StrSubstNo(ExchangeRateLbl, CurrExchRate."Relational Exch. Rate Amount", CurrExchRate."Exchange Rate Amount");
                         end;
                     }
                     dataitem(Total; "Integer")
                     {
-                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+                        DataItemTableView = sorting(Number) where(Number = const(1));
                         column(PmntTermsDesc; PaymentTerms.Description)
                         {
                         }
@@ -731,7 +731,7 @@ report 5272725 "lbt Blanket Sales Order"
                     }
                     dataitem(Total2; "Integer")
                     {
-                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+                        DataItemTableView = sorting(Number) where(Number = const(1));
                         column(SelltoCustNo_SalesHeader; "Sales Header"."Sell-to Customer No.")
                         {
                         }
@@ -762,7 +762,7 @@ report 5272725 "lbt Blanket Sales Order"
                         column(Ship_to_AddressCaption; Ship_to_AddressCaptionLbl)
                         {
                         }
-                        column(SelltoCustNo_SalesHeaderCaption; "Sales Header".FIELDCAPTION("Sell-to Customer No."))
+                        column(SelltoCustNo_SalesHeaderCaption; "Sales Header".FieldCaption("Sell-to Customer No."))
                         {
                         }
 
@@ -774,7 +774,7 @@ report 5272725 "lbt Blanket Sales Order"
                     }
                     dataitem(LBFuss; "Integer")
                     {
-                        DataItemTableView = SORTING(Number);
+                        DataItemTableView = sorting(Number);
                         column(LBFuss_LineNo; '0')
                         {
                         }
@@ -791,9 +791,9 @@ report 5272725 "lbt Blanket Sales Order"
                             Streamin: InStream;
                         begin
                             TempBlobList.Get(LBFuss.Number, TempBlob);
-                            TempBlob.CreateInstream(Streamin, TextEncoding::UTF8);
+                            TempBlob.CreateInStream(Streamin, TextEncoding::UTF8);
 
-                            Streamin.READ(LBFuss_Description);
+                            Streamin.Read(LBFuss_Description);
                             NewPageLBFuss += 1;
                         end;
 
@@ -802,7 +802,7 @@ report 5272725 "lbt Blanket Sales Order"
                             PrintLongText.GetPrintText("Sales Header", Enum::"lbt Position"::Footer, TempBlobList);
                             if TempBlobList.IsEmpty() then
                                 CurrReport.Break();
-                            LBFuss.SETRANGE(Number, 1, TempBlobList.Count());
+                            LBFuss.SetRange(Number, 1, TempBlobList.Count());
                         end;
                     }
                 }
@@ -811,8 +811,8 @@ report 5272725 "lbt Blanket Sales Order"
                 var
                     SalesPost: Codeunit "Sales-Post";
                 begin
-                    CLEAR(TempSalesLine);
-                    CLEAR(SalesPost);
+                    Clear(TempSalesLine);
+                    Clear(SalesPost);
                     TempSalesLine.DeleteAll();
                     TempVATAmountLine.DeleteAll();
                     SalesPost.GetSalesLines("Sales Header", TempSalesLine, 0);
@@ -832,15 +832,15 @@ report 5272725 "lbt Blanket Sales Order"
 
                 trigger OnPostDataItem()
                 begin
-                    if not CurrReport.PREVIEW() then
-                        CODEUNIT.RUN(CODEUNIT::"Sales-Printed", "Sales Header");
+                    if not CurrReport.Preview() then
+                        Codeunit.Run(Codeunit::"Sales-Printed", "Sales Header");
                 end;
 
                 trigger OnPreDataItem()
                 begin
-                    NoOfLoops := ABS(NoOfCopies) + 1;
+                    NoOfLoops := Abs(NoOfCopies) + 1;
                     CopyText := '';
-                    SETRANGE(Number, 1, NoOfLoops);
+                    SetRange(Number, 1, NoOfLoops);
                     OutputNo := 1;
                     NewPageGroup := 1;
                 end;
@@ -852,23 +852,23 @@ report 5272725 "lbt Blanket Sales Order"
                 FormatAddressFields("Sales Header");
                 FormatDocumentFields("Sales Header");
 
-                DimSetEntry1.SETRANGE("Dimension Set ID", "Dimension Set ID");
+                DimSetEntry1.SetRange("Dimension Set ID", "Dimension Set ID");
 
-                if not CurrReport.PREVIEW() then begin
+                if not CurrReport.Preview() then begin
                     if ArchiveDocument then
                         ArchiveManagement.StoreSalesDocument("Sales Header", LogInteraction);
 
                     if LogInteraction then begin
-                        CALCFIELDS("No. of Archived Versions");
+                        CalcFields("No. of Archived Versions");
                         if "Bill-to Contact No." <> '' then
                             SegManagement.LogDocument(
                               2, "No.", "Doc. No. Occurrence",
-                              "No. of Archived Versions", DATABASE::Contact, "Bill-to Contact No.",
+                              "No. of Archived Versions", Database::Contact, "Bill-to Contact No.",
                               "Salesperson Code", "Campaign No.", "Posting Description", "Opportunity No.")
                         else
                             SegManagement.LogDocument(
                               2, "No.", "Doc. No. Occurrence",
-                              "No. of Archived Versions", DATABASE::Customer, "Bill-to Customer No.",
+                              "No. of Archived Versions", Database::Customer, "Bill-to Customer No.",
                               "Salesperson Code", "Campaign No.", "Posting Description", "Opportunity No.");
                     end;
                 end;
@@ -967,16 +967,16 @@ report 5272725 "lbt Blanket Sales Order"
             SalesSetup."Logo Position on Documents"::"No Logo":
                 ;
             SalesSetup."Logo Position on Documents"::Left:
-                CompanyInfo.CALCFIELDS(Picture);
+                CompanyInfo.CalcFields(Picture);
             SalesSetup."Logo Position on Documents"::Center:
                 begin
                     CompanyInfo1.Get();
-                    CompanyInfo1.CALCFIELDS(Picture);
+                    CompanyInfo1.CalcFields(Picture);
                 end;
             SalesSetup."Logo Position on Documents"::Right:
                 begin
                     CompanyInfo2.Get();
-                    CompanyInfo2.CALCFIELDS(Picture);
+                    CompanyInfo2.CalcFields(Picture);
                 end;
         end;
     end;
@@ -1121,7 +1121,7 @@ report 5272725 "lbt Blanket Sales Order"
                 FormatAddr.SalesHeaderSellTo(CustAddr, SalesHeader);
         end;
         ShowShippingAddr := FormatAddr.SalesHeaderShipTo(ShipToAddr, CustAddr, SalesHeader);
-        CLEAR(CompanyAddressLine);
+        Clear(CompanyAddressLine);
 
         for i := 1 to 6 do
             if CompanyAddr[i] <> '' then begin
@@ -1140,8 +1140,8 @@ report 5272725 "lbt Blanket Sales Order"
         FormatDocument.SetPaymentTerms(PaymentTerms, SalesHeader."Payment Terms Code", SalesHeader."Language Code");
         FormatDocument.SetShipmentMethod(ShipmentMethod, SalesHeader."Shipment Method Code", SalesHeader."Language Code");
 
-        ReferenceText := FormatDocument.SetText(SalesHeader."Your Reference" <> '', CopyStr(SalesHeader.FIELDCAPTION("Your Reference"), 1, 80));
-        VATNoText := FormatDocument.SetText(SalesHeader."VAT Registration No." <> '', CopyStr(SalesHeader.FIELDCAPTION("VAT Registration No."), 1, 80));
+        ReferenceText := FormatDocument.SetText(SalesHeader."Your Reference" <> '', CopyStr(SalesHeader.FieldCaption("Your Reference"), 1, 80));
+        VATNoText := FormatDocument.SetText(SalesHeader."VAT Registration No." <> '', CopyStr(SalesHeader.FieldCaption("VAT Registration No."), 1, 80));
         if SalesPersonText <> '' then
             SalesPersonText := SalesPersonText_CaptionLbl;
     end;
@@ -1156,7 +1156,7 @@ report 5272725 "lbt Blanket Sales Order"
 
     local procedure DocumentCaption(): Text
     var
-        DocCaption: text;
+        DocCaption: Text;
     begin
         OnBeforeGetDocumentCaption("Sales Header", DocCaption);
         if DocCaption <> '' then
@@ -1165,7 +1165,7 @@ report 5272725 "lbt Blanket Sales Order"
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnBeforeGetDocumentCaption(SalesHeader: Record "Sales Header"; var DocCaption: text);
+    local procedure OnBeforeGetDocumentCaption(SalesHeader: Record "Sales Header"; var DocCaption: Text);
     begin
     end;
 }

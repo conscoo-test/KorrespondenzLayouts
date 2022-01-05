@@ -18,7 +18,6 @@ page 5272731 "lbt cl Editor"
                         CurrPage.editor.SetHTMLText(data)
                     else
                         CurrPage.editor.SetText(data);
-                    //CurrPage.editor2.ReadOnly(true);
                 end;
 
                 trigger OnAfterSave()
@@ -27,7 +26,7 @@ page 5272731 "lbt cl Editor"
                     CurrPage.Close();
                 end;
 
-                trigger OnSave(ContentData: text)
+                trigger OnSave(ContentData: Text)
                 begin
                     data := ContentData;
                 end;
@@ -44,17 +43,6 @@ page 5272731 "lbt cl Editor"
     {
         area(Navigation)
         {
-            // action(Save)
-            // {
-            //     ApplicationArea = all;
-            //     caption = 'Save';
-            //     trigger OnAction()
-
-            //     begin
-            //         GetContentText();
-            //     end;
-
-            // }
             action(InsertFrom)
             {
 
@@ -68,11 +56,11 @@ page 5272731 "lbt cl Editor"
                 trigger onAction()
                 var
                     ExtTxtHdr: Record "Extended Text Header";
-                    content: text;
-                    seperatorLbl: label '%1<p>###### %2 ######</p>%3', Locked = true;
+                    content: Text;
+                    seperatorLbl: Label '%1<p>###### %2 ######</p>%3', Locked = true;
                 begin
-                    ExtTxtHdr.setrange("lbt Textchoice", ExtTxtHdr."lbt Textchoice"::Blob);
-                    if page.RunModal(0, ExtTxtHdr) = action::LookupOK then begin
+                    ExtTxtHdr.SetRange("lbt Textchoice", ExtTxtHdr."lbt Textchoice"::Blob);
+                    if page.RunModal(0, ExtTxtHdr) = Action::LookupOK then begin
                         content := ExtTxtHdr.lbtclReadContentData(false);
                         data := StrSubstNo(seperatorLbl, data, ExtTxtHdr."No.", content);
                         CurrPage.editor.SetHTMLText(data);
@@ -83,7 +71,7 @@ page 5272731 "lbt cl Editor"
             {
 
                 ApplicationArea = all;
-                caption = 'TestPrint';
+                Caption = 'TestPrint';
                 Promoted = true;
                 InFooterBar = true;
                 PromotedCategory = Process;
@@ -93,36 +81,24 @@ page 5272731 "lbt cl Editor"
                 trigger onAction()
                 var
                     htmlreport: Report "lbt cl htmlreport";
-                    content: text;
                     EditorHelper: Codeunit "lbt cl EditorHelper";
+                    content: Text;
                 begin
-                    //CurrPage.editor.GetText(content);
                     content := data;
 
-                    htmlreport.sethtmltext(editorhelper.PrepareHtmltoprint(content));
-                    htmlreport.run();
+                    htmlreport.sethtmltext(EditorHelper.PrepareHtmltoprint(content));
+                    htmlreport.Run();
                 end;
 
 
 
             }
-            // action("lbt load")
-            // {
-            //     ApplicationArea = all;
-            //     trigger OnAction()
-
-            //     begin
-            //         SetHTMLText('<p>Some initial <strong>bold</strong> text</p>');
-            //         //CurrPage.Editor.Load('This is a <strong>BOLD</strong> statement');
-            //     end;
-
-            //}
         }
     }
 
     var
-        data: text;
-        datatext: text;
+        data: Text;
+        datatext: Text;
         saved: Boolean;
         HTMLMode: Boolean;
 
@@ -133,7 +109,6 @@ page 5272731 "lbt cl Editor"
         if not lookupok then
             lookupok := CloseAction = CloseAction::LookupOK;
         if lookupok and not saved then begin
-            //data := GetContentText();
             CurrPage.editor.GetAll();
             exit(saved);
         end;
@@ -144,38 +119,24 @@ page 5272731 "lbt cl Editor"
         exit(true);
     end;
 
-    local procedure SetContentText(P_Data: text)
-    begin
-        data := P_Data;
-        if HTMLMode then
-            CurrPage.editor.SetHTMLText(data)
-        else
-            CurrPage.editor.SetText(data);
-
-        //CurrPage.Editor.Load(data);
-        //CurrPage.Editor.SetReadOnly(true);
-    end;
-
-
-
-    procedure SetText(ContentData: text; isHTML: Boolean)
+    procedure SetText(ContentData: Text; isHTML: Boolean)
     begin
         data := ContentData;
         HTMLMode := isHTML;
     end;
 
-    procedure GetText() Result: text
+    procedure GetText() Result: Text
     begin
-        result := data;
+        Result := data;
     end;
 
-    procedure GetTextText() Result: text
+    procedure GetTextText() Result: Text
     begin
-        result := dataText;
+        Result := datatext;
     end;
 
     procedure IfLookupOk() Result: Boolean
     begin
-        result := lookupok;
+        Result := lookupok;
     end;
 }

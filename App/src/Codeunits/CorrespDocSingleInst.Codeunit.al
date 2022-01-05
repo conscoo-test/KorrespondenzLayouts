@@ -30,16 +30,16 @@ codeunit 5272722 "lbt Corresp. Doc. SingleInst"
                     case Type of
                         Type::Header:
                             begin
-                                PurchaseOrderHeader.GET(PurchaseOrderHeader."Document Type"::Order, PurchRcptHeader."Order No.");
-                                SourceRecRef.GETTABLE(PurchaseOrderHeader);
-                                TargetRecRef.GETTABLE(PurchRcptHeader);
+                                PurchaseOrderHeader.Get(PurchaseOrderHeader."Document Type"::Order, PurchRcptHeader."Order No.");
+                                SourceRecRef.GetTable(PurchaseOrderHeader);
+                                TargetRecRef.GetTable(PurchRcptHeader);
                                 LongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
                             end;
                         Type::Lines:
                             begin
-                                PurchaseOrderLine.GET(PurchaseOrderLine."Document Type"::Order, PurchRcptLine."Order No.", PurchRcptLine."Order Line No.");
-                                SourceRecRef.GETTABLE(PurchaseOrderLine);
-                                TargetRecRef.GETTABLE(PurchRcptLine);
+                                PurchaseOrderLine.Get(PurchaseOrderLine."Document Type"::Order, PurchRcptLine."Order No.", PurchRcptLine."Order Line No.");
+                                SourceRecRef.GetTable(PurchaseOrderLine);
+                                TargetRecRef.GetTable(PurchRcptLine);
                                 LongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
                             end;
                     end;
@@ -64,16 +64,16 @@ codeunit 5272722 "lbt Corresp. Doc. SingleInst"
                     case Type of
                         Type::Header:
                             begin
-                                SalesOrderHeader.GET(SalesOrderHeader."Document Type"::Order, SalesShipmentHeader."Order No.");
-                                SourceRecRef.GETTABLE(SalesOrderHeader);
-                                TargetRecRef.GETTABLE(SalesShipmentHeader);
+                                SalesOrderHeader.Get(SalesOrderHeader."Document Type"::Order, SalesShipmentHeader."Order No.");
+                                SourceRecRef.GetTable(SalesOrderHeader);
+                                TargetRecRef.GetTable(SalesShipmentHeader);
                                 LongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
                             end;
                         Type::Lines:
                             begin
-                                SalesOrderLine.GET(SalesOrderLine."Document Type"::Order, SalesShipmentLine."Order No.", SalesShipmentLine."Order Line No.");
-                                SourceRecRef.GETTABLE(SalesOrderLine);
-                                TargetRecRef.GETTABLE(SalesShipmentLine);
+                                SalesOrderLine.Get(SalesOrderLine."Document Type"::Order, SalesShipmentLine."Order No.", SalesShipmentLine."Order Line No.");
+                                SourceRecRef.GetTable(SalesOrderLine);
+                                TargetRecRef.GetTable(SalesShipmentLine);
                                 LongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
                             end;
                     end;

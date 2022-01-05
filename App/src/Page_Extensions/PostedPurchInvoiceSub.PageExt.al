@@ -29,14 +29,15 @@ pageextension 5272730 "lbt Posted Purch. Invoice Sub." extends "Posted Purch. In
                 ApplicationArea = All;
                 ToolTip = 'Here you can insert long texts.';
             }
-            field("Lbt Editor"; rec.lbtHasEditorValue())
+            field("Lbt Editor"; Rec.lbtHasEditorValue())
             {
+                Caption = ' ', Locked = true;
                 ApplicationArea = all;
                 Editable = false;
                 ToolTip = 'Editor';
                 trigger OnAssistEdit()
                 begin
-                    rec.lbtEditData();
+                    Rec.lbtEditData();
                 end;
             }
         }
@@ -57,7 +58,7 @@ pageextension 5272730 "lbt Posted Purch. Invoice Sub." extends "Posted Purch. In
                     SourceRecRef: RecordRef;
                     Position: Option Header,Footer,Longtext;
                 begin
-                    SourceRecRef.GETTABLE(Rec);
+                    SourceRecRef.GetTable(Rec);
                     LongtextMgt.ShowLongtextLines(Rec, Position::Longtext);
                 end;
             }

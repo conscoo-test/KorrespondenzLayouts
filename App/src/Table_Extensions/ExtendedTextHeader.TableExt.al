@@ -37,7 +37,7 @@ tableextension 5272726 "lbt Extended Text Header" extends "Extended Text Header"
 
     procedure lbtclEditData()
     var
-        data: text;
+        data: Text;
         EditorHelper: Codeunit "lbt cl EditorHelper";
     begin
         data := lbtclReadContentData(false);
@@ -48,7 +48,7 @@ tableextension 5272726 "lbt Extended Text Header" extends "Extended Text Header"
 
     end;
 
-    procedure lbtclReadContentData(show: Boolean) Result: text
+    procedure lbtclReadContentData(show: Boolean) Result: Text
     var
 
         EditorPreview: Page "lbt cl Editor Preview";
@@ -60,11 +60,11 @@ tableextension 5272726 "lbt Extended Text Header" extends "Extended Text Header"
         is.Read(result);
         if show then begin
             EditorPreview.SetData(result);
-            EditorPreview.run();
+            EditorPreview.Run();
         end;
     end;
 
-    procedure lbtclWriteContentData(content: text)
+    procedure lbtclWriteContentData(content: Text)
     var
         os: OutStream;
 

@@ -32,10 +32,10 @@ controladdin "lbt cl QuillEditor"
 
     procedure GetAll();
 
-    event OnSave(Data: text);
-    event OnSaveText(Data: text);
+    event OnSave(Data: Text);
+    event OnSaveText(Data: Text);
 
-    event OnSaveAll(Data: text; DataText: text);
+    event OnSaveAll(Data: Text; DataText: Text);
     event OnAfterSave();
 
     procedure ReadOnly(ReadOnly: Boolean)

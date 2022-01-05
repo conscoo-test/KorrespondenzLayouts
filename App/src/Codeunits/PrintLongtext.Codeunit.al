@@ -108,11 +108,11 @@ codeunit 5272731 "lbt cl Print Longtext"
         end;
     end;
 
-    local procedure gettype(tableid: Integer) Type: Integer
+    local procedure gettype(TableId: Integer) Type: Integer
     var
         UnsupportedTableErr: Label 'Unsupported Table %1 for Longtext', Comment = '%1 - TableId';
     begin
-        case tableid of
+        case TableId of
             ///Unposted
             Database::"Sales Header",
             Database::"Sales Line",
@@ -155,7 +155,7 @@ codeunit 5272731 "lbt cl Print Longtext"
                 OnGetType_CaseElse(TableId, Type);
         end;
         if Type = 0 then
-            Error(UnsupportedTableErr, tableid);
+            Error(UnsupportedTableErr, TableId);
     end;
 
     local procedure CombineText(RecRef: RecordRef; var CombinedText: Text)
@@ -171,7 +171,7 @@ codeunit 5272731 "lbt cl Print Longtext"
     var
         PSLongtextLine: Record "lbt PS Longtext Line";
     begin
-        Exit(Format(RecRef.Field(PSLongtextLine.FieldNo(Type)).Value) = Format(PSLongtextLine.Type::"New Page"));
+        exit(Format(RecRef.Field(PSLongtextLine.FieldNo(Type)).Value) = Format(PSLongtextLine.Type::"New Page"));
     end;
 
     local procedure SetPositionFilter(var LongLineRecRef: RecordRef; Position: Enum "lbt Position")
@@ -186,7 +186,7 @@ codeunit 5272731 "lbt cl Print Longtext"
         PSLongtextLine: Record "lbt PS Longtext Line";
         TempBlob: Codeunit "Temp Blob";
         EditorHelper: Codeunit "lbt cl EditorHelper";
-        InStr: Instream;
+        InStr: InStream;
         buffer: Text;
         Txt: Text;
         OutStr: OutStream;
@@ -199,7 +199,7 @@ codeunit 5272731 "lbt cl Print Longtext"
         end;
         Txt := EditorHelper.PrepareHtmltoprint(Txt);
         TempBlob.CreateOutStream(OutStr, TextEncoding::UTF8);
-        OutStr.Write(txt);
+        OutStr.Write(Txt);
         TempBlobList.Add(TempBlob);
     end;
 
@@ -217,9 +217,9 @@ codeunit 5272731 "lbt cl Print Longtext"
         OnAfterGetTableIdsAndFieldNos(RecRef, TableId, FieldNo_DocType, FieldNo_DocNo, FieldNo_LineNo, FieldNo_Version, FieldNo_DocNoOccurence);
     end;
 
-    local procedure IsLine(TableId: Integer) result: Boolean
+    local procedure IsLine(TableId: Integer) Result: Boolean
     begin
-        result := TableId in [
+        Result := TableId in [
             Database::"Sales Line",
             Database::"Purchase Line",
             Database::"Sales Shipment Line",
@@ -232,7 +232,7 @@ codeunit 5272731 "lbt cl Print Longtext"
             Database::"Purchase Line Archive"
             ];
 
-        OnAfterIsLine(TableId, result);
+        OnAfterIsLine(TableId, Result);
     end;
 
     [IntegrationEvent(false, false)]

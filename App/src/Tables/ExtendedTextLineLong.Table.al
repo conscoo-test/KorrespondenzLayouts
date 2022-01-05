@@ -8,24 +8,22 @@ table 5272723 "lbt Extended Text Line Long"
 
     fields
     {
-        field(1; "Table_ID"; Option)
+        field(1; "Table_ID"; Enum "Extended Text Table Name")
         {
             Caption = 'Table ID';
-            OptionCaption = 'Standard Text,G/L Account,Item,Resource';
-            OptionMembers = "Standard Text","G/L Account",Item,Resource;
             DataClassification = CustomerContent;
         }
         field(2; "No."; Code[20])
         {
             Caption = 'No.';
             NotBlank = true;
-            TableRelation = IF (Table_ID = CONST("Standard Text")) "Standard Text"
-            ELSE
-            IF (Table_ID = CONST("G/L Account")) "G/L Account"
-            ELSE
-            IF (Table_ID = CONST(Item)) Item
-            ELSE
-            IF (Table_ID = CONST(Resource)) Resource;
+            TableRelation = if (Table_ID = const("Standard Text")) "Standard Text"
+            else
+            if (Table_ID = const("G/L Account")) "G/L Account"
+            else
+            if (Table_ID = const(Item)) Item
+            else
+            if (Table_ID = const(Resource)) Resource;
             DataClassification = CustomerContent;
         }
         field(3; "Language Code"; Code[10])

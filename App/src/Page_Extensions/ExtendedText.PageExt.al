@@ -14,17 +14,17 @@ pageextension 5272741 "lbt Extended Text" extends "Extended Text"
         {
             part("lbt LongTextSUB"; "lbt Ext. Text Lines Long")
             {
-                Visible = rec."lbt Textchoice" = rec."lbt Textchoice"::"long text";
+                Visible = Rec."lbt Textchoice" = Rec."lbt Textchoice"::"long text";
                 ApplicationArea = All;
                 Caption = 'Long Text';
-                SubPageLink = Table_ID = FIELD("Table Name"),
-                              "No." = FIELD("No."),
-                              "Language Code" = FIELD("Language Code"),
-                              "Text No." = FIELD("Text No.");
+                SubPageLink = Table_ID = field("Table Name"),
+                              "No." = field("No."),
+                              "Language Code" = field("Language Code"),
+                              "Text No." = field("Text No.");
             }
             part("lbt EditorPreviewSub"; "lbt cl Editor preview Sub")
             {
-                Visible = rec."lbt Textchoice" = rec."lbt Textchoice"::blob;
+                Visible = Rec."lbt Textchoice" = Rec."lbt Textchoice"::blob;
                 ApplicationArea = all;
                 caption = 'Editor';
             }
@@ -45,7 +45,7 @@ pageextension 5272741 "lbt Extended Text" extends "Extended Text"
                 trigger OnAction()
 
                 begin
-                    rec.lbtclEditData();
+                    Rec.lbtclEditData();
                 end;
             }
 
@@ -53,7 +53,7 @@ pageextension 5272741 "lbt Extended Text" extends "Extended Text"
     }
     trigger OnAfterGetRecord()
     begin
-        CurrPage."lbt EditorPreviewSub".Page.SetData(rec.lbtclReadContentData(false));
+        CurrPage."lbt EditorPreviewSub".Page.SetData(Rec.lbtclReadContentData(false));
     end;
 }
 

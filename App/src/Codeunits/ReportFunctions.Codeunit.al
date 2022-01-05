@@ -17,7 +17,7 @@ codeunit 5272724 "lbt Report Functions"
         Counter: Integer;
         IntVar: Integer;
     begin
-        ParamSetupRecordRef.OPEN(Database::"LBT Report - Attribute Setup");
+        ParamSetupRecordRef.Open(Database::"LBT Report - Attribute Setup");
 
         SetFilterRecRef(ParamSetupRecordRef, 1, 5, UseFilter::SETRANGE);
         SetFilterRecRef(ParamSetupRecordRef, 2, ReportID, UseFilter::SETRANGE);
@@ -36,7 +36,7 @@ codeunit 5272724 "lbt Report Functions"
 
         repeat
             Counter += 1;
-            EVALUATE(IntVar, GetValueRecRef(ParamSetupRecordRef, 3));
+            Evaluate(IntVar, GetValueRecRef(ParamSetupRecordRef, 3));
             Description[Counter] := GetParameterDescription(ReportType, ReportID, IntVar, ParaType, LanguageCode, RowID, LotNo);
             Value[Counter] := GetParameterValue(ReportType, ReportID, IntVar, ParaType, LanguageCode, RowID, LotNo, ItemNo);
             if Value[Counter] = '' then begin
@@ -62,8 +62,8 @@ codeunit 5272724 "lbt Report Functions"
         ParameterDescription := '';
         ParaDescriptionList := '';
 
-        CLEAR(ParamSetupRecordRef);
-        ParamSetupRecordRef.OPEN(Database::"LBT Report - Attribute Setup");
+        Clear(ParamSetupRecordRef);
+        ParamSetupRecordRef.Open(Database::"LBT Report - Attribute Setup");
 
         SetFilterRecRef(ParamSetupRecordRef, 1, 5, UseFilter::SETRANGE);
         SetFilterRecRef(ParamSetupRecordRef, 2, ReportID, UseFilter::SETRANGE);
@@ -87,10 +87,10 @@ codeunit 5272724 "lbt Report Functions"
                 if ParaDescriptionList <> '' then
                     ParaDescriptionList += ' ';
 
-                if ItemAttributeTranslation.GET(GetValueRecRef(ParamSetupRecordRef, 5), LanguageCode) then
+                if ItemAttributeTranslation.Get(GetValueRecRef(ParamSetupRecordRef, 5), LanguageCode) then
                     ParameterDescription := ItemAttributeTranslation.Name
                 else
-                    if ItemAttribute.GET(GetValueRecRef(ParamSetupRecordRef, 5)) then
+                    if ItemAttribute.Get(GetValueRecRef(ParamSetupRecordRef, 5)) then
                         ParameterDescription := ItemAttribute.Name;
 
                 ParaDescriptionList += ParameterDescription;
@@ -104,10 +104,10 @@ codeunit 5272724 "lbt Report Functions"
             repeat
                 if ParaDescriptionList <> '' then
                     ParaDescriptionList += ' ';
-                if ItemAttributeTranslation.GET(GetValueRecRef(ParamSetupRecordRef, 5), LanguageCode) then
+                if ItemAttributeTranslation.Get(GetValueRecRef(ParamSetupRecordRef, 5), LanguageCode) then
                     ParameterDescription := ItemAttributeTranslation.Name
                 else
-                    if ItemAttribute.GET(GetValueRecRef(ParamSetupRecordRef, 5)) then
+                    if ItemAttribute.Get(GetValueRecRef(ParamSetupRecordRef, 5)) then
                         ParameterDescription := ItemAttribute.Name;
                 ParaDescriptionList += ParameterDescription;
                 if GetValueRecRef(ParamSetupRecordRef, 8) <> '' then
@@ -119,10 +119,10 @@ codeunit 5272724 "lbt Report Functions"
             repeat
                 if ParaDescriptionList <> '' then
                     ParaDescriptionList += ' ';
-                if ItemAttributeTranslation.GET(GetValueRecRef(ParamSetupRecordRef, 5), LanguageCode) then
+                if ItemAttributeTranslation.Get(GetValueRecRef(ParamSetupRecordRef, 5), LanguageCode) then
                     ParameterDescription := ItemAttributeTranslation.Name
                 else
-                    if ItemAttribute.GET(GetValueRecRef(ParamSetupRecordRef, 5)) then
+                    if ItemAttribute.Get(GetValueRecRef(ParamSetupRecordRef, 5)) then
                         ParameterDescription := ItemAttribute.Name;
                 ParaDescriptionList += ParameterDescription;
                 if GetValueRecRef(ParamSetupRecordRef, 8) <> '' then
@@ -134,10 +134,10 @@ codeunit 5272724 "lbt Report Functions"
             repeat
                 if ParaDescriptionList <> '' then
                     ParaDescriptionList += ' ';
-                if ItemAttributeTranslation.GET(GetValueRecRef(ParamSetupRecordRef, 5), LanguageCode) then
+                if ItemAttributeTranslation.Get(GetValueRecRef(ParamSetupRecordRef, 5), LanguageCode) then
                     ParameterDescription := ItemAttributeTranslation.Name
                 else
-                    if ItemAttribute.GET(GetValueRecRef(ParamSetupRecordRef, 5)) then
+                    if ItemAttribute.Get(GetValueRecRef(ParamSetupRecordRef, 5)) then
                         ParameterDescription := ItemAttribute.Name;
                 ParaDescriptionList += ParameterDescription;
                 if GetValueRecRef(ParamSetupRecordRef, 8) <> '' then
@@ -150,10 +150,10 @@ codeunit 5272724 "lbt Report Functions"
             repeat
                 if ParaDescriptionList <> '' then
                     ParaDescriptionList += ' ';
-                if ItemAttributeTranslation.GET(GetValueRecRef(ParamSetupRecordRef, 5), LanguageCode) then
+                if ItemAttributeTranslation.Get(GetValueRecRef(ParamSetupRecordRef, 5), LanguageCode) then
                     ParameterDescription := ItemAttributeTranslation.Name
                 else
-                    if ItemAttribute.GET(GetValueRecRef(ParamSetupRecordRef, 5)) then
+                    if ItemAttribute.Get(GetValueRecRef(ParamSetupRecordRef, 5)) then
                         ParameterDescription := ItemAttribute.Name;
                 ParaDescriptionList += ParameterDescription;
                 if GetValueRecRef(ParamSetupRecordRef, 8) <> '' then
@@ -183,8 +183,8 @@ codeunit 5272724 "lbt Report Functions"
         ParaValueList := '';
 
         // Tabellen Filter wird definiert
-        CLEAR(ParamSetupRecordRef);
-        ParamSetupRecordRef.OPEN(Database::"LBT Report - Attribute Setup");
+        Clear(ParamSetupRecordRef);
+        ParamSetupRecordRef.Open(Database::"LBT Report - Attribute Setup");
 
         SetFilterRecRef(ParamSetupRecordRef, 1, 5, localUseFilter::SETRANGE);
         SetFilterRecRef(ParamSetupRecordRef, 2, ReportID, localUseFilter::SETRANGE);
@@ -208,18 +208,18 @@ codeunit 5272724 "lbt Report Functions"
             repeat
                 if ParaValueList <> '' then
                     ParaValueList += ' ';
-                if ItemAttributeValueMapping.GET(DATABASE::Item, ItemNo, GetValueRecRef(ParamSetupRecordRef, 5)) then begin
-                    if ItemAttrValueTranslation.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode) then
+                if ItemAttributeValueMapping.Get(Database::Item, ItemNo, GetValueRecRef(ParamSetupRecordRef, 5)) then begin
+                    if ItemAttrValueTranslation.Get(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode) then
                         ParaValueList += ItemAttrValueTranslation.Name
                     else
-                        if ItemAttributeValue.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID") then
+                        if ItemAttributeValue.Get(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID") then
                             ParaValueList += ItemAttributeValue.Value;
 
-                    if ItemAttribute.GET(GetValueRecRef(ParamSetupRecordRef, 5)) then
-                        if UnitofMeasureTranslation.GET(ItemAttribute."Unit of Measure", LanguageCode) then
+                    if ItemAttribute.Get(GetValueRecRef(ParamSetupRecordRef, 5)) then
+                        if UnitofMeasureTranslation.Get(ItemAttribute."Unit of Measure", LanguageCode) then
                             UnitofMeasureDescription := UnitofMeasureTranslation.Description
                         else
-                            if UnitofMeasure.GET(ItemAttribute."Unit of Measure") then
+                            if UnitofMeasure.Get(ItemAttribute."Unit of Measure") then
                                 UnitofMeasureDescription := UnitofMeasure.Description;
 
 
@@ -237,18 +237,18 @@ codeunit 5272724 "lbt Report Functions"
             repeat
                 if ParaValueList <> '' then
                     ParaValueList += ' ';
-                if ItemAttributeValueMapping.GET(DATABASE::Item, ItemNo, GetValueRecRef(ParamSetupRecordRef, 5)) then begin
-                    if ItemAttrValueTranslation.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode) then
+                if ItemAttributeValueMapping.Get(Database::Item, ItemNo, GetValueRecRef(ParamSetupRecordRef, 5)) then begin
+                    if ItemAttrValueTranslation.Get(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode) then
                         ParaValueList += ItemAttrValueTranslation.Name
                     else
-                        if ItemAttributeValue.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID") then
+                        if ItemAttributeValue.Get(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID") then
                             ParaValueList += ItemAttributeValue.Value;
 
-                    if ItemAttribute.GET(GetValueRecRef(ParamSetupRecordRef, 5)) then
-                        if UnitofMeasureTranslation.GET(ItemAttribute."Unit of Measure", LanguageCode) then
+                    if ItemAttribute.Get(GetValueRecRef(ParamSetupRecordRef, 5)) then
+                        if UnitofMeasureTranslation.Get(ItemAttribute."Unit of Measure", LanguageCode) then
                             UnitofMeasureDescription := UnitofMeasureTranslation.Description
                         else
-                            if UnitofMeasure.GET(ItemAttribute."Unit of Measure") then
+                            if UnitofMeasure.Get(ItemAttribute."Unit of Measure") then
                                 UnitofMeasureDescription := UnitofMeasure.Description;
 
 
@@ -266,18 +266,18 @@ codeunit 5272724 "lbt Report Functions"
             repeat
                 if ParaValueList <> '' then
                     ParaValueList += ' ';
-                if ItemAttributeValueMapping.GET(DATABASE::Item, ItemNo, GetValueRecRef(ParamSetupRecordRef, 5)) then begin
-                    if ItemAttrValueTranslation.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode) then
+                if ItemAttributeValueMapping.Get(Database::Item, ItemNo, GetValueRecRef(ParamSetupRecordRef, 5)) then begin
+                    if ItemAttrValueTranslation.Get(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode) then
                         ParaValueList += ItemAttrValueTranslation.Name
                     else
-                        if ItemAttributeValue.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID") then
+                        if ItemAttributeValue.Get(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID") then
                             ParaValueList += ItemAttributeValue.Value;
 
-                    if ItemAttribute.GET(GetValueRecRef(ParamSetupRecordRef, 5)) then
-                        if UnitofMeasureTranslation.GET(ItemAttribute."Unit of Measure", LanguageCode) then
+                    if ItemAttribute.Get(GetValueRecRef(ParamSetupRecordRef, 5)) then
+                        if UnitofMeasureTranslation.Get(ItemAttribute."Unit of Measure", LanguageCode) then
                             UnitofMeasureDescription := UnitofMeasureTranslation.Description
                         else
-                            if UnitofMeasure.GET(ItemAttribute."Unit of Measure") then
+                            if UnitofMeasure.Get(ItemAttribute."Unit of Measure") then
                                 UnitofMeasureDescription := UnitofMeasure.Description;
 
 
@@ -293,18 +293,18 @@ codeunit 5272724 "lbt Report Functions"
             repeat
                 if ParaValueList <> '' then
                     ParaValueList += ' ';
-                if ItemAttributeValueMapping.GET(DATABASE::Item, ItemNo, GetValueRecRef(ParamSetupRecordRef, 5)) then begin
-                    if ItemAttrValueTranslation.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode) then
+                if ItemAttributeValueMapping.Get(Database::Item, ItemNo, GetValueRecRef(ParamSetupRecordRef, 5)) then begin
+                    if ItemAttrValueTranslation.Get(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode) then
                         ParaValueList += ItemAttrValueTranslation.Name
                     else
-                        if ItemAttributeValue.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID") then
+                        if ItemAttributeValue.Get(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID") then
                             ParaValueList += ItemAttributeValue.Value;
 
-                    if ItemAttribute.GET(GetValueRecRef(ParamSetupRecordRef, 5)) then
-                        if UnitofMeasureTranslation.GET(ItemAttribute."Unit of Measure", LanguageCode) then
+                    if ItemAttribute.Get(GetValueRecRef(ParamSetupRecordRef, 5)) then
+                        if UnitofMeasureTranslation.Get(ItemAttribute."Unit of Measure", LanguageCode) then
                             UnitofMeasureDescription := UnitofMeasureTranslation.Description
                         else
-                            if UnitofMeasure.GET(ItemAttribute."Unit of Measure") then
+                            if UnitofMeasure.Get(ItemAttribute."Unit of Measure") then
                                 UnitofMeasureDescription := UnitofMeasure.Description;
 
                 end;
@@ -320,18 +320,18 @@ codeunit 5272724 "lbt Report Functions"
             repeat
                 if ParaValueList <> '' then
                     ParaValueList += ' ';
-                if ItemAttributeValueMapping.GET(DATABASE::Item, ItemNo, GetValueRecRef(ParamSetupRecordRef, 5)) then begin
-                    if ItemAttrValueTranslation.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode) then
+                if ItemAttributeValueMapping.Get(Database::Item, ItemNo, GetValueRecRef(ParamSetupRecordRef, 5)) then begin
+                    if ItemAttrValueTranslation.Get(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode) then
                         ParaValueList += ItemAttrValueTranslation.Name
                     else
-                        if ItemAttributeValue.GET(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID") then
+                        if ItemAttributeValue.Get(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID") then
                             ParaValueList += ItemAttributeValue.Value;
 
-                    if ItemAttribute.GET(GetValueRecRef(ParamSetupRecordRef, 5)) then
-                        if UnitofMeasureTranslation.GET(ItemAttribute."Unit of Measure", LanguageCode) then
+                    if ItemAttribute.Get(GetValueRecRef(ParamSetupRecordRef, 5)) then
+                        if UnitofMeasureTranslation.Get(ItemAttribute."Unit of Measure", LanguageCode) then
                             UnitofMeasureDescription := UnitofMeasureTranslation.Description
                         else
-                            if UnitofMeasure.GET(ItemAttribute."Unit of Measure") then
+                            if UnitofMeasure.Get(ItemAttribute."Unit of Measure") then
                                 UnitofMeasureDescription := UnitofMeasure.Description;
 
                 end;
@@ -360,27 +360,27 @@ codeunit 5272724 "lbt Report Functions"
             // Gebuchter Beleg
             1:
                 begin
-                    AllObj.SETRANGE("Object Type", AllObj."Object Type"::Table);
-                    AllObj.SETRANGE("Object ID", 5077965);
+                    AllObj.SetRange("Object Type", AllObj."Object Type"::Table);
+                    AllObj.SetRange("Object ID", 5077965);
                     if not AllObj.FindSet() then
                         exit;
                 end;
             // Ungebuchter Beleg
             2:
                 begin
-                    AllObj.SETRANGE("Object Type", AllObj."Object Type"::Table);
-                    AllObj.SETRANGE("Object ID", 5077957);
+                    AllObj.SetRange("Object Type", AllObj."Object Type"::Table);
+                    AllObj.SetRange("Object ID", 5077957);
                     if not AllObj.FindSet() then
                         exit;
                 end;
         end;
 
-        CLEAR(RecordRef);
+        Clear(RecordRef);
         case ItemUnitType of
             1:
-                RecordRef.OPEN(5077965);
+                RecordRef.Open(5077965);
             2:
-                RecordRef.OPEN(5077957);
+                RecordRef.Open(5077957);
         end;
         SetFilterRecRef(RecordRef, 1, StrArray[1], UseFilter::SETFILTER);   //"Table ID"
         SetFilterRecRef(RecordRef, 2, StrArray[2], UseFilter::SETFILTER);   //"Document Type"
@@ -393,13 +393,13 @@ codeunit 5272724 "lbt Report Functions"
             repeat
                 Counter += 1;
                 ItemUnitCode[Counter] := CopyStr(GetValueRecRef(RecordRef, 5), 1, 20);
-                if UnitofMeasureTranslation.GET(ItemUnitCode[Counter], LanguageCode) then
+                if UnitofMeasureTranslation.Get(ItemUnitCode[Counter], LanguageCode) then
                     ItemUnitDescription[Counter] := UnitofMeasureTranslation.Description
                 else
-                    if UnitofMeasure.GET(ItemUnitCode[Counter]) then
+                    if UnitofMeasure.Get(ItemUnitCode[Counter]) then
                         ItemUnitDescription[Counter] := UnitofMeasure.Description;
 
-                //EVALUATE(DecVar,GetValueRecRef(RecordRef,7));
+                //Evaluate(DecVar,GetValueRecRef(RecordRef,7));
                 ItemUnitQty[Counter] := GetValueRecRef(RecordRef, 7);
             until RecordRef.Next() = 0;
 
@@ -409,12 +409,12 @@ codeunit 5272724 "lbt Report Functions"
     var
         SourceFieldRef: FieldRef;
     begin
-        SourceFieldRef := SourceRecordRef.FIELD(FieldID);
+        SourceFieldRef := SourceRecordRef.Field(FieldID);
         case UseFilter_L of
             UseFilter_L::SETFILTER:
                 SourceFieldRef.SETFILTER(FilterValueVariant);
             UseFilter_L::SETRANGE:
-                SourceFieldRef.SETRANGE(FilterValueVariant);
+                SourceFieldRef.SetRange(FilterValueVariant);
         end;
     end;
 
@@ -422,8 +422,8 @@ codeunit 5272724 "lbt Report Functions"
     var
         SourceFieldRef: FieldRef;
     begin
-        SourceFieldRef := SourceRecordRef.FIELD(FieldID);
-        TextVar := FORMAT(SourceFieldRef.Value());
+        SourceFieldRef := SourceRecordRef.Field(FieldID);
+        TextVar := Format(SourceFieldRef.Value());
         exit(TextVar);
     end;
 
@@ -447,7 +447,7 @@ codeunit 5272724 "lbt Report Functions"
         ArrayIndex := 1;
 
         while not (Pos > Len) do begin
-            Char := COPYSTR(IDtext, Pos, 1);
+            Char := CopyStr(IDtext, Pos, 1);
             if (Char = '"') then begin
                 Write := false;
                 Count += 1;
@@ -489,7 +489,7 @@ codeunit 5272724 "lbt Report Functions"
     var
         ItemTrackingManagement: Codeunit "Item Tracking Management";
     begin
-        exit(ItemTrackingManagement.ComposeRowID(DATABASE::"Sales Shipment Line",
+        exit(ItemTrackingManagement.ComposeRowID(Database::"Sales Shipment Line",
           0, SalesShipmentLine."Document No.", '', 0, SalesShipmentLine."Line No."));
     end;
 
@@ -497,10 +497,10 @@ codeunit 5272724 "lbt Report Functions"
     var
         SourceSetup: Record "lbt Source Setup";
     begin
-        SourceSetup.SETRANGE(Type, TypeVar);
-        SourceSetup.SETRANGE("Report Type", ReportType);
+        SourceSetup.SetRange(Type, TypeVar);
+        SourceSetup.SetRange("Report Type", ReportType);
         if SourceSetup.IsEmpty() then
-            SourceSetup.SETRANGE("Report Type", SourceSetup."Report Type"::General);
+            SourceSetup.SetRange("Report Type", SourceSetup."Report Type"::General);
         if not SourceSetup.FindFirst() then
             SourceType := 0
         else
@@ -534,15 +534,15 @@ codeunit 5272724 "lbt Report Functions"
 
         OldDimText: Text[75];
     begin
-        CLEAR(DimText);
+        Clear(DimText);
         Continue := false;
         repeat
             OldDimText := DimText;
             if DimText = '' then
-                DimText := STRSUBSTNO(DimensionCodeAndValueTok, DimSetEntry."Dimension Code", DimSetEntry."Dimension Value Code")
+                DimText := StrSubstNo(DimensionCodeAndValueTok, DimSetEntry."Dimension Code", DimSetEntry."Dimension Value Code")
             else
                 DimText :=
-                  STRSUBSTNO(
+                  StrSubstNo(
                     DimensionAndDimensionCodeAndValueTok, DimText,
                     DimSetEntry."Dimension Code", DimSetEntry."Dimension Value Code");
             if STRLEN(DimText) > MAXSTRLEN(OldDimText) then begin

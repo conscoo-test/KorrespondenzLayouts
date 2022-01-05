@@ -22,8 +22,8 @@ pageextension 5272748 "lbt Purchases & Payables Setup" extends "Purchases & Paya
                 ToolTip = 'Here you can define origin codes for certain reports.';
                 Image = Print;
                 RunObject = Page "lbt Source Setup";
-                RunPageView = SORTING(Type, "Report Type")
-                              WHERE(Type = FILTER(Purchase));
+                RunPageView = sorting(Type, "Report Type")
+                              where(Type = filter(Purchase));
             }
         }
     }

@@ -1,10 +1,10 @@
-pageextension 5272810 "lbt cl ServItemWorksheet Subf" extends "Service Item Worksheet Subform"
+pageextension 5272813 "lbt cl Pstd Service Shpt Lines" extends "Posted Service Shipment Lines"
 {
     layout
     {
         addafter(Description)
         {
-            field("lbt Editor"; rec.lbtHasEditorValue(rec."Document Type".AsInteger()))
+            field("lbt Editor"; Rec.lbtHasEditorValue())
             {
                 ApplicationArea = all;
                 Editable = false;
@@ -12,7 +12,7 @@ pageextension 5272810 "lbt cl ServItemWorksheet Subf" extends "Service Item Work
                 caption = 'Editor';
                 trigger OnAssistEdit()
                 begin
-                    rec.lbtEditData(rec."Document Type".AsInteger());
+                    Rec.lbtEditData();
                 end;
             }
 

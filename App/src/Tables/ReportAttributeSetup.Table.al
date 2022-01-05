@@ -3,7 +3,8 @@ table 5272725 "lbt Report - Attribute Setup"
     // version LBCOR1.00
 
     Caption = 'Report - Attribute Setup';
-
+    LookupPageId = "lbt Report - Attribute Setup";
+    DrillDownPageId = "lbt Report - Attribute Setup";
     fields
     {
         field(1; "Report-Type"; Option)
@@ -16,13 +17,13 @@ table 5272725 "lbt Report - Attribute Setup"
         field(2; "Report-ID"; Integer)
         {
             Caption = 'Report-ID';
-            TableRelation = IF ("Report-Type" = CONST(Report)) AllObjWithCaption."Object ID" WHERE("Object Type" = CONST(Report));
+            TableRelation = if ("Report-Type" = const(Report)) AllObjWithCaption."Object ID" where("Object Type" = const(Report));
             DataClassification = CustomerContent;
 
             trigger OnValidate()
             begin
                 if ("Report-Type" = "Report-Type"::Report) and ("Report-ID" = 0) then
-                    ERROR(PosZeroErr);
+                    Error(PosZeroErr);
             end;
         }
         field(3; Position; Integer)
@@ -48,22 +49,10 @@ table 5272725 "lbt Report - Attribute Setup"
                 ItemAttribute: Record "Item Attribute";
             begin
                 if ID <> 0 then begin
-                    ItemAttribute.GET(ID);
+                    ItemAttribute.Get(ID);
                     Description := ItemAttribute.Name;
                     "Control Unit of Measure Code" := ItemAttribute."Unit of Measure";
                 end;
-                /*
-                Type::Parameter:
-                  BEGIN
-                    CLEAR(ParaRecRef);
-                    ParaRecRef.OPEN(5102726);
-                    LeBitCorrespDocMgt.SetFilterRecRef(ParaRecRef,1,Code,UseFilter::SETRANGE);
-                    ParaRecRef.FINDFIRST;
-                    Description := LeBitCorrespDocMgt.GetValueRecRef(ParaRecRef,3);
-                    "Control Unit of Measure Code" := LeBitCorrespDocMgt.GetValueRecRef(ParaRecRef,5078000);
-                  END;
-                */
-
             end;
         }
         field(6; Description; Text[250])
@@ -91,9 +80,9 @@ table 5272725 "lbt Report - Attribute Setup"
             trigger OnValidate()
             begin
                 ParamSetupRec.Reset();
-                ParamSetupRec.SETRANGE("Report-Type", "Report-Type");
-                ParamSetupRec.SETRANGE("Report-ID", "Report-ID");
-                if ParamSetupRec.FINDSET(true) then
+                ParamSetupRec.SetRange("Report-Type", "Report-Type");
+                ParamSetupRec.SetRange("Report-ID", "Report-ID");
+                if ParamSetupRec.FindSet(true) then
                     repeat
                         if not ((ParamSetupRec.Position = Position) and (ParamSetupRec.Priority = Priority)) then begin
                             ParamSetupRec."Permit Description" := "Permit Description";
@@ -115,16 +104,15 @@ table 5272725 "lbt Report - Attribute Setup"
                 if ("Decimal Places" <> '') and
                    (ID <> 0)
                 then begin
-                    ItemAttribute.GET(ID);
+                    ItemAttribute.Get(ID);
                     if ItemAttribute.Type <> ItemAttribute.Type::Decimal then
-                        ERROR(DecimalPlacesErr);
-                    if STRPOS("Decimal Places", ':') <> 0 then begin
-                        if not EVALUATE(Int, DELSTR("Decimal Places", STRPOS("Decimal Places", ':'), 1)) then
-                            ERROR(TypingErr);
+                        Error(DecimalPlacesErr);
+                    if StrPos("Decimal Places", ':') <> 0 then begin
+                        if not Evaluate(Int, DelStr("Decimal Places", StrPos("Decimal Places", ':'), 1)) then
+                            Error(TypingErr);
                     end else
-                        if not EVALUATE(Int, "Decimal Places") then
-                            ERROR(TypingErr);
-
+                        if not Evaluate(Int, "Decimal Places") then
+                            Error(TypingErr);
                 end;
             end;
         }

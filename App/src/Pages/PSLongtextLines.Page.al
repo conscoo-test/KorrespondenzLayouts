@@ -80,7 +80,7 @@ page 5272720 "lbt PS Longtext Lines"
     begin
         LanguageCode := '';
         Belegdatum := 0D;
-        SourceRecordRef.GETTABLE(Rec);
+        SourceRecordRef.GetTable(Rec);
         SourceFieldRef := SourceRecordRef.Field(2);
         SourceDocumentType := SourceFieldRef.Value();
         SourceFieldRef := SourceRecordRef.Field(3);

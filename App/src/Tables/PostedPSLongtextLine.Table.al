@@ -12,7 +12,7 @@ table 5272721 "lbt Posted PS Longtext Line"
         field(1; "Table ID"; Integer)
         {
             Caption = 'Table ID';
-            TableRelation = AllObj."Object ID" WHERE("Object Type" = CONST(Table));
+            TableRelation = AllObj."Object ID" where("Object Type" = const(Table));
             DataClassification = CustomerContent;
         }
         field(3; "Document No."; Code[20])
@@ -61,7 +61,7 @@ table 5272721 "lbt Posted PS Longtext Line"
         field(11; "No."; Code[20])
         {
             Caption = 'No.';
-            TableRelation = IF (Type = CONST(Text)) "Standard Text";
+            TableRelation = IF (Type = const(Text)) "Standard Text";
             DataClassification = CustomerContent;
         }
         field(12; Description; Text[120])
@@ -95,7 +95,7 @@ table 5272721 "lbt Posted PS Longtext Line"
     procedure EditData()
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";
-        data: text;
+        data: Text;
     begin
         data := ReadContentData(false);
         if not editorhelper.TextEditor(data, true) then
@@ -109,7 +109,7 @@ table 5272721 "lbt Posted PS Longtext Line"
 
     end;
 
-    procedure ReadContentData(show: Boolean) Result: text
+    procedure ReadContentData(show: Boolean) Result: Text
     var
         EditorPreview: Page "lbt cl Editor Preview";
         Buffer: Text;
@@ -123,15 +123,15 @@ table 5272721 "lbt Posted PS Longtext Line"
         end;
         if show then begin
             EditorPreview.SetData(result);
-            EditorPreview.run();
+            EditorPreview.Run();
         end;
     end;
 
-    procedure WriteContentData(content: text)
+    procedure WriteContentData(content: Text)
     var
         os: OutStream;
     begin
-        clear(Rec."Editor Content");
+        Clear(Rec."Editor Content");
         "Editor Content".CreateOutStream(os, TextEncoding::UTF8);
         os.write(content);
     end;

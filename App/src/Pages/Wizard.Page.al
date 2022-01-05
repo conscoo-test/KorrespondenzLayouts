@@ -534,8 +534,8 @@ page 5272724 "lbt Wizard"
 
     local procedure LoadTopBanners();
     begin
-        if MediaRepository.GET('AssistedSetup-NoText-400px.png', Format(CurrentClientType())) then
-            if MediaResources.GET(MediaRepository."Media Resources Ref") then
+        if MediaRepository.Get('AssistedSetup-NoText-400px.png', Format(CurrentClientType())) then
+            if MediaResources.Get(MediaRepository."Media Resources Ref") then
                 TopBannerVisible := MediaResources."Media Reference".HasValue();
         if DoneMediaRepository.Get('AssistedSetupDone-NoText-400px.png', Format(CurrentClientType())) then
             if DoneMediaResources.Get(DoneMediaRepository."Media Resources Ref") then

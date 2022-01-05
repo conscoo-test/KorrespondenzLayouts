@@ -18,13 +18,13 @@ page 5272733 "lbt cl Editor Preview"
                     ApplicationArea = all;
                     trigger ControlAddInReady(callbackUrl: Text)
                     begin
-                        isready := true;
-                        FillAddIn();
+                        isReady := true;
+                        FillAddin();
                     end;
 
-                    trigger CallBack(v_data: text)
+                    trigger CallBack(v_data: Text)
                     begin
-                        data := v_data;
+                        Data := v_data;
                         CurrPage.showdata2.SetContent(Data);
                     end;
                 }
@@ -39,8 +39,8 @@ page 5272733 "lbt cl Editor Preview"
                     ApplicationArea = all;
                     trigger ControlAddInReady(callbackUrl: Text)
                     begin
-                        isready := true;
-                        FillAddIn();
+                        isReady := true;
+                        FillAddin();
                     end;
                 }
             }
@@ -52,26 +52,28 @@ page 5272733 "lbt cl Editor Preview"
             FillAddin();
     end;
 
-    local Procedure FillAddin()
+    local procedure FillAddin()
+    var
+        TextAreaHtmlTxt: Label '<textarea Id="TextArea" maxlength="%2" style="width:100%;height:100%;resize: none; font-family:"Segoe UI", "Segoe WP", Segoe, device-segoe, Tahoma, Helvetica, Arial, sans-serif !important; font-size: 10.5pt !important;" OnChange="window.parent.WebPageViewerHelper.TriggerCallback(document.getElementById(''TextArea'').Value)">%1</textarea>', Locked = true;
     begin
-        CurrPage.showdata.SetContent(StrSubstNo('<textarea Id="TextArea" maxlength="%2" style="width:100%;height:100%;resize: none; font-family:"Segoe UI", "Segoe WP", Segoe, device-segoe, Tahoma, Helvetica, Arial, sans-serif !important; font-size: 10.5pt !important;" OnChange="window.parent.WebPageViewerHelper.TriggerCallback(document.getElementById(''TextArea'').value)">%1</textarea>', data, MaxStrLen(data)));
-        CurrPage.showdata2.SetContent(data);
+        CurrPage.showdata.SetContent(StrSubstNo(TextAreaHtmlTxt, Data, MaxStrLen(Data)));
+        CurrPage.showdata2.SetContent(Data);
     end;
 
     var
         isReady: Boolean;
 
-    procedure SetData(v_Data: text)
+    procedure SetData(v_Data: Text)
     begin
-        data := v_Data;
+        Data := v_Data;
     end;
 
-    procedure GetData() Result: Text
+    procedure GetData(): Text
     begin
-        exit(data);
+        exit(Data);
     end;
 
 
     var
-        Data: text;
+        Data: Text;
 }

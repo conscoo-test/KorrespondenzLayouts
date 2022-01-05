@@ -69,18 +69,18 @@ codeunit 5272723 "lbt Longtext Mgt."
     begin
         SourceTableID := SourceRecordRef.Number();
         case SourceTableID of
-            DATABASE::"Sales Header", DATABASE::"Sales Line",
-            DATABASE::"Purchase Header", DATABASE::"Purchase Line":
+            Database::"Sales Header", Database::"Sales Line",
+            Database::"Purchase Header", Database::"Purchase Line":
                 begin
                     // Filter bestimmen
-                    SourceFieldRef := SourceRecordRef.FIELD(1);
+                    SourceFieldRef := SourceRecordRef.Field(1);
                     SourceDocumentType := SourceFieldRef.Value();
-                    SourceFieldRef := SourceRecordRef.FIELD(3);
+                    SourceFieldRef := SourceRecordRef.Field(3);
                     SourceDocumentNo := SourceFieldRef.Value();
                     if SourceDocumentNo = '' then
                         exit;
-                    if SourceTableID in [DATABASE::"Sales Line", DATABASE::"Purchase Line"] then begin
-                        SourceFieldRef := SourceRecordRef.FIELD(4);
+                    if SourceTableID in [Database::"Sales Line", Database::"Purchase Line"] then begin
+                        SourceFieldRef := SourceRecordRef.Field(4);
                         SourceLineNo := SourceFieldRef.Value();
                         if SourceLineNo = 0 then
                             exit;
@@ -98,25 +98,25 @@ codeunit 5272723 "lbt Longtext Mgt."
                     PAGE.RUNMODAL(PAGE::"lbt PS Longtext Lines", PSLongtextLine)
                 end;
 
-            DATABASE::"Sales Shipment Header", DATABASE::"Sales Shipment Line",
-            DATABASE::"Sales Invoice Header", DATABASE::"Sales Invoice Line",
-            DATABASE::"Sales Cr.Memo Header", DATABASE::"Sales Cr.Memo Line",
-            DATABASE::"Purch. Rcpt. Header", DATABASE::"Purch. Rcpt. Line",
-            DATABASE::"Purch. Inv. Header", DATABASE::"Purch. Inv. Line",
-            DATABASE::"Purch. Cr. Memo Hdr.", DATABASE::"Purch. Cr. Memo Line",
-            DATABASE::"Return Shipment Header", DATABASE::"Return Shipment Line",
-            DATABASE::"Return Receipt Header", DATABASE::"Return Receipt Line":
+            Database::"Sales Shipment Header", Database::"Sales Shipment Line",
+            Database::"Sales Invoice Header", Database::"Sales Invoice Line",
+            Database::"Sales Cr.Memo Header", Database::"Sales Cr.Memo Line",
+            Database::"Purch. Rcpt. Header", Database::"Purch. Rcpt. Line",
+            Database::"Purch. Inv. Header", Database::"Purch. Inv. Line",
+            Database::"Purch. Cr. Memo Hdr.", Database::"Purch. Cr. Memo Line",
+            Database::"Return Shipment Header", Database::"Return Shipment Line",
+            Database::"Return Receipt Header", Database::"Return Receipt Line":
                 begin
                     // Filter bestimmen
-                    SourceFieldRef := SourceRecordRef.FIELD(3);
+                    SourceFieldRef := SourceRecordRef.Field(3);
                     SourceDocumentNo := SourceFieldRef.Value();
                     if SourceDocumentNo = '' then
                         exit;
-                    if SourceTableID in [DATABASE::"Sales Shipment Line", DATABASE::"Sales Invoice Line", DATABASE::"Sales Cr.Memo Line",
-                                         DATABASE::"Purch. Rcpt. Line", DATABASE::"Purch. Inv. Line", DATABASE::"Purch. Cr. Memo Line",
-                                         DATABASE::"Return Shipment Line", DATABASE::"Return Receipt Line"]
+                    if SourceTableID in [Database::"Sales Shipment Line", Database::"Sales Invoice Line", Database::"Sales Cr.Memo Line",
+                                         Database::"Purch. Rcpt. Line", Database::"Purch. Inv. Line", Database::"Purch. Cr. Memo Line",
+                                         Database::"Return Shipment Line", Database::"Return Receipt Line"]
                     then begin
-                        SourceFieldRef := SourceRecordRef.FIELD(4);
+                        SourceFieldRef := SourceRecordRef.Field(4);
                         SourceLineNo := SourceFieldRef.Value();
                         if SourceLineNo = 0 then
                             exit;
@@ -133,28 +133,28 @@ codeunit 5272723 "lbt Longtext Mgt."
                     PAGE.RUNMODAL(PAGE::"lbt Posted PS Longtext Lines", PostedPSLongtextLine)
                 end;
 
-            DATABASE::"Sales Header Archive", DATABASE::"Sales Line Archive",
-            DATABASE::"Purchase Header Archive", DATABASE::"Purchase Line Archive":
+            Database::"Sales Header Archive", Database::"Sales Line Archive",
+            Database::"Purchase Header Archive", Database::"Purchase Line Archive":
                 begin
                     // Filter bestimmen
-                    SourceFieldRef := SourceRecordRef.FIELD(1);
+                    SourceFieldRef := SourceRecordRef.Field(1);
                     SourceDocumentType := SourceFieldRef.Value();
-                    SourceFieldRef := SourceRecordRef.FIELD(3);
+                    SourceFieldRef := SourceRecordRef.Field(3);
                     SourceDocumentNo := SourceFieldRef.Value();
                     if SourceDocumentNo = '' then
                         exit;
-                    if SourceTableID in [DATABASE::"Sales Line Archive", DATABASE::"Purchase Line Archive"]
+                    if SourceTableID in [Database::"Sales Line Archive", Database::"Purchase Line Archive"]
                     then begin
-                        SourceFieldRef := SourceRecordRef.FIELD(4);
+                        SourceFieldRef := SourceRecordRef.Field(4);
                         SourceLineNo := SourceFieldRef.Value();
                         if SourceLineNo = 0 then
                             exit;
                     end else
                         SourceLineNo := 0;
 
-                    SourceFieldRef := SourceRecordRef.FIELD(5048);
+                    SourceFieldRef := SourceRecordRef.Field(5048);
                     SourceDocNoOcc := SourceFieldRef.Value();
-                    SourceFieldRef := SourceRecordRef.FIELD(5047);
+                    SourceFieldRef := SourceRecordRef.Field(5047);
                     SourceVersionNo := SourceFieldRef.Value();
 
 
@@ -196,70 +196,70 @@ codeunit 5272723 "lbt Longtext Mgt."
         SourceTableID := SourceRecordRef.Number();
         // Tabellen und Filterung über RecordRef's
         case SourceTableID of
-            DATABASE::"Sales Header", DATABASE::"Sales Line",
-        DATABASE::"Purchase Header", DATABASE::"Purchase Line":
-                SourceLongtextRecordRef.OPEN(DATABASE::"lbt PS Longtext Line");
-            DATABASE::"Sales Shipment Header", DATABASE::"Sales Shipment Line",
-        DATABASE::"Sales Invoice Header", DATABASE::"Sales Invoice Line",
-        DATABASE::"Sales Cr.Memo Header", DATABASE::"Sales Cr.Memo Line",
-        DATABASE::"Purch. Rcpt. Header", DATABASE::"Purch. Rcpt. Line",
-        DATABASE::"Purch. Inv. Header", DATABASE::"Purch. Inv. Line",
-        DATABASE::"Purch. Cr. Memo Hdr.", DATABASE::"Purch. Cr. Memo Line",
-        DATABASE::"Return Shipment Header", DATABASE::"Return Shipment Line",
-        DATABASE::"Return Receipt Header", DATABASE::"Return Receipt Line":
-                SourceLongtextRecordRef.OPEN(DATABASE::"lbt Posted PS Longtext Line");
-            DATABASE::"Sales Header Archive", DATABASE::"Sales Line Archive",
-        DATABASE::"Purchase Header Archive", DATABASE::"Purchase Line Archive":
-                SourceLongtextRecordRef.OPEN(DATABASE::"lbt Archive PS Longtext Line");
+            Database::"Sales Header", Database::"Sales Line",
+        Database::"Purchase Header", Database::"Purchase Line":
+                SourceLongtextRecordRef.Open(Database::"lbt PS Longtext Line");
+            Database::"Sales Shipment Header", Database::"Sales Shipment Line",
+        Database::"Sales Invoice Header", Database::"Sales Invoice Line",
+        Database::"Sales Cr.Memo Header", Database::"Sales Cr.Memo Line",
+        Database::"Purch. Rcpt. Header", Database::"Purch. Rcpt. Line",
+        Database::"Purch. Inv. Header", Database::"Purch. Inv. Line",
+        Database::"Purch. Cr. Memo Hdr.", Database::"Purch. Cr. Memo Line",
+        Database::"Return Shipment Header", Database::"Return Shipment Line",
+        Database::"Return Receipt Header", Database::"Return Receipt Line":
+                SourceLongtextRecordRef.Open(Database::"lbt Posted PS Longtext Line");
+            Database::"Sales Header Archive", Database::"Sales Line Archive",
+        Database::"Purchase Header Archive", Database::"Purchase Line Archive":
+                SourceLongtextRecordRef.Open(Database::"lbt Archive PS Longtext Line");
         end;
-        SourceFieldRef := SourceLongtextRecordRef.FIELD(1);
+        SourceFieldRef := SourceLongtextRecordRef.Field(1);
         SourceFieldRef.SetRange(SourceTableID);
 
         // Dokumentenart
-        if SourceTableID in [DATABASE::"Sales Header", DATABASE::"Sales Line",
-                             DATABASE::"Purchase Header", DATABASE::"Purchase Line",
-                             DATABASE::"Sales Header Archive", DATABASE::"Sales Line Archive",
-                             DATABASE::"Purchase Header Archive", DATABASE::"Purchase Line Archive"]
+        if SourceTableID in [Database::"Sales Header", Database::"Sales Line",
+                             Database::"Purchase Header", Database::"Purchase Line",
+                             Database::"Sales Header Archive", Database::"Sales Line Archive",
+                             Database::"Purchase Header Archive", Database::"Purchase Line Archive"]
         then begin
-            SourceFieldRef := SourceRecordRef.FIELD(1);
+            SourceFieldRef := SourceRecordRef.Field(1);
             SourceDocumentType := SourceFieldRef.Value();
-            SourceFieldRef := SourceLongtextRecordRef.FIELD(2);
+            SourceFieldRef := SourceLongtextRecordRef.Field(2);
             SourceFieldRef.SetRange(SourceDocumentType);
         end;
 
         // Dokumenten Nr.
-        SourceFieldRef := SourceRecordRef.FIELD(3);
+        SourceFieldRef := SourceRecordRef.Field(3);
         SourceDocumentNo := SourceFieldRef.Value();
-        SourceFieldRef := SourceLongtextRecordRef.FIELD(3);
+        SourceFieldRef := SourceLongtextRecordRef.Field(3);
         SourceFieldRef.SetRange(SourceDocumentNo);
 
         // Belegnr.-Häufigkeit + Versionsnr.
-        if SourceTableID in [DATABASE::"Sales Header Archive", DATABASE::"Purchase Header Archive",
-                             DATABASE::"Sales Line Archive", DATABASE::"Purchase Line Archive"]
+        if SourceTableID in [Database::"Sales Header Archive", Database::"Purchase Header Archive",
+                             Database::"Sales Line Archive", Database::"Purchase Line Archive"]
         then begin
-            SourceFieldRef := SourceRecordRef.FIELD(5048);
+            SourceFieldRef := SourceRecordRef.Field(5048);
             SourceDocNoOcc := SourceFieldRef.Value();
-            SourceFieldRef := SourceLongtextRecordRef.FIELD(8);
+            SourceFieldRef := SourceLongtextRecordRef.Field(8);
             SourceFieldRef.SetRange(SourceDocNoOcc);
 
-            SourceFieldRef := SourceRecordRef.FIELD(5047);
+            SourceFieldRef := SourceRecordRef.Field(5047);
             SourceVersionNo := SourceFieldRef.Value();
-            SourceFieldRef := SourceLongtextRecordRef.FIELD(7);
+            SourceFieldRef := SourceLongtextRecordRef.Field(7);
             SourceFieldRef.SetRange(SourceVersionNo);
         end;
 
         // Zeilen Nr.
-        if SourceTableID in [DATABASE::"Sales Line", DATABASE::"Purchase Line",
-                             DATABASE::"Sales Shipment Line", DATABASE::"Purch. Rcpt. Line",
-                             DATABASE::"Sales Invoice Line", DATABASE::"Purch. Inv. Line",
-                             DATABASE::"Sales Cr.Memo Line", DATABASE::"Purch. Cr. Memo Line",
-                             DATABASE::"Return Shipment Line", DATABASE::"Return Receipt Line",
-                             DATABASE::"Sales Line Archive", DATABASE::"Purchase Line Archive",
-                             DATABASE::"Return Shipment Line", DATABASE::"Return Receipt Line"]
+        if SourceTableID in [Database::"Sales Line", Database::"Purchase Line",
+                             Database::"Sales Shipment Line", Database::"Purch. Rcpt. Line",
+                             Database::"Sales Invoice Line", Database::"Purch. Inv. Line",
+                             Database::"Sales Cr.Memo Line", Database::"Purch. Cr. Memo Line",
+                             Database::"Return Shipment Line", Database::"Return Receipt Line",
+                             Database::"Sales Line Archive", Database::"Purchase Line Archive",
+                             Database::"Return Shipment Line", Database::"Return Receipt Line"]
         then begin
-            SourceFieldRef := SourceRecordRef.FIELD(4);
+            SourceFieldRef := SourceRecordRef.Field(4);
             SourceLineNo := SourceFieldRef.Value();
-            SourceFieldRef := SourceLongtextRecordRef.FIELD(5);
+            SourceFieldRef := SourceLongtextRecordRef.Field(5);
             SourceFieldRef.SetRange(SourceLineNo);
         end;
 
@@ -311,80 +311,80 @@ codeunit 5272723 "lbt Longtext Mgt."
         SourceTableID := SourceRecordRef.Number();
         // Tabellen und Filterung über RecordRef's
         case SourceTableID of
-            DATABASE::"Sales Header", DATABASE::"Sales Line",
-        DATABASE::"Purchase Header", DATABASE::"Purchase Line":
-                SourceLongtextRecordRef.OPEN(DATABASE::"lbt PS Longtext Line");
-            DATABASE::"Sales Shipment Header", DATABASE::"Sales Shipment Line",
-        DATABASE::"Sales Invoice Header", DATABASE::"Sales Invoice Line",
-        DATABASE::"Sales Cr.Memo Header", DATABASE::"Sales Cr.Memo Line",
-        DATABASE::"Purch. Rcpt. Header", DATABASE::"Purch. Rcpt. Line",
-        DATABASE::"Purch. Inv. Header", DATABASE::"Purch. Inv. Line",
-        DATABASE::"Purch. Cr. Memo Hdr.", DATABASE::"Purch. Cr. Memo Line",
-        DATABASE::"Return Shipment Header", DATABASE::"Return Shipment Line",
-        DATABASE::"Return Receipt Header", DATABASE::"Return Receipt Line":
-                SourceLongtextRecordRef.OPEN(DATABASE::"lbt Posted PS Longtext Line");
-            DATABASE::"Sales Header Archive", DATABASE::"Sales Line Archive",
-        DATABASE::"Purchase Header Archive", DATABASE::"Purchase Line Archive":
-                SourceLongtextRecordRef.OPEN(DATABASE::"lbt Archive PS Longtext Line");
+            Database::"Sales Header", Database::"Sales Line",
+        Database::"Purchase Header", Database::"Purchase Line":
+                SourceLongtextRecordRef.Open(Database::"lbt PS Longtext Line");
+            Database::"Sales Shipment Header", Database::"Sales Shipment Line",
+        Database::"Sales Invoice Header", Database::"Sales Invoice Line",
+        Database::"Sales Cr.Memo Header", Database::"Sales Cr.Memo Line",
+        Database::"Purch. Rcpt. Header", Database::"Purch. Rcpt. Line",
+        Database::"Purch. Inv. Header", Database::"Purch. Inv. Line",
+        Database::"Purch. Cr. Memo Hdr.", Database::"Purch. Cr. Memo Line",
+        Database::"Return Shipment Header", Database::"Return Shipment Line",
+        Database::"Return Receipt Header", Database::"Return Receipt Line":
+                SourceLongtextRecordRef.Open(Database::"lbt Posted PS Longtext Line");
+            Database::"Sales Header Archive", Database::"Sales Line Archive",
+        Database::"Purchase Header Archive", Database::"Purchase Line Archive":
+                SourceLongtextRecordRef.Open(Database::"lbt Archive PS Longtext Line");
 
         end;
-        SourceFieldRef := SourceLongtextRecordRef.FIELD(1);
+        SourceFieldRef := SourceLongtextRecordRef.Field(1);
         SourceFieldRef.SetRange(SourceTableID);
 
         // Dokumententyp
-        if SourceTableID in [DATABASE::"Sales Header", DATABASE::"Sales Line",
-                             DATABASE::"Purchase Header", DATABASE::"Purchase Line",
-                             DATABASE::"Sales Header Archive", DATABASE::"Sales Line Archive",
-                             DATABASE::"Purchase Header Archive", DATABASE::"Purchase Line Archive"]
+        if SourceTableID in [Database::"Sales Header", Database::"Sales Line",
+                             Database::"Purchase Header", Database::"Purchase Line",
+                             Database::"Sales Header Archive", Database::"Sales Line Archive",
+                             Database::"Purchase Header Archive", Database::"Purchase Line Archive"]
         then begin
-            SourceFieldRef := SourceRecordRef.FIELD(1);
+            SourceFieldRef := SourceRecordRef.Field(1);
             SourceDocumentType := SourceFieldRef.Value();
-            SourceFieldRef := SourceLongtextRecordRef.FIELD(2);
+            SourceFieldRef := SourceLongtextRecordRef.Field(2);
             SourceFieldRef.SetRange(SourceDocumentType);
         end;
-        if SourceTableID in [DATABASE::"Service Header", database::"service line", database::"Service item Line"]
+        if SourceTableID in [Database::"Service Header", database::"service line", database::"Service item Line"]
         then begin
-            SourceFieldRef := SourceRecordRef.FIELD(43);
+            SourceFieldRef := SourceRecordRef.Field(43);
             SourceDocumentType := SourceFieldRef.Value();
-            SourceFieldRef := SourceLongtextRecordRef.FIELD(43);
+            SourceFieldRef := SourceLongtextRecordRef.Field(43);
             SourceFieldRef.SetRange(SourceDocumentType);
         end;
 
 
         // Dokumenten Nr.
-        SourceFieldRef := SourceRecordRef.FIELD(3);
+        SourceFieldRef := SourceRecordRef.Field(3);
         SourceDocumentNo := SourceFieldRef.Value();
-        SourceFieldRef := SourceLongtextRecordRef.FIELD(3);
+        SourceFieldRef := SourceLongtextRecordRef.Field(3);
         SourceFieldRef.SetRange(SourceDocumentNo);
 
 
         //  Belegnr.-Häufigkeit + Versionsnr.
-        if SourceTableID in [DATABASE::"Sales Header Archive", DATABASE::"Purchase Header Archive",
-                             DATABASE::"Sales Line Archive", DATABASE::"Purchase Line Archive"]
+        if SourceTableID in [Database::"Sales Header Archive", Database::"Purchase Header Archive",
+                             Database::"Sales Line Archive", Database::"Purchase Line Archive"]
         then begin
-            SourceFieldRef := SourceRecordRef.FIELD(5048);
+            SourceFieldRef := SourceRecordRef.Field(5048);
             SourceDocNoOcc := SourceFieldRef.Value();
-            SourceFieldRef := SourceLongtextRecordRef.FIELD(8);
+            SourceFieldRef := SourceLongtextRecordRef.Field(8);
             SourceFieldRef.SetRange(SourceDocNoOcc);
 
-            SourceFieldRef := SourceRecordRef.FIELD(5047);
+            SourceFieldRef := SourceRecordRef.Field(5047);
             SourceVersionNo := SourceFieldRef.Value();
-            SourceFieldRef := SourceLongtextRecordRef.FIELD(7);
+            SourceFieldRef := SourceLongtextRecordRef.Field(7);
             SourceFieldRef.SetRange(SourceVersionNo);
         end;
 
         // Zeilen Nr.
-        if SourceTableID in [DATABASE::"Sales Line", DATABASE::"Purchase Line",
-                             DATABASE::"Sales Shipment Line", DATABASE::"Purch. Rcpt. Line",
-                             DATABASE::"Sales Invoice Line", DATABASE::"Purch. Inv. Line",
-                             DATABASE::"Sales Cr.Memo Line", DATABASE::"Purch. Cr. Memo Line",
-                             DATABASE::"Return Shipment Line", DATABASE::"Return Receipt Line",
-                             DATABASE::"Sales Line Archive", DATABASE::"Purchase Line Archive",
-                             DATABASE::"Return Shipment Line", DATABASE::"Return Receipt Line"]
+        if SourceTableID in [Database::"Sales Line", Database::"Purchase Line",
+                             Database::"Sales Shipment Line", Database::"Purch. Rcpt. Line",
+                             Database::"Sales Invoice Line", Database::"Purch. Inv. Line",
+                             Database::"Sales Cr.Memo Line", Database::"Purch. Cr. Memo Line",
+                             Database::"Return Shipment Line", Database::"Return Receipt Line",
+                             Database::"Sales Line Archive", Database::"Purchase Line Archive",
+                             Database::"Return Shipment Line", Database::"Return Receipt Line"]
         then begin
-            SourceFieldRef := SourceRecordRef.FIELD(4);
+            SourceFieldRef := SourceRecordRef.Field(4);
             SourceLineNo := SourceFieldRef.Value();
-            SourceFieldRef := SourceLongtextRecordRef.FIELD(5);
+            SourceFieldRef := SourceLongtextRecordRef.Field(5);
             SourceFieldRef.SetRange(SourceLineNo);
         end;
 
@@ -394,101 +394,101 @@ codeunit 5272723 "lbt Longtext Mgt."
         TargetTableID := TargetRecordRef.Number();
         // Tabellen und Filterung über RecordRef's
         case TargetTableID of
-            DATABASE::"Sales Header", DATABASE::"Sales Line",
-        DATABASE::"Purchase Header", DATABASE::"Purchase Line":
-                TargetLongtextRecordRef.OPEN(DATABASE::"lbt PS Longtext Line");
-            DATABASE::"Sales Shipment Header", DATABASE::"Sales Shipment Line",
-        DATABASE::"Sales Invoice Header", DATABASE::"Sales Invoice Line",
-        DATABASE::"Sales Cr.Memo Header", DATABASE::"Sales Cr.Memo Line",
-        DATABASE::"Purch. Rcpt. Header", DATABASE::"Purch. Rcpt. Line",
-        DATABASE::"Purch. Inv. Header", DATABASE::"Purch. Inv. Line",
-        DATABASE::"Purch. Cr. Memo Hdr.", DATABASE::"Purch. Cr. Memo Line",
-        DATABASE::"Return Shipment Header", DATABASE::"Return Shipment Line",
-        DATABASE::"Return Receipt Header", DATABASE::"Return Receipt Line":
-                TargetLongtextRecordRef.OPEN(DATABASE::"lbt Posted PS Longtext Line");
-            DATABASE::"Sales Header Archive", DATABASE::"Sales Line Archive",
-        DATABASE::"Purchase Header Archive", DATABASE::"Purchase Line Archive":
-                TargetLongtextRecordRef.OPEN(DATABASE::"lbt Archive PS Longtext Line");
+            Database::"Sales Header", Database::"Sales Line",
+        Database::"Purchase Header", Database::"Purchase Line":
+                TargetLongtextRecordRef.Open(Database::"lbt PS Longtext Line");
+            Database::"Sales Shipment Header", Database::"Sales Shipment Line",
+        Database::"Sales Invoice Header", Database::"Sales Invoice Line",
+        Database::"Sales Cr.Memo Header", Database::"Sales Cr.Memo Line",
+        Database::"Purch. Rcpt. Header", Database::"Purch. Rcpt. Line",
+        Database::"Purch. Inv. Header", Database::"Purch. Inv. Line",
+        Database::"Purch. Cr. Memo Hdr.", Database::"Purch. Cr. Memo Line",
+        Database::"Return Shipment Header", Database::"Return Shipment Line",
+        Database::"Return Receipt Header", Database::"Return Receipt Line":
+                TargetLongtextRecordRef.Open(Database::"lbt Posted PS Longtext Line");
+            Database::"Sales Header Archive", Database::"Sales Line Archive",
+        Database::"Purchase Header Archive", Database::"Purchase Line Archive":
+                TargetLongtextRecordRef.Open(Database::"lbt Archive PS Longtext Line");
         end;
-        TargetFieldRef := TargetLongtextRecordRef.FIELD(1);
+        TargetFieldRef := TargetLongtextRecordRef.Field(1);
         TargetFieldRef.SetRange(TargetTableID);
 
         // Dokumententyp
-        if TargetTableID in [DATABASE::"Sales Header", DATABASE::"Sales Line",
-                             DATABASE::"Purchase Header", DATABASE::"Purchase Line",
-                             DATABASE::"Sales Header Archive", DATABASE::"Sales Line Archive",
-                             DATABASE::"Purchase Header Archive", DATABASE::"Purchase Line Archive"]
+        if TargetTableID in [Database::"Sales Header", Database::"Sales Line",
+                             Database::"Purchase Header", Database::"Purchase Line",
+                             Database::"Sales Header Archive", Database::"Sales Line Archive",
+                             Database::"Purchase Header Archive", Database::"Purchase Line Archive"]
         then begin
-            TargetFieldRef := TargetRecordRef.FIELD(1);
+            TargetFieldRef := TargetRecordRef.Field(1);
             TargetDocumentType := TargetFieldRef.Value();
-            TargetFieldRef := TargetLongtextRecordRef.FIELD(2);
+            TargetFieldRef := TargetLongtextRecordRef.Field(2);
             TargetFieldRef.SetRange(TargetDocumentType);
         end;
 
         // Dokumenten Nr.
-        TargetFieldRef := TargetRecordRef.FIELD(3);
+        TargetFieldRef := TargetRecordRef.Field(3);
         TargetDocumentNo := TargetFieldRef.Value();
-        TargetFieldRef := TargetLongtextRecordRef.FIELD(3);
+        TargetFieldRef := TargetLongtextRecordRef.Field(3);
         TargetFieldRef.SetRange(TargetDocumentNo);
 
         //  Belegnr.-Häufigkeit + Versionsnr.
-        if TargetTableID in [DATABASE::"Sales Header Archive", DATABASE::"Purchase Header Archive",
-                             DATABASE::"Sales Line Archive", DATABASE::"Purchase Line Archive"]
+        if TargetTableID in [Database::"Sales Header Archive", Database::"Purchase Header Archive",
+                             Database::"Sales Line Archive", Database::"Purchase Line Archive"]
         then begin
-            TargetFieldRef := TargetRecordRef.FIELD(5048);
+            TargetFieldRef := TargetRecordRef.Field(5048);
             TargetDocNoOcc := TargetFieldRef.Value();
-            TargetFieldRef := TargetLongtextRecordRef.FIELD(8);
+            TargetFieldRef := TargetLongtextRecordRef.Field(8);
             TargetFieldRef.SetRange(TargetDocNoOcc);
 
-            TargetFieldRef := TargetRecordRef.FIELD(5047);
+            TargetFieldRef := TargetRecordRef.Field(5047);
             TargetVersionNo := TargetFieldRef.Value();
-            TargetFieldRef := TargetLongtextRecordRef.FIELD(7);
+            TargetFieldRef := TargetLongtextRecordRef.Field(7);
             TargetFieldRef.SetRange(TargetVersionNo);
         end;
 
         // Zeilen Nr.
-        if TargetTableID in [DATABASE::"Sales Line", DATABASE::"Purchase Line",
-                             DATABASE::"Sales Shipment Line", DATABASE::"Purch. Rcpt. Line",
-                             DATABASE::"Sales Invoice Line", DATABASE::"Purch. Inv. Line",
-                             DATABASE::"Sales Cr.Memo Line", DATABASE::"Purch. Cr. Memo Line",
-                             DATABASE::"Return Shipment Line", DATABASE::"Return Receipt Line",
-                             DATABASE::"Sales Line Archive", DATABASE::"Purchase Line Archive",
-                             DATABASE::"Return Shipment Line", DATABASE::"Return Receipt Line"]
+        if TargetTableID in [Database::"Sales Line", Database::"Purchase Line",
+                             Database::"Sales Shipment Line", Database::"Purch. Rcpt. Line",
+                             Database::"Sales Invoice Line", Database::"Purch. Inv. Line",
+                             Database::"Sales Cr.Memo Line", Database::"Purch. Cr. Memo Line",
+                             Database::"Return Shipment Line", Database::"Return Receipt Line",
+                             Database::"Sales Line Archive", Database::"Purchase Line Archive",
+                             Database::"Return Shipment Line", Database::"Return Receipt Line"]
         then begin
-            TargetFieldRef := TargetRecordRef.FIELD(4);
+            TargetFieldRef := TargetRecordRef.Field(4);
             TargetLineNo := TargetFieldRef.Value();
-            TargetFieldRef := TargetLongtextRecordRef.FIELD(5);
+            TargetFieldRef := TargetLongtextRecordRef.Field(5);
             TargetFieldRef.SetRange(TargetLineNo);
         end;
 
         // Sonderfall im Auftrag/Bestellung -- Kopf- & Fußtexte für Rechnung/Lieferung
-        if (SourceTableID in [DATABASE::"Sales Header", DATABASE::"Purchase Header"]) and
+        if (SourceTableID in [Database::"Sales Header", Database::"Purchase Header"]) and
            (SourceDocumentType = 1) //Auftrag/Bestellung
         then begin
             // wenn Ziel = Rechnung, dann prüfen, ob separate Texte
-            if (TargetTableID in [DATABASE::"Sales Invoice Header", DATABASE::"Purch. Inv. Header"]) or
-              ((TargetTableID = DATABASE::"Sales Invoice Header") and (TargetDocumentType = 2))
+            if (TargetTableID in [Database::"Sales Invoice Header", Database::"Purch. Inv. Header"]) or
+              ((TargetTableID = Database::"Sales Invoice Header") and (TargetDocumentType = 2))
             then begin
-                SourceFieldRef := SourceLongtextRecordRef.FIELD(2);
+                SourceFieldRef := SourceLongtextRecordRef.Field(2);
                 SourceFieldRef.SetRange(2); // Rechnung
                 if SourceLongtextRecordRef.IsEmpty() then
                     SourceFieldRef.SetRange(1); //Auftrag/Bestellung
             end;
 
             // wenn Ziel = Lieferschein, dann prüfen, ob separate Texte
-            if (TargetTableID in [DATABASE::"Sales Shipment Header", DATABASE::"Purch. Rcpt. Header"])
+            if (TargetTableID in [Database::"Sales Shipment Header", Database::"Purch. Rcpt. Header"])
             then begin
-                SourceFieldRef := SourceLongtextRecordRef.FIELD(2);
+                SourceFieldRef := SourceLongtextRecordRef.Field(2);
                 SourceFieldRef.SetRange(6); // Lieferung
                 if SourceLongtextRecordRef.IsEmpty() then
                     SourceFieldRef.SetRange(1); // Auftrag/Bestellung
             end;
 
             // wenn Ziel = Auftrag, dann alles
-            if (TargetTableID in [DATABASE::"Sales Header", DATABASE::"Purchase Header"]) and
+            if (TargetTableID in [Database::"Sales Header", Database::"Purchase Header"]) and
                (TargetDocumentType = 1) // Auftrag/Bestellung
             then begin
-                SourceFieldRef := SourceLongtextRecordRef.FIELD(2);
+                SourceFieldRef := SourceLongtextRecordRef.Field(2);
                 SourceFieldRef.SetRange();
             end;
         end;
@@ -497,71 +497,71 @@ codeunit 5272723 "lbt Longtext Mgt."
         if SourceLongtextRecordRef.FindSet() then begin
             // letzte Zielzeilennr. finden (falls beim Beleg kopieren noch da)
             if TargetLongtextRecordRef.FindLast() then begin
-                TargetFieldRef := TargetLongtextRecordRef.FIELD(6);
+                TargetFieldRef := TargetLongtextRecordRef.Field(6);
                 LineNo := TargetFieldRef.Value();
             end else
                 LineNo := 0;
             repeat
                 LineNo += 10000;
                 TargetLongtextRecordRef.Init();
-                TargetFieldRef := TargetLongtextRecordRef.FIELD(1);  // Table ID
+                TargetFieldRef := TargetLongtextRecordRef.Field(1);  // Table ID
                 TargetFieldRef.Value := TargetTableID;
                 // wenn Quelle und Ziel = Auftrag, dann originale Arten
-                if ((SourceTableID in [DATABASE::"Sales Header", DATABASE::"Sales Line",
-                                       DATABASE::"Purchase Header", DATABASE::"Purchase Line",
-                                       DATABASE::"Sales Header Archive", DATABASE::"Sales Line Archive",
-                                       DATABASE::"Purchase Header Archive", DATABASE::"Purchase Line Archive"]) and
+                if ((SourceTableID in [Database::"Sales Header", Database::"Sales Line",
+                                       Database::"Purchase Header", Database::"Purchase Line",
+                                       Database::"Sales Header Archive", Database::"Sales Line Archive",
+                                       Database::"Purchase Header Archive", Database::"Purchase Line Archive"]) and
                     (SourceDocumentType = 1)) and
-                   ((TargetTableID in [DATABASE::"Sales Header", DATABASE::"Sales Line",
-                                       DATABASE::"Purchase Header", DATABASE::"Purchase Line",
-                                       DATABASE::"Sales Header Archive", DATABASE::"Sales Line Archive",
-                                       DATABASE::"Purchase Header Archive", DATABASE::"Purchase Line Archive"]) and
+                   ((TargetTableID in [Database::"Sales Header", Database::"Sales Line",
+                                       Database::"Purchase Header", Database::"Purchase Line",
+                                       Database::"Sales Header Archive", Database::"Sales Line Archive",
+                                       Database::"Purchase Header Archive", Database::"Purchase Line Archive"]) and
                     (TargetDocumentType = 1))
                 then begin
-                    SourceFieldRef := SourceLongtextRecordRef.FIELD(2);  // Document Type
-                    TargetFieldRef := TargetLongtextRecordRef.FIELD(2);  // Document Type
+                    SourceFieldRef := SourceLongtextRecordRef.Field(2);  // Document Type
+                    TargetFieldRef := TargetLongtextRecordRef.Field(2);  // Document Type
                     TargetFieldRef.Value := SourceFieldRef.Value();
                 end else
-                    if (TargetTableID in [DATABASE::"Sales Header", DATABASE::"Sales Line",
-                                          DATABASE::"Purchase Header", DATABASE::"Purchase Line",
-                                          DATABASE::"Sales Header Archive", DATABASE::"Sales Line Archive",
-                                          DATABASE::"Purchase Header Archive", DATABASE::"Purchase Line Archive"])
+                    if (TargetTableID in [Database::"Sales Header", Database::"Sales Line",
+                                          Database::"Purchase Header", Database::"Purchase Line",
+                                          Database::"Sales Header Archive", Database::"Sales Line Archive",
+                                          Database::"Purchase Header Archive", Database::"Purchase Line Archive"])
                     then begin
-                        TargetFieldRef := TargetLongtextRecordRef.FIELD(2);  // Document Type
+                        TargetFieldRef := TargetLongtextRecordRef.Field(2);  // Document Type
                         TargetFieldRef.Value := TargetDocumentType;
                     end;
 
-                TargetFieldRef := TargetLongtextRecordRef.FIELD(3);  // Document No.
+                TargetFieldRef := TargetLongtextRecordRef.Field(3);  // Document No.
                 TargetFieldRef.Value := TargetDocumentNo;
-                SourceFieldRef := SourceLongtextRecordRef.FIELD(4);  // Position
-                TargetFieldRef := TargetLongtextRecordRef.FIELD(4);  // Position
+                SourceFieldRef := SourceLongtextRecordRef.Field(4);  // Position
+                TargetFieldRef := TargetLongtextRecordRef.Field(4);  // Position
                 TargetFieldRef.Value := SourceFieldRef.Value();
-                TargetFieldRef := TargetLongtextRecordRef.FIELD(5);  // Document Line No.
+                TargetFieldRef := TargetLongtextRecordRef.Field(5);  // Document Line No.
                 TargetFieldRef.Value := TargetLineNo;
-                TargetFieldRef := TargetLongtextRecordRef.FIELD(6);  // Line No.
+                TargetFieldRef := TargetLongtextRecordRef.Field(6);  // Line No.
                 TargetFieldRef.Value := LineNo;
 
-                if TargetTableID in [DATABASE::"Sales Header Archive", DATABASE::"Sales Line Archive",
-                                     DATABASE::"Purchase Header Archive", DATABASE::"Purchase Line Archive"]
+                if TargetTableID in [Database::"Sales Header Archive", Database::"Sales Line Archive",
+                                     Database::"Purchase Header Archive", Database::"Purchase Line Archive"]
                 then begin
-                    TargetFieldRef := TargetLongtextRecordRef.FIELD(7);  // Version No.
+                    TargetFieldRef := TargetLongtextRecordRef.Field(7);  // Version No.
                     TargetFieldRef.Value := TargetVersionNo;
-                    TargetFieldRef := TargetLongtextRecordRef.FIELD(8);  // Doc. No. Occurrence
+                    TargetFieldRef := TargetLongtextRecordRef.Field(8);  // Doc. No. Occurrence
                     TargetFieldRef.Value := TargetDocNoOcc;
                 end;
-                SourceFieldRef := SourceLongtextRecordRef.FIELD(10); // Type
-                TargetFieldRef := TargetLongtextRecordRef.FIELD(10); // Type
+                SourceFieldRef := SourceLongtextRecordRef.Field(10); // Type
+                TargetFieldRef := TargetLongtextRecordRef.Field(10); // Type
                 TargetFieldRef.Value := SourceFieldRef.Value();
-                SourceFieldRef := SourceLongtextRecordRef.FIELD(11); // No.
-                TargetFieldRef := TargetLongtextRecordRef.FIELD(11); // No.
+                SourceFieldRef := SourceLongtextRecordRef.Field(11); // No.
+                TargetFieldRef := TargetLongtextRecordRef.Field(11); // No.
                 TargetFieldRef.Value := SourceFieldRef.Value();
-                SourceFieldRef := SourceLongtextRecordRef.FIELD(12); // Description
-                TargetFieldRef := TargetLongtextRecordRef.FIELD(12); // Description
+                SourceFieldRef := SourceLongtextRecordRef.Field(12); // Description
+                TargetFieldRef := TargetLongtextRecordRef.Field(12); // Description
                 TargetFieldRef.Value := SourceFieldRef.Value();
 
-                SourceFieldRef := SourceLongtextRecordRef.FIELD(21); // Editor
-                TargetFieldRef := TargetLongtextRecordRef.field(21); //Editor
-                clear(TempBlob);
+                SourceFieldRef := SourceLongtextRecordRef.Field(21); // Editor
+                TargetFieldRef := TargetLongtextRecordRef.Field(21); //Editor
+                Clear(TempBlob);
                 TempBlob.FromFieldRef(SourceFieldRef);
                 TempBlob.ToFieldRef(TargetfieldRef);
 
@@ -589,17 +589,17 @@ codeunit 5272723 "lbt Longtext Mgt."
         SourceLineNo: Integer;
     begin
         SourceTableID := SourceRecordRef.Number();
-        if not (SourceTableID in [DATABASE::"Sales Header", DATABASE::"Sales Line",
-                                  DATABASE::"Purchase Header", DATABASE::"Purchase Line"])
+        if not (SourceTableID in [Database::"Sales Header", Database::"Sales Line",
+                                  Database::"Purchase Header", Database::"Purchase Line"])
         then
             exit;
 
-        SourceFieldRef := SourceRecordRef.FIELD(1);
+        SourceFieldRef := SourceRecordRef.Field(1);
         SourceDocumentType := SourceFieldRef.Value();
-        SourceFieldRef := SourceRecordRef.FIELD(3);
+        SourceFieldRef := SourceRecordRef.Field(3);
         SourceDocumentNo := SourceFieldRef.Value();
-        if SourceTableID in [DATABASE::"Sales Line", DATABASE::"Purchase Line"] then begin
-            SourceFieldRef := SourceRecordRef.FIELD(4);
+        if SourceTableID in [Database::"Sales Line", Database::"Purchase Line"] then begin
+            SourceFieldRef := SourceRecordRef.Field(4);
             SourceLineNo := SourceFieldRef.Value();
         end else
             SourceLineNo := 0;
@@ -625,12 +625,12 @@ codeunit 5272723 "lbt Longtext Mgt."
         ToPSLongtextLine.SetRange(Position, FromPSLongtextLine.Position);
         ToPSLongtextLine.SetRange("Document Line No.", FromPSLongtextLine."Document Line No.");
         ToPSLongtextLine := FromPSLongtextLine;
-        if ToPSLongtextLine.FIND('>') then begin
+        if ToPSLongtextLine.Find('>') then begin
             LineSpacing :=
               (ToPSLongtextLine."Line No." - FromPSLongtextLine."Line No.") div
               (1 + TempExtendedTextLineLong.Count());
             if LineSpacing = 0 then
-                ERROR(NotEnoughSpaceErr);
+                Error(NotEnoughSpaceErr);
         end else
             LineSpacing := 10000;
 
@@ -638,7 +638,7 @@ codeunit 5272723 "lbt Longtext Mgt."
         FirstLine := true;
 
         TempExtendedTextLineLong.Reset();
-        if TempExtendedTextLineLong.FIND('-') then
+        if TempExtendedTextLineLong.Find('-') then
             repeat
                 if FirstLine then begin
                     FromPSLongtextLine.Description := TempExtendedTextLineLong.Description;
@@ -715,7 +715,7 @@ codeunit 5272723 "lbt Longtext Mgt."
                 ExtendedTextLine.SetRange("No.", ExtendedTextHeader."No.");
                 ExtendedTextLine.SetRange("Language Code", ExtendedTextHeader."Language Code");
                 ExtendedTextLine.SetRange("Text No.", ExtendedTextHeader."Text No.");
-                if ExtendedTextLine.FIND('-') then begin
+                if ExtendedTextLine.Find('-') then begin
                     TempExtendedTextLineLong.DeleteAll();
                     repeat
                         TempExtendedTextLineLong.TRANSFERFIELDS(ExtendedTextLine);
@@ -743,7 +743,7 @@ codeunit 5272723 "lbt Longtext Mgt."
     end;
 
     [BusinessEvent(true)]
-    local procedure onbeforeCopyLongText(Sourcerecref: recordref; targetRecRef: recordref; var handled: Boolean)
+    local procedure onbeforeCopyLongText(Sourcerecref: RecordRef; TargetRecRef: RecordRef; var handled: Boolean)
     begin
     end;
 }

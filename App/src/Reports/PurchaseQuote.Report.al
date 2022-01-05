@@ -9,7 +9,7 @@ report 5272727 "lbt Purchase - Quote"
     {
         dataitem("Purchase Header"; "Purchase Header")
         {
-            DataItemTableView = SORTING("Document Type", "No.") WHERE("Document Type" = CONST(Quote));
+            DataItemTableView = sorting("Document Type", "No.") where("Document Type" = const(Quote));
             RequestFilterFields = "No.", "Buy-from Vendor No.", "No. Printed";
             RequestFilterHeading = 'Purchase Quote';
             column(Footer; Footer) { }
@@ -21,10 +21,10 @@ report 5272727 "lbt Purchase - Quote"
             }
             dataitem(CopyLoop; "Integer")
             {
-                DataItemTableView = SORTING(Number);
+                DataItemTableView = sorting(Number);
                 dataitem(PageLoop; "Integer")
                 {
-                    DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+                    DataItemTableView = sorting(Number) where(Number = const(1));
                     column(CompanyInfo2Picture; CompanyInfo2.Picture)
                     {
                     }
@@ -34,7 +34,7 @@ report 5272727 "lbt Purchase - Quote"
                     column(CompanyInfo3Picture; CompanyInfo3.Picture)
                     {
                     }
-                    column(DocumentConfirmCopyCaption; STRSUBSTNO(DocumentCaption(), CopyText))
+                    column(DocumentConfirmCopyCaption; StrSubstNo(DocumentCaption(), CopyText))
                     {
                     }
                     column(VendAddr1; VendAddr[1])
@@ -61,7 +61,7 @@ report 5272727 "lbt Purchase - Quote"
                     column(VendAddr8; VendAddr[8])
                     {
                     }
-                    column(DocDate_PurchHdr; FORMAT("Purchase Header"."Document Date", 0, 4))
+                    column(DocDate_PurchHdr; Format("Purchase Header"."Document Date", 0, 4))
                     {
                     }
                     column(VatTRegNo_PurchHdr; "Purchase Header"."VAT Registration No.")
@@ -85,7 +85,7 @@ report 5272727 "lbt Purchase - Quote"
                     column(OutputNo; OutputNo)
                     {
                     }
-                    column(PaytoVendNo_PurchHdrCaption; "Purchase Header".FIELDCAPTION("Pay-to Vendor No."))
+                    column(PaytoVendNo_PurchHdrCaption; "Purchase Header".FieldCaption("Pay-to Vendor No."))
                     {
                     }
                     column(Quote_No_Caption; Quote_No_CaptionLbl)
@@ -115,16 +115,16 @@ report 5272727 "lbt Purchase - Quote"
                     column(HideCompanyInfo; HideCompanyInfo)
                     {
                     }
-                    column(Purchase_Line__Quantity_Caption; "Purchase Line".FIELDCAPTION(Quantity))
+                    column(Purchase_Line__Quantity_Caption; "Purchase Line".FieldCaption(Quantity))
                     {
                     }
-                    column(Purchase_Line__Description_Caption; "Purchase Line".FIELDCAPTION(Description))
+                    column(Purchase_Line__Description_Caption; "Purchase Line".FieldCaption(Description))
                     {
                     }
                     column(OurAccountNo_Vendor; Vendor."Our Account No.")
                     {
                     }
-                    column(OurAccountNo_Vendor_Caption; Vendor.FIELDCAPTION("Our Account No."))
+                    column(OurAccountNo_Vendor_Caption; Vendor.FieldCaption("Our Account No."))
                     {
                     }
                     column(VAT_Registration_No__Caption; VAT_Registration_No__CaptionLbl)
@@ -133,7 +133,7 @@ report 5272727 "lbt Purchase - Quote"
                     dataitem(DimensionLoop1; "Integer")
                     {
                         DataItemLinkReference = "Purchase Header";
-                        DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
+                        DataItemTableView = sorting(Number) where(Number = filter(1 ..));
                         column(DimText; DimText)
                         {
                         }
@@ -164,7 +164,7 @@ report 5272727 "lbt Purchase - Quote"
                     }
                     dataitem(LBKopf; "Integer")
                     {
-                        DataItemTableView = SORTING(Number);
+                        DataItemTableView = sorting(Number);
                         column(LBKopf_LineNo; '0')
                         {
                         }
@@ -181,9 +181,9 @@ report 5272727 "lbt Purchase - Quote"
                             Streamin: InStream;
                         begin
                             TempBlobList.Get(LBKopf.Number, TempBlob);
-                            TempBlob.CreateInstream(Streamin, TextEncoding::UTF8);
+                            TempBlob.CreateInStream(Streamin, TextEncoding::UTF8);
 
-                            Streamin.READ(LBKopf_Description);
+                            Streamin.Read(LBKopf_Description);
                             NewPageLBKopf += 1;
                         end;
 
@@ -192,14 +192,14 @@ report 5272727 "lbt Purchase - Quote"
                             PrintLongText.GetPrintText("Purchase Header", Enum::"lbt Position"::Header, TempBlobList);
                             if TempBlobList.IsEmpty() then
                                 CurrReport.Break();
-                            LBKopf.SETRANGE(Number, 1, TempBlobList.Count());
+                            LBKopf.SetRange(Number, 1, TempBlobList.Count());
                         end;
                     }
                     dataitem("Purchase Line"; "Purchase Line")
                     {
-                        DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("No.");
+                        DataItemLink = "Document Type" = field("Document Type"), "Document No." = field("No.");
                         DataItemLinkReference = "Purchase Header";
-                        DataItemTableView = SORTING("Document Type", "Document No.", "Line No.");
+                        DataItemTableView = sorting("Document Type", "Document No.", "Line No.");
 
                         trigger OnPreDataItem()
                         begin
@@ -208,11 +208,11 @@ report 5272727 "lbt Purchase - Quote"
                     }
                     dataitem(RoundLoop; "Integer")
                     {
-                        DataItemTableView = SORTING(Number);
+                        DataItemTableView = sorting(Number);
                         column(ShowInternalInfo; ShowInternalInfo)
                         {
                         }
-                        column(PurchaseLineType; FORMAT("Purchase Line".Type, 0, 2))
+                        column(PurchaseLineType; Format("Purchase Line".Type, 0, 2))
                         {
                         }
                         column(LineNo_PurchaseLine; "Purchase Line"."Line No.")
@@ -227,7 +227,7 @@ report 5272727 "lbt Purchase - Quote"
                         column(UnitOfMeasure_PurchaseLine; "Purchase Line"."Unit of Measure")
                         {
                         }
-                        column(Purchase_Line___Expected_Receipt_Date_; FORMAT("Purchase Line"."Expected Receipt Date"))
+                        column(Purchase_Line___Expected_Receipt_Date_; Format("Purchase Line"."Expected Receipt Date"))
                         {
                         }
                         column(Purchase_Line___Expected_Receipt_Date__Caption; Purchase_Line___Expected_Receipt_Date__CaptionLbl)
@@ -236,7 +236,7 @@ report 5272727 "lbt Purchase - Quote"
                         column(NewPageGroup; NewPageGroup)
                         {
                         }
-                        column(PurchaseLineLeBitPrintoption; FORMAT("Purchase Line"."lbt Printoption", 0, 2))
+                        column(PurchaseLineLeBitPrintoption; Format("Purchase Line"."lbt Printoption", 0, 2))
                         {
                         }
                         column(LeBitPosNo_PurchaseLine; "Purchase Line"."lbt Pos. No.")
@@ -268,7 +268,7 @@ report 5272727 "lbt Purchase - Quote"
                         }
                         dataitem(ParameterAndUnits; "Integer")
                         {
-                            DataItemTableView = SORTING(Number);
+                            DataItemTableView = sorting(Number);
                             column(RowNumber; Number)
                             {
                             }
@@ -287,12 +287,12 @@ report 5272727 "lbt Purchase - Quote"
 
                             trigger OnPreDataItem()
                             begin
-                                SETRANGE(Number, 1, InfoRowNo);
+                                SetRange(Number, 1, InfoRowNo);
                             end;
                         }
                         dataitem(LBLang; Integer)
                         {
-                            DataItemTableView = SORTING(Number);
+                            DataItemTableView = sorting(Number);
                             column(LBLang_LineNo; '0') { }
                             column(LBLang_Description; LBLang_Description)
                             {
@@ -307,9 +307,9 @@ report 5272727 "lbt Purchase - Quote"
                                 Streamin: InStream;
                             begin
                                 TempBlobList.Get(LBLang.Number, TempBlob);
-                                TempBlob.CreateInstream(Streamin, TextEncoding::UTF8);
+                                TempBlob.CreateInStream(Streamin, TextEncoding::UTF8);
 
-                                Streamin.READ(LBLang_Description);
+                                Streamin.Read(LBLang_Description);
                                 NewPageLBLang += 1;
                             end;
 
@@ -318,12 +318,12 @@ report 5272727 "lbt Purchase - Quote"
                                 PrintLongText.GetPrintText("Purchase Line", Enum::"lbt Position"::Longtext, TempBlobList);
                                 if TempBlobList.IsEmpty() then
                                     CurrReport.Break();
-                                LBLang.SETRANGE(Number, 1, TempBlobList.Count());
+                                LBLang.SetRange(Number, 1, TempBlobList.Count());
                             end;
                         }
                         dataitem(DimensionLoop2; "Integer")
                         {
-                            DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
+                            DataItemTableView = sorting(Number) where(Number = filter(1 ..));
                             column(DimText1; DimText)
                             {
                             }
@@ -360,36 +360,36 @@ report 5272727 "lbt Purchase - Quote"
                             Counter: Integer;
                         begin
                             if Number = 1 then
-                                TempPurchLine.FIND('-')
+                                TempPurchLine.Find('-')
                             else
                                 TempPurchLine.Next();
                             "Purchase Line" := TempPurchLine;
 
-                            DimSetEntry2.SETRANGE("Dimension Set ID", "Purchase Line"."Dimension Set ID");
+                            DimSetEntry2.SetRange("Dimension Set ID", "Purchase Line"."Dimension Set ID");
 
                             if TempPurchLine."lbt Printoption" = TempPurchLine."lbt Printoption"::"New Page" then
                                 NewPageGroup += 1;
 
                             ItemUnitDescription := '';
                             ItemUnitQty := '';
-                            CLEAR(InfoRowNo);
-                            CLEAR(InfoCaptionArry);
-                            CLEAR(InfoValueArry);
-                            CLEAR(ItemUnitCodeArry);
-                            CLEAR(ItemUnitDescriptionArry);
-                            CLEAR(ItemUnitQtyArry);
-                            CLEAR(Item);
+                            Clear(InfoRowNo);
+                            Clear(InfoCaptionArry);
+                            Clear(InfoValueArry);
+                            Clear(ItemUnitCodeArry);
+                            Clear(ItemUnitDescriptionArry);
+                            Clear(ItemUnitQtyArry);
+                            Clear(Item);
                             ItemPictureExist := false;
 
-                            TempPurchLine.CALCFIELDS("lbt Balance");
+                            TempPurchLine.CalcFields("lbt Balance");
                             if TempPurchLine.Type = TempPurchLine.Type::Item then begin
                                 Item.Get(TempPurchLine."No.");
                                 ItemPictureExist := Item.Picture.Count() > 0;
                                 if not ItemPicturePrint then
                                     ItemPictureExist := false;
-                                TxtVar := CurrReport.OBJECTID(false);
-                                TxtVar := COPYSTR(TxtVar, STRPOS(TxtVar, ' '));
-                                EVALUATE(IntVar, TxtVar);
+                                TxtVar := CurrReport.ObjectId(false);
+                                TxtVar := CopyStr(TxtVar, StrPos(TxtVar, ' '));
+                                Evaluate(IntVar, TxtVar);
                                 LeBitReportFunctions.GetParameterArry(ReportType::Purchase, IntVar, 2, "Purchase Header"."Language Code", "Purchase Line".RowID1(), '', "Purchase Line"."No.", InfoCaptionArry, InfoValueArry);
                                 LeBitReportFunctions.GetItemUnitArry(2, "Purchase Line".RowID1(), '', "Purchase Header"."Language Code", ItemUnitCodeArry, ItemUnitDescriptionArry, ItemUnitQtyArry);
                                 Counter := 0;
@@ -401,9 +401,9 @@ report 5272727 "lbt Purchase - Quote"
                                     ItemUnitCodeArry[Counter] := '';
                                     ItemUnitDescriptionArry[Counter] := '';
                                     ItemUnitQtyArry[Counter] := '';
-                                    COMPRESSARRAY(ItemUnitCodeArry);
-                                    COMPRESSARRAY(ItemUnitDescriptionArry);
-                                    COMPRESSARRAY(ItemUnitQtyArry);
+                                    CompressArray(ItemUnitCodeArry);
+                                    CompressArray(ItemUnitDescriptionArry);
+                                    CompressArray(ItemUnitQtyArry);
                                 end;
                                 if TempPurchLine."Description 2" <> '' then begin
                                     ItemUnitDescription := ItemUnitDescriptionArry[1];
@@ -411,9 +411,9 @@ report 5272727 "lbt Purchase - Quote"
                                     ItemUnitCodeArry[1] := '';
                                     ItemUnitDescriptionArry[1] := '';
                                     ItemUnitQtyArry[1] := '';
-                                    COMPRESSARRAY(ItemUnitCodeArry);
-                                    COMPRESSARRAY(ItemUnitDescriptionArry);
-                                    COMPRESSARRAY(ItemUnitQtyArry);
+                                    CompressArray(ItemUnitCodeArry);
+                                    CompressArray(ItemUnitDescriptionArry);
+                                    CompressArray(ItemUnitQtyArry);
                                 end;
                                 //zus?tzliche Infos
                                 Counter := 0;
@@ -430,7 +430,7 @@ report 5272727 "lbt Purchase - Quote"
                                 IF PurchLine."Expected Receipt Date" <> 0D THEN BEGIN
                                   Counter += 1;
                                   InfoCaptionArry[Counter] := Expected_DateCaptionLbl;
-                                  InfoValueArry[Counter] := FORMAT(PurchLine."Expected Receipt Date",0,4);
+                                  InfoValueArry[Counter] := Format(PurchLine."Expected Receipt Date",0,4);
                                 END;
                                 */
                                 // Ermittlung der RowNo
@@ -453,7 +453,7 @@ report 5272727 "lbt Purchase - Quote"
 
                         trigger OnPreDataItem()
                         begin
-                            MoreLines := TempPurchLine.FIND('+');
+                            MoreLines := TempPurchLine.Find('+');
                             while MoreLines and (TempPurchLine.Description = '') and (TempPurchLine."Description 2" = '') and
                                   (TempPurchLine."No." = '') and (TempPurchLine.Quantity = 0) and
                                   (TempPurchLine.Amount = 0)
@@ -461,13 +461,13 @@ report 5272727 "lbt Purchase - Quote"
                                 MoreLines := TempPurchLine.Next(-1) <> 0;
                             if not MoreLines then
                                 CurrReport.Break();
-                            TempPurchLine.SETRANGE("Line No.", 0, TempPurchLine."Line No.");
-                            SETRANGE(Number, 1, TempPurchLine.Count());
+                            TempPurchLine.SetRange("Line No.", 0, TempPurchLine."Line No.");
+                            SetRange(Number, 1, TempPurchLine.Count());
                         end;
                     }
                     dataitem(Total; "Integer")
                     {
-                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+                        DataItemTableView = sorting(Number) where(Number = const(1));
                         column(ShipmentMethod_Description; ShipmentMethod.Description)
                         {
                         }
@@ -477,11 +477,11 @@ report 5272727 "lbt Purchase - Quote"
                     }
                     dataitem(Total2; "Integer")
                     {
-                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+                        DataItemTableView = sorting(Number) where(Number = const(1));
                         column(Purchase_Header___Buy_from_Vendor_No__; "Purchase Header"."Buy-from Vendor No.")
                         {
                         }
-                        column(Purchase_Header___Buy_from_Vendor_No__Caption; "Purchase Header".FIELDCAPTION("Buy-from Vendor No."))
+                        column(Purchase_Header___Buy_from_Vendor_No__Caption; "Purchase Header".FieldCaption("Buy-from Vendor No."))
                         {
                         }
 
@@ -493,7 +493,7 @@ report 5272727 "lbt Purchase - Quote"
                     }
                     dataitem(Total3; "Integer")
                     {
-                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+                        DataItemTableView = sorting(Number) where(Number = const(1));
                         column(ShipToAddr1; ShipToAddr[1])
                         {
                         }
@@ -529,7 +529,7 @@ report 5272727 "lbt Purchase - Quote"
                     }
                     dataitem(LBFuss; "Integer")
                     {
-                        DataItemTableView = SORTING(Number);
+                        DataItemTableView = sorting(Number);
                         column(LBFuss_LineNo; '0')
                         {
                         }
@@ -546,9 +546,9 @@ report 5272727 "lbt Purchase - Quote"
                             Streamin: InStream;
                         begin
                             TempBlobList.Get(LBFuss.Number, TempBlob);
-                            TempBlob.CreateInstream(Streamin, TextEncoding::UTF8);
+                            TempBlob.CreateInStream(Streamin, TextEncoding::UTF8);
 
-                            Streamin.READ(LBFuss_Description);
+                            Streamin.Read(LBFuss_Description);
                             NewPageLBFuss += 1;
                         end;
 
@@ -557,15 +557,15 @@ report 5272727 "lbt Purchase - Quote"
                             PrintLongText.GetPrintText("Purchase Header", Enum::"lbt Position"::Footer, TempBlobList);
                             if TempBlobList.IsEmpty() then
                                 CurrReport.Break();
-                            LBFuss.SETRANGE(Number, 1, TempBlobList.Count());
+                            LBFuss.SetRange(Number, 1, TempBlobList.Count());
                         end;
                     }
                 }
 
                 trigger OnAfterGetRecord()
                 begin
-                    CLEAR(TempPurchLine);
-                    CLEAR(PurchPost);
+                    Clear(TempPurchLine);
+                    Clear(PurchPost);
                     TempPurchLine.DeleteAll();
                     PurchPost.GetPurchLines("Purchase Header", TempPurchLine, 0);
 
@@ -577,15 +577,15 @@ report 5272727 "lbt Purchase - Quote"
 
                 trigger OnPostDataItem()
                 begin
-                    if not CurrReport.PREVIEW() then
-                        CODEUNIT.RUN(CODEUNIT::"Purch.Header-Printed", "Purchase Header");
+                    if not CurrReport.Preview() then
+                        Codeunit.Run(Codeunit::"Purch.Header-Printed", "Purchase Header");
                 end;
 
                 trigger OnPreDataItem()
                 begin
-                    NoOfLoops := ABS(NoOfCopies) + 1;
+                    NoOfLoops := Abs(NoOfCopies) + 1;
                     CopyText := '';
-                    SETRANGE(Number, 1, NoOfLoops);
+                    SetRange(Number, 1, NoOfLoops);
                     OutputNo := 1;
                     NewPageGroup := 1;
                 end;
@@ -598,16 +598,16 @@ report 5272727 "lbt Purchase - Quote"
                 FormatDocumentFields("Purchase Header");
                 CompanyInfo."lbt SetReportFooter"(Footer);
 
-                DimSetEntry1.SETRANGE("Dimension Set ID", "Dimension Set ID");
+                DimSetEntry1.SetRange("Dimension Set ID", "Dimension Set ID");
 
-                if not CurrReport.PREVIEW() then begin
+                if not CurrReport.Preview() then begin
                     if ArchiveDocument then
                         ArchiveManagement.StorePurchDocument("Purchase Header", LogInteraction);
 
                     if LogInteraction then begin
-                        CALCFIELDS("No. of Archived Versions");
+                        CalcFields("No. of Archived Versions");
                         SegManagement.LogDocument(
-                          11, "No.", "Doc. No. Occurrence", "No. of Archived Versions", DATABASE::Vendor, "Pay-to Vendor No.",
+                          11, "No.", "Doc. No. Occurrence", "No. of Archived Versions", Database::Vendor, "Pay-to Vendor No.",
                           "Purchaser Code", '', "Posting Description", '');
                     end;
                 end;
@@ -818,7 +818,7 @@ report 5272727 "lbt Purchase - Quote"
                 end;
         end;
         FormatAddr.PurchHeaderShipTo(ShipToAddr, PurchaseHeader);
-        CLEAR(CompanyAddressLine);
+        Clear(CompanyAddressLine);
 
         for i := 1 to 6 do
             if CompanyAddr[i] <> '' then begin
@@ -832,8 +832,8 @@ report 5272727 "lbt Purchase - Quote"
     begin
         FormatDocument.SetPurchaser(SalesPurchPerson, PurchaseHeader."Purchaser Code", PurchaserText);
         FormatDocument.SetShipmentMethod(ShipmentMethod, PurchaseHeader."Shipment Method Code", PurchaseHeader."Language Code");
-        ReferenceText := FormatDocument.SetText(PurchaseHeader."Your Reference" <> '', CopyStr(PurchaseHeader.FIELDCAPTION("Your Reference"), 1, 80));
-        VATNoText := FormatDocument.SetText(PurchaseHeader."VAT Registration No." <> '', CopyStr(PurchaseHeader.FIELDCAPTION("VAT Registration No."), 1, 80));
+        ReferenceText := FormatDocument.SetText(PurchaseHeader."Your Reference" <> '', CopyStr(PurchaseHeader.FieldCaption("Your Reference"), 1, 80));
+        VATNoText := FormatDocument.SetText(PurchaseHeader."VAT Registration No." <> '', CopyStr(PurchaseHeader.FieldCaption("VAT Registration No."), 1, 80));
         if PurchaserText <> '' then
             PurchaserText := PurchPersonText_CaptionLbl;
     end;
@@ -848,7 +848,7 @@ report 5272727 "lbt Purchase - Quote"
 
     local procedure DocumentCaption(): Text
     var
-        DocCaption: text;
+        DocCaption: Text;
     begin
         OnBeforeGetDocumentCaption("Purchase Header", DocCaption);
         if DocCaption <> '' then
@@ -857,7 +857,7 @@ report 5272727 "lbt Purchase - Quote"
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnBeforeGetDocumentCaption(PurchaseHeader: Record "Purchase Header"; var DocCaption: text);
+    local procedure OnBeforeGetDocumentCaption(PurchaseHeader: Record "Purchase Header"; var DocCaption: Text);
     begin
     end;
 }

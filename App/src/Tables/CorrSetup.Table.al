@@ -8,6 +8,7 @@ table 5272724 "lbt Corr Setup"
         {
             Caption = 'Primary Key';
             DataClassification = SystemMetadata;
+            NotBlank = false;
         }
         field(2; "Always print VAT"; Boolean)
         {

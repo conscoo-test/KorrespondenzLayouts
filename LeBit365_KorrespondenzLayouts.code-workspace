@@ -26,9 +26,10 @@
 		"CRS.FileNamePatternExtensions": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
 		"CRS.FileNamePatternPageCustomizations": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
 		"al.codeAnalyzers": [
-			"${AppSourceCop}",
 			"${CodeCop}",
-			"${UICop}"
+			"${UICop}",
+			"${AppSourceCop}",
+			"${analyzerFolder}BusinessCentral.LinterCop.dll"
 		],
 	}
 }

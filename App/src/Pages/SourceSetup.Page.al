@@ -90,8 +90,8 @@ page 5272727 "lbt Source Setup"
     trigger OnOpenPage()
     begin
         Rec.FILTERGROUP := 3;
-        case Rec.GETFILTER(Type) of
-            FORMAT(Rec.Type::Sales):
+        case Rec.GetFilter(Type) of
+            Format(Rec.Type::Sales):
                 begin
                     SalesVisible := true;
                     if Rec.IsEmpty() then begin
@@ -101,7 +101,7 @@ page 5272727 "lbt Source Setup"
                         Rec.Insert();
                     end;
                 end;
-            FORMAT(Rec.Type::Purchase):
+            Format(Rec.Type::Purchase):
                 begin
                     PurchVisible := true;
                     if Rec.IsEmpty() then begin

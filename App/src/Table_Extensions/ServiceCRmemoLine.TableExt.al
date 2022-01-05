@@ -7,14 +7,14 @@ tableextension 5272746 "lbt cl ServiceCRmemoLine" extends "Service Cr.Memo Line"
     var
 
     begin
-        exit(EditorHelper.hasEditorValue(rec, enum::"lbt Position"::EditorLine, 0));
+        exit(EditorHelper.hasEditorValue(rec, Enum::"lbt Position"::EditorLine, 0));
     end;
 
     procedure lbtEditData()
     var
 
     begin
-        EditorHelper.editData(rec, enum::"lbt Position"::EditorLine, 0);
+        EditorHelper.editData(rec, Enum::"lbt Position"::EditorLine, 0);
     end;
 
     trigger OnAfterDelete()

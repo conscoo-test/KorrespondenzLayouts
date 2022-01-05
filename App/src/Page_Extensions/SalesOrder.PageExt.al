@@ -9,7 +9,7 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
             group(lbtEditor)
             {
                 caption = 'Longtext';
-                field("lbt Editor Header"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorHeader, rec."Document Type".AsInteger()))
+                field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger()))
                 {
                     ApplicationArea = all;
                     Editable = false;
@@ -17,10 +17,10 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                     caption = 'Editor Header';
                     trigger OnAssistEdit()
                     begin
-                        rec.lbtEditData(enum::"lbt Position"::EditorHeader, rec."Document Type".AsInteger());
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger());
                     end;
                 }
-                field("lbt Editor Footer"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorFooter, rec."Document Type".AsInteger()))
+                field("lbt Editor Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter, Rec."Document Type".AsInteger()))
                 {
                     ApplicationArea = all;
                     Editable = false;
@@ -28,10 +28,10 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                     caption = 'Editor Footer';
                     trigger OnAssistEdit()
                     begin
-                        rec.lbtEditData(enum::"lbt Position"::Editorfooter, rec."Document Type".AsInteger());
+                        Rec.lbtEditData(Enum::"lbt Position"::Editorfooter, Rec."Document Type".AsInteger());
                     end;
                 }
-                field("lbt Editor Shipment Header"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorHeader, rec."Document Type"::"Shipment/Receipt".AsInteger()))
+                field("lbt Editor Shipment Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, Rec."Document Type"::"lbt cl Shipment/Receipt".AsInteger()))
                 {
                     ApplicationArea = all;
                     Editable = false;
@@ -39,10 +39,10 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                     caption = 'Editor Shipment Header';
                     trigger OnAssistEdit()
                     begin
-                        rec.lbtEditData(enum::"lbt Position"::EditorHeader, rec."Document Type"::"Shipment/Receipt".AsInteger());
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorHeader, Rec."Document Type"::"lbt cl Shipment/Receipt".AsInteger());
                     end;
                 }
-                field("lbt Editor Shipment Footer"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorFooter, rec."Document Type"::"Shipment/Receipt".AsInteger()))
+                field("lbt Editor Shipment Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter, Rec."Document Type"::"lbt cl Shipment/Receipt".AsInteger()))
                 {
                     ApplicationArea = all;
                     Editable = false;
@@ -50,10 +50,10 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                     caption = 'Editor Shipment Footer';
                     trigger OnAssistEdit()
                     begin
-                        rec.lbtEditData(enum::"lbt Position"::Editorfooter, rec."Document Type"::"Shipment/Receipt".AsInteger());
+                        Rec.lbtEditData(Enum::"lbt Position"::Editorfooter, Rec."Document Type"::"lbt cl Shipment/Receipt".AsInteger());
                     end;
                 }
-                field("lbt Editor Invoice Header"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorHeader, rec."Document Type"::Invoice.AsInteger()))
+                field("lbt Editor Invoice Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, Rec."Document Type"::Invoice.AsInteger()))
                 {
                     ApplicationArea = all;
                     Editable = false;
@@ -61,10 +61,10 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                     caption = 'Editor Invoice Header';
                     trigger OnAssistEdit()
                     begin
-                        rec.lbtEditData(enum::"lbt Position"::EditorHeader, rec."Document Type"::Invoice.AsInteger());
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorHeader, Rec."Document Type"::Invoice.AsInteger());
                     end;
                 }
-                field("lbt Editor Invoice Footer"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorFooter, rec."Document Type"::Invoice.AsInteger()))
+                field("lbt Editor Invoice Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter, Rec."Document Type"::Invoice.AsInteger()))
                 {
                     ApplicationArea = all;
                     Editable = false;
@@ -72,7 +72,7 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                     caption = 'Editor Invoice Footer';
                     trigger OnAssistEdit()
                     begin
-                        rec.lbtEditData(enum::"lbt Position"::Editorfooter, rec."Document Type"::Invoice.AsInteger());
+                        Rec.lbtEditData(Enum::"lbt Position"::Editorfooter, Rec."Document Type"::Invoice.AsInteger());
                     end;
                 }
             }
@@ -157,7 +157,7 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                     begin
                         SalesHeaderLRec.TransferFields(Rec);
                         SalesHeaderLRec."Document Type" := SalesHeaderLRec."Document Type"::Invoice;
-                        SourceRecRef.GETTABLE(SalesHeaderLRec);
+                        SourceRecRef.GetTable(SalesHeaderLRec);
                         LongtextMgt.ShowLongtextLines(Rec, Position::Header);
                     end;
                 }
@@ -177,7 +177,7 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                     begin
                         SalesHeaderLRec.TransferFields(Rec);
                         SalesHeaderLRec."Document Type" := SalesHeaderLRec."Document Type"::Invoice;
-                        SourceRecRef.GETTABLE(SalesHeaderLRec);
+                        SourceRecRef.GetTable(SalesHeaderLRec);
                         LongtextMgt.ShowLongtextLines(Rec, Position::Footer);
                     end;
                 }
@@ -197,8 +197,8 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                         DocType: Enum "Sales Document Type";
                     begin
                         SalesHeaderLRec.TransferFields(Rec);
-                        SalesHeaderLRec."Document Type" := DocType::"Shipment/Receipt";
-                        SourceRecRef.GETTABLE(SalesHeaderLRec);
+                        SalesHeaderLRec."Document Type" := DocType::"lbt cl Shipment/Receipt";
+                        SourceRecRef.GetTable(SalesHeaderLRec);
                         LongtextMgt.ShowLongtextLines(Rec, Position::Header);
                     end;
                 }
@@ -218,8 +218,8 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                         DocType: Enum "Sales Document Type";
                     begin
                         SalesHeaderLRec.TransferFields(Rec);
-                        SalesHeaderLRec."Document Type" := DocType::"Shipment/Receipt";
-                        SourceRecRef.GETTABLE(SalesHeaderLRec);
+                        SalesHeaderLRec."Document Type" := DocType::"lbt cl Shipment/Receipt";
+                        SourceRecRef.GetTable(SalesHeaderLRec);
                         LongtextMgt.ShowLongtextLines(Rec, Position::Footer);
                     end;
                 }

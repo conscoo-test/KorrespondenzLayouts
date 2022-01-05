@@ -28,10 +28,10 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
         i := 0;
         SummText := TotalTxt;
         if SummText <> '' then
-            if COPYSTR(SummText, STRLEN(SummText)) <> ' ' then
+            if CopyStr(SummText, STRLEN(SummText)) <> ' ' then
                 SummText := SummText + ' ';
         StrLength := STRLEN(SummText);
-        WindowDialog.OPEN(IndentTxt);
+        WindowDialog.Open(IndentTxt);
 
         SalesLine.SetRange("Document Type", SalesHeader."Document Type");
         SalesLine.SetFilter("Document No.", SalesHeader."No.");
@@ -42,7 +42,7 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
                 if SalesLine."lbt Printoption" = SalesLine."lbt Printoption"::"End Total" then begin
                     if i < 1 then
                         Error(MissingBeginTotalTxt);
-                    SalesLine."lbt Summation" := AccNo[i] + '..' + FORMAT(SalesLine."Line No.");
+                    SalesLine."lbt Summation" := AccNo[i] + '..' + Format(SalesLine."Line No.");
                     SalesLine.Description := SummText + Header[i];
                     i -= 1;
                 end;
@@ -58,7 +58,7 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
                     if StrLength + DescLength > 50 then begin
                         RestLength := StrLength + DescLength - 50;
                         NewLength := DescLength - RestLength;
-                        NewString := DELSTR(SalesLine.Description, NewLength, 50);
+                        NewString := DelStr(SalesLine.Description, NewLength, 50);
                         Header[i] := NewString;
                     end else
                         Header[i] := SalesLine.Description;
@@ -148,10 +148,10 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
         i := 0;
         Summtext := TotalTxt;
         if Summtext <> '' then
-            if COPYSTR(Summtext, STRLEN(Summtext)) <> ' ' then
+            if CopyStr(Summtext, STRLEN(Summtext)) <> ' ' then
                 Summtext := Summtext + ' ';
         StrLength := STRLEN(Summtext);
-        WindowDialog.OPEN(IndentTxt);
+        WindowDialog.Open(IndentTxt);
 
         PurchaseLine.SetRange("Document Type", PurchaseHeader."Document Type");
         PurchaseLine.SetFilter("Document No.", PurchaseHeader."No.");
@@ -178,7 +178,7 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
                     if StrLength + DescLength > 50 then begin
                         RestLength := StrLength + DescLength - 50;
                         NewLength := DescLength - RestLength;
-                        NewString := DELSTR(PurchaseLine.Description, NewLength, 50);
+                        NewString := DelStr(PurchaseLine.Description, NewLength, 50);
                         Header[i] := NewString;
                     end else
                         Header[i] := PurchaseLine.Description;
@@ -212,11 +212,11 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
         StrArray[1] := ID;
         StrArray[2] := BatchName;
         for T := 1 to 2 do
-            if STRPOS(StrArray[T], '"') > 0 then begin
+            if StrPos(StrArray[T], '"') > 0 then begin
                 Len := STRLEN(StrArray[T]);
                 Pos := 1;
                 repeat
-                    if COPYSTR(StrArray[T], Pos, 1) = '"' then begin
+                    if CopyStr(StrArray[T], Pos, 1) = '"' then begin
                         StrArray[T] := INSSTR(StrArray[T], '"', Pos + 1);
                         Len += 1;
                         Pos += 1;
@@ -225,7 +225,7 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
                 until Pos > Len;
             end;
 
-        exit(STRSUBSTNO(RowIDTemplateTxt, Type, Subtype, StrArray[1], StrArray[2], ProdOrderLine, RefNo));
+        exit(StrSubstNo(RowIDTemplateTxt, Type, Subtype, StrArray[1], StrArray[2], ProdOrderLine, RefNo));
     end;
 
     procedure GetStyleExpr(Printoption: Option Standard,Title,,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total") StyleExprText: Text[30]

@@ -9,7 +9,7 @@ report 5272721 "lbt Order Confirmation"
     {
         dataitem("Sales Header"; "Sales Header")
         {
-            DataItemTableView = SORTING("Document Type", "No.") WHERE("Document Type" = CONST(Order));
+            DataItemTableView = sorting("Document Type", "No.") where("Document Type" = const(Order));
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
             RequestFilterHeading = 'Sales Order';
             column(Footer; Footer) { }
@@ -22,10 +22,10 @@ report 5272721 "lbt Order Confirmation"
             column(AlwaysPrintVat_CorrSetup; CorrSetup."Always print VAT") { }
             dataitem(CopyLoop; "Integer")
             {
-                DataItemTableView = SORTING(Number);
+                DataItemTableView = sorting(Number);
                 dataitem(PageLoop; "Integer")
                 {
-                    DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+                    DataItemTableView = sorting(Number) where(Number = const(1));
                     column(CompanyInfo2_Picture; CompanyInfo2.Picture)
                     {
                     }
@@ -35,7 +35,7 @@ report 5272721 "lbt Order Confirmation"
                     column(CompanyInfo1_Picture; CompanyInfo1.Picture)
                     {
                     }
-                    column(DocumentConfirmCopyCaption; STRSUBSTNO(DocumentCaption(), CopyText))
+                    column(DocumentConfirmCopyCaption; StrSubstNo(DocumentCaption(), CopyText))
                     {
                     }
                     column(CompanyAddressLine; CompanyAddressLine)
@@ -65,7 +65,7 @@ report 5272721 "lbt Order Confirmation"
                     column(CustAddr8; CustAddr[8])
                     {
                     }
-                    column(Sales_Header___Document_Date; FORMAT("Sales Header"."Document Date", 0, 4))
+                    column(Sales_Header___Document_Date; Format("Sales Header"."Document Date", 0, 4))
                     {
                     }
                     column(Sales_Header___No__; "Sales Header"."No.")
@@ -98,7 +98,7 @@ report 5272721 "lbt Order Confirmation"
                     column(HideCompanyInfo; HideCompanyInfo)
                     {
                     }
-                    column(Sales_Header___Bill_to_Customer_No__Caption; "Sales Header".FIELDCAPTION("Bill-to Customer No."))
+                    column(Sales_Header___Bill_to_Customer_No__Caption; "Sales Header".FieldCaption("Bill-to Customer No."))
                     {
                     }
                     column(Sales_Header___No__Caption; Order_No_CaptionLbl)
@@ -119,10 +119,10 @@ report 5272721 "lbt Order Confirmation"
                     column(Sales_Line_PosNo_Caption; PosNo_SalesLineCaptionLbl)
                     {
                     }
-                    column(Sales_Line__Description_Caption; "Sales Line".FIELDCAPTION(Description))
+                    column(Sales_Line__Description_Caption; "Sales Line".FieldCaption(Description))
                     {
                     }
-                    column(Sales_Line__Quantity_Caption; "Sales Line".FIELDCAPTION(Quantity))
+                    column(Sales_Line__Quantity_Caption; "Sales Line".FieldCaption(Quantity))
                     {
                     }
                     column(Sales_Line_UOM_Caption; UOM_SalesLineCaptionLbl)
@@ -134,7 +134,7 @@ report 5272721 "lbt Order Confirmation"
                     column(AmountCaption; AmountCaptionLbl)
                     {
                     }
-                    column(CarryForwardText; STRSUBSTNO(CarryForwardCaptionLbl, GLSetup."LCY Code"))
+                    column(CarryForwardText; StrSubstNo(CarryForwardCaptionLbl, GLSetup."LCY Code"))
                     {
                     }
                     column(SubtotalCaption; SubtotalCaptionLbl)
@@ -146,7 +146,7 @@ report 5272721 "lbt Order Confirmation"
                     dataitem(DimensionLoop1; "Integer")
                     {
                         DataItemLinkReference = "Sales Header";
-                        DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
+                        DataItemTableView = sorting(Number) where(Number = filter(1 ..));
                         column(DimText; DimText)
                         {
                         }
@@ -160,7 +160,7 @@ report 5272721 "lbt Order Confirmation"
                         trigger OnAfterGetRecord()
                         begin
                             if Number = 1 then begin
-                                if not DimSetEntry1.FIND('-') then
+                                if not DimSetEntry1.Find('-') then
                                     CurrReport.Break();
                             end else
                                 if not Continue then
@@ -177,7 +177,7 @@ report 5272721 "lbt Order Confirmation"
                     }
                     dataitem(LBKopf; "Integer")
                     {
-                        DataItemTableView = SORTING(Number);
+                        DataItemTableView = sorting(Number);
                         column(LBKopf_LineNo; '0')
                         {
                         }
@@ -194,9 +194,9 @@ report 5272721 "lbt Order Confirmation"
                             Streamin: InStream;
                         begin
                             TempBlobList.Get(LBKopf.Number, TempBlob);
-                            TempBlob.CreateInstream(Streamin, TextEncoding::UTF8);
+                            TempBlob.CreateInStream(Streamin, TextEncoding::UTF8);
 
-                            Streamin.READ(LBKopf_Description);
+                            Streamin.Read(LBKopf_Description);
                             NewPageLBKopf += 1;
                         end;
 
@@ -205,14 +205,14 @@ report 5272721 "lbt Order Confirmation"
                             PrintLongText.GetPrintText("Sales Header", Enum::"lbt Position"::Header, TempBlobList);
                             if TempBlobList.IsEmpty() then
                                 CurrReport.Break();
-                            LBKopf.SETRANGE(Number, 1, TempBlobList.Count());
+                            LBKopf.SetRange(Number, 1, TempBlobList.Count());
                         end;
                     }
                     dataitem("Sales Line"; "Sales Line")
                     {
-                        DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("No.");
+                        DataItemLink = "Document Type" = field("Document Type"), "Document No." = field("No.");
                         DataItemLinkReference = "Sales Header";
-                        DataItemTableView = SORTING("Document Type", "Document No.", "Line No.");
+                        DataItemTableView = sorting("Document Type", "Document No.", "Line No.");
 
                         trigger OnPreDataItem()
                         begin
@@ -221,7 +221,7 @@ report 5272721 "lbt Order Confirmation"
                     }
                     dataitem(RoundLoop; "Integer")
                     {
-                        DataItemTableView = SORTING(Number);
+                        DataItemTableView = sorting(Number);
                         column(Item_Picture; Item.Picture)
                         {
                         }
@@ -291,7 +291,7 @@ report 5272721 "lbt Order Confirmation"
                             AutoFormatExpression = "Sales Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(SalesLineType; FORMAT("Sales Line".Type, 0, 2))
+                        column(SalesLineType; Format("Sales Line".Type, 0, 2))
                         {
                         }
                         column(No_SalesLine; "Sales Line"."Line No.")
@@ -350,7 +350,7 @@ report 5272721 "lbt Order Confirmation"
                         column(VATDiscountAmountCaption; VATDiscountAmountCaptionLbl)
                         {
                         }
-                        column(SalesLineLeBitPrintoption; FORMAT("Sales Line"."lbt Printoption", 0, 2))
+                        column(SalesLineLeBitPrintoption; Format("Sales Line"."lbt Printoption", 0, 2))
                         {
                         }
                         column(SalesLine__LeBit_Balance; TempSalesLine."lbt Balance")
@@ -382,7 +382,7 @@ report 5272721 "lbt Order Confirmation"
                         }
                         dataitem(ParameterAndUnits; "Integer")
                         {
-                            DataItemTableView = SORTING(Number);
+                            DataItemTableView = sorting(Number);
                             column(RowNumber; Number)
                             {
                             }
@@ -401,12 +401,12 @@ report 5272721 "lbt Order Confirmation"
 
                             trigger OnPreDataItem()
                             begin
-                                SETRANGE(Number, 1, InfoRowNo);
+                                SetRange(Number, 1, InfoRowNo);
                             end;
                         }
                         dataitem(LBLang; Integer)
                         {
-                            DataItemTableView = SORTING(Number);
+                            DataItemTableView = sorting(Number);
                             column(LBLang_Description; LBLang_Description)
                             {
                             }
@@ -420,9 +420,9 @@ report 5272721 "lbt Order Confirmation"
                                 Streamin: InStream;
                             begin
                                 TempBlobList.Get(LBLang.Number, TempBlob);
-                                TempBlob.CreateInstream(Streamin, TextEncoding::UTF8);
+                                TempBlob.CreateInStream(Streamin, TextEncoding::UTF8);
 
-                                Streamin.READ(LBLang_Description);
+                                Streamin.Read(LBLang_Description);
                                 NewPageLBLang += 1;
                             end;
 
@@ -431,12 +431,12 @@ report 5272721 "lbt Order Confirmation"
                                 PrintLongText.GetPrintText("Sales Line", Enum::"lbt Position"::Longtext, TempBlobList);
                                 if TempBlobList.IsEmpty() then
                                     CurrReport.Break();
-                                LBLang.SETRANGE(Number, 1, TempBlobList.Count());
+                                LBLang.SetRange(Number, 1, TempBlobList.Count());
                             end;
                         }
                         dataitem(DimensionLoop2; "Integer")
                         {
-                            DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
+                            DataItemTableView = sorting(Number) where(Number = filter(1 ..));
                             column(DimText_Control82; DimText)
                             {
                             }
@@ -461,12 +461,12 @@ report 5272721 "lbt Order Confirmation"
                                 if not ShowInternalInfo then
                                     CurrReport.Break();
 
-                                DimSetEntry2.SETRANGE("Dimension Set ID", "Sales Line"."Dimension Set ID");
+                                DimSetEntry2.SetRange("Dimension Set ID", "Sales Line"."Dimension Set ID");
                             end;
                         }
                         dataitem(AsmLoop; "Integer")
                         {
-                            DataItemTableView = SORTING(Number);
+                            DataItemTableView = sorting(Number);
                             column(AsmLineUOMText; GetUnitOfMeasureDescr(AsmLine."Unit of Measure Code"))
                             {
                             }
@@ -496,9 +496,9 @@ report 5272721 "lbt Order Confirmation"
                                     CurrReport.Break();
                                 if not AsmInfoExistsForLine then
                                     CurrReport.Break();
-                                AsmLine.SETRANGE("Document Type", AsmHeader."Document Type");
-                                AsmLine.SETRANGE("Document No.", AsmHeader."No.");
-                                SETRANGE(Number, 1, AsmLine.Count());
+                                AsmLine.SetRange("Document Type", AsmHeader."Document Type");
+                                AsmLine.SetRange("Document No.", AsmHeader."No.");
+                                SetRange(Number, 1, AsmLine.Count());
                             end;
                         }
 
@@ -509,7 +509,7 @@ report 5272721 "lbt Order Confirmation"
                             Counter: Integer;
                         begin
                             if Number = 1 then
-                                TempSalesLine.FIND('-')
+                                TempSalesLine.Find('-')
                             else
                                 TempSalesLine.Next();
                             "Sales Line" := TempSalesLine;
@@ -545,13 +545,13 @@ report 5272721 "lbt Order Confirmation"
 
                             ItemUnitDescription := '';
                             ItemUnitQty := '';
-                            CLEAR(InfoRowNo);
-                            CLEAR(InfoCaptionArry);
-                            CLEAR(InfoValueArry);
-                            CLEAR(ItemUnitCodeArry);
-                            CLEAR(ItemUnitDescriptionArry);
-                            CLEAR(ItemUnitQtyArry);
-                            CLEAR(Item);
+                            Clear(InfoRowNo);
+                            Clear(InfoCaptionArry);
+                            Clear(InfoValueArry);
+                            Clear(ItemUnitCodeArry);
+                            Clear(ItemUnitDescriptionArry);
+                            Clear(ItemUnitQtyArry);
+                            Clear(Item);
                             ItemPictureExist := false;
 
                             if "Sales Line".Quantity <> 0 then
@@ -559,15 +559,15 @@ report 5272721 "lbt Order Confirmation"
                             else
                                 UnitPrice := 0;
 
-                            TempSalesLine.CALCFIELDS("lbt Balance");
+                            TempSalesLine.CalcFields("lbt Balance");
                             if TempSalesLine.Type = TempSalesLine.Type::Item then begin
                                 Item.Get("Sales Line"."No.");
                                 ItemPictureExist := Item.Picture.Count() > 0;
                                 if not ItemPicturePrint then
                                     ItemPictureExist := false;
-                                TxtVar := CurrReport.OBJECTID(false);
-                                TxtVar := COPYSTR(TxtVar, STRPOS(TxtVar, ' '));
-                                EVALUATE(IntVar, TxtVar);
+                                TxtVar := CurrReport.ObjectId(false);
+                                TxtVar := CopyStr(TxtVar, StrPos(TxtVar, ' '));
+                                Evaluate(IntVar, TxtVar);
                                 LeBitReportFunctions.GetParameterArry(ReportType::Sales, IntVar, 2, "Sales Header"."Language Code", "Sales Line".RowID1(), '', "Sales Line"."No.", InfoCaptionArry, InfoValueArry);
                                 LeBitReportFunctions.GetItemUnitArry(2, "Sales Line".RowID1(), '', "Sales Header"."Language Code", ItemUnitCodeArry, ItemUnitDescriptionArry, ItemUnitQtyArry);
                                 Counter := 0;
@@ -579,9 +579,9 @@ report 5272721 "lbt Order Confirmation"
                                     ItemUnitCodeArry[Counter] := '';
                                     ItemUnitDescriptionArry[Counter] := '';
                                     ItemUnitQtyArry[Counter] := '';
-                                    COMPRESSARRAY(ItemUnitCodeArry);
-                                    COMPRESSARRAY(ItemUnitDescriptionArry);
-                                    COMPRESSARRAY(ItemUnitQtyArry);
+                                    CompressArray(ItemUnitCodeArry);
+                                    CompressArray(ItemUnitDescriptionArry);
+                                    CompressArray(ItemUnitQtyArry);
                                 end;
                                 if TempSalesLine."Description 2" <> '' then begin
                                     ItemUnitDescription := ItemUnitDescriptionArry[1];
@@ -589,9 +589,9 @@ report 5272721 "lbt Order Confirmation"
                                     ItemUnitCodeArry[1] := '';
                                     ItemUnitDescriptionArry[1] := '';
                                     ItemUnitQtyArry[1] := '';
-                                    COMPRESSARRAY(ItemUnitCodeArry);
-                                    COMPRESSARRAY(ItemUnitDescriptionArry);
-                                    COMPRESSARRAY(ItemUnitQtyArry);
+                                    CompressArray(ItemUnitCodeArry);
+                                    CompressArray(ItemUnitDescriptionArry);
+                                    CompressArray(ItemUnitQtyArry);
                                 end;
                                 Counter := 0;
                                 repeat
@@ -609,7 +609,7 @@ report 5272721 "lbt Order Confirmation"
 
                         trigger OnPreDataItem()
                         begin
-                            MoreLines := TempSalesLine.FIND('+');
+                            MoreLines := TempSalesLine.Find('+');
                             while MoreLines and (TempSalesLine.Description = '') and (TempSalesLine."Description 2" = '') and
                                   (TempSalesLine."No." = '') and (TempSalesLine.Quantity = 0) and
                                   (TempSalesLine.Amount = 0)
@@ -617,13 +617,13 @@ report 5272721 "lbt Order Confirmation"
                                 MoreLines := TempSalesLine.Next(-1) <> 0;
                             if not MoreLines then
                                 CurrReport.Break();
-                            TempSalesLine.SETRANGE("Line No.", 0, TempSalesLine."Line No.");
-                            SETRANGE(Number, 1, TempSalesLine.Count());
+                            TempSalesLine.SetRange("Line No.", 0, TempSalesLine."Line No.");
+                            SetRange(Number, 1, TempSalesLine.Count());
                         end;
                     }
                     dataitem(VATCounter; "Integer")
                     {
-                        DataItemTableView = SORTING(Number);
+                        DataItemTableView = sorting(Number);
                         column(VATAmountLineVATBase; TempVATAmountLine."VAT Base")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
@@ -725,12 +725,12 @@ report 5272721 "lbt Order Confirmation"
                                 CurrReport.Break();
                             if VATAmount = 0 then
                                 CurrReport.Break();
-                            SETRANGE(Number, 1, TempVATAmountLine.Count());
+                            SetRange(Number, 1, TempVATAmountLine.Count());
                         end;
                     }
                     dataitem(VATCounterLCY; "Integer")
                     {
-                        DataItemTableView = SORTING(Number);
+                        DataItemTableView = sorting(Number);
                         column(VALExchRate; VALExchRate)
                         {
                         }
@@ -801,20 +801,20 @@ report 5272721 "lbt Order Confirmation"
                             then
                                 CurrReport.Break();
 
-                            SETRANGE(Number, 1, TempVATAmountLine.Count());
+                            SetRange(Number, 1, TempVATAmountLine.Count());
 
                             if GLSetup."LCY Code" = '' then
                                 VALSpecLCYHeader := VatAmountLbl + LCYLbl
                             else
-                                VALSpecLCYHeader := VatAmountLbl + FORMAT(GLSetup."LCY Code");
+                                VALSpecLCYHeader := VatAmountLbl + Format(GLSetup."LCY Code");
 
                             CurrExchRate.FindCurrency("Sales Header"."Posting Date", "Sales Header"."Currency Code", 1);
-                            VALExchRate := STRSUBSTNO(ExchangeRateLbl, CurrExchRate."Relational Exch. Rate Amount", CurrExchRate."Exchange Rate Amount");
+                            VALExchRate := StrSubstNo(ExchangeRateLbl, CurrExchRate."Relational Exch. Rate Amount", CurrExchRate."Exchange Rate Amount");
                         end;
                     }
                     dataitem(Total; "Integer")
                     {
-                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+                        DataItemTableView = sorting(Number) where(Number = const(1));
                         column(PmntTermsDesc; PaymentTerms.Description)
                         {
                         }
@@ -830,7 +830,7 @@ report 5272721 "lbt Order Confirmation"
                     }
                     dataitem(Total2; "Integer")
                     {
-                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+                        DataItemTableView = sorting(Number) where(Number = const(1));
                         column(SelltoCustNo_SalesHeader; "Sales Header"."Sell-to Customer No.")
                         {
                         }
@@ -861,7 +861,7 @@ report 5272721 "lbt Order Confirmation"
                         column(Ship_to_AddressCaption; Ship_to_AddressCaptionLbl)
                         {
                         }
-                        column(SelltoCustNo_SalesHeaderCaption; "Sales Header".FIELDCAPTION("Sell-to Customer No."))
+                        column(SelltoCustNo_SalesHeaderCaption; "Sales Header".FieldCaption("Sell-to Customer No."))
                         {
                         }
 
@@ -873,7 +873,7 @@ report 5272721 "lbt Order Confirmation"
                     }
                     dataitem(PrepmtLoop; "Integer")
                     {
-                        DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
+                        DataItemTableView = sorting(Number) where(Number = filter(1 ..));
                         column(PrepmtLineAmount; PrepmtLineAmount)
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
@@ -940,7 +940,7 @@ report 5272721 "lbt Order Confirmation"
                         }
                         dataitem(PrepmtDimLoop; "Integer")
                         {
-                            DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
+                            DataItemTableView = sorting(Number) where(Number = filter(1 ..));
                             column(DimText_Control173; DimText)
                             {
                             }
@@ -951,7 +951,7 @@ report 5272721 "lbt Order Confirmation"
                             trigger OnAfterGetRecord()
                             begin
                                 if Number = 1 then begin
-                                    if not TempPrepmtDimSetEntry.FIND('-') then
+                                    if not TempPrepmtDimSetEntry.Find('-') then
                                         CurrReport.Break();
                                 end else
                                     if not Continue then
@@ -964,7 +964,7 @@ report 5272721 "lbt Order Confirmation"
                         trigger OnAfterGetRecord()
                         begin
                             if Number = 1 then begin
-                                if not TempPrepmtInvBuf.FIND('-') then
+                                if not TempPrepmtInvBuf.Find('-') then
                                     CurrReport.Break();
                             end else
                                 if TempPrepmtInvBuf.Next() = 0 then
@@ -985,7 +985,7 @@ report 5272721 "lbt Order Confirmation"
                     }
                     dataitem(PrepmtVATCounter; "Integer")
                     {
-                        DataItemTableView = SORTING(Number);
+                        DataItemTableView = sorting(Number);
                         column(PrepmtVATAmtLineVATAmt; TempPrepmtVATAmountLine."VAT Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
@@ -1061,12 +1061,12 @@ report 5272721 "lbt Order Confirmation"
 
                         trigger OnPreDataItem()
                         begin
-                            SETRANGE(Number, 1, TempPrepmtVATAmountLine.Count());
+                            SetRange(Number, 1, TempPrepmtVATAmountLine.Count());
                         end;
                     }
                     dataitem(PrepmtTotal; "Integer")
                     {
-                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+                        DataItemTableView = sorting(Number) where(Number = const(1));
                         column(PrepmtPmtTermsDesc; PrepmtPaymentTerms.Description)
                         {
                         }
@@ -1076,13 +1076,13 @@ report 5272721 "lbt Order Confirmation"
 
                         trigger OnPreDataItem()
                         begin
-                            if not TempPrepmtInvBuf.FIND('-') then
+                            if not TempPrepmtInvBuf.Find('-') then
                                 CurrReport.Break();
                         end;
                     }
                     dataitem(LBFuss; "Integer")
                     {
-                        DataItemTableView = SORTING(Number);
+                        DataItemTableView = sorting(Number);
                         column(LBFuss_LineNo; '0')
                         {
                         }
@@ -1099,9 +1099,9 @@ report 5272721 "lbt Order Confirmation"
                             Streamin: InStream;
                         begin
                             TempBlobList.Get(LBFuss.Number, TempBlob);
-                            TempBlob.CreateInstream(Streamin, TextEncoding::UTF8);
+                            TempBlob.CreateInStream(Streamin, TextEncoding::UTF8);
 
-                            Streamin.READ(LBFuss_Description);
+                            Streamin.Read(LBFuss_Description);
                             NewPageLBFuss += 1;
                         end;
 
@@ -1110,7 +1110,7 @@ report 5272721 "lbt Order Confirmation"
                             PrintLongText.GetPrintText("Sales Header", Enum::"lbt Position"::Footer, TempBlobList);
                             if TempBlobList.IsEmpty() then
                                 CurrReport.Break();
-                            LBFuss.SETRANGE(Number, 1, TempBlobList.Count());
+                            LBFuss.SetRange(Number, 1, TempBlobList.Count());
                         end;
                     }
                 }
@@ -1121,8 +1121,8 @@ report 5272721 "lbt Order Confirmation"
                     TempSalesLine2: Record "Sales Line" temporary;
                     SalesPost: Codeunit "Sales-Post";
                 begin
-                    CLEAR(TempSalesLine);
-                    CLEAR(SalesPost);
+                    Clear(TempSalesLine);
+                    Clear(SalesPost);
                     TempVATAmountLine.DeleteAll();
                     TempSalesLine.DeleteAll();
                     SalesPost.GetSalesLines("Sales Header", TempSalesLine, 0);
@@ -1167,24 +1167,24 @@ report 5272721 "lbt Order Confirmation"
                     NNC_SalesLineInvDiscAmt := 0;
 
                     if Number = 1 then begin
-                        TempSalesLine.SETRANGE("lbt Printoption", TempSalesLine."lbt Printoption"::Alternative, TempSalesLine."lbt Printoption"::Optional);
+                        TempSalesLine.SetRange("lbt Printoption", TempSalesLine."lbt Printoption"::Alternative, TempSalesLine."lbt Printoption"::Optional);
                         if not TempSalesLine.IsEmpty() then
                             MESSAGE(AlternativeNotAllowedErr);
-                        TempSalesLine.SETRANGE("lbt Printoption");
+                        TempSalesLine.SetRange("lbt Printoption");
                     end;
                 end;
 
                 trigger OnPostDataItem()
                 begin
                     if Print then
-                        CODEUNIT.RUN(CODEUNIT::"Sales-Printed", "Sales Header");
+                        Codeunit.Run(Codeunit::"Sales-Printed", "Sales Header");
                 end;
 
                 trigger OnPreDataItem()
                 begin
-                    NoOfLoops := ABS(NoOfCopies) + 1;
+                    NoOfLoops := Abs(NoOfCopies) + 1;
                     CopyText := '';
-                    SETRANGE(Number, 1, NoOfLoops);
+                    SetRange(Number, 1, NoOfLoops);
                     OutputNo := 1;
                     NewPageGroup := 1;
                 end;
@@ -1196,7 +1196,7 @@ report 5272721 "lbt Order Confirmation"
                 FormatAddressFields("Sales Header");
                 FormatDocumentFields("Sales Header");
 
-                DimSetEntry1.SETRANGE("Dimension Set ID", "Dimension Set ID");
+                DimSetEntry1.SetRange("Dimension Set ID", "Dimension Set ID");
 
                 if Print then begin
                     if CurrReport.UseRequestPage() and ArchiveDocument or
@@ -1205,16 +1205,16 @@ report 5272721 "lbt Order Confirmation"
                         ArchiveManagement.StoreSalesDocument("Sales Header", LogInteraction);
 
                     if LogInteraction then begin
-                        CALCFIELDS("No. of Archived Versions");
+                        CalcFields("No. of Archived Versions");
                         if "Bill-to Contact No." <> '' then
                             SegManagement.LogDocument(
                               3, "No.", "Doc. No. Occurrence",
-                              "No. of Archived Versions", DATABASE::Contact, "Bill-to Contact No."
+                              "No. of Archived Versions", Database::Contact, "Bill-to Contact No."
                               , "Salesperson Code", "Campaign No.", "Posting Description", "Opportunity No.")
                         else
                             SegManagement.LogDocument(
                               3, "No.", "Doc. No. Occurrence",
-                              "No. of Archived Versions", DATABASE::Customer, "Bill-to Customer No.",
+                              "No. of Archived Versions", Database::Customer, "Bill-to Customer No.",
                               "Salesperson Code", "Campaign No.", "Posting Description", "Opportunity No.");
                     end;
                 end;
@@ -1222,7 +1222,7 @@ report 5272721 "lbt Order Confirmation"
 
             trigger OnPreDataItem()
             begin
-                Print := Print or not CurrReport.PREVIEW();
+                Print := Print or not CurrReport.Preview();
             end;
         }
     }
@@ -1326,16 +1326,16 @@ report 5272721 "lbt Order Confirmation"
             SalesSetup."Logo Position on Documents"::"No Logo":
                 ;
             SalesSetup."Logo Position on Documents"::Left:
-                CompanyInfo.CALCFIELDS(Picture);
+                CompanyInfo.CalcFields(Picture);
             SalesSetup."Logo Position on Documents"::Center:
                 begin
                     CompanyInfo1.Get();
-                    CompanyInfo1.CALCFIELDS(Picture);
+                    CompanyInfo1.CalcFields(Picture);
                 end;
             SalesSetup."Logo Position on Documents"::Right:
                 begin
                     CompanyInfo2.Get();
-                    CompanyInfo2.CALCFIELDS(Picture);
+                    CompanyInfo2.CalcFields(Picture);
                 end;
         end;
     end;
@@ -1527,7 +1527,7 @@ report 5272721 "lbt Order Confirmation"
                 FormatAddr.SalesHeaderSellTo(CustAddr, SalesHeader);
         end;
         ShowShippingAddr := FormatAddr.SalesHeaderShipTo(ShipToAddr, CustAddr, SalesHeader);
-        CLEAR(CompanyAddressLine);
+        Clear(CompanyAddressLine);
 
         for i := 1 to 6 do
             if CompanyAddr[i] <> '' then begin
@@ -1547,8 +1547,8 @@ report 5272721 "lbt Order Confirmation"
         FormatDocument.SetPaymentTerms(PrepmtPaymentTerms, SalesHeader."Prepmt. Payment Terms Code", SalesHeader."Language Code");
         FormatDocument.SetShipmentMethod(ShipmentMethod, SalesHeader."Shipment Method Code", SalesHeader."Language Code");
 
-        ReferenceText := FormatDocument.SetText(SalesHeader."Your Reference" <> '', CopyStr(SalesHeader.FIELDCAPTION("Your Reference"), 1, 80));
-        VATNoText := FormatDocument.SetText(SalesHeader."VAT Registration No." <> '', CopyStr(SalesHeader.FIELDCAPTION("VAT Registration No."), 1, 80));
+        ReferenceText := FormatDocument.SetText(SalesHeader."Your Reference" <> '', CopyStr(SalesHeader.FieldCaption("Your Reference"), 1, 80));
+        VATNoText := FormatDocument.SetText(SalesHeader."VAT Registration No." <> '', CopyStr(SalesHeader.FieldCaption("VAT Registration No."), 1, 80));
         if SalesPersonText <> '' then
             SalesPersonText := SalesPersonText_CaptionLbl;
     end;
@@ -1577,7 +1577,7 @@ report 5272721 "lbt Order Confirmation"
 
     local procedure DocumentCaption(): Text
     var
-        DocCaption: text;
+        DocCaption: Text;
     begin
         OnBeforeGetDocumentCaption("Sales Header", DocCaption);
         if DocCaption <> '' then
@@ -1586,7 +1586,7 @@ report 5272721 "lbt Order Confirmation"
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnBeforeGetDocumentCaption(SalesHeader: Record "Sales Header"; var DocCaption: text);
+    local procedure OnBeforeGetDocumentCaption(SalesHeader: Record "Sales Header"; var DocCaption: Text);
     begin
     end;
 }

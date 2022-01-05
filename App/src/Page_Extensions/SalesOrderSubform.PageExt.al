@@ -31,14 +31,15 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
                 ApplicationArea = All;
                 ToolTip = 'Long Text';
             }
-            field("Lbt Editor"; rec.lbtHasEditorValue(rec."Document Type".asinteger()))
+            field("Lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
+                Caption = ' ', Locked = true;
                 ApplicationArea = all;
                 Editable = false;
                 ToolTip = 'Editor';
                 trigger OnAssistEdit()
                 begin
-                    rec.lbtEditData(rec."Document Type".asinteger());
+                    Rec.lbtEditData(Rec."Document Type".AsInteger());
                 end;
             }
         }
@@ -60,7 +61,7 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
                     SourceRecRef: RecordRef;
                     Position: Option Header,Footer,Longtext;
                 begin
-                    SourceRecRef.GETTABLE(Rec);
+                    SourceRecRef.GetTable(Rec);
                     LongtextMgt.ShowLongtextLines(Rec, Position::Longtext);
                 end;
             }

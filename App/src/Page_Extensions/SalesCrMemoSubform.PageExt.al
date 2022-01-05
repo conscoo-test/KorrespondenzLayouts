@@ -29,7 +29,7 @@ pageextension 5272804 "lbt Sales Cr. Memo Subform" extends "Sales Cr. Memo Subfo
                 ApplicationArea = All;
                 ToolTip = 'Here you can insert long texts.';
             }
-            field("Lbt Editor"; rec.lbtHasEditorValue(rec."Document Type".AsInteger()))
+            field("Lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
                 ApplicationArea = all;
                 Editable = false;
@@ -37,7 +37,7 @@ pageextension 5272804 "lbt Sales Cr. Memo Subform" extends "Sales Cr. Memo Subfo
                 caption = 'Editor';
                 trigger OnAssistEdit()
                 begin
-                    rec.lbtEditData(rec."Document Type".AsInteger());
+                    Rec.lbtEditData(Rec."Document Type".AsInteger());
                 end;
             }
         }
@@ -58,7 +58,7 @@ pageextension 5272804 "lbt Sales Cr. Memo Subform" extends "Sales Cr. Memo Subfo
                     SourceRecRef: RecordRef;
                     Position: Option Header,Footer,Longtext;
                 begin
-                    SourceRecRef.GETTABLE(Rec);
+                    SourceRecRef.GetTable(Rec);
                     LongtextMgt.ShowLongtextLines(Rec, Position::Longtext);
                 end;
             }

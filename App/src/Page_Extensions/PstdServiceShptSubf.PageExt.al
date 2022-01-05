@@ -1,10 +1,10 @@
-pageextension 5272814 "lbt cl Pstd Service Inv Subf" extends "Posted Service Invoice Subform"
+pageextension 5272812 "lbt cl Pstd Service Shpt. Subf" extends "Posted Service Shpt. Subform"
 {
     layout
     {
         addafter(Description)
         {
-            field("lbt Editor"; rec.lbtHasEditorValue())
+            field("lbt Editor"; Rec.lbtHasEditorValue())
             {
                 ApplicationArea = all;
                 Editable = false;
@@ -12,7 +12,7 @@ pageextension 5272814 "lbt cl Pstd Service Inv Subf" extends "Posted Service Inv
                 caption = 'Editor';
                 trigger OnAssistEdit()
                 begin
-                    rec.lbtEditData();
+                    Rec.lbtEditData();
                 end;
             }
 
