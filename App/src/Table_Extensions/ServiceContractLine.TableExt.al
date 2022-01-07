@@ -3,22 +3,22 @@ tableextension 5272747 "lbt cl ServiceContractLine" extends "Service Contract Li
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";
 
-    procedure lbtHasEditorValue() Result: Boolean
+    procedure lbtHasEditorValue(docType: integer) Result: Boolean
     var
 
     begin
-        exit(EditorHelper.hasEditorValue(rec, enum::"lbt Position"::EditorLine, 0));
+        exit(EditorHelper.hasEditorValue(rec, enum::"lbt Position"::EditorLine, docType));
     end;
 
-    procedure lbtEditData()
+    procedure lbtEditData(docType: integer)
     var
 
     begin
-        EditorHelper.editData(rec, enum::"lbt Position"::EditorLine, 0);
+        EditorHelper.editData(rec, enum::"lbt Position"::EditorLine, docType);
     end;
 
     trigger OnAfterDelete()
     begin
-        EditorHelper.deleteLongText(rec, 0);
+        EditorHelper.deleteLongText(rec, rec."Contract Type");
     end;
 }

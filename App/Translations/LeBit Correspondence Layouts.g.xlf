@@ -4753,6 +4753,36 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl Pstd Service Shpt. Subf - Control lbt Editor - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1444463439 - Control 246903213 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2649920062">
+          <source>Editor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl PstdServCrMemoSubform - Control lbt Editor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1444463439 - Control 246903213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2649920062">
+          <source>Editor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl PstdServCrMemoSubform - Control lbt Editor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1650117391 - Control 246903213 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1390650520">
+          <source>Editor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl PstdServiceCrMemoLines - Control lbt Editor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1650117391 - Control 246903213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1390650520">
+          <source>Editor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl PstdServiceCrMemoLines - Control lbt Editor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2904250241 - Control 246903213 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 98121644">
+          <source>Editor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl PstdServiceInvLines - Control lbt Editor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2904250241 - Control 246903213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 98121644">
+          <source>Editor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl PstdServiceInvLines - Control lbt Editor - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1033371749 - Control 246903213 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 754151050">
           <source>Editor</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4763,6 +4793,106 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl Service Invoice Subf - Control lbt Editor - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3422672102 - Control 3671457890 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1511989657">
+          <source>Editor Footer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceContract - Control lbt Editor Footer - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3422672102 - Control 3671457890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1511989657">
+          <source>Editor Footer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceContract - Control lbt Editor Footer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3422672102 - Control 4044143240 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1511989657">
+          <source>Editor Header</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceContract - Control lbt Editor Header - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3422672102 - Control 4044143240 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1511989657">
+          <source>Editor Header</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceContract - Control lbt Editor Header - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2945547906 - Control 246903213 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 586544045">
+          <source>Editor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceContractLineList - Control lbt Editor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2945547906 - Control 246903213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 586544045">
+          <source>Editor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceContractLineList - Control lbt Editor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3097358236 - Control 3671457890 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3289801783">
+          <source>Editor Footer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceContractQuote - Control lbt Editor Footer - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3097358236 - Control 3671457890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3289801783">
+          <source>Editor Footer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceContractQuote - Control lbt Editor Footer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3097358236 - Control 4044143240 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3289801783">
+          <source>Editor Header</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceContractQuote - Control lbt Editor Header - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3097358236 - Control 4044143240 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3289801783">
+          <source>Editor Header</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceContractQuote - Control lbt Editor Header - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3542563060 - Control 246903213 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3544699727">
+          <source>Editor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceContractSubform - Control lbt Editor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3542563060 - Control 246903213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3544699727">
+          <source>Editor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceContractSubform - Control lbt Editor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3423958718 - Control 3671457890 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1879789329">
+          <source>Editor Footer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceContractTemplate - Control lbt Editor Footer - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3423958718 - Control 3671457890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1879789329">
+          <source>Editor Footer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceContractTemplate - Control lbt Editor Footer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3423958718 - Control 4044143240 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1879789329">
+          <source>Editor Header</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceContractTemplate - Control lbt Editor Header - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3423958718 - Control 4044143240 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1879789329">
+          <source>Editor Header</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceContractTemplate - Control lbt Editor Header - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4262061201 - Control 3671457890 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2832910486">
+          <source>Editor Footer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceCreditMemo - Control lbt Editor Footer - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4262061201 - Control 3671457890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2832910486">
+          <source>Editor Footer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceCreditMemo - Control lbt Editor Footer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4262061201 - Control 4044143240 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2832910486">
+          <source>Editor Header</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceCreditMemo - Control lbt Editor Header - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4262061201 - Control 4044143240 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2832910486">
+          <source>Editor Header</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceCreditMemo - Control lbt Editor Header - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3260607367 - Control 246903213 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1751478268">
           <source>Editor</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4772,6 +4902,51 @@
           <source>Editor</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceCreditmemoSubf - Control lbt Editor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4053076579 - Action 2738780584 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1224914752">
+          <source>LeBit365 Correspondence layout</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceInvoice - Action lbt correspondence documents - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4053076579 - Action 1986364312 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1224914752">
+          <source>Here you can define the Footer Text.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceInvoice - Action lbt &amp;Footer Text - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4053076579 - Action 1986364312 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1224914752">
+          <source>&amp;Footer Text</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceInvoice - Action lbt &amp;Footer Text - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4053076579 - Action 3054928492 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1224914752">
+          <source>Here you can define the Header Text.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceInvoice - Action lbt Header Text - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4053076579 - Action 3054928492 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1224914752">
+          <source>Header Text</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceInvoice - Action lbt Header Text - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4053076579 - Control 3671457890 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1224914752">
+          <source>Editor Footer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceInvoice - Control lbt Editor Footer - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4053076579 - Control 3671457890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1224914752">
+          <source>Editor Footer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceInvoice - Control lbt Editor Footer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4053076579 - Control 4044143240 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1224914752">
+          <source>Editor Header</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceInvoice - Control lbt Editor Header - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4053076579 - Control 4044143240 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1224914752">
+          <source>Editor Header</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceInvoice - Control lbt Editor Header - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 4005112826 - Action 2738780584 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2145436509">
           <source>LeBit365 Correspondence layout</source>
@@ -4857,6 +5032,16 @@
           <source>Editor</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceQuoteSubform - Control lbt Editor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 421092504 - Control 246903213 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3263025">
+          <source>Editor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceSontractQuoteSub - Control lbt Editor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 421092504 - Control 246903213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3263025">
+          <source>Editor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceSontractQuoteSub - Control lbt Editor - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 371067530 - Control 246903213 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3793727432">
           <source>Editor</source>

@@ -1,4 +1,4 @@
-tableextension 5272754 "lbt cl SeviceContractHeader" extends "Service Contract Header"
+tableextension 5272755 "lbt cl ServiceContractTemplate" extends "Service Contract Template"
 {
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";
