@@ -10,7 +10,7 @@ report 5272724 "lbt Sales - Shipment"
     {
         dataitem("Sales Shipment Header"; "Sales Shipment Header")
         {
-            DataItemTableView = SORTING("No.");
+            DataItemTableView = sorting("No.");
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
             RequestFilterHeading = 'Posted Sales Shipment';
             column(Footer; Footer) { }
@@ -19,10 +19,10 @@ report 5272724 "lbt Sales - Shipment"
             }
             dataitem(CopyLoop; "Integer")
             {
-                DataItemTableView = SORTING(Number);
+                DataItemTableView = sorting(Number);
                 dataitem(PageLoop; "Integer")
                 {
-                    DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+                    DataItemTableView = sorting(Number) where(Number = const(1));
                     column(CompanyInfo2Picture; CompanyInfo2.Picture)
                     {
                     }
@@ -32,7 +32,7 @@ report 5272724 "lbt Sales - Shipment"
                     column(CompanyInfo3Picture; CompanyInfo3.Picture)
                     {
                     }
-                    column(DocumentConfirmCopyCaption; STRSUBSTNO(DocumentCaption(), CopyText))
+                    column(DocumentConfirmCopyCaption; StrSubstNo(DocumentCaption(), CopyText))
                     {
                     }
                     column(ShipToAddr1; ShipToAddr[1])
@@ -59,7 +59,7 @@ report 5272724 "lbt Sales - Shipment"
                     column(ShipToAddr8; ShipToAddr[8])
                     {
                     }
-                    column(DocDate_SalesShptHeader; FORMAT("Sales Shipment Header"."Document Date", 0, 4))
+                    column(DocDate_SalesShptHeader; Format("Sales Shipment Header"."Document Date", 0, 4))
                     {
                     }
                     column(YourRef_SalesShptHeader; "Sales Shipment Header"."Your Reference")
@@ -86,7 +86,7 @@ report 5272724 "lbt Sales - Shipment"
                     column(ShipmentNoCaption; ShipmentNoCaptionLbl)
                     {
                     }
-                    column(SelltoCustNo_SalesShptHeaderCaption; "Sales Shipment Header".FIELDCAPTION("Sell-to Customer No."))
+                    column(SelltoCustNo_SalesShptHeaderCaption; "Sales Shipment Header".FieldCaption("Sell-to Customer No."))
                     {
                     }
                     column(PagefromPageCaption; PagefromPageCaptionLbl)
@@ -104,10 +104,10 @@ report 5272724 "lbt Sales - Shipment"
                     column(PosNo_Caption; PosNo_CaptionLbl)
                     {
                     }
-                    column(Description_SalesShptLineCaption; "Sales Shipment Line".FIELDCAPTION(Description))
+                    column(Description_SalesShptLineCaption; "Sales Shipment Line".FieldCaption(Description))
                     {
                     }
-                    column(Quantity_SalesShptLineCaption; "Sales Shipment Line".FIELDCAPTION(Quantity))
+                    column(Quantity_SalesShptLineCaption; "Sales Shipment Line".FieldCaption(Quantity))
                     {
                     }
                     column(UOM_Caption; UOM_CaptionLbl)
@@ -130,7 +130,7 @@ report 5272724 "lbt Sales - Shipment"
                     }
                     dataitem(LBKopf; "Integer")
                     {
-                        DataItemTableView = SORTING(Number);
+                        DataItemTableView = sorting(Number);
                         column(LBKopf_LineNo; '0')
                         {
                         }
@@ -147,9 +147,9 @@ report 5272724 "lbt Sales - Shipment"
                             Streamin: InStream;
                         begin
                             TempBlobList.Get(LBKopf.Number, TempBlob);
-                            TempBlob.CreateInstream(Streamin, TextEncoding::UTF8);
+                            TempBlob.CreateInStream(Streamin, TextEncoding::UTF8);
 
-                            Streamin.READ(LBKopf_Description);
+                            Streamin.Read(LBKopf_Description);
                             NewPageLBKopf += 1;
                         end;
 
@@ -158,13 +158,13 @@ report 5272724 "lbt Sales - Shipment"
                             PrintLongText.GetPrintText("Sales Shipment Header", Enum::"lbt Position"::Header, TempBlobList);
                             if TempBlobList.IsEmpty() then
                                 CurrReport.Break();
-                            LBKopf.SETRANGE(Number, 1, TempBlobList.Count());
+                            LBKopf.SetRange(Number, 1, TempBlobList.Count());
                         end;
                     }
                     dataitem(DimensionLoop1; "Integer")
                     {
                         DataItemLinkReference = "Sales Shipment Header";
-                        DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
+                        DataItemTableView = sorting(Number) where(Number = filter(1 ..));
                         column(DimText; DimText)
                         {
                         }
@@ -195,16 +195,16 @@ report 5272724 "lbt Sales - Shipment"
                     }
                     dataitem("Sales Shipment Line"; "Sales Shipment Line")
                     {
-                        DataItemLink = "Document No." = FIELD("No.");
+                        DataItemLink = "Document No." = field("No.");
                         DataItemLinkReference = "Sales Shipment Header";
-                        DataItemTableView = SORTING("Document No.", "Line No.");
+                        DataItemTableView = sorting("Document No.", "Line No.");
                         column(Description_SalesShptLine; Description)
                         {
                         }
                         column(ShowInternalInfo; ShowInternalInfo)
                         {
                         }
-                        column(SalesLineType; FORMAT(Type, 0, 2))
+                        column(SalesLineType; Format(Type, 0, 2))
                         {
                         }
                         column(AsmHeaderExists; AsmHeaderExists)
@@ -228,7 +228,7 @@ report 5272724 "lbt Sales - Shipment"
                         column(ItemPictureExist; ItemPictureExist)
                         {
                         }
-                        column(SalesLineLeBitPrintoption; FORMAT("lbt Printoption", 0, 2))
+                        column(SalesLineLeBitPrintoption; Format("lbt Printoption", 0, 2))
                         {
                         }
                         column(LeBitPosNo_SalesShptLine; "lbt Pos. No.")
@@ -248,7 +248,7 @@ report 5272724 "lbt Sales - Shipment"
                         }
                         dataitem(ParameterAndUnits; "Integer")
                         {
-                            DataItemTableView = SORTING(Number);
+                            DataItemTableView = sorting(Number);
                             column(RowNumber; Number)
                             {
                             }
@@ -267,12 +267,12 @@ report 5272724 "lbt Sales - Shipment"
 
                             trigger OnPreDataItem()
                             begin
-                                SETRANGE(Number, 1, InfoRowNo);
+                                SetRange(Number, 1, InfoRowNo);
                             end;
                         }
                         dataitem(LBLang; Integer)
                         {
-                            DataItemTableView = SORTING(Number);
+                            DataItemTableView = sorting(Number);
                             column(LBLang_LineNo; '0') { }
                             column(LBLang_Description; LBLang_Description)
                             {
@@ -287,9 +287,9 @@ report 5272724 "lbt Sales - Shipment"
                                 Streamin: InStream;
                             begin
                                 TempBlobList.Get(LBLang.Number, TempBlob);
-                                TempBlob.CreateInstream(Streamin, TextEncoding::UTF8);
+                                TempBlob.CreateInStream(Streamin, TextEncoding::UTF8);
 
-                                Streamin.READ(LBLang_Description);
+                                Streamin.Read(LBLang_Description);
                                 NewPageLBLang += 1;
                             end;
 
@@ -298,12 +298,12 @@ report 5272724 "lbt Sales - Shipment"
                                 PrintLongText.GetPrintText("Sales Shipment Line", Enum::"lbt Position"::Longtext, TempBlobList);
                                 if TempBlobList.IsEmpty() then
                                     CurrReport.Break();
-                                LBLang.SETRANGE(Number, 1, TempBlobList.Count());
+                                LBLang.SetRange(Number, 1, TempBlobList.Count());
                             end;
                         }
                         dataitem(DimensionLoop2; "Integer")
                         {
-                            DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
+                            DataItemTableView = sorting(Number) where(Number = filter(1 ..));
                             column(DimText1; DimText)
                             {
                             }
@@ -331,7 +331,7 @@ report 5272724 "lbt Sales - Shipment"
                         }
                         dataitem(DisplayAsmInfo; "Integer")
                         {
-                            DataItemTableView = SORTING(Number);
+                            DataItemTableView = sorting(Number);
                             column(PostedAsmLineItemNo; BlanksForIndent() + PostedAsmLine."No.")
                             {
                             }
@@ -369,8 +369,8 @@ report 5272724 "lbt Sales - Shipment"
                                 if not AsmHeaderExists then
                                     CurrReport.Break();
 
-                                PostedAsmLine.SETRANGE("Document No.", PostedAsmHeader."No.");
-                                SETRANGE(Number, 1, PostedAsmLine.Count());
+                                PostedAsmLine.SetRange("Document No.", PostedAsmHeader."No.");
+                                SetRange(Number, 1, PostedAsmLine.Count());
                             end;
                         }
 
@@ -384,7 +384,7 @@ report 5272724 "lbt Sales - Shipment"
                             if not ShowCorrectionLines and Correction then
                                 CurrReport.Skip();
 
-                            DimSetEntry2.SETRANGE("Dimension Set ID", "Dimension Set ID");
+                            DimSetEntry2.SetRange("Dimension Set ID", "Dimension Set ID");
                             if DisplayAssemblyInformation then
                                 AsmHeaderExists := AsmToShipmentExists(PostedAsmHeader);
 
@@ -393,13 +393,13 @@ report 5272724 "lbt Sales - Shipment"
 
                             ItemUnitDescription := '';
                             ItemUnitQty := '';
-                            CLEAR(InfoRowNo);
-                            CLEAR(InfoCaptionArry);
-                            CLEAR(InfoValueArry);
-                            CLEAR(ItemUnitCodeArry);
-                            CLEAR(ItemUnitDescriptionArry);
-                            CLEAR(ItemUnitQtyArry);
-                            CLEAR(Item);
+                            Clear(InfoRowNo);
+                            Clear(InfoCaptionArry);
+                            Clear(InfoValueArry);
+                            Clear(ItemUnitCodeArry);
+                            Clear(ItemUnitDescriptionArry);
+                            Clear(ItemUnitQtyArry);
+                            Clear(Item);
                             ItemPictureExist := false;
 
                             if Type = Type::Item then begin
@@ -407,9 +407,9 @@ report 5272724 "lbt Sales - Shipment"
                                 ItemPictureExist := Item.Picture.Count() > 0;
                                 if not ItemPicturePrint then
                                     ItemPictureExist := false;
-                                TxtVar := CurrReport.OBJECTID(false);
-                                TxtVar := COPYSTR(TxtVar, STRPOS(TxtVar, ' '));
-                                EVALUATE(IntVar, TxtVar);
+                                TxtVar := CurrReport.ObjectId(false);
+                                TxtVar := CopyStr(TxtVar, StrPos(TxtVar, ' '));
+                                Evaluate(IntVar, TxtVar);
                                 LeBitReportFunctions.GetParameterArry(ReportType::Sales, IntVar, 1, "Sales Shipment Header"."Language Code", LeBitReportFunctions.RowID1ForSalesShipmentLine("Sales Shipment Line"), '', "Sales Shipment Line"."No.", InfoCaptionArry, InfoValueArry);
                                 LeBitReportFunctions.GetItemUnitArry(1, LeBitReportFunctions.RowID1ForSalesShipmentLine("Sales Shipment Line"), '', "Sales Shipment Header"."Language Code", ItemUnitCodeArry, ItemUnitDescriptionArry, ItemUnitQtyArry);
                                 Counter := 0;
@@ -421,9 +421,9 @@ report 5272724 "lbt Sales - Shipment"
                                     ItemUnitCodeArry[Counter] := '';
                                     ItemUnitDescriptionArry[Counter] := '';
                                     ItemUnitQtyArry[Counter] := '';
-                                    COMPRESSARRAY(ItemUnitCodeArry);
-                                    COMPRESSARRAY(ItemUnitDescriptionArry);
-                                    COMPRESSARRAY(ItemUnitQtyArry);
+                                    CompressArray(ItemUnitCodeArry);
+                                    CompressArray(ItemUnitDescriptionArry);
+                                    CompressArray(ItemUnitQtyArry);
                                 end;
                                 if "Description 2" <> '' then begin
                                     ItemUnitDescription := ItemUnitDescriptionArry[1];
@@ -431,9 +431,9 @@ report 5272724 "lbt Sales - Shipment"
                                     ItemUnitCodeArry[1] := '';
                                     ItemUnitDescriptionArry[1] := '';
                                     ItemUnitQtyArry[1] := '';
-                                    COMPRESSARRAY(ItemUnitCodeArry);
-                                    COMPRESSARRAY(ItemUnitDescriptionArry);
-                                    COMPRESSARRAY(ItemUnitQtyArry);
+                                    CompressArray(ItemUnitCodeArry);
+                                    CompressArray(ItemUnitDescriptionArry);
+                                    CompressArray(ItemUnitQtyArry);
                                 end;
                                 ///Pr�fung auf MaxRowNo
                                 Counter := 0;
@@ -454,28 +454,28 @@ report 5272724 "lbt Sales - Shipment"
                                 ItemTrackingDocMgt.SetRetrieveAsmItemTracking(true);
                                 TrackingSpecCount :=
                                   ItemTrackingDocMgt.RetrieveDocumentItemTracking(TempTrackingSpecBuffer,
-                                    "Sales Shipment Header"."No.", DATABASE::"Sales Shipment Header", 0);
+                                    "Sales Shipment Header"."No.", Database::"Sales Shipment Header", 0);
                                 ItemTrackingDocMgt.SetRetrieveAsmItemTracking(false);
                             end;
                         end;
 
                         trigger OnPreDataItem()
                         begin
-                            MoreLines := FIND('+');
+                            MoreLines := Find('+');
                             while MoreLines and (Description = '') and ("No." = '') and (Quantity = 0) do
                                 MoreLines := Next(-1) <> 0;
                             if not MoreLines then
                                 CurrReport.Break();
-                            SETRANGE("Line No.", 0, "Line No.");
+                            SetRange("Line No.", 0, "Line No.");
                         end;
                     }
                     dataitem(Total; "Integer")
                     {
-                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+                        DataItemTableView = sorting(Number) where(Number = const(1));
                     }
                     dataitem(Total2; "Integer")
                     {
-                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+                        DataItemTableView = sorting(Number) where(Number = const(1));
                         column(BilltoCustNo_SalesShptHeader; "Sales Shipment Header"."Bill-to Customer No.")
                         {
                         }
@@ -506,7 +506,7 @@ report 5272724 "lbt Sales - Shipment"
                         column(BilltoAddressCaption; BilltoAddressCaptionLbl)
                         {
                         }
-                        column(BilltoCustNo_SalesShptHeaderCaption; "Sales Shipment Header".FIELDCAPTION("Bill-to Customer No."))
+                        column(BilltoCustNo_SalesShptHeaderCaption; "Sales Shipment Header".FieldCaption("Bill-to Customer No."))
                         {
                         }
 
@@ -518,7 +518,7 @@ report 5272724 "lbt Sales - Shipment"
                     }
                     dataitem(ItemTrackingLine; "Integer")
                     {
-                        DataItemTableView = SORTING(Number);
+                        DataItemTableView = sorting(Number);
                         column(TrackingSpecBufferNo; TempTrackingSpecBuffer."Item No.")
                         {
                         }
@@ -554,7 +554,7 @@ report 5272724 "lbt Sales - Shipment"
                         }
                         dataitem(TotalItemTracking; "Integer")
                         {
-                            DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+                            DataItemTableView = sorting(Number) where(Number = const(1));
                             column(Quantity1; TotalQty)
                             {
                             }
@@ -592,14 +592,14 @@ report 5272724 "lbt Sales - Shipment"
                         begin
                             if TrackingSpecCount = 0 then
                                 CurrReport.Break();
-                            SETRANGE(Number, 1, TrackingSpecCount);
-                            TempTrackingSpecBuffer.SETCURRENTKEY("Source ID", "Source Type", "Source Subtype", "Source Batch Name",
+                            SetRange(Number, 1, TrackingSpecCount);
+                            TempTrackingSpecBuffer.SetCurrentKey("Source ID", "Source Type", "Source Subtype", "Source Batch Name",
                               "Source Prod. Order Line", "Source Ref. No.");
                         end;
                     }
                     dataitem(LBFuss; "Integer")
                     {
-                        DataItemTableView = SORTING(Number);
+                        DataItemTableView = sorting(Number);
                         column(LBFuss_LineNo; '0')
                         {
                         }
@@ -616,9 +616,9 @@ report 5272724 "lbt Sales - Shipment"
                             Streamin: InStream;
                         begin
                             TempBlobList.Get(LBFuss.Number, TempBlob);
-                            TempBlob.CreateInstream(Streamin, TextEncoding::UTF8);
+                            TempBlob.CreateInStream(Streamin, TextEncoding::UTF8);
 
-                            Streamin.READ(LBFuss_Description);
+                            Streamin.Read(LBFuss_Description);
                             NewPageLBFuss += 1;
                         end;
 
@@ -627,7 +627,7 @@ report 5272724 "lbt Sales - Shipment"
                             PrintLongText.GetPrintText("Sales Shipment Header", Enum::"lbt Position"::Footer, TempBlobList);
                             if TempBlobList.IsEmpty() then
                                 CurrReport.Break();
-                            LBFuss.SETRANGE(Number, 1, TempBlobList.Count());
+                            LBFuss.SetRange(Number, 1, TempBlobList.Count());
                         end;
                     }
 
@@ -653,15 +653,15 @@ report 5272724 "lbt Sales - Shipment"
 
                 trigger OnPostDataItem()
                 begin
-                    if not CurrReport.PREVIEW() then
-                        CODEUNIT.RUN(CODEUNIT::"Sales Shpt.-Printed", "Sales Shipment Header");
+                    if not CurrReport.Preview() then
+                        Codeunit.Run(Codeunit::"Sales Shpt.-Printed", "Sales Shipment Header");
                 end;
 
                 trigger OnPreDataItem()
                 begin
-                    NoOfLoops := 1 + ABS(NoOfCopies);
+                    NoOfLoops := 1 + Abs(NoOfCopies);
                     CopyText := '';
-                    SETRANGE(Number, 1, NoOfLoops);
+                    SetRange(Number, 1, NoOfLoops);
                     OutputNo := 1;
                 end;
             }
@@ -673,12 +673,12 @@ report 5272724 "lbt Sales - Shipment"
                 FormatDocumentFields("Sales Shipment Header");
                 CompanyInfo."lbt SetReportFooter"(Footer);
 
-                DimSetEntry1.SETRANGE("Dimension Set ID", "Dimension Set ID");
+                DimSetEntry1.SetRange("Dimension Set ID", "Dimension Set ID");
 
                 if LogInteraction then
-                    if not CurrReport.PREVIEW() then
+                    if not CurrReport.Preview() then
                         SegManagement.LogDocument(
-                          5, "No.", 0, 0, DATABASE::Customer, "Sell-to Customer No.", "Salesperson Code",
+                          5, "No.", 0, 0, Database::Customer, "Sell-to Customer No.", "Salesperson Code",
                           "Campaign No.", "Posting Description", '');
             end;
         }
@@ -896,7 +896,7 @@ report 5272724 "lbt Sales - Shipment"
         FormatAddr.GetCompanyAddr(SalesShipmentHeader."Responsibility Center", RespCenter, CompanyInfo, CompanyAddr);
         FormatAddr.SalesShptShipTo(ShipToAddr, SalesShipmentHeader);
         ShowCustAddr := FormatAddr.SalesShptBillTo(CustAddr, ShipToAddr, SalesShipmentHeader);
-        CLEAR(CompanyAddressLine);
+        Clear(CompanyAddressLine);
 
         for i := 1 to 6 do
             if CompanyAddr[i] <> '' then begin
@@ -909,8 +909,8 @@ report 5272724 "lbt Sales - Shipment"
     local procedure FormatDocumentFields(SalesShipmentHeader: Record "Sales Shipment Header")
     begin
         FormatDocument.SetSalesPerson(SalesPurchPerson, SalesShipmentHeader."Salesperson Code", SalesPersonText);
-        ReferenceText := FormatDocument.SetText(SalesShipmentHeader."Your Reference" <> '', CopyStr(SalesShipmentHeader.FIELDCAPTION("Your Reference"), 1, 80));
-        OrderNoText := FormatDocument.SetText(SalesShipmentHeader."Order No." <> '', CopyStr(SalesShipmentHeader.FIELDCAPTION("Order No."), 1, 80));
+        ReferenceText := FormatDocument.SetText(SalesShipmentHeader."Your Reference" <> '', CopyStr(SalesShipmentHeader.FieldCaption("Your Reference"), 1, 80));
+        OrderNoText := FormatDocument.SetText(SalesShipmentHeader."Order No." <> '', CopyStr(SalesShipmentHeader.FieldCaption("Order No."), 1, 80));
     end;
 
     local procedure GetUnitOfMeasureDescr(UOMCode: Code[10]): Text
@@ -929,7 +929,7 @@ report 5272724 "lbt Sales - Shipment"
 
     local procedure DocumentCaption(): Text
     var
-        DocCaption: text;
+        DocCaption: Text;
     begin
         OnBeforeGetDocumentCaption("Sales Shipment Header", DocCaption);
         if DocCaption <> '' then
@@ -938,7 +938,7 @@ report 5272724 "lbt Sales - Shipment"
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnBeforeGetDocumentCaption(SalesShipmentHeader: Record "Sales Shipment Header"; var DocCaption: text);
+    local procedure OnBeforeGetDocumentCaption(SalesShipmentHeader: Record "Sales Shipment Header"; var DocCaption: Text);
     begin
     end;
 }

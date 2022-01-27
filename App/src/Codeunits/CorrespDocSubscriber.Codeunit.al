@@ -1,6 +1,17 @@
 codeunit 5272721 "lbt Corresp. Doc. Subscriber"
 {
-    Permissions = TableData 111 = m, TableData 113 = m, TableData 115 = m, TableData 6661 = m, TableData 5108 = m, TableData 121 = m, TableData 123 = m, TableData 125 = m, TableData 6651 = m, TableData 5110 = m;
+    Permissions =
+        tabledata "Sales Shipment Line" = m,
+        tabledata "Sales Invoice Line" = m,
+        tabledata "Sales Cr.Memo Line" = m,
+        tabledata "Return Receipt Line" = m,
+        tabledata "Sales Line Archive" = m,
+        tabledata "Purch. Rcpt. Line" = m,
+        tabledata "Purch. Inv. Line" = m,
+        tabledata "Purch. Cr. Memo Line" = m,
+        tabledata "Return Shipment Line" = m,
+        tabledata "Purchase Line Archive" = m;
+
     trigger OnRun()
     begin
     end;
@@ -132,7 +143,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LongtextMgt.CopyLongtext(SalesLine, ReturnRcptLine);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 86, 'OnAfterOnRun', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Quote to Order", 'OnAfterOnRun', '', false, false)]
     local procedure OnAfterOnRun_Codeunit86(SalesHeader: Record "Sales Header"; SalesOrderHeader: Record "Sales Header")
     begin
         LongtextMgt.CopyLongtext(SalesHeader, SalesOrderHeader);
@@ -234,7 +245,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LongtextMgt.CopyLongtext(PurchQuoteLine, PurchOrderLine);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, 97, 'OnBeforeInsertPurchOrderHeader', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Blanket Purch. Order to Order", 'OnBeforeInsertPurchOrderHeader', '', false, false)]
     local procedure OnBeforeInsertPurchOrderHeader_Codeunit97(PurchOrderHeader: Record "Purchase Header"; BlanketOrderPurchHeader: Record "Purchase Header")
     begin
         LongtextMgt.CopyLongtext(BlanketOrderPurchHeader, PurchOrderHeader);

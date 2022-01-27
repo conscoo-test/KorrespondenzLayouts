@@ -29,14 +29,15 @@ pageextension 5272781 "lbt Posted Ret. Shipment Sub." extends "Posted Return Shi
                 ToolTip = 'Here you can insert long texts. ';
                 ApplicationArea = All;
             }
-            field("Lbt Editor"; rec.lbtHasEditorValue())
+            field("Lbt Editor"; Rec.lbtHasEditorValue())
             {
+                Caption = ' ', Locked = true;
                 ApplicationArea = all;
                 Editable = false;
                 ToolTip = 'Editor';
                 trigger OnAssistEdit()
                 begin
-                    rec.lbtEditData();
+                    Rec.lbtEditData();
                 end;
             }
         }
@@ -57,7 +58,7 @@ pageextension 5272781 "lbt Posted Ret. Shipment Sub." extends "Posted Return Shi
                     SourceRecRef: RecordRef;
                     Position: Option Header,Footer,Longtext;
                 begin
-                    SourceRecRef.GETTABLE(Rec);
+                    SourceRecRef.GetTable(Rec);
                     LongtextMgt.ShowLongtextLines(Rec, Position::Longtext);
                 end;
             }

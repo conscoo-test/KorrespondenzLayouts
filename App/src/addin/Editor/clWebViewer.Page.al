@@ -20,9 +20,9 @@ page 5272729 "lbt cl WebViewer"
     }
 
     var
-        HTMLContent: text;
+        HTMLContent: Text;
 
-    procedure SetContent(p_content: text)
+    procedure SetContent(p_content: Text)
     begin
         HTMLContent := p_content;
     end;

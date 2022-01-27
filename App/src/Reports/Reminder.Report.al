@@ -8,7 +8,7 @@ report 5272731 "lbt Reminder"
     {
         dataitem("Issued Reminder Header"; "Issued Reminder Header")
         {
-            DataItemTableView = SORTING("No.");
+            DataItemTableView = sorting("No.");
             RequestFilterFields = "No.";
             RequestFilterHeading = 'Reminder';
             column(Footer; Footer) { }
@@ -30,19 +30,19 @@ report 5272731 "lbt Reminder"
             column(DocDateCaption; DocDateCaptionLbl)
             {
             }
-            column(DocType_IssuedReminderLineCaption; "Issued Reminder Line".FIELDCAPTION("Document Type"))
+            column(DocType_IssuedReminderLineCaption; "Issued Reminder Line".FieldCaption("Document Type"))
             {
             }
-            column(DocNo_IssuedReminderLineCaption; "Issued Reminder Line".FIELDCAPTION("Document No."))
+            column(DocNo_IssuedReminderLineCaption; "Issued Reminder Line".FieldCaption("Document No."))
             {
             }
             column(DueDateCaption; DueDateCaptionLbl)
             {
             }
-            column(OriginalAmt_IssuedReminderLineCaption; "Issued Reminder Line".FIELDCAPTION("Original Amount"))
+            column(OriginalAmt_IssuedReminderLineCaption; "Issued Reminder Line".FieldCaption("Original Amount"))
             {
             }
-            column(RemainingAmt_IssuedReminderLineCaption; "Issued Reminder Line".FIELDCAPTION("Remaining Amount"))
+            column(RemainingAmt_IssuedReminderLineCaption; "Issued Reminder Line".FieldCaption("Remaining Amount"))
             {
             }
             column(HideCompanyInfo; HideCompanyInfo)
@@ -50,7 +50,7 @@ report 5272731 "lbt Reminder"
             }
             dataitem("Integer"; "Integer")
             {
-                DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+                DataItemTableView = sorting(Number) where(Number = const(1));
                 column(CompanyInfo1Picture; CompanyInfo1.Picture)
                 {
                 }
@@ -87,7 +87,7 @@ report 5272731 "lbt Reminder"
                 column(CustAddr8; CustAddr[8])
                 {
                 }
-                column(DocDate_IssuedReminderHdr; FORMAT("Issued Reminder Header"."Document Date"))
+                column(DocDate_IssuedReminderHdr; Format("Issued Reminder Header"."Document Date"))
                 {
                 }
                 column(YourReference_IssuedReminderHdr; "Issued Reminder Header"."Your Reference")
@@ -111,10 +111,10 @@ report 5272731 "lbt Reminder"
                 column(ReminderCaption; DocumentCaption())
                 {
                 }
-                column(CustNo_IssuedReminderHdrCaption; "Issued Reminder Header".FIELDCAPTION("Customer No."))
+                column(CustNo_IssuedReminderHdrCaption; "Issued Reminder Header".FieldCaption("Customer No."))
                 {
                 }
-                column(CarryForwardText; STRSUBSTNO(CarryForwardCaptionLbl, GLSetup."LCY Code"))
+                column(CarryForwardText; StrSubstNo(CarryForwardCaptionLbl, GLSetup."LCY Code"))
                 {
                 }
                 column(SubtotalCaption; SubtotalCaptionLbl)
@@ -135,7 +135,7 @@ report 5272731 "lbt Reminder"
                 dataitem(DimensionLoop; "Integer")
                 {
                     DataItemLinkReference = "Issued Reminder Header";
-                    DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
+                    DataItemTableView = sorting(Number) where(Number = filter(1 ..));
                     column(DimText; DimText)
                     {
                     }
@@ -155,18 +155,18 @@ report 5272731 "lbt Reminder"
                             if not Continue then
                                 CurrReport.Break();
 
-                        CLEAR(DimText);
+                        Clear(DimText);
                         Continue := false;
                         repeat
                             OldDimText := DimText;
                             if DimText = '' then
-                                DimText := STRSUBSTNO(DimLbl, DimSetEntry."Dimension Code", DimSetEntry."Dimension Value Code")
+                                DimText := StrSubstNo(DimLbl, DimSetEntry."Dimension Code", DimSetEntry."Dimension Value Code")
                             else
                                 DimText :=
-                                  STRSUBSTNO(
+                                  StrSubstNo(
                                     CombinedDimLbl, DimText,
                                     DimSetEntry."Dimension Code", DimSetEntry."Dimension Value Code");
-                            if STRLEN(DimText) > MAXSTRLEN(OldDimText) then begin
+                            if StrLen(DimText) > MaxStrLen(OldDimText) then begin
                                 DimText := OldDimText;
                                 Continue := true;
                                 exit;
@@ -182,9 +182,9 @@ report 5272731 "lbt Reminder"
                 }
                 dataitem("Issued Reminder Line"; "Issued Reminder Line")
                 {
-                    DataItemLink = "Reminder No." = FIELD("No.");
+                    DataItemLink = "Reminder No." = field("No.");
                     DataItemLinkReference = "Issued Reminder Header";
-                    DataItemTableView = SORTING("Reminder No.", "Line No.");
+                    DataItemTableView = sorting("Reminder No.", "Line No.");
                     column(RemainingAmt_IssuedReminderLine; "Remaining Amount")
                     {
                         AutoFormatExpression = "Issued Reminder Line".GetCurrencyCodeFromHeader();
@@ -199,16 +199,16 @@ report 5272731 "lbt Reminder"
                     column(Description_IssuedReminderLine; Description)
                     {
                     }
-                    column(Type; FORMAT("Issued Reminder Line".Type, 0, 2))
+                    column(Type; Format("Issued Reminder Line".Type, 0, 2))
                     {
                     }
-                    column(DocDate_IssuedReminderLine; FORMAT("Document Date"))
+                    column(DocDate_IssuedReminderLine; Format("Document Date"))
                     {
                     }
                     column(DocNo_IssuedReminderLine; "Document No.")
                     {
                     }
-                    column(DueDate_IssuedReminderLine; FORMAT("Due Date"))
+                    column(DueDate_IssuedReminderLine; Format("Due Date"))
                     {
                     }
                     column(OriginalAmt_IssuedReminderLine; "Original Amount")
@@ -292,7 +292,7 @@ report 5272731 "lbt Reminder"
 
                     trigger OnPreDataItem()
                     begin
-                        if FIND('-') then begin
+                        if Find('-') then begin
                             StartLineNo := 0;
                             repeat
                                 Continue := Type = Type::" ";
@@ -312,14 +312,14 @@ report 5272731 "lbt Reminder"
                         end;
 
                         TempVATAmountLine.DeleteAll();
-                        SETFILTER("Line No.", '<%1', EndLineNo);
+                        SetFilter("Line No.", '<%1', EndLineNo);
                     end;
                 }
                 dataitem(IssuedReminderLine2; "Issued Reminder Line")
                 {
-                    DataItemLink = "Reminder No." = FIELD("No.");
+                    DataItemLink = "Reminder No." = field("No.");
                     DataItemLinkReference = "Issued Reminder Header";
-                    DataItemTableView = SORTING("Reminder No.", "Line No.");
+                    DataItemTableView = sorting("Reminder No.", "Line No.");
                     column(Description_IssuedReminderLine2; Description)
                     {
                     }
@@ -329,23 +329,23 @@ report 5272731 "lbt Reminder"
 
                     trigger OnPreDataItem()
                     begin
-                        SETFILTER("Line No.", '>=%1', EndLineNo);
+                        SetFilter("Line No.", '>=%1', EndLineNo);
                         if not ShowNotDueAmounts then begin
-                            SETFILTER(Type, '<>%1', Type::" ");
+                            SetFilter(Type, '<>%1', Type::" ");
                             if FindFirst() then
                                 if "Line No." > EndLineNo then begin
-                                    SETRANGE(Type);
-                                    SETRANGE("Line No.", EndLineNo, "Line No." - 1); // find "Open Entries Not Due" line
+                                    SetRange(Type);
+                                    SetRange("Line No.", EndLineNo, "Line No." - 1); // find "Open Entries Not Due" line
                                     if FindLast() then
-                                        SETRANGE("Line No.", EndLineNo, "Line No." - 1);
+                                        SetRange("Line No.", EndLineNo, "Line No." - 1);
                                 end;
-                            SETRANGE(Type);
+                            SetRange(Type);
                         end;
                     end;
                 }
                 dataitem(VATCounter; "Integer")
                 {
-                    DataItemTableView = SORTING(Number);
+                    DataItemTableView = sorting(Number);
                     column(VATAmtLineAmtInclVAT; TempVATAmountLine."Amount Including VAT")
                     {
                         AutoFormatExpression = "Issued Reminder Line".GetCurrencyCodeFromHeader();
@@ -386,7 +386,7 @@ report 5272731 "lbt Reminder"
                         if TempVATAmountLine.GetTotalVATAmount() = 0 then
                             CurrReport.Break();
 
-                        SETRANGE(Number, 1, TempVATAmountLine.Count());
+                        SetRange(Number, 1, TempVATAmountLine.Count());
 
                         VALVATBase := 0;
                         VALVATAmount := 0;
@@ -394,7 +394,7 @@ report 5272731 "lbt Reminder"
                 }
                 dataitem(VATClauseEntryCounter; "Integer")
                 {
-                    DataItemTableView = SORTING(Number);
+                    DataItemTableView = sorting(Number);
                     column(VATClauseVATIdentifier; TempVATAmountLine."VAT Identifier")
                     {
                     }
@@ -432,13 +432,13 @@ report 5272731 "lbt Reminder"
 
                     trigger OnPreDataItem()
                     begin
-                        CLEAR(VATClause);
-                        SETRANGE(Number, 1, TempVATAmountLine.Count());
+                        Clear(VATClause);
+                        SetRange(Number, 1, TempVATAmountLine.Count());
                     end;
                 }
                 dataitem(VATCounterLCY; "Integer")
                 {
-                    DataItemTableView = SORTING(Number);
+                    DataItemTableView = sorting(Number);
                     column(VALExchRate; VALExchRate)
                     {
                     }
@@ -472,7 +472,7 @@ report 5272731 "lbt Reminder"
                            (TempVATAmountLine.GetTotalVATAmount() = 0) then
                             CurrReport.Break();
 
-                        SETRANGE(Number, 1, TempVATAmountLine.Count());
+                        SetRange(Number, 1, TempVATAmountLine.Count());
 
                         VALVATBaseLCY := 0;
                         VALVATAmountLCY := 0;
@@ -480,19 +480,19 @@ report 5272731 "lbt Reminder"
                         if GLSetup."LCY Code" = '' then
                             VALSpecLCYHeader := VatAmountLbl + LCYLbl
                         else
-                            VALSpecLCYHeader := VatAmountLbl + FORMAT(GLSetup."LCY Code");
+                            VALSpecLCYHeader := VatAmountLbl + Format(GLSetup."LCY Code");
 
                         CurrExchRate.FindCurrency("Issued Reminder Header"."Posting Date", "Issued Reminder Header"."Currency Code", 1);
-                        CustEntry.SETRANGE("Customer No.", "Issued Reminder Header"."Customer No.");
-                        CustEntry.SETRANGE("Document Type", CustEntry."Document Type"::Reminder);
-                        CustEntry.SETRANGE("Document No.", "Issued Reminder Header"."No.");
+                        CustEntry.SetRange("Customer No.", "Issued Reminder Header"."Customer No.");
+                        CustEntry.SetRange("Document Type", CustEntry."Document Type"::Reminder);
+                        CustEntry.SetRange("Document No.", "Issued Reminder Header"."No.");
                         if CustEntry.FindFirst() then begin
-                            CustEntry.CALCFIELDS("Amount (LCY)", Amount);
+                            CustEntry.CalcFields("Amount (LCY)", Amount);
                             CurrFactor := 1 / (CustEntry."Amount (LCY)" / CustEntry.Amount);
-                            VALExchRate := STRSUBSTNO(ExchangeRateLbl, ROUND(1 / CurrFactor * 100, 0.000001), CurrExchRate."Exchange Rate Amount");
+                            VALExchRate := StrSubstNo(ExchangeRateLbl, ROUND(1 / CurrFactor * 100, 0.000001), CurrExchRate."Exchange Rate Amount");
                         end else begin
                             CurrFactor := CurrExchRate.ExchangeRate("Issued Reminder Header"."Posting Date", "Issued Reminder Header"."Currency Code");
-                            VALExchRate := STRSUBSTNO(ExchangeRateLbl, CurrExchRate."Relational Exch. Rate Amount", CurrExchRate."Exchange Rate Amount");
+                            VALExchRate := StrSubstNo(ExchangeRateLbl, CurrExchRate."Relational Exch. Rate Amount", CurrExchRate."Exchange Rate Amount");
                         end;
                     end;
                 }
@@ -506,32 +506,32 @@ report 5272731 "lbt Reminder"
             begin
                 CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
                 CompanyInfo."lbt SetReportFooter"(Footer);
-                DimSetEntry.SETRANGE("Dimension Set ID", "Dimension Set ID");
+                DimSetEntry.SetRange("Dimension Set ID", "Dimension Set ID");
 
                 FormatAddr.IssuedReminder(CustAddr, "Issued Reminder Header");
                 if "Your Reference" = '' then
                     ReferenceText := ''
                 else
-                    ReferenceText := FIELDCAPTION("Your Reference");
+                    ReferenceText := FieldCaption("Your Reference");
                 if "VAT Registration No." = '' then
                     VATNoText := ''
                 else
-                    VATNoText := FIELDCAPTION("VAT Registration No.");
+                    VATNoText := FieldCaption("VAT Registration No.");
                 if "Currency Code" = '' then begin
                     GLSetup.TESTFIELD("LCY Code");
-                    TotalText := STRSUBSTNO(TotalLbl, GLSetup."LCY Code");
-                    TotalInclVATText := STRSUBSTNO(TotalInclVatLbl, GLSetup."LCY Code");
+                    TotalText := StrSubstNo(TotalLbl, GLSetup."LCY Code");
+                    TotalInclVATText := StrSubstNo(TotalInclVatLbl, GLSetup."LCY Code");
                 end else begin
-                    TotalText := STRSUBSTNO(TotalLbl, "Currency Code");
-                    TotalInclVATText := STRSUBSTNO(TotalInclVatLbl, "Currency Code");
+                    TotalText := StrSubstNo(TotalLbl, "Currency Code");
+                    TotalInclVATText := StrSubstNo(TotalInclVatLbl, "Currency Code");
                 end;
-                if not CurrReport.PREVIEW() then begin
+                if not CurrReport.Preview() then begin
                     if LogInteraction then
                         SegManagement.LogDocument(
-                          8, "No.", 0, 0, DATABASE::Customer, "Customer No.", '', '', "Posting Description", '');
+                          8, "No.", 0, 0, Database::Customer, "Customer No.", '', '', "Posting Description", '');
                     IncrNoPrinted();
                 end;
-                CALCFIELDS("Additional Fee");
+                CalcFields("Additional Fee");
                 CustPostingGroup.Get("Customer Posting Group");
                 if GLAcc.Get(CustPostingGroup."Additional Fee Account") then begin
                     VATPostingSetup.Get("VAT Bus. Posting Group", GLAcc."VAT Prod. Posting Group");
@@ -539,10 +539,10 @@ report 5272731 "lbt Reminder"
                 end else
                     AddFeeInclVAT := "Additional Fee";
 
-                CALCFIELDS("Add. Fee per Line");
+                CalcFields("Add. Fee per Line");
                 AddFeePerLineInclVAT := "Add. Fee per Line" + CalculateLineFeeVATAmount();
 
-                CALCFIELDS("Interest Amount", "VAT Amount");
+                CalcFields("Interest Amount", "VAT Amount");
                 if ("Interest Amount" <> 0) and ("VAT Amount" <> 0) then begin
                     GLAcc.Get(CustPostingGroup."Interest Account");
                     VATPostingSetup.Get("VAT Bus. Posting Group", GLAcc."VAT Prod. Posting Group");
@@ -571,7 +571,7 @@ report 5272731 "lbt Reminder"
             begin
                 CompanyInfo.Get();
                 FormatAddr.Company(CompanyAddr, CompanyInfo);
-                CLEAR(CompanyAddressLine);
+                Clear(CompanyAddressLine);
 
                 for i := 1 to 6 do
                     if CompanyAddr[i] <> '' then begin
@@ -655,17 +655,17 @@ report 5272731 "lbt Reminder"
             SalesSetup."Logo Position on Documents"::Left:
                 begin
                     CompanyInfo3.Get();
-                    CompanyInfo3.CALCFIELDS(Picture);
+                    CompanyInfo3.CalcFields(Picture);
                 end;
             SalesSetup."Logo Position on Documents"::Center:
                 begin
                     CompanyInfo1.Get();
-                    CompanyInfo1.CALCFIELDS(Picture);
+                    CompanyInfo1.CalcFields(Picture);
                 end;
             SalesSetup."Logo Position on Documents"::Right:
                 begin
                     CompanyInfo2.Get();
-                    CompanyInfo2.CALCFIELDS(Picture);
+                    CompanyInfo2.CalcFields(Picture);
                 end;
         end;
     end;
@@ -757,7 +757,7 @@ report 5272731 "lbt Reminder"
 
     local procedure DocumentCaption(): Text
     var
-        DocCaption: text;
+        DocCaption: Text;
     begin
         OnBeforeGetDocumentCaption("Issued Reminder Header", DocCaption);
         if DocCaption <> '' then
@@ -766,7 +766,7 @@ report 5272731 "lbt Reminder"
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnBeforeGetDocumentCaption(IssuedReminderHeader: Record "Issued Reminder Header"; var DocCaption: text);
+    local procedure OnBeforeGetDocumentCaption(IssuedReminderHeader: Record "Issued Reminder Header"; var DocCaption: Text);
     begin
     end;
 }

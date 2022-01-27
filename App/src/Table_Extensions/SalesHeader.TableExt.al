@@ -21,18 +21,18 @@ tableextension 5272728 "lbt Sales Header" extends "Sales Header"
         PSLongtextLine.DeleteAll();
     end;
 
-    procedure lbtHasEditorValue(Position: enum "lbt Position"; docType: integer) Result: text
+    procedure lbtHasEditorValue(Position: enum "lbt Position"; docType: Integer) Result: Text
     begin
         exit(format(EditorHelper.hasEditorValue(rec, Position, doctype)));
         //exit(EditorHelper.hasEditorValue(rec, Position));
     end;
 
-    procedure lbtEditData(Position: enum "lbt Position"; docType: integer)
+    procedure lbtEditData(Position: enum "lbt Position"; docType: Integer)
     begin
         EditorHelper.editData(rec, Position, docType);
     end;
 
-    procedure lbtGetPrintData(Position: enum "lbt Position"; docType: integer): text
+    procedure lbtGetPrintData(Position: enum "lbt Position"; docType: Integer): Text
     begin
         exit(EditorHelper.getPrintData(rec, Position, docType));
     end;
@@ -44,7 +44,7 @@ tableextension 5272728 "lbt Sales Header" extends "Sales Header"
 
     trigger OnAfterDelete()
     begin
-        EditorHelper.deleteLongText(rec, rec."Document Type".AsInteger());
+        EditorHelper.deleteLongText(rec, Rec."Document Type".AsInteger());
     end;
 
 

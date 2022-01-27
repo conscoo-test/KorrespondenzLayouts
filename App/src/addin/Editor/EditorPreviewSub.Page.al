@@ -21,7 +21,7 @@ page 5272734 "lbt cl Editor Preview Sub"
                     trigger ControlReady()
                     begin
                         CurrPage.editor.Init(true, true);
-                        CurrPage.editor.SetHTMLText(data);
+                        CurrPage.editor.SetHTMLText(Data);
                     end;
 
                 }
@@ -35,26 +35,26 @@ page 5272734 "lbt cl Editor Preview Sub"
             FillAddin();
     end;
 
-    local Procedure FillAddin()
+    local procedure FillAddin()
     begin
-        //CurrPage.showdata.SetContent(StrSubstNo('<textarea Id="TextArea" maxlength="%2" style="width:100%;height:100%;resize: none; font-family:"Segoe UI", "Segoe WP", Segoe, device-segoe, Tahoma, Helvetica, Arial, sans-serif !important; font-size: 10.5pt !important;" OnChange="window.parent.WebPageViewerHelper.TriggerCallback(document.getElementById(''TextArea'').value)">%1</textarea>', data, MaxStrLen(data)));
+        //CurrPage.showdata.SetContent(StrSubstNo('<textarea Id="TextArea" maxlength="%2" style="width:100%;height:100%;resize: none; font-family:"Segoe UI", "Segoe WP", Segoe, device-segoe, Tahoma, Helvetica, Arial, sans-serif !important; font-size: 10.5pt !important;" OnChange="window.parent.WebPageViewerHelper.TriggerCallback(document.getElementById(''TextArea'').Value)">%1</textarea>', data, MaxStrLen(data)));
         //CurrPage.showdata2.SetContent(data);
     end;
 
     var
         isReady: Boolean;
 
-    procedure SetData(v_Data: text)
+    procedure SetData(v_Data: Text)
     begin
-        data := v_Data;
+        Data := v_Data;
     end;
 
     procedure GetData() Result: Text
     begin
-        exit(data);
+        exit(Data);
     end;
 
 
     var
-        Data: text;
+        Data: Text;
 }

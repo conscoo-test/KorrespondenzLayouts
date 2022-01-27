@@ -5,7 +5,8 @@ table 5272726 "lbt Source Setup"
     // LBIS00     211218 MH   ERSTELLT   H19/0780
 
     Caption = 'lbt Source Setup';
-
+    LookupPageId = "lbt Source Setup";
+    DrillDownPageId = "lbt Source Setup";
     fields
     {
         field(1; Type; Option)

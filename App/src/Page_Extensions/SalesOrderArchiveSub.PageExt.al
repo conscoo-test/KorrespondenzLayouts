@@ -29,14 +29,15 @@ pageextension 5272758 "lbt Sales Order Archive Sub." extends "Sales Order Archiv
                 ToolTip = 'Here you can insert long texts. ';
                 ApplicationArea = All;
             }
-            field("Lbt Editor"; rec.lbtHasEditorValue(rec."Document Type".AsInteger()))
+            field("Lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
+                Caption = ' ', Locked = true;
                 ApplicationArea = all;
                 Editable = false;
                 ToolTip = 'Editor';
                 trigger OnAssistEdit()
                 begin
-                    rec.lbtEditData(rec."Document Type".AsInteger());
+                    Rec.lbtEditData(Rec."Document Type".AsInteger());
                 end;
             }
         }
@@ -57,7 +58,7 @@ pageextension 5272758 "lbt Sales Order Archive Sub." extends "Sales Order Archiv
                     SourceRecRef: RecordRef;
                     Position: Option Header,Footer,Longtext;
                 begin
-                    SourceRecRef.GETTABLE(Rec);
+                    SourceRecRef.GetTable(Rec);
                     LongtextMgt.ShowLongtextLines(Rec, Position::Longtext);
                 end;
             }

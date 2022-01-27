@@ -8,7 +8,7 @@ report 5272733 "lbt cl Service Quote"
     {
         dataitem("Service Header"; "Service Header")
         {
-            DataItemTableView = SORTING("Document Type", "No.") WHERE("Document Type" = CONST(Quote));
+            DataItemTableView = sorting("Document Type", "No.") where("Document Type" = const(Quote));
             RequestFilterFields = "No.", "Customer No.";
             column(DocumentType_ServHeader; "Document Type")
             {
@@ -24,10 +24,10 @@ report 5272733 "lbt cl Service Quote"
             }
             dataitem(CopyLoop; "Integer")
             {
-                DataItemTableView = SORTING(Number);
+                DataItemTableView = sorting(Number);
                 dataitem(PageLoop; "Integer")
                 {
-                    DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+                    DataItemTableView = sorting(Number) where(Number = const(1));
                     column(CompanyInfo1Picture; CompanyInfo1.Picture)
                     {
                     }
@@ -134,16 +134,16 @@ report 5272733 "lbt cl Service Quote"
                     {
                     }
                     ///lbt
-                    column(lbt_cl_HeaderTxt; "Service Header".lbtGetPrintData(enum::"lbt Position"::EditorHeader, "Service Header"."Document Type".AsInteger()))
+                    column(lbt_cl_HeaderTxt; "Service Header".lbtGetPrintData(Enum::"lbt Position"::EditorHeader, "Service Header"."Document Type".AsInteger()))
                     {
                     }
                     ///lbt
-                    column(lbt_cl_FooterTxt; "Service Header".lbtGetPrintData(enum::"lbt Position"::EditorFooter, "Service Header"."Document Type".AsInteger()))
+                    column(lbt_cl_FooterTxt; "Service Header".lbtGetPrintData(Enum::"lbt Position"::EditorFooter, "Service Header"."Document Type".AsInteger()))
                     {
                     }
                     dataitem(DimensionLoop1; "Integer")
                     {
-                        DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
+                        DataItemTableView = sorting(Number) where(Number = filter(1 ..));
                         column(DimText; DimText)
                         {
                         }
@@ -190,9 +190,9 @@ report 5272733 "lbt cl Service Quote"
                     }
                     dataitem("Service Order Comment"; "Service Comment Line")
                     {
-                        DataItemLink = "Table Subtype" = FIELD("Document Type"), "No." = FIELD("No.");
+                        DataItemLink = "Table Subtype" = field("Document Type"), "No." = field("No.");
                         DataItemLinkReference = "Service Header";
-                        DataItemTableView = SORTING("Table Name", "Table Subtype", "No.", Type, "Table Line No.", "Line No.") WHERE("Table Name" = CONST("Service Header"), Type = CONST(General));
+                        DataItemTableView = sorting("Table Name", "Table Subtype", "No.", Type, "Table Line No.", "Line No.") where("Table Name" = const("Service Header"), Type = const(General));
                         column(LineNo_ServOrderComment; "Line No.")
                         {
                         }
@@ -205,9 +205,9 @@ report 5272733 "lbt cl Service Quote"
                     }
                     dataitem("Service Item Line"; "Service Item Line")
                     {
-                        DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("No.");
+                        DataItemLink = "Document Type" = field("Document Type"), "Document No." = field("No.");
                         DataItemLinkReference = "Service Header";
-                        DataItemTableView = SORTING("Document Type", "Document No.", "Line No.");
+                        DataItemTableView = sorting("Document Type", "Document No.", "Line No.");
                         column(ShowInternalInfo; ShowInternalInfo)
                         {
                         }
@@ -272,13 +272,13 @@ report 5272733 "lbt cl Service Quote"
                         {
                         }
                         ///lbt
-                        column(lbt_cl_ServiceItemLineTxt; "Service item line".lbtGetPrintData(enum::"lbt Position"::EditorLine, "Service item line"."Document Type".AsInteger()))
+                        column(lbt_cl_ServiceItemLineTxt; "Service item line".lbtGetPrintData(Enum::"lbt Position"::EditorLine, "Service item line"."Document Type".AsInteger()))
                         {
                         }
                         dataitem("Fault Comment"; "Service Comment Line")
                         {
-                            DataItemLink = "Table Subtype" = FIELD("Document Type"), "No." = FIELD("Document No."), "Table Line No." = FIELD("Line No.");
-                            DataItemTableView = SORTING("Table Name", "Table Subtype", "No.", Type, "Table Line No.", "Line No.") WHERE("Table Name" = CONST("Service Header"), Type = CONST(Fault));
+                            DataItemLink = "Table Subtype" = field("Document Type"), "No." = field("Document No."), "Table Line No." = field("Line No.");
+                            DataItemTableView = sorting("Table Name", "Table Subtype", "No.", Type, "Table Line No.", "Line No.") where("Table Name" = const("Service Header"), Type = const(Fault));
                             column(Comment_FaultComment; Comment)
                             {
                             }
@@ -306,8 +306,8 @@ report 5272733 "lbt cl Service Quote"
                         }
                         dataitem("Resolution Comment"; "Service Comment Line")
                         {
-                            DataItemLink = "Table Subtype" = FIELD("Document Type"), "No." = FIELD("Document No."), "Table Line No." = FIELD("Line No.");
-                            DataItemTableView = SORTING("Table Name", "Table Subtype", "No.", Type, "Table Line No.", "Line No.") WHERE("Table Name" = CONST("Service Header"), Type = CONST(Resolution));
+                            DataItemLink = "Table Subtype" = field("Document Type"), "No." = field("Document No."), "Table Line No." = field("Line No.");
+                            DataItemTableView = sorting("Table Name", "Table Subtype", "No.", Type, "Table Line No.", "Line No.") where("Table Name" = const("Service Header"), Type = const(Resolution));
                             column(Comment_ResolutionComment; Comment)
                             {
                             }
@@ -342,9 +342,9 @@ report 5272733 "lbt cl Service Quote"
                     }
                     dataitem("Service Line"; "Service Line")
                     {
-                        DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("No.");
+                        DataItemLink = "Document Type" = field("Document Type"), "Document No." = field("No.");
                         DataItemLinkReference = "Service Header";
-                        DataItemTableView = SORTING("Document Type", "Document No.", "Line No.");
+                        DataItemTableView = sorting("Document Type", "Document No.", "Line No.");
                         column(SerItemSlNo_ServLine; "Service Item Serial No.")
                         {
                         }
@@ -424,12 +424,12 @@ report 5272733 "lbt cl Service Quote"
                         {
                         }
                         ///lbt
-                        column(lbt_cl_ServiceLineTxt; "Service line".lbtGetPrintData(enum::"lbt Position"::EditorLine, "Service line"."Document Type".AsInteger()))
+                        column(lbt_cl_ServiceLineTxt; "Service line".lbtGetPrintData(Enum::"lbt Position"::EditorLine, "Service line"."Document Type".AsInteger()))
                         {
                         }
                         dataitem(DimesionLoop2; "Integer")
                         {
-                            DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
+                            DataItemTableView = sorting(Number) where(Number = filter(1 ..));
                             column(DimText1; DimText)
                             {
                             }
@@ -485,7 +485,7 @@ report 5272733 "lbt cl Service Quote"
                     }
                     dataitem(Shipto; "Integer")
                     {
-                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+                        DataItemTableView = sorting(Number) where(Number = const(1));
                         column(ShipToAddr6; ShipToAddr[6])
                         {
                         }
@@ -529,7 +529,7 @@ report 5272733 "lbt cl Service Quote"
                 trigger OnPostDataItem()
                 begin
                     if not IsReportInPreviewMode then
-                        CODEUNIT.Run(CODEUNIT::"Service-Printed", "Service Header");
+                        Codeunit.Run(Codeunit::"Service-Printed", "Service Header");
                 end;
 
                 trigger OnPreDataItem()
@@ -621,10 +621,10 @@ report 5272733 "lbt cl Service Quote"
             if "Service Header".FindSet then
                 repeat
                     if "Service Header"."Contact No." <> '' then
-                        SegManagement.LogDocument(25, "Service Header"."No.", 0, 0, DATABASE::Contact, "Service Header"."Contact No.",
+                        SegManagement.LogDocument(25, "Service Header"."No.", 0, 0, Database::Contact, "Service Header"."Contact No.",
                           "Service Header"."Salesperson Code", '', '', '')
                     else
-                        SegManagement.LogDocument(25, "Service Header"."No.", 0, 0, DATABASE::Customer, "Service Header"."Customer No.",
+                        SegManagement.LogDocument(25, "Service Header"."No.", 0, 0, Database::Customer, "Service Header"."Customer No.",
                           "Service Header"."Salesperson Code", '', '', '');
                 until "Service Header".Next() = 0;
     end;

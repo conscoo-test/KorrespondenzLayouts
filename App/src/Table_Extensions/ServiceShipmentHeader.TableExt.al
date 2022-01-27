@@ -3,7 +3,7 @@ tableextension 5272752 "lbt cl ServiceShipmentHeader" extends "Service Shipment 
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";
 
-    procedure lbtHasEditorValue(Position: enum "lbt Position") Result: text
+    procedure lbtHasEditorValue(Position: enum "lbt Position") Result: Text
     begin
         exit(format(EditorHelper.hasEditorValue(rec, Position, 0)));
         //exit(EditorHelper.hasEditorValue(rec, Position));

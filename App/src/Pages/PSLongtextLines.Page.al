@@ -57,7 +57,7 @@ page 5272720 "lbt PS Longtext Lines"
                 begin
                     Rec.DBOpenMemo();
 
-                    CurrPage.UPDATE(false);
+                    CurrPage.Update(false);
                 end;
             }
         }
@@ -69,7 +69,7 @@ page 5272720 "lbt PS Longtext Lines"
         PurchaseHeader: Record "Purchase Header";
         SourceRecordRef: RecordRef;
         SourceFieldRef: FieldRef;
-        SourceDocumentType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order";
+        SourceDocumentType: Enum "Sales Document Type";
         Belegdatum: Date;
         LanguageCode: Code[10];
         SourceDocumentNo: Code[20];
@@ -80,7 +80,7 @@ page 5272720 "lbt PS Longtext Lines"
     begin
         LanguageCode := '';
         Belegdatum := 0D;
-        SourceRecordRef.GETTABLE(Rec);
+        SourceRecordRef.GetTable(Rec);
         SourceFieldRef := SourceRecordRef.Field(2);
         SourceDocumentType := SourceFieldRef.Value();
         SourceFieldRef := SourceRecordRef.Field(3);
@@ -114,7 +114,7 @@ page 5272720 "lbt PS Longtext Lines"
         if LongtextMgt.LongTextCheckIfAnyExtText(ExtendedTextHeader, LanguageCode, Belegdatum) then
             LongtextMgt.InsertLongTextExtText(Rec, Rec."Document Type");
 
-        CurrPage.UPDATE(false);
+        CurrPage.Update(false);
     end;
 }
 

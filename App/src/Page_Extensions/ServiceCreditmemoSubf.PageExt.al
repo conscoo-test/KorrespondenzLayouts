@@ -1,4 +1,4 @@
-pageextension 5272808 "lbt cl ServiceQuoteSubform" extends "Service Quote Subform"
+pageextension 5272811 "lbt cl ServiceCreditmemoSubf" extends "Service Credit Memo Subform"
 {
     layout
     {

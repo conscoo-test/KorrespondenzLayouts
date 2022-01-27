@@ -9,18 +9,18 @@ pageextension 5272771 "lbt Sales Return Order" extends "Sales Return Order"
                 caption = 'Longtext';
                 visible = longtextvisible;
                 field("lbt Editor Header";
-                rec.lbtHasEditorValue(enum::"lbt Position"::EditorHeader, rec."Document Type".AsInteger()))
+                Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger()))
                 {
                     ApplicationArea = all;
-                Editable = false;
-                ToolTip = 'Editor Header';
-                caption = 'Editor Header';
+                    Editable = false;
+                    ToolTip = 'Editor Header';
+                    caption = 'Editor Header';
                     trigger OnAssistEdit()
-    begin
-        rec.lbtEditData(enum::"lbt Position"::EditorHeader, rec."Document Type".AsInteger());
-    end;
-}
-                field("lbt Editor Footer"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorFooter, rec."Document Type".AsInteger()))
+                    begin
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger());
+                    end;
+                }
+                field("lbt Editor Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter, Rec."Document Type".AsInteger()))
                 {
                     ApplicationArea = all;
                     Editable = false;
@@ -28,7 +28,7 @@ pageextension 5272771 "lbt Sales Return Order" extends "Sales Return Order"
                     caption = 'Editor Footer';
                     trigger OnAssistEdit()
                     begin
-                        rec.lbtEditData(enum::"lbt Position"::Editorfooter, rec."Document Type".AsInteger());
+                        Rec.lbtEditData(Enum::"lbt Position"::Editorfooter, Rec."Document Type".AsInteger());
                     end;
                 }
             }
@@ -105,7 +105,7 @@ pageextension 5272771 "lbt Sales Return Order" extends "Sales Return Order"
 
     trigger OnOpenPage()
     begin
-        longtextvisible := rec.lbtEditorVisible();
+        longtextvisible := Rec.lbtEditorVisible();
     end;
 }
 

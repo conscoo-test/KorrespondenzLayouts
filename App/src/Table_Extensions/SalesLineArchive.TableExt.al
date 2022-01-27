@@ -4,13 +4,13 @@ tableextension 5272732 "lbt Sales Line Archive" extends "Sales Line Archive"
     {
         field(5272720; "lbt Long Text"; Boolean)
         {
-            CalcFormula = Exist("lbt Archive PS Longtext Line" WHERE("Table ID" = CONST(5108),
-                                                                        "Document Type" = FIELD("Document Type"),
-                                                                        "Document No." = FIELD("Document No."),
-                                                                        Position = CONST(Longtext),
-                                                                        "Document Line No." = FIELD("Line No."),
-                                                                        "Version No." = FIELD("Version No."),
-                                                                        "Doc. No. Occurrence" = FIELD("Doc. No. Occurrence")));
+            CalcFormula = Exist("lbt Archive PS Longtext Line" where("Table ID" = const(5108),
+                                                                        "Document Type" = field("Document Type"),
+                                                                        "Document No." = field("Document No."),
+                                                                        Position = const(Longtext),
+                                                                        "Document Line No." = field("Line No."),
+                                                                        "Version No." = field("Version No."),
+                                                                        "Doc. No. Occurrence" = field("Doc. No. Occurrence")));
             Caption = 'Long Text';
             Editable = false;
             FieldClass = FlowField;
@@ -25,24 +25,24 @@ tableextension 5272732 "lbt Sales Line Archive" extends "Sales Line Archive"
         field(5272722; "lbt Summation"; Text[250])
         {
             Caption = 'Summation';
-            TableRelation = "Sales Line Archive"."Line No." WHERE("Document Type" = FIELD("Document Type"),
-                                                                   "Document No." = FIELD("Document No."));
+            TableRelation = "Sales Line Archive"."Line No." where("Document Type" = field("Document Type"),
+                                                                   "Document No." = field("Document No."));
             ValidateTableRelation = false;
             DataClassification = CustomerContent;
         }
         field(5272723; "lbt Balance"; Decimal)
         {
             AutoFormatType = 1;
-            CalcFormula = Sum("Sales Line Archive"."Line Amount" WHERE("Document Type" = FIELD("Document Type"),
-                                                                        "Document No." = FIELD("Document No."),
-                                                                        "Doc. No. Occurrence" = FIELD("Doc. No. Occurrence"),
-                                                                        "Version No." = FIELD("Version No."),
-                                                                        "Line No." = FIELD(FILTER("lbt Summation"))));
+            CalcFormula = Sum("Sales Line Archive"."Line Amount" where("Document Type" = field("Document Type"),
+                                                                        "Document No." = field("Document No."),
+                                                                        "Doc. No. Occurrence" = field("Doc. No. Occurrence"),
+                                                                        "Version No." = field("Version No."),
+                                                                        "Line No." = field(filter("lbt Summation"))));
             Caption = 'Balance';
             Editable = false;
             FieldClass = FlowField;
-            TableRelation = "Sales Line Archive"."Line No." WHERE("Document Type" = FIELD("Document Type"),
-                                                                   "Document No." = FIELD("Document No."));
+            TableRelation = "Sales Line Archive"."Line No." where("Document Type" = field("Document Type"),
+                                                                   "Document No." = field("Document No."));
         }
         field(5272724; "lbt Pos. No."; Text[30])
         {
@@ -80,21 +80,21 @@ tableextension 5272732 "lbt Sales Line Archive" extends "Sales Line Archive"
         LongtextMgt.DelLongtext(Rec);
     end;
 
-    procedure lbtHasEditorValue(docType: integer) Result: Boolean
+    procedure lbtHasEditorValue(docType: Integer) Result: Boolean
     var
 
     begin
-        exit(EditorHelper.hasEditorValue(rec, enum::"lbt Position"::EditorLine, doctype));
+        exit(EditorHelper.hasEditorValue(rec, Enum::"lbt Position"::EditorLine, doctype));
     end;
 
-    procedure lbtEditData(doctype: integer)
+    procedure lbtEditData(doctype: Integer)
     var
 
     begin
-        EditorHelper.editData(rec, enum::"lbt Position"::EditorLine, doctype);
+        EditorHelper.editData(rec, Enum::"lbt Position"::EditorLine, doctype);
     end;
 
-    procedure lbtGetPrintData(Position: enum "lbt Position"; docType: integer): Text
+    procedure lbtGetPrintData(Position: enum "lbt Position"; docType: Integer): Text
     begin
         exit(EditorHelper.getPrintData(rec, Position, docType));
     end;

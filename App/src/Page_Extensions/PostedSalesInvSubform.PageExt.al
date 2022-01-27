@@ -29,7 +29,7 @@ pageextension 5272724 "lbt Posted Sales Inv. Subform" extends "Posted Sales Invo
                 ApplicationArea = All;
                 ToolTip = 'Here you can insert long texts.';
             }
-            field("Lbt Editor"; rec.lbtHasEditorValue())
+            field("Lbt Editor"; Rec.lbtHasEditorValue())
             {
                 ApplicationArea = all;
                 Editable = false;
@@ -37,7 +37,7 @@ pageextension 5272724 "lbt Posted Sales Inv. Subform" extends "Posted Sales Invo
                 Caption = 'Editor';
                 trigger OnAssistEdit()
                 begin
-                    rec.lbtEditData();
+                    Rec.lbtEditData();
                 end;
             }
 
@@ -60,7 +60,7 @@ pageextension 5272724 "lbt Posted Sales Inv. Subform" extends "Posted Sales Invo
                     SourceRecRef: RecordRef;
                     Position: Option Header,Footer,Longtext;
                 begin
-                    SourceRecRef.GETTABLE(Rec);
+                    SourceRecRef.GetTable(Rec);
                     LongtextMgt.ShowLongtextLines(Rec, Position::Longtext);
                 end;
             }

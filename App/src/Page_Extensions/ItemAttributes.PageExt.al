@@ -14,7 +14,7 @@ pageextension 5272786 "lbt Item Attributes" extends "Item Attributes"
                     ToolTip = 'Allows you to assign attributes to a specific report or area.';
                     Image = Setup;
                     RunObject = Page "lbt Report - Attribute Setup";
-                    RunPageView = SORTING("Report-Type", "Report-ID", Position, Priority);
+                    RunPageView = sorting("Report-Type", "Report-ID", Position, Priority);
                 }
             }
         }

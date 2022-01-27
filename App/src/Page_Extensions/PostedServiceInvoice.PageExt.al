@@ -4,7 +4,7 @@ pageextension 5272816 "lbt cl PostedServiceInvoice" extends "Posted Service Invo
     {
         addlast(General)
         {
-            field("lbt Editor Header"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorHeader))
+            field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader))
             {
                 ApplicationArea = all;
                 Editable = false;
@@ -12,10 +12,10 @@ pageextension 5272816 "lbt cl PostedServiceInvoice" extends "Posted Service Invo
                 caption = 'Editor Header';
                 trigger OnAssistEdit()
                 begin
-                    rec.lbtEditData(enum::"lbt Position"::EditorHeader);
+                    Rec.lbtEditData(Enum::"lbt Position"::EditorHeader);
                 end;
             }
-            field("lbt Editor Footer"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorFooter))
+            field("lbt Editor Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter))
             {
                 ApplicationArea = all;
                 Editable = false;
@@ -23,7 +23,7 @@ pageextension 5272816 "lbt cl PostedServiceInvoice" extends "Posted Service Invo
                 caption = 'Editor Footer';
                 trigger OnAssistEdit()
                 begin
-                    rec.lbtEditData(enum::"lbt Position"::Editorfooter);
+                    Rec.lbtEditData(Enum::"lbt Position"::Editorfooter);
                 end;
             }
         }

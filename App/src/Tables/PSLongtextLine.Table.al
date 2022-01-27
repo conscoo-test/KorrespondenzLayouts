@@ -12,27 +12,25 @@ table 5272720 "lbt PS Longtext Line"
         field(1; "Table ID"; Integer)
         {
             Caption = 'Table ID';
-            TableRelation = AllObj."Object ID" WHERE("Object Type" = CONST(Table));
+            TableRelation = AllObj."Object ID" where("Object Type" = const(Table));
             DataClassification = CustomerContent;
         }
-        field(2; "Document Type"; Option)
+        field(2; "Document Type"; Enum "Sales Document Type")
         {
             Caption = 'Document Type';
-            OptionCaption = 'Quote,Order,Invoice,Credit Memo,Blanket Order,Return Order,Shipment/Receipt';
-            OptionMembers = Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order","Shipment/Receipt";
             DataClassification = CustomerContent;
         }
         field(3; "Document No."; Code[20])
         {
             Caption = 'Document No.';
             NotBlank = true;
-            TableRelation = IF ("Table ID" = CONST(36)) "Sales Header"."No." WHERE("Document Type" = FIELD("Document Type"))
-            ELSE
-            IF ("Table ID" = CONST(37)) "Sales Line"."Document No." WHERE("Document Type" = FIELD("Document Type"))
-            ELSE
-            IF ("Table ID" = CONST(38)) "Purchase Header"."No." WHERE("Document Type" = FIELD("Document Type"))
-            ELSE
-            IF ("Table ID" = CONST(39)) "Purchase Line"."Document No." WHERE("Document Type" = FIELD("Document Type"));
+            TableRelation = if ("Table ID" = const(36)) "Sales Header"."No." where("Document Type" = field("Document Type"))
+            else
+            if ("Table ID" = const(37)) "Sales Line"."Document No." where("Document Type" = field("Document Type"))
+            else
+            if ("Table ID" = const(38)) "Purchase Header"."No." where("Document Type" = field("Document Type"))
+            else
+            if ("Table ID" = const(39)) "Purchase Line"."Document No." where("Document Type" = field("Document Type"));
             //This property is currently not supported
             //TestTableRelation = false;
             ValidateTableRelation = false;
@@ -53,11 +51,11 @@ table 5272720 "lbt PS Longtext Line"
         field(5; "Document Line No."; Integer)
         {
             Caption = 'Document Line No.';
-            TableRelation = IF ("Table ID" = CONST(37)) "Sales Line"."Line No." WHERE("Document Type" = FIELD("Document Type"),
-                                                                                     "Document No." = FIELD("Document No."))
-            ELSE
-            IF ("Table ID" = CONST(39)) "Purchase Line"."Line No." WHERE("Document Type" = FIELD("Document Type"),
-                                                                                                                                                      "Document No." = FIELD("Document No."));
+            TableRelation = if ("Table ID" = const(37)) "Sales Line"."Line No." where("Document Type" = field("Document Type"),
+                                                                                     "Document No." = field("Document No."))
+            else
+            if ("Table ID" = const(39)) "Purchase Line"."Line No." where("Document Type" = field("Document Type"),
+                                                                                                                                                      "Document No." = field("Document No."));
             DataClassification = CustomerContent;
         }
         field(6; "Line No."; Integer)
@@ -92,7 +90,7 @@ table 5272720 "lbt PS Longtext Line"
         field(11; "No."; Code[20])
         {
             Caption = 'No.';
-            TableRelation = IF (Type = CONST(Text)) "Standard Text";
+            TableRelation = if (Type = const(Text)) "Standard Text";
             DataClassification = CustomerContent;
 
             trigger OnValidate()
@@ -101,7 +99,7 @@ table 5272720 "lbt PS Longtext Line"
                     Type::Text,
                     Type::"Text + Line break":
                         begin
-                            StandardText.GET("No.");
+                            StandardText.Get("No.");
                             Description := StandardText.Description;
                         end;
                 end;
@@ -115,12 +113,12 @@ table 5272720 "lbt PS Longtext Line"
             trigger OnValidate()
             begin
                 if Type = Type::"New Page" then
-                    ERROR(CantChangeTxt);
+                    Error(CantChangeTxt);
                 if Description = '' then
                     Type := Type::Text;
             end;
         }
-        field(13; "Text"; BLOB)
+        field(13; "Text"; Blob)
         {
             Caption = 'Text';
             DataClassification = CustomerContent;
@@ -166,17 +164,17 @@ table 5272720 "lbt PS Longtext Line"
         filled: Boolean;
     begin
         if "Document No." = '' then begin
-            PSLongtextLine.SETFILTER("Table ID", Rec.GETFILTER("Table ID"));
-            PSLongtextLine.SETFILTER("Document Type", Rec.GETFILTER("Document Type"));
-            PSLongtextLine.SETFILTER("Document No.", Rec.GETFILTER("Document No."));
-            PSLongtextLine.SETFILTER(Position, Rec.GETFILTER(Position));
-            PSLongtextLine.SETFILTER("Document Line No.", Rec.GETFILTER("Document Line No."));
+            PSLongtextLine.SetFilter("Table ID", Rec.GetFilter("Table ID"));
+            PSLongtextLine.SetFilter("Document Type", Rec.GetFilter("Document Type"));
+            PSLongtextLine.SetFilter("Document No.", Rec.GetFilter("Document No."));
+            PSLongtextLine.SetFilter(Position, Rec.GetFilter(Position));
+            PSLongtextLine.SetFilter("Document Line No.", Rec.GetFilter("Document Line No."));
         end else begin
-            PSLongtextLine.SETRANGE("Table ID", "Table ID");
-            PSLongtextLine.SETRANGE("Document Type", "Document Type");
-            PSLongtextLine.SETRANGE("Document No.", "Document No.");
-            PSLongtextLine.SETRANGE(Position, Position);
-            PSLongtextLine.SETRANGE("Document Line No.", "Document Line No.");
+            PSLongtextLine.SetRange("Table ID", "Table ID");
+            PSLongtextLine.SetRange("Document Type", "Document Type");
+            PSLongtextLine.SetRange("Document No.", "Document No.");
+            PSLongtextLine.SetRange(Position, Position);
+            PSLongtextLine.SetRange("Document Line No.", "Document Line No.");
         end;
 
         delimiter[1] := 13;
@@ -194,10 +192,10 @@ table 5272720 "lbt PS Longtext Line"
 
         DBTextEdit.SetText(Txt);
 
-        if DBTextEdit.RUNMODAL() = ACTION::OK then begin
-            PSLongtextLine.DELETEALL();
+        if DBTextEdit.RunModal() = Action::OK then begin
+            PSLongtextLine.DeleteAll();
             Txt := DBTextEdit.GetText();
-            CLEAR(delimiter);
+            Clear(delimiter);
             SplitText(Txt, delimiter, TempPSLongtextLine, 120);
             if TempPSLongtextLine.FindSet() then
                 repeat
@@ -210,11 +208,11 @@ table 5272720 "lbt PS Longtext Line"
                     repeat
                         LineNo += 10000;
                         PSLongtextLine.Init();
-                        EVALUATE(PSLongtextLine."Table ID", Rec.GETFILTER("Table ID"));
-                        EVALUATE(PSLongtextLine."Document Type", Rec.GETFILTER("Document Type"));
-                        PSLongtextLine."Document No." := CopyStr(Rec.GETFILTER("Document No."), 1, 20);
-                        EVALUATE(PSLongtextLine.Position, GETFILTER(Position));
-                        EVALUATE(PSLongtextLine."Document Line No.", Rec.GETFILTER("Document Line No."));
+                        Evaluate(PSLongtextLine."Table ID", Rec.GetFilter("Table ID"));
+                        Evaluate(PSLongtextLine."Document Type", Rec.GetFilter("Document Type"));
+                        PSLongtextLine."Document No." := CopyStr(Rec.GetFilter("Document No."), 1, 20);
+                        Evaluate(PSLongtextLine.Position, GetFilter(Position));
+                        Evaluate(PSLongtextLine."Document Line No.", Rec.GetFilter("Document Line No."));
 
                         PSLongtextLine.Description := TempPSLongtextLine.Description;
                         PSLongtextLine."Line No." := LineNo;
@@ -241,7 +239,7 @@ table 5272720 "lbt PS Longtext Line"
         TestString: Text;
     begin
         SplitArray := Text.Split(Delimiter);
-        foreach newstring in text.Split(delimiter) do begin
+        foreach NewString in Text.Split(Delimiter) do begin
             NewString := NewString.Trim();
             ende := false;
             repeat
@@ -271,45 +269,45 @@ table 5272720 "lbt PS Longtext Line"
     procedure EditData()
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";
-        data: text;
+        data: Text;
     begin
         data := ReadContentData(false);
-        if not editorhelper.TextEditor(data, true) then
+        if not EditorHelper.TextEditor(data, true) then
             exit;
         if (data = '<p><br></p>') or (data = '<p></p>') then
-            delete(true)
+            Delete(true)
         else begin
             WriteContentData(data);
-            modify();
+            Modify();
         end;
 
     end;
 
-    procedure ReadContentData(show: Boolean) Result: text
+    procedure ReadContentData(show: Boolean) Result: Text
     var
         EditorPreview: Page "lbt cl Editor Preview";
         Buffer: Text;
-        is: instream;
+        is: InStream;
     begin
         CalcFields("Editor Content");
-        "editor content".CreateInStream(is, TextEncoding::UTF8);
+        "Editor Content".CreateInStream(is, TextEncoding::UTF8);
         while not is.EOS do begin
             is.Read(Buffer);
             Result += Buffer;
         end;
         if show then begin
-            EditorPreview.SetData(result);
-            EditorPreview.run();
+            EditorPreview.SetData(Result);
+            EditorPreview.Run();
         end;
     end;
 
-    procedure WriteContentData(content: text)
+    procedure WriteContentData(content: Text)
     var
         os: OutStream;
     begin
-        clear(Rec."Editor Content");
+        Clear(Rec."Editor Content");
         "Editor Content".CreateOutStream(os, TextEncoding::UTF8);
-        os.write(content);
+        os.Write(content);
     end;
 
 }

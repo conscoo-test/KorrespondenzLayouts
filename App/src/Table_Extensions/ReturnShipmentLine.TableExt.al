@@ -4,10 +4,10 @@ tableextension 5272734 "lbt Return Shipment Line" extends "Return Shipment Line"
     {
         field(5272720; "lbt Long Text"; Boolean)
         {
-            CalcFormula = Exist("lbt Posted PS Longtext Line" WHERE("Table ID" = CONST(6651),
-                                                                       "Document No." = FIELD("Document No."),
-                                                                       Position = CONST(Longtext),
-                                                                       "Document Line No." = FIELD("Line No.")));
+            CalcFormula = Exist("lbt Posted PS Longtext Line" where("Table ID" = const(6651),
+                                                                       "Document No." = field("Document No."),
+                                                                       Position = const(Longtext),
+                                                                       "Document Line No." = field("Line No.")));
             Caption = 'Long Text';
             Editable = false;
             FieldClass = FlowField;
@@ -22,7 +22,7 @@ tableextension 5272734 "lbt Return Shipment Line" extends "Return Shipment Line"
         field(5272722; "lbt Summation"; Text[250])
         {
             Caption = 'Summation';
-            TableRelation = "Purch. Rcpt. Line"."Line No." WHERE("Document No." = FIELD("Document No."));
+            TableRelation = "Purch. Rcpt. Line"."Line No." where("Document No." = field("Document No."));
             ValidateTableRelation = false;
             DataClassification = CustomerContent;
         }
@@ -67,14 +67,14 @@ tableextension 5272734 "lbt Return Shipment Line" extends "Return Shipment Line"
     var
 
     begin
-        exit(EditorHelper.hasEditorValue(rec, enum::"lbt Position"::EditorLine, 0));
+        exit(EditorHelper.hasEditorValue(rec, Enum::"lbt Position"::EditorLine, 0));
     end;
 
     procedure lbtEditData()
     var
 
     begin
-        EditorHelper.editData(rec, enum::"lbt Position"::EditorLine, 0);
+        EditorHelper.editData(rec, Enum::"lbt Position"::EditorLine, 0);
     end;
 }
 

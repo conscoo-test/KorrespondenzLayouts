@@ -1,10 +1,10 @@
-pageextension 5272808 "lbt cl ServiceQuoteSubform" extends "Service Quote Subform"
+pageextension 5272812 "lbt cl Pstd Service Shpt. Subf" extends "Posted Service Shpt. Subform"
 {
     layout
     {
         addafter(Description)
         {
-            field("lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
+            field("lbt Editor"; Rec.lbtHasEditorValue())
             {
                 ApplicationArea = all;
                 Editable = false;
@@ -12,7 +12,7 @@ pageextension 5272808 "lbt cl ServiceQuoteSubform" extends "Service Quote Subfor
                 caption = 'Editor';
                 trigger OnAssistEdit()
                 begin
-                    Rec.lbtEditData(Rec."Document Type".AsInteger());
+                    Rec.lbtEditData();
                 end;
             }
 

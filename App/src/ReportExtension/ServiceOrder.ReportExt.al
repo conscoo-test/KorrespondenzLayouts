@@ -4,10 +4,10 @@
 //     {
 //         add("Service Header")
 //         {
-//             column(EditorHeader; "Service Header".lbtGetPrintData(enum::"lbt Position"::EditorHeader))
+//             column(EditorHeader; "Service Header".lbtGetPrintData(Enum::"lbt Position"::EditorHeader))
 //             {
 //             }
-//             column(EditorFooter; "Service Header".lbtGetPrintData(enum::"lbt Position"::EditorFooter))
+//             column(EditorFooter; "Service Header".lbtGetPrintData(Enum::"lbt Position"::EditorFooter))
 //             {
 //             }
 

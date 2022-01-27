@@ -29,14 +29,15 @@ pageextension 5272784 "lbt Post. Return Receipt Sub." extends "Posted Return Rec
                 ApplicationArea = All;
                 ToolTip = 'Here you can insert long texts. ';
             }
-            field("Lbt Editor"; rec.lbtHasEditorValue())
+            field("Lbt Editor"; Rec.lbtHasEditorValue())
             {
+                Caption = ' ', Locked = true;
                 ApplicationArea = all;
                 Editable = false;
                 ToolTip = 'Editor';
                 trigger OnAssistEdit()
                 begin
-                    rec.lbtEditData();
+                    Rec.lbtEditData();
                 end;
             }
         }
@@ -57,7 +58,7 @@ pageextension 5272784 "lbt Post. Return Receipt Sub." extends "Posted Return Rec
                     SourceRecRef: RecordRef;
                     Position: Option Header,Footer,Longtext;
                 begin
-                    SourceRecRef.GETTABLE(Rec);
+                    SourceRecRef.GetTable(Rec);
                     LongtextMgt.ShowLongtextLines(Rec, Position::Longtext);
                 end;
             }

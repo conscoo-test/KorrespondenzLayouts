@@ -4,10 +4,10 @@ tableextension 5272725 "lbt Purch. Cr. Memo Line" extends "Purch. Cr. Memo Line"
     {
         field(5272720; "lbt Long Text"; Boolean)
         {
-            CalcFormula = Exist("lbt Posted PS Longtext Line" WHERE("Table ID" = CONST(125),
-                                                                       "Document No." = FIELD("Document No."),
-                                                                       Position = CONST(Longtext),
-                                                                       "Document Line No." = FIELD("Line No.")));
+            CalcFormula = Exist("lbt Posted PS Longtext Line" where("Table ID" = const(125),
+                                                                       "Document No." = field("Document No."),
+                                                                       Position = const(Longtext),
+                                                                       "Document Line No." = field("Line No.")));
             Caption = 'Long Text';
             Editable = false;
             FieldClass = FlowField;
@@ -22,15 +22,15 @@ tableextension 5272725 "lbt Purch. Cr. Memo Line" extends "Purch. Cr. Memo Line"
         field(5272722; "lbt Summation"; Text[250])
         {
             Caption = 'Summation';
-            TableRelation = "Purch. Cr. Memo Line"."Line No." WHERE("Document No." = FIELD("Document No."));
+            TableRelation = "Purch. Cr. Memo Line"."Line No." where("Document No." = field("Document No."));
             ValidateTableRelation = false;
             DataClassification = CustomerContent;
         }
         field(5272723; "lbt Balance"; Decimal)
         {
             AutoFormatType = 1;
-            CalcFormula = Sum("Purch. Cr. Memo Line"."Line Amount" WHERE("Document No." = FIELD("Document No."),
-                                                                          "Line No." = FIELD(FILTER("lbt Summation"))));
+            CalcFormula = Sum("Purch. Cr. Memo Line"."Line Amount" where("Document No." = field("Document No."),
+                                                                          "Line No." = field(filter("lbt Summation"))));
             Caption = 'Balance';
             Editable = false;
             FieldClass = FlowField;
@@ -69,14 +69,14 @@ tableextension 5272725 "lbt Purch. Cr. Memo Line" extends "Purch. Cr. Memo Line"
     var
 
     begin
-        exit(EditorHelper.hasEditorValue(rec, enum::"lbt Position"::EditorLine, 0));
+        exit(EditorHelper.hasEditorValue(rec, Enum::"lbt Position"::EditorLine, 0));
     end;
 
     procedure lbtEditData()
     var
 
     begin
-        EditorHelper.editData(rec, enum::"lbt Position"::EditorLine, 0);
+        EditorHelper.editData(rec, Enum::"lbt Position"::EditorLine, 0);
     end;
 
 }

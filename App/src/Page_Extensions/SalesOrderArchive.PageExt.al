@@ -7,7 +7,7 @@ pageextension 5272757 "lbt Sales Order Archive" extends "Sales Order Archive"
             group(lbtEditor)
             {
                 caption = 'Longtext';
-                field("lbt Editor Header"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorHeader, rec."Document Type".AsInteger()))
+                field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger()))
                 {
                     ApplicationArea = all;
                     Editable = false;
@@ -15,10 +15,10 @@ pageextension 5272757 "lbt Sales Order Archive" extends "Sales Order Archive"
                     caption = 'Editor Header';
                     trigger OnAssistEdit()
                     begin
-                        rec.lbtEditData(enum::"lbt Position"::EditorHeader, rec."Document Type".AsInteger());
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger());
                     end;
                 }
-                field("lbt Editor Footer"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorFooter, rec."Document Type".AsInteger()))
+                field("lbt Editor Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter, Rec."Document Type".AsInteger()))
                 {
                     ApplicationArea = all;
                     Editable = false;
@@ -26,7 +26,7 @@ pageextension 5272757 "lbt Sales Order Archive" extends "Sales Order Archive"
                     caption = 'Editor Footer';
                     trigger OnAssistEdit()
                     begin
-                        rec.lbtEditData(enum::"lbt Position"::Editorfooter, rec."Document Type".AsInteger());
+                        Rec.lbtEditData(Enum::"lbt Position"::Editorfooter, Rec."Document Type".AsInteger());
                     end;
                 }
             }

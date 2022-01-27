@@ -4,7 +4,7 @@ codeunit 5272729 "lbt cl EditorHelper"
     var
         Editor: Page "lbt cl Editor";
     begin
-        Editor.SetText(data, html);
+        Editor.SetText(data, HTML);
         Editor.LookupMode(true);
         Editor.RunModal();
         if Editor.IfLookupOk() then begin
@@ -13,132 +13,131 @@ codeunit 5272729 "lbt cl EditorHelper"
         end;
     end;
 
-    procedure deleteLongText(vari: variant; otherDocType: integer)
+    procedure deleteLongText(vari: Variant; OtherDocType: Integer)
     var
-        recref: recordref;
+        RecRef: RecordRef;
     begin
-        recref.GetTable(vari);
-        DeleteLongText(recref, otherDocType);
+        RecRef.GetTable(vari);
+        deleteLongText(RecRef, OtherDocType);
     end;
 
-    procedure deleteLongText(recRef: recordref; otherDocType: integer)
+    procedure deleteLongText(RecRef: RecordRef; OtherDocType: Integer)
     var
         PSLongtextLn: Record "lbt PS Longtext Line";
         PstdPSLongtextLn: Record "lbt Posted PS Longtext Line";
         ArchivePSLongtextLn: Record "lbt Archive PS Longtext Line";
-        tableid: integer;
-        Tabletype: integer;
+        TableId: Integer;
+        Tabletype: Integer;
 
     begin
-        tableid := recref.Number;
-        Tabletype := gettype(tableid);
+        TableId := RecRef.Number;
+        Tabletype := GetType(TableId);
 
-        case tabletype of
+        case Tabletype of
             1:
                 begin
-                    SetPsLongtextLineFilter(PSLongtextLn, PSLongtextLn.Position::EditorFooter, otherDocType, recref, false);
+                    SetPsLongtextLineFilter(PSLongtextLn, PSLongtextLn.Position::EditorFooter, OtherDocType, RecRef, false);
                     PSLongtextLn.SetRange(Position);
                     PSLongtextLn.DeleteAll(true);
                 end;
             2:
                 begin
-                    SetPstdPsLongtextLineFilter(PstdPSLongtextLn, PstdPSLongtextLn.Position::EditorFooter, recref, false);
+                    SetPstdPsLongtextLineFilter(PstdPSLongtextLn, PstdPSLongtextLn.Position::EditorFooter, RecRef, false);
                     PstdPSLongtextLn.SetRange(Position);
                     PstdPSLongtextLn.DeleteAll(true);
 
                 end;
             3:
                 begin
-                    SetArchPsLongtextLineFilter(ArchivePSLongtextLn, PstdPSLongtextLn.Position::EditorFooter, recref, false);
-                    PstdPSLongtextLn.setrange(Position);
+                    SetArchPsLongtextLineFilter(ArchivePSLongtextLn, PstdPSLongtextLn.Position::EditorFooter, RecRef, false);
+                    PstdPSLongtextLn.SetRange(Position);
                     PstdPSLongtextLn.DeleteAll(true);
-                    //result := ArchivePSLongtextLn.ReadContentData(false);
                 end;
         end;
 
     end;
 
-    procedure getPrintData(vari: Variant; Position: Enum "lbt Position"; otherDocType: integer) Result: text
+    procedure getPrintData(vari: Variant; Position: Enum "lbt Position"; OtherDocType: Integer) Result: Text
     var
-        recref: RecordRef;
+        RecRef: RecordRef;
     begin
-        recref.GetTable(vari);
-        result := GetPrintData(recref, Position, otherDocType);
+        RecRef.GetTable(vari);
+        Result := getPrintData(RecRef, Position, OtherDocType);
     end;
 
-    procedure getPrintData(recRef: recordref; Position: Enum "lbt Position"; otherDocType: integer) Result: text
+    procedure getPrintData(RecRef: RecordRef; Position: Enum "lbt Position"; OtherDocType: Integer) Result: Text
     var
         PSLongtextLn: Record "lbt PS Longtext Line";
         PstdPSLongtextLn: Record "lbt Posted PS Longtext Line";
         ArchivePSLongtextLn: Record "lbt Archive PS Longtext Line";
-        tableid: integer;
-        Tabletype: integer;
+        TableId: Integer;
+        Tabletype: Integer;
 
     begin
-        tableid := recref.Number;
-        Tabletype := gettype(tableid);
+        TableId := RecRef.Number;
+        Tabletype := GetType(TableId);
 
-        case tabletype of
+        case Tabletype of
             1:
                 begin
-                    SetPsLongtextLineFilter(PSLongtextLn, position, otherDocType, recref, false);
-                    if PSLongtextLn.findfirst() then
-                        result := PSLongtextLn.ReadContentData(false);
+                    SetPsLongtextLineFilter(PSLongtextLn, Position, OtherDocType, RecRef, false);
+                    if PSLongtextLn.FindFirst() then
+                        Result := PSLongtextLn.ReadContentData(false);
                 end;
             2:
                 begin
-                    SetPstdPsLongtextLineFilter(PstdPSLongtextLn, position, recref, false);
-                    if PstdPSLongtextLn.findfirst() then
-                        result := PstdPSLongtextLn.ReadContentData(false);
+                    SetPstdPsLongtextLineFilter(PstdPSLongtextLn, Position, RecRef, false);
+                    if PstdPSLongtextLn.FindFirst() then
+                        Result := PstdPSLongtextLn.ReadContentData(false);
                 end;
             3:
                 begin
-                    SetArchPsLongtextLineFilter(ArchivePSLongtextLn, position, recref, false);
-                    if ArchivePSLongtextLn.findfirst() then
-                        result := ArchivePSLongtextLn.ReadContentData(false);
+                    SetArchPsLongtextLineFilter(ArchivePSLongtextLn, Position, RecRef, false);
+                    if ArchivePSLongtextLn.FindFirst() then
+                        Result := ArchivePSLongtextLn.ReadContentData(false);
                 end;
 
 
         end;
-        result := PrepareHtmltoprint(result);
+        Result := PrepareHtmltoprint(Result);
 
     end;
 
-    procedure hasEditorValue(vari: variant; Position: Enum "lbt Position"; otherDocType: integer) Result: Boolean
+    procedure hasEditorValue(vari: Variant; Position: Enum "lbt Position"; OtherDocType: Integer) Result: Boolean
     var
-        recRef: RecordRef;
+        RecRef: RecordRef;
     begin
-        recref.GetTable(vari);
-        result := hasEditorValue(recref, Position, otherDocType);
+        RecRef.GetTable(vari);
+        Result := hasEditorValue(RecRef, Position, OtherDocType);
     end;
 
-    procedure hasEditorValue(RecRef: recordref; Position: Enum "lbt Position"; otherDocType: integer) Result: Boolean
+    procedure hasEditorValue(RecRef: RecordRef; Position: Enum "lbt Position"; OtherDocType: Integer) Result: Boolean
     var
         PSLongtextLn: Record "lbt PS Longtext Line";
         PstdPSLongtextLn: Record "lbt Posted PS Longtext Line";
         ArchivePSLongtextLn: Record "lbt Archive PS Longtext Line";
-        tableid: integer;
-        Tabletype: integer;
+        TableId: Integer;
+        Tabletype: Integer;
 
     begin
-        tableid := recref.Number;
-        Tabletype := gettype(tableid);
+        TableId := RecRef.Number;
+        Tabletype := GetType(TableId);
 
-        case tabletype of
+        case Tabletype of
             1:
                 begin
-                    SetPsLongtextLineFilter(PSLongtextLn, position, otherDoctype, recref, false);
+                    SetPsLongtextLineFilter(PSLongtextLn, Position, OtherDocType, RecRef, false);
                     exit(not PSLongtextLn.IsEmpty());
                 end;
             2:
                 begin
-                    SetPstdPsLongtextLineFilter(PstdPSLongtextLn, position, recref, false);
+                    SetPstdPsLongtextLineFilter(PstdPSLongtextLn, Position, RecRef, false);
                     exit(not PstdPSLongtextLn.IsEmpty());
 
                 end;
             3:
                 begin
-                    SetArchPsLongtextLineFilter(ArchivePSLongtextLn, position, recref, false);
+                    SetArchPsLongtextLineFilter(ArchivePSLongtextLn, Position, RecRef, false);
                     exit(not PstdPSLongtextLn.IsEmpty());
 
                 end;
@@ -147,340 +146,220 @@ codeunit 5272729 "lbt cl EditorHelper"
         end;
     end;
 
-    procedure editData(vari: variant; Position: Enum "lbt Position"; otherDocType: integer)
+    procedure editData(vari: Variant; Position: Enum "lbt Position"; OtherDocType: Integer)
     var
         RecRef: RecordRef;
     begin
-        recref.GetTable(vari);
-        editData(recref, position, otherDocType);
+        RecRef.GetTable(vari);
+        editData(RecRef, Position, OtherDocType);
 
     end;
 
-    procedure editData(recRef: recordref; Position: Enum "lbt Position"; otherDocType: integer)
-    var
-        PSLongtextLn: Record "lbt PS Longtext Line";
-        PstdPSLongtextLn: Record "lbt Posted PS Longtext Line";
-        ArchivePSLongtextLn: Record "lbt Archive PS Longtext Line";
-
-        Tabletype: integer;
-
+    procedure editData(RecRef: RecordRef; Position: Enum "lbt Position"; OtherDocType: Integer)
     begin
-
-        Tabletype := gettype(recref.number);
-        case Tabletype of
+        case GetType(RecRef.Number) of
             1:
-                begin
-                    SetPsLongtextLineFilter(PSLongtextLn, position, otherDocType, recref, true);
-                    PSLongtextLn.EditData();
-                    if not PSLongtextLn."Editor Content".HasValue() then
-                        if PSLongtextLn.delete(true) then;
-                end;
+                EditLongtext(RecRef, Position, OtherDocType);
             2:
-                begin
-                    SetPstdPsLongtextLineFilter(pstdPSLongtextLn, position, recref, true);
-                    pstdPSLongtextLn.EditData();
-                    if not pstdPSLongtextLn."Editor Content".HasValue() then
-                        if pstdPSLongtextLn.delete(true) then;
-                end;
+                EditPostedLongtext(RecRef, Position);
             3:
-                begin
-                    SetArchPsLongtextLineFilter(ArchivePSLongtextLn, position, recref, true);
-                    ArchivePSLongtextLn.EditData();
-                    if not ArchivePSLongtextLn."Editor Content".HasValue() then
-                        if ArchivePSLongtextLn.delete(true) then;
-                end;
+                EditArchivedLongtext(RecRef, Position);
         end;
     end;
 
     internal procedure PrepareHtmltoprint(content: Text) Result: Text
     var
         TypeHelper: Codeunit "Type Helper";
+        IndentClassLbl: Label '<p class="ql-indent-%1">', Locked = true;
+        SpaceTemplateLbl: Label '<p>%1', Locked = true;
         chr: Char;
-        text: text;
-        textList: list of [text];
-        textLine: text;
+        text: Text;
+        TextList: List of [Text];
+        TextLine: Text;
         tb: TextBuilder;
-        tab: integer;
-        i: integer;
+        tab: Integer;
+        i: Integer;
     begin
         tab := 5;
         text := content;
-        ///del kopftext
-
 
         for i := 1 to 10 do
-            text := text.replace(strsubstno('<p class="ql-indent-%1">', i), strsubstno('<p>%1', getSpace(i * tab)));
+            text := text.Replace(StrSubstNo(IndentClassLbl, i), StrSubstNo(SpaceTemplateLbl, getSpace(i * tab)));
         chr := 9;
-        text := text.replace(chr, getspace(1 * tab));
-        textlist := text.Split(TypeHelper.LFSeparator());
-        textlist := text.Split('</p>');
-        foreach textline in textlist do
-            if not textline.Contains('######') then
-                tb.AppendLine(textLine + '</p>');
+        text := text.Replace(chr, getSpace(1 * tab));
+        TextList := text.Split(TypeHelper.LFSeparator());
+        TextList := text.Split('</p>');
+        foreach TextLine in TextList do
+            if not TextLine.Contains('######') then
+                tb.AppendLine(TextLine + '</p>');
 
-        // for i := 1 to 10 do
-        //     text := text.replace(strsubstno('<li class="ql-indent-%1">', i), strsubstno('<li>%1', getSpace(i * tab)));
-        result := tb.ToText();
-        //result := text;
+        Result := tb.ToText();
 
     end;
 
-    internal procedure editorVisible(TableId: integer): Boolean
+    internal procedure editorVisible(TableId: Integer): Boolean
     begin
         exit(true);
     end;
 
 
-    local procedure getSpace(no: integer) Result: text
+    local procedure getSpace(no: Integer) Result: Text
     var
         i: Integer;
     begin
         for i := 1 to no do
-            result += '&nbsp;';
+            Result += '&nbsp;';
     end;
 
 
-    local procedure gettype(tableid: Integer) Result: Integer
+    local procedure GetType(TableId: Integer): Integer
     begin
         ///Unposted
         if tableid in [36, 37, 38, 39, 5900, 5901, 5902, 5964, 5965, 5968] then
             exit(1);
         ///Posted
-        if tableid in [110, 111, 112, 113, 114, 115, 120, 121, 122, 123, 124, 125, 5989, 5990, 5991, 5992, 5993, 5994, 5995] then
+        if TableId in [110, 111, 112, 113, 114, 115, 120, 121, 122, 123, 124, 125, 5989, 5990, 5991, 5992, 5993, 5994, 5995] then
             exit(2);
         ///archived
-        if tableid in [5107, 5108, 5109, 5110, 5102781] then
+        if TableId in [5107, 5108, 5109, 5110, 5102781] then
             exit(3);
     end;
 
-    local procedure SetPsLongtextLineFilter(var PSLongtextLn: Record "lbt PS Longtext Line"; Position: Enum "lbt Position"; otherDocType: integer; recref: RecordRef; insertIfEmpty: Boolean)
+    local procedure SetPsLongtextLineFilter(var PSLongtextLn: Record "lbt PS Longtext Line"; Position: Enum "lbt Position"; OtherDocType: Integer; RecRef: RecordRef; InsertIfEmpty: Boolean)
     var
-        fields_No: array[10] of integer;
-        docno_fieldno: integer;
-        doctype_fieldno: integer;
-        lineNo_fieldNo: integer;
+        DocNo_FieldNo: Integer;
+        DocType_FieldNo: Integer;
+        LineNo_FieldNo: Integer;
     begin
-        doctype_fieldNo := 1;
-        docno_fieldno := 3;
-        if recref.number in [37, 39, 111, 113, 115, 121, 123, 125, 5108, 5110] then
-            lineNo_fieldNo := 4;
-        if isserviceTable(recref.number, fields_No) <> 0 then begin
-            doctype_fieldNo := fields_No[1];
-            docno_fieldno := fields_No[2];
-            lineNo_fieldNo := fields_No[3];
-        end;
+        AssignFieldNos(RecRef, DocNo_FieldNo, DocType_FieldNo, LineNo_FieldNo);
 
-
-        PSLongtextLn.SetRange("Table ID", recref.Number);
-        if (otherDocType = 0) and (doctype_fieldno <> 0) then
-            PSLongtextLn.SetRange("document type", recref.field(doctype_fieldno).value)
+        PSLongtextLn.SetRange("Table ID", RecRef.Number);
+        if OtherDocType = 0 then
+            PSLongtextLn.SetRange("Document Type", RecRef.Field(DocType_FieldNo).Value)
         else
-            PSLongtextLn.SetRange("document type", otherdoctype);
+            PSLongtextLn.SetRange("Document Type", OtherDocType);
 
-        PSLongtextLn.setrange("Document No.", recref.field(docno_fieldno).value);
-        PSLongtextLn.setrange(Position, Position);
-        if lineNo_fieldNo <> 0 then
-            PSLongtextLn.SetRange("Document Line No.", recref.field(lineNo_fieldNo).value);
-        if not insertifempty then
+        PSLongtextLn.SetRange("Document No.", RecRef.Field(DocNo_FieldNo).Value);
+        PSLongtextLn.SetRange(Position, Position);
+        if LineNo_FieldNo <> 0 then
+            PSLongtextLn.SetRange("Document Line No.", RecRef.Field(LineNo_FieldNo).Value);
+        if not InsertIfEmpty then
             exit;
-        if PSLongtextLn.findfirst() then
+        if PSLongtextLn.FindFirst() then
             exit;
-        PSLongtextLn.init();
-        PSLongtextLn."Table ID" := recref.number;
-        if doctype_fieldno <> 0 then
-            PSLongtextLn."document type" := otherdoctype;//recref.field(doctype_fieldno).Value;
-        PSLongtextLn."Document No." := recref.field(docno_fieldno).value;
-        if lineNo_fieldNo <> 0 then
-            PSLongtextLn."document Line No." := recref.field(lineNo_fieldNo).value;
-        PSLongtextLn.Position := position;
-        PSLongtextLn.insert(true);
-        commit();
+        PSLongtextLn.Init();
+        PSLongtextLn."Table ID" := RecRef.Number;
+        PSLongtextLn."Document Type" := OtherDocType;
+        PSLongtextLn."Document No." := RecRef.Field(DocNo_FieldNo).Value;
+        if LineNo_FieldNo <> 0 then
+            PSLongtextLn."Document Line No." := RecRef.Field(LineNo_FieldNo).Value;
+        PSLongtextLn.Position := Position;
+        PSLongtextLn.Insert(true);
+        Commit(); //TODO: explain Commit
     end;
 
-    local procedure SetPstdPsLongtextLineFilter(var PstdPSLongtextLn: Record "lbt Posted PS Longtext Line"; Position: Enum "lbt Position"; recref: RecordRef; insertIfEmpty: Boolean)
+    local procedure SetPstdPsLongtextLineFilter(var PstdPSLongtextLn: Record "lbt Posted PS Longtext Line"; Position: Enum "lbt Position"; RecRef: RecordRef; InsertIfEmpty: Boolean)
     var
-        fields_no: array[10] of integer;
-        docNo_fieldno: integer;
-        lineNo_fieldNo: integer;
+        Field_Nos: array[10] of Integer;
+        DocNo_FieldNo: Integer;
+        LineNo_FieldNo: Integer;
     begin
-        docno_fieldno := 3;
-        if recref.number in [37, 39, 111, 113, 115, 121, 123, 125, 5108, 5110] then
-            lineNo_fieldNo := 4;
+        DocNo_FieldNo := 3;
+        if RecRef.Number in [37, 39, 111, 113, 115, 121, 123, 125, 5108, 5110] then
+            LineNo_FieldNo := 4;
 
-        if isserviceTable(recref.number, fields_No) <> 0 then begin
-            docno_fieldno := fields_No[2];
-            lineNo_fieldNo := fields_No[3];
+        if isserviceTable(RecRef.Number, Field_Nos) <> 0 then begin
+            DocNo_FieldNo := Field_Nos[2];
+            LineNo_FieldNo := Field_Nos[3];
         end;
 
-        PstdPSLongtextLn.SetRange("Table ID", recref.number);
-        //PstdPSLongtextLn.SetRange("document type", rec."Document Type");
-        PstdPSLongtextLn.setrange("Document No.", recref.field(docNo_fieldno).value);
-        PstdPSLongtextLn.setrange(Position, position);
-        if lineNo_fieldNo <> 0 then
-            PstdPSLongtextLn.SetRange("Document Line No.", recref.field(lineNo_fieldNo).value);
-
-        if not insertifempty then
+        PstdPSLongtextLn.SetRange("Table ID", RecRef.Number);
+        PstdPSLongtextLn.SetRange("Document No.", RecRef.Field(DocNo_FieldNo).Value);
+        PstdPSLongtextLn.SetRange(Position, Position);
+        PstdPSLongtextLn.SetRange("Document Line No.", RecRef.Field(LineNo_FieldNo).Value);
+        if not InsertIfEmpty then
             exit;
-        if PstdPSLongtextLn.findfirst() then
+        if PstdPSLongtextLn.FindFirst() then
             exit;
-        PstdPSLongtextLn.init();
-        PstdPSLongtextLn."Table ID" := recref.number;
-        //PstdPSLongtextLn."document type" := recref.field(1).Value;
-        PstdPSLongtextLn."Document No." := recref.field(docNo_fieldno).value;
-        PstdPSLongtextLn."document Line No." := recref.field(lineNo_fieldNo).value;
-        PstdPSLongtextLn.Position := position;
-        PstdPSLongtextLn.insert(true);
-        commit();
+        PstdPSLongtextLn.Init();
+        PstdPSLongtextLn."Table ID" := RecRef.Number;
+        PstdPSLongtextLn."Document No." := RecRef.Field(DocNo_FieldNo).Value;
+        PstdPSLongtextLn."Document Line No." := RecRef.Field(LineNo_FieldNo).Value;
+        PstdPSLongtextLn.Position := Position;
+        PstdPSLongtextLn.Insert(true);
+        Commit(); //TODO: explain Commit
     end;
 
-    local procedure SetArchPsLongtextLineFilter(var ArchivePSLongtextLn: Record "lbt Archive PS Longtext Line"; Position: Enum "lbt Position"; recref: RecordRef; insertIfEmpty: Boolean)
+    local procedure SetArchPsLongtextLineFilter(var ArchivePSLongtextLn: Record "lbt Archive PS Longtext Line"; Position: Enum "lbt Position"; RecRef: RecordRef; InsertIfEmpty: Boolean)
     var
-        fields_no: array[10] of integer;
-        doctype_fieldno: integer;
-        docNo_fieldno: integer;
-        lineNo_fieldNo: integer;
-        docOccur_FieldNo: integer;
-        version_FieldNo: integer;
+        DocType_FieldNo: Integer;
+        DocNo_FieldNo: Integer;
+        LineNo_FieldNo: Integer;
+        docOccur_FieldNo: Integer;
+        version_FieldNo: Integer;
     begin
-        doctype_fieldNo := 1;
-        docno_fieldno := 3;
-        if recref.number in [37, 39, 111, 113, 115, 121, 123, 125, 5108, 5110] then
-            lineNo_fieldNo := 4;
-        if recref.number in [5107, 5108, 5109, 5110] then begin
-            docOccur_FieldNo := 5048;
-            version_FieldNo := 5047;
-        end;
-
-        if isserviceTable(recref.number, fields_No) <> 0 then begin
-            doctype_fieldno := fields_No[1];
-            docno_fieldno := fields_No[2];
-            lineNo_fieldNo := fields_No[3];
-            docOccur_FieldNo := fields_no[4];
-            version_FieldNo := fields_no[5];
-        end;
+        AssignFieldNos(RecRef, DocType_FieldNo, DocNo_FieldNo, LineNo_FieldNo, docOccur_FieldNo, version_FieldNo);
 
         ///TODO Archive Filter
-        ArchivePSLongtextLn.SetRange("Table ID", recref.number);
-        if doctype_fieldno <> 0 then
-            ArchivePSLongtextLn.SetRange("document type", recref.field(docType_fieldno).value);
-        ArchivePSLongtextLn.setrange("Document No.", recref.field(docNo_fieldno).value);
-        ArchivePSLongtextLn.setrange(Position, position);
-        if lineNo_fieldNo <> 0 then
-            ArchivePSLongtextLn.SetRange("Document Line No.", recref.field(LineNo_fieldno).value);
+        ArchivePSLongtextLn.SetRange("Table ID", RecRef.Number);
+        ArchivePSLongtextLn.SetRange("Document Type", RecRef.Field(DocType_FieldNo).Value);
+        ArchivePSLongtextLn.SetRange("Document No.", RecRef.Field(DocNo_FieldNo).Value);
+        ArchivePSLongtextLn.SetRange(Position, Position);
+        if LineNo_FieldNo <> 0 then
+            ArchivePSLongtextLn.SetRange("Document Line No.", RecRef.Field(LineNo_FieldNo).Value);
         if docOccur_FieldNo <> 0 then
-            ArchivePSLongtextLn.SetRange("Doc. No. Occurrence", recref.field(docOccur_FieldNo).value);
+            ArchivePSLongtextLn.SetRange("Doc. No. Occurrence", RecRef.Field(docOccur_FieldNo).Value);
         if version_FieldNo <> 0 then
-            ArchivePSLongtextLn.SetRange("Version no.", recref.field(version_FieldNo).value);
-        if not insertifempty then
+            ArchivePSLongtextLn.SetRange("Version No.", RecRef.Field(version_FieldNo).Value);
+        if not InsertIfEmpty then
             exit;
-        if ArchivePSLongtextLn.findfirst() then
+        if ArchivePSLongtextLn.FindFirst() then
             exit;
-        ArchivePSLongtextLn.init();
-        ArchivePSLongtextLn."Table ID" := recref.number;
-        if doctype_fieldno <> 0 then
-            ArchivePSLongtextLn."document type" := recref.field(docNo_fieldno).value;
-        ArchivePSLongtextLn."Document No." := recref.field(docNo_fieldno).value;
-        ArchivePSLongtextLn."document Line No." := recref.field(lineNo_fieldNo).value;
-        ArchivePSLongtextLn.Position := position;
-        ArchivePSLongtextLn.insert(true);
-        commit();
+        ArchivePSLongtextLn.Init();
+        ArchivePSLongtextLn."Table ID" := RecRef.Number;
+        ArchivePSLongtextLn."Document Type" := RecRef.Field(DocNo_FieldNo).Value;
+        ArchivePSLongtextLn."Document No." := RecRef.Field(DocNo_FieldNo).Value;
+        ArchivePSLongtextLn."Document Line No." := RecRef.Field(LineNo_FieldNo).Value;
+        ArchivePSLongtextLn.Position := Position;
+        ArchivePSLongtextLn.Insert(true);
+        Commit(); //TODO: Explain commit
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"lbt Longtext Mgt.", 'onbeforeCopyLongText', '', true, true)]
-    local procedure lbtLongtextMgt_onbeforeCopyLongText(Sourcerecref: RecordRef; targetRecRef: RecordRef; var handled: Boolean)
+    local procedure lbtLongtextMgt_onbeforeCopyLongText(Sourcerecref: RecordRef; TargetRecRef: RecordRef; var handled: Boolean)
     var
-        TempBlob: Codeunit "Temp Blob";
         TargetMemo: RecordRef;
-        SourceMemo: recordref;
-        SourceMemoField: fieldref;
-        TargetMemoField: fieldref;
-        SourceRecField: fieldref;
+        SourceMemo: RecordRef;
 
-        targettype: integer;
-        sourcetype: integer;
-        source_Fields: array[10] of integer;
-        target_fields: array[10] of integer;
+        TargetType: Integer;
+        SourceType: Integer;
+        source_Fields: array[10] of Integer;
+        target_fields: array[10] of Integer;
 
     begin
-        sourcetype := isserviceTable(Sourcerecref.Number, source_Fields);
-        targettype := isserviceTable(targetrecref.Number, target_fields);
-        if (targettype = 0) and (sourcetype = 0) then
+        SourceType := isserviceTable(Sourcerecref.Number, source_Fields);
+        TargetType := isserviceTable(TargetRecRef.Number, target_fields);
+        if (TargetType = 0) and (SourceType = 0) then
             exit;
-        if sourcetype in [1, 2] then
-            SourceMemo.open(database::"lbt PS Longtext Line");
-        if sourcetype in [3, 4] then
-            SourceMemo.open(database::"lbt Posted PS Longtext Line");
-        if targettype in [1, 2] then
-            targetMemo.open(database::"lbt PS Longtext Line");
-        if targettype in [3, 4] then
-            targetMemo.open(database::"lbt Posted PS Longtext Line");
+        OpenMemo(SourceMemo, SourceType);
+        OpenMemo(TargetMemo, TargetType);
 
-        ///TableId
-        SourceMemoField := Sourcememo.field(1);
-        SourceMemoField.SetRange(Sourcerecref.Number);
-        ///doctype
-        if source_Fields[1] <> 0 then begin
-            SourceRecField := Sourcerecref.field(source_Fields[1]);
-            SourceMemoField := SourceMemo.field(2);
-            SourceMemoField.SetRange(SourceRecField.value);
-        end;
-        ///DocNo
-        if source_Fields[2] <> 0 then begin
-            SourceRecField := Sourcerecref.field(source_Fields[2]);
-            SourceMemoField := SourceMemo.field(3);
-            SourceMemoField.SetRange(SourceRecField.value);
-        end;
-        /// 
-        ///lineno
-        if source_Fields[3] <> 0 then begin
-            SourceRecField := Sourcerecref.field(source_Fields[3]);
-            SourceMemoField := SourceMemo.field(5);
-            SourceMemoField.SetRange(SourceRecField.value);
-        end;
-        ///
+        SetMemoFilters(Sourcerecref, SourceMemo, source_Fields);
 
-        if SourceMemo.findset() then
+        if SourceMemo.FindSet() then
             repeat
-                TargetMemo.init();
-                TargetMemo.field(1).value := targetRecRef.number;
-                if target_fields[1] <> 0 then
-                    TargetMemo.field(2).value := targetRecRef.field(target_fields[1]).value;
-                if target_fields[2] <> 0 then
-                    TargetMemo.field(3).value := targetRecRef.field(target_fields[2]).value;
-                if target_fields[3] <> 0 then
-                    TargetMemo.field(5).value := targetRecRef.field(target_fields[3]).value;
-
-                TargetMemo.field(4).value := sourcememo.field(4).value;
-
-                TargetMemo.field(6).value := sourcememo.field(6).value;
-                TargetMemo.field(10).value := sourcememo.field(10).value;
-                TargetMemo.field(11).value := sourcememo.field(11).value;
-                TargetMemo.field(12).value := sourcememo.field(12).value;
-                clear(TempBlob);
-                sourcememofield := SourceMemo.field(21);
-                targetMemoField := TargetMemo.field(21);
-                TempBlob.FromFieldRef(SourceMemoField);
-                TempBlob.ToFieldRef(TargetMemofield);
-                targetmemo.insert();
-
-            until sourcememo.next() = 0;
+                InitMemoFields(TargetRecRef, TargetMemo, target_fields);
+                CopyMemoFields(TargetMemo, SourceMemo);
+                TargetMemo.Insert();
+            until SourceMemo.Next() = 0;
 
         handled := true;
     end;
 
-    local procedure isserviceTable(TableId: integer; var field_No: array[10] of integer) result: integer
+    local procedure isserviceTable(TableId: Integer; var field_No: array[10] of Integer) TableType: Integer
     begin
-        if tableid in [database::"service header", database::"service contract Header", database::"Service Contract Template"] then
-            result := 1;
-        if tableid in [database::"service line", database::"Service item Line", Database::"Service Contract Line"] then
-            result := 2;
-
-        if tableid in [database::"service invoice header", database::"Service Shipment Header", database::"Service Cr.Memo Header"] then
-            result := 3;
-        if tableid in [database::"service invoice line", database::"Service Shipment Line", database::"Service Cr.Memo Line", database::"Service Shipment Item Line"] then
-            result := 4;
-
-        case tableid of
+        TableType := GetServiceTableType(TableId);
+        case TableId of
             database::"Service item Line":
                 begin
                     field_No[1] := 43;
@@ -537,6 +416,159 @@ codeunit 5272729 "lbt cl EditorHelper"
                 end;
 
         end;
+    end;
+
+    local procedure GetServiceTableType(TableId: Integer) TableType: Integer
+    begin
+        case TableId of
+            database::"Service Header":
+                TableType := 1;
+            database::"Service Line",
+            database::"Service Item Line":
+                TableType := 2;
+            database::"Service Invoice Header",
+            database::"Service Shipment Header",
+            database::"Service Cr.Memo Header":
+                TableType := 3;
+            database::"Service Invoice Line",
+            database::"Service Shipment Line",
+            database::"Service Cr.Memo Line",
+            database::"Service Shipment Item Line":
+                TableType := 4;
+        end;
+    end;
+
+    local procedure SetMemoFilters(var Sourcerecref: RecordRef; var SourceMemo: RecordRef; source_Fields: array[10] of Integer)
+    var
+        SourceRecField: FieldRef;
+        SourceMemoField: FieldRef;
+    begin
+        ///TableId
+        SourceMemoField := SourceMemo.Field(1);
+        SourceMemoField.SetRange(Sourcerecref.Number);
+
+        ///doctype
+        if source_Fields[1] <> 0 then begin
+            SourceRecField := Sourcerecref.Field(source_Fields[1]);
+            SourceMemoField := SourceMemo.Field(2);
+            SourceMemoField.SetRange(SourceRecField.Value);
+        end;
+
+        ///DocNo
+        if source_Fields[2] <> 0 then begin
+            SourceRecField := Sourcerecref.Field(source_Fields[2]);
+            SourceMemoField := SourceMemo.Field(3);
+            SourceMemoField.SetRange(SourceRecField.Value);
+        end;
+
+        ///lineno
+        if source_Fields[3] <> 0 then begin
+            SourceRecField := Sourcerecref.Field(source_Fields[3]);
+            SourceMemoField := SourceMemo.Field(5);
+            SourceMemoField.SetRange(SourceRecField.Value);
+        end;
+    end;
+
+    local procedure OpenMemo(var SourceMemo: RecordRef; SourceType: Integer)
+    begin
+        case SourceType of
+            1, 2:
+                SourceMemo.Open(database::"lbt PS Longtext Line");
+            3, 4:
+                SourceMemo.Open(database::"lbt Posted PS Longtext Line");
+        end;
+    end;
+
+    local procedure InitMemoFields(var RecRef: RecordRef; var Memo: RecordRef; KeyFields: array[10] of Integer)
+    begin
+        Memo.Init();
+        Memo.Field(1).Value := RecRef.Number;
+        if KeyFields[1] <> 0 then
+            Memo.Field(2).Value := RecRef.Field(KeyFields[1]).Value;
+        if KeyFields[2] <> 0 then
+            Memo.Field(3).Value := RecRef.Field(KeyFields[2]).Value;
+        if KeyFields[3] <> 0 then
+            Memo.Field(5).Value := RecRef.Field(KeyFields[3]).Value;
+    end;
+
+    local procedure CopyMemoFields(var TargetMemo: RecordRef; var SourceMemo: RecordRef)
+    var
+        TempBlob: Codeunit "Temp Blob";
+        SourceMemoField: FieldRef;
+        TargetMemoField: FieldRef;
+    begin
+        TargetMemo.Field(4).Value := SourceMemo.Field(4).Value;
+        TargetMemo.Field(6).Value := SourceMemo.Field(6).Value;
+        TargetMemo.Field(10).Value := SourceMemo.Field(10).Value;
+        TargetMemo.Field(11).Value := SourceMemo.Field(11).Value;
+        TargetMemo.Field(12).Value := SourceMemo.Field(12).Value;
+        Clear(TempBlob);
+        SourceMemoField := SourceMemo.Field(21);
+        TargetMemoField := TargetMemo.Field(21);
+        TempBlob.FromFieldRef(SourceMemoField);
+        TempBlob.ToFieldRef(TargetMemoField);
+    end;
+
+    local procedure AssignFieldNos(var RecRef: RecordRef; var DocType_FieldNo: Integer; var DocNo_FieldNo: Integer; var LineNo_FieldNo: Integer; var docOccur_FieldNo: Integer; var version_FieldNo: Integer)
+    var
+        Field_Nos: array[10] of Integer;
+    begin
+        AssignFieldNos(RecRef, DocNo_FieldNo, DocType_FieldNo, LineNo_FieldNo);
+
+        if RecRef.Number in [5107, 5108, 5109, 5110] then begin
+            docOccur_FieldNo := 5048;
+            version_FieldNo := 5047;
+        end;
+
+        if isserviceTable(RecRef.Number, Field_Nos) <> 0 then begin
+            docOccur_FieldNo := Field_Nos[4];
+            version_FieldNo := Field_Nos[5];
+        end;
+    end;
+
+    local procedure AssignFieldNos(var RecRef: RecordRef; var DocNo_FieldNo: Integer; var DocType_FieldNo: Integer; var LineNo_FieldNo: Integer)
+    var
+        Field_Nos: array[10] of Integer;
+    begin
+        DocType_FieldNo := 1;
+        DocNo_FieldNo := 3;
+        if RecRef.Number in [37, 39, 111, 113, 115, 121, 123, 125, 5108, 5110] then
+            LineNo_FieldNo := 4;
+        if isserviceTable(RecRef.Number, Field_Nos) <> 0 then begin
+            DocType_FieldNo := Field_Nos[1];
+            DocNo_FieldNo := Field_Nos[2];
+            LineNo_FieldNo := Field_Nos[3];
+        end;
+    end;
+
+    local procedure EditLongtext(var RecRef: RecordRef; Position: Enum "lbt Position"; OtherDocType: Integer)
+    var
+        PSLongtextLn: Record "lbt PS Longtext Line";
+    begin
+        SetPsLongtextLineFilter(PSLongtextLn, Position, OtherDocType, RecRef, true);
+        PSLongtextLn.EditData();
+        if not PSLongtextLn."Editor Content".HasValue() then
+            if PSLongtextLn.Delete(true) then;
+    end;
+
+    local procedure EditPostedLongtext(var RecRef: RecordRef; Position: Enum "lbt Position")
+    var
+        PstdPSLongtextLn: Record "lbt Posted PS Longtext Line";
+    begin
+        SetPstdPsLongtextLineFilter(PstdPSLongtextLn, Position, RecRef, true);
+        PstdPSLongtextLn.EditData();
+        if not PstdPSLongtextLn."Editor Content".HasValue() then
+            if PstdPSLongtextLn.Delete(true) then;
+    end;
+
+    local procedure EditArchivedLongtext(var RecRef: RecordRef; Position: Enum "lbt Position")
+    var
+        ArchivePSLongtextLn: Record "lbt Archive PS Longtext Line";
+    begin
+        SetArchPsLongtextLineFilter(ArchivePSLongtextLn, Position, RecRef, true);
+        ArchivePSLongtextLn.EditData();
+        if not ArchivePSLongtextLn."Editor Content".HasValue() then
+            if ArchivePSLongtextLn.Delete(true) then;
     end;
 
 }

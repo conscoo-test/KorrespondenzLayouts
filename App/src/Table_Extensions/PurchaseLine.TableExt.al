@@ -13,11 +13,11 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
 
         field(5272720; "lbt Long Text"; Boolean)
         {
-            CalcFormula = Exist("lbt PS Longtext Line" WHERE("Table ID" = CONST(39),
-                                                                "Document Type" = FIELD("Document Type"),
-                                                                "Document No." = FIELD("Document No."),
-                                                                Position = CONST(Longtext),
-                                                                "Document Line No." = FIELD("Line No.")));
+            CalcFormula = Exist("lbt PS Longtext Line" where("Table ID" = const(39),
+                                                                "Document Type" = field("Document Type"),
+                                                                "Document No." = field("Document No."),
+                                                                Position = const(Longtext),
+                                                                "Document Line No." = field("Line No.")));
             Caption = 'Long Text';
             Editable = false;
             FieldClass = FlowField;
@@ -38,7 +38,7 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
 
                 if "lbt Printoption" = "lbt Printoption"::"New Page" then begin
                     if "No." <> '' then
-                        ERROR(NewPageErr);
+                        Error(NewPageErr);
                     VALIDATE(Type, Type::" ");
                     Description := NewPageLbl;
                 end;
@@ -47,8 +47,8 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
         field(5272722; "lbt Summation"; Text[250])
         {
             Caption = 'Summation';
-            TableRelation = "Purchase Line"."Line No." WHERE("Document Type" = FIELD("Document Type"),
-                                                              "Document No." = FIELD("Document No."));
+            TableRelation = "Purchase Line"."Line No." where("Document Type" = field("Document Type"),
+                                                              "Document No." = field("Document No."));
             ValidateTableRelation = false;
             DataClassification = CustomerContent;
 
@@ -56,21 +56,21 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
             begin
                 if "lbt Printoption" <> "lbt Printoption"::"End Total" then
                     FIELDERROR("lbt Printoption");
-                CALCFIELDS("lbt Balance");
+                CalcFields("lbt Balance");
             end;
         }
         field(5272723; "lbt Balance"; Decimal)
         {
             AutoFormatType = 1;
-            CalcFormula = Sum("Purchase Line"."Line Amount" WHERE("Document Type" = FIELD("Document Type"),
-                                                                    "Document No." = FIELD("Document No."),
-                                                                    "Line No." = FIELD(FILTER("lbt Summation")),
+            CalcFormula = Sum("Purchase Line"."Line Amount" where("Document Type" = field("Document Type"),
+                                                                    "Document No." = field("Document No."),
+                                                                    "Line No." = field(filter("lbt Summation")),
                                                                     "lbt Printoption" = filter(<> Alternative & <> Optional)));
             Caption = 'Balance';
             Editable = false;
             FieldClass = FlowField;
-            TableRelation = "Purchase Line"."Line No." WHERE("Document Type" = FIELD("Document Type"),
-                                                              "Document No." = FIELD("Document No."));
+            TableRelation = "Purchase Line"."Line No." where("Document Type" = field("Document Type"),
+                                                              "Document No." = field("Document No."));
         }
         field(5272724; "lbt Pos. No."; Text[30])
         {
@@ -114,21 +114,21 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
         NewPageLbl: Label '--- New Page ---';
         PrintOptionTypeMismatchErr: Label 'If Type is %1 then you can only use printoptions "%2" and "%3"', Comment = '%1 - Type, %2 - Printoption, %3 - Printoption';
 
-    procedure lbtHasEditorValue(docType: integer) Result: Boolean
+    procedure lbtHasEditorValue(docType: Integer) Result: Boolean
     var
 
     begin
-        exit(EditorHelper.hasEditorValue(rec, enum::"lbt Position"::EditorLine, doctype));
+        exit(EditorHelper.hasEditorValue(rec, Enum::"lbt Position"::EditorLine, doctype));
     end;
 
-    procedure lbtEditData(doctype: integer)
+    procedure lbtEditData(doctype: Integer)
     var
 
     begin
-        EditorHelper.editData(rec, enum::"lbt Position"::EditorLine, doctype);
+        EditorHelper.editData(rec, Enum::"lbt Position"::EditorLine, doctype);
     end;
 
-    procedure lbtGetPrintData(Position: enum "lbt Position"; docType: integer): Text
+    procedure lbtGetPrintData(Position: enum "lbt Position"; docType: Integer): Text
     begin
         exit(EditorHelper.getPrintData(rec, Position, docType));
     end;

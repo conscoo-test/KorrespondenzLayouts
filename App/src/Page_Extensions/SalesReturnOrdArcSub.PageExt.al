@@ -26,14 +26,15 @@ pageextension 5272769 "lbt Sales Return Ord. Arc Sub." extends "Sales Return Ord
                 ToolTip = 'Here you can insert long texts. ';
                 ApplicationArea = All;
             }
-            field("Lbt Editor"; rec.lbtHasEditorValue(rec."Document Type".AsInteger()))
+            field("Lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
+                Caption = ' ', Locked = true;
                 ApplicationArea = all;
                 Editable = false;
                 ToolTip = 'Editor';
                 trigger OnAssistEdit()
                 begin
-                    rec.lbtEditData(rec."Document Type".AsInteger());
+                    Rec.lbtEditData(Rec."Document Type".AsInteger());
                 end;
             }
         }
@@ -54,7 +55,7 @@ pageextension 5272769 "lbt Sales Return Ord. Arc Sub." extends "Sales Return Ord
                     SourceRecRef: RecordRef;
                     Position: Option Header,Footer,Longtext;
                 begin
-                    SourceRecRef.GETTABLE(Rec);
+                    SourceRecRef.GetTable(Rec);
                     LongtextMgt.ShowLongtextLines(Rec, Position::Longtext);
                 end;
             }

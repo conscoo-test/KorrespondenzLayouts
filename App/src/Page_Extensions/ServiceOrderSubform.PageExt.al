@@ -4,7 +4,7 @@ pageextension 5272807 "lbt cl ServiceOrderSubform" extends "Service Order Subfor
     {
         addafter(Description)
         {
-            field("lbt Editor"; rec.lbtHasEditorValue(rec."Document Type".AsInteger()))
+            field("lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
                 ApplicationArea = all;
                 Editable = false;
@@ -12,7 +12,7 @@ pageextension 5272807 "lbt cl ServiceOrderSubform" extends "Service Order Subfor
                 caption = 'Editor';
                 trigger OnAssistEdit()
                 begin
-                    rec.lbtEditData(rec."Document Type".AsInteger());
+                    Rec.lbtEditData(Rec."Document Type".AsInteger());
                 end;
             }
 
