@@ -56,7 +56,7 @@ page 5272725 "lbt Report - Attribute Setup"
 
                     trigger OnValidate()
                     begin
-                        CurrPage.UPDATE();
+                        CurrPage.Update();
                     end;
                 }
                 field("Control Unit of Measure Code"; Rec."Control Unit of Measure Code")

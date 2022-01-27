@@ -15,11 +15,9 @@ table 5272720 "lbt PS Longtext Line"
             TableRelation = AllObj."Object ID" where("Object Type" = const(Table));
             DataClassification = CustomerContent;
         }
-        field(2; "Document Type"; Option)
+        field(2; "Document Type"; Enum "Sales Document Type")
         {
             Caption = 'Document Type';
-            OptionCaption = 'Quote,Order,Invoice,Credit Memo,Blanket Order,Return Order,Shipment/Receipt';
-            OptionMembers = Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order","Shipment/Receipt";
             DataClassification = CustomerContent;
         }
         field(3; "Document No."; Code[20])

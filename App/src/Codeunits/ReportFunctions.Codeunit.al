@@ -1,32 +1,18 @@
 codeunit 5272724 "lbt Report Functions"
 {
-    // version LBCOR1.00
-
-
-    trigger OnRun()
-    begin
-    end;
-
-    var
-        AllObj: Record AllObj;
-        UseFilter: Option SETRANGE,SETFILTER;
-
     procedure GetParameterArry(ReportType: Option Purchase,Sales,QA,Production,Delivery,"Report"; ReportID: Integer; ParaType: Integer; LanguageCode: Code[10]; RowID: Text[250]; LotNo: Code[20]; ItemNo: Code[20]; var Description: array[99] of Text; var Value: array[99] of Text)
     var
-        ParamSetupRecordRef: RecordRef;
+        ReportAttributeSetup: Record "lbt Report - Attribute Setup";
         Counter: Integer;
-        IntVar: Integer;
     begin
-        ParamSetupRecordRef.Open(Database::"LBT Report - Attribute Setup");
-
-        SetFilterRecRef(ParamSetupRecordRef, 1, 5, UseFilter::SETRANGE);
-        SetFilterRecRef(ParamSetupRecordRef, 2, ReportID, UseFilter::SETRANGE);
-        if not ParamSetupRecordRef.FindSet() then begin
-            ParamSetupRecordRef.Reset();
-            SetFilterRecRef(ParamSetupRecordRef, 1, ReportType, UseFilter::SETRANGE);
+        ReportAttributeSetup.SetRange("Report-Type", ReportAttributeSetup."Report-Type"::Report);
+        ReportAttributeSetup.SetRange("Report-ID", ReportID);
+        if ReportAttributeSetup.IsEmpty() then begin
+            ReportAttributeSetup.Reset();
+            ReportAttributeSetup.SetRange("Report-Type", ReportType);
         end;
 
-        if not ParamSetupRecordRef.FindFirst() then
+        if not ReportAttributeSetup.FindSet() then
             exit;
 
         repeat
@@ -36,454 +22,172 @@ codeunit 5272724 "lbt Report Functions"
 
         repeat
             Counter += 1;
-            Evaluate(IntVar, GetValueRecRef(ParamSetupRecordRef, 3));
-            Description[Counter] := GetParameterDescription(ReportType, ReportID, IntVar, ParaType, LanguageCode, RowID, LotNo);
-            Value[Counter] := GetParameterValue(ReportType, ReportID, IntVar, ParaType, LanguageCode, RowID, LotNo, ItemNo);
+            Description[Counter] := GetParameterDescription(ReportAttributeSetup, LanguageCode);
+            Value[Counter] := GetParameterValue(ReportAttributeSetup, ItemNo, LanguageCode);
             if Value[Counter] = '' then begin
                 Description[Counter] := '';
                 Counter -= 1;
             end;
-        until ParamSetupRecordRef.Next() = 0;
-    end;
-
-    procedure GetParameterDescription(ReportType: Option Purchase,Sales,QA,Production,Delivery,"Report"; ReportID: Integer; Pos: Integer; ParaType: Integer; LanguageCode: Code[10]; RowID: Text[250]; LotNo: Code[20]) ParaDescriptionList: Text[1000]
-    var
-        ItemAttribute: Record "Item Attribute";
-        ItemAttributeTranslation: Record "Item Attribute Translation";
-        ParamSetupRecordRef: RecordRef;
-        StrArray: array[6] of Text[100];
-        ParameterDescription: Text;
-    begin
-        // Ermittlung der Beschreibung, der zu druckenenden Parameter
-        // Return eines Strings (wenn Sprachcode hinterlegt, mit Übersetzung)
-
-
-        // Tabellen Filter wird definiert
-        ParameterDescription := '';
-        ParaDescriptionList := '';
-
-        Clear(ParamSetupRecordRef);
-        ParamSetupRecordRef.Open(Database::"LBT Report - Attribute Setup");
-
-        SetFilterRecRef(ParamSetupRecordRef, 1, 5, UseFilter::SETRANGE);
-        SetFilterRecRef(ParamSetupRecordRef, 2, ReportID, UseFilter::SETRANGE);
-        if not ParamSetupRecordRef.FindSet() then begin
-            ParamSetupRecordRef.Reset();
-            SetFilterRecRef(ParamSetupRecordRef, 1, ReportType, UseFilter::SETRANGE);
-        end;
-
-        // Trennung der übergebenen ROWID in ein Array
-        FragmentRowID(RowID, StrArray);
-
-        // Die zu druckende Position filtern
-        SetFilterRecRef(ParamSetupRecordRef, 3, Pos, UseFilter::SETRANGE);
-        if not ParamSetupRecordRef.FindFirst() then
-            exit('');
-
-        // Gebuchter Beleg
-        case ParaType of
-            1:
-            repeat
-                if ParaDescriptionList <> '' then
-                    ParaDescriptionList += ' ';
-
-                if ItemAttributeTranslation.Get(GetValueRecRef(ParamSetupRecordRef, 5), LanguageCode) then
-                    ParameterDescription := ItemAttributeTranslation.Name
-                else
-                    if ItemAttribute.Get(GetValueRecRef(ParamSetupRecordRef, 5)) then
-                        ParameterDescription := ItemAttribute.Name;
-
-                ParaDescriptionList += ParameterDescription;
-                if GetValueRecRef(ParamSetupRecordRef, 8) <> '' then
-                    ParaDescriptionList += ' ' + GetValueRecRef(ParamSetupRecordRef, 8);
-            until ParamSetupRecordRef.Next() = 0;
-
-            // Ungebuchter Beleg
-            2:
-
-            repeat
-                if ParaDescriptionList <> '' then
-                    ParaDescriptionList += ' ';
-                if ItemAttributeTranslation.Get(GetValueRecRef(ParamSetupRecordRef, 5), LanguageCode) then
-                    ParameterDescription := ItemAttributeTranslation.Name
-                else
-                    if ItemAttribute.Get(GetValueRecRef(ParamSetupRecordRef, 5)) then
-                        ParameterDescription := ItemAttribute.Name;
-                ParaDescriptionList += ParameterDescription;
-                if GetValueRecRef(ParamSetupRecordRef, 8) <> '' then
-                    ParaDescriptionList += ' ' + GetValueRecRef(ParamSetupRecordRef, 8);
-            until ParamSetupRecordRef.Next() = 0;
-
-            3:
-
-            repeat
-                if ParaDescriptionList <> '' then
-                    ParaDescriptionList += ' ';
-                if ItemAttributeTranslation.Get(GetValueRecRef(ParamSetupRecordRef, 5), LanguageCode) then
-                    ParameterDescription := ItemAttributeTranslation.Name
-                else
-                    if ItemAttribute.Get(GetValueRecRef(ParamSetupRecordRef, 5)) then
-                        ParameterDescription := ItemAttribute.Name;
-                ParaDescriptionList += ParameterDescription;
-                if GetValueRecRef(ParamSetupRecordRef, 8) <> '' then
-                    ParaDescriptionList += ' ' + GetValueRecRef(ParamSetupRecordRef, 8);
-            until ParamSetupRecordRef.Next() = 0;
-
-            4:
-
-            repeat
-                if ParaDescriptionList <> '' then
-                    ParaDescriptionList += ' ';
-                if ItemAttributeTranslation.Get(GetValueRecRef(ParamSetupRecordRef, 5), LanguageCode) then
-                    ParameterDescription := ItemAttributeTranslation.Name
-                else
-                    if ItemAttribute.Get(GetValueRecRef(ParamSetupRecordRef, 5)) then
-                        ParameterDescription := ItemAttribute.Name;
-                ParaDescriptionList += ParameterDescription;
-                if GetValueRecRef(ParamSetupRecordRef, 8) <> '' then
-                    ParaDescriptionList += ' ' + GetValueRecRef(ParamSetupRecordRef, 8);
-            until ParamSetupRecordRef.Next() = 0;
-
-            // Archivierter Beleg
-            5:
-
-            repeat
-                if ParaDescriptionList <> '' then
-                    ParaDescriptionList += ' ';
-                if ItemAttributeTranslation.Get(GetValueRecRef(ParamSetupRecordRef, 5), LanguageCode) then
-                    ParameterDescription := ItemAttributeTranslation.Name
-                else
-                    if ItemAttribute.Get(GetValueRecRef(ParamSetupRecordRef, 5)) then
-                        ParameterDescription := ItemAttribute.Name;
-                ParaDescriptionList += ParameterDescription;
-                if GetValueRecRef(ParamSetupRecordRef, 8) <> '' then
-                    ParaDescriptionList += ' ' + GetValueRecRef(ParamSetupRecordRef, 8);
-            until ParamSetupRecordRef.Next() = 0;
-
-        end;
-    end;
-
-    procedure GetParameterValue(ReportType: Integer; ReportID: Integer; Pos: Integer; ParaType: Integer; LanguageCode: Code[10]; RowID: Text[250]; LotNo: Code[20]; ItemNo: Code[20]) ParaValueList: Text
-    var
-        UnitofMeasure: Record "Unit of Measure";
-        ItemAttributeValueMapping: Record "Item Attribute Value Mapping";
-        ItemAttrValueTranslation: Record "Item Attr. Value Translation";
-        ItemAttributeValue: Record "Item Attribute Value";
-        ItemAttribute: Record "Item Attribute";
-        UnitofMeasureTranslation: Record "Unit of Measure Translation";
-        ParamSetupRecordRef: RecordRef;
-        StrArray: array[6] of Text[100];
-        UnitofMeasureDescription: Text;
-        localUseFilter: Option SETRANGE,SETFILTER;
-    begin
-        // Ermittlung der Werte, der zu druckenden Parameter
-        // Return eines Strings (wenn Sprachcode hinterlegt, mit Übersetzung)
-
-
-        ParaValueList := '';
-
-        // Tabellen Filter wird definiert
-        Clear(ParamSetupRecordRef);
-        ParamSetupRecordRef.Open(Database::"LBT Report - Attribute Setup");
-
-        SetFilterRecRef(ParamSetupRecordRef, 1, 5, localUseFilter::SETRANGE);
-        SetFilterRecRef(ParamSetupRecordRef, 2, ReportID, localUseFilter::SETRANGE);
-        if not ParamSetupRecordRef.FindSet() then begin
-            ParamSetupRecordRef.Reset();
-            SetFilterRecRef(ParamSetupRecordRef, 1, ReportType, localUseFilter::SETRANGE);
-        end;
-
-        // Trennung der übergebenen ROWID in ein Array
-        FragmentRowID(RowID, StrArray);
-
-        // Die zu druckende Position filtern
-        SetFilterRecRef(ParamSetupRecordRef, 3, Pos, localUseFilter::SETRANGE);
-        if not ParamSetupRecordRef.FindFirst() then
-            exit('');
-
-        // Gebuchter Beleg
-        case ParaType of
-            1:
-
-            repeat
-                if ParaValueList <> '' then
-                    ParaValueList += ' ';
-                if ItemAttributeValueMapping.Get(Database::Item, ItemNo, GetValueRecRef(ParamSetupRecordRef, 5)) then begin
-                    if ItemAttrValueTranslation.Get(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode) then
-                        ParaValueList += ItemAttrValueTranslation.Name
-                    else
-                        if ItemAttributeValue.Get(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID") then
-                            ParaValueList += ItemAttributeValue.Value;
-
-                    if ItemAttribute.Get(GetValueRecRef(ParamSetupRecordRef, 5)) then
-                        if UnitofMeasureTranslation.Get(ItemAttribute."Unit of Measure", LanguageCode) then
-                            UnitofMeasureDescription := UnitofMeasureTranslation.Description
-                        else
-                            if UnitofMeasure.Get(ItemAttribute."Unit of Measure") then
-                                UnitofMeasureDescription := UnitofMeasure.Description;
-
-
-                end;
-
-                if UnitofMeasureDescription <> '' then
-                    ParaValueList += ' ' + UnitofMeasureDescription;
-                if GetValueRecRef(ParamSetupRecordRef, 8) <> '' then
-                    ParaValueList += ' ' + GetValueRecRef(ParamSetupRecordRef, 8);
-            until ParamSetupRecordRef.Next() = 0;
-
-            2:
-
-            // Ungebuchter Beleg
-            repeat
-                if ParaValueList <> '' then
-                    ParaValueList += ' ';
-                if ItemAttributeValueMapping.Get(Database::Item, ItemNo, GetValueRecRef(ParamSetupRecordRef, 5)) then begin
-                    if ItemAttrValueTranslation.Get(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode) then
-                        ParaValueList += ItemAttrValueTranslation.Name
-                    else
-                        if ItemAttributeValue.Get(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID") then
-                            ParaValueList += ItemAttributeValue.Value;
-
-                    if ItemAttribute.Get(GetValueRecRef(ParamSetupRecordRef, 5)) then
-                        if UnitofMeasureTranslation.Get(ItemAttribute."Unit of Measure", LanguageCode) then
-                            UnitofMeasureDescription := UnitofMeasureTranslation.Description
-                        else
-                            if UnitofMeasure.Get(ItemAttribute."Unit of Measure") then
-                                UnitofMeasureDescription := UnitofMeasure.Description;
-
-
-                end;
-
-                if UnitofMeasureDescription <> '' then
-                    ParaValueList += ' ' + UnitofMeasureDescription;
-                if GetValueRecRef(ParamSetupRecordRef, 8) <> '' then
-                    ParaValueList += ' ' + GetValueRecRef(ParamSetupRecordRef, 8);
-            until ParamSetupRecordRef.Next() = 0;
-
-            // Assign
-            3:
-
-            repeat
-                if ParaValueList <> '' then
-                    ParaValueList += ' ';
-                if ItemAttributeValueMapping.Get(Database::Item, ItemNo, GetValueRecRef(ParamSetupRecordRef, 5)) then begin
-                    if ItemAttrValueTranslation.Get(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode) then
-                        ParaValueList += ItemAttrValueTranslation.Name
-                    else
-                        if ItemAttributeValue.Get(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID") then
-                            ParaValueList += ItemAttributeValue.Value;
-
-                    if ItemAttribute.Get(GetValueRecRef(ParamSetupRecordRef, 5)) then
-                        if UnitofMeasureTranslation.Get(ItemAttribute."Unit of Measure", LanguageCode) then
-                            UnitofMeasureDescription := UnitofMeasureTranslation.Description
-                        else
-                            if UnitofMeasure.Get(ItemAttribute."Unit of Measure") then
-                                UnitofMeasureDescription := UnitofMeasure.Description;
-
-
-                end;
-                if UnitofMeasureDescription <> '' then
-                    ParaValueList += ' ' + UnitofMeasureDescription;
-                if GetValueRecRef(ParamSetupRecordRef, 8) <> '' then
-                    ParaValueList += ' ' + GetValueRecRef(ParamSetupRecordRef, 8);
-            until ParamSetupRecordRef.Next() = 0;
-
-            4:
-
-            repeat
-                if ParaValueList <> '' then
-                    ParaValueList += ' ';
-                if ItemAttributeValueMapping.Get(Database::Item, ItemNo, GetValueRecRef(ParamSetupRecordRef, 5)) then begin
-                    if ItemAttrValueTranslation.Get(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode) then
-                        ParaValueList += ItemAttrValueTranslation.Name
-                    else
-                        if ItemAttributeValue.Get(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID") then
-                            ParaValueList += ItemAttributeValue.Value;
-
-                    if ItemAttribute.Get(GetValueRecRef(ParamSetupRecordRef, 5)) then
-                        if UnitofMeasureTranslation.Get(ItemAttribute."Unit of Measure", LanguageCode) then
-                            UnitofMeasureDescription := UnitofMeasureTranslation.Description
-                        else
-                            if UnitofMeasure.Get(ItemAttribute."Unit of Measure") then
-                                UnitofMeasureDescription := UnitofMeasure.Description;
-
-                end;
-                if UnitofMeasureDescription <> '' then
-                    ParaValueList += ' ' + UnitofMeasureDescription;
-                if GetValueRecRef(ParamSetupRecordRef, 8) <> '' then
-                    ParaValueList += ' ' + GetValueRecRef(ParamSetupRecordRef, 8);
-            until ParamSetupRecordRef.Next() = 0;
-
-            5:
-
-            // Archivierter Beleg
-            repeat
-                if ParaValueList <> '' then
-                    ParaValueList += ' ';
-                if ItemAttributeValueMapping.Get(Database::Item, ItemNo, GetValueRecRef(ParamSetupRecordRef, 5)) then begin
-                    if ItemAttrValueTranslation.Get(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode) then
-                        ParaValueList += ItemAttrValueTranslation.Name
-                    else
-                        if ItemAttributeValue.Get(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID") then
-                            ParaValueList += ItemAttributeValue.Value;
-
-                    if ItemAttribute.Get(GetValueRecRef(ParamSetupRecordRef, 5)) then
-                        if UnitofMeasureTranslation.Get(ItemAttribute."Unit of Measure", LanguageCode) then
-                            UnitofMeasureDescription := UnitofMeasureTranslation.Description
-                        else
-                            if UnitofMeasure.Get(ItemAttribute."Unit of Measure") then
-                                UnitofMeasureDescription := UnitofMeasure.Description;
-
-                end;
-                if UnitofMeasureDescription <> '' then
-                    ParaValueList += ' ' + UnitofMeasureDescription;
-                if GetValueRecRef(ParamSetupRecordRef, 8) <> '' then
-                    ParaValueList += ' ' + GetValueRecRef(ParamSetupRecordRef, 8);
-            until ParamSetupRecordRef.Next() = 0;
-
-        end;
+        until ReportAttributeSetup.Next() = 0;
     end;
 
     procedure GetItemUnitArry(ItemUnitType: Integer; RowID: Text[250]; LotNo: Code[20]; LanguageCode: Code[10]; var ItemUnitCode: array[50] of Code[20]; var ItemUnitDescription: array[50] of Text; var ItemUnitQty: array[50] of Text)
     var
+        Handled: Boolean;
+    begin
+
+        OnBeforeGetItemUnitArray(ItemUnitType, RowID, LotNo, LanguageCode, ItemUnitCode, ItemUnitDescription, ItemUnitQty, Handled);
+        if Handled then
+            exit;
+        GetItemUnitArryOld(ItemUnitType, RowID, LotNo, LanguageCode, ItemUnitCode, ItemUnitDescription, ItemUnitQty);
+    end;
+#pragma warning disable AA0137
+    local procedure GetItemUnitArryOld(ItemUnitType: Integer; RowID: Text[250]; LotNo: Code[20]; LanguageCode: Code[10]; var ItemUnitCode: array[50] of Code[20]; var ItemUnitDescription: array[50] of Text; var ItemUnitQty: array[50] of Text)
+#pragma warning restore AA0137
+    var
+    // UnitofMeasure: Record "Unit of Measure";
+    // UnitofMeasureTranslation: Record "Unit of Measure Translation";
+    // RecordRef: RecordRef;
+    // Counter: Integer;
+    // StrArray: array[6] of Text[100];
+    begin
+        // // Trennung der übergebenen ROWID in ein Array
+        // FragmentRowID(RowID, StrArray);
+
+        // //Prüfung auf vorhandene Tabelle
+        // case ItemUnitType of
+        //     // Gebuchter Beleg
+        //     1:
+        //         begin
+        //             AllObj.SetRange("Object Type", AllObj."Object Type"::Table);
+        //             AllObj.SetRange("Object ID", 5077965);
+        //             if not AllObj.FindSet() then
+        //                 exit;
+        //         end;
+        //     // Ungebuchter Beleg
+        //     2:
+        //         begin
+        //             AllObj.SetRange("Object Type", AllObj."Object Type"::Table);
+        //             AllObj.SetRange("Object ID", 5077957);
+        //             if not AllObj.FindSet() then
+        //                 exit;
+        //         end;
+        // end;
+
+        // Clear(RecordRef);
+        // case ItemUnitType of
+        //     1:
+        //         RecordRef.Open(5077965);
+        //     2:
+        //         RecordRef.Open(5077957);
+        // end;
+        // SetFilterRecRef(RecordRef, 1, StrArray[1], UseFilter::SETFILTER);   //"Table ID"
+        // SetFilterRecRef(RecordRef, 2, StrArray[2], UseFilter::SETFILTER);   //"Document Type"
+        // SetFilterRecRef(RecordRef, 3, StrArray[3], UseFilter::SETRANGE);    //"Document No."
+        // SetFilterRecRef(RecordRef, 9, StrArray[4], UseFilter::SETFILTER);   //"Document No. 2"
+        // SetFilterRecRef(RecordRef, 4, StrArray[6], UseFilter::SETFILTER);   //"Document Line No."
+        // SetFilterRecRef(RecordRef, 12, LotNo, UseFilter::SETRANGE);         //"Lot No."
+        // SetFilterRecRef(RecordRef, 20, true, UseFilter::SETRANGE);          //Print
+        // if RecordRef.FindSet() then
+        //     repeat
+        //         Counter += 1;
+        //         ItemUnitCode[Counter] := CopyStr(GetValueRecRef(RecordRef, 5), 1, 20);
+        //         if UnitofMeasureTranslation.Get(ItemUnitCode[Counter], LanguageCode) then
+        //             ItemUnitDescription[Counter] := UnitofMeasureTranslation.Description
+        //         else
+        //             if UnitofMeasure.Get(ItemUnitCode[Counter]) then
+        //                 ItemUnitDescription[Counter] := UnitofMeasure.Description;
+
+        //         //Evaluate(DecVar,GetValueRecRef(RecordRef,7));
+        //         ItemUnitQty[Counter] := GetValueRecRef(RecordRef, 7);
+        //     until RecordRef.Next() = 0;
+
+    end;
+
+    local procedure GetSourceTypeSales(var SourceType: Option; var SourceSetup: Record "lbt Source Setup")
+    begin
+        case SourceSetup."Source Type" of
+            SourceSetup."Source Type"::Default:
+                SourceType := 0;
+            SourceSetup."Source Type"::"Bill-to Customer":
+                SourceType := 1;
+            SourceSetup."Source Type"::"Sell-to Customer":
+                SourceType := 2;
+        end;
+    end;
+
+    local procedure GetSourceTypePurchase(var SourceType: Option; var SourceSetup: Record "lbt Source Setup")
+    begin
+        case SourceSetup."Source Type" of
+            SourceSetup."Source Type"::Default:
+                SourceType := 0;
+            SourceSetup."Source Type"::"Pay-to Vendor":
+                SourceType := 1;
+            SourceSetup."Source Type"::"Buy-from Vendor":
+                SourceType := 2;
+        end;
+    end;
+
+    local procedure AppendAdditionalCharacter(var ReportAttributeSetup: Record "lbt Report - Attribute Setup"; var ParaDescriptionList: Text)
+    begin
+        if ReportAttributeSetup."Additional Character" <> '' then
+            ParaDescriptionList += ' ' + ReportAttributeSetup."Additional Character";
+    end;
+
+    local procedure GetUnitOfMeasureDescription(AttributeId: Integer; LanguageCode: Code[10]) UnitofMeasureDescription: Text
+    var
         UnitofMeasure: Record "Unit of Measure";
+        ItemAttribute: Record "Item Attribute";
         UnitofMeasureTranslation: Record "Unit of Measure Translation";
-        RecordRef: RecordRef;
-        Counter: Integer;
-        StrArray: array[6] of Text[100];
     begin
-        // Trennung der übergebenen ROWID in ein Array
-        FragmentRowID(RowID, StrArray);
-
-        //Prüfung auf vorhandene Tabelle
-        case ItemUnitType of
-            // Gebuchter Beleg
-            1:
-                begin
-                    AllObj.SetRange("Object Type", AllObj."Object Type"::Table);
-                    AllObj.SetRange("Object ID", 5077965);
-                    if not AllObj.FindSet() then
-                        exit;
-                end;
-            // Ungebuchter Beleg
-            2:
-                begin
-                    AllObj.SetRange("Object Type", AllObj."Object Type"::Table);
-                    AllObj.SetRange("Object ID", 5077957);
-                    if not AllObj.FindSet() then
-                        exit;
-                end;
-        end;
-
-        Clear(RecordRef);
-        case ItemUnitType of
-            1:
-                RecordRef.Open(5077965);
-            2:
-                RecordRef.Open(5077957);
-        end;
-        SetFilterRecRef(RecordRef, 1, StrArray[1], UseFilter::SETFILTER);   //"Table ID"
-        SetFilterRecRef(RecordRef, 2, StrArray[2], UseFilter::SETFILTER);   //"Document Type"
-        SetFilterRecRef(RecordRef, 3, StrArray[3], UseFilter::SETRANGE);    //"Document No."
-        SetFilterRecRef(RecordRef, 9, StrArray[4], UseFilter::SETFILTER);   //"Document No. 2"
-        SetFilterRecRef(RecordRef, 4, StrArray[6], UseFilter::SETFILTER);   //"Document Line No."
-        SetFilterRecRef(RecordRef, 12, LotNo, UseFilter::SETRANGE);         //"Lot No."
-        SetFilterRecRef(RecordRef, 20, true, UseFilter::SETRANGE);          //Print
-        if RecordRef.FindSet() then
-            repeat
-                Counter += 1;
-                ItemUnitCode[Counter] := CopyStr(GetValueRecRef(RecordRef, 5), 1, 20);
-                if UnitofMeasureTranslation.Get(ItemUnitCode[Counter], LanguageCode) then
-                    ItemUnitDescription[Counter] := UnitofMeasureTranslation.Description
-                else
-                    if UnitofMeasure.Get(ItemUnitCode[Counter]) then
-                        ItemUnitDescription[Counter] := UnitofMeasure.Description;
-
-                //Evaluate(DecVar,GetValueRecRef(RecordRef,7));
-                ItemUnitQty[Counter] := GetValueRecRef(RecordRef, 7);
-            until RecordRef.Next() = 0;
-
+        if ItemAttribute.Get(AttributeId) then
+            if UnitofMeasureTranslation.Get(ItemAttribute."Unit of Measure", LanguageCode) then
+                UnitofMeasureDescription := UnitofMeasureTranslation.Description
+            else
+                if UnitofMeasure.Get(ItemAttribute."Unit of Measure") then
+                    UnitofMeasureDescription := UnitofMeasure.Description;
     end;
 
-    procedure SetFilterRecRef(var SourceRecordRef: RecordRef; FieldID: Integer; FilterValueVariant: Variant; UseFilter_L: Option SETRANGE,SETFILTER)
+    local procedure GetAttributeValueTranslation(AttributeId: Integer; AttributeValueId: Integer; LanguageCode: Code[10]): Text
     var
-        SourceFieldRef: FieldRef;
+        ItemAttrValueTranslation: Record "Item Attr. Value Translation";
+        ItemAttributeValue: Record "Item Attribute Value";
     begin
-        SourceFieldRef := SourceRecordRef.Field(FieldID);
-        case UseFilter_L of
-            UseFilter_L::SETFILTER:
-                SourceFieldRef.SETFILTER(FilterValueVariant);
-            UseFilter_L::SETRANGE:
-                SourceFieldRef.SetRange(FilterValueVariant);
-        end;
+        if ItemAttrValueTranslation.Get(AttributeId, AttributeValueId, LanguageCode) then
+            exit(ItemAttrValueTranslation.Name);
+        if ItemAttributeValue.Get(AttributeId, AttributeValueId) then
+            exit(ItemAttributeValue.Value);
     end;
 
-    procedure GetValueRecRef(var SourceRecordRef: RecordRef; FieldID: Integer) TextVar: Text
+    local procedure GetParameterDescription(var ReportAttributeSetup: Record "lbt Report - Attribute Setup"; LanguageCode: Code[10]) ParaDescriptionList: Text
     var
-        SourceFieldRef: FieldRef;
+        ItemAttribute: Record "Item Attribute";
+        Language: Codeunit Language;
+        ParameterDescription: Text;
+        LanguageId: Integer;
     begin
-        SourceFieldRef := SourceRecordRef.Field(FieldID);
-        TextVar := Format(SourceFieldRef.Value());
-        exit(TextVar);
+        LanguageId := Language.GetLanguageId(LanguageCode);
+        if ItemAttribute.Get(ReportAttributeSetup.ID) then
+            ParameterDescription := ItemAttribute.GetTranslatedName(LanguageId);
+
+        ParaDescriptionList += ParameterDescription;
+        AppendAdditionalCharacter(ReportAttributeSetup, ParaDescriptionList);
     end;
 
-    procedure FragmentRowID(IDtext: Text[250]; var StrArray: array[6] of Text[100])
+    local procedure GetParameterValue(ReportAttributeSetup: Record "lbt Report - Attribute Setup"; ItemNo: Code[20]; LanguageCode: Code[10]) ParaValueList: Text
     var
-        Len: Integer;
-        Pos: Integer;
-        ArrayIndex: Integer;
-        "Count": Integer;
-        Char: Text[1];
-        NoWriteSinceLastNext: Boolean;
-        Write: Boolean;
-        Next: Boolean;
+        ItemAttributeValueMapping: Record "Item Attribute Value Mapping";
+        UnitofMeasureDescription: Text;
     begin
-        // Funktion zum Splitten der Rowid
-
-        for ArrayIndex := 1 to 6 do
-            StrArray[ArrayIndex] := '';
-        Len := STRLEN(IDtext);
-        Pos := 1;
-        ArrayIndex := 1;
-
-        while not (Pos > Len) do begin
-            Char := CopyStr(IDtext, Pos, 1);
-            if (Char = '"') then begin
-                Write := false;
-                Count += 1;
-            end else begin
-                if Count = 0 then
-                    Write := true
-                else begin
-                    if Count mod 2 = 1 then begin
-                        Next := (Char = ';');
-                        Count -= 1;
-                    end else
-                        if NoWriteSinceLastNext and (Char = ';') then begin
-                            Count -= 2;
-                            Next := true;
-                        end;
-                    Count /= 2;
-                    while Count > 0 do begin
-                        StrArray[ArrayIndex] += '"';
-                        Count -= 1;
-                    end;
-                    Write := not Next;
-                end;
-                NoWriteSinceLastNext := Next;
-            end;
-
-            if Next then begin
-                ArrayIndex += 1;
-                Next := false
-            end;
-
-            if Write then
-                StrArray[ArrayIndex] += Char;
-            Pos += 1;
+        if ItemAttributeValueMapping.Get(Database::Item, ItemNo, ReportAttributeSetup.ID) then begin
+            ParaValueList += GetAttributeValueTranslation(ItemAttributeValueMapping."Item Attribute ID", ItemAttributeValueMapping."Item Attribute Value ID", LanguageCode);
+            UnitofMeasureDescription := GetUnitOfMeasureDescription(ReportAttributeSetup.ID, LanguageCode);
+            if UnitofMeasureDescription <> '' then
+                ParaValueList += ' ' + UnitofMeasureDescription;
         end;
-    end;
 
+        AppendAdditionalCharacter(ReportAttributeSetup, ParaValueList);
+    end;
 
     procedure RowID1ForSalesShipmentLine(SalesShipmentLine: Record "Sales Shipment Line"): Text[250]
     var
@@ -501,29 +205,17 @@ codeunit 5272724 "lbt Report Functions"
         SourceSetup.SetRange("Report Type", ReportType);
         if SourceSetup.IsEmpty() then
             SourceSetup.SetRange("Report Type", SourceSetup."Report Type"::General);
-        if not SourceSetup.FindFirst() then
-            SourceType := 0
-        else
-            case SourceSetup.Type of
-                SourceSetup.Type::Sales:
-                    case SourceSetup."Source Type" of
-                        SourceSetup."Source Type"::Default:
-                            SourceType := 0;
-                        SourceSetup."Source Type"::"Bill-to Customer":
-                            SourceType := 1;
-                        SourceSetup."Source Type"::"Sell-to Customer":
-                            SourceType := 2;
-                    end;
-                SourceSetup.Type::Purchase:
-                    case SourceSetup."Source Type" of
-                        SourceSetup."Source Type"::Default:
-                            SourceType := 0;
-                        SourceSetup."Source Type"::"Pay-to Vendor":
-                            SourceType := 1;
-                        SourceSetup."Source Type"::"Buy-from Vendor":
-                            SourceType := 2;
-                    end;
-            end;
+        if not SourceSetup.FindFirst() then begin
+            SourceType := 0;
+            exit;
+        end;
+
+        case SourceSetup.Type of
+            SourceSetup.Type::Sales:
+                GetSourceTypeSales(SourceType, SourceSetup);
+            SourceSetup.Type::Purchase:
+                GetSourceTypePurchase(SourceType, SourceSetup);
+        end;
 
     end;
 
@@ -537,7 +229,7 @@ codeunit 5272724 "lbt Report Functions"
         Clear(DimText);
         Continue := false;
         repeat
-            OldDimText := DimText;
+            OldDimText := CopyStr(DimText, 1, MaxStrLen(OldDimText));
             if DimText = '' then
                 DimText := StrSubstNo(DimensionCodeAndValueTok, DimSetEntry."Dimension Code", DimSetEntry."Dimension Value Code")
             else
@@ -545,12 +237,17 @@ codeunit 5272724 "lbt Report Functions"
                   StrSubstNo(
                     DimensionAndDimensionCodeAndValueTok, DimText,
                     DimSetEntry."Dimension Code", DimSetEntry."Dimension Value Code");
-            if STRLEN(DimText) > MAXSTRLEN(OldDimText) then begin
+            if StrLen(DimText) > MaxStrLen(OldDimText) then begin
                 DimText := OldDimText;
                 Continue := true;
                 exit;
             end;
         until DimSetEntry.Next() = 0;
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeGetItemUnitArray(ItemUnitType: Integer; RowID: Text[250]; LotNo: Code[20]; LanguageCode: Code[10]; var ItemUnitCode: array[50] of Code[20]; var ItemUnitDescription: array[50] of Text; var ItemUnitQty: array[50] of Text; Handled: Boolean)
+    begin
     end;
 }
 

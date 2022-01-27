@@ -593,7 +593,7 @@ report 5272724 "lbt Sales - Shipment"
                             if TrackingSpecCount = 0 then
                                 CurrReport.Break();
                             SetRange(Number, 1, TrackingSpecCount);
-                            TempTrackingSpecBuffer.SETCURRENTKEY("Source ID", "Source Type", "Source Subtype", "Source Batch Name",
+                            TempTrackingSpecBuffer.SetCurrentKey("Source ID", "Source Type", "Source Subtype", "Source Batch Name",
                               "Source Prod. Order Line", "Source Ref. No.");
                         end;
                     }

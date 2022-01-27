@@ -978,7 +978,7 @@ report 5272722 "lbt Sales - Invoice"
                 Counter := 0;
                 if OrderNoText = '' then begin
                     SalesInvoiceLine.SetRange("Document No.", "Sales Invoice Header"."No.");
-                    SalesInvoiceLine.SETFILTER(Type, '<>%1', SalesInvoiceLine.Type::" ");
+                    SalesInvoiceLine.SetFilter(Type, '<>%1', SalesInvoiceLine.Type::" ");
                     if SalesInvoiceLine.FindSet() then
                         repeat
                             Counter += 1;
@@ -1283,11 +1283,11 @@ report 5272722 "lbt Sales - Invoice"
         Quantity: Decimal;
     begin
         TotalQuantity := SalesInvoiceLine2."Quantity (Base)";
-        ValueEntry.SETCURRENTKEY("Document No.");
+        ValueEntry.SetCurrentKey("Document No.");
         ValueEntry.SetRange("Document No.", SalesInvoiceLine2."Document No.");
         ValueEntry.SetRange("Posting Date", "Sales Invoice Header"."Posting Date");
         ValueEntry.SetRange("Item Charge No.", '');
-        ValueEntry.SETFILTER("Entry No.", '%1..', FirstValueEntryNo);
+        ValueEntry.SetFilter("Entry No.", '%1..', FirstValueEntryNo);
         if ValueEntry.Find('-') then
             repeat
                 if ItemLedgerEntry.Get(ValueEntry."Item Ledger Entry No.") then begin
@@ -1315,8 +1315,8 @@ report 5272722 "lbt Sales - Invoice"
         Quantity: Decimal;
     begin
         TotalQuantity := 0;
-        SalesInvoiceHeader.SETCURRENTKEY("Order No.");
-        SalesInvoiceHeader.SETFILTER("No.", '..%1', "Sales Invoice Header"."No.");
+        SalesInvoiceHeader.SetCurrentKey("Order No.");
+        SalesInvoiceHeader.SetFilter("No.", '..%1', "Sales Invoice Header"."No.");
         SalesInvoiceHeader.SetRange("Order No.", "Sales Invoice Header"."Order No.");
         if SalesInvoiceHeader.Find('-') then
             repeat
@@ -1331,14 +1331,14 @@ report 5272722 "lbt Sales - Invoice"
                     until SalesInvoiceLine2.Next() = 0;
             until SalesInvoiceHeader.Next() = 0;
 
-        SalesShipmentLine.SETCURRENTKEY("Order No.", "Order Line No.");
+        SalesShipmentLine.SetCurrentKey("Order No.", "Order Line No.");
         SalesShipmentLine.SetRange("Order No.", "Sales Invoice Header"."Order No.");
         SalesShipmentLine.SetRange("Order Line No.", SalesInvoiceLine."Line No.");
         SalesShipmentLine.SetRange("Line No.", SalesInvoiceLine."Line No.");
         SalesShipmentLine.SetRange(Type, SalesInvoiceLine.Type);
         SalesShipmentLine.SetRange("No.", SalesInvoiceLine."No.");
         SalesShipmentLine.SetRange("Unit of Measure Code", SalesInvoiceLine."Unit of Measure Code");
-        SalesShipmentLine.SETFILTER(Quantity, '<>%1', 0);
+        SalesShipmentLine.SetFilter(Quantity, '<>%1', 0);
 
         if SalesShipmentLine.Find('-') then
             repeat
@@ -1369,7 +1369,7 @@ report 5272722 "lbt Sales - Invoice"
     var
         l_SalesInvoiceLine: Record "Sales Invoice Line";
     begin
-        l_SalesInvoiceLine.SETCURRENTKEY("Shipment No.", "Shipment Line No.");
+        l_SalesInvoiceLine.SetCurrentKey("Shipment No.", "Shipment Line No.");
         l_SalesInvoiceLine.SetRange("Shipment No.", SalesShipmentLine."Document No.");
         l_SalesInvoiceLine.SetRange("Shipment Line No.", SalesShipmentLine."Line No.");
         if l_SalesInvoiceLine.Find('-') then
@@ -1464,7 +1464,7 @@ report 5272722 "lbt Sales - Invoice"
         TempPostedAsmLine.DeleteAll();
         if "Sales Invoice Line".Type <> "Sales Invoice Line".Type::Item then
             exit;
-        ValueEntry.SETCURRENTKEY("Document No.");
+        ValueEntry.SetCurrentKey("Document No.");
         ValueEntry.SetRange("Document No.", "Sales Invoice Line"."Document No.");
         ValueEntry.SetRange("Document Type", ValueEntry."Document Type"::"Sales Invoice");
         ValueEntry.SetRange("Document Line No.", "Sales Invoice Line"."Line No.");

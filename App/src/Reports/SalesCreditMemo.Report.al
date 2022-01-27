@@ -1131,11 +1131,11 @@ report 5272723 "lbt Sales - Credit Memo"
         Quantity: Decimal;
     begin
         TotalQuantity := SalesCrMemoLine2."Quantity (Base)";
-        ValueEntry.SETCURRENTKEY("Document No.");
+        ValueEntry.SetCurrentKey("Document No.");
         ValueEntry.SetRange("Document No.", SalesCrMemoLine2."Document No.");
         ValueEntry.SetRange("Posting Date", "Sales Cr.Memo Header"."Posting Date");
         ValueEntry.SetRange("Item Charge No.", '');
-        ValueEntry.SETFILTER("Entry No.", '%1..', FirstValueEntryNo);
+        ValueEntry.SetFilter("Entry No.", '%1..', FirstValueEntryNo);
         if ValueEntry.Find('-') then
             repeat
                 if ItemLedgerEntry.Get(ValueEntry."Item Ledger Entry No.") then begin
@@ -1163,8 +1163,8 @@ report 5272723 "lbt Sales - Credit Memo"
         Quantity: Decimal;
     begin
         TotalQuantity := 0;
-        SalesCrMemoHeader.SETCURRENTKEY("Return Order No.");
-        SalesCrMemoHeader.SETFILTER("No.", '..%1', "Sales Cr.Memo Header"."No.");
+        SalesCrMemoHeader.SetCurrentKey("Return Order No.");
+        SalesCrMemoHeader.SetFilter("No.", '..%1', "Sales Cr.Memo Header"."No.");
         SalesCrMemoHeader.SetRange("Return Order No.", "Sales Cr.Memo Header"."Return Order No.");
         if SalesCrMemoHeader.Find('-') then
             repeat
@@ -1179,14 +1179,14 @@ report 5272723 "lbt Sales - Credit Memo"
                     until SalesCrMemoLine2.Next() = 0;
             until SalesCrMemoHeader.Next() = 0;
 
-        ReturnReceiptLine.SETCURRENTKEY("Return Order No.", "Return Order Line No.");
+        ReturnReceiptLine.SetCurrentKey("Return Order No.", "Return Order Line No.");
         ReturnReceiptLine.SetRange("Return Order No.", "Sales Cr.Memo Header"."Return Order No.");
         ReturnReceiptLine.SetRange("Return Order Line No.", SalesCrMemoLine."Line No.");
         ReturnReceiptLine.SetRange("Line No.", SalesCrMemoLine."Line No.");
         ReturnReceiptLine.SetRange(Type, SalesCrMemoLine.Type);
         ReturnReceiptLine.SetRange("No.", SalesCrMemoLine."No.");
         ReturnReceiptLine.SetRange("Unit of Measure Code", SalesCrMemoLine."Unit of Measure Code");
-        ReturnReceiptLine.SETFILTER(Quantity, '<>%1', 0);
+        ReturnReceiptLine.SetFilter(Quantity, '<>%1', 0);
 
         if ReturnReceiptLine.Find('-') then
             repeat
@@ -1216,7 +1216,7 @@ report 5272723 "lbt Sales - Credit Memo"
     var
         SalesCrMemoLine: Record "Sales Cr.Memo Line";
     begin
-        SalesCrMemoLine.SETCURRENTKEY("Return Receipt No.", "Return Receipt Line No.");
+        SalesCrMemoLine.SetCurrentKey("Return Receipt No.", "Return Receipt Line No.");
         SalesCrMemoLine.SetRange("Return Receipt No.", ReturnReceiptLine."Document No.");
         SalesCrMemoLine.SetRange("Return Receipt Line No.", ReturnReceiptLine."Line No.");
         if SalesCrMemoLine.Find('-') then

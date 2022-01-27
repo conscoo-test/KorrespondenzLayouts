@@ -7,30 +7,22 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
     var
         IndentTxt: Label 'Indenting the Document #1##########', Comment = '%1 - Document Name';
         MissingBeginTotalTxt: Label 'End-Total %1 is missing a matching Begin-Total.', Comment = '%1 - End-Total Name';
-        RowIDTemplateTxt: Label '"%1";"%2";"%3";"%4";"%5";"%6"', Locked = true;
         TotalTxt: Label 'Total';
+        PosNoTemplateLbl: Label '%1%2.', Locked = true;
 
     procedure SalesLineIndentTotaling(var SalesHeader: Record "Sales Header")
     var
         SalesLine: Record "Sales Line";
         WindowDialog: Dialog;
         AccNo: array[10] of Code[20];
-        NewString: Text;
-        NoString: Text[20];
         Header: array[10] of Text;
         SummText: Text;
-        StrLength: Integer;
-        DescLength: Integer;
-        NewLength: Integer;
-        RestLength: Integer;
-        i: Integer;
+        Indentation: Integer;
     begin
-        i := 0;
+        Indentation := 0;
         SummText := TotalTxt;
-        if SummText <> '' then
-            if CopyStr(SummText, STRLEN(SummText)) <> ' ' then
-                SummText := SummText + ' ';
-        StrLength := STRLEN(SummText);
+        if not SummText.EndsWith(' ') then
+            SummText := SummText + ' ';
         WindowDialog.Open(IndentTxt);
 
         SalesLine.SetRange("Document Type", SalesHeader."Document Type");
@@ -40,29 +32,20 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
                 WindowDialog.Update(1, SalesLine."No.");
 
                 if SalesLine."lbt Printoption" = SalesLine."lbt Printoption"::"End Total" then begin
-                    if i < 1 then
+                    if Indentation < 1 then
                         Error(MissingBeginTotalTxt);
-                    SalesLine."lbt Summation" := AccNo[i] + '..' + Format(SalesLine."Line No.");
-                    SalesLine.Description := SummText + Header[i];
-                    i -= 1;
+                    SalesLine."lbt Summation" := AccNo[Indentation] + '..' + Format(SalesLine."Line No.");
+                    SalesLine.Description := CopyStr(SummText + Header[Indentation], 1, MaxStrLen(SalesLine.Description));
+                    Indentation -= 1;
                 end;
 
-                SalesLine."lbt Indentation" := i;
+                SalesLine."lbt Indentation" := Indentation;
                 SalesLine.Modify();
 
                 if (SalesLine."lbt Printoption" = SalesLine."lbt Printoption"::"Begin Total") then begin
-                    i += 1;
-                    NoString := Format(SalesLine."Line No.");
-                    AccNo[i] := NoString;
-                    DescLength := STRLEN(SalesLine.Description);
-                    if StrLength + DescLength > 50 then begin
-                        RestLength := StrLength + DescLength - 50;
-                        NewLength := DescLength - RestLength;
-                        NewString := DelStr(SalesLine.Description, NewLength, 50);
-                        Header[i] := NewString;
-                    end else
-                        Header[i] := SalesLine.Description;
-
+                    Indentation += 1;
+                    AccNo[Indentation] := Format(SalesLine."Line No.");
+                    Header[Indentation] := SalesLine.Description;
                 end;
             until SalesLine.Next() = 0;
         WindowDialog.Close();
@@ -81,7 +64,7 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
                 exit;
             end;
             if (SalesLine.Type <> SalesLine.Type::" ") or (SalesLine."lbt Printoption" = SalesLine."lbt Printoption"::"Begin Total") then begin
-                PosNo := StrSubstNo('%1%2.', Prefix, Counter);
+                PosNo := StrSubstNo(PosNoTemplateLbl, Prefix, Counter);
                 Counter += 1;
                 SalesLine."lbt Pos. No." := PosNo;
                 SalesLine.Modify();
@@ -106,7 +89,7 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
                 exit;
             end;
             if (PurchaseLine.Type <> PurchaseLine.Type::" ") or (PurchaseLine."lbt Printoption" = PurchaseLine."lbt Printoption"::"Begin Total") then begin
-                PosNo := StrSubstNo('%1%2.', Prefix, Counter);
+                PosNo := StrSubstNo(PosNoTemplateLbl, Prefix, Counter);
                 Counter += 1;
                 PurchaseLine."lbt Pos. No." := PosNo;
                 PurchaseLine.Modify();
@@ -135,22 +118,14 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
         PurchaseLine: Record "Purchase Line";
         WindowDialog: Dialog;
         AccNo: array[10] of Code[20];
-        NoString: Text[20];
         Header: array[10] of Text;
         Summtext: Text;
-        NewString: Text;
-        i: Integer;
-        StrLength: Integer;
-        DescLength: Integer;
-        NewLength: Integer;
-        RestLength: Integer;
+        Indentation: Integer;
     begin
-        i := 0;
+        Indentation := 0;
         Summtext := TotalTxt;
-        if Summtext <> '' then
-            if CopyStr(Summtext, STRLEN(Summtext)) <> ' ' then
-                Summtext := Summtext + ' ';
-        StrLength := STRLEN(Summtext);
+        if not Summtext.EndsWith(' ') then
+            Summtext := Summtext + ' ';
         WindowDialog.Open(IndentTxt);
 
         PurchaseLine.SetRange("Document Type", PurchaseHeader."Document Type");
@@ -160,28 +135,21 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
                 WindowDialog.Update(1, PurchaseLine."No.");
 
                 if PurchaseLine."lbt Printoption" = PurchaseLine."lbt Printoption"::"End Total" then begin
-                    if i < 1 then
+                    if Indentation < 1 then
                         Error(MissingBeginTotalTxt, PurchaseLine."No.");
-                    PurchaseLine."lbt Summation" := AccNo[i] + '..' + Format(PurchaseLine."Line No.");
-                    PurchaseLine.Description := Summtext + Header[i];
-                    i -= 1;
+                    PurchaseLine."lbt Summation" := AccNo[Indentation] + '..' + Format(PurchaseLine."Line No.");
+                    PurchaseLine.Description := CopyStr(Summtext + Header[Indentation], 1, MaxStrLen(PurchaseLine.Description));
+                    Indentation -= 1;
                 end;
 
-                PurchaseLine."lbt Indentation" := i;
+                PurchaseLine."lbt Indentation" := Indentation;
                 PurchaseLine.Modify();
 
                 if (PurchaseLine."lbt Printoption" = PurchaseLine."lbt Printoption"::"Begin Total") then begin
-                    i += 1;
-                    NoString := Format(PurchaseLine."Line No.");
-                    AccNo[i] := NoString;
-                    DescLength := STRLEN(PurchaseLine.Description);
-                    if StrLength + DescLength > 50 then begin
-                        RestLength := StrLength + DescLength - 50;
-                        NewLength := DescLength - RestLength;
-                        NewString := DelStr(PurchaseLine.Description, NewLength, 50);
-                        Header[i] := NewString;
-                    end else
-                        Header[i] := PurchaseLine.Description;
+                    Indentation += 1;
+                    AccNo[Indentation] := Format(PurchaseLine."Line No.");
+                    ;
+                    Header[Indentation] := PurchaseLine.Description;
                 end;
             until PurchaseLine.Next() = 0;
         WindowDialog.Close();
@@ -197,35 +165,6 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
         PurchaseLine.SetRange("Document No.", PurchaseHeader."No.");
         if PurchaseLine.FindSet() then
             Number(0, '', PurchaseLine);
-    end;
-
-    procedure DefragmentRowID(Type: Integer; Subtype: Integer; ID: Code[20]; BatchName: Code[20]; ProdOrderLine: Integer; RefNo: Integer): Text[250]
-    var
-        StrArray: array[2] of Text;
-        Pos: Integer;
-        Len: Integer;
-        T: Integer;
-    begin
-        // Funktion zum zusammensetzen der RowID
-        // somit werden alle wichtigen Kriterien generiert die für einen Filteraufbau von nöten sind
-
-        StrArray[1] := ID;
-        StrArray[2] := BatchName;
-        for T := 1 to 2 do
-            if StrPos(StrArray[T], '"') > 0 then begin
-                Len := STRLEN(StrArray[T]);
-                Pos := 1;
-                repeat
-                    if CopyStr(StrArray[T], Pos, 1) = '"' then begin
-                        StrArray[T] := INSSTR(StrArray[T], '"', Pos + 1);
-                        Len += 1;
-                        Pos += 1;
-                    end;
-                    Pos += 1;
-                until Pos > Len;
-            end;
-
-        exit(StrSubstNo(RowIDTemplateTxt, Type, Subtype, StrArray[1], StrArray[2], ProdOrderLine, RefNo));
     end;
 
     procedure GetStyleExpr(Printoption: Option Standard,Title,,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total") StyleExprText: Text[30]

@@ -166,7 +166,7 @@ report 5272731 "lbt Reminder"
                                   StrSubstNo(
                                     CombinedDimLbl, DimText,
                                     DimSetEntry."Dimension Code", DimSetEntry."Dimension Value Code");
-                            if STRLEN(DimText) > MAXSTRLEN(OldDimText) then begin
+                            if StrLen(DimText) > MaxStrLen(OldDimText) then begin
                                 DimText := OldDimText;
                                 Continue := true;
                                 exit;
@@ -312,7 +312,7 @@ report 5272731 "lbt Reminder"
                         end;
 
                         TempVATAmountLine.DeleteAll();
-                        SETFILTER("Line No.", '<%1', EndLineNo);
+                        SetFilter("Line No.", '<%1', EndLineNo);
                     end;
                 }
                 dataitem(IssuedReminderLine2; "Issued Reminder Line")
@@ -329,9 +329,9 @@ report 5272731 "lbt Reminder"
 
                     trigger OnPreDataItem()
                     begin
-                        SETFILTER("Line No.", '>=%1', EndLineNo);
+                        SetFilter("Line No.", '>=%1', EndLineNo);
                         if not ShowNotDueAmounts then begin
-                            SETFILTER(Type, '<>%1', Type::" ");
+                            SetFilter(Type, '<>%1', Type::" ");
                             if FindFirst() then
                                 if "Line No." > EndLineNo then begin
                                     SetRange(Type);

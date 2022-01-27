@@ -1262,7 +1262,7 @@ report 5272726 "lbt Sales pro forma Invoice"
                 Counter := 0;
                 SalesLineRec.SetRange("Document Type", "Sales Header"."Document Type");
                 SalesLineRec.SetRange("Document No.", "Sales Header"."No.");
-                SalesLineRec.SETFILTER(Type, '<>%1', SalesLineRec.Type::" ");
+                SalesLineRec.SetFilter(Type, '<>%1', SalesLineRec.Type::" ");
                 if SalesLineRec.FindSet() then
                     repeat
                         Counter += 1;
