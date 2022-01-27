@@ -15,10 +15,6 @@
 		{
 			"path": "Dependencies"
 		}
-		,
-		{
-			"path": "CAL"
-		}
 	],
 	"settings": {
 		"al.enableCodeAnalysis": true,
