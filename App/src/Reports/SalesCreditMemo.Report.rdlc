@@ -4980,25 +4980,25 @@
                               <TablixBody>
                                 <TablixColumns>
                                   <TablixColumn>
-                                    <Width>2.4cm</Width>
+                                    <Width>2.2cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>2.18473cm</Width>
-                                  </TablixColumn>
-                                  <TablixColumn>
-                                    <Width>2.65cm</Width>
-                                  </TablixColumn>
-                                  <TablixColumn>
-                                    <Width>3.04688cm</Width>
+                                    <Width>1.8cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
                                     <Width>2.6cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>2.25652cm</Width>
+                                    <Width>2.8cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>1.8cm</Width>
+                                    <Width>3cm</Width>
+                                  </TablixColumn>
+                                  <TablixColumn>
+                                    <Width>2.4cm</Width>
+                                  </TablixColumn>
+                                  <TablixColumn>
+                                    <Width>2.1cm</Width>
                                   </TablixColumn>
                                 </TablixColumns>
                                 <TablixRows>
@@ -5790,7 +5790,6 @@
                                                     <Value>=Fields!VATAmtLineVAT.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -5822,7 +5821,6 @@
                                                     <Value>=Fields!VATAmtLineLineAmt.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VATAmtLineLineAmtFormat.Value</Format>
                                                     </Style>
@@ -5855,7 +5853,6 @@
                                                     <Value>=Fields!VATAmtLineInvDiscBaseAmt.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VATAmtLineInvDiscBaseAmtFormat.Value</Format>
                                                     </Style>
@@ -5888,7 +5885,6 @@
                                                     <Value>=Fields!VATAmtLineInvoiceDiscAmt.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VATAmtLineInvoiceDiscAmtFormat.Value</Format>
                                                     </Style>
@@ -5921,7 +5917,6 @@
                                                     <Value>=Fields!VATAmtLineVATBase.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VATAmtLineVATBaseFormat.Value</Format>
                                                     </Style>
@@ -5954,7 +5949,6 @@
                                                     <Value>=Fields!VATAmtLineVATAmt.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VATAmtLineVATAmtFormat.Value</Format>
                                                     </Style>
@@ -6060,7 +6054,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -6390,7 +6383,7 @@
                               <Top>20.66484cm</Top>
                               <Left>2.46969cm</Left>
                               <Height>2.8222cm</Height>
-                              <Width>16.93813cm</Width>
+                              <Width>16.9cm</Width>
                               <ZIndex>2</ZIndex>
                               <Visibility>
                                 <Hidden>=(Fields!VATAmtLineVATIdentifier.Value = "")</Hidden>
@@ -8062,7 +8055,6 @@
                                 <Hidden>=(Fields!VATClausesCaption.Value = "")</Hidden>
                               </Visibility>
                               <Style>
-                                <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
                               </Style>
                             </Tablix>

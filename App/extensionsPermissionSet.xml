@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PermissionSets>
-  <PermissionSet RoleID="LBT CORR LAYOUT" RoleName="LeBit Correspondence Layouts">
+  <PermissionSet RoleID="LEBIT CORRESPONDENCE" RoleName="LeBit Correspondence Layouts">
     <Permission>
       <ObjectID>5272722</ObjectID>
       <ObjectType>0</ObjectType>
