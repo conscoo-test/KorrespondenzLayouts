@@ -3305,13 +3305,13 @@
         </trans-unit>
         <trans-unit id="Report 1098254834 - NamedType 2344697101" size-unit="char" translate="yes" xml:space="preserve">
           <source>Invoice Discount Amount</source>
-          <target>Rechnungsrab.-Bem.grundlage</target>
+          <target>Rechnungsrab.-Bemessungsgr.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Return Order - NamedType InvDisAmtCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 1098254834 - NamedType 1378777375" size-unit="char" translate="yes" xml:space="preserve">
           <source>Invoice Discount Base Amount</source>
-          <target>Rechnungsrab.-Bem.grundlage</target>
+          <target>Rechnungsrab.-Bemessungsgr.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Return Order - NamedType InvDiscBaseAmtCaptionLbl</note>
         </trans-unit>
@@ -3629,7 +3629,7 @@
         </trans-unit>
         <trans-unit id="Report 2085745012 - NamedType 1378777375" size-unit="char" translate="yes" xml:space="preserve">
           <source>Invoice Discount Base Amount</source>
-          <target>Rechnungsrab.-Bem.grundlage</target>
+          <target>Rechnungsrab.-Bemessungsgr.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales - Credit Memo - NamedType InvDiscBaseAmtCaptionLbl</note>
         </trans-unit>
@@ -3917,7 +3917,7 @@
         </trans-unit>
         <trans-unit id="Report 443349154 - NamedType 1378777375" size-unit="char" translate="yes" xml:space="preserve">
           <source>Invoice Discount Base Amount</source>
-          <target>Rechnungsrab.-Bem.grundlage</target>
+          <target>Rechnungsrab.-Bemessungsgr.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales - Invoice - NamedType InvDiscBaseAmtCaptionLbl</note>
         </trans-unit>
@@ -5039,7 +5039,7 @@
         </trans-unit>
         <trans-unit id="Report 1113867451 - NamedType 1390968288" size-unit="char" translate="yes" xml:space="preserve">
           <source>Inv. Disc. Base Amount</source>
-          <target>Rechnungsrab.-Bem.grundlage</target>
+          <target>Rechnungsrab.-Bemessungsgr.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales pro forma Invoice - NamedType VATAmountLine__Inv__Disc__Base_Amount__Control73CaptionLbl</note>
         </trans-unit>
