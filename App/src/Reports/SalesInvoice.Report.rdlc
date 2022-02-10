@@ -632,25 +632,25 @@
                               <TablixBody>
                                 <TablixColumns>
                                   <TablixColumn>
-                                    <Width>2.69345cm</Width>
+                                    <Width>2.2cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>2.25652cm</Width>
+                                    <Width>1.8cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>2.58314cm</Width>
+                                    <Width>2.6cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>2.58314cm</Width>
+                                    <Width>2.8cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>2.49934cm</Width>
+                                    <Width>3cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>2.25652cm</Width>
+                                    <Width>2.4cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>2.02789cm</Width>
+                                    <Width>2.1cm</Width>
                                   </TablixColumn>
                                 </TablixColumns>
                                 <TablixRows>
@@ -1501,6 +1501,12 @@
                                             </Paragraphs>
                                             <rd:DefaultName>Textbox207</rd:DefaultName>
                                             <Style>
+                                              <Border>
+                                                <Style>None</Style>
+                                              </Border>
+                                              <TopBorder>
+                                                <Style>Solid</Style>
+                                              </TopBorder>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingRight>5pt</PaddingRight>
                                             </Style>
@@ -3747,7 +3753,7 @@
                                 <Hidden>=(Fields!VATClausesCaption.Value = "")</Hidden>
                               </Visibility>
                               <Style>
-                                <FontFamily>Segoe UI</FontFamily>
+                                <FontFamily>Arial</FontFamily>
                                 <FontSize>8pt</FontSize>
                               </Style>
                             </Tablix>
@@ -5020,7 +5026,6 @@
                                               <VerticalAlign>Middle</VerticalAlign>
                                             </Style>
                                           </Textbox>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                     </TablixCells>

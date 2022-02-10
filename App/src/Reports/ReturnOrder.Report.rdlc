@@ -18,7 +18,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>19.7396cm</Width>
+                  <Width>19.74497cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -6410,7 +6410,6 @@
                                               <VerticalAlign>Middle</VerticalAlign>
                                             </Style>
                                           </Textbox>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                     </TablixCells>
@@ -6888,7 +6887,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -6924,7 +6923,7 @@
                                                     <Value>=Fields!ShiptoAddressCaption.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -6960,7 +6959,7 @@
                                                     <Value>=Fields!SelltoCustNo_PurchHdrCaption.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -6988,7 +6987,7 @@
                                                     <Value>=Fields!SelltoCustNo_PurchHdr.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7021,7 +7020,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7050,7 +7049,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7084,7 +7083,7 @@
                                                     <Value>=Fields!ShipToAddr1.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7113,7 +7112,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7147,7 +7146,7 @@
                                                     <Value>=Fields!ShipToAddr2.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7175,7 +7174,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7209,7 +7208,7 @@
                                                     <Value>=Fields!ShipToAddr3.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7237,7 +7236,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7271,7 +7270,7 @@
                                                     <Value>=Fields!ShipToAddr4.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7299,7 +7298,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7333,7 +7332,7 @@
                                                     <Value>=Fields!ShipToAddr5.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7361,7 +7360,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7395,7 +7394,7 @@
                                                     <Value>=Fields!ShipToAddr6.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7423,7 +7422,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7457,7 +7456,7 @@
                                                     <Value>=Fields!ShipToAddr7.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7485,7 +7484,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7519,7 +7518,7 @@
                                                     <Value>=Fields!ShipToAddr8.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7547,7 +7546,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7661,25 +7660,25 @@
                               <TablixBody>
                                 <TablixColumns>
                                   <TablixColumn>
-                                    <Width>0.80056in</Width>
+                                    <Width>0.86614in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>0.68764in</Width>
+                                    <Width>0.70866in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>0.92963in</Width>
+                                    <Width>1.02362in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>1.05055in</Width>
+                                    <Width>1.10236in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>1.16758in</Width>
+                                    <Width>1.1811in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>1.21703in</Width>
+                                    <Width>0.94488in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>0.80058in</Width>
+                                    <Width>0.82677in</Width>
                                   </TablixColumn>
                                 </TablixColumns>
                                 <TablixRows>
@@ -7698,7 +7697,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -7739,7 +7738,7 @@
                                                     <Value>=Fields!VATAmtSpecCaption.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -7770,7 +7769,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -7799,7 +7798,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -7829,7 +7828,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -7859,7 +7858,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -7894,7 +7893,7 @@
                                                     <Value>=Fields!VATIdentifierCaption.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -7925,7 +7924,7 @@
                                                     <Value>=Fields!VATPercentCaption.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -7957,7 +7956,7 @@
                                                     <Value>=Fields!LineAmtCaption.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -7989,7 +7988,7 @@
                                                     <Value>=Fields!InvDiscBaseAmtCaption.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8021,7 +8020,7 @@
                                                     <Value>=Fields!InvDisAmtCaption.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8054,7 +8053,7 @@
                                                     <Value>=Fields!VATBaseCaption.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8087,7 +8086,7 @@
                                                     <Value>=Fields!VATAmtCaption.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8124,7 +8123,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8173,7 +8172,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8215,7 +8214,7 @@
                                                     <Value>=Fields!VATAmtLineVATIdentifier.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -8243,7 +8242,7 @@
                                                     <Value>=Fields!VATAmtLineVAT.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VATAmtLineVATFormat.Value</Format>
                                                     </Style>
@@ -8275,7 +8274,7 @@
                                                     <Value>=Fields!VATAmtLineLineAmt.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VATAmtLineLineAmtFormat.Value</Format>
                                                     </Style>
@@ -8307,7 +8306,7 @@
                                                     <Value>=Fields!VATAmtLineInvDiscBaseAmt.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VATAmtLineInvDiscBaseAmtFormat.Value</Format>
                                                     </Style>
@@ -8339,7 +8338,7 @@
                                                     <Value>=Fields!VATAmtLineInvDiscAmt.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VATAmtLineInvDiscAmtFormat.Value</Format>
                                                     </Style>
@@ -8372,7 +8371,7 @@
                                                     <Value>=Fields!VATAmtLineVATBase.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VATAmtLineVATBaseFormat.Value</Format>
                                                     </Style>
@@ -8405,7 +8404,7 @@
                                                     <Value>=Fields!VATAmtLineVATAmt.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VATAmtLineVATAmtFormat.Value</Format>
                                                     </Style>
@@ -8441,7 +8440,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8472,7 +8471,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8502,7 +8501,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8534,7 +8533,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8566,7 +8565,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8598,7 +8597,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8630,7 +8629,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8666,7 +8665,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8697,7 +8696,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8727,7 +8726,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8765,7 +8764,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8803,7 +8802,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8841,7 +8840,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8879,7 +8878,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8921,7 +8920,7 @@
                                                     <Value>=Fields!VATBaseCaption1.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8954,7 +8953,7 @@
                                                     <Value>=Sum(Fields!VATAmtLineLineAmt.Value)</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                       <Format>=Fields!VATAmtLineLineAmtFormat.Value</Format>
@@ -8987,7 +8986,7 @@
                                                     <Value>=Sum(Fields!VATAmtLineInvDiscBaseAmt.Value)</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                       <Format>=Fields!VATAmtLineInvDiscBaseAmtFormat.Value</Format>
@@ -9020,7 +9019,7 @@
                                                     <Value>=Sum(Fields!VATAmtLineInvDiscAmt.Value)</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                       <Format>=Fields!VATAmtLineInvDiscAmtFormat.Value</Format>
@@ -9054,7 +9053,7 @@
                                                     <Value>=Sum(Fields!VATAmtLineVATBase.Value)</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                       <Format>=Fields!VATAmtLineVATBaseFormat.Value</Format>
@@ -9088,7 +9087,7 @@
                                                     <Value>=Sum(Fields!VATAmtLineVATAmt.Value)</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                       <Format>=Fields!VATAmtLineVATAmtFormat.Value</Format>
@@ -9192,7 +9191,7 @@
                               <Top>21.68258cm</Top>
                               <Left>2.5584cm</Left>
                               <Height>2.75164cm</Height>
-                              <Width>6.65357in</Width>
+                              <Width>6.65354in</Width>
                               <ZIndex>9</ZIndex>
                               <Visibility>
                                 <Hidden>=Microsoft.VisualBasic.Interaction.IIF(Fields!VATIdentifierCaption.Value = "", True, False)</Hidden>
@@ -9232,7 +9231,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -9269,7 +9268,7 @@
                                                     <Value>=Fields!VALSpecLCYHdr.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -9306,7 +9305,7 @@
                                                     <Value>=Fields!VALExchRate.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -9343,7 +9342,7 @@
                                                     <Value>=Fields!VATIdentifierCaption1.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -9372,7 +9371,7 @@
                                                     <Value>=Fields!VATPctCaption.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -9404,7 +9403,7 @@
                                                     <Value>=Fields!VATBaseCaption2.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -9436,7 +9435,7 @@
                                                     <Value>=Fields!VATAmountCaption.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -9472,7 +9471,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -9510,7 +9509,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -9554,7 +9553,7 @@
                                                     <Value>=Fields!VATAmtLineVATIdentifier1.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>#,##0.00</Format>
                                                     </Style>
@@ -9583,7 +9582,7 @@
                                                     <Value>=Fields!VATAmtLineVAT1.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VATAmtLineVAT1Format.Value</Format>
                                                     </Style>
@@ -9615,7 +9614,7 @@
                                                     <Value>=Fields!VALVATBaseLCY.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VALVATBaseLCYFormat.Value</Format>
                                                     </Style>
@@ -9647,7 +9646,7 @@
                                                     <Value>=Fields!VALVATAmtLCY.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VALVATAmtLCYFormat.Value</Format>
                                                     </Style>
@@ -9682,7 +9681,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -9738,7 +9737,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -9769,7 +9768,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -9804,7 +9803,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -9860,7 +9859,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -9897,7 +9896,7 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -9938,7 +9937,7 @@
                                                     <Value>=Fields!TotalCaption1.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -9971,7 +9970,7 @@
                                                     <Value>=Sum(Fields!VALVATBaseLCY.Value)</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VALVATBaseLCYFormat.Value</Format>
                                                     </Style>
@@ -10003,7 +10002,7 @@
                                                     <Value>=Sum(Fields!VALVATAmtLCY.Value)</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VALVATAmtLCYFormat.Value</Format>
                                                     </Style>
@@ -10177,7 +10176,7 @@
             <DataSetName>DataSet_Result</DataSetName>
             <Left>0.05587cm</Left>
             <Height>33.68688cm</Height>
-            <Width>19.7396cm</Width>
+            <Width>19.74497cm</Width>
             <Style />
           </Tablix>
         </ReportItems>
@@ -10188,7 +10187,7 @@
           </Border>
         </Style>
       </Body>
-      <Width>19.79547cm</Width>
+      <Width>19.80084cm</Width>
       <Page>
         <PageHeader>
           <Height>3.2331cm</Height>

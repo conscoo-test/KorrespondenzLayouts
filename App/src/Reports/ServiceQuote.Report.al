@@ -2,7 +2,7 @@ report 5272733 "lbt cl Service Quote"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './src/Reports/ServiceQuote.rdlc';
-    Caption = 'cl Service Quote';
+    Caption = 'Service Quote';
 
     dataset
     {
