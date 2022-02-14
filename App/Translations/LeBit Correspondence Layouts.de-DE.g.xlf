@@ -3969,6 +3969,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales - Invoice - NamedType PaymentDiscVATCaptionLbl</note>
         </trans-unit>
+        <trans-unit id="Report 443349154 - NamedType 1160489787" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Method</source>
+          <target>Zahlungsform</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales - Invoice - NamedType PaymentMethodCaptionLbl</note>
+        </trans-unit>
         <trans-unit id="Report 443349154 - NamedType 1302573237" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Terms</source>
           <target>Zahlungsbedingungen</target>

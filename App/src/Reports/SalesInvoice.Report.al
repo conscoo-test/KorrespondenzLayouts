@@ -4,7 +4,7 @@ report 5272722 "lbt Sales - Invoice"
     RDLCLayout = './src/Reports/SalesInvoice.Report.rdlc';
     Caption = 'Sales - Invoice';
     EnableHyperlinks = true;
-    Permissions = TableData "Sales Shipment Buffer" = rimd;
+    Permissions = tabledata "Sales Shipment Buffer" = rimd;
     PreviewMode = PrintLayout;
 
     dataset
@@ -40,6 +40,7 @@ report 5272722 "lbt Sales - Invoice"
             column(PaymentTermsCaption; PaymentTermsCaptionLbl)
             {
             }
+            column(PaymentMethodCaption; PaymentMethodCaptionLbl) { }
             column(ShipmentMethodCaption; ShipmentMethodCaptionLbl)
             {
             }
@@ -127,13 +128,14 @@ report 5272722 "lbt Sales - Invoice"
                     column(ShptMethodDesc; ShipmentMethod.Description)
                     {
                     }
+                    column(PaymentMethodDescription; PaymentMethod.Description) { }
                     column(InvoiceNoCaption; InvoiceNoCaptionLbl)
                     {
                     }
                     column(BillToCustNo_SalesInvHdrCaption; Bill_to_Customer_No__CaptionLbl)
                     {
                     }
-                    column(PagefromPageCaption; PagefromPageCaptionLbl)
+                    column(PagefromPageCaption; PageFromPageCaptionLbl)
                     {
                     }
                     column(NoCaption; NoCaptionLbl)
@@ -798,7 +800,7 @@ report 5272722 "lbt Sales - Invoice"
                                 VALSpecLCYHeader := VatAmountLbl + Format(GLSetup."LCY Code");
 
                             CurrExchRate.FindCurrency("Sales Invoice Header"."Posting Date", "Sales Invoice Header"."Currency Code", 1);
-                            CalculatedExchRate := ROUND(1 / "Sales Invoice Header"."Currency Factor" * CurrExchRate."Exchange Rate Amount", 0.000001);
+                            CalculatedExchRate := Round(1 / "Sales Invoice Header"."Currency Factor" * CurrExchRate."Exchange Rate Amount", 0.000001);
                             VALExchRate := StrSubstNo(ExchangeRateLbl, CalculatedExchRate, CurrExchRate."Exchange Rate Amount");
                         end;
                     }
@@ -864,7 +866,7 @@ report 5272722 "lbt Sales - Invoice"
                     }
                     dataitem(LineFee; "Integer")
                     {
-                        DataItemTableView = sorting(Number) ORDER(Ascending) where(Number = filter(1 ..));
+                        DataItemTableView = sorting(Number) order(ascending) where(Number = filter(1 ..));
                         column(LineFeeCaptionLbl; TempLineFeeNoteOnReportHist.ReportText)
                         {
                         }
@@ -1090,7 +1092,7 @@ report 5272722 "lbt Sales - Invoice"
 
     trigger OnPreReport()
     begin
-        if not CurrReport.USEREQUESTPAGE() then
+        if not CurrReport.UseRequestPage() then
             InitLogInteraction();
     end;
 
@@ -1119,6 +1121,7 @@ report 5272722 "lbt Sales - Invoice"
         Item: Record Item;
         SalesInvoiceLine: Record "Sales Invoice Line";
         CorrSetup: Record "lbt Corr Setup";
+        PaymentMethod: Record "Payment Method";
         LeBitReportFunctions: Codeunit "lbt Report Functions";
         Language: Codeunit Language;
         PrintLongText: Codeunit "lbt cl Print Longtext";
@@ -1225,6 +1228,7 @@ report 5272722 "lbt Sales - Invoice"
         Counter: Integer;
         VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
         Footer: Text;
+        PaymentMethodCaptionLbl: Label 'Payment Method';
         HideShipmentDate: Boolean;
 
     procedure InitLogInteraction()
@@ -1266,7 +1270,7 @@ report 5272722 "lbt Sales - Invoice"
                 TempSalesShipmentBuffer.Delete();
                 exit(TempSalesShipmentBuffer2."Posting Date");
             end;
-            TempSalesShipmentBuffer.CALCSUMS(Quantity);
+            TempSalesShipmentBuffer.CalcSums(Quantity);
             if TempSalesShipmentBuffer.Quantity <> "Sales Invoice Line".Quantity then begin
                 TempSalesShipmentBuffer.DeleteAll();
                 exit("Sales Invoice Header"."Posting Date");
@@ -1405,8 +1409,8 @@ report 5272722 "lbt Sales - Invoice"
         DocCaption: Text;
     begin
         OnBeforeGetDocumentCaption("Sales Invoice Header", DocCaption);
-        IF DocCaption <> '' THEN
-            EXIT(DocCaption);
+        if DocCaption <> '' then
+            exit(DocCaption);
         if "Sales Invoice Header"."Prepayment Invoice" then
             exit(PrepaymentTitleLbl);
         exit(TitleLbl);
@@ -1428,6 +1432,7 @@ report 5272722 "lbt Sales - Invoice"
         FormatDocument.SetSalesPerson(SalesPurchPerson, SalesInvoiceHeader."Salesperson Code", SalesPersonText);
         FormatDocument.SetPaymentTerms(PaymentTerms, SalesInvoiceHeader."Payment Terms Code", SalesInvoiceHeader."Language Code");
         FormatDocument.SetShipmentMethod(ShipmentMethod, SalesInvoiceHeader."Shipment Method Code", SalesInvoiceHeader."Language Code");
+        FormatDocument.SetPaymentMethod(PaymentMethod, SalesInvoiceHeader."Payment Method Code", SalesInvoiceHeader."Language Code");
 
         OrderNoText := FormatDocument.SetText(SalesInvoiceHeader."Order No." <> '', CopyStr(SalesInvoiceHeader.FieldCaption("Order No."), 1, 80));
         ReferenceText := FormatDocument.SetText(SalesInvoiceHeader."Your Reference" <> '', CopyStr(SalesInvoiceHeader.FieldCaption("Your Reference"), 1, 80));
@@ -1516,7 +1521,7 @@ report 5272722 "lbt Sales - Invoice"
 
     procedure BlanksForIndent(): Text[10]
     begin
-        exit(PADSTR('', 2, ' '));
+        exit(PadStr('', 2, ' '));
     end;
 
     local procedure GetLineFeeNoteOnReportHist(SalesInvoiceHeaderNo: Code[20])
@@ -1540,7 +1545,7 @@ report 5272722 "lbt Sales - Invoice"
             repeat
                 TempLineFeeNoteOnReportHist.Init();
                 ;
-                TempLineFeeNoteOnReportHist.COPY(LineFeeNoteOnReportHist);
+                TempLineFeeNoteOnReportHist.Copy(LineFeeNoteOnReportHist);
                 TempLineFeeNoteOnReportHist.Insert();
             until LineFeeNoteOnReportHist.Next() = 0
         else begin
@@ -1549,7 +1554,7 @@ report 5272722 "lbt Sales - Invoice"
                 repeat
                     TempLineFeeNoteOnReportHist.Init();
                     ;
-                    TempLineFeeNoteOnReportHist.COPY(LineFeeNoteOnReportHist);
+                    TempLineFeeNoteOnReportHist.Copy(LineFeeNoteOnReportHist);
                     TempLineFeeNoteOnReportHist.Insert();
                 until LineFeeNoteOnReportHist.Next() = 0;
         end;
