@@ -23,7 +23,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>39.5275cm</Height>
+                  <Height>39.90851cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -3753,7 +3753,6 @@
                                 <Hidden>=(Fields!VATClausesCaption.Value = "")</Hidden>
                               </Visibility>
                               <Style>
-                                <FontFamily>Arial</FontFamily>
                                 <FontSize>8pt</FontSize>
                               </Style>
                             </Tablix>
@@ -5692,7 +5691,7 @@
                                   </TablixMember>
                                 </TablixMembers>
                               </TablixRowHierarchy>
-                              <Top>15.36516in</Top>
+                              <Top>15.51516in</Top>
                               <Left>2.45867cm</Left>
                               <Height>0.5cm</Height>
                               <Width>6.65354in</Width>
@@ -5787,6 +5786,70 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
+                                          <Textbox Name="PaymentMethodCaption">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=Fields!PaymentMethodCaption.Value</Value>
+                                                    <Style>
+                                                      <FontSize>9pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>PaymentMethodCaption</rd:DefaultName>
+                                            <Style>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox79">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=Fields!PaymentMethodDescription.Value</Value>
+                                                    <Style>
+                                                      <FontSize>9pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox79</rd:DefaultName>
+                                            <Style>
+                                              <Border>
+                                                <Style>None</Style>
+                                              </Border>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                    </TablixCells>
+                                  </TablixRow>
+                                  <TablixRow>
+                                    <Height>0.5cm</Height>
+                                    <TablixCells>
+                                      <TablixCell>
+                                        <CellContents>
                                           <Textbox Name="ShipmentMethod_DescriptionCaption_1">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
@@ -5859,18 +5922,29 @@
                               </TablixColumnHierarchy>
                               <TablixRowHierarchy>
                                 <TablixMembers>
-                                  <TablixMember />
-                                  <TablixMember />
+                                  <TablixMember>
+                                    <Visibility>
+                                      <Hidden>=Fields!PmntTermsDesc.Value=""</Hidden>
+                                    </Visibility>
+                                  </TablixMember>
+                                  <TablixMember>
+                                    <Visibility>
+                                      <Hidden>=Fields!PaymentMethodDescription.Value=""</Hidden>
+                                    </Visibility>
+                                  </TablixMember>
+                                  <TablixMember>
+                                    <Visibility>
+                                      <Hidden>=Fields!ShptMethodDesc.Value=""</Hidden>
+                                    </Visibility>
+                                  </TablixMember>
                                 </TablixMembers>
                               </TablixRowHierarchy>
+                              <DataSetName>DataSet_Result</DataSetName>
                               <Top>37.85112cm</Top>
                               <Left>2.45867cm</Left>
-                              <Height>1cm</Height>
+                              <Height>1.5cm</Height>
                               <Width>16.94134cm</Width>
                               <ZIndex>12</ZIndex>
-                              <Visibility>
-                                <Hidden>=Fields!ShptMethodDesc.Value = Fields!PmntTermsDesc.Value</Hidden>
-                              </Visibility>
                               <DataElementOutput>NoOutput</DataElementOutput>
                               <Style />
                             </Tablix>
@@ -10939,14 +11013,14 @@
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
             <Left>0.02058cm</Left>
-            <Height>39.5275cm</Height>
+            <Height>39.90851cm</Height>
             <Width>19.65164cm</Width>
             <Style>
               <FontSize>9pt</FontSize>
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>39.5275cm</Height>
+        <Height>39.90851cm</Height>
         <Style />
       </Body>
       <Width>19.76014cm</Width>
@@ -12058,6 +12132,9 @@ End Function
         <Field Name="PaymentTermsCaption">
           <DataField>PaymentTermsCaption</DataField>
         </Field>
+        <Field Name="PaymentMethodCaption">
+          <DataField>PaymentMethodCaption</DataField>
+        </Field>
         <Field Name="ShipmentMethodCaption">
           <DataField>ShipmentMethodCaption</DataField>
         </Field>
@@ -12138,6 +12215,9 @@ End Function
         </Field>
         <Field Name="ShptMethodDesc">
           <DataField>ShptMethodDesc</DataField>
+        </Field>
+        <Field Name="PaymentMethodDescription">
+          <DataField>PaymentMethodDescription</DataField>
         </Field>
         <Field Name="InvoiceNoCaption">
           <DataField>InvoiceNoCaption</DataField>
