@@ -12082,6 +12082,18 @@ End Function
         <Field Name="OutputNo">
           <DataField>OutputNo</DataField>
         </Field>
+        <Field Name="NoCaption">
+          <DataField>NoCaption</DataField>
+        </Field>
+        <Field Name="PagefromPageCaption">
+          <DataField>PagefromPageCaption</DataField>
+        </Field>
+        <Field Name="FromCaption">
+          <DataField>FromCaption</DataField>
+        </Field>
+        <Field Name="CarryForwardText">
+          <DataField>CarryForwardText</DataField>
+        </Field>
         <Field Name="HideCompanyInfo">
           <DataField>HideCompanyInfo</DataField>
         </Field>

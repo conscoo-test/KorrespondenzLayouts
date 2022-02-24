@@ -94,6 +94,18 @@ report 5272725 "lbt Blanket Sales Order"
                     column(OutputNo; OutputNo)
                     {
                     }
+                    column(NoCaption; NoCaptionLbl)
+                    {
+                    }
+                    column(PagefromPageCaption; PageFromPageCaptionLbl)
+                    {
+                    }
+                    column(FromCaption; FromCaptionLbl)
+                    {
+                    }
+                    column(CarryForwardText; StrSubstNo(CarryForwardCaptionLbl, GLSetup."LCY Code"))
+                    {
+                    }
                     column(HideCompanyInfo; HideCompanyInfo)
                     {
                     }
@@ -1093,6 +1105,10 @@ report 5272725 "lbt Blanket Sales Order"
         PosNo_SalesLineCaptionLbl: Label 'Pos.';
         UOM_SalesLineCaptionLbl: Label 'Unit';
         SalesPersonText_CaptionLbl: Label 'Salesperson';
+        NoCaptionLbl: Label 'No.';
+        PageFromPageCaptionLbl: Label 'Page %1 of %2', Comment = '%1 - Current Page, %2 - Total Pages';
+        FromCaptionLbl: Label 'from';
+        CarryForwardCaptionLbl: Label 'Carry-forward %1', Comment = '%1 - Amount';
         AlternativePositionsNotAllowedErr: Label 'At orders no alternative positions and demand positions are allowed!';
         ReportType: Option Purchase,Sales,QA,Production,Delivery,"Report";
         UnitPrice: Decimal;
