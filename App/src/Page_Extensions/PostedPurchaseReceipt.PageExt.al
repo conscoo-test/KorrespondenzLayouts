@@ -1,4 +1,4 @@
-pageextension 5272727 "lbt Posted Purchase Receipt" extends "Posted Purchase Receipt"
+pageextension 50727 "lbt Posted Purchase Receipt" extends "Posted Purchase Receipt"
 {
     // version NAVW111.00.00.19846,LBCOR1.00
 

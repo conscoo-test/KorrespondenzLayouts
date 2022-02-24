@@ -1,4 +1,4 @@
-page 5272728 "lbt Corr Setup"
+page 50728 "lbt Corr Setup"
 {
     PageType = Card;
     ApplicationArea = All;

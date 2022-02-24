@@ -1,4 +1,4 @@
-pageextension 5272815 "lbt cl ServiceOrder" extends "Service Order"
+pageextension 50815 "lbt cl ServiceOrder" extends "Service Order"
 {
     layout
     {

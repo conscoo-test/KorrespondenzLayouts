@@ -1,4 +1,4 @@
-tableextension 5272750 "lbt cl ServiceHeader" extends "Service Header"
+tableextension 50750 "lbt cl ServiceHeader" extends "Service Header"
 {
 
     var

@@ -1,4 +1,4 @@
-tableextension 5272751 "lbt cl ServiceInvoiceHeader" extends "Service Invoice Header"
+tableextension 50751 "lbt cl ServiceInvoiceHeader" extends "Service Invoice Header"
 {
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";

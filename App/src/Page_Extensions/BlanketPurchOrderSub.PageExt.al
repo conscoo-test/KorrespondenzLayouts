@@ -1,4 +1,4 @@
-pageextension 5272756 "lbt Blanket Purch. Order Sub." extends "Blanket Purchase Order Subform"
+pageextension 50756 "lbt Blanket Purch. Order Sub." extends "Blanket Purchase Order Subform"
 {
     layout
     {

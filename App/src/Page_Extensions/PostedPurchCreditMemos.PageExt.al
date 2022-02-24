@@ -1,4 +1,4 @@
-pageextension 5272738 "lbt Posted Purch. Credit Memos" extends "Posted Purchase Credit Memos"
+pageextension 50738 "lbt Posted Purch. Credit Memos" extends "Posted Purchase Credit Memos"
 {
     actions
     {

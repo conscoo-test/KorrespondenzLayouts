@@ -1,4 +1,4 @@
-pageextension 5272764 "lbt Purch. Order Archive Sub." extends "Purchase Order Archive Subform"
+pageextension 50764 "lbt Purch. Order Archive Sub." extends "Purchase Order Archive Subform"
 {
     layout
     {

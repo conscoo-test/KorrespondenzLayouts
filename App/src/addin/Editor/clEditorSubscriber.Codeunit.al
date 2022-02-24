@@ -1,4 +1,4 @@
-codeunit 5272730 "lbt cl EditorSubscriber"
+codeunit 50730 "lbt cl EditorSubscriber"
 {
     var
         LongtextMgt: Codeunit "lbt Longtext Mgt.";

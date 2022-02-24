@@ -1,4 +1,4 @@
-report 5272730 "lbt Return Order"
+report 50730 "lbt Return Order"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './src/Reports/ReturnOrder.Report.rdlc';

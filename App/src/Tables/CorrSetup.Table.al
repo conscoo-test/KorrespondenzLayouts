@@ -1,4 +1,4 @@
-table 5272724 "lbt Corr Setup"
+table 50724 "lbt Corr Setup"
 {
     DataClassification = SystemMetadata;
 

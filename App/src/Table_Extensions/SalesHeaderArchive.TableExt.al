@@ -1,4 +1,4 @@
-tableextension 5272739 "lbt Sales Header Archive" extends "Sales Header Archive"
+tableextension 50739 "lbt Sales Header Archive" extends "Sales Header Archive"
 {
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";

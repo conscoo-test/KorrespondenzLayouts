@@ -1,4 +1,4 @@
-page 5272731 "lbt cl Editor"
+page 50731 "lbt cl Editor"
 
 {
     caption = 'Editor';

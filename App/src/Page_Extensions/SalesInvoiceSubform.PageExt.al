@@ -1,4 +1,4 @@
-pageextension 5272749 "lbt Sales Invoice Subform" extends "Sales Invoice Subform"
+pageextension 50749 "lbt Sales Invoice Subform" extends "Sales Invoice Subform"
 {
     layout
     {

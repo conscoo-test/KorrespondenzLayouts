@@ -1,4 +1,4 @@
-page 5272724 "lbt Wizard"
+page 50724 "lbt Wizard"
 {
     PageType = NavigatePage;
     Caption = 'LeBit365 Setup';

@@ -1,4 +1,4 @@
-pageextension 5272755 "lbt Purchase Invoice" extends "Purchase Invoice"
+pageextension 50755 "lbt Purchase Invoice" extends "Purchase Invoice"
 {
     // version NAVW111.00.00.20348,LBCOR1.00
     layout

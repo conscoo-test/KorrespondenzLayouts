@@ -1,4 +1,4 @@
-pageextension 5272754 "lbt Blanket Purchase Order" extends "Blanket Purchase Order"
+pageextension 50754 "lbt Blanket Purchase Order" extends "Blanket Purchase Order"
 {
     layout
     {

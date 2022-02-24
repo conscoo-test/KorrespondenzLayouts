@@ -1,4 +1,4 @@
-tableextension 5272728 "lbt Sales Header" extends "Sales Header"
+tableextension 50728 "lbt Sales Header" extends "Sales Header"
 {
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";
