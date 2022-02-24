@@ -104,8 +104,16 @@ tableextension 5272736 "lbt Company Information" extends "Company Information"
     procedure "lbt SetReportFooter"(var Footer: Text)
     var
         FormatDocument: Codeunit "lbt Format Document";
+        Handled: Boolean;
     begin
-        FormatDocument.SetReportFooter(Footer);
+        lbtOnBeforeSetReportFooter(Footer, Handled);
+        if not Handled then
+            FormatDocument.SetReportFooter(Footer);
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure lbtOnBeforeSetReportFooter(var Footer: Text; Handled: Boolean)
+    begin
     end;
 }
 
