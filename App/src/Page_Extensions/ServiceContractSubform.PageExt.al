@@ -1,4 +1,4 @@
-pageextension 5272824 "lbt cl ServiceContractSubform" extends "Service Contract Subform"
+pageextension 50824 "lbt cl ServiceContractSubform" extends "Service Contract Subform"
 {
     layout
     {

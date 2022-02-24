@@ -1,4 +1,4 @@
-pageextension 5272829 "lbt cl PstdServCrMemoSubform" extends "Posted Serv. Cr. Memo Subform"
+pageextension 50829 "lbt cl PstdServCrMemoSubform" extends "Posted Serv. Cr. Memo Subform"
 {
     layout
     {

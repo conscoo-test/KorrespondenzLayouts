@@ -1,4 +1,4 @@
-pageextension 5272830 "lbt cl ServiceContractTemplate" extends "Service Contract Template"
+pageextension 50830 "lbt cl ServiceContractTemplate" extends "Service Contract Template"
 {
     layout
     {
