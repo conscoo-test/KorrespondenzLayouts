@@ -112,7 +112,7 @@ tableextension 50736 "lbt Company Information" extends "Company Information"
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure lbtOnBeforeSetReportFooter(var Footer: Text; Handled: Boolean)
+    local procedure lbtOnBeforeSetReportFooter(var Footer: Text; var Handled: Boolean)
     begin
     end;
 }
