@@ -1059,7 +1059,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Blanket Purchase Order - NamedType BitteAndern_CaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3134870048 - NamedType 1180345653" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Blanket Purchase Order No.</source>
+          <source>Blanket Order No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Blanket Purchase Order - NamedType Blanket_Purchase_Order_No_CaptionLbl</note>
         </trans-unit>

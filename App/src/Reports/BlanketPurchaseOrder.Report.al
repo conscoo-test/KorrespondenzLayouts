@@ -746,7 +746,7 @@ report 5272729 "lbt Blanket Purchase Order"
         OutputNo: Integer;
         [InDataSet]
         LogInteractionEnable: Boolean;
-        Blanket_Purchase_Order_No_CaptionLbl: Label 'Blanket Purchase Order No.';
+        Blanket_Purchase_Order_No_CaptionLbl: Label 'Blanket Order No.';
         Header_DimensionsCaptionLbl: Label 'Header Dimensions';
         Purchase_Line___Expected_Receipt_Date__CaptionLbl: Label 'Expected Date';
         Purchase_Line___Vendor_Item_No__CaptionLbl: Label 'No.';

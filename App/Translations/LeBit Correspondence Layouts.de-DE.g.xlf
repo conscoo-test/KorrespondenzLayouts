@@ -1270,8 +1270,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Blanket Purchase Order - NamedType BitteAndern_CaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3134870048 - NamedType 1180345653" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Blanket Purchase Order No.</source>
-          <target>Einkauf Rahmenbestellung Nr.</target>
+          <source>Blanket Order No.</source>
+          <target>Rahmenbestellnr.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Blanket Purchase Order - NamedType Blanket_Purchase_Order_No_CaptionLbl</note>
         </trans-unit>
@@ -1583,7 +1583,7 @@
         </trans-unit>
         <trans-unit id="Report 1741165601 - NamedType 1582893390" size-unit="char" translate="yes" xml:space="preserve">
           <source>Blanket Sales Order %1</source>
-          <target>Rahmenauftragsnr. %1</target>
+          <target>Rahmenauftrag %1</target>
           <note from="Developer" annotates="general" priority="2">%1 - Document No.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Blanket Sales Order - NamedType TitleLbl</note>
         </trans-unit>
@@ -2849,7 +2849,7 @@
         </trans-unit>
         <trans-unit id="Report 2627732418 - NamedType 2593559584" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quote %1</source>
-          <target>Angebotnr. %1</target>
+          <target>Angebot %1</target>
           <note from="Developer" annotates="general" priority="2">%1 - Document No.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Purchase - Quote - NamedType DocCaptionLbl</note>
         </trans-unit>
@@ -4667,7 +4667,7 @@
         </trans-unit>
         <trans-unit id="Report 3691972257 - NamedType 1582893390" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sales - Shipment %1</source>
-          <target>Verkauf - Lieferschein. %1</target>
+          <target>Lieferschein. %1</target>
           <note from="Developer" annotates="general" priority="2">%1 - Document No.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales - Shipment - NamedType TitleLbl</note>
         </trans-unit>
