@@ -1,5 +1,37 @@
 pageextension 5272723 "lbt Posted Sales Invoice" extends "Posted Sales Invoice"
 {
+    layout
+    {
+        addafter(SalesInvLines)
+        {
+            group(lbtEditor)
+            {
+                caption = 'Longtext';
+                field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader))
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    ToolTip = 'Editor Header';
+                    caption = 'Editor Header';
+                    trigger OnAssistEdit()
+                    begin
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorHeader);
+                    end;
+                }
+                field("lbt Editor Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter))
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    ToolTip = 'Editor Footer';
+                    caption = 'Editor Footer';
+                    trigger OnAssistEdit()
+                    begin
+                        Rec.lbtEditData(Enum::"lbt Position"::Editorfooter);
+                    end;
+                }
+            }
+        }
+    }
     actions
     {
         addafter(ActionGroupCRM)

@@ -19,7 +19,7 @@
 	"settings": {
 		"al.enableCodeAnalysis": true,
 		"al.ruleSetPath": "lebit.ruleset.json",
-		"CRS.ObjectNamePrefix": "lbt ",
+		"CRS.ObjectNamePrefix": "lbt cl",
 		"CRS.OnSaveAlFileAction": "DoNothing",
 		"CRS.RemovePrefixFromFilename": true,
 		"CRS.FileNamePattern": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",

@@ -13,6 +13,11 @@ codeunit 5272729 "lbt cl EditorHelper"
         end;
     end;
 
+    procedure deleteLongText(vari: Variant)
+    begin
+        deleteLongText(vari, 0);
+    end;
+
     procedure deleteLongText(vari: Variant; OtherDocType: Integer)
     var
         RecRef: RecordRef;
@@ -103,6 +108,11 @@ codeunit 5272729 "lbt cl EditorHelper"
 
     end;
 
+    procedure hasEditorValue(vari: Variant; Position: Enum "lbt Position") Result: Boolean
+    begin
+        hasEditorValue(vari, Position, 0);
+    end;
+
     procedure hasEditorValue(vari: Variant; Position: Enum "lbt Position"; OtherDocType: Integer) Result: Boolean
     var
         RecRef: RecordRef;
@@ -144,6 +154,11 @@ codeunit 5272729 "lbt cl EditorHelper"
 
 
         end;
+    end;
+
+    procedure editData(vari: Variant; Position: Enum "lbt Position")
+    begin
+        editData(vari, Position, 0);
     end;
 
     procedure editData(vari: Variant; Position: Enum "lbt Position"; OtherDocType: Integer)
@@ -215,7 +230,7 @@ codeunit 5272729 "lbt cl EditorHelper"
     local procedure GetType(TableId: Integer): Integer
     begin
         ///Unposted
-        if tableid in [36, 37, 38, 39, 5900, 5901, 5902, 5964, 5965, 5968] then
+        if TableId in [36, 37, 38, 39, 5900, 5901, 5902, 5964, 5965, 5968] then
             exit(1);
         ///Posted
         if TableId in [110, 111, 112, 113, 114, 115, 120, 121, 122, 123, 124, 125, 5989, 5990, 5991, 5992, 5993, 5994, 5995] then
@@ -249,7 +264,7 @@ codeunit 5272729 "lbt cl EditorHelper"
             exit;
         PSLongtextLn.Init();
         PSLongtextLn."Table ID" := RecRef.Number;
-        PSLongtextLn."Document Type" := OtherDocType;
+        PSLongtextLn."Document Type" := "Sales Document Type".FromInteger(OtherDocType);
         PSLongtextLn."Document No." := RecRef.Field(DocNo_FieldNo).Value;
         if LineNo_FieldNo <> 0 then
             PSLongtextLn."Document Line No." := RecRef.Field(LineNo_FieldNo).Value;
