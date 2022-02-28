@@ -529,10 +529,10 @@ codeunit 50723 "lbt Longtext Mgt."
     var
         SourceFieldRef: FieldRef;
     begin
-        SourceFieldRef := SourceLongtextRecordRef.Field(2);
-
         if not IsOrder(SourceDocumentType, SourceTableID) then
             exit;
+
+        SourceFieldRef := SourceLongtextRecordRef.Field(2);
 
         // wenn Ziel = Rechnung, dann prüfen, ob separate Texte
         if IsInvoice(TargetDocumentType, TargetTableID) then begin
