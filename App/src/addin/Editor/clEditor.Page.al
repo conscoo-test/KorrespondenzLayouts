@@ -56,13 +56,20 @@ page 5272731 "lbt cl Editor"
                 trigger onAction()
                 var
                     ExtTxtHdr: Record "Extended Text Header";
+                    ExtendedTextList: Page "Extended Text List";
                     content: Text;
                     seperatorLbl: Label '%1<p>###### %2 ######</p>%3', Locked = true;
                 begin
                     ExtTxtHdr.SetRange("lbt Textchoice", ExtTxtHdr."lbt Textchoice"::Blob);
-                    if page.RunModal(0, ExtTxtHdr) = Action::LookupOK then begin
-                        content := ExtTxtHdr.lbtclReadContentData(false);
-                        data := StrSubstNo(seperatorLbl, data, ExtTxtHdr."No.", content);
+                    ExtendedTextList.SetTableView(ExtTxtHdr);
+                    ExtendedTextList.LookupMode(true);
+                    if ExtendedTextList.RunModal() = Action::LookupOK then begin
+                        ExtendedTextList.SetSelectionFilter(ExtTxtHdr);
+                        if ExtTxtHdr.FindSet() then
+                            repeat
+                                content := ExtTxtHdr.lbtclReadContentData(false);
+                                data := StrSubstNo(seperatorLbl, data, ExtTxtHdr."No.", content);
+                            until ExtTxtHdr.Next() = 0;
                         CurrPage.editor.SetHTMLText(data);
                     end;
                 end;
