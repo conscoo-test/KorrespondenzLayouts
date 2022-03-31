@@ -104,7 +104,7 @@ report 5272721 "lbt Order Confirmation"
                     column(Sales_Header___No__Caption; Order_No_CaptionLbl)
                     {
                     }
-                    column(PagefromPageCaption; PagefromPageCaptionLbl)
+                    column(PagefromPageCaption; PageFromPageCaptionLbl)
                     {
                     }
                     column(NoCaption; NoCaptionLbl)

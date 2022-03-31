@@ -9578,10 +9578,10 @@
                               <TablixBody>
                                 <TablixColumns>
                                   <TablixColumn>
-                                    <Width>2.47674cm</Width>
+                                    <Width>1.47674cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>2.77326cm</Width>
+                                    <Width>3.77326cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
                                     <Width>3.36326cm</Width>
@@ -12081,6 +12081,18 @@ End Function
         </Field>
         <Field Name="OutputNo">
           <DataField>OutputNo</DataField>
+        </Field>
+        <Field Name="NoCaption">
+          <DataField>NoCaption</DataField>
+        </Field>
+        <Field Name="PagefromPageCaption">
+          <DataField>PagefromPageCaption</DataField>
+        </Field>
+        <Field Name="FromCaption">
+          <DataField>FromCaption</DataField>
+        </Field>
+        <Field Name="CarryForwardText">
+          <DataField>CarryForwardText</DataField>
         </Field>
         <Field Name="HideCompanyInfo">
           <DataField>HideCompanyInfo</DataField>
