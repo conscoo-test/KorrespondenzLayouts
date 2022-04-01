@@ -1,4 +1,4 @@
-pageextension 5272781 "lbt Posted Ret. Shipment Sub." extends "Posted Return Shipment Subform"
+pageextension 50781 "lbt Posted Ret. Shipment Sub." extends "Posted Return Shipment Subform"
 {
     layout
     {

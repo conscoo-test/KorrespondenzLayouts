@@ -1,4 +1,4 @@
-codeunit 5272724 "lbt Report Functions"
+codeunit 50724 "lbt Report Functions"
 {
     procedure GetParameterArry(ReportType: Option Purchase,Sales,QA,Production,Delivery,"Report"; ReportID: Integer; ParaType: Integer; LanguageCode: Code[10]; RowID: Text[250]; LotNo: Code[20]; ItemNo: Code[20]; var Description: array[99] of Text; var Value: array[99] of Text)
     var

@@ -1,4 +1,4 @@
-pageextension 5272791 "lbt Sales Return Order List" extends "Sales Return Order List"
+pageextension 50791 "lbt Sales Return Order List" extends "Sales Return Order List"
 {
     actions
     {

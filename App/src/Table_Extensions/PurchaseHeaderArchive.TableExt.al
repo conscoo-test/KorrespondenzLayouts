@@ -1,4 +1,4 @@
-tableextension 5272740 "lbt Purchase Header Archive" extends "Purchase Header Archive"
+tableextension 50740 "lbt Purchase Header Archive" extends "Purchase Header Archive"
 {
     trigger OnDelete()
     var

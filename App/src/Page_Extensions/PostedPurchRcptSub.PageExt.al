@@ -1,4 +1,4 @@
-pageextension 5272728 "lbt Posted Purch. Rcpt. Sub." extends "Posted Purchase Rcpt. Subform"
+pageextension 50728 "lbt Posted Purch. Rcpt. Sub." extends "Posted Purchase Rcpt. Subform"
 {
     layout
     {

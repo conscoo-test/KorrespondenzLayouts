@@ -1,4 +1,4 @@
-pageextension 5272784 "lbt Post. Return Receipt Sub." extends "Posted Return Receipt Subform"
+pageextension 50784 "lbt Post. Return Receipt Sub." extends "Posted Return Receipt Subform"
 {
     layout
     {

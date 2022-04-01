@@ -1,4 +1,4 @@
-table 5272723 "lbt Extended Text Line Long"
+table 50723 "lbt Extended Text Line Long"
 {
     // version LBCOR1.00
 

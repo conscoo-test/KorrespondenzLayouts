@@ -1,4 +1,4 @@
-pageextension 5272797 "lbt Blanket Purchase Orders" extends "Blanket Purchase Orders"
+pageextension 50797 "lbt Blanket Purchase Orders" extends "Blanket Purchase Orders"
 {
     actions
     {

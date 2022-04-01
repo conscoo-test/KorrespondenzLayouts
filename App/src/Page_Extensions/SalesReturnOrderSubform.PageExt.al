@@ -1,4 +1,4 @@
-pageextension 5272772 "lbt Sales Return Order Subform" extends "Sales Return Order Subform"
+pageextension 50772 "lbt Sales Return Order Subform" extends "Sales Return Order Subform"
 {
     layout
     {

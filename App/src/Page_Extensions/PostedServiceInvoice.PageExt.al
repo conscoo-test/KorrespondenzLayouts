@@ -1,4 +1,4 @@
-pageextension 5272816 "lbt cl PostedServiceInvoice" extends "Posted Service Invoice"
+pageextension 50816 "lbt cl PostedServiceInvoice" extends "Posted Service Invoice"
 {
     layout
     {

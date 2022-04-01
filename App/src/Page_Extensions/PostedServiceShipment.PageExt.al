@@ -1,4 +1,4 @@
-pageextension 5272817 "lbt cl PostedServiceShipment" extends "Posted Service Shipment"
+pageextension 50817 "lbt cl PostedServiceShipment" extends "Posted Service Shipment"
 {
     layout
     {

@@ -1,4 +1,4 @@
-page 5272734 "lbt cl Editor Preview Sub"
+page 50734 "lbt cl Editor Preview Sub"
 {
     PageType = CardPart;
     ApplicationArea = All;

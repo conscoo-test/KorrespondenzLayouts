@@ -1,4 +1,4 @@
-pageextension 5272812 "lbt cl Pstd Service Shpt. Subf" extends "Posted Service Shpt. Subform"
+pageextension 50812 "lbt cl Pstd Service Shpt. Subf" extends "Posted Service Shpt. Subform"
 {
     layout
     {

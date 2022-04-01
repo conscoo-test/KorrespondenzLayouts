@@ -1,4 +1,4 @@
-pageextension 5272745 "lbt Sales Credit Memo" extends "Sales Credit Memo"
+pageextension 50745 "lbt Sales Credit Memo" extends "Sales Credit Memo"
 {
     // version NAVW111.00.00.19846,LBCOR1.00
     layout

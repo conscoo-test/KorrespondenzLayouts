@@ -1,15 +1,15 @@
-tableextension 5272726 "lbt Extended Text Header" extends "Extended Text Header"
+tableextension 50726 "lbt Extended Text Header" extends "Extended Text Header"
 {
     fields
     {
-        field(5272720; "lbt Textchoice"; Option)
+        field(50720; "lbt Textchoice"; Option)
         {
             Caption = 'Textchoice';
             OptionCaption = 'Standard,Longtext,Blob';
             OptionMembers = standard,"long text","Blob";
             DataClassification = CustomerContent;
         }
-        field(5272721; "lbt Editor Blob"; blob)
+        field(50721; "lbt Editor Blob"; blob)
         {
             caption = 'Editor Blob';
             DataClassification = CustomerContent;

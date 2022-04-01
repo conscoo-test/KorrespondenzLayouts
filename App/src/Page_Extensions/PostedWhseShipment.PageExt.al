@@ -1,4 +1,4 @@
-pageextension 5272820 "lbt cl Posted Whse. Shipment" extends "Posted Whse. Shipment"
+pageextension 50820 "lbt cl Posted Whse. Shipment" extends "Posted Whse. Shipment"
 {
     layout
     {

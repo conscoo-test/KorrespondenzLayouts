@@ -1,4 +1,4 @@
-codeunit 5272729 "lbt cl EditorHelper"
+codeunit 50729 "lbt cl EditorHelper"
 {
     procedure TextEditor(var data: Text; HTML: Boolean) Result: Boolean
     var

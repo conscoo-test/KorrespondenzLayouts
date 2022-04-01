@@ -1,4 +1,4 @@
-tableextension 5272758 "lbt cl Pstd Whse. Ship. Header" extends "Posted Whse. Shipment Header"
+tableextension 50758 "lbt cl Pstd Whse. Ship. Header" extends "Posted Whse. Shipment Header"
 {
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";

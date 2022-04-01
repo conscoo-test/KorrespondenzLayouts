@@ -1,4 +1,4 @@
-pageextension 5272788 "lbt Sales Invoice List" extends "Sales Invoice List"
+pageextension 50788 "lbt Sales Invoice List" extends "Sales Invoice List"
 {
     actions
     {

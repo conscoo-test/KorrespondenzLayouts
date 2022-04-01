@@ -1,4 +1,4 @@
-tableextension 5272756 "lbt cl Sales Invoice Header" extends "Sales Invoice Header"
+tableextension 50756 "lbt cl Sales Invoice Header" extends "Sales Invoice Header"
 {
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";

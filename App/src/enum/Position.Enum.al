@@ -1,4 +1,4 @@
-enum 5272720 "lbt Position"
+enum 50720 "lbt Position"
 {
     Extensible = true;
     
