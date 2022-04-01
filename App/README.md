@@ -12,6 +12,7 @@
     "id": "8eba6f06-6b07-4f76-b829-2e23b81116fd",
     "name": "LeBit Correspondence Layouts (Customer Range)",
     ```
+1. appId und Name für Dependency in `Test/app.json` austauschen
 1. In allen Dateien (außer dieser ReadMe) ersetzen `5272` &rarr; `50`
 1. In den Workspace Settings `AppSourceCop` löschen
 1. VS Code neu starten

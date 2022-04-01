@@ -53,6 +53,5 @@
   ],
   "contextSensitiveHelpUrl": "https://www.lebit.net/#support",
   "showMyCode": false,
-  "runtime": "4.0",
-  "features": ["TranslationFile"]
+  "runtime": "4.0"
 }

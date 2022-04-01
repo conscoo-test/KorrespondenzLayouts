@@ -18,7 +18,7 @@
 	],
 	"settings": {
 		"al.enableCodeAnalysis": true,
-		"al.ruleSetPath": "lebit.ruleset.json",
+		"al.ruleSetPath": "../Scripts/lebit.ruleset.json",
 		"CRS.ObjectNamePrefix": "lbt cl",
 		"CRS.OnSaveAlFileAction": "DoNothing",
 		"CRS.RemovePrefixFromFilename": true,
