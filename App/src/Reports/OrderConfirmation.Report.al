@@ -513,6 +513,10 @@ report 5272721 "lbt Order Confirmation"
                             else
                                 TempSalesLine.Next();
                             "Sales Line" := TempSalesLine;
+
+                            if "Sales Line"."lbt Printoption" in ["Sales Line"."lbt Printoption"::Alternative, "Sales Line"."lbt Printoption"::Optional] then
+                                CurrReport.Skip();
+
                             if DisplayAssemblyInfo then
                                 AsmInfoExistsForLine := TempSalesLine.AsmToOrderExists(AsmHeader);
 

@@ -461,6 +461,9 @@ report 5272728 "lbt Order"
                                 TempPurchLine.Next();
                             "Purchase Line" := TempPurchLine;
 
+                            if "Purchase Line"."lbt Printoption" in ["Purchase Line"."lbt Printoption"::Alternative, "Purchase Line"."lbt Printoption"::Optional] then
+                                CurrReport.Skip();
+
                             if not "Purchase Header"."Prices Including VAT" and
                                (TempPurchLine."VAT Calculation Type" = TempPurchLine."VAT Calculation Type"::"Full VAT")
                             then

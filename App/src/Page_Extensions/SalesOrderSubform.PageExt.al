@@ -22,6 +22,7 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
             {
                 ApplicationArea = All;
                 ToolTip = 'Specified the Printoption';
+                OptionCaption = 'Standard,Title,Total,Price Invisible,Line Invisible,,,New Page,Begin Total,End Total';
             }
         }
         addafter("Line No.")

@@ -7785,6 +7785,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purchase Order Subform - Control lbt Printoption - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2413440263 - Control 2971227444 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 526152577">
+          <source>Standard,Title,Total,Price Invisible,Line Invisible,,,New Page,Begin Total,End Total</source>
+          <target>Normal,Überschrift,Summe,Preis unsichtbar,Zeile unsichtbar,,,Seitenwechsel,Von Summe,Bis Summe</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purchase Order Subform - Control lbt Printoption - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2413440263 - Control 1040839181 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 526152577">
           <source>Editor</source>
           <target>Editor</target>
@@ -8810,6 +8816,12 @@
           <target>Legt die Druckauswahl fest</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Sales Order Subform - Control lbt Printoption - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 203299394 - Control 2971227444 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2026081320">
+          <source>Standard,Title,Total,Price Invisible,Line Invisible,,,New Page,Begin Total,End Total</source>
+          <target>Normal,Überschrift,Summe,Preis unsichtbar,Zeile unsichtbar,,,Seitenwechsel,Von Summe,Bis Summe</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Sales Order Subform - Control lbt Printoption - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="PageExtension 203299394 - Control 1040839181 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2026081320">
           <source>Editor</source>
