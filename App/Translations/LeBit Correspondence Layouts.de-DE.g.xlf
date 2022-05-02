@@ -4667,7 +4667,7 @@
         </trans-unit>
         <trans-unit id="Report 3691972257 - NamedType 1582893390" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sales - Shipment %1</source>
-          <target>Lieferschein. %1</target>
+          <target>Lieferschein %1</target>
           <note from="Developer" annotates="general" priority="2">%1 - Document No.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales - Shipment - NamedType TitleLbl</note>
         </trans-unit>
