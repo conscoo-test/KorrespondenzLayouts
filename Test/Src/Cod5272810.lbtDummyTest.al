@@ -1,4 +1,4 @@
-codeunit 5272810 "lbt DummyTest"
+codeunit 50810 "lbt DummyTest"
 {
     Subtype = Test;
 

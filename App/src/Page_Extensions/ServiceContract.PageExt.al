@@ -1,4 +1,4 @@
-// pageextension 5272820 "lbt cl ServiceContract" extends "Service Contract"
+// pageextension 50820 "lbt cl ServiceContract" extends "Service Contract"
 // {
 //     layout
 //     {

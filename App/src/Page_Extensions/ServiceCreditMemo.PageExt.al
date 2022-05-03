@@ -1,4 +1,4 @@
-pageextension 5272822 "lbt cl ServiceCreditMemo" extends "Service Credit Memo"
+pageextension 50822 "lbt cl ServiceCreditMemo" extends "Service Credit Memo"
 {
     layout
     {

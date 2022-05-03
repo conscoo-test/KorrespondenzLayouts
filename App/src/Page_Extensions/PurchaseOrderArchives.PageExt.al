@@ -1,4 +1,4 @@
-pageextension 5272800 "lbt Purchase Order Archives" extends "Purchase Order Archives"
+pageextension 50800 "lbt Purchase Order Archives" extends "Purchase Order Archives"
 {
     actions
     {

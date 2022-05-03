@@ -1,6 +1,6 @@
 {
-  "id": "ae7eef02-bb60-436c-856d-d815600787b0",
-  "name": "LeBit Correspondence Layouts",
+  "id": "8eba6f06-6b07-4f76-b829-2e23b81116fd",
+  "name": "LeBit Correspondence Layouts (Customer Range)",
   "publisher": "LeBit Software & Consult GmbH",
   "brief": "Komfort Belegset und Komfort Funktionen für Korrespondenzbelege",
   "description": "Komfort Belegset und Komfort Funktionen für Korrespondenzbelege",
@@ -15,8 +15,8 @@
   "application": "17.0.0.0",
   "idRanges": [
     {
-      "from": 5272720,
-      "to": 5272849
+      "from": 50720,
+      "to": 50849
     }
   ],
   "runtime": "7.0",

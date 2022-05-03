@@ -36,8 +36,8 @@
     },
    
     {
-      "appId": "ae7eef02-bb60-436c-856d-d815600787b0",
-      "name": "LeBit Correspondence Layouts",
+      "appId": "8eba6f06-6b07-4f76-b829-2e23b81116fd",
+      "name": "LeBit Correspondence Layouts (Customer Range)",
       "publisher": "LeBit Software & Consult GmbH",
       "version": "1.0.0.0"
     }
@@ -47,8 +47,8 @@
   "application": "16.0.0.0",
   "idRanges": [
     {
-      "from": 5272720,
-      "to": 5272810
+      "from": 50720,
+      "to": 50810
     }
   ],
   "contextSensitiveHelpUrl": "https://www.lebit.net/#support",

@@ -1,4 +1,4 @@
-pageextension 5272720 "lbt Company Information" extends "Company Information"
+pageextension 50720 "lbt Company Information" extends "Company Information"
 {
     // version NAVW111.00.00.19846,NAVDACH11.00.00.19846,NAVDE11.00.00.19846,LBCOR1.00
 

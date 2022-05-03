@@ -1,4 +1,4 @@
-pageextension 5272741 "lbt Extended Text" extends "Extended Text"
+pageextension 50741 "lbt Extended Text" extends "Extended Text"
 {
     layout
     {

@@ -28,7 +28,6 @@
 		"al.codeAnalyzers": [
 			"${CodeCop}",
 			"${UICop}",
-			"${AppSourceCop}",
 			"${analyzerFolder}BusinessCentral.LinterCop.dll"
 		],
 	}

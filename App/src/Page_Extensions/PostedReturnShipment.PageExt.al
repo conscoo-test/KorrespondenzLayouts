@@ -1,4 +1,4 @@
-pageextension 5272780 "lbt Posted Return Shipment" extends "Posted Return Shipment"
+pageextension 50780 "lbt Posted Return Shipment" extends "Posted Return Shipment"
 {
     actions
     {

@@ -1,4 +1,4 @@
-pageextension 5272794 "lbt Purchase Order List" extends "Purchase Order List"
+pageextension 50794 "lbt Purchase Order List" extends "Purchase Order List"
 {
     actions
     {

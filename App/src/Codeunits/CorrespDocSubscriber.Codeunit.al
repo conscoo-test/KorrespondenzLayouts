@@ -1,4 +1,4 @@
-codeunit 5272721 "lbt Corresp. Doc. Subscriber"
+codeunit 50721 "lbt Corresp. Doc. Subscriber"
 {
     Permissions =
         tabledata "Sales Shipment Line" = m,

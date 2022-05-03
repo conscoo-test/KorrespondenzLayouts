@@ -1,4 +1,4 @@
-pageextension 5272795 "lbt Purchase Invoices" extends "Purchase Invoices"
+pageextension 50795 "lbt Purchase Invoices" extends "Purchase Invoices"
 {
     actions
     {

@@ -1,4 +1,4 @@
-pageextension 5272827 "lbt cl PstdServiceInvLines" extends "Posted Service Invoice Lines"
+pageextension 50827 "lbt cl PstdServiceInvLines" extends "Posted Service Invoice Lines"
 {
     layout
     {

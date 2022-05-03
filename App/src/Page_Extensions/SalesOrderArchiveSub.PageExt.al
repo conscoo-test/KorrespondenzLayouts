@@ -1,4 +1,4 @@
-pageextension 5272758 "lbt Sales Order Archive Sub." extends "Sales Order Archive Subform"
+pageextension 50758 "lbt Sales Order Archive Sub." extends "Sales Order Archive Subform"
 {
     layout
     {

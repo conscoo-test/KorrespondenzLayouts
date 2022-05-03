@@ -1,8 +1,8 @@
-tableextension 5272732 "lbt Sales Line Archive" extends "Sales Line Archive"
+tableextension 50732 "lbt Sales Line Archive" extends "Sales Line Archive"
 {
     fields
     {
-        field(5272720; "lbt Long Text"; Boolean)
+        field(50720; "lbt Long Text"; Boolean)
         {
             CalcFormula = Exist("lbt Archive PS Longtext Line" where("Table ID" = const(5108),
                                                                         "Document Type" = field("Document Type"),
@@ -15,14 +15,14 @@ tableextension 5272732 "lbt Sales Line Archive" extends "Sales Line Archive"
             Editable = false;
             FieldClass = FlowField;
         }
-        field(5272721; "lbt Printoption"; Option)
+        field(50721; "lbt Printoption"; Option)
         {
             Caption = 'Printoption';
             OptionCaption = 'Standard,Title,,Price Invisible,Line Invisible,Alternative,Optional,New Page,Begin Total,End Total';
             OptionMembers = Standard,Title,,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total";
             DataClassification = CustomerContent;
         }
-        field(5272722; "lbt Summation"; Text[250])
+        field(50722; "lbt Summation"; Text[250])
         {
             Caption = 'Summation';
             TableRelation = "Sales Line Archive"."Line No." where("Document Type" = field("Document Type"),
@@ -30,7 +30,7 @@ tableextension 5272732 "lbt Sales Line Archive" extends "Sales Line Archive"
             ValidateTableRelation = false;
             DataClassification = CustomerContent;
         }
-        field(5272723; "lbt Balance"; Decimal)
+        field(50723; "lbt Balance"; Decimal)
         {
             AutoFormatType = 1;
             CalcFormula = Sum("Sales Line Archive"."Line Amount" where("Document Type" = field("Document Type"),
@@ -44,25 +44,25 @@ tableextension 5272732 "lbt Sales Line Archive" extends "Sales Line Archive"
             TableRelation = "Sales Line Archive"."Line No." where("Document Type" = field("Document Type"),
                                                                    "Document No." = field("Document No."));
         }
-        field(5272724; "lbt Pos. No."; Text[30])
+        field(50724; "lbt Pos. No."; Text[30])
         {
             Caption = 'Pos.No.';
             DataClassification = CustomerContent;
         }
-        field(5272725; "lbt Indentation"; Integer)
+        field(50725; "lbt Indentation"; Integer)
         {
             Caption = 'Indentation';
             DataClassification = CustomerContent;
             MinValue = 0;
         }
-        field(5272726; "lbt Source Document Line No."; Integer)
+        field(50726; "lbt Source Document Line No."; Integer)
         {
             ObsoleteState = Removed;
             ObsoleteReason = 'Removed';
             Caption = 'Source Document Line No.';
             DataClassification = CustomerContent;
         }
-        field(5272727; "lbt Printoption StyleExpr"; Text[30])
+        field(50727; "lbt Printoption StyleExpr"; Text[30])
         {
             ObsoleteState = Removed;
             ObsoleteReason = 'Removed';

@@ -1,4 +1,4 @@
-pageextension 5272721 "lbt Posted Sales Shipment" extends "Posted Sales Shipment"
+pageextension 50721 "lbt Posted Sales Shipment" extends "Posted Sales Shipment"
 {
     actions
     {

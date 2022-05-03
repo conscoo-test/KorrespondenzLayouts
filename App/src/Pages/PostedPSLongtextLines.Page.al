@@ -1,4 +1,4 @@
-page 5272721 "lbt Posted PS Longtext Lines"
+page 50721 "lbt Posted PS Longtext Lines"
 {
     Caption = 'Posted PS Longtext Lines';
     DeleteAllowed = false;
@@ -13,7 +13,7 @@ page 5272721 "lbt Posted PS Longtext Lines"
     {
         area(content)
         {
-            repeater(Control5272723)
+            repeater(Control50723)
             {
                 Editable = false;
                 ShowCaption = false;

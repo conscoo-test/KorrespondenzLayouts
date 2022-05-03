@@ -1,4 +1,4 @@
-pageextension 5272826 "lbt cl ServiceContractLineList" extends "Service Contract Line List"
+pageextension 50826 "lbt cl ServiceContractLineList" extends "Service Contract Line List"
 {
     layout
     {

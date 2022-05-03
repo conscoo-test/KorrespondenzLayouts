@@ -1,4 +1,4 @@
-codeunit 5272728 "lbt Format Document"
+codeunit 50728 "lbt Format Document"
 {
     procedure SetTotalLabels(CurrencyCode: Code[10]; var TotalText: Text[50]; var TotalInclVATText: Text[50]; var TotalExclVATText: Text[50])
     var

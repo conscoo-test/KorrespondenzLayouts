@@ -1,4 +1,4 @@
-tableextension 5272738 "lbt Purch. Rcpt. Header" extends "Purch. Rcpt. Header"
+tableextension 50738 "lbt Purch. Rcpt. Header" extends "Purch. Rcpt. Header"
 {
     fields
     {

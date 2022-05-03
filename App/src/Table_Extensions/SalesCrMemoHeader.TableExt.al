@@ -1,4 +1,4 @@
-tableextension 5272757 "lbt cl Sales Cr.Memo Header" extends "Sales Cr.Memo Header"
+tableextension 50757 "lbt cl Sales Cr.Memo Header" extends "Sales Cr.Memo Header"
 {
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";

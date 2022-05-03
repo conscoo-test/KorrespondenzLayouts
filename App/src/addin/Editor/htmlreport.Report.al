@@ -1,4 +1,4 @@
-report 5272732 "lbt cl htmlreport"
+report 50732 "lbt cl htmlreport"
 {
     ApplicationArea = All;
     Caption = 'htmlreport';

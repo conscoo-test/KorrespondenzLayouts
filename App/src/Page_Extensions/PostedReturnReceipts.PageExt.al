@@ -1,4 +1,4 @@
-pageextension 5272785 "lbt Posted Return Receipts" extends "Posted Return Receipts"
+pageextension 50785 "lbt Posted Return Receipts" extends "Posted Return Receipts"
 {
     actions
     {
