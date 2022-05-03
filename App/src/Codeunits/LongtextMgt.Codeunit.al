@@ -439,15 +439,28 @@ codeunit 5272723 "lbt Longtext Mgt."
             ExtendedTextLine.SetRange("No.", ExtendedTextHeader."No.");
             ExtendedTextLine.SetRange("Language Code", ExtendedTextHeader."Language Code");
             ExtendedTextLine.SetRange("Text No.", ExtendedTextHeader."Text No.");
-            exit(not ExtendedTextLine.IsEmpty());
+            if not ExtendedTextLine.FindSet() then
+                exit(false);
+            TempExtendedTextLineLong.DeleteAll();
+            repeat
+                TempExtendedTextLineLong.TransferFields(ExtendedTextLine);
+                TempExtendedTextLineLong.Insert();
+            until ExtendedTextLine.Next() = 0;
+            exit(true);
         end;
 
         ExtendedTextLineLong.SetRange(Table_ID, ExtendedTextHeader."Table Name");
         ExtendedTextLineLong.SetRange("No.", ExtendedTextHeader."No.");
         ExtendedTextLineLong.SetRange("Language Code", ExtendedTextHeader."Language Code");
         ExtendedTextLineLong.SetRange("Text No.", ExtendedTextHeader."Text No.");
-        exit(not ExtendedTextLineLong.IsEmpty());
-
+        if not ExtendedTextLineLong.FindSet() then
+            exit(false);
+        TempExtendedTextLineLong.DeleteAll();
+        repeat
+            TempExtendedTextLineLong := ExtendedTextLineLong;
+            TempExtendedTextLineLong.Insert();
+        until ExtendedTextLineLong.Next() = 0;
+        exit(true);
     end;
 
     local procedure FilterRecRef(var RecRef: RecordRef; var LongtextRecordRef: RecordRef; var DocumentType: Enum "Sales Document Type"; var TargetDocumentNo: Code[20]; var TableID: Integer; var TargetDocNoOcc: Integer; var TargetVersionNo: Integer; var TargetLineNo: Integer)
