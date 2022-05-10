@@ -20,6 +20,6 @@ tableextension 5272754 "lbt cl ServiceContractHeader" extends "Service Contract 
 
     trigger OnAfterDelete()
     begin
-        EditorHelper.deleteLongText(Rec, Rec."Contract Type".AsInteger());
+        EditorHelper.deleteLongText(Rec, Rec."Contract Type");
     end;
 }
