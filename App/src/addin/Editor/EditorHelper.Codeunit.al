@@ -436,7 +436,9 @@ codeunit 5272729 "lbt cl EditorHelper"
     local procedure GetServiceTableType(TableId: Integer) TableType: Integer
     begin
         case TableId of
-            database::"Service Header":
+            database::"Service Header",
+            database::"Service Contract Header",
+            database::"Service Contract Template":
                 TableType := 1;
             database::"Service Line",
             database::"Service Item Line":
