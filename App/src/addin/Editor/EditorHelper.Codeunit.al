@@ -468,14 +468,23 @@ codeunit 5272729 "lbt cl EditorHelper"
         target_fields: array[10] of Integer;
 
     begin
-        if Sourcerecref.Number <> Database::Job then
+        sourcetype := GetType(Sourcerecref.number);
+        TargetType := GetType(TargetRecRef.Number);
+        if SourceType <> 5 then
             exit;
-        SourceType := 5;//isserviceTable(Sourcerecref.Number, source_Fields);
 
-        if TargetRecRef.Number = database::"Sales Header" then begin
-            TargetType := 1;
-            target_fields[1] := 1;
-            target_fields[2] := 3;
+        case TargetRecRef.Number of
+            database::"Sales Header":
+                begin
+                    target_fields[1] := 1;
+                    target_fields[2] := 3;
+                end;
+            database::"Sales line":
+                begin
+                    target_fields[1] := 1;
+                    target_fields[2] := 3;
+                    target_fields[3] := 4;
+                end;
         end;
 
         OpenMemo(SourceMemo, SourceType);
@@ -486,7 +495,8 @@ codeunit 5272729 "lbt cl EditorHelper"
         SourceMemoField := SourceMemo.field(2);
         SourceMemoField.SetRange(Sourcerecref.Field(Sourcerecref.SystemIdNo).Value);
         SourceMemoField := SourceMemo.Field(3);
-        SourceMemoField.SetRange(Enum::"Sales Document Type"::Invoice);
+        if Sourcerecref.number = database::job then
+            SourceMemoField.SetRange(Enum::"Sales Document Type"::Invoice);
 
 
         if SourceMemo.FindSet() then
