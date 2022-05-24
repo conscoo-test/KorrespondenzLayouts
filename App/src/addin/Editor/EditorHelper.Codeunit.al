@@ -291,7 +291,8 @@ codeunit 5272729 "lbt cl EditorHelper"
         PstdPSLongtextLn.SetRange("Table ID", RecRef.Number);
         PstdPSLongtextLn.SetRange("Document No.", RecRef.Field(DocNo_FieldNo).Value);
         PstdPSLongtextLn.SetRange(Position, Position);
-        PstdPSLongtextLn.SetRange("Document Line No.", RecRef.Field(LineNo_FieldNo).Value);
+        if LineNo_FieldNo <> 0 then
+            PstdPSLongtextLn.SetRange("Document Line No.", RecRef.Field(LineNo_FieldNo).Value);
         if not InsertIfEmpty then
             exit;
         if PstdPSLongtextLn.FindFirst() then
@@ -359,7 +360,8 @@ codeunit 5272729 "lbt cl EditorHelper"
         OpenMemo(SourceMemo, SourceType);
         OpenMemo(TargetMemo, TargetType);
 
-        SetMemoFilters(Sourcerecref, SourceMemo, source_Fields);
+        SetMemoFilters(Sourcerecref, TargetRecRef, SourceMemo, source_Fields);
+
 
         if SourceMemo.FindSet() then
             repeat
@@ -455,7 +457,7 @@ codeunit 5272729 "lbt cl EditorHelper"
         end;
     end;
 
-    local procedure SetMemoFilters(var Sourcerecref: RecordRef; var SourceMemo: RecordRef; source_Fields: array[10] of Integer)
+    local procedure SetMemoFilters(var Sourcerecref: RecordRef; var TargetRecRef: RecordRef; var SourceMemo: RecordRef; source_Fields: array[10] of Integer)
     var
         SourceRecField: FieldRef;
         SourceMemoField: FieldRef;
@@ -469,13 +471,13 @@ codeunit 5272729 "lbt cl EditorHelper"
             SourceRecField := Sourcerecref.Field(source_Fields[1]);
             SourceMemoField := SourceMemo.Field(2);
             SourceMemoField.SetRange(SourceRecField.Value);
-            // if Sourcerecref.Number = database::"Service Header" then begin
-            //     if targetRecRef.Number = Database::"Service Shipment Header" then
-            //         SourceMemoField.SetRange(11);
-            //     if targetRecRef.Number = Database::"Service Invoice Header" then
-            //         SourceMemoField.SetRange(12);
+            if Sourcerecref.Number = database::"Service Header" then begin
+                if TargetRecRef.Number = Database::"Service Shipment Header" then
+                    SourceMemoField.SetRange(11);
+                if TargetRecRef.Number = Database::"Service Invoice Header" then
+                    SourceMemoField.SetRange(12);
+            end;
 
-            // end;
         end;
 
         ///DocNo
