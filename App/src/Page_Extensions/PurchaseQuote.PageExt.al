@@ -3,29 +3,34 @@ pageextension 5272750 "lbt Purchase Quote" extends "Purchase Quote"
     // version NAVW111.00.00.20348,LBCOR1.00
     layout
     {
-        addlast(General)
+        addafter(PurchLines)
         {
-            field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger()))
+            group(lbtEditor)
             {
-                ApplicationArea = all;
-                Editable = false;
-                ToolTip = 'Editor Header';
-                caption = 'Editor Header';
-                trigger OnAssistEdit()
-                begin
-                    Rec.lbtEditData(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger());
-                end;
-            }
-            field("lbt Editor Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter, Rec."Document Type".AsInteger()))
-            {
-                ApplicationArea = all;
-                Editable = false;
-                ToolTip = 'Editor Footer';
-                caption = 'Editor Footer';
-                trigger OnAssistEdit()
-                begin
-                    Rec.lbtEditData(Enum::"lbt Position"::Editorfooter, Rec."Document Type".AsInteger());
-                end;
+                Caption = 'Longtext';
+
+                field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger()))
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    ToolTip = 'Editor Header';
+                    caption = 'Editor Header';
+                    trigger OnAssistEdit()
+                    begin
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger());
+                    end;
+                }
+                field("lbt Editor Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter, Rec."Document Type".AsInteger()))
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    ToolTip = 'Editor Footer';
+                    caption = 'Editor Footer';
+                    trigger OnAssistEdit()
+                    begin
+                        Rec.lbtEditData(Enum::"lbt Position"::Editorfooter, Rec."Document Type".AsInteger());
+                    end;
+                }
             }
         }
     }
