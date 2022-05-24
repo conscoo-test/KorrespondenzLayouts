@@ -5973,6 +5973,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceInvoice - Control lbt Editor Header - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3735817671 - Control 246903213 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 997019036">
+          <source>Editor</source>
+          <target>Editor</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceLines - Control lbt Editor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3735817671 - Control 246903213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 997019036">
+          <source>Editor</source>
+          <target>Editor</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceLines - Control lbt Editor - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4005112826 - Action 2738780584 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2145436509">
           <source>LeBit365 Correspondence layout</source>
           <target>LeBit365 Korrespondenzbelege</target>
@@ -6003,6 +6017,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceOrder - Action lbt Header Text - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 4005112826 - Control 2936602837 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2145436509">
+          <source>Longtext</source>
+          <target>Langtext</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceOrder - Control lbtEditor - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4005112826 - Control 3671457890 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2145436509">
           <source>Editor Footer</source>
           <target>Editor Fuss</target>
@@ -6026,6 +6047,62 @@
           <target>Editor Kopf</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceOrder - Control lbt Editor Header - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4005112826 - Control 985919857 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2145436509">
+          <source>Editor Invoice Footer</source>
+          <target>Editor Rechnung Fuss</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceOrder - Control lbt Editor Invoice Footer - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4005112826 - Control 985919857 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2145436509">
+          <source>Editor Invoice Footer</source>
+          <target>Editor Rechnung Fuss</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceOrder - Control lbt Editor Invoice Footer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4005112826 - Control 3693876391 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2145436509">
+          <source>Editor Invoice Header</source>
+          <target>Editor Rechnung Kopf</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceOrder - Control lbt Editor Invoice Header - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4005112826 - Control 3693876391 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2145436509">
+          <source>Editor Invoice Header</source>
+          <target>Editor Rechnung Kopf</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceOrder - Control lbt Editor Invoice Header - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4005112826 - Control 3816522682 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2145436509">
+          <source>Editor Shipment Footer</source>
+          <target>Editor Lieferung Fuss</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceOrder - Control lbt Editor Shipment Footer - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4005112826 - Control 3816522682 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2145436509">
+          <source>Editor Shipment Footer</source>
+          <target>Editor Lieferung Fuss</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceOrder - Control lbt Editor Shipment Footer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4005112826 - Control 311801328 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2145436509">
+          <source>Editor Shipment Header</source>
+          <target>Editor Lieferung Kopf</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceOrder - Control lbt Editor Shipment Header - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4005112826 - Control 311801328 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2145436509">
+          <source>Editor Shipment Header</source>
+          <target>Editor Lieferung Kopf</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServiceOrder - Control lbt Editor Shipment Header - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 48502696 - Control 246903213 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2247137235">
           <source>Editor</source>
