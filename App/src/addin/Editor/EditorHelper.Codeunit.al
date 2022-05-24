@@ -469,6 +469,13 @@ codeunit 5272729 "lbt cl EditorHelper"
             SourceRecField := Sourcerecref.Field(source_Fields[1]);
             SourceMemoField := SourceMemo.Field(2);
             SourceMemoField.SetRange(SourceRecField.Value);
+            // if Sourcerecref.Number = database::"Service Header" then begin
+            //     if targetRecRef.Number = Database::"Service Shipment Header" then
+            //         SourceMemoField.SetRange(11);
+            //     if targetRecRef.Number = Database::"Service Invoice Header" then
+            //         SourceMemoField.SetRange(12);
+
+            // end;
         end;
 
         ///DocNo

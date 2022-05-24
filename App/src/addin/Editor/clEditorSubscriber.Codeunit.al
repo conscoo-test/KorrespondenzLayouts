@@ -35,7 +35,7 @@ codeunit 5272730 "lbt cl EditorSubscriber"
         ServCrMemoHdr: Record "Service Cr.Memo Header";
     begin
         if ServShipmentNo <> '' then
-            if ServCrMemoHdr.get(ServShipmentNo) then
+            if ServShptHdr.get(ServShipmentNo) then
                 LongtextMgt.CopyLongtext(ServiceHeader, ServShptHdr);
         if ServInvoiceNo <> '' then
             if ServInvHdr.get(ServInvoiceNo) then
