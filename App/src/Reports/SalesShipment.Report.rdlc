@@ -3778,7 +3778,7 @@
                                           <TablixMember>
                                             <Visibility>
                                               <Hidden>=Iif((Fields!SalesLineType.Value = "0") and
-     (Fields!SalesLineLeBitPrintoption.Value = "8"),false, true)</Hidden>
+     (Fields!SalesLineLeBitPrintoption.Value = "8" or Fields!SalesLineLeBitPrintoption.Value = "9"),false, true)</Hidden>
                                             </Visibility>
                                             <KeepWithGroup>After</KeepWithGroup>
                                             <KeepTogether>true</KeepTogether>
@@ -3794,7 +3794,10 @@
                                           <TablixMember>
                                             <Visibility>
                                               <Hidden>=Iif((Fields!SalesLineType.Value &lt;&gt; "0") and
-         (Fields!SalesLineLeBitPrintoption.Value = "0"), false, true)</Hidden>
+         Fields!SalesLineLeBitPrintoption.Value &lt;&gt; "4" and
+		 Fields!SalesLineLeBitPrintoption.Value &lt;&gt; "8" and
+		 Fields!SalesLineLeBitPrintoption.Value &lt;&gt; "9" and
+		 Fields!SalesLineLeBitPrintoption.Value &lt;&gt; "1", false, true)</Hidden>
                                             </Visibility>
                                             <KeepWithGroup>After</KeepWithGroup>
                                             <KeepTogether>true</KeepTogether>
