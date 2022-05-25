@@ -8638,6 +8638,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Line - Field lbt Balance - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 962502568 - Field 1778465339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
+          <source>From Standard Sales Line</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Line - Field lbt from Standard Sales Line - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 962502568 - Field 3380591293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
           <source>Indentation</source>
           <note from="Developer" annotates="general" priority="2"></note>

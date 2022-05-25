@@ -11,6 +11,16 @@ codeunit 5272729 "lbt cl EditorHelper"
             data := Editor.GetText();
             Result := true;
         end;
+
+    end;
+
+    procedure ShowTextEditor(var data: Text; HTML: Boolean) Result: Boolean
+    var
+        Editor: Page "lbt cl Editor";
+    begin
+        Editor.SetText(data, HTML);
+        Editor.Editable(false);
+        Editor.RunModal();
     end;
 
     procedure deleteLongText(vari: Variant)
@@ -200,7 +210,7 @@ codeunit 5272729 "lbt cl EditorHelper"
 
     procedure editData(vari: Variant; Position: Enum "lbt Position")
     begin
-        editData(vari, Position, 0);
+        editData(vari, Position, 0, true);
     end;
 
     procedure editData(vari: Variant; Position: Enum "lbt Position"; OtherDocType: Integer)
@@ -208,7 +218,7 @@ codeunit 5272729 "lbt cl EditorHelper"
         RecRef: RecordRef;
     begin
         RecRef.GetTable(vari);
-        editData(RecRef, Position, OtherDocType);
+        editData(RecRef, Position, OtherDocType, true);
 
     end;
 
@@ -217,12 +227,21 @@ codeunit 5272729 "lbt cl EditorHelper"
         RecRef: RecordRef;
     begin
         RecRef.GetTable(vari);
-        editData(RecRef, Position, OtherDocType);
+        editData(RecRef, Position, OtherDocType, true);
+
+    end;
+
+    procedure ShowDataSysId(vari: Variant; Position: Enum "lbt Position"; OtherDocType: Integer): Boolean
+    var
+        RecRef: RecordRef;
+    begin
+        RecRef.GetTable(vari);
+        editData(RecRef, Position, OtherDocType, false);
 
     end;
 
 
-    procedure editData(RecRef: RecordRef; Position: Enum "lbt Position"; OtherDocType: Integer)
+    procedure editData(RecRef: RecordRef; Position: Enum "lbt Position"; OtherDocType: Integer; editable: Boolean)
     begin
         case GetType(RecRef.Number) of
             1:
@@ -232,7 +251,7 @@ codeunit 5272729 "lbt cl EditorHelper"
             3:
                 EditArchivedLongtext(RecRef, Position);
             5:
-                EditLongTextSysId(RecRef, Position, OtherDocType);
+                EditLongTextSysId(RecRef, Position, OtherDocType, editable);
         end;
     end;
 
@@ -723,9 +742,10 @@ codeunit 5272729 "lbt cl EditorHelper"
         PstdPSLongtextLn: Record "lbt Posted PS Longtext Line";
     begin
         SetPstdPsLongtextLineFilter(PstdPSLongtextLn, Position, RecRef, true);
-        PstdPSLongtextLn.EditData();
-        if not PstdPSLongtextLn."Editor Content".HasValue() then
-            if PstdPSLongtextLn.Delete(true) then;
+        PstdPSLongtextLn.ShowData();
+        // PstdPSLongtextLn.EditData();
+        // if not PstdPSLongtextLn."Editor Content".HasValue() then
+        //     if PstdPSLongtextLn.Delete(true) then;
     end;
 
     local procedure EditArchivedLongtext(var RecRef: RecordRef; Position: Enum "lbt Position")
@@ -733,19 +753,24 @@ codeunit 5272729 "lbt cl EditorHelper"
         ArchivePSLongtextLn: Record "lbt Archive PS Longtext Line";
     begin
         SetArchPsLongtextLineFilter(ArchivePSLongtextLn, Position, RecRef, true);
-        ArchivePSLongtextLn.EditData();
-        if not ArchivePSLongtextLn."Editor Content".HasValue() then
-            if ArchivePSLongtextLn.Delete(true) then;
+        ArchivePSLongtextLn.ShowData();
+        // ArchivePSLongtextLn.EditData();
+        // if not ArchivePSLongtextLn."Editor Content".HasValue() then
+        //     if ArchivePSLongtextLn.Delete(true) then;
     end;
 
-    local procedure EditLongtextSysId(var RecRef: RecordRef; Position: Enum "lbt Position"; OtherDocType: Integer)
+    local procedure EditLongtextSysId(var RecRef: RecordRef; Position: Enum "lbt Position"; OtherDocType: Integer; editable: Boolean)
     var
         PSLongtextSysId: Record "lbt clPSLongtextSystemId";
     begin
         SetPSLongTextLineSysIdFilter(PSLongtextSysId, Position, OtherDocType, RecRef, true);
-        PSLongtextSysId.EditData();
-        if not PSLongtextSysId."Editor Content".HasValue() then
-            if PSLongtextSysId.Delete(true) then;
+        if editable then begin
+            PSLongtextSysId.EditData();
+            if not PSLongtextSysId."Editor Content".HasValue() then
+                if PSLongtextSysId.Delete(true) then;
+        end else begin
+            PSLongtextSysId.ShowData();
+        end;
     end;
 
 
