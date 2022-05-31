@@ -2849,7 +2849,7 @@
         </trans-unit>
         <trans-unit id="Report 2627732418 - NamedType 2593559584" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quote %1</source>
-          <target>Angebot %1</target>
+          <target>Anfrage %1</target>
           <note from="Developer" annotates="general" priority="2">%1 - Document No.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Purchase - Quote - NamedType DocCaptionLbl</note>
         </trans-unit>
@@ -2909,7 +2909,7 @@
         </trans-unit>
         <trans-unit id="Report 2627732418 - NamedType 689983417" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quote No.</source>
-          <target>Angebotsnr.</target>
+          <target>Anfragenr.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Purchase - Quote - NamedType Quote_No_CaptionLbl</note>
         </trans-unit>
