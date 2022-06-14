@@ -18,6 +18,11 @@ codeunit 5272729 "lbt cl EditorHelper"
         deleteLongText(vari, 0);
     end;
 
+    procedure deleteLongTextSysId(vari: Variant)
+    begin
+        deleteLongText(vari, 0);
+    end;
+
     procedure deleteLongText(vari: Variant; OtherDocType: Integer)
     var
         RecRef: RecordRef;
@@ -31,6 +36,7 @@ codeunit 5272729 "lbt cl EditorHelper"
         PSLongtextLn: Record "lbt PS Longtext Line";
         PstdPSLongtextLn: Record "lbt Posted PS Longtext Line";
         ArchivePSLongtextLn: Record "lbt Archive PS Longtext Line";
+        PSLongtextSystemId: Record "lbt clPSLongtextSystemId";
         TableId: Integer;
         Tabletype: Integer;
 
@@ -58,8 +64,22 @@ codeunit 5272729 "lbt cl EditorHelper"
                     PstdPSLongtextLn.SetRange(Position);
                     PstdPSLongtextLn.DeleteAll(true);
                 end;
+            5:
+                begin
+                    PSLongtextSystemId.SetRange("Table Id", recref.Number);
+                    PSLongtextSystemId.SetRange("Source System Id", Recref.Field(recref.SystemIdNo).Value);
+                    PSLongtextSystemId.DeleteAll(true);
+                end;
         end;
 
+    end;
+
+    procedure getPrintDataSysId(vari: Variant; Position: Enum "lbt Position"; OtherDocType: Integer) Result: Text
+    var
+        RecRef: RecordRef;
+    begin
+        RecRef.GetTable(vari);
+        Result := getPrintData(RecRef, Position, OtherDocType);
     end;
 
     procedure getPrintData(vari: Variant; Position: Enum "lbt Position"; OtherDocType: Integer) Result: Text
@@ -75,6 +95,7 @@ codeunit 5272729 "lbt cl EditorHelper"
         PSLongtextLn: Record "lbt PS Longtext Line";
         PstdPSLongtextLn: Record "lbt Posted PS Longtext Line";
         ArchivePSLongtextLn: Record "lbt Archive PS Longtext Line";
+        PSLongtextSystemId: Record "lbt clPSLongtextSystemId";
         TableId: Integer;
         Tabletype: Integer;
 
@@ -101,6 +122,13 @@ codeunit 5272729 "lbt cl EditorHelper"
                     if ArchivePSLongtextLn.FindFirst() then
                         Result := ArchivePSLongtextLn.ReadContentData(false);
                 end;
+            5:
+                begin
+                    PSLongtextSystemId.SetRange("Table Id", recref.Number);
+                    PSLongtextSystemId.SetRange("Source System Id", Recref.Field(recref.SystemIdNo).Value);
+                    if PSLongtextSystemId.FindFirst() then
+                        Result := PSLongtextSystemId.ReadContentData(false);
+                end;
 
 
         end;
@@ -121,11 +149,22 @@ codeunit 5272729 "lbt cl EditorHelper"
         Result := hasEditorValue(RecRef, Position, OtherDocType);
     end;
 
+    procedure hasEditorValueSysId(vari: Variant; Position: Enum "lbt Position"; OtherDocType: Integer) Result: Boolean
+    var
+        RecRef: RecordRef;
+    begin
+        RecRef.GetTable(vari);
+        Result := hasEditorValue(RecRef, Position, OtherDocType);
+    end;
+
+
     procedure hasEditorValue(RecRef: RecordRef; Position: Enum "lbt Position"; OtherDocType: Integer) Result: Boolean
     var
         PSLongtextLn: Record "lbt PS Longtext Line";
         PstdPSLongtextLn: Record "lbt Posted PS Longtext Line";
         ArchivePSLongtextLn: Record "lbt Archive PS Longtext Line";
+        PSLongtextSystemId: Record "lbt clPSLongtextSystemId";
+
         TableId: Integer;
         Tabletype: Integer;
 
@@ -149,9 +188,12 @@ codeunit 5272729 "lbt cl EditorHelper"
                 begin
                     SetArchPsLongtextLineFilter(ArchivePSLongtextLn, Position, RecRef, false);
                     exit(not PstdPSLongtextLn.IsEmpty());
-
                 end;
-
+            5:
+                begin
+                    SetPSLongTextLineSysIdFilter(PSLongtextSystemId, Position, OtherDocType, RecRef, false);
+                    exit(not PSLongtextSystemId.IsEmpty());
+                end;
 
         end;
     end;
@@ -170,6 +212,16 @@ codeunit 5272729 "lbt cl EditorHelper"
 
     end;
 
+    procedure editDataSysId(vari: Variant; Position: Enum "lbt Position"; OtherDocType: Integer): Boolean
+    var
+        RecRef: RecordRef;
+    begin
+        RecRef.GetTable(vari);
+        editData(RecRef, Position, OtherDocType);
+
+    end;
+
+
     procedure editData(RecRef: RecordRef; Position: Enum "lbt Position"; OtherDocType: Integer)
     begin
         case GetType(RecRef.Number) of
@@ -179,6 +231,8 @@ codeunit 5272729 "lbt cl EditorHelper"
                 EditPostedLongtext(RecRef, Position);
             3:
                 EditArchivedLongtext(RecRef, Position);
+            5:
+                EditLongTextSysId(RecRef, Position, OtherDocType);
         end;
     end;
 
@@ -227,7 +281,9 @@ codeunit 5272729 "lbt cl EditorHelper"
     end;
 
 
-    local procedure GetType(TableId: Integer): Integer
+    local procedure GetType(TableId: Integer) Result: Integer
+    var
+        handled: Boolean;
     begin
         ///Unposted
         if TableId in [36, 37, 38, 39, 5900, 5901, 5902, 5964, 5965, 5968] then
@@ -238,20 +294,25 @@ codeunit 5272729 "lbt cl EditorHelper"
         ///archived
         if TableId in [5107, 5108, 5109, 5110, 5102781] then
             exit(3);
+        if TableId in [Database::job, Database::"Job Planning Line", Database::"Standard Sales Code", database::"Standard Sales Line", database::"Assembly Line"] then
+            exit(5);
+        OnAfterGetType(TableId, handled, Result);
     end;
 
-    local procedure SetPsLongtextLineFilter(var PSLongtextLn: Record "lbt PS Longtext Line"; Position: Enum "lbt Position"; OtherDocType: Integer; RecRef: RecordRef; InsertIfEmpty: Boolean)
+    local procedure SetPsLongtextLineFilter(var PSLongtextLn: Record "lbt PS Longtext Line"; Position: Enum "lbt Position"; OtherDocType: Integer;
+                                                                                                           RecRef: RecordRef;
+                                                                                                           InsertIfEmpty: Boolean)
     var
         DocNo_FieldNo: Integer;
         DocType_FieldNo: Integer;
         LineNo_FieldNo: Integer;
     begin
         AssignFieldNos(RecRef, DocNo_FieldNo, DocType_FieldNo, LineNo_FieldNo);
-
         PSLongtextLn.SetRange("Table ID", RecRef.Number);
-        if OtherDocType = 0 then
-            PSLongtextLn.SetRange("Document Type", RecRef.Field(DocType_FieldNo).Value)
-        else
+        if OtherDocType = 0 then begin
+            if DocType_FieldNo <> 0 then
+                PSLongtextLn.SetRange("Document Type", RecRef.Field(DocType_FieldNo).Value);
+        end else
             PSLongtextLn.SetRange("Document Type", OtherDocType);
 
         PSLongtextLn.SetRange("Document No.", RecRef.Field(DocNo_FieldNo).Value);
@@ -273,7 +334,8 @@ codeunit 5272729 "lbt cl EditorHelper"
         Commit(); //TODO: explain Commit
     end;
 
-    local procedure SetPstdPsLongtextLineFilter(var PstdPSLongtextLn: Record "lbt Posted PS Longtext Line"; Position: Enum "lbt Position"; RecRef: RecordRef; InsertIfEmpty: Boolean)
+    local procedure SetPstdPsLongtextLineFilter(var PstdPSLongtextLn: Record "lbt Posted PS Longtext Line"; Position: Enum "lbt Position"; RecRef: RecordRef;
+                                                                                                                          InsertIfEmpty: Boolean)
     var
         Field_Nos: array[10] of Integer;
         DocNo_FieldNo: Integer;
@@ -306,7 +368,8 @@ codeunit 5272729 "lbt cl EditorHelper"
         Commit(); //TODO: explain Commit
     end;
 
-    local procedure SetArchPsLongtextLineFilter(var ArchivePSLongtextLn: Record "lbt Archive PS Longtext Line"; Position: Enum "lbt Position"; RecRef: RecordRef; InsertIfEmpty: Boolean)
+    local procedure SetArchPsLongtextLineFilter(var ArchivePSLongtextLn: Record "lbt Archive PS Longtext Line"; Position: Enum "lbt Position"; RecRef: RecordRef;
+                                                                                                                              InsertIfEmpty: Boolean)
     var
         DocType_FieldNo: Integer;
         DocNo_FieldNo: Integer;
@@ -341,6 +404,25 @@ codeunit 5272729 "lbt cl EditorHelper"
         Commit(); //TODO: Explain commit
     end;
 
+    local procedure SetPSLongTextLineSysIdFilter(var PSLongtextSystemId: Record "lbt clPSLongtextSystemId"; Position: Enum "lbt Position"; OtherDocType: Integer; RecRef: RecordRef; insertIfEmpty: Boolean)
+    begin
+        PSLongtextSystemId.SetRange("Table Id", RecRef.Number);
+        PSLongtextSystemId.SetRange("Source System Id", RecRef.Field(RecRef.SystemIdNo).Value);
+        PSLongtextSystemId.SetRange("Document Type", OtherDocType);
+        PSLongtextSystemId.SetRange(Position, Position);
+        if not InsertIfEmpty then
+            exit;
+        if PSLongtextSystemId.FindFirst() then
+            exit;
+        PSLongtextSystemId.Init();
+        PSLongtextSystemId."Table ID" := RecRef.Number;
+        PSLongtextSystemId."Source System Id" := RecRef.Field(RecRef.SystemIdNo).Value;
+        PSLongtextSystemId.Position := Position;
+        PSLongtextSystemId."Document Type" := OtherDocType;
+        PSLongtextSystemId.Insert(true);
+        Commit(); //TODO: explain Commit
+    end;
+
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"lbt Longtext Mgt.", 'onbeforeCopyLongText', '', true, true)]
     local procedure lbtLongtextMgt_onbeforeCopyLongText(Sourcerecref: RecordRef; TargetRecRef: RecordRef; var handled: Boolean)
     var
@@ -355,12 +437,56 @@ codeunit 5272729 "lbt cl EditorHelper"
     begin
         SourceType := isserviceTable(Sourcerecref.Number, source_Fields);
         TargetType := isserviceTable(TargetRecRef.Number, target_fields);
-        if (TargetType = 0) and (SourceType = 0) then
+        if (TargetType = 0) or (SourceType = 0) then
             exit;
+
         OpenMemo(SourceMemo, SourceType);
         OpenMemo(TargetMemo, TargetType);
 
         SetMemoFilters(Sourcerecref, TargetRecRef, SourceMemo, source_Fields);
+
+        if SourceMemo.FindSet() then
+            repeat
+                InitMemoFields(TargetRecRef, TargetMemo, target_fields);
+                CopyMemoFields(TargetMemo, SourceMemo);
+                TargetMemo.Insert();
+            until SourceMemo.Next() = 0;
+
+        handled := true;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"lbt Longtext Mgt.", 'onbeforeCopyLongText', '', true, true)]
+    local procedure lbtLongtextMgt_onbeforeCopyLongTextJob(Sourcerecref: RecordRef; TargetRecRef: RecordRef; var handled: Boolean)
+    var
+        TargetMemo: RecordRef;
+        SourceMemo: RecordRef;
+
+        SourceMemoField: FieldRef;
+        TargetType: Integer;
+        SourceType: Integer;
+        //source_Fields: array[10] of Integer;
+        target_fields: array[10] of Integer;
+
+    begin
+        if Sourcerecref.Number <> Database::Job then
+            exit;
+        SourceType := 5;//isserviceTable(Sourcerecref.Number, source_Fields);
+
+        if TargetRecRef.Number = database::"Sales Header" then begin
+            TargetType := 1;
+            target_fields[1] := 1;
+            target_fields[2] := 3;
+        end;
+
+        OpenMemo(SourceMemo, SourceType);
+        OpenMemo(TargetMemo, TargetType);
+        //SetMemoFilters(Sourcerecref, TargetRecRef, SourceMemo, source_Fields);
+        SourceMemoField := SourceMemo.field(1);
+        SourceMemoField.SetRange(Sourcerecref.Number);
+        SourceMemoField := SourceMemo.field(2);
+        SourceMemoField.SetRange(Sourcerecref.Field(Sourcerecref.SystemIdNo).Value);
+        SourceMemoField := SourceMemo.Field(3);
+        SourceMemoField.SetRange(Enum::"Sales Document Type"::Invoice);
 
 
         if SourceMemo.FindSet() then
@@ -502,6 +628,8 @@ codeunit 5272729 "lbt cl EditorHelper"
                 SourceMemo.Open(database::"lbt PS Longtext Line");
             3, 4:
                 SourceMemo.Open(database::"lbt Posted PS Longtext Line");
+            5:
+                SourceMemo.Open(database::"lbt clPSLongtextSystemId");
         end;
     end;
 
@@ -522,6 +650,7 @@ codeunit 5272729 "lbt cl EditorHelper"
         TempBlob: Codeunit "Temp Blob";
         SourceMemoField: FieldRef;
         TargetMemoField: FieldRef;
+
     begin
         TargetMemo.Field(4).Value := SourceMemo.Field(4).Value;
         TargetMemo.Field(6).Value := SourceMemo.Field(6).Value;
@@ -555,6 +684,7 @@ codeunit 5272729 "lbt cl EditorHelper"
     local procedure AssignFieldNos(var RecRef: RecordRef; var DocNo_FieldNo: Integer; var DocType_FieldNo: Integer; var LineNo_FieldNo: Integer)
     var
         Field_Nos: array[10] of Integer;
+        handled: Boolean;
     begin
         DocType_FieldNo := 1;
         DocNo_FieldNo := 3;
@@ -565,6 +695,7 @@ codeunit 5272729 "lbt cl EditorHelper"
             DocNo_FieldNo := Field_Nos[2];
             LineNo_FieldNo := Field_Nos[3];
         end;
+        OnAfterAssignFieldNos(RecRef.Number, DocType_FieldNo, DocNo_FieldNo, LineNo_FieldNo, handled);
     end;
 
     local procedure EditLongtext(var RecRef: RecordRef; Position: Enum "lbt Position"; OtherDocType: Integer)
@@ -597,4 +728,24 @@ codeunit 5272729 "lbt cl EditorHelper"
             if ArchivePSLongtextLn.Delete(true) then;
     end;
 
+    local procedure EditLongtextSysId(var RecRef: RecordRef; Position: Enum "lbt Position"; OtherDocType: Integer)
+    var
+        PSLongtextSysId: Record "lbt clPSLongtextSystemId";
+    begin
+        SetPSLongTextLineSysIdFilter(PSLongtextSysId, Position, OtherDocType, RecRef, true);
+        PSLongtextSysId.EditData();
+        if not PSLongtextSysId."Editor Content".HasValue() then
+            if PSLongtextSysId.Delete(true) then;
+    end;
+
+
+    [IntegrationEvent(false, false)]
+    local procedure OnAfterGetType(TableId: Integer; var handled: Boolean; var Result: Integer)
+    begin
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnAfterAssignFieldNos(Number: Integer; var DocType_FieldNo: Integer; var DocNo_FieldNo: Integer; var LineNo_FieldNo: Integer; var handled: Boolean)
+    begin
+    end;
 }

@@ -604,5 +604,16 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LongtextMgt.CopyLongtext(SalesHeader, SalesCrMemoHeader);
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Job Create-Invoice", 'OnAfterCreateSalesLine', '', false, false)]
+    local procedure JobCreateInvoice_OnAfterCreateSalesLine(SalesHeader: Record "Sales Header"; Job: Record Job; var JobPlanningLine: Record "Job Planning Line"; var SalesLine: Record "Sales Line")
+    begin
+        LongtextMgt.CopyLongtext(JobPlanningLine, SalesLine);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Job Create-Invoice", 'OnCreateSalesHeaderOnBeforeUpdateSalesHeader', '', false, false)]
+    local procedure JobCreateInvoice_OnAfterCreateSalesInvoiceLine(SalesHeader: Record "Sales Header"; var Job: Record Job)
+    begin
+        LongtextMgt.CopyLongtext(Job, SalesHeader);
+    end;
 }
 

@@ -1,14 +1,13 @@
-pageextension 5272823 "lbt cl ServiceContractQuote" extends "Service Contract Quote"
+pageextension 5272835 "lbt cl StandardSalesCodes" extends "Standard Sales Codes"
 {
     layout
     {
-        addafter(ServContractLines)
+        addafter(Control1)
         {
             group(lbtEditor)
             {
                 Caption = 'Longtext';
-
-                field("lbt Editor Header"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorHeader, rec."Contract Type"))
+                field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader))
                 {
                     ApplicationArea = all;
                     Editable = false;
@@ -16,10 +15,10 @@ pageextension 5272823 "lbt cl ServiceContractQuote" extends "Service Contract Qu
                     caption = 'Editor Header';
                     trigger OnAssistEdit()
                     begin
-                        rec.lbtEditData(enum::"lbt Position"::EditorHeader, rec."Contract Type");
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorHeader);
                     end;
                 }
-                field("lbt Editor Footer"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorFooter, rec."Contract Type"))
+                field("lbt Editor Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter))
                 {
                     ApplicationArea = all;
                     Editable = false;
@@ -27,7 +26,7 @@ pageextension 5272823 "lbt cl ServiceContractQuote" extends "Service Contract Qu
                     caption = 'Editor Footer';
                     trigger OnAssistEdit()
                     begin
-                        rec.lbtEditData(enum::"lbt Position"::Editorfooter, rec."Contract Type");
+                        Rec.lbtEditData(Enum::"lbt Position"::Editorfooter);
                     end;
                 }
             }
