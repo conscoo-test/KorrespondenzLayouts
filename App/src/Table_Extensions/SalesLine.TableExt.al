@@ -104,6 +104,11 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
             Caption = 'lbt Printoption StyleExpr';
             DataClassification = CustomerContent;
         }
+        field(5272728; "lbt from Standard Sales Line"; Guid)
+        {
+            Caption = 'From Standard Sales Line';
+            DataClassification = CustomerContent;
+        }
     }
 
     trigger OnDelete()

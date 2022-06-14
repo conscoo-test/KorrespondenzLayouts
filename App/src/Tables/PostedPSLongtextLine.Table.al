@@ -98,14 +98,24 @@ table 5272721 "lbt Posted PS Longtext Line"
         data: Text;
     begin
         data := ReadContentData(false);
+
         if not editorhelper.TextEditor(data, true) then
             exit;
         if (data = '<p><br></p>') or (data = '<p></p>') then
-            delete(true)
+            Delete(true)
         else begin
             WriteContentData(data);
-            modify();
+            Modify();
         end;
+    end;
+
+    procedure ShowData()
+    var
+        EditorHelper: Codeunit "lbt cl EditorHelper";
+        data: Text;
+    begin
+        data := ReadContentData(false);
+        editorhelper.ShowTextEditor(data, true);
 
     end;
 

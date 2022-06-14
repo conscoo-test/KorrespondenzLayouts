@@ -283,6 +283,17 @@ table 5272720 "lbt PS Longtext Line"
 
     end;
 
+    procedure ShowData()
+    var
+        EditorHelper: Codeunit "lbt cl EditorHelper";
+        data: Text;
+    begin
+        data := ReadContentData(false);
+        editorhelper.ShowTextEditor(data, true);
+
+    end;
+
+
     procedure ReadContentData(show: Boolean) Result: Text
     var
         EditorPreview: Page "lbt cl Editor Preview";

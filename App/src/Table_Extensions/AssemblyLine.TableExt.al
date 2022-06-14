@@ -19,6 +19,6 @@ tableextension 5272761 "lbt cl AssemblyLine" extends "Assembly Line"
 
     procedure lbtGetPrintData(Position: enum "lbt Position"; docType: Integer): Text
     begin
-        //exit(EditorHelper.getPrintData(Rec, Rec.SystemId,Position, docType));
+        exit(EditorHelper.getPrintData(Rec, Position, docType));
     end;
 }
