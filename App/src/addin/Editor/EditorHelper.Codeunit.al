@@ -209,8 +209,11 @@ codeunit 5272729 "lbt cl EditorHelper"
     end;
 
     procedure editData(vari: Variant; Position: Enum "lbt Position")
+    var
+        RecRef: RecordRef;
     begin
-        editData(vari, Position, 0, true);
+        RecRef.GetTable(vari);
+        editData(RecRef, Position, 0, true);
     end;
 
     procedure editData(vari: Variant; Position: Enum "lbt Position"; OtherDocType: Integer)
