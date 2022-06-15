@@ -360,14 +360,16 @@ codeunit 5272729 "lbt cl EditorHelper"
         DocNo_FieldNo: Integer;
         LineNo_FieldNo: Integer;
     begin
-        DocNo_FieldNo := 3;
-        if RecRef.Number in [37, 39, 111, 113, 115, 121, 123, 125, 5108, 5110] then
-            LineNo_FieldNo := 4;
+        //if RecRef.Number in [37, 39, 111, 113, 115, 121, 123, 125, 5108, 5110] then
+        //    LineNo_FieldNo := 4;
 
-        if isserviceTable(RecRef.Number, Field_Nos) <> 0 then begin
-            DocNo_FieldNo := Field_Nos[2];
-            LineNo_FieldNo := Field_Nos[3];
-        end;
+        //if isserviceTable(RecRef.Number, Field_Nos) <> 0 then begin
+        //    DocNo_FieldNo := Field_Nos[2];
+        //    LineNo_FieldNo := Field_Nos[3];
+        //end;
+        GetKeyFields(RecRef.Number, field_Nos);
+        DocNo_FieldNo := field_nos[2];
+        LineNo_FieldNo := Field_Nos[3];
 
         PstdPSLongtextLn.SetRange("Table ID", RecRef.Number);
         PstdPSLongtextLn.SetRange("Document No.", RecRef.Field(DocNo_FieldNo).Value);
@@ -451,13 +453,15 @@ codeunit 5272729 "lbt cl EditorHelper"
         TargetType: Integer;
         SourceType: Integer;
         source_Fields: array[10] of Integer;
-        target_fields: array[10] of Integer;
+        target_Fields: array[10] of Integer;
 
     begin
-        SourceType := isserviceTable(Sourcerecref.Number, source_Fields);
-        TargetType := isserviceTable(TargetRecRef.Number, target_fields);
+        SourceType := isserviceTable(Sourcerecref.Number);
+        TargetType := isserviceTable(TargetRecRef.Number);
         if (TargetType = 0) or (SourceType = 0) then
             exit;
+        GetKeyFields(Sourcerecref.Number, source_Fields);
+        GetKeyFields(Sourcerecref.Number, target_Fields);
 
         OpenMemo(SourceMemo, SourceType);
         OpenMemo(TargetMemo, TargetType);
@@ -466,7 +470,7 @@ codeunit 5272729 "lbt cl EditorHelper"
 
         if SourceMemo.FindSet() then
             repeat
-                InitMemoFields(TargetRecRef, TargetMemo, target_fields);
+                InitMemoFields(TargetRecRef, TargetMemo, target_Fields);
                 CopyMemoFields(TargetMemo, SourceMemo);
                 TargetMemo.Insert();
             until SourceMemo.Next() = 0;
@@ -475,7 +479,7 @@ codeunit 5272729 "lbt cl EditorHelper"
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"lbt Longtext Mgt.", 'onbeforeCopyLongText', '', true, true)]
-    local procedure lbtLongtextMgt_onbeforeCopyLongTextJob(Sourcerecref: RecordRef; TargetRecRef: RecordRef; var handled: Boolean)
+    local procedure lbtLongtextMgt_onbeforeCopyLongTextJob(SourceRecRef: RecordRef; TargetRecRef: RecordRef; var handled: Boolean)
     var
         TargetMemo: RecordRef;
         SourceMemo: RecordRef;
@@ -487,36 +491,38 @@ codeunit 5272729 "lbt cl EditorHelper"
         target_fields: array[10] of Integer;
 
     begin
-        sourcetype := GetType(Sourcerecref.number);
+        SourceType := GetType(SourceRecRef.Number);
         TargetType := GetType(TargetRecRef.Number);
+
         if SourceType <> 5 then
             exit;
 
-        case TargetRecRef.Number of
-            database::"Sales Header":
-                begin
-                    target_fields[1] := 1;
-                    target_fields[2] := 3;
-                end;
-            database::"Sales line":
-                begin
-                    target_fields[1] := 1;
-                    target_fields[2] := 3;
-                    target_fields[3] := 4;
-                end;
-        end;
+        GetKeyFields(TargetRecRef.Number, target_fields);
+        // case TargetRecRef.Number of
+        //     database::"Sales Header", Database::"Purchase Header":
+        //         begin
+        //             target_fields[1] := 1;
+        //             target_fields[2] := 3;
+        //         end;
+        //     database::"Sales line", Database::"Purchase Line":
+        //         begin
+        //             target_fields[1] := 1;
+        //             target_fields[2] := 3;
+        //             target_fields[3] := 4;
+        //         end;
+        // end;
 
         OpenMemo(SourceMemo, SourceType);
         OpenMemo(TargetMemo, TargetType);
         //SetMemoFilters(Sourcerecref, TargetRecRef, SourceMemo, source_Fields);
-        SourceMemoField := SourceMemo.field(1);
-        SourceMemoField.SetRange(Sourcerecref.Number);
-        SourceMemoField := SourceMemo.field(2);
-        SourceMemoField.SetRange(Sourcerecref.Field(Sourcerecref.SystemIdNo).Value);
-        SourceMemoField := SourceMemo.Field(3);
-        if Sourcerecref.number = database::job then
-            SourceMemoField.SetRange(Enum::"Sales Document Type"::Invoice);
 
+        SourceMemoField := SourceMemo.Field(1);
+        SourceMemoField.SetRange(SourceRecRef.Number);
+        SourceMemoField := SourceMemo.Field(2);
+        SourceMemoField.SetRange(SourceRecRef.Field(SourceRecRef.SystemIdNo).Value);
+        SourceMemoField := SourceMemo.Field(3);
+        if SourceRecRef.Number = database::job then
+            SourceMemoField.SetRange(Enum::"Sales Document Type"::Invoice);
 
         if SourceMemo.FindSet() then
             repeat
@@ -528,66 +534,10 @@ codeunit 5272729 "lbt cl EditorHelper"
         handled := true;
     end;
 
-    local procedure isserviceTable(TableId: Integer; var field_No: array[10] of Integer) TableType: Integer
+    local procedure isserviceTable(TableId: Integer) TableType: Integer
     begin
         TableType := GetServiceTableType(TableId);
-        case TableId of
-            database::"Service item Line":
-                begin
-                    field_No[1] := 43;
-                    field_No[2] := 1;
-                    field_No[3] := 2;
-                end;
-            database::"Service Shipment Item Line":
-                begin
-                    field_No[1] := 0;
-                    field_No[2] := 1;
-                    field_No[3] := 2;
-                end;
-            database::"Service Line":
-                begin
-                    field_No[1] := 1;
-                    field_No[2] := 3;
-                    field_No[3] := 4;
-                end;
-            database::"Service shipment Line", database::"Service Cr.Memo Line", database::"Service Invoice Line":
-                begin
-                    field_No[1] := 0;
-                    field_No[2] := 3;
-                    field_No[3] := 4;
-                end;
-            database::"Service header":
-                begin
-                    field_No[1] := 1;
-                    field_No[2] := 3;
-                    field_No[3] := 0;
-                end;
-            database::"Service shipment header", database::"Service Cr.Memo header", database::"Service Invoice header":
-                begin
-                    field_No[1] := 0;
-                    field_No[2] := 3;
-                    field_No[3] := 0;
-                end;
-            database::"Service Contract Header":
-                begin
-                    field_No[1] := 2;
-                    field_No[2] := 1;
-                    field_No[3] := 0;
-                end;
-            database::"Service Contract line":
-                begin
-                    field_No[1] := 1;
-                    field_No[2] := 2;
-                    field_No[3] := 3;
-                end;
-            database::"Service Contract template":
-                begin
-                    field_No[1] := 0;
-                    field_No[2] := 1;
-                    field_No[3] := 0;
-                end;
 
-        end;
     end;
 
     local procedure GetServiceTableType(TableId: Integer) TableType: Integer
@@ -697,17 +647,24 @@ codeunit 5272729 "lbt cl EditorHelper"
     var
         Field_Nos: array[10] of Integer;
     begin
-        AssignFieldNos(RecRef, DocNo_FieldNo, DocType_FieldNo, LineNo_FieldNo);
+        GetKeyFields(RecRef.Number, Field_Nos);
+        DocType_FieldNo := Field_Nos[1];
+        DocNo_FieldNo := Field_Nos[2];
+        LineNo_FieldNo := Field_Nos[3];
+        docOccur_FieldNo := Field_Nos[4];
+        version_FieldNo := Field_Nos[5];
 
-        if RecRef.Number in [5107, 5108, 5109, 5110] then begin
-            docOccur_FieldNo := 5048;
-            version_FieldNo := 5047;
-        end;
+        // AssignFieldNos(RecRef, DocNo_FieldNo, DocType_FieldNo, LineNo_FieldNo);
 
-        if isserviceTable(RecRef.Number, Field_Nos) <> 0 then begin
-            docOccur_FieldNo := Field_Nos[4];
-            version_FieldNo := Field_Nos[5];
-        end;
+        // if RecRef.Number in [5107, 5108, 5109, 5110] then begin
+        //     docOccur_FieldNo := 5048;
+        //     version_FieldNo := 5047;
+        // end;
+
+        // if isserviceTable(RecRef.Number, Field_Nos) <> 0 then begin
+        //     docOccur_FieldNo := Field_Nos[4];
+        //     version_FieldNo := Field_Nos[5];
+        // end;
     end;
 
     local procedure AssignFieldNos(var RecRef: RecordRef; var DocNo_FieldNo: Integer; var DocType_FieldNo: Integer; var LineNo_FieldNo: Integer)
@@ -715,15 +672,17 @@ codeunit 5272729 "lbt cl EditorHelper"
         Field_Nos: array[10] of Integer;
         handled: Boolean;
     begin
-        DocType_FieldNo := 1;
-        DocNo_FieldNo := 3;
-        if RecRef.Number in [37, 39, 111, 113, 115, 121, 123, 125, 5108, 5110] then
-            LineNo_FieldNo := 4;
-        if isserviceTable(RecRef.Number, Field_Nos) <> 0 then begin
-            DocType_FieldNo := Field_Nos[1];
-            DocNo_FieldNo := Field_Nos[2];
-            LineNo_FieldNo := Field_Nos[3];
-        end;
+        GetKeyFields(RecRef.Number, Field_Nos);
+        DocType_FieldNo := Field_Nos[1];
+        DocNo_FieldNo := Field_Nos[2];
+        LineNo_FieldNo := Field_Nos[3];
+        // if RecRef.Number in [37, 39, 111, 113, 115, 121, 123, 125, 5108, 5110] then
+        //     LineNo_FieldNo := 4;
+        // if isserviceTable(RecRef.Number, Field_Nos) <> 0 then begin
+        //     DocType_FieldNo := Field_Nos[1];
+        //     DocNo_FieldNo := Field_Nos[2];
+        //     LineNo_FieldNo := Field_Nos[3];
+        // end;
         OnAfterAssignFieldNos(RecRef.Number, DocType_FieldNo, DocNo_FieldNo, LineNo_FieldNo, handled);
     end;
 
@@ -771,6 +730,117 @@ codeunit 5272729 "lbt cl EditorHelper"
         end else begin
             PSLongtextSysId.ShowData();
         end;
+    end;
+
+    local procedure GetKeyFields(TableId: Integer; var field_No: array[10] of Integer)
+    var
+        handled: Boolean;
+    begin
+        case TableId of
+            database::"Purchase Header", Database::"Sales Header":
+                begin
+                    field_No[1] := 1;
+                    field_No[2] := 3;
+                    field_No[3] := 0;
+                end;
+            database::"Purchase Line", Database::"Sales Line":
+                begin
+                    field_No[1] := 1;
+                    field_No[2] := 3;
+                    field_No[3] := 4;
+                end;
+            110, 112, 114, 120, 122, 124:
+                begin
+                    field_No[1] := 0;
+                    field_No[2] := 3;
+                    field_No[3] := 0;
+                end;
+            5108, 5110:
+                begin
+                    field_No[1] := 1;
+                    field_No[2] := 3;
+                    field_No[3] := 0;
+                    Field_No[4] := 5048;
+                    Field_No[5] := 5047;
+                end;
+            111, 113, 115, 121, 123, 125:
+                begin
+
+                    field_No[1] := 0;
+                    field_No[2] := 3;
+                    field_No[3] := 4;
+
+                end;
+            5109, 5111:
+                begin
+                    field_No[1] := 1;
+                    field_No[2] := 3;
+                    field_No[3] := 4;
+                    Field_No[4] := 5048;
+                    Field_No[5] := 5047;
+                end;
+
+            database::"Service item Line":
+                begin
+                    field_No[1] := 43;
+                    field_No[2] := 1;
+                    field_No[3] := 2;
+                end;
+            database::"Service Shipment Item Line":
+                begin
+                    field_No[1] := 0;
+                    field_No[2] := 1;
+                    field_No[3] := 2;
+                end;
+            database::"Service Line":
+                begin
+                    field_No[1] := 1;
+                    field_No[2] := 3;
+                    field_No[3] := 4;
+                end;
+            database::"Service shipment Line", database::"Service Cr.Memo Line", database::"Service Invoice Line":
+                begin
+                    field_No[1] := 0;
+                    field_No[2] := 3;
+                    field_No[3] := 4;
+                end;
+            database::"Service header":
+                begin
+                    field_No[1] := 1;
+                    field_No[2] := 3;
+                    field_No[3] := 0;
+                end;
+            database::"Service shipment header", database::"Service Cr.Memo header", database::"Service Invoice header":
+                begin
+                    field_No[1] := 0;
+                    field_No[2] := 3;
+                    field_No[3] := 0;
+                end;
+            database::"Service Contract Header":
+                begin
+                    field_No[1] := 2;
+                    field_No[2] := 1;
+                    field_No[3] := 0;
+                end;
+            database::"Service Contract line":
+                begin
+                    field_No[1] := 1;
+                    field_No[2] := 2;
+                    field_No[3] := 3;
+                end;
+            database::"Service Contract template":
+                begin
+                    field_No[1] := 0;
+                    field_No[2] := 1;
+                    field_No[3] := 0;
+                end;
+        end;
+        onAfterGetKeyFields(TableId, field_No, handled)
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure onAfterGetKeyFields(TableId: Integer; var field_No: array[10] of Integer; handled: Boolean)
+    begin
     end;
 
 
