@@ -456,8 +456,11 @@ codeunit 5272729 "lbt cl EditorHelper"
         target_Fields: array[10] of Integer;
 
     begin
-        SourceType := isserviceTable(Sourcerecref.Number);
-        TargetType := isserviceTable(TargetRecRef.Number);
+        //SourceType := isserviceTable(Sourcerecref.Number);
+        //TargetType := isserviceTable(TargetRecRef.Number);
+        SourceType := GetType(SourceRecRef.Number);
+        TargetType := GetType(TargetRecRef.Number);
+
         if (TargetType = 0) or (SourceType = 0) then
             exit;
         GetKeyFields(Sourcerecref.Number, source_Fields);
@@ -470,7 +473,7 @@ codeunit 5272729 "lbt cl EditorHelper"
 
         if SourceMemo.FindSet() then
             repeat
-                InitMemoFields(TargetRecRef, TargetMemo, target_Fields);
+                InitMemoFields(TargetRecRef, TargetMemo, target_Fields, TargetType);
                 CopyMemoFields(TargetMemo, SourceMemo);
                 TargetMemo.Insert();
             until SourceMemo.Next() = 0;
@@ -526,7 +529,7 @@ codeunit 5272729 "lbt cl EditorHelper"
 
         if SourceMemo.FindSet() then
             repeat
-                InitMemoFields(TargetRecRef, TargetMemo, target_fields);
+                InitMemoFields(TargetRecRef, TargetMemo, target_fields, TargetType);
                 CopyMemoFields(TargetMemo, SourceMemo);
                 TargetMemo.Insert();
             until SourceMemo.Next() = 0;
@@ -612,16 +615,21 @@ codeunit 5272729 "lbt cl EditorHelper"
         end;
     end;
 
-    local procedure InitMemoFields(var RecRef: RecordRef; var Memo: RecordRef; KeyFields: array[10] of Integer)
+    local procedure InitMemoFields(var RecRef: RecordRef; var Memo: RecordRef; KeyFields: array[10] of Integer; TargetType: Integer)
     begin
         Memo.Init();
         Memo.Field(1).Value := RecRef.Number;
-        if KeyFields[1] <> 0 then
-            Memo.Field(2).Value := RecRef.Field(KeyFields[1]).Value;
-        if KeyFields[2] <> 0 then
-            Memo.Field(3).Value := RecRef.Field(KeyFields[2]).Value;
-        if KeyFields[3] <> 0 then
-            Memo.Field(5).Value := RecRef.Field(KeyFields[3]).Value;
+        if TargetType = 5 then begin
+            Memo.Field(2).Value := RecRef.Field(RecRef.SystemIdNo).Value;
+        end else begin
+
+            if KeyFields[1] <> 0 then
+                Memo.Field(2).Value := RecRef.Field(KeyFields[1]).Value;
+            if KeyFields[2] <> 0 then
+                Memo.Field(3).Value := RecRef.Field(KeyFields[2]).Value;
+            if KeyFields[3] <> 0 then
+                Memo.Field(5).Value := RecRef.Field(KeyFields[3]).Value;
+        end;
     end;
 
     local procedure CopyMemoFields(var TargetMemo: RecordRef; var SourceMemo: RecordRef)
