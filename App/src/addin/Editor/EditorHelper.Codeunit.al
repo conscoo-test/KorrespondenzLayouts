@@ -461,13 +461,15 @@ codeunit 5272729 "lbt cl EditorHelper"
     begin
         //SourceType := isserviceTable(Sourcerecref.Number);
         //TargetType := isserviceTable(TargetRecRef.Number);
+        if handled then
+            exit;
         SourceType := GetType(SourceRecRef.Number);
         TargetType := GetType(TargetRecRef.Number);
 
         if (TargetType = 0) or (SourceType = 0) then
             exit;
         GetKeyFields(Sourcerecref.Number, source_Fields);
-        GetKeyFields(Sourcerecref.Number, target_Fields);
+        GetKeyFields(TargetRecRef.Number, target_Fields);
 
         OpenMemo(SourceMemo, SourceType);
         OpenMemo(TargetMemo, TargetType);
@@ -497,6 +499,8 @@ codeunit 5272729 "lbt cl EditorHelper"
         target_fields: array[10] of Integer;
 
     begin
+        if handled then
+            exit;
         SourceType := GetType(SourceRecRef.Number);
         TargetType := GetType(TargetRecRef.Number);
 
