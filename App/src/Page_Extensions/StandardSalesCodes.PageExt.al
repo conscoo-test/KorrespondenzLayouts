@@ -1,8 +1,8 @@
-pageextension 5272835 "lbt cl StandardSalesCodes" extends "Standard Sales Codes"
+pageextension 5272835 "lbt cl StandardSalesCodes" extends "Standard Sales Code Card"
 {
     layout
     {
-        addafter(Control1)
+        addafter(StdSalesLines)
         {
             group(lbtEditor)
             {
