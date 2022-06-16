@@ -484,8 +484,6 @@ codeunit 5272729 "lbt cl EditorHelper"
                 TargetMemo.Insert();
             until SourceMemo.Next() = 0;
 
-        PstdPSLongtextLn.SetRange("Table ID", 124);
-        PstdPSLongtextLn.findlast();
         handled := true;
     end;
 
@@ -875,19 +873,5 @@ codeunit 5272729 "lbt cl EditorHelper"
     begin
     end;
 
-    [EventSubscriber(ObjectType::Table, Database::"lbt Posted PS Longtext Line", 'OnAfterInsertEvent', '', true, true)]
-    local procedure MyProcedurex(var Rec: Record "lbt Posted PS Longtext Line")
-    var
-        i: integer;
-    begin
-        i += 1;
-    end;
 
-    [EventSubscriber(ObjectType::Table, Database::"lbt Posted PS Longtext Line", 'OnAfterModifyEvent', '', true, true)]
-    local procedure MyProcedurexx(var Rec: Record "lbt Posted PS Longtext Line")
-    var
-        i: integer;
-    begin
-        i += 1;
-    end;
 }
