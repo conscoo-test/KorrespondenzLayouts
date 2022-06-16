@@ -148,7 +148,7 @@ codeunit 5272729 "lbt cl EditorHelper"
 
     procedure hasEditorValue(vari: Variant; Position: Enum "lbt Position") Result: Boolean
     begin
-        hasEditorValue(vari, Position, 0);
+        Result := hasEditorValue(vari, Position, 0);
     end;
 
     procedure hasEditorValue(vari: Variant; Position: Enum "lbt Position"; OtherDocType: Integer) Result: Boolean
@@ -457,6 +457,7 @@ codeunit 5272729 "lbt cl EditorHelper"
         SourceType: Integer;
         source_Fields: array[10] of Integer;
         target_Fields: array[10] of Integer;
+        PstdPSLongtextLn: Record "lbt Posted PS Longtext Line";
 
     begin
         //SourceType := isserviceTable(Sourcerecref.Number);
@@ -483,6 +484,8 @@ codeunit 5272729 "lbt cl EditorHelper"
                 TargetMemo.Insert();
             until SourceMemo.Next() = 0;
 
+        PstdPSLongtextLn.SetRange("Table ID", 124);
+        PstdPSLongtextLn.findlast();
         handled := true;
     end;
 
@@ -613,9 +616,9 @@ codeunit 5272729 "lbt cl EditorHelper"
     local procedure OpenMemo(var SourceMemo: RecordRef; SourceType: Integer)
     begin
         case SourceType of
-            1, 2:
+            1:
                 SourceMemo.Open(database::"lbt PS Longtext Line");
-            3, 4:
+            2:
                 SourceMemo.Open(database::"lbt Posted PS Longtext Line");
             5:
                 SourceMemo.Open(database::"lbt clPSLongtextSystemId");
@@ -635,7 +638,10 @@ codeunit 5272729 "lbt cl EditorHelper"
             if KeyFields[2] <> 0 then
                 Memo.Field(3).Value := RecRef.Field(KeyFields[2]).Value;
             if KeyFields[3] <> 0 then
-                Memo.Field(5).Value := RecRef.Field(KeyFields[3]).Value;
+                Memo.Field(5).Value := RecRef.Field(KeyFields[3]).Value
+            else
+                Memo.Field(5).Value := 0;
+
         end;
     end;
 
@@ -868,4 +874,5 @@ codeunit 5272729 "lbt cl EditorHelper"
     local procedure OnAfterAssignFieldNos(Number: Integer; var DocType_FieldNo: Integer; var DocNo_FieldNo: Integer; var LineNo_FieldNo: Integer; var handled: Boolean)
     begin
     end;
+
 }
