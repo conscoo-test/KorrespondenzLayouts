@@ -1,16 +1,5 @@
-tableextension 5272738 "lbt Purch. Rcpt. Header" extends "Purch. Rcpt. Header"
+tableextension 5272764 "lbt Purch. Cr.Memo. Header" extends "Purch. Cr. Memo Hdr."
 {
-    fields
-    {
-    }
-    trigger OnInsert()
-    var
-        PurchRcptLine: Record "Purch. Rcpt. Line";
-        LeBitCorrespDocSingleInst: Codeunit "lbt Corresp. Doc. SingleInst";
-    begin
-        LeBitCorrespDocSingleInst.CopyLongTextForPostDropOrderShipment(Rec, PurchRcptLine, 1, 0);
-    end;
-
 
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";

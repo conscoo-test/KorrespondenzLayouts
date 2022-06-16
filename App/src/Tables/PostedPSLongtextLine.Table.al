@@ -40,6 +40,7 @@ table 5272721 "lbt Posted PS Longtext Line"
         field(5; "Document Line No."; Integer)
         {
             Caption = 'Document Line No.';
+            InitValue = 0;
             //This property is currently not supported
             //TestTableRelation = false;
             //The property 'ValidateTableRelation' can only be set if the property 'TableRelation' is set
@@ -49,6 +50,7 @@ table 5272721 "lbt Posted PS Longtext Line"
         field(6; "Line No."; Integer)
         {
             Caption = 'Line No.';
+            InitValue = 0;
             DataClassification = CustomerContent;
         }
         field(10; Type; Option)
