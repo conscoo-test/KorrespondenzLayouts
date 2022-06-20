@@ -604,5 +604,43 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LongtextMgt.CopyLongtext(SalesHeader, SalesCrMemoHeader);
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Job Create-Invoice", 'OnAfterCreateSalesLine', '', false, false)]
+    local procedure JobCreateInvoice_OnAfterCreateSalesLine(SalesHeader: Record "Sales Header"; Job: Record Job; var JobPlanningLine: Record "Job Planning Line"; var SalesLine: Record "Sales Line")
+    begin
+        LongtextMgt.CopyLongtext(JobPlanningLine, SalesLine);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Job Create-Invoice", 'OnCreateSalesHeaderOnBeforeUpdateSalesHeader', '', false, false)]
+    local procedure JobCreateInvoice_OnAfterCreateSalesInvoiceLine(SalesHeader: Record "Sales Header"; var Job: Record Job)
+    begin
+        LongtextMgt.CopyLongtext(Job, SalesHeader);
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Standard Customer Sales Code", 'OnAfterCreateSalesInvoice', '', false, false)]
+    local procedure StandardCustomerSalesCode_OnAfterCreateSalesInvoice(StandardCustomerSalesCode: Record "Standard Customer Sales Code"; var SalesHeader: Record "Sales Header")
+    begin
+        LongtextMgt.CopyLongtext(StandardCustomerSalesCode, SalesHeader);
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Standard Customer Sales Code", 'OnBeforeApplyStdCodesToSalesLines', '', false, false)]
+    local procedure StandardCustomerSalesCode_OnBeforeApplyStdCodesToSalesLines(var SalesLine: Record "Sales Line"; StdSalesLine: Record "Standard Sales Line")
+    begin
+        SalesLine."lbt from Standard Sales Line" := StdSalesLine.SystemId;
+    end;
+
+
+    [EventSubscriber(ObjectType::Table, Database::"Standard Customer Sales Code", 'OnAfterApplyStdCodesToSalesLinesLoop', '', false, false)]
+    local procedure StandardCustomerSalesCode_OnAfterApplyStdCodesToSalesLinesLoop(var SalesLine: Record "Sales Line"; StdSalesCode: Record "Standard Sales Code")
+    var
+        StdSalesLn: Record "Standard Sales Line";
+    begin
+        if SalesLine.FindSet() then
+            repeat
+                if not SalesLine.lbtHasEditorValue(SalesLine."Document Type".AsInteger()) then begin
+                    StdSalesLn.GetBySystemId(SalesLine."lbt from Standard Sales Line");
+                    LongtextMgt.CopyLongtext(StdSalesLn, SalesLine);
+                end;
+            until SalesLine.Next() = 0;
+    end;
 }
 

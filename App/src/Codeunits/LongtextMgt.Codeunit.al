@@ -500,6 +500,12 @@ codeunit 5272723 "lbt Longtext Mgt."
             FRef := LongtextRecordRef.Field(2);
             FRef.SetRange(DocumentType);
         end;
+        if TableID in [Database::job] then begin
+            FRef := RecRef.Field(1);
+            DocumentType := FRef.Value();
+            FRef := LongtextRecordRef.Field(2);
+            FRef.SetRange(DocumentType);
+        end;
 
         // Dokumenten Nr.
         FRef := RecRef.Field(3);

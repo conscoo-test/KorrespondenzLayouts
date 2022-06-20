@@ -2,29 +2,34 @@ pageextension 5272830 "lbt cl ServiceContractTemplate" extends "Service Contract
 {
     layout
     {
-        addlast(General)
+        addafter(General)
         {
-            field("lbt Editor Header"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorHeader))
+            group(lbtEditor)
             {
-                ApplicationArea = all;
-                Editable = false;
-                ToolTip = 'Editor Header';
-                caption = 'Editor Header';
-                trigger OnAssistEdit()
-                begin
-                    rec.lbtEditData(enum::"lbt Position"::EditorHeader);
-                end;
-            }
-            field("lbt Editor Footer"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorFooter))
-            {
-                ApplicationArea = all;
-                Editable = false;
-                ToolTip = 'Editor Footer';
-                caption = 'Editor Footer';
-                trigger OnAssistEdit()
-                begin
-                    rec.lbtEditData(enum::"lbt Position"::Editorfooter);
-                end;
+                Caption = 'Longtext';
+
+                field("lbt Editor Header"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorHeader))
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    ToolTip = 'Editor Header';
+                    caption = 'Editor Header';
+                    trigger OnAssistEdit()
+                    begin
+                        rec.lbtEditData(enum::"lbt Position"::EditorHeader);
+                    end;
+                }
+                field("lbt Editor Footer"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorFooter))
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    ToolTip = 'Editor Footer';
+                    caption = 'Editor Footer';
+                    trigger OnAssistEdit()
+                    begin
+                        rec.lbtEditData(enum::"lbt Position"::Editorfooter);
+                    end;
+                }
             }
         }
     }

@@ -1,28 +1,23 @@
-table 5272721 "lbt Posted PS Longtext Line"
+table 5272727 "lbt clPSLongtextSystemId"
 {
-    // version LBCOR1.00
-
-    Caption = 'Posted Purch/Sales Longtext Line';
-    DrillDownPageID = "lbt Posted PS Longtext Lines";
-    LookupPageID = "lbt Posted PS Longtext Lines";
-    PasteIsValid = false;
+    Caption = 'PSLongtextSystemId';
+    DataClassification = ToBeClassified;
 
     fields
     {
-        field(1; "Table ID"; Integer)
+        field(1; "Table Id"; Integer)
         {
-            Caption = 'Table ID';
-            TableRelation = AllObj."Object ID" where("Object Type" = const(Table));
+            Caption = 'Table Id';
             DataClassification = CustomerContent;
         }
-        field(3; "Document No."; Code[20])
+        field(2; "Source System Id"; Guid)
         {
-            Caption = 'Document No.';
-            NotBlank = true;
-            //This property is currently not supported
-            //TestTableRelation = false;
-            //The property 'ValidateTableRelation' can only be set if the property 'TableRelation' is set
-            //ValidateTableRelation = false;
+            Caption = 'Source System Id';
+            DataClassification = CustomerContent;
+        }
+        field(3; "Document Type"; Enum "Sales Document Type")
+        {
+            Caption = 'Document Type';
             DataClassification = CustomerContent;
         }
         field(4; Position; Enum "lbt Position")
@@ -30,27 +25,9 @@ table 5272721 "lbt Posted PS Longtext Line"
             Caption = 'Position';
             DataClassification = CustomerContent;
         }
-        // field(4; Position; Option)
-        // {
-        //     Caption = 'Position';
-        //     OptionCaption = 'Header,Footer,Longtext,EditorHeader,EditorFooter,EditorLine';
-        //     OptionMembers = Header,Footer,Longtext,EditorHeader,EditorFooter,EditorLine;
-        //     DataClassification = CustomerContent;
-        // }
-        field(5; "Document Line No."; Integer)
-        {
-            Caption = 'Document Line No.';
-            InitValue = 0;
-            //This property is currently not supported
-            //TestTableRelation = false;
-            //The property 'ValidateTableRelation' can only be set if the property 'TableRelation' is set
-            //ValidateTableRelation = false;
-            DataClassification = CustomerContent;
-        }
         field(6; "Line No."; Integer)
         {
             Caption = 'Line No.';
-            InitValue = 0;
             DataClassification = CustomerContent;
         }
         field(10; Type; Option)
@@ -59,11 +36,12 @@ table 5272721 "lbt Posted PS Longtext Line"
             OptionCaption = 'Text,New Page,Text + Line break';
             OptionMembers = Text,"New Page","Text + Line break";
             DataClassification = CustomerContent;
+
         }
         field(11; "No."; Code[20])
         {
             Caption = 'No.';
-            TableRelation = IF (Type = const(Text)) "Standard Text";
+            TableRelation = if (Type = const(Text)) "Standard Text";
             DataClassification = CustomerContent;
         }
         field(12; Description; Text[120])
@@ -71,28 +49,18 @@ table 5272721 "lbt Posted PS Longtext Line"
             Caption = 'Description';
             DataClassification = CustomerContent;
         }
-        field(13; "Text"; BLOB)
-        {
-            Caption = 'Text';
-            DataClassification = CustomerContent;
-        }
-
         field(21; "Editor Content"; Blob)
         {
-            caption = 'Editor Content';
+            Caption = 'Editor Content';
             DataClassification = CustomerContent;
         }
     }
-
     keys
     {
-        key(Key1; "Table ID", "Document No.", Position, "Document Line No.", "Line No.")
+        key(PK; "Table Id", "Source System Id", "Document Type", Position)
         {
+            Clustered = true;
         }
-    }
-
-    fieldgroups
-    {
     }
     procedure EditData()
     var
@@ -100,8 +68,7 @@ table 5272721 "lbt Posted PS Longtext Line"
         data: Text;
     begin
         data := ReadContentData(false);
-
-        if not editorhelper.TextEditor(data, true) then
+        if not EditorHelper.TextEditor(data, true) then
             exit;
         if (data = '<p><br></p>') or (data = '<p></p>') then
             Delete(true)
@@ -109,6 +76,7 @@ table 5272721 "lbt Posted PS Longtext Line"
             WriteContentData(data);
             Modify();
         end;
+
     end;
 
     procedure ShowData()
@@ -121,20 +89,21 @@ table 5272721 "lbt Posted PS Longtext Line"
 
     end;
 
+
     procedure ReadContentData(show: Boolean) Result: Text
     var
         EditorPreview: Page "lbt cl Editor Preview";
         Buffer: Text;
-        is: instream;
+        is: InStream;
     begin
         CalcFields("Editor Content");
-        "editor content".CreateInStream(is, TextEncoding::UTF8);
+        "Editor Content".CreateInStream(is, TextEncoding::UTF8);
         while not is.EOS do begin
             is.Read(Buffer);
             Result += Buffer;
         end;
         if show then begin
-            EditorPreview.SetData(result);
+            EditorPreview.SetData(Result);
             EditorPreview.Run();
         end;
     end;
@@ -145,7 +114,7 @@ table 5272721 "lbt Posted PS Longtext Line"
     begin
         Clear(Rec."Editor Content");
         "Editor Content".CreateOutStream(os, TextEncoding::UTF8);
-        os.write(content);
+        os.Write(content);
     end;
-}
 
+}
