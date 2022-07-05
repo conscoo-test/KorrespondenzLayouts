@@ -31,7 +31,7 @@ pageextension 5272784 "lbt Post. Return Receipt Sub." extends "Posted Return Rec
             }
             field("Lbt Editor"; Rec.lbtHasEditorValue())
             {
-                Caption = ' ', Locked = true;
+                Caption = 'Editor';
                 ApplicationArea = all;
                 Editable = false;
                 ToolTip = 'Editor';

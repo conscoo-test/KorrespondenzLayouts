@@ -28,7 +28,7 @@ pageextension 5272778 "lbt Purch Ret. Order Arc Sub." extends "Purch Return Orde
             }
             field("Lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
-                Caption = ' ', Locked = true;
+                Caption = 'Editor';
                 ApplicationArea = all;
                 Editable = false;
                 ToolTip = 'Editor';

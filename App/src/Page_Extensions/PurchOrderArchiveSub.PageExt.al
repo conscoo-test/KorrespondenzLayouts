@@ -32,7 +32,7 @@ pageextension 5272764 "lbt Purch. Order Archive Sub." extends "Purchase Order Ar
             }
             field("Lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
-                Caption = ' ', Locked = true;
+                Caption = 'Editor';
                 ApplicationArea = all;
                 Editable = false;
                 ToolTip = 'Editor';

@@ -31,7 +31,7 @@ pageextension 5272756 "lbt Blanket Purch. Order Sub." extends "Blanket Purchase 
             }
             field("Lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
-                Caption = ' ', Locked = true;
+                Caption = 'Editor';
                 ApplicationArea = all;
                 Editable = false;
                 ToolTip = 'Editor';

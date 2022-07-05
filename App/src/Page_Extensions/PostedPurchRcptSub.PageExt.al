@@ -31,7 +31,7 @@ pageextension 5272728 "lbt Posted Purch. Rcpt. Sub." extends "Posted Purchase Rc
             }
             field("lbt Editor"; Rec.lbtHasEditorValue())
             {
-                Caption = ' ', Locked = true;
+                Caption = 'Editor';
                 ApplicationArea = all;
                 Editable = false;
                 ToolTip = 'Editor';

@@ -31,7 +31,7 @@ pageextension 5272730 "lbt Posted Purch. Invoice Sub." extends "Posted Purch. In
             }
             field("Lbt Editor"; Rec.lbtHasEditorValue())
             {
-                Caption = ' ', Locked = true;
+                Caption = 'Editor';
                 ApplicationArea = all;
                 Editable = false;
                 ToolTip = 'Editor';
