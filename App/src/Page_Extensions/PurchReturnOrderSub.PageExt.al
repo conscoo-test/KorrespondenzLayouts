@@ -32,7 +32,7 @@ pageextension 5272775 "lbt Purch. Return Order Sub." extends "Purchase Return Or
             }
             field("Lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
-                Caption = ' ', Locked = true;
+                Caption = 'Editor';
                 ApplicationArea = all;
                 Editable = false;
                 ToolTip = 'Editor';

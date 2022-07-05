@@ -31,7 +31,7 @@ pageextension 5272726 "lbt Posted Sales Cr. Memo Sub." extends "Posted Sales Cr.
             }
             field("Lbt Editor"; Rec.lbtHasEditorValue())
             {
-                Caption = ' ', Locked = true;
+                Caption = 'Editor';
                 ApplicationArea = all;
                 Editable = false;
                 ToolTip = 'Editor';

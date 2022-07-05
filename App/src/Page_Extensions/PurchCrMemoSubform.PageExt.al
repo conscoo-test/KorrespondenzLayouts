@@ -31,7 +31,7 @@ pageextension 5272806 "lbt Purch. Cr. Memo Subform" extends "Purch. Cr. Memo Sub
             }
             field("Lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
-                Caption = ' ', Locked = true;
+                Caption = 'Editor';
                 ApplicationArea = all;
                 Editable = false;
                 ToolTip = 'Editor';

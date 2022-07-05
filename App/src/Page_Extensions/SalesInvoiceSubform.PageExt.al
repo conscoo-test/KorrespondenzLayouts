@@ -33,7 +33,7 @@ pageextension 5272749 "lbt Sales Invoice Subform" extends "Sales Invoice Subform
             }
             field("Lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
-                Caption = ' ', Locked = true;
+                Caption = 'Editor';
                 ApplicationArea = all;
                 Editable = false;
                 ToolTip = 'Editor';

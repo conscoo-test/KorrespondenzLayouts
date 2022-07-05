@@ -31,7 +31,7 @@ pageextension 5272781 "lbt Posted Ret. Shipment Sub." extends "Posted Return Shi
             }
             field("Lbt Editor"; Rec.lbtHasEditorValue())
             {
-                Caption = ' ', Locked = true;
+                Caption = 'Editor';
                 ApplicationArea = all;
                 Editable = false;
                 ToolTip = 'Editor';

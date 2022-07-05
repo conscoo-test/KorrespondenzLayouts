@@ -31,7 +31,7 @@ pageextension 5272732 "lbt Post. Purch. Cr. Memo Sub." extends "Posted Purch. Cr
             }
             field("Lbt Editor"; Rec.lbtHasEditorValue())
             {
-                Caption = ' ', Locked = true;
+                Caption = 'Editor';
                 ApplicationArea = all;
                 Editable = false;
                 ToolTip = 'Editor';

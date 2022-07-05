@@ -28,7 +28,7 @@ pageextension 5272769 "lbt Sales Return Ord. Arc Sub." extends "Sales Return Ord
             }
             field("Lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
-                Caption = ' ', Locked = true;
+                Caption = 'Editor';
                 ApplicationArea = all;
                 Editable = false;
                 ToolTip = 'Editor';
