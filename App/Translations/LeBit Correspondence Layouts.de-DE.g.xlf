@@ -5697,6 +5697,30 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl AssemblyOrderSubform - Control lbt Editor - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2242267201 - Control 3671457890 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3219644059">
+          <source>Footer Text</source>
+          <target>Fußtext</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl Cust. Report Selections - Control lbt Editor Footer - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2242267201 - Control 3671457890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3219644059">
+          <source>Footer Text</source>
+          <target>Fußtext</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl Cust. Report Selections - Control lbt Editor Footer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2242267201 - Control 4044143240 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3219644059">
+          <source>Header Text</source>
+          <target>Kopftext</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl Cust. Report Selections - Control lbt Editor Header - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2242267201 - Control 4044143240 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3219644059">
+          <source>Header Text</source>
+          <target>Kopftext</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl Cust. Report Selections - Control lbt Editor Header - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 96969626 - Control 2936602837 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4010542053">
           <source>Longtext</source>
           <target>Langtext</target>
@@ -10019,7 +10043,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 764318951 - Action 3054928492 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3507632001">
           <source>Header Text</source>
-          <target>Koptext</target>
+          <target>Kopftext</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Sales Return Orders - Action lbt Header Text - Property Caption</note>
         </trans-unit>

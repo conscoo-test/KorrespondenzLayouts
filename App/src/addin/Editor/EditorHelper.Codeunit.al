@@ -347,6 +347,7 @@ codeunit 5272729 "lbt cl EditorHelper"
             Database::"Purchase Line Archive":
                 Result := 3; ///archived
 
+            Database::Customer,
             Database::Job,
             Database::"Job Planning Line",
             Database::"Standard Sales Code",
@@ -479,45 +480,7 @@ codeunit 5272729 "lbt cl EditorHelper"
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"lbt Longtext Mgt.", 'onbeforeCopyLongText', '', true, true)]
-    local procedure lbtLongtextMgt_onbeforeCopyLongText(Sourcerecref: RecordRef; TargetRecRef: RecordRef; var handled: Boolean)
-    var
-        TargetMemo: RecordRef;
-        SourceMemo: RecordRef;
-
-        TargetType: Integer;
-        SourceType: Integer;
-        source_Fields: array[10] of Integer;
-        target_Fields: array[10] of Integer;
-    begin
-        //SourceType := isserviceTable(Sourcerecref.Number);
-        //TargetType := isserviceTable(TargetRecRef.Number);
-        if handled then
-            exit;
-        SourceType := GetType(Sourcerecref.Number);
-        TargetType := GetType(TargetRecRef.Number);
-
-        if (TargetType = 0) or (SourceType = 0) then
-            exit;
-        GetKeyFields(Sourcerecref.Number, source_Fields);
-        GetKeyFields(TargetRecRef.Number, target_Fields);
-
-        OpenMemo(SourceMemo, SourceType);
-        OpenMemo(TargetMemo, TargetType);
-
-        SetMemoFilters(Sourcerecref, TargetRecRef, SourceMemo, source_Fields, SourceType);
-
-        if SourceMemo.FindSet() then
-            repeat
-                InitMemoFields(TargetRecRef, TargetMemo, target_Fields, TargetType);
-                CopyMemoFields(TargetMemo, SourceMemo);
-                TargetMemo.Insert();
-            until SourceMemo.Next() = 0;
-
-        handled := true;
-    end;
-
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"lbt Longtext Mgt.", 'onbeforeCopyLongText', '', true, true)]
-    local procedure lbtLongtextMgt_onbeforeCopyLongTextJob(SourceRecRef: RecordRef; TargetRecRef: RecordRef; var handled: Boolean)
+    local procedure lbtLongtextMgt_onbeforeCopyLongText(SourceRecRef: RecordRef; TargetRecRef: RecordRef; var handled: Boolean)
     var
         TargetMemo: RecordRef;
         SourceMemo: RecordRef;
@@ -534,7 +497,7 @@ codeunit 5272729 "lbt cl EditorHelper"
         SourceType := GetType(SourceRecRef.Number);
         TargetType := GetType(TargetRecRef.Number);
 
-        if SourceType <> 5 then
+        if (SourceType = 0) or (TargetType = 0) then
             exit;
 
         GetKeyFields(TargetRecRef.Number, target_fields);
@@ -542,18 +505,24 @@ codeunit 5272729 "lbt cl EditorHelper"
 
         OpenMemo(SourceMemo, SourceType);
         OpenMemo(TargetMemo, TargetType);
-        //SetMemoFilters(Sourcerecref, TargetRecRef, SourceMemo, source_Fields);
+
         SetMemoFilters(SourceRecRef, TargetRecRef, SourceMemo, source_Fields, SourceType);
 
-        SourceMemoField := SourceMemo.Field(3);
-        if SourceRecRef.Number = Database::Job then
+        if SourceRecRef.Number = Database::Job then begin
+            SourceMemoField := SourceMemo.Field(3);
             SourceMemoField.SetRange(Enum::"Sales Document Type"::Invoice);
+        end;
 
         if SourceMemo.FindSet() then
             repeat
                 InitMemoFields(TargetRecRef, TargetMemo, target_fields, TargetType);
+                if IsOrderOrCustomer(TargetRecRef) then
+                    if SourceType = 5 then
+                        TargetMemo.Field(2).Value := SourceMemo.Field(3).Value
+                    else
+                        TargetMemo.Field(2).Value := SourceMemo.Field(2).Value;
                 CopyMemoFields(TargetMemo, SourceMemo);
-                TargetMemo.Insert();
+                if TargetMemo.Insert() then;
             until SourceMemo.Next() = 0;
 
         handled := true;
@@ -567,48 +536,52 @@ codeunit 5272729 "lbt cl EditorHelper"
         ///TableId
         SourceMemoField := SourceMemo.Field(1);
         SourceMemoField.SetRange(Sourcerecref.Number);
+
+        ///SystemId
         if SourceType = 5 then begin
             SourceMemoField := SourceMemo.Field(2);
             SourceMemoField.SetRange(Sourcerecref.Field(Sourcerecref.SystemIdNo).Value);
+            SourceMemoField := SourceMemo.Field(3);
+            SetSourceTypeFilter(Sourcerecref, TargetRecRef, SourceMemoField);
+            exit;
+        end;
 
-        end else begin
-            ///doctype
-            if source_Fields[1] <> 0 then begin
-                SourceRecField := Sourcerecref.Field(source_Fields[1]);
-                SourceMemoField := SourceMemo.Field(2);
-                SourceMemoField.SetRange(SourceRecField.Value);
-                if Sourcerecref.Number = Database::"Service Header" then begin
-                    if TargetRecRef.Number = Database::"Service Shipment Header" then
-                        SourceMemoField.SetRange(11);
-                    if TargetRecRef.Number = Database::"Service Invoice Header" then
-                        SourceMemoField.SetRange(12);
-                end;
+        ///doctype
+        if source_Fields[1] <> 0 then begin
+            SourceRecField := Sourcerecref.Field(source_Fields[1]);
+            SourceMemoField := SourceMemo.Field(2);
+            SourceMemoField.SetRange(SourceRecField.Value);
+            if Sourcerecref.Number = Database::"Service Header" then begin
+                if TargetRecRef.Number = Database::"Service Shipment Header" then
+                    SourceMemoField.SetRange(11);
+                if TargetRecRef.Number = Database::"Service Invoice Header" then
+                    SourceMemoField.SetRange(12);
+            end;
+            SetSourceTypeFilter(Sourcerecref, TargetRecRef, SourceMemoField);
+        end;
 
-            end;
+        ///DocNo
+        if source_Fields[2] <> 0 then begin
+            SourceRecField := Sourcerecref.Field(source_Fields[2]);
+            SourceMemoField := SourceMemo.Field(3);
+            SourceMemoField.SetRange(SourceRecField.Value);
+        end;
 
-            ///DocNo
-            if source_Fields[2] <> 0 then begin
-                SourceRecField := Sourcerecref.Field(source_Fields[2]);
-                SourceMemoField := SourceMemo.Field(3);
-                SourceMemoField.SetRange(SourceRecField.Value);
-            end;
-
-            ///lineno
-            if source_Fields[3] <> 0 then begin
-                SourceRecField := Sourcerecref.Field(source_Fields[3]);
-                SourceMemoField := SourceMemo.Field(5);
-                SourceMemoField.SetRange(SourceRecField.Value);
-            end;
-            if source_Fields[4] <> 0 then begin
-                SourceRecField := Sourcerecref.Field(source_Fields[4]);
-                SourceMemoField := SourceMemo.Field(7);
-                SourceMemoField.SetRange(SourceRecField.Value);
-            end;
-            if source_Fields[5] <> 0 then begin
-                SourceRecField := Sourcerecref.Field(source_Fields[5]);
-                SourceMemoField := SourceMemo.Field(8);
-                SourceMemoField.SetRange(SourceRecField.Value);
-            end;
+        ///lineno
+        if source_Fields[3] <> 0 then begin
+            SourceRecField := Sourcerecref.Field(source_Fields[3]);
+            SourceMemoField := SourceMemo.Field(5);
+            SourceMemoField.SetRange(SourceRecField.Value);
+        end;
+        if source_Fields[4] <> 0 then begin
+            SourceRecField := Sourcerecref.Field(source_Fields[4]);
+            SourceMemoField := SourceMemo.Field(7);
+            SourceMemoField.SetRange(SourceRecField.Value);
+        end;
+        if source_Fields[5] <> 0 then begin
+            SourceRecField := Sourcerecref.Field(source_Fields[5]);
+            SourceMemoField := SourceMemo.Field(8);
+            SourceMemoField.SetRange(SourceRecField.Value);
         end;
     end;
 
@@ -865,6 +838,67 @@ codeunit 5272729 "lbt cl EditorHelper"
         end;
         onAfterGetKeyFields(TableId, field_No, handled)
     end;
+
+    local procedure IsOrderOrCustomer(var Sourcerecref: RecordRef): Boolean
+    var
+        FRef: FieldRef;
+        DocType: Enum "Sales Document Type";
+    begin
+        if Sourcerecref.Number = Database::Customer then
+            exit(true);
+        if not (Sourcerecref.Number in [Database::"Sales Header", Database::"Purchase Header"]) then
+            exit(false);
+        FRef := Sourcerecref.Field(1);
+        DocType := FRef.Value();
+        if DocType = DocType::Order then
+            exit(true);
+    end;
+
+    local procedure IsInvoice(var RecRef: RecordRef): Boolean
+    begin
+        if (RecRef.Number in [Database::"Sales Invoice Header", Database::"Purch. Inv. Header"]) then
+            exit(true);
+        exit(IsDocType(RecRef, Enum::"Sales Document Type"::Invoice));
+    end;
+
+    local procedure IsShipment(var RecRef: RecordRef): Boolean
+    begin
+        if (RecRef.Number in [Database::"Sales Shipment Header", Database::"Purch. Rcpt. Header"]) then
+            exit(true);
+        exit(IsDocType(RecRef, Enum::"Sales Document Type"::Invoice));
+    end;
+
+    local procedure SetSourceTypeFilter(var Sourcerecref: RecordRef; var TargetRecRef: RecordRef; var SourceMemoField: FieldRef)
+    begin
+        if not IsOrderOrCustomer(Sourcerecref) then
+            exit;
+        case true of
+            IsInvoice(TargetRecRef):
+                SourceMemoField.SetRange(Enum::"Sales Document Type"::Invoice);
+            IsShipment(TargetRecRef):
+                SourceMemoField.SetRange(Enum::"Sales Document Type"::"lbt cl Shipment/Receipt");
+            IsDocType(TargetRecRef, Enum::"Sales Document Type"::Quote):
+                SourceMemoField.SetRange(Enum::"Sales Document Type"::Quote);
+            IsDocType(TargetRecRef, Enum::"Sales Document Type"::"Credit Memo"):
+                SourceMemoField.SetRange(Enum::"Sales Document Type"::"Credit Memo");
+            else
+                SourceMemoField.SetRange();
+        end;
+    end;
+
+    local procedure IsDocType(var RecRef: RecordRef; DocType2: Enum "Sales Document Type"): Boolean
+    var
+        FRef: FieldRef;
+        DocType: Enum "Sales Document Type";
+    begin
+        if not (RecRef.Number in [Database::"Sales Header", Database::"Purchase Header"]) then
+            exit(false);
+        FRef := RecRef.Field(1);
+        DocType := FRef.Value();
+        if DocType = DocType2 then
+            exit(true);
+    end;
+
 
     [IntegrationEvent(false, false)]
     local procedure onAfterGetKeyFields(TableId: Integer; var field_No: array[10] of Integer; handled: Boolean)
