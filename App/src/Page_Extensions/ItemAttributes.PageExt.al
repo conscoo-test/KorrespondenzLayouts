@@ -6,7 +6,7 @@ pageextension 5272786 "lbt Item Attributes" extends "Item Attributes"
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout';
+                Caption = 'LeBit Extended Layout Options';
                 action("lbt Report - Attribute Setup")
                 {
                     ApplicationArea = All;

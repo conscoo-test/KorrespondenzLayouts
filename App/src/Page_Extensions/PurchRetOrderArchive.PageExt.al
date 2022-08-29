@@ -6,7 +6,7 @@ pageextension 5272777 "lbt Purch. Ret. Order Archive" extends "Purchase Return O
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout';
+                Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {
                     ApplicationArea = All;

@@ -6,7 +6,7 @@ pageextension 5272788 "lbt Sales Invoice List" extends "Sales Invoice List"
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout';
+                Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {
                     ApplicationArea = All;

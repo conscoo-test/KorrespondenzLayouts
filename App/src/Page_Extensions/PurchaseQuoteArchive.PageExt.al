@@ -6,7 +6,7 @@ pageextension 5272761 "lbt Purchase Quote Archive" extends "Purchase Quote Archi
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout';
+                Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {
                     ToolTip = 'Here you can define the Header Text.';

@@ -6,7 +6,7 @@ pageextension 5272779 "lbt Purch. Return List Archive" extends "Purchase Return 
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout';
+                Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {
                     ApplicationArea = All;

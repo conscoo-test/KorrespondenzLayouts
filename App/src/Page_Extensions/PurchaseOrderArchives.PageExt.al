@@ -6,7 +6,7 @@ pageextension 5272800 "lbt Purchase Order Archives" extends "Purchase Order Arch
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout';
+                Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {
                     ApplicationArea = All;

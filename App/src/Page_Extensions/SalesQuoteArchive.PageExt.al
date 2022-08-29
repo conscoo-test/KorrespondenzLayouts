@@ -38,7 +38,7 @@ pageextension 5272759 "lbt Sales Quote Archive" extends "Sales Quote Archive"
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout';
+                Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {
                     ToolTip = 'Here you can define the Header Text.';

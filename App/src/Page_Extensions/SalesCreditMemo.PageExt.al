@@ -41,7 +41,7 @@ pageextension 5272745 "lbt Sales Credit Memo" extends "Sales Credit Memo"
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout';
+                Caption = 'LeBit Extended Layout Options';
                 action("lbt Tot&aling")
                 {
                     ApplicationArea = All;

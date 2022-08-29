@@ -6,7 +6,7 @@ pageextension 5272776 "lbt Purchase Return Orders" extends "Purchase Return Orde
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout';
+                Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {
                     ApplicationArea = All;

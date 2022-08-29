@@ -6,7 +6,7 @@ pageextension 5272794 "lbt Purchase Order List" extends "Purchase Order List"
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout';
+                Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {
                     ApplicationArea = All;

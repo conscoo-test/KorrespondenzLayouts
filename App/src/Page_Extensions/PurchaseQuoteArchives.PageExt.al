@@ -6,7 +6,7 @@ pageextension 5272799 "lbt Purchase Quote Archives" extends "Purchase Quote Arch
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout';
+                Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {
                     ApplicationArea = All;

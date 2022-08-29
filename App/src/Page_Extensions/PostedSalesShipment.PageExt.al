@@ -6,7 +6,7 @@ pageextension 5272721 "lbt Posted Sales Shipment" extends "Posted Sales Shipment
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout';
+                Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {
                     ApplicationArea = All;

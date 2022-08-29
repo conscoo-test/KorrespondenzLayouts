@@ -8,7 +8,7 @@ pageextension 5272768 "lbt Sales Return Order Archive" extends "Sales Return Ord
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout';
+                Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {
                     ToolTip = 'Here you can define the Header Text.';

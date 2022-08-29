@@ -40,7 +40,7 @@ pageextension 5272750 "lbt Purchase Quote" extends "Purchase Quote"
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout';
+                Caption = 'LeBit Extended Layout Options';
                 action("lbt Tot&aling")
                 {
                     ApplicationArea = All;
