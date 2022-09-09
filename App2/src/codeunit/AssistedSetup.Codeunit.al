@@ -67,5 +67,5 @@ codeunit 5272727 "lbt AssistedSetup"
         NotificationIdTxt: Label 'e6947c77-ec45-40c2-8c7e-01295de6efe4', Locked = true;
         NotificationMsg: Label 'The setup for LeBit365 Reports is incomplete';
         ActionMsg: Label 'To Wizard...';
-        ExtensionGuidTxt: Label 'ae7eef02-bb60-436c-856d-d815600787b0', Locked = true;
+        ExtensionGuidTxt: Label '438ef260-fa91-4861-9fc5-2bc28bf85771', Locked = true;
 }

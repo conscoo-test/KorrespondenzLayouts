@@ -1,9 +1,9 @@
 {
-  "id": "ae7eef02-bb60-436c-856d-d815600787b0",
-  "name": "LeBit Extended Layout Options",
+  "id": "438ef260-fa91-4861-9fc5-2bc28bf85771",
+  "name": "LeBit Correspondence Reports",
   "publisher": "LeBit Software & Consult GmbH",
-  "brief": "Komfort Funktionen für Korrespondenzbelege",
-  "description": "Komfort Funktionen für Korrespondenzbelege",
+  "brief": "Komfort Belegset und Komfort Funktionen für Korrespondenzbelege",
+  "description": "Komfort Belegset und Komfort Funktionen für Korrespondenzbelege",
   "version": "1.8.0.0",
   "privacyStatement": "https://www.lebit.net/impressum#datenschutz",
   "EULA": "https://www.lebit.net/impressum#datenschutz",
@@ -11,6 +11,14 @@
   "url": "https://www.lebit.net/#kontakt",
   "logo": "..\\Appendix\\Logo\\LB18.jpg",
   "screenshots": [],
+  "dependencies": [
+    {
+      "id": "ae7eef02-bb60-436c-856d-d815600787b0",
+      "name": "LeBit Extended Layout Options",
+      "publisher": "LeBit Software & Consult GmbH",
+      "version": "1.8.0.0"
+    }
+  ],
   "platform": "17.0.0.0",
   "application": "17.0.0.0",
   "idRanges": [

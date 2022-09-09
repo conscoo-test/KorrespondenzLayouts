@@ -9,11 +9,13 @@ report 5272722 "lbt Sales - Invoice"
 
     dataset
     {
+        #region dataitem
         dataitem("Sales Invoice Header"; "Sales Invoice Header")
         {
             DataItemTableView = sorting("No.");
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
             RequestFilterHeading = 'Posted Sales Invoice';
+            #region columns
             column(Footer; Footer) { }
             column(AlwaysPrintVat_CorrSetup; CorrSetup."Always print VAT") { }
             column(No_SalesInvHdr; "No.")
@@ -44,12 +46,16 @@ report 5272722 "lbt Sales - Invoice"
             column(ShipmentMethodCaption; ShipmentMethodCaptionLbl)
             {
             }
+            #endregion columns
+            #region dataitem
             dataitem(CopyLoop; "Integer")
             {
                 DataItemTableView = sorting(Number);
+                #region dataitem
                 dataitem(PageLoop; "Integer")
                 {
                     DataItemTableView = sorting(Number) where(Number = const(1));
+                    #region columns
                     column(CompanyInfo2Picture; CompanyInfo2.Picture)
                     {
                     }
@@ -177,9 +183,12 @@ report 5272722 "lbt Sales - Invoice"
                     column(VAT_Registration_No__Caption; VAT_Registration_No__CaptionLbl)
                     {
                     }
+                    #endregion columns
+                    #region dataitems
                     dataitem(LBKopf; "Integer")
                     {
                         DataItemTableView = sorting(Number);
+                        #region columns
                         column(LBKopf_LineNo; '0')
                         {
                         }
@@ -189,7 +198,9 @@ report 5272722 "lbt Sales - Invoice"
                         column(NewPageLBKopf; NewPageLBKopf)
                         {
                         }
+                        #endregion columns
 
+                        #region OnAfterGetRecord
                         trigger OnAfterGetRecord()
                         var
                             TempBlob: Codeunit "Temp Blob";
@@ -201,7 +212,9 @@ report 5272722 "lbt Sales - Invoice"
                             Streamin.Read(LBKopf_Description);
                             NewPageLBKopf += 1;
                         end;
+                        #endregion OnAfterGetRecord
 
+                        #region OnPreDataItem
                         trigger OnPreDataItem()
                         begin
                             PrintLongText.GetPrintText("Sales Invoice Header", Enum::"lbt Position"::Header, TempBlobList);
@@ -209,11 +222,13 @@ report 5272722 "lbt Sales - Invoice"
                                 CurrReport.Break();
                             LBKopf.SetRange(Number, 1, TempBlobList.Count());
                         end;
+                        #endregion OnPreDataItem
                     }
                     dataitem(DimensionLoop1; "Integer")
                     {
                         DataItemLinkReference = "Sales Invoice Header";
                         DataItemTableView = sorting(Number) where(Number = filter(1 ..));
+                        #region columns
                         column(DimText; DimText)
                         {
                         }
@@ -223,7 +238,9 @@ report 5272722 "lbt Sales - Invoice"
                         column(DimensionsCaption; DimensionsCaptionLbl)
                         {
                         }
+                        #endregion columns
 
+                        #region OnAfterGetRecord
                         trigger OnAfterGetRecord()
                         begin
                             if Number = 1 then begin
@@ -235,18 +252,22 @@ report 5272722 "lbt Sales - Invoice"
 
                             LeBitReportFunctions.GetDimTextFromDimSetEntry(DimSetEntry1, DimText, Continue);
                         end;
+                        #endregion OnAfterGetRecord
 
+                        #region OnPreDataItem
                         trigger OnPreDataItem()
                         begin
                             if not ShowInternalInfo then
                                 CurrReport.Break();
                         end;
+                        #endregion OnPreDataItem
                     }
                     dataitem("Sales Invoice Line"; "Sales Invoice Line")
                     {
                         DataItemLink = "Document No." = field("No.");
                         DataItemLinkReference = "Sales Invoice Header";
                         DataItemTableView = sorting("Document No.", "Line No.");
+                        #region columns
                         column(Item_Picture; Item.Picture)
                         {
                         }
@@ -367,9 +388,12 @@ report 5272722 "lbt Sales - Invoice"
                         column(NewPageGroup; NewPageGroup)
                         {
                         }
+                        #endregion columns
+                        #region dataitems
                         dataitem(ParameterAndUnits; "Integer")
                         {
                             DataItemTableView = sorting(Number);
+                            #region columns
                             column(RowNumber; Number)
                             {
                             }
@@ -385,15 +409,19 @@ report 5272722 "lbt Sales - Invoice"
                             column(ItemUnitQtyArry; ItemUnitQtyArry[Number])
                             {
                             }
+                            #endregion columns
 
+                            #region OnPreDataItem
                             trigger OnPreDataItem()
                             begin
                                 SetRange(Number, 1, InfoRowNo);
                             end;
+                            #endregion OnPreDataItem
                         }
                         dataitem(LBLang; Integer)
                         {
                             DataItemTableView = sorting(Number);
+                            #region columns
                             column(LBLang_LineNo; '0') { }
                             column(LBLang_Description; LBLang_Description)
                             {
@@ -401,7 +429,9 @@ report 5272722 "lbt Sales - Invoice"
                             column(NewPageLBLang; NewPageLBLang)
                             {
                             }
+                            #endregion columns
 
+                            #region OnAfterGetRecord
                             trigger OnAfterGetRecord()
                             var
                                 TempBlob: Codeunit "Temp Blob";
@@ -413,7 +443,9 @@ report 5272722 "lbt Sales - Invoice"
                                 Streamin.Read(LBLang_Description);
                                 NewPageLBLang += 1;
                             end;
+                            #endregion OnAfterGetRecord
 
+                            #region OnPreDataItem
                             trigger OnPreDataItem()
                             begin
                                 PrintLongText.GetPrintText("Sales Invoice Line", Enum::"lbt Position"::Longtext, TempBlobList);
@@ -421,10 +453,12 @@ report 5272722 "lbt Sales - Invoice"
                                     CurrReport.Break();
                                 LBLang.SetRange(Number, 1, TempBlobList.Count());
                             end;
+                            #endregion OnPreDataItem
                         }
                         dataitem("Sales Shipment Buffer"; "Integer")
                         {
                             DataItemTableView = sorting(Number);
+                            #region OnAfterGetRecord
                             trigger OnAfterGetRecord()
                             begin
                                 if Number = 1 then
@@ -432,7 +466,9 @@ report 5272722 "lbt Sales - Invoice"
                                 else
                                     TempSalesShipmentBuffer.Next();
                             end;
+                            #endregion OnAfterGetRecord
 
+                            #region OnPreDataItem
                             trigger OnPreDataItem()
                             begin
                                 TempSalesShipmentBuffer.SetRange("Document No.", "Sales Invoice Line"."Document No.");
@@ -440,17 +476,21 @@ report 5272722 "lbt Sales - Invoice"
 
                                 SetRange(Number, 1, TempSalesShipmentBuffer.Count());
                             end;
+                            #endregion OnPreDataItem
                         }
                         dataitem(DimensionLoop2; "Integer")
                         {
                             DataItemTableView = sorting(Number) where(Number = filter(1 ..));
+                            #region columns
                             column(DimText_DimensionLoop2; DimText)
                             {
                             }
                             column(LineDimensionsCaption; LineDimensionsCaptionLbl)
                             {
                             }
+                            #endregion columns
 
+                            #region OnAfterGetRecord
                             trigger OnAfterGetRecord()
                             begin
                                 if Number = 1 then begin
@@ -462,7 +502,9 @@ report 5272722 "lbt Sales - Invoice"
 
                                 LeBitReportFunctions.GetDimTextFromDimSetEntry(DimSetEntry2, DimText, Continue);
                             end;
+                            #endregion OnAfterGetRecord
 
+                            #region OnPreDataItem
                             trigger OnPreDataItem()
                             begin
                                 if not ShowInternalInfo then
@@ -470,9 +512,11 @@ report 5272722 "lbt Sales - Invoice"
 
                                 DimSetEntry2.SetRange("Dimension Set ID", "Sales Invoice Line"."Dimension Set ID");
                             end;
+                            #endregion OnPreDataItem
                         }
                         dataitem(AsmLoop; "Integer")
                         {
+                            #region columns
                             column(TempPostedAsmLineUOMCode; GetUOMText(TempPostedAsmLine."Unit of Measure Code"))
                             {
                             }
@@ -486,7 +530,9 @@ report 5272722 "lbt Sales - Invoice"
                             column(TempPostedAsmLineNo; BlanksForIndent() + TempPostedAsmLine."No.")
                             {
                             }
+                            #endregion columns
 
+                            #region OnAfterGetRecord
                             trigger OnAfterGetRecord()
                             var
                                 ItemTranslation: Record "Item Translation";
@@ -502,7 +548,9 @@ report 5272722 "lbt Sales - Invoice"
                                 then
                                     TempPostedAsmLine.Description := ItemTranslation.Description;
                             end;
+                            #endregion OnAfterGetRecord
 
+                            #region OnPreDataItem
                             trigger OnPreDataItem()
                             begin
                                 Clear(TempPostedAsmLine);
@@ -512,8 +560,11 @@ report 5272722 "lbt Sales - Invoice"
                                 Clear(TempPostedAsmLine);
                                 SetRange(Number, 1, TempPostedAsmLine.Count());
                             end;
+                            #endregion OnPreDataItem
                         }
+                        #endregion dataitems
 
+                        #region OnAfterGetRecord
                         trigger OnAfterGetRecord()
                         var
                             IntVar: Integer;
@@ -629,7 +680,9 @@ report 5272722 "lbt Sales - Invoice"
                                     InfoRowNo := 0;
                             end;
                         end;
+                        #endregion OnAfterGetRecord
 
+                        #region OnPreDataItem
                         trigger OnPreDataItem()
                         begin
                             TempVATAmountLine.DeleteAll();
@@ -643,10 +696,12 @@ report 5272722 "lbt Sales - Invoice"
                                 CurrReport.Break();
                             SetRange("Line No.", 0, "Line No.");
                         end;
+                        #endregion OnPreDataItem
                     }
                     dataitem(VATCounter; "Integer")
                     {
                         DataItemTableView = sorting(Number);
+                        #region columns
                         column(VATAmountLineVATBase; TempVATAmountLine."VAT Base")
                         {
                             AutoFormatExpression = "Sales Invoice Line".GetCurrencyCode();
@@ -688,22 +743,28 @@ report 5272722 "lbt Sales - Invoice"
                         column(LineAmountCaption; LineAmountCaptionLbl)
                         {
                         }
+                        #endregion columns
 
+                        #region OnAfterGetRecord
                         trigger OnAfterGetRecord()
                         begin
                             TempVATAmountLine.GetLine(Number);
                         end;
+                        #endregion OnAfterGetRecord
 
+                        #region OnPreDataItem
                         trigger OnPreDataItem()
                         begin
                             if TempVATAmountLine.Count() < 2 then
                                 CurrReport.Break();
                             SetRange(Number, 1, TempVATAmountLine.Count());
                         end;
+                        #endregion OnPreDataItem
                     }
                     dataitem(VATClauseEntryCounter; "Integer")
                     {
                         DataItemTableView = sorting(Number);
+                        #region columns
                         column(VATClauseVATIdentifier; TempVATAmountLine."VAT Identifier")
                         {
                         }
@@ -730,7 +791,9 @@ report 5272722 "lbt Sales - Invoice"
                         column(VATClauseVATAmtCaption; VATAmountCaptionLbl)
                         {
                         }
+                        #endregion columns
 
+                        #region OnAfterGetRecord
                         trigger OnAfterGetRecord()
                         begin
                             TempVATAmountLine.GetLine(Number);
@@ -738,16 +801,20 @@ report 5272722 "lbt Sales - Invoice"
                                 CurrReport.Skip();
                             VATClause.TranslateDescription("Sales Invoice Header"."Language Code");
                         end;
+                        #endregion OnAfterGetRecord
 
+                        #region OnPreDataItem
                         trigger OnPreDataItem()
                         begin
                             Clear(VATClause);
                             SetRange(Number, 1, TempVATAmountLine.Count());
                         end;
+                        #endregion OnPreDataItem
                     }
                     dataitem(VatCounterLCY; "Integer")
                     {
                         DataItemTableView = sorting(Number);
+                        #region columns
                         column(VALSpecLCYHeader; VALSpecLCYHeader)
                         {
                         }
@@ -769,7 +836,9 @@ report 5272722 "lbt Sales - Invoice"
                         column(VATAmtLineVATIdentifier_VatCounterLCY; TempVATAmountLine."VAT Identifier")
                         {
                         }
+                        #endregion columns
 
+                        #region OnAfterGetRecord
                         trigger OnAfterGetRecord()
                         begin
                             TempVATAmountLine.GetLine(Number);
@@ -782,7 +851,9 @@ report 5272722 "lbt Sales - Invoice"
                                 "Sales Invoice Header"."Posting Date", "Sales Invoice Header"."Currency Code",
                                 "Sales Invoice Header"."Currency Factor");
                         end;
+                        #endregion OnAfterGetRecord
 
+                        #region OnPreDataItem
                         trigger OnPreDataItem()
                         begin
                             if TempVATAmountLine.Count() < 2 then
@@ -803,11 +874,13 @@ report 5272722 "lbt Sales - Invoice"
                             CalculatedExchRate := Round(1 / "Sales Invoice Header"."Currency Factor" * CurrExchRate."Exchange Rate Amount", 0.000001);
                             VALExchRate := StrSubstNo(ExchangeRateLbl, CalculatedExchRate, CurrExchRate."Exchange Rate Amount");
                         end;
+                        #endregion OnPreDataItem
                     }
                     dataitem(PaymentReportingArgument; "Payment Reporting Argument")
                     {
                         DataItemTableView = sorting(Key);
                         UseTemporary = true;
+                        #region OnPreDataItem
                         trigger OnPreDataItem()
                         var
                             PaymentServiceSetup: Record "Payment Service Setup";
@@ -816,6 +889,7 @@ report 5272722 "lbt Sales - Invoice"
                             if IsEmpty() then
                                 CurrReport.Break();
                         end;
+                        #endregion OnPreDataItem
                     }
                     dataitem(Total; "Integer")
                     {
@@ -824,6 +898,7 @@ report 5272722 "lbt Sales - Invoice"
                     dataitem(Total2; "Integer")
                     {
                         DataItemTableView = sorting(Number) where(Number = const(1));
+                        #region columns
                         column(SellToCustNo_SalesInvHdr; "Sales Invoice Header"."Sell-to Customer No.")
                         {
                         }
@@ -857,20 +932,26 @@ report 5272722 "lbt Sales - Invoice"
                         column(SellToCustNo_SalesInvHdrCaption; "Sales Invoice Header".FieldCaption("Sell-to Customer No."))
                         {
                         }
+                        #endregion columns
 
+                        #region OnPreDataItem
                         trigger OnPreDataItem()
                         begin
                             if not ShowShippingAddr then
                                 CurrReport.Break();
                         end;
+                        #endregion OnPreDataItem
                     }
                     dataitem(LineFee; "Integer")
                     {
                         DataItemTableView = sorting(Number) order(ascending) where(Number = filter(1 ..));
+                        #region column
                         column(LineFeeCaptionLbl; TempLineFeeNoteOnReportHist.ReportText)
                         {
                         }
+                        #endregion column
 
+                        #region OnAfterGetRecord
                         trigger OnAfterGetRecord()
                         begin
                             if not DisplayAdditionalFeeNote then
@@ -883,10 +964,12 @@ report 5272722 "lbt Sales - Invoice"
                                 if TempLineFeeNoteOnReportHist.Next() = 0 then
                                     CurrReport.Break();
                         end;
+                        #endregion OnAfterGetRecord
                     }
                     dataitem(LBFuss; "Integer")
                     {
                         DataItemTableView = sorting(Number);
+                        #region columns
                         column(LBFuss_LineNo; '0')
                         {
                         }
@@ -896,7 +979,9 @@ report 5272722 "lbt Sales - Invoice"
                         column(NewPageLBFuss; NewPageLBFuss)
                         {
                         }
+                        #endregion columns
 
+                        #region OnAfterGetRecord
                         trigger OnAfterGetRecord()
                         var
                             TempBlob: Codeunit "Temp Blob";
@@ -908,7 +993,9 @@ report 5272722 "lbt Sales - Invoice"
                             Streamin.Read(LBFuss_Description);
                             NewPageLBFuss += 1;
                         end;
+                        #endregion OnAfterGetRecord
 
+                        #region OnPreDataItem
                         trigger OnPreDataItem()
                         begin
                             PrintLongText.GetPrintText("Sales Invoice Header", Enum::"lbt Position"::Footer, TempBlobList);
@@ -916,9 +1003,13 @@ report 5272722 "lbt Sales - Invoice"
                                 CurrReport.Break();
                             LBFuss.SetRange(Number, 1, TempBlobList.Count());
                         end;
+                        #endregion OnPreDataItem
                     }
+                    #endregion dataitems
                 }
+                #endregion dataitem
 
+                #region OnAfterGetRecord
                 trigger OnAfterGetRecord()
                 begin
                     if Number > 1 then begin
@@ -933,13 +1024,17 @@ report 5272722 "lbt Sales - Invoice"
                     TotalAmountInclVAT := 0;
                     TotalPaymentDiscountOnVAT := 0;
                 end;
+                #endregion OnAfterGetRecord
 
+                #region OnPostDataItem
                 trigger OnPostDataItem()
                 begin
                     if not CurrReport.Preview() then
                         Codeunit.Run(Codeunit::"Sales Inv.-Printed", "Sales Invoice Header");
                 end;
+                #endregion OnPostDataItem
 
+                #region OnPreDataItem
                 trigger OnPreDataItem()
                 begin
                     NoOfLoops := Abs(NoOfCopies) + Cust."Invoice Copies" + 1;
@@ -949,8 +1044,11 @@ report 5272722 "lbt Sales - Invoice"
                     SetRange(Number, 1, NoOfLoops);
                     OutputNo := 1;
                 end;
+                #endregion OnPreDataItem
             }
+            #endregion dataitem
 
+            #region OnAfterGetRecord
             trigger OnAfterGetRecord()
             begin
                 CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
@@ -993,7 +1091,9 @@ report 5272722 "lbt Sales - Invoice"
                     OrderNoText := FormatDocument.SetText(OrderNo <> '', CopyStr(FieldCaption("Order No."), 1, 80));
                 end;
             end;
+            #endregion OnAfterGetRecord
         }
+        #endregion dataitem
     }
 
     requestpage
@@ -1064,22 +1164,27 @@ report 5272722 "lbt Sales - Invoice"
         {
         }
 
+        #region OnInit
         trigger OnInit()
         begin
             LogInteractionEnable := true;
         end;
+        #endregion OnInit
 
+        #region OnOpenPage
         trigger OnOpenPage()
         begin
             InitLogInteraction();
             LogInteractionEnable := LogInteraction;
         end;
+        #endregion OnOpenPage
     }
 
     labels
     {
     }
 
+    #region OnInitReport
     trigger OnInitReport()
     begin
         GLSetup.Get();
@@ -1089,12 +1194,15 @@ report 5272722 "lbt Sales - Invoice"
         CompanyInfo.VerifyAndSetPaymentInfo();
         FormatDocument.SetLogoPosition(SalesSetup."Logo Position on Documents", CompanyInfo1, CompanyInfo2, CompanyInfo3);
     end;
+    #endregion OnInitReport
 
+    #region OnPreReport
     trigger OnPreReport()
     begin
         if not CurrReport.UseRequestPage() then
             InitLogInteraction();
     end;
+    #endregion OnPreReport
 
     protected var
         CompanyInfo: Record "Company Information";
@@ -1231,11 +1339,14 @@ report 5272722 "lbt Sales - Invoice"
         PaymentMethodCaptionLbl: Label 'Payment Method';
         HideShipmentDate: Boolean;
 
+    #region InitLogInteraction
     procedure InitLogInteraction()
     begin
         LogInteraction := SegManagement.FindInteractTmplCode(4) <> '';
     end;
+    #endregion InitLogInteraction
 
+    #region FindPostedShipmentDate
     procedure FindPostedShipmentDate(): Date
     var
         SalesShipmentHeader: Record "Sales Shipment Header";
@@ -1278,7 +1389,9 @@ report 5272722 "lbt Sales - Invoice"
         end else
             exit("Sales Invoice Header"."Posting Date");
     end;
+    #endregion FindPostedShipmentDate
 
+    #region GenerateBufferFromValueEntry
     procedure GenerateBufferFromValueEntry(SalesInvoiceLine2: Record "Sales Invoice Line")
     var
         ValueEntry: Record "Value Entry";
@@ -1308,7 +1421,9 @@ report 5272722 "lbt Sales - Invoice"
                 FirstValueEntryNo := ValueEntry."Entry No." + 1;
             until (ValueEntry.Next() = 0) or (TotalQuantity = 0);
     end;
+    #endregion GenerateBufferFromValueEntry
 
+    #region GenerateBufferFromShipment
     procedure GenerateBufferFromShipment(SalesInvoiceLine: Record "Sales Invoice Line")
     var
         SalesInvoiceHeader: Record "Sales Invoice Header";
@@ -1368,7 +1483,9 @@ report 5272722 "lbt Sales - Invoice"
                 end;
             until (SalesShipmentLine.Next() = 0) or (TotalQuantity = 0);
     end;
+    #endregion GenerateBufferFromShipment
 
+    #region CorrectShipment
     procedure CorrectShipment(var SalesShipmentLine: Record "Sales Shipment Line")
     var
         l_SalesInvoiceLine: Record "Sales Invoice Line";
@@ -1381,7 +1498,9 @@ report 5272722 "lbt Sales - Invoice"
                 SalesShipmentLine.Quantity := SalesShipmentLine.Quantity - l_SalesInvoiceLine.Quantity;
             until l_SalesInvoiceLine.Next() = 0;
     end;
+    #endregion CorrectShipment
 
+    #region AddBufferEntry
     procedure AddBufferEntry(SalesInvoiceLine: Record "Sales Invoice Line"; QtyOnShipment: Decimal; PostingDate: Date)
     begin
         TempSalesShipmentBuffer.SetRange("Document No.", SalesInvoiceLine."Document No.");
@@ -1403,7 +1522,9 @@ report 5272722 "lbt Sales - Invoice"
         TempSalesShipmentBuffer.Insert();
         NextEntryNo := NextEntryNo + 1
     end;
+    #endregion AddBufferEntry
 
+    #region DocumentCaption
     local procedure DocumentCaption(): Text
     var
         DocCaption: Text;
@@ -1415,7 +1536,9 @@ report 5272722 "lbt Sales - Invoice"
             exit(PrepaymentTitleLbl);
         exit(TitleLbl);
     end;
+    #endregion DocumentCaption
 
+    #region InitializeRequest
     procedure InitializeRequest(NewNoOfCopies: Integer; NewShowInternalInfo: Boolean; NewLogInteraction: Boolean; DisplayAsmInfo: Boolean)
     begin
         NoOfCopies := NewNoOfCopies;
@@ -1423,7 +1546,9 @@ report 5272722 "lbt Sales - Invoice"
         LogInteraction := NewLogInteraction;
         DisplayAssemblyInformation := DisplayAsmInfo;
     end;
+    #endregion InitializeRequest
 
+    #region FormatDocumentFields
     local procedure FormatDocumentFields(SalesInvoiceHeader: Record "Sales Invoice Header")
     var
         lbtFormatDocument: Codeunit "lbt Format Document";
@@ -1440,7 +1565,9 @@ report 5272722 "lbt Sales - Invoice"
         if SalesPersonText <> '' then
             SalesPersonText := SalesPersonText_CaptionLbl;
     end;
+    #endregion FormatDocumentFields
 
+    #region FormatAddressFields
     local procedure FormatAddressFields(SalesInvoiceHeader: Record "Sales Invoice Header")
     var
         i: Integer;
@@ -1457,7 +1584,9 @@ report 5272722 "lbt Sales - Invoice"
                 CompanyAddressLine := CompanyAddressLine + CompanyAddr[i];
             end;
     end;
+    #endregion FormatAddressFields
 
+    #region CollectAsmInformation
     procedure CollectAsmInformation()
     var
         ValueEntry: Record "Value Entry";
@@ -1491,7 +1620,9 @@ report 5272722 "lbt Sales - Invoice"
 
         until ValueEntry.Next() = 0;
     end;
+    #endregion CollectAsmInformation
 
+    #region TreatAsmLineBuffer
     procedure TreatAsmLineBuffer(PostedAsmLine: Record "Posted Assembly Line")
     begin
         Clear(TempPostedAsmLine);
@@ -1509,7 +1640,9 @@ report 5272722 "lbt Sales - Invoice"
             TempPostedAsmLine.Insert();
         end;
     end;
+    #endregion TreatAsmLineBuffer
 
+    #region GetUOMText
     procedure GetUOMText(UOMCode: Code[10]): Text
     var
         UnitOfMeasure: Record "Unit of Measure";
@@ -1518,12 +1651,16 @@ report 5272722 "lbt Sales - Invoice"
             exit(UOMCode);
         exit(UnitOfMeasure.Description);
     end;
+    #endregion GetUOMText
 
+    #region BlanksForIndent
     procedure BlanksForIndent(): Text[10]
     begin
         exit(PadStr('', 2, ' '));
     end;
+    #endregion BlanksForIndent
 
+    #region GetLineFeeNoteOnReportHist
     local procedure GetLineFeeNoteOnReportHist(SalesInvoiceHeaderNo: Code[20])
     var
         LineFeeNoteOnReportHist: Record "Line Fee Note on Report Hist.";
@@ -1559,7 +1696,9 @@ report 5272722 "lbt Sales - Invoice"
                 until LineFeeNoteOnReportHist.Next() = 0;
         end;
     end;
+    #endregion GetLineFeeNoteOnReportHist
 
+    #region PrintShipmentDate
     local procedure PrintShipmentDate(var Counter: Integer)
     begin
         if PostedShipmentDate <> 0D then begin
@@ -1590,11 +1729,14 @@ report 5272722 "lbt Sales - Invoice"
             end;
         end;
     end;
+    #endregion PrintShipmentDate
 
+    #region OnBeforeGetDocumentCaption
     [IntegrationEvent(false, false)]
     local procedure OnBeforeGetDocumentCaption(SalesInvoiceHeader: Record "Sales Invoice Header"; var DocCaption: Text);
     begin
     end;
+    #endregion OnBeforeGetDocumentCaption
 }
 
 
