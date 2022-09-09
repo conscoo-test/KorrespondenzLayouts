@@ -3,6 +3,20 @@ pageextension 5272745 "lbt Sales Credit Memo" extends "Sales Credit Memo"
     // version NAVW111.00.00.19846,LBCOR1.00
     layout
     {
+        addlast(General)
+        {
+
+            field("lbt cl Delivery Date Type"; Rec."lbt cl Delivery Date Type")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Here can you define the Delivery Date Type';
+            }
+            field("lbt cl Destination"; Rec."lbt cl Destination")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Here can you define the Destination.';
+            }
+        }
         addafter(SalesLines)
         {
             group(lbtEditor)

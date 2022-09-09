@@ -7,6 +7,12 @@ tableextension 5272739 "lbt Sales Header Archive" extends "Sales Header Archive"
             Caption = 'Delivery Date Type';
             DataClassification = CustomerContent;
         }
+        field(5272722; "lbt cl Destination"; Code[10])
+        {
+            Caption = 'Destination';
+            DataClassification = CustomerContent;
+            TableRelation = "Entry/Exit Point";
+        }
     }
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";

@@ -7,6 +7,12 @@ tableextension 5272756 "lbt cl Sales Invoice Header" extends "Sales Invoice Head
             Caption = 'Delivery Date Type';
             DataClassification = CustomerContent;
         }
+        field(5272722; "lbt cl Destination"; Code[10])
+        {
+            Caption = 'Destination';
+            DataClassification = CustomerContent;
+            TableRelation = "Entry/Exit Point";
+        }
     }
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";

@@ -2,6 +2,20 @@ pageextension 5272759 "lbt Sales Quote Archive" extends "Sales Quote Archive"
 {
     layout
     {
+        addafter(General)
+        {
+
+            field("lbt cl Delivery Date Type"; Rec."lbt cl Delivery Date Type")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Delivery Date Type field.';
+            }
+            field("lbt cl Destination"; Rec."lbt cl Destination")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Destination field.';
+            }
+        }
         addafter(SalesLinesArchive)
         {
             group(lbtEditor)

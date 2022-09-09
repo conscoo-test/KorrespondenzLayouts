@@ -10,6 +10,16 @@ pageextension 5272838 "lbt cl CustomerCard" extends "Customer Card"
                 ApplicationArea = All;
                 ToolTip = 'Here can you define the Delivery Date Type.';
             }
+            field("lbt cl No. Shipm. Note Copies"; Rec."lbt cl No. Shipm. Note Copies")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Here can you define the No. of Shipment note Copies field.';
+            }
+            field("lbt cl Destination"; Rec."lbt cl Destination")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Here can you define the Destination.';
+            }
         }
     }
 }

@@ -10,6 +10,11 @@ pageextension 5272742 "lbt Sales Quote" extends "Sales Quote"
                 ApplicationArea = All;
                 ToolTip = 'Here can you define the Delivery Date Type';
             }
+            field("lbt cl Destination"; Rec."lbt cl Destination")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Here can you define the Destination.';
+            }
         }
 
         addafter(SalesLines)

@@ -7,5 +7,17 @@ tableextension 5272766 "lbt cl Customer" extends Customer
             Caption = 'Delivery Date Type';
             DataClassification = CustomerContent;
         }
+        field(5272721; "lbt cl No. Shipm. Note Copies"; Integer)
+        {
+            Caption = 'No. of Shipment note Copies';
+            DataClassification = CustomerContent;
+            BlankZero = true;
+        }
+        field(5272722; "lbt cl Destination"; Code[10])
+        {
+            Caption = 'Destination';
+            DataClassification = CustomerContent;
+            TableRelation = "Entry/Exit Point";
+        }
     }
 }
