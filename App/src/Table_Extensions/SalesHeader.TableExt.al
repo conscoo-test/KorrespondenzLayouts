@@ -2,6 +2,12 @@ tableextension 5272728 "lbt Sales Header" extends "Sales Header"
 {
     fields
     {
+        field(5272720; "lbt cl Delivery Date Type"; Enum "lbt cl DeliveryDateTime")
+        {
+            Caption = 'Delivery Date Type';
+            DataClassification = CustomerContent;
+        }
+
         modify("Sell-to Customer No.")
         {
             trigger OnAfterValidate()

@@ -2,6 +2,15 @@ pageextension 5272752 "lbt Blanket Sales Order" extends "Blanket Sales Order"
 {
     layout
     {
+        addlast(General)
+        {
+            field("lbt cl Delivery Date Type"; Rec."lbt cl Delivery Date Type")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Here can you define the Delivery Date Type';
+            }
+        }
+
         addafter(SalesLines)
         {
             group(lbtEditor)

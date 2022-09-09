@@ -61,6 +61,11 @@ tableextension 5272721 "lbt Sales Invoice Line" extends "Sales Invoice Line"
             Caption = 'lbt Printoption StyleExpr';
             DataClassification = CustomerContent;
         }
+        field(5272729; "lbt cl Delivery Date Type"; Enum "lbt cl DeliveryDateTime")
+        {
+            Caption = 'Delivery Date Type';
+            DataClassification = CustomerContent;
+        }
 
     }
 

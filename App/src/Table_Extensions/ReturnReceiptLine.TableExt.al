@@ -58,6 +58,11 @@ tableextension 5272735 "lbt Return Receipt Line" extends "Return Receipt Line"
             Caption = 'lbt Printoption StyleExpr';
             DataClassification = CustomerContent;
         }
+        field(5272729; "lbt cl Delivery Date Type"; Enum "lbt cl DeliveryDateTime")
+        {
+            Caption = 'Delivery Date Type';
+            DataClassification = CustomerContent;
+        }
     }
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";

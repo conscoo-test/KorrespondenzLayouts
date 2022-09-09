@@ -41,6 +41,14 @@ pageextension 5272804 "lbt Sales Cr. Memo Subform" extends "Sales Cr. Memo Subfo
                 end;
             }
         }
+        addafter(Quantity)
+        {
+            field("lbt cl Delivery Date Type"; Rec."lbt cl Delivery Date Type")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Here can you define the Delivery Date Type';
+            }
+        }
     }
     actions
     {

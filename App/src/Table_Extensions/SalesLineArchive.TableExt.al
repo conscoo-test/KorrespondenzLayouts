@@ -69,6 +69,11 @@ tableextension 5272732 "lbt Sales Line Archive" extends "Sales Line Archive"
             Caption = 'lbt Printoption StyleExpr';
             DataClassification = CustomerContent;
         }
+        field(5272729; "lbt cl Delivery Date Type"; Enum "lbt cl DeliveryDateTime")
+        {
+            Caption = 'Delivery Date Type';
+            DataClassification = CustomerContent;
+        }
     }
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";

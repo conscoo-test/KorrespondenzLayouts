@@ -41,6 +41,15 @@ pageextension 5272753 "lbt Blanket Sales Order Sub." extends "Blanket Sales Orde
                 end;
             }
         }
+        addafter(Quantity)
+        {
+            field("lbt cl Delivery Date Type"; Rec."lbt cl Delivery Date Type")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Here can you define the Delivery Date Type';
+            }
+        }
+
     }
     actions
     {

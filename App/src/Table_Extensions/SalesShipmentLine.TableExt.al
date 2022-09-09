@@ -59,6 +59,11 @@ tableextension 5272720 "lbt Sales Shipment Line" extends "Sales Shipment Line"
             Caption = 'lbt Printoption StyleExpr';
             DataClassification = CustomerContent;
         }
+        field(5272729; "lbt cl Delivery Date Type"; Enum "lbt cl DeliveryDateTime")
+        {
+            Caption = 'Delivery Date Type';
+            DataClassification = CustomerContent;
+        }
     }
     trigger OnInsert()
     var

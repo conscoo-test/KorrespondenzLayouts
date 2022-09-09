@@ -109,7 +109,13 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
             Caption = 'From Standard Sales Line';
             DataClassification = CustomerContent;
         }
+        field(5272729; "lbt cl Delivery Date Type"; Enum "lbt cl DeliveryDateTime")
+        {
+            Caption = 'Delivery Date Type';
+            DataClassification = CustomerContent;
+        }
     }
+
 
     trigger OnDelete()
     var

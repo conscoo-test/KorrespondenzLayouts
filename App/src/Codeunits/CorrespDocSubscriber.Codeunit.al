@@ -642,5 +642,20 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
                 end;
             until SalesLine.Next() = 0;
     end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnAfterValidateEvent', 'Sell-to Customer No.', false, false)]
+    local procedure SalesHeader_OnAfterValidateEvent_SelltoCustomerNo(var Rec: Record "Sales Header")
+    var
+        Cust: Record Customer;
+    begin
+        if Cust.Get(rec."Sell-to Customer No.") then
+            Rec."lbt cl Delivery Date Type" := Cust."lbt cl Delivery Date Type";
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterInitHeaderDefaults', '', false, false)]
+    local procedure SalesLine_OnAfterInitHeaderDefaults(SalesHeader: Record "Sales Header"; var SalesLine: Record "Sales Line")
+    begin
+        SalesLine."lbt cl Delivery Date Type" := SalesHeader."lbt cl Delivery Date Type";
+    end;
 }
 

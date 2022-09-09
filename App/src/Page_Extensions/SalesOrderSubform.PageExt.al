@@ -44,6 +44,15 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
                 end;
             }
         }
+        addafter(Quantity)
+        {
+            field("lbt cl Delivery Date Type"; Rec."lbt cl Delivery Date Type")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Here can you define the Delivery Date Type';
+            }
+        }
+
 
     }
     actions

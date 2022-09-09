@@ -44,6 +44,14 @@ pageextension 5272749 "lbt Sales Invoice Subform" extends "Sales Invoice Subform
             }
 
         }
+        addafter(Quantity)
+        {
+            field("lbt cl Delivery Date Type"; Rec."lbt cl Delivery Date Type")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Here can you define the Delivery Date Type';
+            }
+        }
     }
     actions
     {
