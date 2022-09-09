@@ -6,7 +6,7 @@ pageextension 5272801 "lbt Sales Quote Archives" extends "Sales Quote Archives"
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout';
+                Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {
                     ApplicationArea = All;

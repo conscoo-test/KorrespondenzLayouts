@@ -6,7 +6,7 @@ pageextension 5272802 "lbt Sales Order Archives" extends "Sales Order Archives"
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout';
+                Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {
                     ApplicationArea = All;

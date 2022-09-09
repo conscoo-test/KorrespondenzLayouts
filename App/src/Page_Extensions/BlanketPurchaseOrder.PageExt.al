@@ -38,7 +38,7 @@ pageextension 5272754 "lbt Blanket Purchase Order" extends "Blanket Purchase Ord
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout';
+                Caption = 'LeBit Extended Layout Options';
                 action("lbt Tot&aling")
                 {
                     ApplicationArea = All;

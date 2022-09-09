@@ -39,7 +39,7 @@ pageextension 5272744 "lbt Sales Invoice" extends "Sales Invoice"
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout';
+                Caption = 'LeBit Extended Layout Options';
                 action("lbt Tot&aling")
                 {
                     ApplicationArea = All;

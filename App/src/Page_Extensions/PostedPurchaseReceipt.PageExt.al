@@ -40,7 +40,7 @@ pageextension 5272727 "lbt Posted Purchase Receipt" extends "Posted Purchase Rec
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout';
+                Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {
                     ApplicationArea = All;

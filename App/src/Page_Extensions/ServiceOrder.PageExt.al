@@ -83,7 +83,7 @@ pageextension 5272815 "lbt cl ServiceOrder" extends "Service Order"
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout';
+                Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {
                     ApplicationArea = All;

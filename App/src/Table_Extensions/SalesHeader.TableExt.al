@@ -1,5 +1,21 @@
 tableextension 5272728 "lbt Sales Header" extends "Sales Header"
 {
+    fields
+    {
+        modify("Sell-to Customer No.")
+        {
+            trigger OnAfterValidate()
+            begin
+                CopyLongTextFromCustomer();
+            end;
+        }
+    }
+
+    trigger OnAfterInsert()
+    begin
+        CopyLongTextFromCustomer();
+    end;
+
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";
 
@@ -40,6 +56,18 @@ tableextension 5272728 "lbt Sales Header" extends "Sales Header"
     procedure lbtEditorVisible(): Boolean
     begin
         exit(EditorHelper.editorVisible(database::"sales header"));
+    end;
+
+    local procedure CopyLongTextFromCustomer()
+    var
+        Customer: Record Customer;
+        LongtextMgt: Codeunit "lbt Longtext Mgt.";
+    begin
+        if Rec."No." = '' then
+            exit;
+        if Rec."Sell-to Customer No." <> '' then
+            if Customer.Get(Rec."Sell-to Customer No.") then
+                LongtextMgt.CopyLongtext(Customer, Rec);
     end;
 
     trigger OnAfterDelete()

@@ -6,7 +6,7 @@ pageextension 5272791 "lbt Sales Return Order List" extends "Sales Return Order 
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout';
+                Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {
                     ApplicationArea = All;

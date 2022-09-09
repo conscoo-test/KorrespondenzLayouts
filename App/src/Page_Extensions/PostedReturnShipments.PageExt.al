@@ -6,7 +6,7 @@ pageextension 5272782 "lbt Posted Return Shipments" extends "Posted Return Shipm
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout';
+                Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {
                     ApplicationArea = All;

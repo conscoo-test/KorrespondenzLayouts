@@ -6,7 +6,7 @@ pageextension 5272735 "lbt Posted Sales Credit Memos" extends "Posted Sales Cred
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout';
+                Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {
                     ApplicationArea = All;

@@ -6,7 +6,7 @@ pageextension 5272790 "lbt Blanket Sales Orders" extends "Blanket Sales Orders"
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout';
+                Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {
                     ApplicationArea = All;

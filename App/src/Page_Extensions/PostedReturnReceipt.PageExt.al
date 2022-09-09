@@ -6,7 +6,7 @@ pageextension 5272783 "lbt Posted Return Receipt" extends "Posted Return Receipt
         {
             group("lbt correspondence documents")
             {
-                Caption = 'LeBit365 Correspondence layout';
+                Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {
                     ApplicationArea = All;
