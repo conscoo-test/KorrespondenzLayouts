@@ -1,4 +1,4 @@
-tableextension 5272766 "lbt cl Customer" extends Customer
+tableextension 5272769 "lbt cl Customer" extends Customer
 {
     fields
     {

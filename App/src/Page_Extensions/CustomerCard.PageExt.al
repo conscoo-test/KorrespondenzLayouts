@@ -1,4 +1,4 @@
-pageextension 5272838 "lbt cl CustomerCard" extends "Customer Card"
+pageextension 5272840 "lbt cl CustomerCard" extends "Customer Card"
 {
     layout
     {
