@@ -423,21 +423,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table lbt Source Setup - Field Type - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="Codeunit 1539813029 - NamedType 262960121" size-unit="char" translate="yes" xml:space="preserve">
-          <source>To Wizard...</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt AssistedSetup - NamedType ActionMsg</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1539813029 - NamedType 1304771032" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The setup for LeBit365 Reports is incomplete</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt AssistedSetup - NamedType NotificationMsg</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1539813029 - NamedType 2999628943" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Setup LeBit365</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt AssistedSetup - NamedType SetupLbl</note>
-        </trans-unit>
         <trans-unit id="Codeunit 4073882909 - Method 3109373962 - NamedType 3847532890" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unsupported Table %1 for Longtext</source>
           <note from="Developer" annotates="general" priority="2">%1 - TableId</note>
