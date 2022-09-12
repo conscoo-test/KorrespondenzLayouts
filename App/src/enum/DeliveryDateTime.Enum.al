@@ -1,4 +1,4 @@
-enum 5272721 "lbt cl DeliveryDateTime"
+enum 5272721 "lbt cl DeliveryDateType"
 {
     Extensible = true;
 

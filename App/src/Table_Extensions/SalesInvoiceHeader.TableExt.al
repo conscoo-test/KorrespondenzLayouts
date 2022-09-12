@@ -2,7 +2,7 @@ tableextension 5272756 "lbt cl Sales Invoice Header" extends "Sales Invoice Head
 {
     fields
     {
-        field(5272720; "lbt cl Delivery Date Type"; Enum "lbt cl DeliveryDateTime")
+        field(5272720; "lbt cl Delivery Date Type"; Enum "lbt cl DeliveryDateType")
         {
             Caption = 'Delivery Date Type';
             DataClassification = CustomerContent;

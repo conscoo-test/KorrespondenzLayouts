@@ -2,7 +2,7 @@ tableextension 5272728 "lbt Sales Header" extends "Sales Header"
 {
     fields
     {
-        field(5272720; "lbt cl Delivery Date Type"; Enum "lbt cl DeliveryDateTime")
+        field(5272720; "lbt cl Delivery Date Type"; Enum "lbt cl DeliveryDateType")
         {
             Caption = 'Delivery Date Type';
             DataClassification = CustomerContent;
@@ -70,20 +70,27 @@ tableextension 5272728 "lbt Sales Header" extends "Sales Header"
         exit(EditorHelper.editorVisible(Database::"Sales Header"));
     end;
 
-    procedure lbtclSetDestination()
+    procedure lbtclSetAdditionalFields()
     var
         Cust: Record Customer;
         ShiptoAddr: Record "Ship-to Address";
         destination: Code[10];
+        DeliveryDateType: Enum "lbt cl DeliveryDateType";
     begin
-        if Cust.Get("Sell-to Customer No.") then
+        if Cust.Get("Sell-to Customer No.") then begin
             destination := Cust."lbt cl Destination";
+            DeliveryDateType := cust."lbt cl Delivery Date Type";
+        end;
         if Rec."Ship-to Code" <> '' then
-            if ShiptoAddr.Get("Sell-to Customer No.", "Ship-to Code") then
+            if ShiptoAddr.Get("Sell-to Customer No.", "Ship-to Code") then begin
                 if ShiptoAddr."lbt cl Destination" <> '' then
                     destination := ShiptoAddr."lbt cl Destination";
+                DeliveryDateType := ShiptoAddr."lbt cl Delivery Date Type";
+            end;
         if Rec."lbt cl Destination" <> destination then
             Rec.Validate("lbt cl Destination", destination);
+        if Rec."lbt cl Delivery Date Type" <> DeliveryDateType then
+            Rec.Validate("lbt cl Delivery Date Type", DeliveryDateType);
     end;
 
     local procedure CopyLongTextFromCustomer()

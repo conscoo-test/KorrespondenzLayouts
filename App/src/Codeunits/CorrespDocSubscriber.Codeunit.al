@@ -650,7 +650,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
     begin
         if Cust.Get(Rec."Sell-to Customer No.") then
             Rec."lbt cl Delivery Date Type" := Cust."lbt cl Delivery Date Type";
-        Rec.lbtclSetDestination();
+        Rec.lbtclSetAdditionalFields();
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnAfterValidateEvent', 'Ship-to Code', false, false)]
@@ -658,7 +658,7 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
     var
 
     begin
-        Rec.lbtclSetDestination();
+        Rec.lbtclSetAdditionalFields();
     end;
 
 
@@ -666,6 +666,14 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
     local procedure SalesLine_OnAfterInitHeaderDefaults(SalesHeader: Record "Sales Header"; var SalesLine: Record "Sales Line")
     begin
         SalesLine."lbt cl Delivery Date Type" := SalesHeader."lbt cl Delivery Date Type";
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales Line - Price", 'OnAfterSetPrice', '', true, true)]
+    local procedure SalesLine_OnUpdateUnitPriceOnBeforeFindPrice(var SalesLine: Record "Sales Line"; PriceListLine: Record "Price List Line"; AmountType: Enum "Price Amount Type")
+    begin
+        if AmountType = AmountType::Price then
+            if SalesLine."lbt cl Price Factor" <> PriceListLine."lbt cl Price Factor" then
+                SalesLine.Validate("lbt cl Price Factor", PriceListLine."lbt cl Price Factor");
     end;
 
 }

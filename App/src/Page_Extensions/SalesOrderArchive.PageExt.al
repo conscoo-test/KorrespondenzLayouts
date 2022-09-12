@@ -8,12 +8,12 @@ pageextension 5272757 "lbt Sales Order Archive" extends "Sales Order Archive"
             field("lbt cl Delivery Date Type"; Rec."lbt cl Delivery Date Type")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specifies the value of the Delivery Date Type field.';
+                ToolTip = 'Here can you enter the Delivery Date Type.';
             }
             field("lbt cl Destination"; Rec."lbt cl Destination")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specifies the value of the Destination field.';
+                ToolTip = 'Here can you enter the Destination.';
             }
         }
         addafter(SalesLinesArchive)

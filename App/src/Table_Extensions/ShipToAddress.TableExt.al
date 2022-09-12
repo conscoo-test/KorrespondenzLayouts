@@ -2,7 +2,12 @@ tableextension 5272768 "lbt cl Ship-To-Address" extends "Ship-to Address"
 {
     fields
     {
-        field(5272720; "lbt cl Destination"; Code[10])
+        field(5272720; "lbt cl Delivery Date Type"; Enum "lbt cl DeliveryDateType")
+        {
+            Caption = 'Delivery Date Type';
+            DataClassification = CustomerContent;
+        }
+        field(5272722; "lbt cl Destination"; Code[10])
         {
             Caption = 'Destination';
             DataClassification = CustomerContent;

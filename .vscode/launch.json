@@ -21,7 +21,7 @@
             "name": "Docker",
             "type": "al",
             "request": "launch",
-            "server": "http://BC15T",
+            "server": "http://bc20sh",
             "serverInstance": "BC",
             "authentication": "UserPassword",
             "startupObjectId": 40,

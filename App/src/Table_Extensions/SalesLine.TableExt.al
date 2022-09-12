@@ -4,7 +4,7 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
     {
         field(5272720; "lbt Long Text"; Boolean)
         {
-            CalcFormula = Exist("lbt PS Longtext Line" where("Table ID" = const(37),
+            CalcFormula = exist("lbt PS Longtext Line" where("Table ID" = const(37),
                                                                 "Document Type" = field("Document Type"),
                                                                 "Document No." = field("Document No."),
                                                                 Position = const(Longtext),
@@ -25,29 +25,29 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
                 Printoption: Option Standard,Title,Total,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total";
                 EndTime: Time;
             begin
-                if ("Printoption" = "Printoption"::Alternative) or
-                  ("Printoption" = "Printoption"::Optional)
+                if (Printoption = Printoption::Alternative) or
+                  (Printoption = Printoption::Optional)
                 then begin
-                    VALIDATE(Quantity, 0);
-                    VALIDATE("Unit Price");
+                    Validate(Quantity, 0);
+                    Validate("Unit Price");
                 end;
 
-                if "Printoption" = "Printoption"::"New Page" then begin
+                if Printoption = Printoption::"New Page" then begin
                     if "No." <> '' then
                         Error(NewPageErr);
-                    Printoption := "Printoption";
-                    VALIDATE(Type, Type::" ");
+                    Printoption := Printoption;
+                    Validate(Type, Type::" ");
                     Description := NewPageLbl;
-                    "Printoption" := Printoption;
+                    Printoption := Printoption;
                 end;
 
-                if "Printoption" in ["Printoption"::"Begin Total",
-                                           "Printoption"::"End Total",
-                                           "Printoption"::Title]
+                if Printoption in [Printoption::"Begin Total",
+                                           Printoption::"End Total",
+                                           Printoption::Title]
                 then begin
-                    Printoption := "Printoption";
-                    VALIDATE(Type, Type::" ");
-                    "Printoption" := Printoption;
+                    Printoption := Printoption;
+                    Validate(Type, Type::" ");
+                    Printoption := Printoption;
                 end;
             end;
         }
@@ -62,14 +62,14 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
             trigger OnValidate()
             begin
                 if "lbt Printoption" <> "lbt Printoption"::"End Total" then
-                    FIELDERROR("lbt Printoption");
+                    FieldError("lbt Printoption");
                 CalcFields("lbt Balance");
             end;
         }
         field(5272723; "lbt Balance"; Decimal)
         {
             AutoFormatType = 1;
-            CalcFormula = Sum("Sales Line"."Line Amount" where("Document Type" = field("Document Type"),
+            CalcFormula = sum("Sales Line"."Line Amount" where("Document Type" = field("Document Type"),
                                                                 "Document No." = field("Document No."),
                                                                 "Line No." = field(filter("lbt Summation")),
                                                                 "lbt Printoption" = filter(<> Alternative & <> Optional)));
@@ -109,10 +109,39 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
             Caption = 'From Standard Sales Line';
             DataClassification = CustomerContent;
         }
-        field(5272729; "lbt cl Delivery Date Type"; Enum "lbt cl DeliveryDateTime")
+        field(5272729; "lbt cl Delivery Date Type"; Enum "lbt cl DeliveryDateType")
         {
             Caption = 'Delivery Date Type';
             DataClassification = CustomerContent;
+        }
+        field(5272730; "lbt cl Price Factor"; Enum "lbt cl Price Factor")
+        {
+            Caption = 'Price Factor';
+            DataClassification = CustomerContent;
+            trigger OnValidate()
+            begin
+                lbtclSetUnitPrice(FieldNo("lbt cl Price Factor"));
+            end;
+        }
+        field(5272731; "lbt cl Price in Price Factor"; Decimal)
+        {
+            Caption = 'Unit Price in Price Factor';
+            DataClassification = CustomerContent;
+            AutoFormatExpression = "Currency Code";
+            AutoFormatType = 2;
+            CaptionClass = GetCaptionClass(FieldNo("lbt cl Price in Price Factor"));
+            trigger OnValidate()
+            begin
+                lbtclSetUnitPrice(FieldNo("lbt cl Price in Price Factor"));
+            end;
+
+        }
+        modify("Unit Price")
+        {
+            trigger OnAfterValidate()
+            begin
+                lbtclSetUnitPrice(FieldNo("Unit Price"));
+            end;
         }
     }
 
@@ -133,20 +162,33 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
     var
 
     begin
-        exit(EditorHelper.hasEditorValue(rec, Enum::"lbt Position"::EditorLine, doctype));
+        exit(EditorHelper.hasEditorValue(Rec, Enum::"lbt Position"::EditorLine, docType));
     end;
 
     procedure lbtEditData(doctype: Integer)
     var
 
     begin
-        EditorHelper.editData(rec, Enum::"lbt Position"::EditorLine, doctype);
+        EditorHelper.editData(Rec, Enum::"lbt Position"::EditorLine, doctype);
     end;
 
-    procedure lbtGetPrintData(Position: enum "lbt Position"; docType: Integer): Text
+    procedure lbtGetPrintData(Position: Enum "lbt Position"; docType: Integer): Text
     begin
-        exit(EditorHelper.getPrintData(rec, Position, docType));
+        exit(EditorHelper.getPrintData(Rec, Position, docType));
     end;
 
+    ///H22/0437
+    procedure lbtclSetUnitPrice(CurrentFieldNo: Integer)
+    var
+        CorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
+
+    begin
+        case CurrentFieldNo of
+            FieldNo("lbt cl Price in Price Factor"):
+                Validate("Unit Price", "lbt cl Price in Price Factor" * CorrespDocMgt.GetPriceFactor("lbt cl Price Factor"));
+            FieldNo("Unit Price"), FieldNo("lbt cl Price Factor"):
+                "lbt cl Price in Price Factor" := "Unit Price" / CorrespDocMgt.GetPriceFactor("lbt cl Price Factor");
+        end;
+    end;
 }
 

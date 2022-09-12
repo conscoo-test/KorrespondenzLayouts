@@ -2,7 +2,7 @@ tableextension 5272769 "lbt cl Customer" extends Customer
 {
     fields
     {
-        field(5272720; "lbt cl Delivery Date Type"; Enum "lbt cl DeliveryDateTime")
+        field(5272720; "lbt cl Delivery Date Type"; Enum "lbt cl DeliveryDateType")
         {
             Caption = 'Delivery Date Type';
             DataClassification = CustomerContent;

@@ -188,5 +188,31 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
                 StyleExprText := Format(StyleExpr::Standard);
         end;
     end;
+
+    procedure GetPriceFactor(PriceFactor: Enum "lbt cl Price Factor") Result: Decimal
+    var
+        IsHandled: Boolean;
+    begin
+        OnBeforeGetPriceFactor(PriceFactor, Ishandled, Result);
+        if IsHandled then
+            exit;
+        case PriceFactor of
+            PriceFactor::"1":
+                Result := 1;
+            PriceFactor::"10":
+                Result := 10;
+            PriceFactor::"100":
+                Result := 100;
+            PriceFactor::"1000":
+                Result := 1000;
+        end;
+
+    end;
+
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeGetPriceFactor(PriceFactor: Enum "lbt cl Price Factor"; var Ishandled: Boolean; var Result: Decimal)
+    begin
+    end;
 }
 
