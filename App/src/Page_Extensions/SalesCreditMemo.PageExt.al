@@ -11,6 +11,7 @@ pageextension 5272745 "lbt Sales Credit Memo" extends "Sales Credit Memo"
                 ApplicationArea = All;
                 ToolTip = 'Here can you define the Delivery Date Type';
             }
+
             field("lbt cl Destination"; Rec."lbt cl Destination")
             {
                 ApplicationArea = All;

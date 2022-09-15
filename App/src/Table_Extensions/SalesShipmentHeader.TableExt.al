@@ -7,6 +7,12 @@ tableextension 5272737 "lbt Sales Shipment Header" extends "Sales Shipment Heade
             Caption = 'Delivery Date Type';
             DataClassification = CustomerContent;
         }
+        field(5272722; "lbt cl Destination"; Code[10])
+        {
+            Caption = 'Destination';
+            DataClassification = CustomerContent;
+            TableRelation = "Entry/Exit Point";
+        }
     }
 
     trigger OnInsert()

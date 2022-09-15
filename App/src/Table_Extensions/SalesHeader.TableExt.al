@@ -6,12 +6,18 @@ tableextension 5272728 "lbt Sales Header" extends "Sales Header"
         {
             Caption = 'Delivery Date Type';
             DataClassification = CustomerContent;
+            trigger OnValidate()
+            begin
+                if ("lbt cl Delivery Date Type" <> xRec."lbt cl Delivery Date Type") then
+                    MessageIfSalesLinesExist(FieldCaption("lbt cl Delivery Date Type"));
+            end;
         }
         field(5272722; "lbt cl Destination"; Code[10])
         {
             Caption = 'Destination';
             DataClassification = CustomerContent;
             TableRelation = "Entry/Exit Point";
+
         }
 
         modify("Sell-to Customer No.")

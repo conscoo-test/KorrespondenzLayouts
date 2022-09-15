@@ -2077,7 +2077,6 @@
           <source>Here can you enter the Delivery Date Type.</source>
           <target>Hier kann die Lieferterminart eingetragen werden.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl Ship-to-Address - Control lbt cl Delivery Date Type - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 1446067974 - Control 81731067 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1187003046">

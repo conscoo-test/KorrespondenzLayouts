@@ -4963,6 +4963,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt cl ReturnReceiptHeader - Field lbt cl Delivery Date Type - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1322237616 - Field 81731067 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2925931323">
+          <source>Destination</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt cl ReturnReceiptHeader - Field lbt cl Destination - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4035430585 - Field 3178038303 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
           <source>Delivery Date Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -5627,6 +5632,11 @@
           <source>Delivery Date Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Shipment Header - Field lbt cl Delivery Date Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 131395823 - Field 81731067 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>Destination</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Shipment Header - Field lbt cl Destination - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 688316136 - Field 403159976 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1114148978">
           <source>Balance</source>

@@ -7,6 +7,7 @@ tableextension 5272757 "lbt cl Sales Cr.Memo Header" extends "Sales Cr.Memo Head
             Caption = 'Delivery Date Type';
             DataClassification = CustomerContent;
         }
+
         field(5272722; "lbt cl Destination"; Code[10])
         {
             Caption = 'Destination';

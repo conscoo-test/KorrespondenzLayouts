@@ -10,6 +10,9 @@ pageextension 5272744 "lbt Sales Invoice" extends "Sales Invoice"
                 ApplicationArea = All;
                 ToolTip = 'Here can you define the Delivery Date Type';
             }
+        }
+        addlast("Shipping and Billing")
+        {
             field("lbt cl Destination"; Rec."lbt cl Destination")
             {
                 ApplicationArea = All;

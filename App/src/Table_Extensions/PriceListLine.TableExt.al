@@ -40,9 +40,9 @@ tableextension 5272770 "lbt cl PriceListLine" extends "Price List Line"
     begin
         case CurrentFieldNo of
             FieldNo("lbt cl Price in Price Factor"):
-                Validate("Unit Price", "lbt cl Price in Price Factor" * CorrespDocMgt.GetPriceFactor("lbt cl Price Factor"));
+                Validate("Unit Price", "lbt cl Price in Price Factor" / CorrespDocMgt.GetPriceFactor("lbt cl Price Factor"));
             FieldNo("Unit Price"), FieldNo("lbt cl Price Factor"):
-                "lbt cl Price in Price Factor" := "Unit Price" / CorrespDocMgt.GetPriceFactor("lbt cl Price Factor");
+                "lbt cl Price in Price Factor" := "Unit Price" * CorrespDocMgt.GetPriceFactor("lbt cl Price Factor");
         end;
     end;
 }
