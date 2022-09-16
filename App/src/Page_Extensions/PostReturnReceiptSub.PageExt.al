@@ -41,6 +41,14 @@ pageextension 5272784 "lbt Post. Return Receipt Sub." extends "Posted Return Rec
                 end;
             }
         }
+        addafter(Quantity)
+        {
+            field("lbt cl Delivery Date Type"; Rec."lbt cl Delivery Date Type")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Here can you define the Delivery Date Type';
+            }
+        }
     }
     actions
     {

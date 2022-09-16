@@ -44,6 +44,29 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
                 end;
             }
         }
+        addafter(Quantity)
+        {
+            field("lbt cl Delivery Date Type"; Rec."lbt cl Delivery Date Type")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Here can you define the Delivery Date Type';
+            }
+        }
+        ///H22/0437
+        addafter("Unit Price")
+        {
+            field("lbt cl Price Factor"; Rec."lbt cl Price Factor")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Here can you enter the Price Factor.';
+            }
+            field("lbt cl Price in Price Factor"; Rec."lbt cl Price in Price Factor")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Here can you enter the Unit Price in Price Factor.';
+            }
+        }
+
 
     }
     actions

@@ -42,6 +42,20 @@ pageextension 5272760 "lbt Sales Quote Archive Sub." extends "Sales Quote Archiv
                 end;
             }
         }
+        ///H22/0437
+        addafter("Unit Price")
+        {
+            field("lbt cl Price Factor"; Rec."lbt cl Price Factor")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Here can you enter the Price Factor.';
+            }
+            field("lbt cl Price in Price Factor"; Rec."lbt cl Price in Price Factor")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Here can you enter the Unit Price in Price Factor.';
+            }
+        }
     }
     actions
     {

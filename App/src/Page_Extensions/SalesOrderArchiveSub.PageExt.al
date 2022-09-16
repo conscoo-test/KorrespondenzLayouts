@@ -41,6 +41,20 @@ pageextension 5272758 "lbt Sales Order Archive Sub." extends "Sales Order Archiv
                 end;
             }
         }
+        ///H22/0437
+        addafter("Unit Price")
+        {
+            field("lbt cl Price Factor"; Rec."lbt cl Price Factor")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Here can you enter the Price Factor.';
+            }
+            field("lbt cl Price in Price Factor"; Rec."lbt cl Price in Price Factor")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Here can you enter the Unit Price in Price Factor.';
+            }
+        }
     }
     actions
     {

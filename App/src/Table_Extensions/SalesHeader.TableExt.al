@@ -2,6 +2,24 @@ tableextension 5272728 "lbt Sales Header" extends "Sales Header"
 {
     fields
     {
+        field(5272720; "lbt cl Delivery Date Type"; Enum "lbt cl DeliveryDateType")
+        {
+            Caption = 'Delivery Date Type';
+            DataClassification = CustomerContent;
+            trigger OnValidate()
+            begin
+                if ("lbt cl Delivery Date Type" <> xRec."lbt cl Delivery Date Type") then
+                    MessageIfSalesLinesExist(FieldCaption("lbt cl Delivery Date Type"));
+            end;
+        }
+        field(5272722; "lbt cl Destination"; Code[10])
+        {
+            Caption = 'Destination';
+            DataClassification = CustomerContent;
+            TableRelation = "Entry/Exit Point";
+
+        }
+
         modify("Sell-to Customer No.")
         {
             trigger OnAfterValidate()
@@ -37,25 +55,48 @@ tableextension 5272728 "lbt Sales Header" extends "Sales Header"
         PSLongtextLine.DeleteAll();
     end;
 
-    procedure lbtHasEditorValue(Position: enum "lbt Position"; docType: Integer) Result: Text
+    procedure lbtHasEditorValue(Position: Enum "lbt Position"; docType: Integer) Result: Text
     begin
-        exit(format(EditorHelper.hasEditorValue(rec, Position, doctype)));
+        exit(Format(EditorHelper.hasEditorValue(Rec, Position, docType)));
         //exit(EditorHelper.hasEditorValue(rec, Position));
     end;
 
-    procedure lbtEditData(Position: enum "lbt Position"; docType: Integer)
+    procedure lbtEditData(Position: Enum "lbt Position"; docType: Integer)
     begin
-        EditorHelper.editData(rec, Position, docType);
+        EditorHelper.editData(Rec, Position, docType);
     end;
 
-    procedure lbtGetPrintData(Position: enum "lbt Position"; docType: Integer): Text
+    procedure lbtGetPrintData(Position: Enum "lbt Position"; docType: Integer): Text
     begin
-        exit(EditorHelper.getPrintData(rec, Position, docType));
+        exit(EditorHelper.getPrintData(Rec, Position, docType));
     end;
 
     procedure lbtEditorVisible(): Boolean
     begin
-        exit(EditorHelper.editorVisible(database::"sales header"));
+        exit(EditorHelper.editorVisible(Database::"Sales Header"));
+    end;
+
+    procedure lbtclSetAdditionalFields()
+    var
+        Cust: Record Customer;
+        ShiptoAddr: Record "Ship-to Address";
+        destination: Code[10];
+        DeliveryDateType: Enum "lbt cl DeliveryDateType";
+    begin
+        if Cust.Get("Sell-to Customer No.") then begin
+            destination := Cust."lbt cl Destination";
+            DeliveryDateType := cust."lbt cl Delivery Date Type";
+        end;
+        if Rec."Ship-to Code" <> '' then
+            if ShiptoAddr.Get("Sell-to Customer No.", "Ship-to Code") then begin
+                if ShiptoAddr."lbt cl Destination" <> '' then
+                    destination := ShiptoAddr."lbt cl Destination";
+                DeliveryDateType := ShiptoAddr."lbt cl Delivery Date Type";
+            end;
+        if Rec."lbt cl Destination" <> destination then
+            Rec.Validate("lbt cl Destination", destination);
+        if Rec."lbt cl Delivery Date Type" <> DeliveryDateType then
+            Rec.Validate("lbt cl Delivery Date Type", DeliveryDateType);
     end;
 
     local procedure CopyLongTextFromCustomer()
@@ -72,7 +113,7 @@ tableextension 5272728 "lbt Sales Header" extends "Sales Header"
 
     trigger OnAfterDelete()
     begin
-        EditorHelper.deleteLongText(rec, Rec."Document Type".AsInteger());
+        EditorHelper.deleteLongText(Rec, Rec."Document Type".AsInteger());
     end;
 
 
