@@ -869,9 +869,15 @@ codeunit 5272729 "lbt cl EditorHelper"
     end;
 
     local procedure SetSourceTypeFilter(var Sourcerecref: RecordRef; var TargetRecRef: RecordRef; var SourceMemoField: FieldRef)
+    var
+        IsHandled: Boolean;
     begin
         if not IsOrderOrCustomer(Sourcerecref) then
             exit;
+        lbtclOnBeforeSetSourceTypeFilter(TargetRecRef, SourceMemoField, IsHandled);
+        if IsHandled then
+            exit;
+
         case true of
             IsInvoice(TargetRecRef):
                 SourceMemoField.SetRange(Enum::"Sales Document Type"::Invoice);
@@ -897,6 +903,11 @@ codeunit 5272729 "lbt cl EditorHelper"
         DocType := FRef.Value();
         if DocType = DocType2 then
             exit(true);
+    end;
+
+    [IntegrationEvent(true, false)]
+    local procedure lbtclOnBeforeSetSourceTypeFilter(var TargetRecRef: RecordRef; var SourceMemoField: FieldRef; var IsHandled: Boolean)
+    begin
     end;
 
 

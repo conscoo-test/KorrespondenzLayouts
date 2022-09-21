@@ -32,6 +32,8 @@ tableextension 5272766 "lbt cl Cust. Report Selection" extends "Custom Report Se
                     Customer.Get("Source No.");
                     RecordRef.GetTable(Customer);
                 end;
+            else
+                lbtclGetRecRef(Rec, RecordRef);
         end;
     end;
 
@@ -48,6 +50,18 @@ tableextension 5272766 "lbt cl Cust. Report Selection" extends "Custom Report Se
                 DocType := DocType::"Credit Memo";
             Usage::"S.Shipment":
                 DocType := DocType::"lbt cl Shipment/Receipt";
+            else
+                lbtclOnElseGetDocType(Rec, DocType);
         end;
+    end;
+
+    [IntegrationEvent(true, false)]
+    local procedure lbtclGetRecRef(Rec: Record "Custom Report Selection"; var RecordRef: RecordRef)
+    begin
+    end;
+
+    [IntegrationEvent(true, false)]
+    local procedure lbtclOnElseGetDocType(Rec: Record "Custom Report Selection"; var DocType: Enum "Sales Document Type")
+    begin
     end;
 }
