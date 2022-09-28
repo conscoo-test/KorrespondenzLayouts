@@ -6,7 +6,7 @@ pageextension 5272754 "lbt Blanket Purchase Order" extends "Blanket Purchase Ord
         {
             group(lbtEditor)
             {
-                Caption = 'Longtext';
+                Caption = 'LeBit Extended Layout Options';
                 field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger()))
                 {
                     ApplicationArea = all;

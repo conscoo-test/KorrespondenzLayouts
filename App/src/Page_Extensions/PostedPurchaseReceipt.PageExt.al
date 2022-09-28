@@ -8,7 +8,7 @@ pageextension 5272727 "lbt Posted Purchase Receipt" extends "Posted Purchase Rec
         {
             group(lbtEditor)
             {
-                caption = 'Longtext';
+                caption = 'LeBit Extended Layout Options';
                 field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader))
                 {
                     ApplicationArea = all;

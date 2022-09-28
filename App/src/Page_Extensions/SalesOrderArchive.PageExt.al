@@ -21,7 +21,7 @@ pageextension 5272757 "lbt Sales Order Archive" extends "Sales Order Archive"
         {
             group(lbtEditor)
             {
-                caption = 'Longtext';
+                caption = 'LeBit Extended Layout Options';
                 field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger()))
                 {
                     ApplicationArea = all;

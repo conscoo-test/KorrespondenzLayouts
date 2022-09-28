@@ -6,7 +6,7 @@ pageextension 5272723 "lbt Posted Sales Invoice" extends "Posted Sales Invoice"
         {
             group(lbtEditor)
             {
-                caption = 'Longtext';
+                caption = 'LeBit Extended Layout Options';
                 field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader))
                 {
                     ApplicationArea = all;

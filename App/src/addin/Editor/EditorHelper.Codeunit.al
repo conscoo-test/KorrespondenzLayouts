@@ -197,7 +197,7 @@ codeunit 5272729 "lbt cl EditorHelper"
             3:
                 begin
                     SetArchPsLongtextLineFilter(ArchivePSLongtextLn, Position, RecRef, false);
-                    exit(not PstdPSLongtextLn.IsEmpty());
+                    exit(not ArchivePSLongtextLn.IsEmpty());
                 end;
             5:
                 begin

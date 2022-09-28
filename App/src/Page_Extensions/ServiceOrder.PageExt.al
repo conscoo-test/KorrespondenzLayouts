@@ -7,7 +7,7 @@ pageextension 5272815 "lbt cl ServiceOrder" extends "Service Order"
             group(lbtEditor)
 
             {
-                Caption = 'Longtext';
+                Caption = 'LeBit Extended Layout Options';
                 field("lbt Editor Header"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorHeader, rec."Document Type"::Order.AsInteger()))
                 {
                     ApplicationArea = all;

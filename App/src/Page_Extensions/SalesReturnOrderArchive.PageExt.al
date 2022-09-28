@@ -2,6 +2,38 @@ pageextension 5272768 "lbt Sales Return Order Archive" extends "Sales Return Ord
 {
     // version NAVW111.00.00.19846,LBCOR1.00
 
+    layout
+    {
+        addafter(SalesLinesArchive)
+        {
+            group(lbtEditor)
+            {
+                caption = 'LeBit Extended Layout Options';
+                field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger()))
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    ToolTip = 'Editor Header';
+                    caption = 'Editor Header';
+                    trigger OnAssistEdit()
+                    begin
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger());
+                    end;
+                }
+                field("lbt Editor Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter, Rec."Document Type".AsInteger()))
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    ToolTip = 'Editor Footer';
+                    caption = 'Editor Footer';
+                    trigger OnAssistEdit()
+                    begin
+                        Rec.lbtEditData(Enum::"lbt Position"::Editorfooter, Rec."Document Type".AsInteger());
+                    end;
+                }
+            }
+        }
+    }
     actions
     {
         addafter("Ver&sion")

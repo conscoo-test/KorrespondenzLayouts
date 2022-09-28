@@ -15,11 +15,24 @@ tableextension 5272737 "lbt Sales Shipment Header" extends "Sales Shipment Heade
         }
     }
 
+    var
+        EditorHelper: Codeunit "lbt cl EditorHelper";
+
     trigger OnInsert()
     var
         SalesShipmentLine: Record "Sales Shipment Line";
         LeBitCorrespDocSingleInst: Codeunit "lbt Corresp. Doc. SingleInst";
     begin
         LeBitCorrespDocSingleInst.CopyLongTextForPostCombineSalesOrderShipment(Rec, SalesShipmentLine, 1, 0);
+    end;
+
+    procedure lbtHasEditorValue(Position: Enum "lbt Position") Result: Text
+    begin
+        exit(Format(EditorHelper.hasEditorValue(Rec, Position)));
+    end;
+
+    procedure lbtEditData(Position: Enum "lbt Position")
+    begin
+        EditorHelper.editData(Rec, Position);
     end;
 }

@@ -6,7 +6,7 @@ pageextension 5272821 "lbt cl ServiceInvoice" extends "Service Invoice"
         {
             group(lbtEditor)
             {
-                Caption = 'Longtext';
+                Caption = 'LeBit Extended Layout Options';
 
                 field("lbt Editor Header"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorHeader, rec."Document Type".AsInteger()))
                 {

@@ -15,5 +15,17 @@ tableextension 5272767 "lbt cl ReturnReceiptHeader" extends "Return Receipt Head
             TableRelation = "Entry/Exit Point";
         }
     }
+    var
+        EditorHelper: Codeunit "lbt cl EditorHelper";
+
+    procedure lbtHasEditorValue(Position: Enum "lbt Position") Result: Text
+    begin
+        exit(Format(EditorHelper.hasEditorValue(Rec, Position)));
+    end;
+
+    procedure lbtEditData(Position: Enum "lbt Position")
+    begin
+        EditorHelper.editData(Rec, Position);
+    end;
 
 }

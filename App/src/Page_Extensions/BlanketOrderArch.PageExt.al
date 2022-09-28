@@ -1,13 +1,13 @@
-pageextension 5272820 "lbt cl Posted Whse. Shipment" extends "Posted Whse. Shipment"
+pageextension 5272843 "lbt cl BlanketOrderArch" extends "Blanket Sales Order Archive"
 {
     layout
     {
-        addafter(WhseShptLines)
+        addafter(SalesLinesArchive)
         {
-            group("lbt cllbtEditor")
+            group(lbtEditor)
             {
                 caption = 'LeBit Extended Layout Options';
-                field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader))
+                field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger()))
                 {
                     ApplicationArea = all;
                     Editable = false;
@@ -15,10 +15,10 @@ pageextension 5272820 "lbt cl Posted Whse. Shipment" extends "Posted Whse. Shipm
                     caption = 'Editor Header';
                     trigger OnAssistEdit()
                     begin
-                        Rec.lbtEditData(Enum::"lbt Position"::EditorHeader);
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger());
                     end;
                 }
-                field("lbt Editor Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter))
+                field("lbt Editor Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter, Rec."Document Type".AsInteger()))
                 {
                     ApplicationArea = all;
                     Editable = false;
@@ -26,7 +26,7 @@ pageextension 5272820 "lbt cl Posted Whse. Shipment" extends "Posted Whse. Shipm
                     caption = 'Editor Footer';
                     trigger OnAssistEdit()
                     begin
-                        Rec.lbtEditData(Enum::"lbt Position"::Editorfooter);
+                        Rec.lbtEditData(Enum::"lbt Position"::Editorfooter, Rec."Document Type".AsInteger());
                     end;
                 }
             }

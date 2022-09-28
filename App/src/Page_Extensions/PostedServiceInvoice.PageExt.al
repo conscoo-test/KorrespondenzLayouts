@@ -6,7 +6,7 @@ pageextension 5272816 "lbt cl PostedServiceInvoice" extends "Posted Service Invo
         {
             group(lbtEditor)
             {
-                Caption = 'Longtext';
+                Caption = 'LeBit Extended Layout Options';
 
                 field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader))
                 {

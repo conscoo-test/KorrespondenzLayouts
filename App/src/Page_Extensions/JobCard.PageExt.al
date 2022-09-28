@@ -6,7 +6,7 @@ pageextension 5272832 "lbt cl JobCard" extends "Job Card"
         {
             group(lbtEditor)
             {
-                caption = 'Longtext';
+                caption = 'LeBit Extended Layout Options';
                 field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, 0))
                 {
                     ApplicationArea = all;
