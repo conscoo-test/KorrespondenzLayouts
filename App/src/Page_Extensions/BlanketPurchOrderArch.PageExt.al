@@ -1,5 +1,6 @@
 pageextension 5272740 "lbt Blanket Purch. Order Arch." extends "Blanket Purch. Order Archives"
 {
+
     actions
     {
         addafter(Comments)

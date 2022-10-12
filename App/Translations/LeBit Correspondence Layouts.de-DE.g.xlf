@@ -1335,6 +1335,36 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl BlanketOrderArch - Control lbt Editor Header - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 411283469 - Control 2936602837 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 461465832">
+          <source>LeBit Extended Layout Options</source>
+          <target>LeBit Erweiterte Layoutoptionen</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl BlanketPurchPrderArch - Control lbtEditor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 411283469 - Control 3671457890 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 461465832">
+          <source>Editor Footer</source>
+          <target>Editor Fuss</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl BlanketPurchPrderArch - Control lbt Editor Footer - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 411283469 - Control 3671457890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 461465832">
+          <source>Editor Footer</source>
+          <target>Editor Fuss</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl BlanketPurchPrderArch - Control lbt Editor Footer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 411283469 - Control 4044143240 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 461465832">
+          <source>Editor Header</source>
+          <target>Editor Kopf</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl BlanketPurchPrderArch - Control lbt Editor Header - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 411283469 - Control 4044143240 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 461465832">
+          <source>Editor Header</source>
+          <target>Editor Kopf</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl BlanketPurchPrderArch - Control lbt Editor Header - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2242267201 - Control 3671457890 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3219644059">
           <source>Footer Text</source>
           <target>Fußtext</target>

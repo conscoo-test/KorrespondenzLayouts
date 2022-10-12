@@ -332,6 +332,10 @@ codeunit 5272729 "lbt cl EditorHelper"
             Database::"Purch. Inv. Line",
             Database::"Purch. Cr. Memo Hdr.",
             Database::"Purch. Cr. Memo Line",
+            database::"Return Receipt Header",
+            database::"Return Receipt Line",
+            DATABASE::"Return Shipment Header",
+            database::"Return Shipment Line",
             Database::"Service Shipment Item Line",
             Database::"Service Shipment Header",
             Database::"Service Shipment Line",
@@ -454,7 +458,13 @@ codeunit 5272729 "lbt cl EditorHelper"
         ArchivePSLongtextLn."Table ID" := RecRef.Number;
         ArchivePSLongtextLn."Document Type" := RecRef.Field(DocNo_FieldNo).Value;
         ArchivePSLongtextLn."Document No." := RecRef.Field(DocNo_FieldNo).Value;
-        ArchivePSLongtextLn."Document Line No." := RecRef.Field(LineNo_FieldNo).Value;
+        if LineNo_FieldNo <> 0 then
+            ArchivePSLongtextLn."Document Line No." := RecRef.Field(LineNo_FieldNo).Value;
+        if docOccur_FieldNo <> 0 then
+            ArchivePSLongtextLn."Doc. No. Occurrence" := RecRef.Field(docOccur_FieldNo).Value;
+        if version_FieldNo <> 0 then
+            ArchivePSLongtextLn."Version No." := RecRef.Field(version_FieldNo).Value;
+
         ArchivePSLongtextLn.Position := Position;
         ArchivePSLongtextLn.Insert(true);
         Commit(); //TODO: Explain commit
@@ -616,9 +626,9 @@ codeunit 5272729 "lbt cl EditorHelper"
             else
                 Memo.Field(5).Value := 0;
             if KeyFields[4] <> 0 then
-                Memo.Field(7).Value := RecRef.Field(KeyFields[4]).Value;
+                Memo.Field(8).Value := RecRef.Field(KeyFields[4]).Value;
             if KeyFields[5] <> 0 then
-                Memo.Field(8).Value := RecRef.Field(KeyFields[5]).Value;
+                Memo.Field(7).Value := RecRef.Field(KeyFields[5]).Value;
 
 
 
@@ -750,7 +760,7 @@ codeunit 5272729 "lbt cl EditorHelper"
                     field_No[2] := 3;
                     field_No[3] := 4;
                 end;
-            110, 112, 114, 120, 122, 124:
+            110, 112, 114, 120, 122, 124, 6660, 6650:
                 begin
                     field_No[1] := 0;
                     field_No[2] := 3;
@@ -764,7 +774,7 @@ codeunit 5272729 "lbt cl EditorHelper"
                     field_No[4] := 5048;
                     field_No[5] := 5047;
                 end;
-            111, 113, 115, 121, 123, 125:
+            111, 113, 115, 121, 123, 125, 6661, 6651:
                 begin
 
                     field_No[1] := 0;
