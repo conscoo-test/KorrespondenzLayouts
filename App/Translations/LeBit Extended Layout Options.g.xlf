@@ -1138,6 +1138,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl BlanketPurchPrderArch - Control lbt Editor Header - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2125496819 - Control 1040839181 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1859456101">
+          <source>Editor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl BlankPurchOrderArchSub - Control Lbt Editor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2125496819 - Control 1040839181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1859456101">
+          <source>Editor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl BlankPurchOrderArchSub - Control Lbt Editor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3594892159 - Control 1040839181 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1234581291">
+          <source>Editor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl BlankSalesOrderArchSub - Control Lbt Editor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3594892159 - Control 1040839181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1234581291">
+          <source>Editor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl BlankSalesOrderArchSub - Control Lbt Editor - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2242267201 - Control 3671457890 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3219644059">
           <source>Footer Text</source>
           <note from="Developer" annotates="general" priority="2"></note>
