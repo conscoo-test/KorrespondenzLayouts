@@ -963,6 +963,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Blanket Purch. Order Sub. - Control lbt Long Text - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1963258137 - Control 3517179999 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1843696368">
+          <source>Here can you enter the Price Factor.</source>
+          <target>Hier kann der Preisfaktor eingetragen werden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Blanket Purch. Order Sub. - Control lbt cl Price Factor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1963258137 - Control 2357849537 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1843696368">
+          <source>Here can you enter the Unit Price in Price Factor.</source>
+          <target>Hier kann der Preis in Preisfaktor eingetragen werden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Blanket Purch. Order Sub. - Control lbt cl Price in Price Factor - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3134870048 - Action 2738780584 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2965669802">
           <source>LeBit Extended Layout Options</source>
           <target>LeBit Erweiterte Layoutoptionen</target>
@@ -1365,6 +1377,42 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl BlanketPurchPrderArch - Control lbt Editor Header - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2125496819 - Control 1040839181 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1859456101">
+          <source>Editor</source>
+          <target>Editor</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl BlankPurchOrderArchSub - Control Lbt Editor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2125496819 - Control 1040839181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1859456101">
+          <source>Editor</source>
+          <target>Editor</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl BlankPurchOrderArchSub - Control Lbt Editor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2125496819 - Control 3517179999 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1859456101">
+          <source>Here can you enter the Price Factor.</source>
+          <target>Hier kann der Preisfaktor eingetragen werden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl BlankPurchOrderArchSub - Control lbt cl Price Factor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2125496819 - Control 2357849537 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1859456101">
+          <source>Here can you enter the Unit Price in Price Factor.</source>
+          <target>Hier kann der Preis in Preisfaktor eingetragen werden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl BlankPurchOrderArchSub - Control lbt cl Price in Price Factor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3594892159 - Control 1040839181 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1234581291">
+          <source>Editor</source>
+          <target>Editor</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl BlankSalesOrderArchSub - Control Lbt Editor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3594892159 - Control 1040839181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1234581291">
+          <source>Editor</source>
+          <target>Editor</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl BlankSalesOrderArchSub - Control Lbt Editor - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2242267201 - Control 3671457890 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3219644059">
           <source>Footer Text</source>
           <target>Fußtext</target>
@@ -1624,7 +1672,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl PriceListLineReview - Control lbt cl Price Factor - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 1089563898 - Control 2357849537 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2341972053">
-          <source>Here can you enter the Unit Price in Price Factor.</source>
+          <source>Here can you enter the Price in Price Factor.</source>
           <target>Hier kann der Preis in Preisfaktor eingetragen werden.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl PriceListLineReview - Control lbt cl Price in Price Factor - Property ToolTip</note>
@@ -1636,7 +1684,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl PriceListLines - Control lbt cl Price Factor - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3953410105 - Control 2357849537 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 881164414">
-          <source>Here can you enter the Unit Price in Price Factor.</source>
+          <source>Here can you enter the Price in Price Factor.</source>
           <target>Hier kann der Preis in Preisfaktor eingetragen werden.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl PriceListLines - Control lbt cl Price in Price Factor - Property ToolTip</note>
@@ -2367,6 +2415,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Post. Purch. Cr. Memo Sub. - Control lbt Long Text - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3788816683 - Control 3517179999 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2618934728">
+          <source>Here can you enter the Price Factor.</source>
+          <target>Hier kann der Preisfaktor eingetragen werden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Post. Purch. Cr. Memo Sub. - Control lbt cl Price Factor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3788816683 - Control 2357849537 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2618934728">
+          <source>Here can you enter the Unit Price in Price Factor.</source>
+          <target>Hier kann der Preis in Preisfaktor eingetragen werden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Post. Purch. Cr. Memo Sub. - Control lbt cl Price in Price Factor - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3165079484 - Action 3037420063 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1445757383">
           <source>Here you can insert the long text for the line.</source>
           <target>Hier können Sie den Langtext für die Zeile einfügen.</target>
@@ -2546,6 +2606,18 @@
           <target>Hier können Sie Langtexte einfügen.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Posted Purch. Invoice Sub. - Control lbt Long Text - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1114505694 - Control 3517179999 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2410131092">
+          <source>Here can you enter the Price Factor.</source>
+          <target>Hier kann der Preisfaktor eingetragen werden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Posted Purch. Invoice Sub. - Control lbt cl Price Factor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1114505694 - Control 2357849537 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2410131092">
+          <source>Here can you enter the Unit Price in Price Factor.</source>
+          <target>Hier kann der Preis in Preisfaktor eingetragen werden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Posted Purch. Invoice Sub. - Control lbt cl Price in Price Factor - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 4024852556 - Action 3037420063 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2406989597">
           <source>Here you can insert the long text for the line.</source>
@@ -3495,6 +3567,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purch. Cr. Memo Subform - Control lbt Long Text - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1203749785 - Control 3517179999 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1521900543">
+          <source>Here can you enter the Price Factor.</source>
+          <target>Hier kann der Preisfaktor eingetragen werden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purch. Cr. Memo Subform - Control lbt cl Price Factor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1203749785 - Control 2357849537 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1521900543">
+          <source>Here can you enter the Unit Price in Price Factor.</source>
+          <target>Hier kann der Preis in Preisfaktor eingetragen werden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purch. Cr. Memo Subform - Control lbt cl Price in Price Factor - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3174495117 - Action 3037420063 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 896930563">
           <source>Here you can insert the long text for the line.</source>
           <target>Hier können Sie den Langtext für die Zeile einfügen.</target>
@@ -3536,6 +3620,18 @@
           <target>Hier können Sie Langtexte einfügen.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purch. Invoice Subform - Control lbt Long Text - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3174495117 - Control 3517179999 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 896930563">
+          <source>Here can you enter the Price Factor.</source>
+          <target>Hier kann der Preisfaktor eingetragen werden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purch. Invoice Subform - Control lbt cl Price Factor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3174495117 - Control 2357849537 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 896930563">
+          <source>Here can you enter the Unit Price in Price Factor.</source>
+          <target>Hier kann der Preis in Preisfaktor eingetragen werden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purch. Invoice Subform - Control lbt cl Price in Price Factor - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 1837477730 - Action 3037420063 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1060050287">
           <source>Here you can insert the long text for the line.</source>
@@ -3579,6 +3675,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purch. Order Archive Sub. - Control lbt Long Text - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1837477730 - Control 3517179999 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1060050287">
+          <source>Here can you enter the Price Factor.</source>
+          <target>Hier kann der Preisfaktor eingetragen werden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purch. Order Archive Sub. - Control lbt cl Price Factor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1837477730 - Control 2357849537 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1060050287">
+          <source>Here can you enter the Unit Price in Price Factor.</source>
+          <target>Hier kann der Preis in Preisfaktor eingetragen werden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purch. Order Archive Sub. - Control lbt cl Price in Price Factor - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2583416182 - Action 3037420063 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2354201699">
           <source>Here you can insert the long text for the line.</source>
           <target>Hier können Sie den Langtext für die Zeile einfügen.</target>
@@ -3620,6 +3728,18 @@
           <target>Hier können Sie Langtexte einfügen.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purch. Quote Archive Sub. - Control lbt Long Text - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2583416182 - Control 3517179999 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2354201699">
+          <source>Here can you enter the Price Factor.</source>
+          <target>Hier kann der Preisfaktor eingetragen werden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purch. Quote Archive Sub. - Control lbt cl Price Factor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2583416182 - Control 2357849537 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2354201699">
+          <source>Here can you enter the Unit Price in Price Factor.</source>
+          <target>Hier kann der Preis in Preisfaktor eingetragen werden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purch. Quote Archive Sub. - Control lbt cl Price in Price Factor - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 148319283 - Action 2738780584 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1367327215">
           <source>LeBit Extended Layout Options</source>
@@ -4281,6 +4401,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purchase Order Subform - Control lbt Long Text - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2413440263 - Control 3517179999 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 526152577">
+          <source>Here can you enter the Price Factor.</source>
+          <target>Hier kann der Preisfaktor eingetragen werden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purchase Order Subform - Control lbt cl Price Factor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2413440263 - Control 2357849537 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 526152577">
+          <source>Here can you enter the Unit Price in Price Factor.</source>
+          <target>Hier kann der Preis in Preisfaktor eingetragen werden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purchase Order Subform - Control lbt cl Price in Price Factor - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3245677157 - Action 2738780584 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3321822267">
           <source>LeBit Extended Layout Options</source>
           <target>LeBit Erweiterte Layoutoptionen</target>
@@ -4496,6 +4628,18 @@
           <target>Hier können Sie Langtexte einfügen.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purchase Quote Subform - Control lbt Long Text - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1693215451 - Control 3517179999 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 997943925">
+          <source>Here can you enter the Price Factor.</source>
+          <target>Hier kann der Preisfaktor eingetragen werden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purchase Quote Subform - Control lbt cl Price Factor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1693215451 - Control 2357849537 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 997943925">
+          <source>Here can you enter the Unit Price in Price Factor.</source>
+          <target>Hier kann der Preis in Preisfaktor eingetragen werden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purchase Quote Subform - Control lbt cl Price in Price Factor - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 2040509596 - Action 2738780584 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1819353702">
           <source>LeBit Extended Layout Options</source>
@@ -6189,6 +6333,30 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Sales Return Orders - Action lbt Header Text - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2865294440 - Control 3517179999 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4154795139">
+          <source>Here can you Enter the Price Factor.</source>
+          <target>Hier kann der Preisfaktor eingetragen werden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbtcl PurchasePriceListLines - Control lbt cl Price Factor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2865294440 - Control 2357849537 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4154795139">
+          <source>Here can you enter the Price in Price Factor.</source>
+          <target>Hier kann der Preis in Preisfaktor eingetragen werden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbtcl PurchasePriceListLines - Control lbt cl Price in Price Factor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1861687887 - Control 3517179999 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Here can you enter the Price Factor.</source>
+          <target>Hier kann der Preisfaktor eingetragen werden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbtcl ReqWorksheet - Control lbt cl Price Factor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1861687887 - Control 2357849537 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Here can you enter the Unit Price in Price Factor.</source>
+          <target>Hier kann der Preis in Preisfaktor eingetragen werden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbtcl ReqWorksheet - Control lbt cl Price in Price Factor - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="TableExtension 447278067 - Field 3178038303 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Delivery Date Type</source>
           <target>Lieferterminart</target>
@@ -6214,8 +6382,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt cl PriceListLine - Field lbt cl Price Factor - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2187817816 - Field 2357849537 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2964960979">
-          <source>Unit Price in Price Factor</source>
-          <target>VK-Preis in Preisfaktor</target>
+          <source>Price in Price Factor</source>
+          <target>Preis in Preisfaktor</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt cl PriceListLine - Field lbt cl Price in Price Factor - Property Caption</note>
         </trans-unit>
@@ -6417,6 +6585,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purch. Cr. Memo Line - Field lbt Balance - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3961252845 - Field 3517179999 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 518488723">
+          <source>Price Factor</source>
+          <target>Preisfaktor</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purch. Cr. Memo Line - Field lbt cl Price Factor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3961252845 - Field 2357849537 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 518488723">
+          <source>Unit Price in Price Factor</source>
+          <target>Preis in Preisfaktor</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purch. Cr. Memo Line - Field lbt cl Price in Price Factor - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3961252845 - Field 3380591293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 518488723">
           <source>Indentation</source>
           <target>Einrückung</target>
@@ -6459,6 +6639,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purch. Inv. Line - Field lbt Balance - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2515814195 - Field 3517179999 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
+          <source>Price Factor</source>
+          <target>Preisfaktor</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purch. Inv. Line - Field lbt cl Price Factor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2515814195 - Field 2357849537 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
+          <source>Unit Price in Price Factor</source>
+          <target>Preis in Preisfaktor</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purch. Inv. Line - Field lbt cl Price in Price Factor - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2515814195 - Field 3380591293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
           <source>Indentation</source>
           <target>Einrückung</target>
@@ -6500,6 +6692,18 @@
           <target>Saldo</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purch. Rcpt. Line - Field lbt Balance - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 588896087 - Field 3517179999 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 959319265">
+          <source>Price Factor</source>
+          <target>Preisfaktor</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purch. Rcpt. Line - Field lbt cl Price Factor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 588896087 - Field 2357849537 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 959319265">
+          <source>Unit Price in Price Factor</source>
+          <target>Preis in Preisfaktor</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purch. Rcpt. Line - Field lbt cl Price in Price Factor - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 588896087 - Field 3380591293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 959319265">
           <source>Indentation</source>
@@ -6561,6 +6765,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purchase Line - Field lbt Balance - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2301185401 - Field 3517179999 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
+          <source>Price Factor</source>
+          <target>Preisfaktor</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purchase Line - Field lbt cl Price Factor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2301185401 - Field 2357849537 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
+          <source>Unit Price in Price Factor</source>
+          <target>Preis in Preisfaktor</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purchase Line - Field lbt cl Price in Price Factor - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2301185401 - Field 3380591293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
           <source>Indentation</source>
           <target>Einrückung</target>
@@ -6602,6 +6818,18 @@
           <target>Saldo</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purchase Line Archive - Field lbt Balance - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1167243623 - Field 3517179999 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2809873457">
+          <source>Price Factor</source>
+          <target>Preisfaktor</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purchase Line Archive - Field lbt cl Price Factor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1167243623 - Field 2357849537 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2809873457">
+          <source>Unit Price in Price Factor</source>
+          <target>Preis in Preisfaktor</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purchase Line Archive - Field lbt cl Price in Price Factor - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1167243623 - Field 3380591293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2809873457">
           <source>Indentation</source>
@@ -6761,7 +6989,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 1439991867 - Field 2357849537 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3059602325">
           <source>Unit Price in Price Factor</source>
-          <target>VK-Preis in Preisfaktor</target>
+          <target>Preis in Preisfaktor</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Cr.Memo Line - Field lbt cl Price in Price Factor - Property Caption</note>
         </trans-unit>
@@ -6845,7 +7073,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 584848631 - Field 2357849537 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
           <source>Unit Price in Price Factor</source>
-          <target>VK-Preis in Preisfaktor</target>
+          <target>Preis in Preisfaktor</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Invoice Line - Field lbt cl Price in Price Factor - Property Caption</note>
         </trans-unit>
@@ -6917,7 +7145,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 962502568 - Field 2357849537 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
           <source>Unit Price in Price Factor</source>
-          <target>VK-Preis in Preisfaktor</target>
+          <target>Preis in Preisfaktor</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Line - Field lbt cl Price in Price Factor - Property Caption</note>
         </trans-unit>
@@ -6983,7 +7211,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 4262640906 - Field 2357849537 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2903552224">
           <source>Unit Price in Price Factor</source>
-          <target>VK-Preis in Preisfaktor</target>
+          <target>Preis in Preisfaktor</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Line Archive - Field lbt cl Price in Price Factor - Property Caption</note>
         </trans-unit>
@@ -7082,6 +7310,18 @@
           <target>Zusammenzählung</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Shipment Line - Field lbt Summation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2806499337 - Field 3517179999 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3755718006">
+          <source>Price Factor</source>
+          <target>Preisfaktor</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbtcl RequisitionLine - Field lbt cl Price Factor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2806499337 - Field 2357849537 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3755718006">
+          <source>Unit Price in Price Factor</source>
+          <target>Preis in Preisfaktor</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbtcl RequisitionLine - Field lbt cl Price in Price Factor - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 778857727 - EnumValue 1910491912 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CW</source>

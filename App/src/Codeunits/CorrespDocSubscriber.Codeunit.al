@@ -671,10 +671,40 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales Line - Price", 'OnAfterSetPrice', '', true, true)]
     local procedure SalesLine_OnUpdateUnitPriceOnBeforeFindPrice(var SalesLine: Record "Sales Line"; PriceListLine: Record "Price List Line"; AmountType: Enum "Price Amount Type")
     begin
-        if AmountType = AmountType::Price then
+        if AmountType in [AmountType::Price] then
             if SalesLine."lbt cl Price Factor" <> PriceListLine."lbt cl Price Factor" then
                 SalesLine.Validate("lbt cl Price Factor", PriceListLine."lbt cl Price Factor");
     end;
+    ///H22/0522
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purchase Line - Price", 'OnAfterSetPrice', '', true, true)]
+    local procedure PurchaseLine_OnUpdateUnitPriceOnBeforeFindPrice(var PurchaseLine: Record "Purchase Line"; PriceListLine: Record "Price List Line"; AmountType: Enum "Price Amount Type")
+    begin
+        if AmountType in [AmountType::Price] then
+            if PurchaseLine."lbt cl Price Factor" <> PriceListLine."lbt cl Price Factor" then
+                PurchaseLine.Validate("lbt cl Price Factor", PriceListLine."lbt cl Price Factor");
+    end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Req. Wksh.-Make Order", 'OnAfterInitPurchOrderLine', '', true, true)]
+    local procedure ReqWkshMakeOrder_OnAfterInitPurchOrderLine(var PurchaseLine: Record "Purchase Line"; RequisitionLine: Record "Requisition Line")
+    begin
+        PurchaseLine.Validate("lbt cl Price Factor", RequisitionLine."lbt cl Price Factor");
+    end;
+
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Requisition Line - Price", 'OnAfterSetPrice', '', true, true)]
+    local procedure RequisitionLinePrice_OnAfterSetPrice(AmountType: Enum "Price Amount Type"; var RequisitionLine: Record "Requisition Line"; PriceListLine: Record "Price List Line")
+    begin
+        if not (AmountType in [AmountType::Price, AmountType::Any]) then
+            exit;
+        if (RequisitionLine."lbt cl Price Factor" <> PriceListLine."lbt cl Price Factor") or (RequisitionLine."lbt cl Price in Price Factor" = 0) then
+            RequisitionLine.Validate("lbt cl Price Factor", PriceListLine."lbt cl Price Factor");
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Req. Wksh.-Make Order", 'OnBeforeCopyOrderDateFromPurchHeader', '', true, true)]
+    local procedure ReqWkshMakeOrder_OnBeforeCopyOrderDateFromPurchHeader(var IsHandled: Boolean)
+    begin
+        ///Schaltet die erneute Preisfindung auf requisitionLine aus
+        IsHandled := true;
+    end;
 }
 

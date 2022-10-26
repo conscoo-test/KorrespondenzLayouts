@@ -41,6 +41,7 @@ pageextension 5272728 "lbt Posted Purch. Rcpt. Sub." extends "Posted Purchase Rc
                 end;
             }
         }
+
     }
     actions
     {

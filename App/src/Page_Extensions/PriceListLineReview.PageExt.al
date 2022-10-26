@@ -13,7 +13,7 @@ pageextension 5272841 "lbt cl PriceListLineReview" extends "Price List Line Revi
             field("lbt cl Price in Price Factor"; Rec."lbt cl Price in Price Factor")
             {
                 ApplicationArea = All;
-                ToolTip = 'Here can you enter the Unit Price in Price Factor.';
+                ToolTip = 'Here can you enter the Price in Price Factor.';
             }
         }
     }

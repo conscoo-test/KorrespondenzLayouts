@@ -41,6 +41,20 @@ pageextension 5272756 "lbt Blanket Purch. Order Sub." extends "Blanket Purchase 
                 end;
             }
         }
+        ///H22/0522
+        addafter("Direct Unit Cost")
+        {
+            field("lbt cl Price Factor"; Rec."lbt cl Price Factor")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Here can you enter the Price Factor.';
+            }
+            field("lbt cl Price in Price Factor"; Rec."lbt cl Price in Price Factor")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Here can you enter the Unit Price in Price Factor.';
+            }
+        }
     }
     actions
     {

@@ -68,6 +68,18 @@ tableextension 5272733 "lbt Purchase Line Archive" extends "Purchase Line Archiv
             Caption = 'lbt Printoption StyleExpr';
             DataClassification = CustomerContent;
         }
+        field(5272730; "lbt cl Price Factor"; Enum "lbt cl Price Factor")
+        {
+            Caption = 'Price Factor';
+            DataClassification = CustomerContent;
+        }
+        field(5272731; "lbt cl Price in Price Factor"; Decimal)
+        {
+            Caption = 'Unit Price in Price Factor';
+            DataClassification = CustomerContent;
+            AutoFormatType = 2;
+            CaptionClass = GetCaptionClass(FieldNo("lbt cl Price in Price Factor"));
+        }
     }
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";

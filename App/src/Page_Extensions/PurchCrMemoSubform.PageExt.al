@@ -41,6 +41,20 @@ pageextension 5272806 "lbt Purch. Cr. Memo Subform" extends "Purch. Cr. Memo Sub
                 end;
             }
         }
+        ///H22/0522
+        addafter("Direct Unit Cost")
+        {
+            field("lbt cl Price Factor"; Rec."lbt cl Price Factor")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Here can you enter the Price Factor.';
+            }
+            field("lbt cl Price in Price Factor"; Rec."lbt cl Price in Price Factor")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Here can you enter the Unit Price in Price Factor.';
+            }
+        }
     }
     actions
     {

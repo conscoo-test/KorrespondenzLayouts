@@ -59,6 +59,18 @@ tableextension 5272723 "lbt Purch. Rcpt. Line" extends "Purch. Rcpt. Line"
             Caption = 'lbt Printoption StyleExpr';
             DataClassification = CustomerContent;
         }
+        field(5272730; "lbt cl Price Factor"; Enum "lbt cl Price Factor")
+        {
+            Caption = 'Price Factor';
+            DataClassification = CustomerContent;
+        }
+        field(5272731; "lbt cl Price in Price Factor"; Decimal)
+        {
+            Caption = 'Unit Price in Price Factor';
+            DataClassification = CustomerContent;
+            AutoFormatType = 2;
+            CaptionClass = GetCaptionClass(FieldNo("lbt cl Price in Price Factor"));
+        }
     }
     trigger OnInsert()
     var

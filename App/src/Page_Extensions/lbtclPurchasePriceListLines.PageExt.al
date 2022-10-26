@@ -1,8 +1,8 @@
-pageextension 5272842 "lbt cl PriceListLines" extends "Price List Lines"
+pageextension 5272847 "lbtcl PurchasePriceListLines" extends "Purchase Price List Lines"
 {
     layout
     {
-        addafter("Unit Price")
+        addafter(DirectUnitCost)
         {
 
             field("lbt cl Price Factor"; Rec."lbt cl Price Factor")
