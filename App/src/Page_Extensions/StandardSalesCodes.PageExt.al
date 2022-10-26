@@ -6,7 +6,7 @@ pageextension 5272835 "lbt cl StandardSalesCodes" extends "Standard Sales Code C
         {
             group(lbtEditor)
             {
-                Caption = 'Longtext';
+                Caption = 'LeBit Extended Layout Options';
                 field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader))
                 {
                     ApplicationArea = all;

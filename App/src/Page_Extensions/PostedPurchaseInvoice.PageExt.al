@@ -6,7 +6,7 @@ pageextension 5272729 "lbt Posted Purchase Invoice" extends "Posted Purchase Inv
         {
             group(lbtEditor)
             {
-                caption = 'Longtext';
+                caption = 'LeBit Extended Layout Options';
                 field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader))
                 {
                     ApplicationArea = all;

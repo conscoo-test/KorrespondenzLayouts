@@ -6,7 +6,7 @@ pageextension 5272817 "lbt cl PostedServiceShipment" extends "Posted Service Shi
         {
             group(lbtEditor)
             {
-                Caption = 'Longtext';
+                Caption = 'LeBit Extended Layout Options';
 
                 field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader))
                 {

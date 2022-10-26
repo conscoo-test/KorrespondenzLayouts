@@ -6,7 +6,7 @@ pageextension 5272823 "lbt cl ServiceContractQuote" extends "Service Contract Qu
         {
             group(lbtEditor)
             {
-                Caption = 'Longtext';
+                Caption = 'LeBit Extended Layout Options';
 
                 field("lbt Editor Header"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorHeader, rec."Contract Type"))
                 {

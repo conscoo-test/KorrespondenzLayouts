@@ -6,7 +6,7 @@ pageextension 5272822 "lbt cl ServiceCreditMemo" extends "Service Credit Memo"
         {
             group(lbtEditor)
             {
-                Caption = 'Longtext';
+                Caption = 'LeBit Extended Layout Options';
 
                 field("lbt Editor Header"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorHeader, rec."Document Type".AsInteger()))
                 {

@@ -6,7 +6,7 @@ pageextension 5272771 "lbt Sales Return Order" extends "Sales Return Order"
         {
             group(lbtEditor)
             {
-                caption = 'Longtext';
+                caption = 'LeBit Extended Layout Options';
                 visible = longtextvisible;
                 field("lbt Editor Header";
                 Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger()))

@@ -6,7 +6,7 @@ pageextension 5272818 "lbt cl PostedServiceCreditMemo" extends "Posted Service C
         {
             group(lbtEditor)
             {
-                Caption = 'Longtext';
+                Caption = 'LeBit Extended Layout Options';
 
                 field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader))
                 {

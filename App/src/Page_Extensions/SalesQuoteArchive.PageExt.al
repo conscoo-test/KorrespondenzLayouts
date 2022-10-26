@@ -21,7 +21,7 @@ pageextension 5272759 "lbt Sales Quote Archive" extends "Sales Quote Archive"
         {
             group(lbtEditor)
             {
-                caption = 'Longtext';
+                caption = 'LeBit Extended Layout Options';
                 field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger()))
                 {
                     ApplicationArea = all;
