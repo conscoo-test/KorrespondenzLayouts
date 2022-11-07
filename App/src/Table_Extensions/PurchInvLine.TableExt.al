@@ -88,7 +88,7 @@ tableextension 5272724 "lbt Purch. Inv. Line" extends "Purch. Inv. Line"
     var
 
     begin
-        EditorHelper.editData(rec, Enum::"lbt Position"::EditorLine, 0);
+        EditorHelper.ShowData(rec, Enum::"lbt Position"::EditorLine, 0);
     end;
 
 }

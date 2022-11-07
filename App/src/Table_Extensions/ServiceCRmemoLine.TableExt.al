@@ -14,7 +14,7 @@ tableextension 5272746 "lbt cl ServiceCRmemoLine" extends "Service Cr.Memo Line"
     var
 
     begin
-        EditorHelper.editData(rec, Enum::"lbt Position"::EditorLine, 0);
+        EditorHelper.ShowData(rec, Enum::"lbt Position"::EditorLine, 0);
     end;
 
     trigger OnAfterDelete()

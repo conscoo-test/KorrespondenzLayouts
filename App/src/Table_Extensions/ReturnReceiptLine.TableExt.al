@@ -78,7 +78,7 @@ tableextension 5272735 "lbt Return Receipt Line" extends "Return Receipt Line"
     var
 
     begin
-        EditorHelper.editData(rec, Enum::"lbt Position"::EditorLine, 0);
+        EditorHelper.ShowData(rec, Enum::"lbt Position"::EditorLine, 0);
     end;
 }
 

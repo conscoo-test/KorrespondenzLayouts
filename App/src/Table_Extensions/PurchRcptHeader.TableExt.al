@@ -30,6 +30,6 @@ tableextension 5272738 "lbt Purch. Rcpt. Header" extends "Purch. Rcpt. Header"
 
     procedure lbtEditData(Position: Enum "lbt Position")
     begin
-        EditorHelper.editData(Rec, Position);
+        EditorHelper.ShowData(Rec, Position);
     end;
 }

@@ -11,7 +11,7 @@ tableextension 5272753 "lbt cl ServiceCRMemoHeader" extends "Service Cr.Memo Hea
 
     procedure lbtEditData(Position: enum "lbt Position")
     begin
-        EditorHelper.editData(rec, Position, 0);
+        EditorHelper.ShowData(rec, Position, 0);
     end;
 
     procedure lbtGetPrintData(Position: enum "lbt Position"): Text

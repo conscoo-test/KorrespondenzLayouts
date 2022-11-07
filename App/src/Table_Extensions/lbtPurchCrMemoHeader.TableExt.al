@@ -19,6 +19,6 @@ tableextension 5272764 "lbt Purch. Cr.Memo. Header" extends "Purch. Cr. Memo Hdr
 
     procedure lbtEditData(Position: Enum "lbt Position")
     begin
-        EditorHelper.editData(Rec, Position);
+        EditorHelper.ShowData(Rec, Position);
     end;
 }

@@ -18,7 +18,7 @@ tableextension 5272740 "lbt Purchase Header Archive" extends "Purchase Header Ar
 
     procedure lbtEditData(Position: enum "lbt Position"; docType: Integer)
     begin
-        EditorHelper.editData(rec, Position, docType);
+        EditorHelper.ShowData(rec, Position, docType);
     end;
 
 }

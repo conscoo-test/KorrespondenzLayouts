@@ -14,7 +14,7 @@ tableextension 5272745 "lbt cl ServiceInvoiceLine" extends "Service Invoice Line
     var
 
     begin
-        EditorHelper.editData(rec, Enum::"lbt Position"::EditorLine, 0);
+        EditorHelper.showData(rec, Enum::"lbt Position"::EditorLine, 0);
     end;
 
     trigger OnAfterDelete()

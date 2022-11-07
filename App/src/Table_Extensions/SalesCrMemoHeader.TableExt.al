@@ -33,6 +33,6 @@ tableextension 5272757 "lbt cl Sales Cr.Memo Header" extends "Sales Cr.Memo Head
 
     procedure lbtEditData(Position: Enum "lbt Position")
     begin
-        EditorHelper.editData(Rec, Position);
+        EditorHelper.ShowData(Rec, Position);
     end;
 }

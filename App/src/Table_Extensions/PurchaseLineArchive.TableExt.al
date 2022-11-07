@@ -102,7 +102,7 @@ tableextension 5272733 "lbt Purchase Line Archive" extends "Purchase Line Archiv
     var
 
     begin
-        EditorHelper.editData(rec, Enum::"lbt Position"::EditorLine, doctype);
+        EditorHelper.ShowData(rec, Enum::"lbt Position"::EditorLine, doctype);
     end;
 
     procedure lbtGetPrintData(Position: enum "lbt Position"; docType: Integer): Text

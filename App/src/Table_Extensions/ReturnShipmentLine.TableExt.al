@@ -74,7 +74,7 @@ tableextension 5272734 "lbt Return Shipment Line" extends "Return Shipment Line"
     var
 
     begin
-        EditorHelper.editData(rec, Enum::"lbt Position"::EditorLine, 0);
+        EditorHelper.ShowData(rec, Enum::"lbt Position"::EditorLine, 0);
     end;
 }
 

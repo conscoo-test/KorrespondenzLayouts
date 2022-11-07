@@ -87,7 +87,7 @@ tableextension 5272720 "lbt Sales Shipment Line" extends "Sales Shipment Line"
     var
 
     begin
-        EditorHelper.editData(rec, Enum::"lbt Position"::EditorLine, 0);
+        EditorHelper.ShowData(rec, Enum::"lbt Position"::EditorLine, 0);
     end;
 
 }

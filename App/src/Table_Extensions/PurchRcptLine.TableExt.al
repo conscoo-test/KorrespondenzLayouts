@@ -94,7 +94,7 @@ tableextension 5272723 "lbt Purch. Rcpt. Line" extends "Purch. Rcpt. Line"
     var
 
     begin
-        EditorHelper.editData(rec, Enum::"lbt Position"::EditorLine, 0);
+        EditorHelper.ShowData(rec, Enum::"lbt Position"::EditorLine, 0);
     end;
 
 }

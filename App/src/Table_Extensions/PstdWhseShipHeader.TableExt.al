@@ -18,6 +18,6 @@ tableextension 5272758 "lbt cl Pstd Whse. Ship. Header" extends "Posted Whse. Sh
 
     procedure lbtEditData(Position: Enum "lbt Position")
     begin
-        EditorHelper.editData(Rec, Position);
+        EditorHelper.ShowData(Rec, Position);
     end;
 }

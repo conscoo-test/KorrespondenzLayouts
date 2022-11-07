@@ -19,6 +19,6 @@ tableextension 5272765 "lbt cllbt Purch. Inv. Header" extends "Purch. Inv. Heade
 
     procedure lbtEditData(Position: Enum "lbt Position")
     begin
-        EditorHelper.editData(Rec, Position);
+        EditorHelper.ShowData(Rec, Position);
     end;
 }

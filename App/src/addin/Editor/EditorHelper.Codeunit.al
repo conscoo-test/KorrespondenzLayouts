@@ -216,13 +216,28 @@ codeunit 5272729 "lbt cl EditorHelper"
         editData(RecRef, Position, 0, true);
     end;
 
+    procedure ShowData(vari: Variant; Position: Enum "lbt Position")
+    var
+        RecRef: RecordRef;
+    begin
+        RecRef.GetTable(vari);
+        editData(RecRef, Position, 0, false);
+    end;
+
     procedure editData(vari: Variant; Position: Enum "lbt Position"; OtherDocType: Integer)
     var
         RecRef: RecordRef;
     begin
         RecRef.GetTable(vari);
         editData(RecRef, Position, OtherDocType, true);
+    end;
 
+    procedure ShowData(vari: Variant; Position: Enum "lbt Position"; OtherDocType: Integer)
+    var
+        RecRef: RecordRef;
+    begin
+        RecRef.GetTable(vari);
+        editData(RecRef, Position, OtherDocType, false);
     end;
 
     procedure editDataSysId(vari: Variant; Position: Enum "lbt Position"; OtherDocType: Integer): Boolean
@@ -711,7 +726,7 @@ codeunit 5272729 "lbt cl EditorHelper"
     var
         PstdPSLongtextLn: Record "lbt Posted PS Longtext Line";
     begin
-        SetPstdPsLongtextLineFilter(PstdPSLongtextLn, Position, RecRef, true);
+        SetPstdPsLongtextLineFilter(PstdPSLongtextLn, Position, RecRef, false);
         PstdPSLongtextLn.ShowData();
         // PstdPSLongtextLn.EditData();
         // if not PstdPSLongtextLn."Editor Content".HasValue() then
@@ -722,7 +737,7 @@ codeunit 5272729 "lbt cl EditorHelper"
     var
         ArchivePSLongtextLn: Record "lbt Archive PS Longtext Line";
     begin
-        SetArchPsLongtextLineFilter(ArchivePSLongtextLn, Position, RecRef, true);
+        SetArchPsLongtextLineFilter(ArchivePSLongtextLn, Position, RecRef, false);
         ArchivePSLongtextLn.ShowData();
         // ArchivePSLongtextLn.EditData();
         // if not ArchivePSLongtextLn."Editor Content".HasValue() then

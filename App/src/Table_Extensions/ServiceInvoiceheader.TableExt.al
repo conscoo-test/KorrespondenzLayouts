@@ -11,7 +11,7 @@ tableextension 5272751 "lbt cl ServiceInvoiceHeader" extends "Service Invoice He
 
     procedure lbtEditData(Position: enum "lbt Position")
     begin
-        EditorHelper.editData(rec, Position, 0);
+        EditorHelper.showData(rec, Position, 0);
     end;
 
     procedure lbtGetPrintData(Position: enum "lbt Position"): Text
