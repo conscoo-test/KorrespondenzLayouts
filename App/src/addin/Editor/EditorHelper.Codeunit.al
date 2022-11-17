@@ -17,10 +17,14 @@ codeunit 5272729 "lbt cl EditorHelper"
     procedure ShowTextEditor(data: Text; IsHTML: Boolean) Result: Boolean
     var
         Editor: Page "lbt cl Editor";
+        WebViewer: Page "lbt cl WebViewer";
     begin
-        Editor.SetText(data, IsHTML);
-        Editor.Editable(false);
-        Editor.RunModal();
+        WebViewer.SetContent(data);
+        WebViewer.Editable := false;
+        WebViewer.Run();
+        //Editor.SetText(data, IsHTML);
+        //Editor.Editable(false);
+        //Editor.RunModal();
     end;
 
     procedure deleteLongText(vari: Variant)
@@ -399,9 +403,9 @@ codeunit 5272729 "lbt cl EditorHelper"
         PSLongtextLn.SetRange(Position, Position);
         if LineNo_FieldNo <> 0 then
             PSLongtextLn.SetRange("Document Line No.", RecRef.Field(LineNo_FieldNo).Value);
-        if not InsertIfEmpty then
-            exit;
         if PSLongtextLn.FindFirst() then
+            exit;
+        if not InsertIfEmpty then
             exit;
         PSLongtextLn.Init();
         PSLongtextLn."Table ID" := RecRef.Number;
@@ -430,9 +434,9 @@ codeunit 5272729 "lbt cl EditorHelper"
         PstdPSLongtextLn.SetRange(Position, Position);
         if LineNo_FieldNo <> 0 then
             PstdPSLongtextLn.SetRange("Document Line No.", RecRef.Field(LineNo_FieldNo).Value);
-        if not InsertIfEmpty then
-            exit;
         if PstdPSLongtextLn.FindFirst() then
+            exit;
+        if not InsertIfEmpty then
             exit;
         PstdPSLongtextLn.Init();
         PstdPSLongtextLn."Table ID" := RecRef.Number;
@@ -465,9 +469,9 @@ codeunit 5272729 "lbt cl EditorHelper"
             ArchivePSLongtextLn.SetRange("Doc. No. Occurrence", RecRef.Field(docOccur_FieldNo).Value);
         if version_FieldNo <> 0 then
             ArchivePSLongtextLn.SetRange("Version No.", RecRef.Field(version_FieldNo).Value);
-        if not InsertIfEmpty then
-            exit;
         if ArchivePSLongtextLn.FindFirst() then
+            exit;
+        if not InsertIfEmpty then
             exit;
         ArchivePSLongtextLn.Init();
         ArchivePSLongtextLn."Table ID" := RecRef.Number;

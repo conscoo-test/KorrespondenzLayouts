@@ -4,17 +4,23 @@ page 5272729 "lbt cl WebViewer"
     UsageCategory = Lists;
     layout
     {
+
+
         area(Content)
         {
 
-            usercontrol(Viewer; "Microsoft.Dynamics.Nav.Client.WebPageViewer")
+            group(Editor)
             {
-                ApplicationArea = all;
-                trigger ControlAddInReady(callbackUrl: Text)
-                var
-                begin
-                    CurrPage.Viewer.SetContent(HTMLContent);
-                end;
+                Caption = 'Editor';
+                usercontrol(Viewer; "Microsoft.Dynamics.Nav.Client.WebPageViewer")
+                {
+                    ApplicationArea = all;
+                    trigger ControlAddInReady(callbackUrl: Text)
+                    var
+                    begin
+                        CurrPage.Viewer.SetContent(HTMLContent);
+                    end;
+                }
             }
         }
     }
