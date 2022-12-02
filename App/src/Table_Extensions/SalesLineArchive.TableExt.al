@@ -108,7 +108,7 @@ tableextension 5272732 "lbt Sales Line Archive" extends "Sales Line Archive"
     var
 
     begin
-        EditorHelper.editData(rec, Enum::"lbt Position"::EditorLine, doctype);
+        EditorHelper.ShowData(rec, Enum::"lbt Position"::EditorLine, doctype);
     end;
 
     procedure lbtGetPrintData(Position: enum "lbt Position"; docType: Integer): Text

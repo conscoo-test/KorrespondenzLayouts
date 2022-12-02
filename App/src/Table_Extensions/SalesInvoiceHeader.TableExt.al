@@ -32,7 +32,7 @@ tableextension 5272756 "lbt cl Sales Invoice Header" extends "Sales Invoice Head
 
     procedure lbtEditData(Position: Enum "lbt Position")
     begin
-        EditorHelper.editData(Rec, Position);
+        EditorHelper.ShowData(Rec, Position);
     end;
 }
 

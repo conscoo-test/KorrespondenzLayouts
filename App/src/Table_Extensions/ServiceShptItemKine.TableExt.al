@@ -14,7 +14,7 @@ tableextension 5272749 "lbt cl Service Shpt Item Line" extends "Service Shipment
     var
 
     begin
-        EditorHelper.editData(rec, Enum::"lbt Position"::EditorLine, 0);
+        EditorHelper.showData(rec, Enum::"lbt Position"::EditorLine, 0);
     end;
 
     trigger OnAfterDelete()

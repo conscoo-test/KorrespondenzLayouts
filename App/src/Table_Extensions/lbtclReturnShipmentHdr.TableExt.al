@@ -10,6 +10,6 @@ tableextension 5272771 "lbtcl ReturnShipmentHdr" extends "Return Shipment Header
 
     procedure lbtEditData(Position: Enum "lbt Position")
     begin
-        EditorHelper.editData(Rec, Position);
+        EditorHelper.ShowData(Rec, Position);
     end;
 }

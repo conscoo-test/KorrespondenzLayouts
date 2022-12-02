@@ -95,7 +95,7 @@ tableextension 5272721 "lbt Sales Invoice Line" extends "Sales Invoice Line"
     var
 
     begin
-        EditorHelper.editData(rec, Enum::"lbt Position"::EditorLine, 0);
+        EditorHelper.ShowData(rec, Enum::"lbt Position"::EditorLine, 0);
     end;
 
 }

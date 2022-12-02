@@ -33,6 +33,6 @@ tableextension 5272737 "lbt Sales Shipment Header" extends "Sales Shipment Heade
 
     procedure lbtEditData(Position: Enum "lbt Position")
     begin
-        EditorHelper.editData(Rec, Position);
+        EditorHelper.ShowData(Rec, Position);
     end;
 }

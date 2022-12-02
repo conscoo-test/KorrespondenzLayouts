@@ -81,14 +81,14 @@ tableextension 5272725 "lbt Purch. Cr. Memo Line" extends "Purch. Cr. Memo Line"
     var
 
     begin
-        exit(EditorHelper.hasEditorValue(rec, Enum::"lbt Position"::EditorLine, 0));
+        exit(EditorHelper.hasEditorValue(Rec, Enum::"lbt Position"::EditorLine, 0));
     end;
 
     procedure lbtEditData()
     var
 
     begin
-        EditorHelper.editData(rec, Enum::"lbt Position"::EditorLine, 0);
+        EditorHelper.ShowData(Rec, Enum::"lbt Position"::EditorLine, 0);
     end;
 
 }

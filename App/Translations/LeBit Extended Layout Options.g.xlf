@@ -533,6 +533,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt cl WebViewer - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3747984497 - Control 1015418339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Editor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt cl WebViewer - Control Editor - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 214935587 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Correspondence Setup</source>
           <note from="Developer" annotates="general" priority="2"></note>

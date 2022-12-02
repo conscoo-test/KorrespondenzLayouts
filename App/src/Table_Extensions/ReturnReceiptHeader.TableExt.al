@@ -25,7 +25,7 @@ tableextension 5272767 "lbt cl ReturnReceiptHeader" extends "Return Receipt Head
 
     procedure lbtEditData(Position: Enum "lbt Position")
     begin
-        EditorHelper.editData(Rec, Position);
+        EditorHelper.ShowData(Rec, Position);
     end;
 
 }

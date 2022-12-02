@@ -32,7 +32,7 @@ tableextension 5272739 "lbt Sales Header Archive" extends "Sales Header Archive"
 
     procedure lbtEditData(Position: enum "lbt Position"; docType: Integer)
     begin
-        EditorHelper.editData(rec, Position, docType);
+        EditorHelper.ShowData(rec, Position, docType);
     end;
 
     procedure lbtGetPrintData(Position: enum "lbt Position"; docType: Integer): Text

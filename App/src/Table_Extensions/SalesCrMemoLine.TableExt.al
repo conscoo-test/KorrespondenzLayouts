@@ -93,7 +93,7 @@ tableextension 5272722 "lbt Sales Cr.Memo Line" extends "Sales Cr.Memo Line"
     var
 
     begin
-        EditorHelper.editData(rec, Enum::"lbt Position"::EditorLine, 0);
+        EditorHelper.ShowData(rec, Enum::"lbt Position"::EditorLine, 0);
     end;
 
 }
