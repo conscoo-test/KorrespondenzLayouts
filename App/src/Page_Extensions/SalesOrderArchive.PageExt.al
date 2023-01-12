@@ -4,7 +4,6 @@ pageextension 5272757 "lbt Sales Order Archive" extends "Sales Order Archive"
     {
         addlast(General)
         {
-
             field("lbt cl Delivery Date Type"; Rec."lbt cl Delivery Date Type")
             {
                 ApplicationArea = All;
@@ -21,13 +20,13 @@ pageextension 5272757 "lbt Sales Order Archive" extends "Sales Order Archive"
         {
             group(lbtEditor)
             {
-                caption = 'LeBit Extended Layout Options';
+                Caption = 'LeBit Extended Layout Options';
                 field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger()))
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Editor Header';
-                    caption = 'Editor Header';
+                    Caption = 'Editor Header';
                     trigger OnAssistEdit()
                     begin
                         Rec.lbtEditData(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger());
@@ -35,18 +34,17 @@ pageextension 5272757 "lbt Sales Order Archive" extends "Sales Order Archive"
                 }
                 field("lbt Editor Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter, Rec."Document Type".AsInteger()))
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Editor Footer';
-                    caption = 'Editor Footer';
+                    Caption = 'Editor Footer';
                     trigger OnAssistEdit()
                     begin
-                        Rec.lbtEditData(Enum::"lbt Position"::Editorfooter, Rec."Document Type".AsInteger());
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorFooter, Rec."Document Type".AsInteger());
                     end;
                 }
             }
         }
-
     }
     actions
     {
@@ -89,4 +87,3 @@ pageextension 5272757 "lbt Sales Order Archive" extends "Sales Order Archive"
         }
     }
 }
-

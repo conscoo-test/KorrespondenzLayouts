@@ -22,7 +22,7 @@ pageextension 5272805 "lbt Purchase Quote Subform" extends "Purchase Quote Subfo
                 ToolTip = 'Specified the Printoption';
             }
         }
-        addafter("ShortcutDimCode8")
+        addafter(ShortcutDimCode8)
         {
             field("lbt Long Text"; Rec."lbt Long Text")
             {
@@ -32,7 +32,7 @@ pageextension 5272805 "lbt Purchase Quote Subform" extends "Purchase Quote Subfo
             field("Lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
                 Caption = 'Editor';
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
                 trigger OnAssistEdit()
@@ -88,4 +88,3 @@ pageextension 5272805 "lbt Purchase Quote Subform" extends "Purchase Quote Subfo
     var
         lbtStyle: Text;
 }
-

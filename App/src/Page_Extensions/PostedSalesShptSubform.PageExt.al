@@ -31,10 +31,10 @@ pageextension 5272722 "lbt Posted Sales Shpt. Subform" extends "Posted Sales Shp
             }
             field("Lbt Editor"; Rec.lbtHasEditorValue())
             {
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
-                caption = 'Editor';
+                Caption = 'Editor';
                 trigger OnAssistEdit()
                 begin
                     Rec.lbtEditData();
@@ -74,4 +74,3 @@ pageextension 5272722 "lbt Posted Sales Shpt. Subform" extends "Posted Sales Shp
     var
         lbtStyle: Text;
 }
-

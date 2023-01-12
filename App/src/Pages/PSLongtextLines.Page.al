@@ -9,7 +9,7 @@ page 5272720 "lbt PS Longtext Lines"
 
     layout
     {
-        area(content)
+        area(Content)
         {
             repeater(Control5272723)
             {
@@ -24,7 +24,6 @@ page 5272720 "lbt PS Longtext Lines"
                         NoOnAfterValidate();
                     end;
                 }
-
                 field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
@@ -41,7 +40,7 @@ page 5272720 "lbt PS Longtext Lines"
 
     actions
     {
-        area(processing)
+        area(Processing)
         {
             action("E&ditor")
             {
@@ -65,14 +64,14 @@ page 5272720 "lbt PS Longtext Lines"
 
     var
         ExtendedTextHeader: Record "Extended Text Header";
-        SalesHeader: Record "Sales Header";
         PurchaseHeader: Record "Purchase Header";
+        SalesHeader: Record "Sales Header";
         SourceRecordRef: RecordRef;
         SourceFieldRef: FieldRef;
-        SourceDocumentType: Enum "Sales Document Type";
-        Belegdatum: Date;
         LanguageCode: Code[10];
         SourceDocumentNo: Code[20];
+        Belegdatum: Date;
+        SourceDocumentType: Enum "Sales Document Type";
 
     local procedure NoOnAfterValidate()
     var
@@ -117,4 +116,3 @@ page 5272720 "lbt PS Longtext Lines"
         CurrPage.Update(false);
     end;
 }
-

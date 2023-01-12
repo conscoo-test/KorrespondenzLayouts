@@ -10,44 +10,10 @@ codeunit 5272722 "lbt Corresp. Doc. SingleInst"
 
     var
         LongtextMgt: Codeunit "lbt Longtext Mgt.";
-        ProcessingPostDropOrderShipment: Boolean;
         ProcessingPostCombineSalesOrderShipment: Boolean;
-        WithSalesHeader: Boolean;
+        ProcessingPostDropOrderShipment: Boolean;
         WithPurchHeader: Boolean;
-
-    procedure CopyLongTextForPostDropOrderShipment(var PurchRcptHeader: Record "Purch. Rcpt. Header"; var PurchRcptLine: Record "Purch. Rcpt. Line"; EventType: Option OnBefore,Processing,OnAfter; Type: Option Header,Lines)
-    var
-        PurchaseOrderHeader: Record "Purchase Header";
-        PurchaseOrderLine: Record "Purchase Line";
-        SourceRecRef: RecordRef;
-        TargetRecRef: RecordRef;
-    begin
-        case EventType of
-            EventType::OnBefore:
-                ProcessingPostDropOrderShipment := true;
-            EventType::Processing:
-                if ProcessingPostDropOrderShipment then
-                    case Type of
-                        Type::Header:
-                            begin
-                                PurchaseOrderHeader.Get(PurchaseOrderHeader."Document Type"::Order, PurchRcptHeader."Order No.");
-                                SourceRecRef.GetTable(PurchaseOrderHeader);
-                                TargetRecRef.GetTable(PurchRcptHeader);
-                                LongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
-                            end;
-                        Type::Lines:
-                            begin
-                                PurchaseOrderLine.Get(PurchaseOrderLine."Document Type"::Order, PurchRcptLine."Order No.", PurchRcptLine."Order Line No.");
-                                SourceRecRef.GetTable(PurchaseOrderLine);
-                                TargetRecRef.GetTable(PurchRcptLine);
-                                LongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
-                            end;
-                    end;
-
-            EventType::OnAfter:
-                ProcessingPostDropOrderShipment := false;
-        end;
-    end;
+        WithSalesHeader: Boolean;
 
     procedure CopyLongTextForPostCombineSalesOrderShipment(SalesShipmentHeader: Record "Sales Shipment Header"; SalesShipmentLine: Record "Sales Shipment Line"; EventType: Option OnBefore,Processing,OnAfter; Type: Option Header,Lines)
     var
@@ -83,9 +49,43 @@ codeunit 5272722 "lbt Corresp. Doc. SingleInst"
         end;
     end;
 
-    procedure SetWithSalesHeader(WithSalesHeaderVar: Boolean)
+    procedure CopyLongTextForPostDropOrderShipment(var PurchRcptHeader: Record "Purch. Rcpt. Header"; var PurchRcptLine: Record "Purch. Rcpt. Line"; EventType: Option OnBefore,Processing,OnAfter; Type: Option Header,Lines)
+    var
+        PurchaseOrderHeader: Record "Purchase Header";
+        PurchaseOrderLine: Record "Purchase Line";
+        SourceRecRef: RecordRef;
+        TargetRecRef: RecordRef;
     begin
-        WithSalesHeader := WithSalesHeaderVar;
+        case EventType of
+            EventType::OnBefore:
+                ProcessingPostDropOrderShipment := true;
+            EventType::Processing:
+                if ProcessingPostDropOrderShipment then
+                    case Type of
+                        Type::Header:
+                            begin
+                                PurchaseOrderHeader.Get(PurchaseOrderHeader."Document Type"::Order, PurchRcptHeader."Order No.");
+                                SourceRecRef.GetTable(PurchaseOrderHeader);
+                                TargetRecRef.GetTable(PurchRcptHeader);
+                                LongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+                            end;
+                        Type::Lines:
+                            begin
+                                PurchaseOrderLine.Get(PurchaseOrderLine."Document Type"::Order, PurchRcptLine."Order No.", PurchRcptLine."Order Line No.");
+                                SourceRecRef.GetTable(PurchaseOrderLine);
+                                TargetRecRef.GetTable(PurchRcptLine);
+                                LongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
+                            end;
+                    end;
+
+            EventType::OnAfter:
+                ProcessingPostDropOrderShipment := false;
+        end;
+    end;
+
+    procedure GetWithPurchHeader(): Boolean
+    begin
+        exit(WithPurchHeader);
     end;
 
     procedure GetWithSalesHeader(): Boolean
@@ -98,9 +98,8 @@ codeunit 5272722 "lbt Corresp. Doc. SingleInst"
         WithPurchHeader := WithPurchHeaderVar;
     end;
 
-    procedure GetWithPurchHeader(): Boolean
+    procedure SetWithSalesHeader(WithSalesHeaderVar: Boolean)
     begin
-        exit(WithPurchHeader);
+        WithSalesHeader := WithSalesHeaderVar;
     end;
 }
-

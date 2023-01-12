@@ -16,14 +16,13 @@ pageextension 5272775 "lbt Purch. Return Order Sub." extends "Purchase Return Or
         }
         addafter(Type)
         {
-
             field("lbt Printoption"; Rec."lbt Printoption")
             {
                 ToolTip = 'Here you can choose the Printoptions.';
                 ApplicationArea = All;
             }
         }
-        addafter("ShortcutDimCode8")
+        addafter(ShortcutDimCode8)
         {
             field("lbt Long Text"; Rec."lbt Long Text")
             {
@@ -33,7 +32,7 @@ pageextension 5272775 "lbt Purch. Return Order Sub." extends "Purchase Return Or
             field("Lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
                 Caption = 'Editor';
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
                 trigger OnAssistEdit()
@@ -75,4 +74,3 @@ pageextension 5272775 "lbt Purch. Return Order Sub." extends "Purchase Return Or
     var
         lbtStyle: Text;
 }
-

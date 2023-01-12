@@ -16,7 +16,6 @@ pageextension 5272760 "lbt Sales Quote Archive Sub." extends "Sales Quote Archiv
         }
         addafter(Type)
         {
-
             field("lbt Printoption"; Rec."lbt Printoption")
             {
                 ToolTip = 'Here you can choose the Printoptions.';
@@ -33,7 +32,7 @@ pageextension 5272760 "lbt Sales Quote Archive Sub." extends "Sales Quote Archiv
             field("Lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
                 Caption = 'Editor';
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
                 trigger OnAssistEdit()
@@ -89,4 +88,3 @@ pageextension 5272760 "lbt Sales Quote Archive Sub." extends "Sales Quote Archiv
     var
         lbtStyle: Text;
 }
-

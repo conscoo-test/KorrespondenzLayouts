@@ -4,7 +4,6 @@ pageextension 5272842 "lbt cl PriceListLines" extends "Price List Lines"
     {
         addafter("Unit Price")
         {
-
             field("lbt cl Price Factor"; Rec."lbt cl Price Factor")
             {
                 ApplicationArea = All;

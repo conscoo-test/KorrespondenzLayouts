@@ -22,7 +22,7 @@ pageextension 5272803 "lbt Sales Quote Subform" extends "Sales Quote Subform"
                 ToolTip = 'Specified the Printoption';
             }
         }
-        addafter("ShortcutDimCode8")
+        addafter(ShortcutDimCode8)
         {
             field("lbt Long Text"; Rec."lbt Long Text")
             {
@@ -32,7 +32,7 @@ pageextension 5272803 "lbt Sales Quote Subform" extends "Sales Quote Subform"
             field("Lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
                 Caption = 'Editor';
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
                 trigger OnAssistEdit()
@@ -63,7 +63,6 @@ pageextension 5272803 "lbt Sales Quote Subform" extends "Sales Quote Subform"
                 ToolTip = 'Here can you enter the Unit Price in Price Factor.';
             }
         }
-
     }
     actions
     {

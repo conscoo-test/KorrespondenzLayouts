@@ -12,7 +12,6 @@ pageextension 5272734 "lbt Posted Sales Invoices" extends "Posted Sales Invoices
                 action("lbt Header Text")
                 {
                     ApplicationArea = All;
-
                     Caption = 'Header Text';
                     ToolTip = 'Specified the Header Text';
                     Image = BeginningText;
@@ -44,4 +43,3 @@ pageextension 5272734 "lbt Posted Sales Invoices" extends "Posted Sales Invoices
         }
     }
 }
-

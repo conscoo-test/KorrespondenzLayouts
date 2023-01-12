@@ -32,7 +32,7 @@ pageextension 5272732 "lbt Post. Purch. Cr. Memo Sub." extends "Posted Purch. Cr
             field("Lbt Editor"; Rec.lbtHasEditorValue())
             {
                 Caption = 'Editor';
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
                 trigger OnAssistEdit()
@@ -88,4 +88,3 @@ pageextension 5272732 "lbt Post. Purch. Cr. Memo Sub." extends "Posted Purch. Cr
     var
         lbtStyle: Text;
 }
-

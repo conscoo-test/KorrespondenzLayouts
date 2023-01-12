@@ -41,4 +41,3 @@ pageextension 5272735 "lbt Posted Sales Credit Memos" extends "Posted Sales Cred
         }
     }
 }
-

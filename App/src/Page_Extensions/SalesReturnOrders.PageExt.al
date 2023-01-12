@@ -41,4 +41,3 @@ pageextension 5272773 "lbt Sales Return Orders" extends "Sales Return Orders"
         }
     }
 }
-

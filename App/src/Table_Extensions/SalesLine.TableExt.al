@@ -2,6 +2,13 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
 {
     fields
     {
+        modify("Unit Price")
+        {
+            trigger OnAfterValidate()
+            begin
+                lbtclSetUnitPrice(FieldNo("Unit Price"));
+            end;
+        }
         field(5272720; "lbt Long Text"; Boolean)
         {
             CalcFormula = exist("lbt PS Longtext Line" where("Table ID" = const(37),
@@ -134,17 +141,8 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
             begin
                 lbtclSetUnitPrice(FieldNo("lbt cl Price in Price Factor"));
             end;
-
-        }
-        modify("Unit Price")
-        {
-            trigger OnAfterValidate()
-            begin
-                lbtclSetUnitPrice(FieldNo("Unit Price"));
-            end;
         }
     }
-
 
     trigger OnDelete()
     var
@@ -157,25 +155,6 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
         EditorHelper: Codeunit "lbt cl EditorHelper";
         NewPageErr: Label 'New Pages can only be set in blank lines.';
         NewPageLbl: Label '--- New Page ---';
-
-    procedure lbtHasEditorValue(docType: Integer) Result: Boolean
-    var
-
-    begin
-        exit(EditorHelper.hasEditorValue(Rec, Enum::"lbt Position"::EditorLine, docType));
-    end;
-
-    procedure lbtEditData(doctype: Integer)
-    var
-
-    begin
-        EditorHelper.editData(Rec, Enum::"lbt Position"::EditorLine, doctype);
-    end;
-
-    procedure lbtGetPrintData(Position: Enum "lbt Position"; docType: Integer): Text
-    begin
-        exit(EditorHelper.getPrintData(Rec, Position, docType));
-    end;
 
     ///H22/0437
     procedure lbtclSetUnitPrice(CurrentFieldNo: Integer)
@@ -190,5 +169,23 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
                 "lbt cl Price in Price Factor" := "Unit Price" * CorrespDocMgt.GetPriceFactor("lbt cl Price Factor");
         end;
     end;
-}
 
+    procedure lbtEditData(doctype: Integer)
+    var
+
+    begin
+        EditorHelper.editData(Rec, Enum::"lbt Position"::EditorLine, doctype);
+    end;
+
+    procedure lbtGetPrintData(Position: Enum "lbt Position"; docType: Integer): Text
+    begin
+        exit(EditorHelper.getPrintData(Rec, Position, docType));
+    end;
+
+    procedure lbtHasEditorValue(docType: Integer) Result: Boolean
+    var
+
+    begin
+        exit(EditorHelper.hasEditorValue(Rec, Enum::"lbt Position"::EditorLine, docType));
+    end;
+}

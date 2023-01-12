@@ -2,8 +2,8 @@ table 5272722 "lbt Archive PS Longtext Line"
 {
     // version LBCOR1.00
 
-    DrillDownPageID = "lbt Arch. PS Longtext Lines";
-    LookupPageID = "lbt Arch. PS Longtext Lines";
+    DrillDownPageId = "lbt Arch. PS Longtext Lines";
+    LookupPageId = "lbt Arch. PS Longtext Lines";
     PasteIsValid = false;
 
     fields
@@ -25,9 +25,9 @@ table 5272722 "lbt Archive PS Longtext Line"
         {
             Caption = 'Document No.';
             NotBlank = true;
-            TableRelation = IF ("Table ID" = const(5107)) "Sales Header Archive"."No." where("Document Type" = field("Document Type"))
-            ELSE
-            IF ("Table ID" = const(5109)) "Purchase Header Archive"."No." where("Document Type" = field("Document Type"));
+            TableRelation = if ("Table ID" = const(5107)) "Sales Header Archive"."No." where("Document Type" = field("Document Type"))
+            else
+            if ("Table ID" = const(5109)) "Purchase Header Archive"."No." where("Document Type" = field("Document Type"));
             DataClassification = CustomerContent;
         }
         field(4; Position; Enum "lbt Position")
@@ -72,7 +72,7 @@ table 5272722 "lbt Archive PS Longtext Line"
         field(11; "No."; Code[20])
         {
             Caption = 'No.';
-            TableRelation = IF (Type = const(Text)) "Standard Text";
+            TableRelation = if (Type = const(Text)) "Standard Text";
             DataClassification = CustomerContent;
         }
         field(12; Description; Text[120])
@@ -80,14 +80,14 @@ table 5272722 "lbt Archive PS Longtext Line"
             Caption = 'Description';
             DataClassification = CustomerContent;
         }
-        field(13; "Text"; BLOB)
+        field(13; "Text"; Blob)
         {
             Caption = 'Text';
             DataClassification = CustomerContent;
         }
         field(21; "Editor Content"; Blob)
         {
-            caption = 'Editor Content';
+            Caption = 'Editor Content';
             DataClassification = CustomerContent;
         }
     }
@@ -108,15 +108,32 @@ table 5272722 "lbt Archive PS Longtext Line"
         data: Text;
     begin
         data := ReadContentData(false);
-        if not editorhelper.TextEditor(data, true) then
+        if not EditorHelper.TextEditor(data, true) then
             exit;
         if (data = '<p><br></p>') or (data = '<p></p>') then
-            delete(true)
+            Delete(true)
         else begin
             WriteContentData(data);
-            modify();
+            Modify();
         end;
+    end;
 
+    procedure ReadContentData(show: Boolean) Result: Text
+    var
+        EditorPreview: Page "lbt cl Editor Preview";
+        is: InStream;
+        Buffer: Text;
+    begin
+        CalcFields("Editor Content");
+        "Editor Content".CreateInStream(is, TextEncoding::UTF8);
+        while not is.EOS do begin
+            is.Read(Buffer);
+            Result += Buffer;
+        end;
+        if show then begin
+            EditorPreview.SetData(Result);
+            EditorPreview.Run();
+        end;
     end;
 
     procedure ShowData()
@@ -125,27 +142,7 @@ table 5272722 "lbt Archive PS Longtext Line"
         data: Text;
     begin
         data := ReadContentData(false);
-        editorhelper.ShowTextEditor(data, true);
-
-    end;
-
-
-    procedure ReadContentData(show: Boolean) Result: Text
-    var
-        EditorPreview: Page "lbt cl Editor Preview";
-        Buffer: Text;
-        is: instream;
-    begin
-        CalcFields("Editor Content");
-        "editor content".CreateInStream(is, TextEncoding::UTF8);
-        while not is.EOS do begin
-            is.Read(Buffer);
-            Result += Buffer;
-        end;
-        if show then begin
-            EditorPreview.SetData(result);
-            EditorPreview.Run();
-        end;
+        EditorHelper.ShowTextEditor(data, true);
     end;
 
     procedure WriteContentData(content: Text)
@@ -154,8 +151,6 @@ table 5272722 "lbt Archive PS Longtext Line"
     begin
         Clear(Rec."Editor Content");
         "Editor Content".CreateOutStream(os, TextEncoding::UTF8);
-        os.write(content);
+        os.Write(content);
     end;
-
 }
-

@@ -101,7 +101,6 @@ codeunit 5272724 "lbt Report Functions"
         //         //Evaluate(DecVar,GetValueRecRef(RecordRef,7));
         //         ItemUnitQty[Counter] := GetValueRecRef(RecordRef, 7);
         //     until RecordRef.Next() = 0;
-
     end;
 
     local procedure GetSourceTypeSales(var SourceType: Option; var SourceSetup: Record "lbt Source Setup")
@@ -136,8 +135,8 @@ codeunit 5272724 "lbt Report Functions"
 
     local procedure GetUnitOfMeasureDescription(AttributeId: Integer; LanguageCode: Code[10]) UnitofMeasureDescription: Text
     var
-        UnitofMeasure: Record "Unit of Measure";
         ItemAttribute: Record "Item Attribute";
+        UnitofMeasure: Record "Unit of Measure";
         UnitofMeasureTranslation: Record "Unit of Measure Translation";
     begin
         if ItemAttribute.Get(AttributeId) then
@@ -163,8 +162,8 @@ codeunit 5272724 "lbt Report Functions"
     var
         ItemAttribute: Record "Item Attribute";
         Language: Codeunit Language;
-        ParameterDescription: Text;
         LanguageId: Integer;
+        ParameterDescription: Text;
     begin
         LanguageId := Language.GetLanguageId(LanguageCode);
         if ItemAttribute.Get(ReportAttributeSetup.ID) then
@@ -216,13 +215,12 @@ codeunit 5272724 "lbt Report Functions"
             SourceSetup.Type::Purchase:
                 GetSourceTypePurchase(SourceType, SourceSetup);
         end;
-
     end;
 
     procedure GetDimTextFromDimSetEntry(var DimSetEntry: Record "Dimension Set Entry"; var DimText: Text[120]; var Continue: Boolean)
     var
-        DimensionCodeAndValueTok: Label '%1 - %2', Locked = true;
         DimensionAndDimensionCodeAndValueTok: Label '%1; %2 - %3', Locked = true;
+        DimensionCodeAndValueTok: Label '%1 - %2', Locked = true;
 
         OldDimText: Text[75];
     begin
@@ -250,4 +248,3 @@ codeunit 5272724 "lbt Report Functions"
     begin
     end;
 }
-

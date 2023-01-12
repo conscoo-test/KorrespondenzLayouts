@@ -22,14 +22,13 @@ pageextension 5272741 "lbt Extended Text" extends "Extended Text"
                               "Language Code" = field("Language Code"),
                               "Text No." = field("Text No.");
             }
-            part("lbt EditorPreviewSub"; "lbt cl Editor preview Sub")
+            part("lbt EditorPreviewSub"; "lbt cl Editor Preview Sub")
             {
-                Visible = Rec."lbt Textchoice" = Rec."lbt Textchoice"::blob;
-                ApplicationArea = all;
-                caption = 'Editor';
+                Visible = Rec."lbt Textchoice" = Rec."lbt Textchoice"::Blob;
+                ApplicationArea = All;
+                Caption = 'Editor';
             }
         }
-
     }
     actions
     {
@@ -37,9 +36,9 @@ pageextension 5272741 "lbt Extended Text" extends "Extended Text"
         {
             action("lbt Edit")
             {
-                caption = 'Editor';
+                Caption = 'Editor';
                 ApplicationArea = All;
-                image = Edit;
+                Image = Edit;
                 Promoted = true;
                 PromotedIsBig = true;
                 trigger OnAction()
@@ -48,7 +47,6 @@ pageextension 5272741 "lbt Extended Text" extends "Extended Text"
                     Rec.lbtclEditData();
                 end;
             }
-
         }
     }
     trigger OnAfterGetRecord()
@@ -56,4 +54,3 @@ pageextension 5272741 "lbt Extended Text" extends "Extended Text"
         CurrPage."lbt EditorPreviewSub".Page.SetData(Rec.lbtclReadContentData(false));
     end;
 }
-

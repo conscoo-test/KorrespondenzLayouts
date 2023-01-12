@@ -3,10 +3,9 @@ tableextension 5272762 "lbt cl StandardSalesCode" extends "Standard Sales Code"
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";
 
-    procedure lbtHasEditorValue(Position: Enum "lbt Position") Result: Text
+    trigger OnAfterDelete()
     begin
-        exit(Format(EditorHelper.hasEditorValueSysId(Rec, Position, 0)));
-        //exit(EditorHelper.hasEditorValue(rec, Position));
+        EditorHelper.deleteLongText(Rec, 0);
     end;
 
     procedure lbtEditData(Position: Enum "lbt Position")
@@ -19,8 +18,9 @@ tableextension 5272762 "lbt cl StandardSalesCode" extends "Standard Sales Code"
         exit(EditorHelper.getPrintData(Rec, Position, 0));
     end;
 
-    trigger OnAfterDelete()
+    procedure lbtHasEditorValue(Position: Enum "lbt Position") Result: Text
     begin
-        EditorHelper.deleteLongText(Rec, 0);
+        exit(Format(EditorHelper.hasEditorValueSysId(Rec, Position, 0)));
+        //exit(EditorHelper.hasEditorValue(rec, Position));
     end;
 }

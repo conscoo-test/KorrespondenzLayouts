@@ -9,7 +9,7 @@ page 5272723 "lbt Ext. Text Lines Long"
 
     layout
     {
-        area(content)
+        area(Content)
         {
             repeater(Control5272721)
             {
@@ -27,4 +27,3 @@ page 5272723 "lbt Ext. Text Lines Long"
     {
     }
 }
-

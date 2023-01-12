@@ -7,7 +7,7 @@ pageextension 5272845 "lbt cl BlankSalesOrderArchSub" extends "Blanket Sales Ord
             field("Lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
                 Caption = 'Editor';
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
                 trigger OnAssistEdit()

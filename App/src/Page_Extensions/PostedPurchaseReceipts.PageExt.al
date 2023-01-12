@@ -41,4 +41,3 @@ pageextension 5272736 "lbt Posted Purchase Receipts" extends "Posted Purchase Re
         }
     }
 }
-

@@ -11,13 +11,13 @@ tableextension 5272758 "lbt cl Pstd Whse. Ship. Header" extends "Posted Whse. Sh
         EditorHelper.deleteLongText(Rec);
     end;
 
-    procedure lbtHasEditorValue(Position: Enum "lbt Position") Result: Text
-    begin
-        exit(Format(EditorHelper.hasEditorValue(Rec, Position)));
-    end;
-
     procedure lbtEditData(Position: Enum "lbt Position")
     begin
         EditorHelper.ShowData(Rec, Position);
+    end;
+
+    procedure lbtHasEditorValue(Position: Enum "lbt Position") Result: Text
+    begin
+        exit(Format(EditorHelper.hasEditorValue(Rec, Position)));
     end;
 }

@@ -6,16 +6,15 @@ pageextension 5272812 "lbt cl Pstd Service Shpt. Subf" extends "Posted Service S
         {
             field("lbt Editor"; Rec.lbtHasEditorValue())
             {
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
-                caption = 'Editor';
+                Caption = 'Editor';
                 trigger OnAssistEdit()
                 begin
                     Rec.lbtEditData();
                 end;
             }
-
         }
     }
 }

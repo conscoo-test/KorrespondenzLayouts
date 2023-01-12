@@ -3,29 +3,27 @@ tableextension 5272744 "lbt cl ServiceLine" extends "Service Line"
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";
 
-    procedure lbtHasEditorValue(docType: Integer) Result: Boolean
-    var
-
+    trigger OnAfterDelete()
     begin
-        exit(EditorHelper.hasEditorValue(rec, Enum::"lbt Position"::EditorLine, docType));
+        EditorHelper.deleteLongText(Rec, Rec."Document Type".AsInteger());
     end;
 
     procedure lbtEditData(docType: Integer)
     var
     begin
 
-        EditorHelper.editData(rec, Enum::"lbt Position"::EditorLine, docType);
+        EditorHelper.editData(Rec, Enum::"lbt Position"::EditorLine, docType);
     end;
 
-    trigger OnAfterDelete()
+    procedure lbtGetPrintData(Position: Enum "lbt Position"; docType: Integer): Text
     begin
-        EditorHelper.deleteLongText(rec, Rec."Document Type".AsInteger());
+        exit(EditorHelper.getPrintData(Rec, Position, docType));
     end;
 
-    procedure lbtGetPrintData(Position: enum "lbt Position"; docType: Integer): Text
+    procedure lbtHasEditorValue(docType: Integer) Result: Boolean
+    var
+
     begin
-        exit(EditorHelper.getPrintData(rec, Position, docType));
+        exit(EditorHelper.hasEditorValue(Rec, Enum::"lbt Position"::EditorLine, docType));
     end;
-
-
 }

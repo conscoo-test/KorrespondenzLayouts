@@ -6,16 +6,15 @@ pageextension 5272808 "lbt cl ServiceQuoteSubform" extends "Service Quote Subfor
         {
             field("lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
-                caption = 'Editor';
+                Caption = 'Editor';
                 trigger OnAssistEdit()
                 begin
                     Rec.lbtEditData(Rec."Document Type".AsInteger());
                 end;
             }
-
         }
     }
 }

@@ -1,7 +1,7 @@
 enum 5272720 "lbt Position"
 {
     Extensible = true;
-    
+
     value(0; Header)
     {
         Caption = 'Header';
@@ -26,5 +26,4 @@ enum 5272720 "lbt Position"
     {
         Caption = 'EditorLine';
     }
-    
 }

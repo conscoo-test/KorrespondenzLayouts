@@ -26,13 +26,18 @@ tableextension 5272737 "lbt Sales Shipment Header" extends "Sales Shipment Heade
         LeBitCorrespDocSingleInst.CopyLongTextForPostCombineSalesOrderShipment(Rec, SalesShipmentLine, 1, 0);
     end;
 
-    procedure lbtHasEditorValue(Position: Enum "lbt Position") Result: Text
-    begin
-        exit(Format(EditorHelper.hasEditorValue(Rec, Position)));
-    end;
-
     procedure lbtEditData(Position: Enum "lbt Position")
     begin
         EditorHelper.ShowData(Rec, Position);
+    end;
+
+    procedure lbtGetPrintData(Position: Enum "lbt Position"): Text
+    begin
+        exit(EditorHelper.getPrintData(Rec, Position, 0));
+    end;
+
+    procedure lbtHasEditorValue(Position: Enum "lbt Position") Result: Text
+    begin
+        exit(Format(EditorHelper.hasEditorValue(Rec, Position)));
     end;
 }

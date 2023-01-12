@@ -41,4 +41,3 @@ pageextension 5272792 "lbt Sales Order List" extends "Sales Order List"
         }
     }
 }
-

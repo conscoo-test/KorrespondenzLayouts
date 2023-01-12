@@ -11,7 +11,6 @@ tableextension 5272742 "lbt Prepayment Inv.Line Buffer" extends "Prepayment Inv.
         {
             DataClassification = CustomerContent;
         }
-
         field(5272724; "lbt Pos. No."; Text[30])
         {
             DataClassification = CustomerContent;

@@ -3,24 +3,24 @@ tableextension 5272753 "lbt cl ServiceCRMemoHeader" extends "Service Cr.Memo Hea
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";
 
-    procedure lbtHasEditorValue(Position: enum "lbt Position") Result: Text
-    begin
-        exit(format(EditorHelper.hasEditorValue(rec, Position, 0)));
-        //exit(EditorHelper.hasEditorValue(rec, Position));
-    end;
-
-    procedure lbtEditData(Position: enum "lbt Position")
-    begin
-        EditorHelper.ShowData(rec, Position, 0);
-    end;
-
-    procedure lbtGetPrintData(Position: enum "lbt Position"): Text
-    begin
-        exit(EditorHelper.getPrintData(rec, Position, 0));
-    end;
-
     trigger OnAfterDelete()
     begin
-        EditorHelper.deleteLongText(rec, 0);
+        EditorHelper.deleteLongText(Rec, 0);
+    end;
+
+    procedure lbtEditData(Position: Enum "lbt Position")
+    begin
+        EditorHelper.ShowData(Rec, Position, 0);
+    end;
+
+    procedure lbtGetPrintData(Position: Enum "lbt Position"): Text
+    begin
+        exit(EditorHelper.getPrintData(Rec, Position, 0));
+    end;
+
+    procedure lbtHasEditorValue(Position: Enum "lbt Position") Result: Text
+    begin
+        exit(Format(EditorHelper.hasEditorValue(Rec, Position, 0)));
+        //exit(EditorHelper.hasEditorValue(rec, Position));
     end;
 }

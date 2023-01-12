@@ -10,11 +10,10 @@ pageextension 5272746 "lbt Sales & Receivables Setup" extends "Sales & Receivabl
                 Caption = 'Source Setup';
                 ToolTip = 'Here you can define origin codes for certain reports.';
                 Image = Print;
-                RunObject = Page "lbt Source Setup";
+                RunObject = page "lbt Source Setup";
                 RunPageView = sorting(Type, "Report Type")
                               where(Type = filter(Sales));
             }
         }
     }
 }
-

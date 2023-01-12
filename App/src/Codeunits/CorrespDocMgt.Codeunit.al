@@ -7,48 +7,48 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
     var
         IndentTxt: Label 'Indenting the Document #1##########', Comment = '%1 - Document Name';
         MissingBeginTotalTxt: Label 'End-Total %1 is missing a matching Begin-Total.', Comment = '%1 - End-Total Name';
-        TotalTxt: Label 'Total';
         PosNoTemplateLbl: Label '%1%2.', Locked = true;
+        TotalTxt: Label 'Total';
 
-    procedure SalesLineIndentTotaling(var SalesHeader: Record "Sales Header")
+    procedure GetPriceFactor(PriceFactor: Enum "lbt cl Price Factor") Result: Decimal
     var
-        SalesLine: Record "Sales Line";
-        WindowDialog: Dialog;
-        AccNo: array[10] of Code[20];
-        Header: array[10] of Text;
-        SummText: Text;
-        Indentation: Integer;
+        IsHandled: Boolean;
     begin
-        Indentation := 0;
-        SummText := TotalTxt;
-        if not SummText.EndsWith(' ') then
-            SummText := SummText + ' ';
-        WindowDialog.Open(IndentTxt);
+        OnBeforeGetPriceFactor(PriceFactor, IsHandled, Result);
+        if IsHandled then
+            exit;
+        case PriceFactor of
+            PriceFactor::"1":
+                Result := 1;
+            PriceFactor::"10":
+                Result := 10;
+            PriceFactor::"100":
+                Result := 100;
+            PriceFactor::"1000":
+                Result := 1000;
+        end;
+    end;
 
-        SalesLine.SetRange("Document Type", SalesHeader."Document Type");
-        SalesLine.SetFilter("Document No.", SalesHeader."No.");
-        if SalesLine.FindSet(true) then
-            repeat
-                WindowDialog.Update(1, SalesLine."No.");
-
-                if SalesLine."lbt Printoption" = SalesLine."lbt Printoption"::"End Total" then begin
-                    if Indentation < 1 then
-                        Error(MissingBeginTotalTxt);
-                    SalesLine."lbt Summation" := AccNo[Indentation] + '..' + Format(SalesLine."Line No.");
-                    SalesLine.Description := CopyStr(SummText + Header[Indentation], 1, MaxStrLen(SalesLine.Description));
-                    Indentation -= 1;
-                end;
-
-                SalesLine."lbt Indentation" := Indentation;
-                SalesLine.Modify();
-
-                if (SalesLine."lbt Printoption" = SalesLine."lbt Printoption"::"Begin Total") then begin
-                    Indentation += 1;
-                    AccNo[Indentation] := Format(SalesLine."Line No.");
-                    Header[Indentation] := SalesLine.Description;
-                end;
-            until SalesLine.Next() = 0;
-        WindowDialog.Close();
+    procedure GetStyleExpr(Printoption: Option Standard,Title,,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total") StyleExprText: Text[30]
+    var
+        StyleExpr: Option Standard,StandardAccent,Strong,StrongAccent,Attention,AttentionAccent,Favorable,Unfavorable,Ambiguous,Subordinate;
+    begin
+        case Printoption of
+            Printoption::"Price Invisible":
+                StyleExprText := Format(StyleExpr::Attention);
+            Printoption::"Line Invisible":
+                StyleExprText := Format(StyleExpr::Subordinate);
+            Printoption::Alternative:
+                StyleExprText := Format(StyleExpr::StrongAccent);
+            Printoption::Optional:
+                StyleExprText := Format(StyleExpr::Favorable);
+            Printoption::Title,
+          Printoption::"Begin Total",
+          Printoption::"End Total":
+                StyleExprText := Format(StyleExpr::Strong);
+            else
+                StyleExprText := Format(StyleExpr::Standard);
+        end;
     end;
 
     procedure Number(Indent: Integer; Prefix: Text[30]; var SalesLine: Record "Sales Line"): Boolean
@@ -101,26 +101,14 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
         until PurchaseLine.Next() = 0;
     end;
 
-    procedure SalesLinePosNumber(var SalesHeader: Record "Sales Header")
-    var
-        SalesLine: Record "Sales Line";
-    begin
-        SalesLineIndentTotaling(SalesHeader);
-
-        SalesLine.SetRange("Document Type", SalesHeader."Document Type");
-        SalesLine.SetRange("Document No.", SalesHeader."No.");
-        if SalesLine.FindSet() then
-            Number(0, '', SalesLine);
-    end;
-
     procedure PurchLineIndentTotaling(var PurchaseHeader: Record "Purchase Header")
     var
         PurchaseLine: Record "Purchase Line";
-        WindowDialog: Dialog;
         AccNo: array[10] of Code[20];
+        WindowDialog: Dialog;
+        Indentation: Integer;
         Header: array[10] of Text;
         Summtext: Text;
-        Indentation: Integer;
     begin
         Indentation := 0;
         Summtext := TotalTxt;
@@ -167,52 +155,61 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
             Number(0, '', PurchaseLine);
     end;
 
-    procedure GetStyleExpr(Printoption: Option Standard,Title,,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total") StyleExprText: Text[30]
+    procedure SalesLineIndentTotaling(var SalesHeader: Record "Sales Header")
     var
-        StyleExpr: Option Standard,StandardAccent,Strong,StrongAccent,Attention,AttentionAccent,Favorable,Unfavorable,Ambiguous,Subordinate;
+        SalesLine: Record "Sales Line";
+        AccNo: array[10] of Code[20];
+        WindowDialog: Dialog;
+        Indentation: Integer;
+        Header: array[10] of Text;
+        SummText: Text;
     begin
-        case Printoption of
-            Printoption::"Price Invisible":
-                StyleExprText := Format(StyleExpr::Attention);
-            Printoption::"Line Invisible":
-                StyleExprText := Format(StyleExpr::Subordinate);
-            Printoption::Alternative:
-                StyleExprText := Format(StyleExpr::StrongAccent);
-            Printoption::Optional:
-                StyleExprText := Format(StyleExpr::Favorable);
-            Printoption::Title,
-          Printoption::"Begin Total",
-          Printoption::"End Total":
-                StyleExprText := Format(StyleExpr::Strong);
-            else
-                StyleExprText := Format(StyleExpr::Standard);
-        end;
+        Indentation := 0;
+        SummText := TotalTxt;
+        if not SummText.EndsWith(' ') then
+            SummText := SummText + ' ';
+        WindowDialog.Open(IndentTxt);
+
+        SalesLine.SetRange("Document Type", SalesHeader."Document Type");
+        SalesLine.SetFilter("Document No.", SalesHeader."No.");
+        if SalesLine.FindSet(true) then
+            repeat
+                WindowDialog.Update(1, SalesLine."No.");
+
+                if SalesLine."lbt Printoption" = SalesLine."lbt Printoption"::"End Total" then begin
+                    if Indentation < 1 then
+                        Error(MissingBeginTotalTxt);
+                    SalesLine."lbt Summation" := AccNo[Indentation] + '..' + Format(SalesLine."Line No.");
+                    SalesLine.Description := CopyStr(SummText + Header[Indentation], 1, MaxStrLen(SalesLine.Description));
+                    Indentation -= 1;
+                end;
+
+                SalesLine."lbt Indentation" := Indentation;
+                SalesLine.Modify();
+
+                if (SalesLine."lbt Printoption" = SalesLine."lbt Printoption"::"Begin Total") then begin
+                    Indentation += 1;
+                    AccNo[Indentation] := Format(SalesLine."Line No.");
+                    Header[Indentation] := SalesLine.Description;
+                end;
+            until SalesLine.Next() = 0;
+        WindowDialog.Close();
     end;
 
-    procedure GetPriceFactor(PriceFactor: Enum "lbt cl Price Factor") Result: Decimal
+    procedure SalesLinePosNumber(var SalesHeader: Record "Sales Header")
     var
-        IsHandled: Boolean;
+        SalesLine: Record "Sales Line";
     begin
-        OnBeforeGetPriceFactor(PriceFactor, Ishandled, Result);
-        if IsHandled then
-            exit;
-        case PriceFactor of
-            PriceFactor::"1":
-                Result := 1;
-            PriceFactor::"10":
-                Result := 10;
-            PriceFactor::"100":
-                Result := 100;
-            PriceFactor::"1000":
-                Result := 1000;
-        end;
+        SalesLineIndentTotaling(SalesHeader);
 
+        SalesLine.SetRange("Document Type", SalesHeader."Document Type");
+        SalesLine.SetRange("Document No.", SalesHeader."No.");
+        if SalesLine.FindSet() then
+            Number(0, '', SalesLine);
     end;
-
 
     [IntegrationEvent(false, false)]
     local procedure OnBeforeGetPriceFactor(PriceFactor: Enum "lbt cl Price Factor"; var Ishandled: Boolean; var Result: Decimal)
     begin
     end;
 }
-

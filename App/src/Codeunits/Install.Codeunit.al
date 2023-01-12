@@ -58,5 +58,4 @@ codeunit 5272725 "lbt Install"
     begin
         InitCorrSetup();
     end;
-
 }

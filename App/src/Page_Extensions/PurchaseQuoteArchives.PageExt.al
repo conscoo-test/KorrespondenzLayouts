@@ -41,4 +41,3 @@ pageextension 5272799 "lbt Purchase Quote Archives" extends "Purchase Quote Arch
         }
     }
 }
-

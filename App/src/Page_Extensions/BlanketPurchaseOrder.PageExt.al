@@ -9,10 +9,10 @@ pageextension 5272754 "lbt Blanket Purchase Order" extends "Blanket Purchase Ord
                 Caption = 'LeBit Extended Layout Options';
                 field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger()))
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Editor Header';
-                    caption = 'Editor Header';
+                    Caption = 'Editor Header';
                     trigger OnAssistEdit()
                     begin
                         Rec.lbtEditData(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger());
@@ -20,13 +20,13 @@ pageextension 5272754 "lbt Blanket Purchase Order" extends "Blanket Purchase Ord
                 }
                 field("lbt Editor Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter, Rec."Document Type".AsInteger()))
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Editor Footer';
-                    caption = 'Editor Footer';
+                    Caption = 'Editor Footer';
                     trigger OnAssistEdit()
                     begin
-                        Rec.lbtEditData(Enum::"lbt Position"::Editorfooter, Rec."Document Type".AsInteger());
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorFooter, Rec."Document Type".AsInteger());
                     end;
                 }
             }
@@ -79,7 +79,6 @@ pageextension 5272754 "lbt Blanket Purchase Order" extends "Blanket Purchase Ord
                     begin
                         LongtextMgt.ShowLongtextLines(Rec, Position::Header);
                     end;
-
                 }
                 action("lbt Footer Text")
                 {
@@ -95,10 +94,8 @@ pageextension 5272754 "lbt Blanket Purchase Order" extends "Blanket Purchase Ord
                     begin
                         LongtextMgt.ShowLongtextLines(Rec, Position::Footer);
                     end;
-
                 }
             }
         }
     }
 }
-

@@ -61,5 +61,4 @@ codeunit 5272726 "lbt Upgrade"
         // case lbtModuleInfo.DataVersion() of
         // end;
     end;
-
 }

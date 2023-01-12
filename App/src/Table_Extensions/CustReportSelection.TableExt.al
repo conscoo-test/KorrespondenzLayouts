@@ -1,16 +1,5 @@
 tableextension 5272766 "lbt cl Cust. Report Selection" extends "Custom Report Selection"
 {
-    procedure lbtHasEditorValue(Position: Enum "lbt Position") Result: Text
-    var
-        EditorHelper: Codeunit "lbt cl EditorHelper";
-        RecRef: RecordRef;
-        DocType: Enum "Sales Document Type";
-    begin
-        RecRef := GetRecRef();
-        DocType := GetDocType();
-        exit(Format(EditorHelper.hasEditorValue(RecRef, Position, DocType.AsInteger())));
-    end;
-
     procedure lbtEditData(Position: Enum "lbt Position")
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";
@@ -22,19 +11,15 @@ tableextension 5272766 "lbt cl Cust. Report Selection" extends "Custom Report Se
         EditorHelper.editData(RecRef, Position, DocType.AsInteger());
     end;
 
-    local procedure GetRecRef() RecordRef: RecordRef
+    procedure lbtHasEditorValue(Position: Enum "lbt Position") Result: Text
     var
-        Customer: Record Customer;
+        EditorHelper: Codeunit "lbt cl EditorHelper";
+        RecRef: RecordRef;
+        DocType: Enum "Sales Document Type";
     begin
-        case "Source Type" of
-            Database::Customer:
-                begin
-                    Customer.Get("Source No.");
-                    RecordRef.GetTable(Customer);
-                end;
-            else
-                lbtclGetRecRef(Rec, RecordRef);
-        end;
+        RecRef := GetRecRef();
+        DocType := GetDocType();
+        exit(Format(EditorHelper.hasEditorValue(RecRef, Position, DocType.AsInteger())));
     end;
 
     local procedure GetDocType() DocType: Enum "Sales Document Type"
@@ -52,6 +37,21 @@ tableextension 5272766 "lbt cl Cust. Report Selection" extends "Custom Report Se
                 DocType := DocType::"lbt cl Shipment/Receipt";
             else
                 lbtclOnElseGetDocType(Rec, DocType);
+        end;
+    end;
+
+    local procedure GetRecRef() RecordRef: RecordRef
+    var
+        Customer: Record Customer;
+    begin
+        case "Source Type" of
+            Database::Customer:
+                begin
+                    Customer.Get("Source No.");
+                    RecordRef.GetTable(Customer);
+                end;
+            else
+                lbtclGetRecRef(Rec, RecordRef);
         end;
     end;
 

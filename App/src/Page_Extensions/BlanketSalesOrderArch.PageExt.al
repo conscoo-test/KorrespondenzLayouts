@@ -1,7 +1,5 @@
 pageextension 5272739 "lbt Blanket Sales Order Arch." extends "Blanket Sales Order Archives"
 {
-
-
     actions
     {
         addafter(Comments)
@@ -43,4 +41,3 @@ pageextension 5272739 "lbt Blanket Sales Order Arch." extends "Blanket Sales Ord
         }
     }
 }
-

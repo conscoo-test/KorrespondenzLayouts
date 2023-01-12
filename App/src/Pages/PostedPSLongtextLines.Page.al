@@ -7,11 +7,11 @@ page 5272721 "lbt Posted PS Longtext Lines"
     PageType = List;
     SourceTable = "lbt Posted PS Longtext Line";
     // UsageCategory = Lists;
-    // ApplicationArea = All;    
+    // ApplicationArea = All;
 
     layout
     {
-        area(content)
+        area(Content)
         {
             repeater(Control5272723)
             {
@@ -40,4 +40,3 @@ page 5272721 "lbt Posted PS Longtext Lines"
     {
     }
 }
-

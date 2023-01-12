@@ -11,10 +11,10 @@ pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
 
                 field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger()))
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Editor Header';
-                    caption = 'Editor Header';
+                    Caption = 'Editor Header';
                     trigger OnAssistEdit()
                     begin
                         Rec.lbtEditData(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger());
@@ -22,13 +22,13 @@ pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
                 }
                 field("lbt Editor Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter, Rec."Document Type".AsInteger()))
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Editor Footer';
-                    caption = 'Editor Footer';
+                    Caption = 'Editor Footer';
                     trigger OnAssistEdit()
                     begin
-                        Rec.lbtEditData(Enum::"lbt Position"::Editorfooter, Rec."Document Type".AsInteger());
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorFooter, Rec."Document Type".AsInteger());
                     end;
                 }
             }
@@ -109,8 +109,8 @@ pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
                         PurchaseHeaderRec: Record "Purchase Header";
                         LongtextMgt: Codeunit "lbt Longtext Mgt.";
                         SourceRecRef: RecordRef;
-                        Position: Option Header,Footer,Longtext;
                         DocType: Enum "Purchase Document Type";
+                        Position: Option Header,Footer,Longtext;
                     begin
                         PurchaseHeaderRec.TransferFields(Rec);
                         PurchaseHeaderRec."Document Type" := DocType::Invoice;
@@ -130,8 +130,8 @@ pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
                         PurchaseHeaderRec: Record "Purchase Header";
                         LongtextMgt: Codeunit "lbt Longtext Mgt.";
                         SourceRecRef: RecordRef;
-                        Position: Option Header,Footer,Longtext;
                         DocType: Enum "Purchase Document Type";
+                        Position: Option Header,Footer,Longtext;
                     begin
                         PurchaseHeaderRec.TransferFields(Rec);
                         PurchaseHeaderRec."Document Type" := DocType::Invoice;
@@ -151,8 +151,8 @@ pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
                         PurchaseHeaderRec: Record "Purchase Header";
                         LongtextMgt: Codeunit "lbt Longtext Mgt.";
                         SourceRecRef: RecordRef;
-                        Position: Option Header,Footer,Longtext;
                         DocType: Enum "Purchase Document Type";
+                        Position: Option Header,Footer,Longtext;
                     begin
                         PurchaseHeaderRec.TransferFields(Rec);
                         PurchaseHeaderRec."Document Type" := DocType::"Return Order";
@@ -172,8 +172,8 @@ pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
                         PurchaseHeaderRec: Record "Purchase Header";
                         LongtextMgt: Codeunit "lbt Longtext Mgt.";
                         SourceRecRef: RecordRef;
-                        Position: Option Header,Footer,Longtext;
                         DocType: Enum "Purchase Document Type";
+                        Position: Option Header,Footer,Longtext;
                     begin
                         PurchaseHeaderRec.TransferFields(Rec);
                         PurchaseHeaderRec."Document Type" := DocType::"Return Order";
@@ -185,4 +185,3 @@ pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
         }
     }
 }
-

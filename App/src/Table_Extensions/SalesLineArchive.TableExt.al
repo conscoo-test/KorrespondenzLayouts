@@ -4,7 +4,7 @@ tableextension 5272732 "lbt Sales Line Archive" extends "Sales Line Archive"
     {
         field(5272720; "lbt Long Text"; Boolean)
         {
-            CalcFormula = Exist("lbt Archive PS Longtext Line" where("Table ID" = const(5108),
+            CalcFormula = exist("lbt Archive PS Longtext Line" where("Table ID" = const(5108),
                                                                         "Document Type" = field("Document Type"),
                                                                         "Document No." = field("Document No."),
                                                                         Position = const(Longtext),
@@ -33,7 +33,7 @@ tableextension 5272732 "lbt Sales Line Archive" extends "Sales Line Archive"
         field(5272723; "lbt Balance"; Decimal)
         {
             AutoFormatType = 1;
-            CalcFormula = Sum("Sales Line Archive"."Line Amount" where("Document Type" = field("Document Type"),
+            CalcFormula = sum("Sales Line Archive"."Line Amount" where("Document Type" = field("Document Type"),
                                                                         "Document No." = field("Document No."),
                                                                         "Doc. No. Occurrence" = field("Doc. No. Occurrence"),
                                                                         "Version No." = field("Version No."),
@@ -97,23 +97,22 @@ tableextension 5272732 "lbt Sales Line Archive" extends "Sales Line Archive"
         LongtextMgt.DelLongtext(Rec);
     end;
 
-    procedure lbtHasEditorValue(docType: Integer) Result: Boolean
-    var
-
-    begin
-        exit(EditorHelper.hasEditorValue(rec, Enum::"lbt Position"::EditorLine, doctype));
-    end;
-
     procedure lbtEditData(doctype: Integer)
     var
 
     begin
-        EditorHelper.ShowData(rec, Enum::"lbt Position"::EditorLine, doctype);
+        EditorHelper.ShowData(Rec, Enum::"lbt Position"::EditorLine, doctype);
     end;
 
-    procedure lbtGetPrintData(Position: enum "lbt Position"; docType: Integer): Text
+    procedure lbtGetPrintData(Position: Enum "lbt Position"; docType: Integer): Text
     begin
-        exit(EditorHelper.getPrintData(rec, Position, docType));
+        exit(EditorHelper.getPrintData(Rec, Position, docType));
+    end;
+
+    procedure lbtHasEditorValue(docType: Integer) Result: Boolean
+    var
+
+    begin
+        exit(EditorHelper.hasEditorValue(Rec, Enum::"lbt Position"::EditorLine, docType));
     end;
 }
-

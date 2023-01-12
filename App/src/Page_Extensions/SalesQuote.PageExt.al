@@ -2,7 +2,6 @@ pageextension 5272742 "lbt Sales Quote" extends "Sales Quote"
 {
     layout
     {
-
         addlast(General)
         {
             field("lbt cl Delivery Date Type"; Rec."lbt cl Delivery Date Type")
@@ -24,13 +23,13 @@ pageextension 5272742 "lbt Sales Quote" extends "Sales Quote"
         {
             group(lbtEditor)
             {
-                caption = 'LeBit Extended Layout Options';
+                Caption = 'LeBit Extended Layout Options';
                 field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger()))
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Editor Header';
-                    caption = 'Editor Header';
+                    Caption = 'Editor Header';
                     trigger OnAssistEdit()
                     begin
                         Rec.lbtEditData(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger());
@@ -38,17 +37,16 @@ pageextension 5272742 "lbt Sales Quote" extends "Sales Quote"
                 }
                 field("lbt Editor Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter, Rec."Document Type".AsInteger()))
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Editor Footer';
-                    caption = 'Editor Footer';
+                    Caption = 'Editor Footer';
                     trigger OnAssistEdit()
                     begin
-                        Rec.lbtEditData(Enum::"lbt Position"::Editorfooter, Rec."Document Type".AsInteger());
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorFooter, Rec."Document Type".AsInteger());
                     end;
                 }
             }
-
         }
         modify(SalesLines)
         {
@@ -122,4 +120,3 @@ pageextension 5272742 "lbt Sales Quote" extends "Sales Quote"
         }
     }
 }
-

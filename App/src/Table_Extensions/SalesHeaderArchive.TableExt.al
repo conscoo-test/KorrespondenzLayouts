@@ -24,31 +24,29 @@ tableextension 5272739 "lbt Sales Header Archive" extends "Sales Header Archive"
         LongtextMgt.DelLongtext(Rec);
     end;
 
-    procedure lbtHasEditorValue(Position: enum "lbt Position"; docType: Integer) Result: Text
+    trigger OnAfterDelete()
     begin
-        exit(format(EditorHelper.hasEditorValue(rec, Position, doctype)));
-        //exit(EditorHelper.hasEditorValue(rec, Position));
+        EditorHelper.deleteLongText(Rec, Rec."Document Type".AsInteger());
     end;
 
-    procedure lbtEditData(Position: enum "lbt Position"; docType: Integer)
+    procedure lbtEditData(Position: Enum "lbt Position"; docType: Integer)
     begin
-        EditorHelper.ShowData(rec, Position, docType);
-    end;
-
-    procedure lbtGetPrintData(Position: enum "lbt Position"; docType: Integer): Text
-    begin
-        exit(EditorHelper.getPrintData(rec, Position, docType));
+        EditorHelper.ShowData(Rec, Position, docType);
     end;
 
     procedure lbtEditorVisible(): Boolean
     begin
-        exit(EditorHelper.editorVisible(database::"Sales Header Archive"));
+        exit(EditorHelper.editorVisible(Database::"Sales Header Archive"));
     end;
 
-    trigger OnAfterDelete()
+    procedure lbtGetPrintData(Position: Enum "lbt Position"; docType: Integer): Text
     begin
-        EditorHelper.deleteLongText(rec, Rec."Document Type".AsInteger());
+        exit(EditorHelper.getPrintData(Rec, Position, docType));
     end;
 
-
+    procedure lbtHasEditorValue(Position: Enum "lbt Position"; docType: Integer) Result: Text
+    begin
+        exit(Format(EditorHelper.hasEditorValue(Rec, Position, docType)));
+        //exit(EditorHelper.hasEditorValue(rec, Position));
+    end;
 }

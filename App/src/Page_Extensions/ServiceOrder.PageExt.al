@@ -8,70 +8,70 @@ pageextension 5272815 "lbt cl ServiceOrder" extends "Service Order"
 
             {
                 Caption = 'LeBit Extended Layout Options';
-                field("lbt Editor Header"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorHeader, rec."Document Type"::Order.AsInteger()))
+                field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, Rec."Document Type"::Order.AsInteger()))
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Editor Header';
-                    caption = 'Editor Header';
+                    Caption = 'Editor Header';
                     trigger OnAssistEdit()
                     begin
-                        rec.lbtEditData(enum::"lbt Position"::EditorHeader, rec."Document Type".AsInteger());
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger());
                     end;
                 }
-                field("lbt Editor Footer"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorFooter, rec."Document Type"::Order.AsInteger()))
+                field("lbt Editor Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter, Rec."Document Type"::Order.AsInteger()))
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Editor Footer';
-                    caption = 'Editor Footer';
+                    Caption = 'Editor Footer';
                     trigger OnAssistEdit()
                     begin
-                        rec.lbtEditData(enum::"lbt Position"::Editorfooter, rec."Document Type".AsInteger());
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorFooter, Rec."Document Type".AsInteger());
                     end;
                 }
-                field("lbt Editor Shipment Header"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorHeader, 11))
+                field("lbt Editor Shipment Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, 11))
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Editor Shipment Header';
-                    caption = 'Editor Shipment Header';
+                    Caption = 'Editor Shipment Header';
                     trigger OnAssistEdit()
                     begin
-                        rec.lbtEditData(enum::"lbt Position"::EditorHeader, 11);
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorHeader, 11);
                     end;
                 }
-                field("lbt Editor Shipment Footer"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorFooter, 11))
+                field("lbt Editor Shipment Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter, 11))
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Editor Shipment Footer';
-                    caption = 'Editor Shipment Footer';
+                    Caption = 'Editor Shipment Footer';
                     trigger OnAssistEdit()
                     begin
-                        rec.lbtEditData(enum::"lbt Position"::Editorfooter, 11);
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorFooter, 11);
                     end;
                 }
-                field("lbt Editor Invoice Header"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorHeader, 12))
+                field("lbt Editor Invoice Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, 12))
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Editor Invoice Header';
-                    caption = 'Editor Invoice Header';
+                    Caption = 'Editor Invoice Header';
                     trigger OnAssistEdit()
                     begin
-                        rec.lbtEditData(enum::"lbt Position"::EditorHeader, 12);
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorHeader, 12);
                     end;
                 }
-                field("lbt Editor Invoice Footer"; rec.lbtHasEditorValue(enum::"lbt Position"::EditorFooter, 12))
+                field("lbt Editor Invoice Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter, 12))
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Editor Invoice Footer';
-                    caption = 'Editor Invoice Footer';
+                    Caption = 'Editor Invoice Footer';
                     trigger OnAssistEdit()
                     begin
-                        rec.lbtEditData(enum::"lbt Position"::Editorfooter, 12);
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorFooter, 12);
                     end;
                 }
             }
@@ -106,7 +106,7 @@ pageextension 5272815 "lbt cl ServiceOrder" extends "Service Order"
 
                     trigger OnAction()
                     begin
-                        Rec.lbtEditData(Enum::"lbt Position"::Editorfooter, Rec."Document Type".AsInteger());
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorFooter, Rec."Document Type".AsInteger());
                     end;
                 }
             }

@@ -32,7 +32,7 @@ pageextension 5272756 "lbt Blanket Purch. Order Sub." extends "Blanket Purchase 
             field("Lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
                 Caption = 'Editor';
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
                 trigger OnAssistEdit()
@@ -88,4 +88,3 @@ pageextension 5272756 "lbt Blanket Purch. Order Sub." extends "Blanket Purchase 
     var
         lbtStyle: Text;
 }
-

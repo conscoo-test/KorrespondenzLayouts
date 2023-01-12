@@ -6,18 +6,15 @@ pageextension 5272809 "lbt cl Service Invoice Subf" extends "Service Invoice Sub
         {
             field("lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
-                caption = 'Editor';
+                Caption = 'Editor';
                 trigger OnAssistEdit()
                 begin
                     Rec.lbtEditData(Rec."Document Type".AsInteger());
                 end;
             }
-
         }
-
-
     }
 }

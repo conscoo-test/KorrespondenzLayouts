@@ -39,4 +39,3 @@ pageextension 5272797 "lbt Blanket Purchase Orders" extends "Blanket Purchase Or
         }
     }
 }
-

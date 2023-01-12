@@ -7,7 +7,6 @@ pageextension 5272749 "lbt Sales Invoice Subform" extends "Sales Invoice Subform
             StyleExpr = lbtStyle;
         }
 
-
         addfirst(Control1)
         {
             field("lbt Pos. No."; Rec."lbt Pos. No.")
@@ -34,7 +33,7 @@ pageextension 5272749 "lbt Sales Invoice Subform" extends "Sales Invoice Subform
             field("Lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
                 Caption = 'Editor';
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
                 trigger OnAssistEdit()
@@ -42,7 +41,6 @@ pageextension 5272749 "lbt Sales Invoice Subform" extends "Sales Invoice Subform
                     Rec.lbtEditData(Rec."Document Type".AsInteger());
                 end;
             }
-
         }
         addafter(Quantity)
         {
@@ -95,4 +93,3 @@ pageextension 5272749 "lbt Sales Invoice Subform" extends "Sales Invoice Subform
     var
         lbtStyle: Text;
 }
-

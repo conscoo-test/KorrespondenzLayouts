@@ -24,7 +24,5 @@ tableextension 5272727 "lbt Purchases & Payables Setup" extends "Purchases & Pay
         //     Caption = 'Arch. Orders and Ret. Orders';
         //     DataClassification = CustomerContent;
         // }
-
     }
 }
-

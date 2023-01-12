@@ -39,4 +39,3 @@ pageextension 5272798 "lbt Purchase Return Order List" extends "Purchase Return 
         }
     }
 }
-

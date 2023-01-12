@@ -41,4 +41,3 @@ pageextension 5272790 "lbt Blanket Sales Orders" extends "Blanket Sales Orders"
         }
     }
 }
-
