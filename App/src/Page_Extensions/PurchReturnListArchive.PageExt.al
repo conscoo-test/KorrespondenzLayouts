@@ -41,4 +41,3 @@ pageextension 5272779 "lbt Purch. Return List Archive" extends "Purchase Return 
         }
     }
 }
-

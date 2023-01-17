@@ -36,10 +36,8 @@ pageextension 5272782 "lbt Posted Return Shipments" extends "Posted Return Shipm
                     begin
                         LongtextMgt.ShowLongtextLines(Rec, Position::Footer);
                     end;
-
                 }
             }
         }
     }
 }
-

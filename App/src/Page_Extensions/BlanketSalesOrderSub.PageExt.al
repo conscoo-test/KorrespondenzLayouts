@@ -32,7 +32,7 @@ pageextension 5272753 "lbt Blanket Sales Order Sub." extends "Blanket Sales Orde
             field("Lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
                 Caption = 'Editor';
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
                 trigger OnAssistEdit()
@@ -63,7 +63,6 @@ pageextension 5272753 "lbt Blanket Sales Order Sub." extends "Blanket Sales Orde
                 ToolTip = 'Here can you enter the Unit Price in Price Factor.';
             }
         }
-
     }
     actions
     {
@@ -97,4 +96,3 @@ pageextension 5272753 "lbt Blanket Sales Order Sub." extends "Blanket Sales Orde
     var
         lbtStyle: Text;
 }
-

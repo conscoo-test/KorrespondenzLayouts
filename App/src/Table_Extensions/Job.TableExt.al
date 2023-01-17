@@ -3,10 +3,9 @@ tableextension 5272759 "lbt cl Job" extends Job
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";
 
-    procedure lbtHasEditorValue(Position: Enum "lbt Position"; docType: Integer) Result: Text
+    trigger OnAfterDelete()
     begin
-        exit(Format(EditorHelper.hasEditorValueSysId(Rec, Position, docType)));
-        //exit(EditorHelper.hasEditorValue(rec, Position));
+        EditorHelper.deleteLongTextSysId(Rec);
     end;
 
     procedure lbtEditData(Position: Enum "lbt Position"; docType: Integer)
@@ -16,12 +15,12 @@ tableextension 5272759 "lbt cl Job" extends Job
 
     procedure lbtGetPrintData(Position: Enum "lbt Position"; docType: Integer): Text
     begin
-        exit(EditorHelper.getPrintDataSysid(Rec, Position, docType));
+        exit(EditorHelper.getPrintDataSysId(Rec, Position, docType));
     end;
 
-    trigger OnAfterDelete()
+    procedure lbtHasEditorValue(Position: Enum "lbt Position"; docType: Integer) Result: Text
     begin
-        EditorHelper.deleteLongTextSysId(Rec);
+        exit(Format(EditorHelper.hasEditorValueSysId(Rec, Position, docType)));
+        //exit(EditorHelper.hasEditorValue(rec, Position));
     end;
-
 }

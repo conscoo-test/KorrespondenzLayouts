@@ -21,7 +21,6 @@ pageextension 5272791 "lbt Sales Return Order List" extends "Sales Return Order 
                     begin
                         LongtextMgt.ShowLongtextLines(Rec, Position::Header);
                     end;
-
                 }
                 action("lbt Footer Text")
                 {
@@ -42,4 +41,3 @@ pageextension 5272791 "lbt Sales Return Order List" extends "Sales Return Order 
         }
     }
 }
-

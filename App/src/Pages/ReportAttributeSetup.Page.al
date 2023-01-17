@@ -8,7 +8,7 @@ page 5272725 "lbt Report - Attribute Setup"
 
     layout
     {
-        area(content)
+        area(Content)
         {
             repeater(Control5272730)
             {
@@ -22,7 +22,7 @@ page 5272725 "lbt Report - Attribute Setup"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Please select the report-id';
-                    LookupPageID = Objects;
+                    LookupPageId = Objects;
                 }
                 field(Position; Rec.Position)
                 {
@@ -77,4 +77,3 @@ page 5272725 "lbt Report - Attribute Setup"
     {
     }
 }
-

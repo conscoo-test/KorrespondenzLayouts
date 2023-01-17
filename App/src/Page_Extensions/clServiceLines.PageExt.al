@@ -4,15 +4,15 @@ pageextension 5272831 "lbt cl ServiceLines" extends "Service Lines"
     {
         addafter(Description)
         {
-            field("lbt Editor"; rec.lbtHasEditorValue(rec."Document Type".AsInteger()))
+            field("lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
-                caption = 'Editor';
+                Caption = 'Editor';
                 trigger OnAssistEdit()
                 begin
-                    rec.lbtEditData(rec."Document Type".AsInteger());
+                    Rec.lbtEditData(Rec."Document Type".AsInteger());
                 end;
             }
         }

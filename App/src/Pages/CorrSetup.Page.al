@@ -31,5 +31,4 @@ page 5272728 "lbt Corr Setup"
             Rec.Insert();
         end
     end;
-
 }

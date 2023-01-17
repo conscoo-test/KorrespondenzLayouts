@@ -6,10 +6,10 @@ pageextension 5272837 "lbt cl ServiceContract" extends "Service Contract"
         {
             field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, Rec."Contract Type"))
             {
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor Header';
-                caption = 'Editor Header';
+                Caption = 'Editor Header';
                 trigger OnAssistEdit()
                 begin
                     Rec.lbtEditData(Enum::"lbt Position"::EditorHeader, Rec."Contract Type");
@@ -17,13 +17,13 @@ pageextension 5272837 "lbt cl ServiceContract" extends "Service Contract"
             }
             field("lbt Editor Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter, Rec."Contract Type"))
             {
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor Footer';
-                caption = 'Editor Footer';
+                Caption = 'Editor Footer';
                 trigger OnAssistEdit()
                 begin
-                    Rec.lbtEditData(Enum::"lbt Position"::Editorfooter, Rec."Contract Type");
+                    Rec.lbtEditData(Enum::"lbt Position"::EditorFooter, Rec."Contract Type");
                 end;
             }
         }

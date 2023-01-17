@@ -1,8 +1,21 @@
 tableextension 5272770 "lbt cl PriceListLine" extends "Price List Line"
 {
-
     fields
     {
+        modify("Direct Unit Cost")
+        {
+            trigger OnAfterValidate()
+            begin
+                lbtclSetUnitPrice(FieldNo("Direct Unit Cost"));
+            end;
+        }
+        modify("Unit Price")
+        {
+            trigger OnAfterValidate()
+            begin
+                lbtclSetUnitPrice(FieldNo("Unit Price"));
+            end;
+        }
         field(5272730; "lbt cl Price Factor"; Enum "lbt cl Price Factor")
         {
             Caption = 'Price Factor';
@@ -21,22 +34,6 @@ tableextension 5272770 "lbt cl PriceListLine" extends "Price List Line"
             trigger OnValidate()
             begin
                 lbtclSetUnitPrice(FieldNo("lbt cl Price in Price Factor"));
-            end;
-
-        }
-        modify("Unit Price")
-        {
-            trigger OnAfterValidate()
-            begin
-                lbtclSetUnitPrice(FieldNo("Unit Price"));
-            end;
-        }
-        modify("Direct Unit Cost")
-        {
-            trigger OnAfterValidate()
-            begin
-                lbtclSetUnitPrice(FieldNo("Direct Unit Cost"));
-
             end;
         }
     }
@@ -60,7 +57,7 @@ tableextension 5272770 "lbt cl PriceListLine" extends "Price List Line"
                 begin
                     case CurrentFieldNo of
                         FieldNo("lbt cl Price in Price Factor"):
-                            Validate("direct unit Cost", "lbt cl Price in Price Factor" / CorrespDocMgt.GetPriceFactor("lbt cl Price Factor"));
+                            Validate("Direct Unit Cost", "lbt cl Price in Price Factor" / CorrespDocMgt.GetPriceFactor("lbt cl Price Factor"));
                         FieldNo("Direct Unit Cost"), FieldNo("lbt cl Price Factor"):
                             "lbt cl Price in Price Factor" := "Direct Unit Cost" * CorrespDocMgt.GetPriceFactor("lbt cl Price Factor");
                     end;

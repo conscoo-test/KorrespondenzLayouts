@@ -6,13 +6,13 @@ pageextension 5272832 "lbt cl JobCard" extends "Job Card"
         {
             group(lbtEditor)
             {
-                caption = 'LeBit Extended Layout Options';
+                Caption = 'LeBit Extended Layout Options';
                 field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, 0))
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Editor Header';
-                    caption = 'Editor Header';
+                    Caption = 'Editor Header';
                     trigger OnAssistEdit()
                     begin
                         Rec.lbtEditData(Enum::"lbt Position"::EditorHeader, 0);
@@ -20,57 +20,57 @@ pageextension 5272832 "lbt cl JobCard" extends "Job Card"
                 }
                 field("lbt Editor Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter, 0))
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Editor Footer';
-                    caption = 'Editor Footer';
+                    Caption = 'Editor Footer';
                     trigger OnAssistEdit()
                     begin
-                        Rec.lbtEditData(Enum::"lbt Position"::Editorfooter, 0);
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorFooter, 0);
                     end;
                 }
-                field("lbt Editor Shipment Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, enum::"Sales Document Type"::"lbt cl Shipment/Receipt".AsInteger()))
+                field("lbt Editor Shipment Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, Enum::"Sales Document Type"::"lbt cl Shipment/Receipt".AsInteger()))
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Editor Shipment Header';
-                    caption = 'Editor Shipment Header';
+                    Caption = 'Editor Shipment Header';
                     trigger OnAssistEdit()
                     begin
-                        Rec.lbtEditData(Enum::"lbt Position"::EditorHeader, enum::"Sales Document Type"::"lbt cl Shipment/Receipt".AsInteger());
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorHeader, Enum::"Sales Document Type"::"lbt cl Shipment/Receipt".AsInteger());
                     end;
                 }
-                field("lbt Editor Shipment Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter, enum::"Sales Document Type"::"lbt cl Shipment/Receipt".AsInteger()))
+                field("lbt Editor Shipment Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter, Enum::"Sales Document Type"::"lbt cl Shipment/Receipt".AsInteger()))
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Editor Shipment Footer';
-                    caption = 'Editor Shipment Footer';
+                    Caption = 'Editor Shipment Footer';
                     trigger OnAssistEdit()
                     begin
-                        Rec.lbtEditData(Enum::"lbt Position"::Editorfooter, enum::"Sales Document Type"::"lbt cl Shipment/Receipt".AsInteger());
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorFooter, Enum::"Sales Document Type"::"lbt cl Shipment/Receipt".AsInteger());
                     end;
                 }
-                field("lbt Editor Invoice Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, enum::"Sales Document Type"::Invoice.AsInteger()))
+                field("lbt Editor Invoice Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, Enum::"Sales Document Type"::Invoice.AsInteger()))
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Editor Invoice Header';
-                    caption = 'Editor Invoice Header';
+                    Caption = 'Editor Invoice Header';
                     trigger OnAssistEdit()
                     begin
-                        Rec.lbtEditData(Enum::"lbt Position"::EditorHeader, enum::"Sales Document Type"::Invoice.AsInteger());
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorHeader, Enum::"Sales Document Type"::Invoice.AsInteger());
                     end;
                 }
-                field("lbt Editor Invoice Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter, enum::"Sales Document Type"::Invoice.AsInteger()))
+                field("lbt Editor Invoice Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter, Enum::"Sales Document Type"::Invoice.AsInteger()))
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Editor Invoice Footer';
-                    caption = 'Editor Invoice Footer';
+                    Caption = 'Editor Invoice Footer';
                     trigger OnAssistEdit()
                     begin
-                        Rec.lbtEditData(Enum::"lbt Position"::Editorfooter, enum::"Sales Document Type"::Invoice.AsInteger());
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorFooter, Enum::"Sales Document Type"::Invoice.AsInteger());
                     end;
                 }
             }

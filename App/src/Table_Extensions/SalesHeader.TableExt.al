@@ -2,6 +2,13 @@ tableextension 5272728 "lbt Sales Header" extends "Sales Header"
 {
     fields
     {
+        modify("Sell-to Customer No.")
+        {
+            trigger OnAfterValidate()
+            begin
+                CopyLongTextFromCustomer();
+            end;
+        }
         field(5272720; "lbt cl Delivery Date Type"; Enum "lbt cl DeliveryDateType")
         {
             Caption = 'Delivery Date Type';
@@ -17,15 +24,6 @@ tableextension 5272728 "lbt Sales Header" extends "Sales Header"
             Caption = 'Destination';
             DataClassification = CustomerContent;
             TableRelation = "Entry/Exit Point";
-
-        }
-
-        modify("Sell-to Customer No.")
-        {
-            trigger OnAfterValidate()
-            begin
-                CopyLongTextFromCustomer();
-            end;
         }
     }
 
@@ -44,36 +42,9 @@ tableextension 5272728 "lbt Sales Header" extends "Sales Header"
         LongtextMgt.DelLongtext(Rec);
     end;
 
-    procedure lbtTransferPSLongtextLineToTemp(var PSLongtextLine: Record "lbt PS Longtext Line"; var TempPSLongtextLine: Record "lbt PS Longtext Line" temporary)
+    trigger OnAfterDelete()
     begin
-        if PSLongtextLine.FindSet() then
-            repeat
-                TempPSLongtextLine.Init();
-                TempPSLongtextLine := PSLongtextLine;
-                TempPSLongtextLine.Insert();
-            until PSLongtextLine.Next() = 0;
-        PSLongtextLine.DeleteAll();
-    end;
-
-    procedure lbtHasEditorValue(Position: Enum "lbt Position"; docType: Integer) Result: Text
-    begin
-        exit(Format(EditorHelper.hasEditorValue(Rec, Position, docType)));
-        //exit(EditorHelper.hasEditorValue(rec, Position));
-    end;
-
-    procedure lbtEditData(Position: Enum "lbt Position"; docType: Integer)
-    begin
-        EditorHelper.editData(Rec, Position, docType);
-    end;
-
-    procedure lbtGetPrintData(Position: Enum "lbt Position"; docType: Integer): Text
-    begin
-        exit(EditorHelper.getPrintData(Rec, Position, docType));
-    end;
-
-    procedure lbtEditorVisible(): Boolean
-    begin
-        exit(EditorHelper.editorVisible(Database::"Sales Header"));
+        EditorHelper.deleteLongText(Rec, Rec."Document Type".AsInteger());
     end;
 
     procedure lbtclSetAdditionalFields()
@@ -85,7 +56,7 @@ tableextension 5272728 "lbt Sales Header" extends "Sales Header"
     begin
         if Cust.Get("Sell-to Customer No.") then begin
             destination := Cust."lbt cl Destination";
-            DeliveryDateType := cust."lbt cl Delivery Date Type";
+            DeliveryDateType := Cust."lbt cl Delivery Date Type";
         end;
         if Rec."Ship-to Code" <> '' then
             if ShiptoAddr.Get("Sell-to Customer No.", "Ship-to Code") then begin
@@ -99,6 +70,38 @@ tableextension 5272728 "lbt Sales Header" extends "Sales Header"
             Rec.Validate("lbt cl Delivery Date Type", DeliveryDateType);
     end;
 
+    procedure lbtEditData(Position: Enum "lbt Position"; docType: Integer)
+    begin
+        EditorHelper.editData(Rec, Position, docType);
+    end;
+
+    procedure lbtEditorVisible(): Boolean
+    begin
+        exit(EditorHelper.editorVisible(Database::"Sales Header"));
+    end;
+
+    procedure lbtGetPrintData(Position: Enum "lbt Position"; docType: Integer): Text
+    begin
+        exit(EditorHelper.getPrintData(Rec, Position, docType));
+    end;
+
+    procedure lbtHasEditorValue(Position: Enum "lbt Position"; docType: Integer) Result: Text
+    begin
+        exit(Format(EditorHelper.hasEditorValue(Rec, Position, docType)));
+        //exit(EditorHelper.hasEditorValue(rec, Position));
+    end;
+
+    procedure lbtTransferPSLongtextLineToTemp(var PSLongtextLine: Record "lbt PS Longtext Line"; var TempPSLongtextLine: Record "lbt PS Longtext Line" temporary)
+    begin
+        if PSLongtextLine.FindSet() then
+            repeat
+                TempPSLongtextLine.Init();
+                TempPSLongtextLine := PSLongtextLine;
+                TempPSLongtextLine.Insert();
+            until PSLongtextLine.Next() = 0;
+        PSLongtextLine.DeleteAll();
+    end;
+
     local procedure CopyLongTextFromCustomer()
     var
         Customer: Record Customer;
@@ -110,12 +113,4 @@ tableextension 5272728 "lbt Sales Header" extends "Sales Header"
             if Customer.Get(Rec."Sell-to Customer No.") then
                 LongtextMgt.CopyLongtext(Customer, Rec);
     end;
-
-    trigger OnAfterDelete()
-    begin
-        EditorHelper.deleteLongText(Rec, Rec."Document Type".AsInteger());
-    end;
-
-
 }
-

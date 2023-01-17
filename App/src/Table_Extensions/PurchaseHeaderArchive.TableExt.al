@@ -10,15 +10,14 @@ tableextension 5272740 "lbt Purchase Header Archive" extends "Purchase Header Ar
         LongtextMgt.DelLongtext(Rec);
     end;
 
-    procedure lbtHasEditorValue(Position: enum "lbt Position"; docType: Integer) Result: Text
+    procedure lbtEditData(Position: Enum "lbt Position"; docType: Integer)
     begin
-        exit(format(EditorHelper.hasEditorValue(rec, Position, doctype)));
+        EditorHelper.ShowData(Rec, Position, docType);
+    end;
+
+    procedure lbtHasEditorValue(Position: Enum "lbt Position"; docType: Integer) Result: Text
+    begin
+        exit(Format(EditorHelper.hasEditorValue(Rec, Position, docType)));
         //exit(EditorHelper.hasEditorValue(rec, Position));
     end;
-
-    procedure lbtEditData(Position: enum "lbt Position"; docType: Integer)
-    begin
-        EditorHelper.ShowData(rec, Position, docType);
-    end;
-
 }

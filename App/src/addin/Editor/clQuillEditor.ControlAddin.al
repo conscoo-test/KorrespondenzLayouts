@@ -4,15 +4,12 @@ controladdin "lbt cl QuillEditor"
     HorizontalStretch = true;
 
     //MinimumWidth = 200;
-    //MaximumHeight = 
-
+    //MaximumHeight =
 
     //StyleSheets = 'https://cdn.quilljs.com/1.3.6/quill.snow.css', 'obj/addin/Editor/Scripts/quillStyle.css';
     StyleSheets = 'src/addin/Editor/Scripts/quill.snow.css', 'src/addin/Editor/Scripts/quillStyle.css';
-
     Scripts = 'src/addin/Editor/Scripts/quill.min.js', 'src/addin/Editor//Scripts/MainQuill.js';
     //Scripts = 'https://cdn.quilljs.com/1.3.6/quill.js', 'obj/addin/Editor//Scripts/MainQuill.js';
-
 
     StartupScript = 'src/addin/Editor//Scripts/startupScript.js';
     RecreateScript = 'src/addin/Editor//Scripts/recreateScript.js';
@@ -39,6 +36,4 @@ controladdin "lbt cl QuillEditor"
     event OnAfterSave();
 
     procedure ReadOnly(ReadOnly: Boolean)
-
-
 }

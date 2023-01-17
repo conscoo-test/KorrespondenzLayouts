@@ -1,16 +1,15 @@
 page 5272731 "lbt cl Editor"
 
 {
-    caption = 'Editor';
+    Caption = 'Editor';
     UsageCategory = Lists;
     layout
     {
         area(Content)
         {
-
             usercontrol(editor; "lbt cl QuillEditor")
             {
-                ApplicationArea = all;
+                ApplicationArea = All;
                 trigger ControlReady()
                 begin
                     CurrPage.editor.Init(false, false);
@@ -36,7 +35,6 @@ page 5272731 "lbt cl Editor"
                     datatext := ContentData;
                 end;
             }
-
         }
     }
     actions
@@ -45,20 +43,19 @@ page 5272731 "lbt cl Editor"
         {
             action(InsertFrom)
             {
-
-                ApplicationArea = all;
-                caption = 'Insert From';
+                ApplicationArea = All;
+                Caption = 'Insert From';
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
                 PromotedOnly = true;
                 Image = Insert;
-                trigger onAction()
+                trigger OnAction()
                 var
                     ExtTxtHdr: Record "Extended Text Header";
                     ExtendedTextList: Page "Extended Text List";
-                    content: Text;
                     seperatorLbl: Label '%1<p>###### %2 ######</p>%3', Locked = true;
+                    content: Text;
                 begin
                     ExtTxtHdr.SetRange("lbt Textchoice", ExtTxtHdr."lbt Textchoice"::Blob);
                     ExtendedTextList.SetTableView(ExtTxtHdr);
@@ -76,8 +73,7 @@ page 5272731 "lbt cl Editor"
             }
             action(TestPrint)
             {
-
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Caption = 'TestPrint';
                 Promoted = true;
                 InFooterBar = true;
@@ -85,7 +81,7 @@ page 5272731 "lbt cl Editor"
                 PromotedOnly = true;
                 PromotedIsBig = true;
                 Image = TestReport;
-                trigger onAction()
+                trigger OnAction()
                 var
                     htmlreport: Report "lbt cl htmlreport";
                     EditorHelper: Codeunit "lbt cl EditorHelper";
@@ -96,20 +92,17 @@ page 5272731 "lbt cl Editor"
                     htmlreport.sethtmltext(EditorHelper.PrepareHtmltoprint(content));
                     htmlreport.Run();
                 end;
-
-
-
             }
         }
     }
 
     var
-        data: Text;
-        datatext: Text;
-        saved: Boolean;
         HTMLMode: Boolean;
 
         lookupok: Boolean;
+        saved: Boolean;
+        data: Text;
+        datatext: Text;
 
     trigger OnQueryClosePage(CloseAction: Action): Boolean
     begin
@@ -126,12 +119,6 @@ page 5272731 "lbt cl Editor"
         exit(true);
     end;
 
-    procedure SetText(ContentData: Text; isHTML: Boolean)
-    begin
-        data := ContentData;
-        HTMLMode := isHTML;
-    end;
-
     procedure GetText() Result: Text
     begin
         Result := data;
@@ -145,5 +132,11 @@ page 5272731 "lbt cl Editor"
     procedure IfLookupOk() Result: Boolean
     begin
         Result := lookupok;
+    end;
+
+    procedure SetText(ContentData: Text; isHTML: Boolean)
+    begin
+        data := ContentData;
+        HTMLMode := isHTML;
     end;
 }

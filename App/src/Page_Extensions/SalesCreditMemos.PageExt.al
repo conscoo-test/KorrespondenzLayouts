@@ -41,4 +41,3 @@ pageextension 5272789 "lbt Sales Credit Memos" extends "Sales Credit Memos"
         }
     }
 }
-

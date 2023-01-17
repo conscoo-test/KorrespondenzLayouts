@@ -4,7 +4,7 @@ tableextension 5272725 "lbt Purch. Cr. Memo Line" extends "Purch. Cr. Memo Line"
     {
         field(5272720; "lbt Long Text"; Boolean)
         {
-            CalcFormula = Exist("lbt Posted PS Longtext Line" where("Table ID" = const(125),
+            CalcFormula = exist("lbt Posted PS Longtext Line" where("Table ID" = const(125),
                                                                        "Document No." = field("Document No."),
                                                                        Position = const(Longtext),
                                                                        "Document Line No." = field("Line No.")));
@@ -29,7 +29,7 @@ tableextension 5272725 "lbt Purch. Cr. Memo Line" extends "Purch. Cr. Memo Line"
         field(5272723; "lbt Balance"; Decimal)
         {
             AutoFormatType = 1;
-            CalcFormula = Sum("Purch. Cr. Memo Line"."Line Amount" where("Document No." = field("Document No."),
+            CalcFormula = sum("Purch. Cr. Memo Line"."Line Amount" where("Document No." = field("Document No."),
                                                                           "Line No." = field(filter("lbt Summation"))));
             Caption = 'Balance';
             Editable = false;
@@ -46,7 +46,6 @@ tableextension 5272725 "lbt Purch. Cr. Memo Line" extends "Purch. Cr. Memo Line"
             MinValue = 0;
             DataClassification = CustomerContent;
         }
-
         field(5272726; "lbt Source Document Line No."; Integer)
         {
             ObsoleteState = Removed;
@@ -77,13 +76,6 @@ tableextension 5272725 "lbt Purch. Cr. Memo Line" extends "Purch. Cr. Memo Line"
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";
 
-    procedure lbtHasEditorValue() Result: Boolean
-    var
-
-    begin
-        exit(EditorHelper.hasEditorValue(Rec, Enum::"lbt Position"::EditorLine, 0));
-    end;
-
     procedure lbtEditData()
     var
 
@@ -91,5 +83,15 @@ tableextension 5272725 "lbt Purch. Cr. Memo Line" extends "Purch. Cr. Memo Line"
         EditorHelper.ShowData(Rec, Enum::"lbt Position"::EditorLine, 0);
     end;
 
-}
+    procedure lbtGetPrintData(Position: Enum "lbt Position"): Text
+    begin
+        exit(EditorHelper.getPrintData(Rec, Position, 0));
+    end;
 
+    procedure lbtHasEditorValue() Result: Boolean
+    var
+
+    begin
+        exit(EditorHelper.hasEditorValue(Rec, Enum::"lbt Position"::EditorLine, 0));
+    end;
+}

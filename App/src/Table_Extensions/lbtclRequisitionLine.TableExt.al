@@ -2,6 +2,13 @@ tableextension 5272772 "lbtcl RequisitionLine" extends "Requisition Line"
 {
     fields
     {
+        modify("Direct Unit Cost")
+        {
+            trigger OnAfterValidate()
+            begin
+                lbtclSetUnitPrice(FieldNo("Direct Unit Cost"));
+            end;
+        }
         field(5272730; "lbt cl Price Factor"; Enum "lbt cl Price Factor")
         {
             Caption = 'Price Factor';
@@ -22,14 +29,6 @@ tableextension 5272772 "lbtcl RequisitionLine" extends "Requisition Line"
             begin
                 lbtclSetUnitPrice(FieldNo("lbt cl Price in Price Factor"));
             end;
-
-        }
-        modify("Direct Unit Cost")
-        {
-            trigger OnAfterValidate()
-            begin
-                lbtclSetUnitPrice(FieldNo("Direct Unit Cost"));
-            end;
         }
     }
     procedure lbtclSetUnitPrice(CurrentFieldNo: Integer)
@@ -44,5 +43,4 @@ tableextension 5272772 "lbtcl RequisitionLine" extends "Requisition Line"
                 "lbt cl Price in Price Factor" := "Direct Unit Cost" * CorrespDocMgt.GetPriceFactor("lbt cl Price Factor");
         end;
     end;
-
 }

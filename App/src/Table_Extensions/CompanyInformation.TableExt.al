@@ -97,7 +97,6 @@ tableextension 5272736 "lbt Company Information" extends "Company Information"
         field(5272736; "lbt Setup finished"; Boolean)
         {
             DataClassification = CustomerContent;
-
         }
     }
 
@@ -116,4 +115,3 @@ tableextension 5272736 "lbt Company Information" extends "Company Information"
     begin
     end;
 }
-

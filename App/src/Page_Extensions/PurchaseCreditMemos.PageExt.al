@@ -39,4 +39,3 @@ pageextension 5272796 "lbt Purchase Credit Memos" extends "Purchase Credit Memos
         }
     }
 }
-

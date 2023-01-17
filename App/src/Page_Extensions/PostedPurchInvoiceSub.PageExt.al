@@ -32,7 +32,7 @@ pageextension 5272730 "lbt Posted Purch. Invoice Sub." extends "Posted Purch. In
             field("Lbt Editor"; Rec.lbtHasEditorValue())
             {
                 Caption = 'Editor';
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
                 trigger OnAssistEdit()
@@ -88,4 +88,3 @@ pageextension 5272730 "lbt Posted Purch. Invoice Sub." extends "Posted Purch. In
     var
         lbtStyle: Text;
 }
-

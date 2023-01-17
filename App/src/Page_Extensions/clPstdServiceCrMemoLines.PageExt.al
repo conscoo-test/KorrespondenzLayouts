@@ -4,18 +4,17 @@ pageextension 5272828 "lbt cl PstdServiceCrMemoLines" extends "Posted Service Cr
     {
         addafter(Description)
         {
-            field("lbt Editor"; rec.lbtHasEditorValue())
+            field("lbt Editor"; Rec.lbtHasEditorValue())
             {
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
-                caption = 'Editor';
+                Caption = 'Editor';
                 trigger OnAssistEdit()
                 begin
-                    rec.lbtEditData();
+                    Rec.lbtEditData();
                 end;
             }
-
         }
     }
 }

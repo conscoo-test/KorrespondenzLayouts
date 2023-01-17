@@ -6,10 +6,10 @@ pageextension 5272836 "lbt cl StandardSalesCodeSub" extends "Standard Sales Code
         {
             field("lbt Editor"; Rec.lbtHasEditorValue())
             {
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
-                caption = 'Editor';
+                Caption = 'Editor';
                 trigger OnAssistEdit()
                 begin
                     Rec.lbtEditData();

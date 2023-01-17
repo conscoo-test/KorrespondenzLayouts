@@ -131,8 +131,7 @@ table 5272725 "lbt Report - Attribute Setup"
 
     var
         ParamSetupRec: Record "lbt Report - Attribute Setup";
+        DecimalPlacesErr: Label 'Decimal places only valid for parameters with decimal type.';
         PosZeroErr: Label 'Position 0 is not allowed!.';
         TypingErr: Label 'Typing is not correct. A correct entry would be for example\\1      A minimum of 1 and a maximum of 1 decimal place\1:4   A minimum of 1 and a maximum of 4 decimal places\2:     At least 2 decimal places\:2     No more than 2 decimal places.';
-        DecimalPlacesErr: Label 'Decimal places only valid for parameters with decimal type.';
 }
-

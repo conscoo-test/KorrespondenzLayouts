@@ -9,16 +9,16 @@ tableextension 5272726 "lbt Extended Text Header" extends "Extended Text Header"
             OptionMembers = standard,"long text","Blob";
             DataClassification = CustomerContent;
         }
-        field(5272721; "lbt Editor Blob"; blob)
+        field(5272721; "lbt Editor Blob"; Blob)
         {
-            caption = 'Editor Blob';
+            Caption = 'Editor Blob';
             DataClassification = CustomerContent;
         }
     }
     trigger OnRename()
     var
-        ExtTextLineLongOld: Record "lbt Extended Text Line Long";
         ExtTextLineLongNew: Record "lbt Extended Text Line Long";
+        ExtTextLineLongOld: Record "lbt Extended Text Line Long";
     begin
         ExtTextLineLongOld.SetRange(Table_ID, Rec."Table Name");
         ExtTextLineLongOld.SetRange("No.", Rec."No.");
@@ -37,29 +37,28 @@ tableextension 5272726 "lbt Extended Text Header" extends "Extended Text Header"
 
     procedure lbtclEditData()
     var
-        data: Text;
         EditorHelper: Codeunit "lbt cl EditorHelper";
+        data: Text;
     begin
         data := lbtclReadContentData(false);
-        if editorhelper.TextEditor(data, true) then begin
+        if EditorHelper.TextEditor(data, true) then begin
             lbtclWriteContentData(data);
-            modify();
+            Modify();
         end;
-
     end;
 
     procedure lbtclReadContentData(show: Boolean) Result: Text
     var
 
         EditorPreview: Page "lbt cl Editor Preview";
-        is: instream;
+        is: InStream;
 
     begin
         CalcFields("lbt Editor Blob");
-        "lbt editor Blob".CreateInStream(is, TextEncoding::UTF8);
-        is.Read(result);
+        "lbt Editor Blob".CreateInStream(is, TextEncoding::UTF8);
+        is.Read(Result);
         if show then begin
-            EditorPreview.SetData(result);
+            EditorPreview.SetData(Result);
             EditorPreview.Run();
         end;
     end;
@@ -70,8 +69,6 @@ tableextension 5272726 "lbt Extended Text Header" extends "Extended Text Header"
 
     begin
         "lbt Editor Blob".CreateOutStream(os, TextEncoding::UTF8);
-        os.write(content);
+        os.Write(content);
     end;
-
 }
-

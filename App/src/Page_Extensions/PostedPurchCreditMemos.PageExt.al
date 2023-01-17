@@ -41,4 +41,3 @@ pageextension 5272738 "lbt Posted Purch. Credit Memos" extends "Posted Purchase 
         }
     }
 }
-

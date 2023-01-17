@@ -11,7 +11,6 @@ tableextension 5272738 "lbt Purch. Rcpt. Header" extends "Purch. Rcpt. Header"
         LeBitCorrespDocSingleInst.CopyLongTextForPostDropOrderShipment(Rec, PurchRcptLine, 1, 0);
     end;
 
-
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";
 
@@ -23,13 +22,18 @@ tableextension 5272738 "lbt Purch. Rcpt. Header" extends "Purch. Rcpt. Header"
         EditorHelper.deleteLongText(Rec);
     end;
 
-    procedure lbtHasEditorValue(Position: Enum "lbt Position") Result: Text
-    begin
-        exit(Format(EditorHelper.hasEditorValue(Rec, Position)));
-    end;
-
     procedure lbtEditData(Position: Enum "lbt Position")
     begin
         EditorHelper.ShowData(Rec, Position);
+    end;
+
+    procedure lbtGetPrintData(Position: Enum "lbt Position"): Text
+    begin
+        exit(EditorHelper.getPrintData(Rec, Position, 0));
+    end;
+
+    procedure lbtHasEditorValue(Position: Enum "lbt Position") Result: Text
+    begin
+        exit(Format(EditorHelper.hasEditorValue(Rec, Position)));
     end;
 }

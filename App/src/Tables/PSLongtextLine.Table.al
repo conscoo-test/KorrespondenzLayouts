@@ -3,8 +3,8 @@ table 5272720 "lbt PS Longtext Line"
     // version LBCOR1.00
 
     Caption = 'Purch/Sales Longtext Line';
-    DrillDownPageID = "lbt PS Longtext Lines";
-    LookupPageID = "lbt PS Longtext Lines";
+    DrillDownPageId = "lbt PS Longtext Lines";
+    LookupPageId = "lbt PS Longtext Lines";
     PasteIsValid = false;
 
     fields
@@ -123,10 +123,9 @@ table 5272720 "lbt PS Longtext Line"
             Caption = 'Text';
             DataClassification = CustomerContent;
         }
-
         field(21; "Editor Content"; Blob)
         {
-            caption = 'Editor Content';
+            Caption = 'Editor Content';
             DataClassification = CustomerContent;
         }
     }
@@ -150,18 +149,18 @@ table 5272720 "lbt PS Longtext Line"
 
     var
         StandardText: Record "Standard Text";
-        NewPageLbl: Label '--- New Page ---';
         CantChangeTxt: Label 'You can not change this text.'; //TODO: ??
+        NewPageLbl: Label '--- New Page ---';
 
     procedure DBOpenMemo()
     var
         PSLongtextLine: Record "lbt PS Longtext Line";
         TempPSLongtextLine: Record "lbt PS Longtext Line" temporary;
         DBTextEdit: Page "lbt DBTextEdit";
-        Txt: Text;
-        delimiter: Text;
-        LineNo: Integer;
         filled: Boolean;
+        LineNo: Integer;
+        delimiter: Text;
+        Txt: Text;
     begin
         if "Document No." = '' then begin
             PSLongtextLine.SetFilter("Table ID", Rec.GetFilter("Table ID"));
@@ -201,7 +200,6 @@ table 5272720 "lbt PS Longtext Line"
                 repeat
                     if TempPSLongtextLine.Description <> '' then
                         filled := true;
-
                 until TempPSLongtextLine.Next() = 0;
             if filled then begin
                 if TempPSLongtextLine.FindSet() then
@@ -225,17 +223,68 @@ table 5272720 "lbt PS Longtext Line"
                 end;
             end;
         end;
+    end;
 
+    procedure EditData()
+    var
+        EditorHelper: Codeunit "lbt cl EditorHelper";
+        data: Text;
+    begin
+        data := ReadContentData(false);
+        if not EditorHelper.TextEditor(data, true) then
+            exit;
+        if (data = '<p><br></p>') or (data = '<p></p>') then
+            Delete(true)
+        else begin
+            WriteContentData(data);
+            Modify();
+        end;
+    end;
+
+    procedure ReadContentData(show: Boolean) Result: Text
+    var
+        EditorPreview: Page "lbt cl Editor Preview";
+        is: InStream;
+        Buffer: Text;
+    begin
+        CalcFields("Editor Content");
+        "Editor Content".CreateInStream(is, TextEncoding::UTF8);
+        while not is.EOS do begin
+            is.Read(Buffer);
+            Result += Buffer;
+        end;
+        if show then begin
+            EditorPreview.SetData(Result);
+            EditorPreview.Run();
+        end;
+    end;
+
+    procedure ShowData()
+    var
+        EditorHelper: Codeunit "lbt cl EditorHelper";
+        data: Text;
+    begin
+        data := ReadContentData(false);
+        EditorHelper.ShowTextEditor(data, true);
+    end;
+
+    procedure WriteContentData(content: Text)
+    var
+        os: OutStream;
+    begin
+        Clear(Rec."Editor Content");
+        "Editor Content".CreateOutStream(os, TextEncoding::UTF8);
+        os.Write(content);
     end;
 
     local procedure SplitText(Text: Text; Delimiter: Text; var PSLongtextLine: Record "lbt PS Longtext Line"; maxlen: Integer)
     var
-        NewString: Text;
-        SplitArray: List of [Text];
         ende: Boolean;
-        newstring1: Text;
         LineNo: Integer;
         NewLen: Integer;
+        SplitArray: List of [Text];
+        NewString: Text;
+        newstring1: Text;
         TestString: Text;
     begin
         SplitArray := Text.Split(Delimiter);
@@ -265,61 +314,4 @@ table 5272720 "lbt PS Longtext Line"
             until ende;
         end;
     end;
-
-    procedure EditData()
-    var
-        EditorHelper: Codeunit "lbt cl EditorHelper";
-        data: Text;
-    begin
-        data := ReadContentData(false);
-        if not EditorHelper.TextEditor(data, true) then
-            exit;
-        if (data = '<p><br></p>') or (data = '<p></p>') then
-            Delete(true)
-        else begin
-            WriteContentData(data);
-            Modify();
-        end;
-
-    end;
-
-    procedure ShowData()
-    var
-        EditorHelper: Codeunit "lbt cl EditorHelper";
-        data: Text;
-    begin
-        data := ReadContentData(false);
-        editorhelper.ShowTextEditor(data, true);
-
-    end;
-
-
-    procedure ReadContentData(show: Boolean) Result: Text
-    var
-        EditorPreview: Page "lbt cl Editor Preview";
-        Buffer: Text;
-        is: InStream;
-    begin
-        CalcFields("Editor Content");
-        "Editor Content".CreateInStream(is, TextEncoding::UTF8);
-        while not is.EOS do begin
-            is.Read(Buffer);
-            Result += Buffer;
-        end;
-        if show then begin
-            EditorPreview.SetData(Result);
-            EditorPreview.Run();
-        end;
-    end;
-
-    procedure WriteContentData(content: Text)
-    var
-        os: OutStream;
-    begin
-        Clear(Rec."Editor Content");
-        "Editor Content".CreateOutStream(os, TextEncoding::UTF8);
-        os.Write(content);
-    end;
-
 }
-

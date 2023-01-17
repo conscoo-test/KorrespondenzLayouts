@@ -1,20 +1,17 @@
 page 5272729 "lbt cl WebViewer"
 {
-    caption = 'Viewer';
+    Caption = 'Viewer';
     UsageCategory = Lists;
     layout
     {
-
-
         area(Content)
         {
-
             group(Editor)
             {
                 Caption = 'Editor';
                 usercontrol(Viewer; "Microsoft.Dynamics.Nav.Client.WebPageViewer")
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                     trigger ControlAddInReady(callbackUrl: Text)
                     var
                     begin

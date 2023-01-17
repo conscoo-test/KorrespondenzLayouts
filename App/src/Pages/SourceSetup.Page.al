@@ -8,7 +8,7 @@ page 5272727 "lbt Source Setup"
 
     layout
     {
-        area(content)
+        area(Content)
         {
             repeater("Group Sales")
             {
@@ -32,7 +32,6 @@ page 5272727 "lbt Source Setup"
                     Caption = 'Source Type';
                     OptionCaption = 'Default,"Bill-to Customer","Sell-to Customer"';
 
-
                     trigger OnValidate()
                     begin
                         SetSourceType();
@@ -48,7 +47,6 @@ page 5272727 "lbt Source Setup"
                     ToolTip = 'Please select the report type';
                     Caption = 'Report Type';
                     OptionCaption = 'General,"Purchase Quote","Purchase Order","Blanket Purchase Order"';
-
 
                     trigger OnValidate()
                     begin
@@ -89,7 +87,7 @@ page 5272727 "lbt Source Setup"
 
     trigger OnOpenPage()
     begin
-        Rec.FILTERGROUP := 3;
+        Rec.FilterGroup := 3;
         case Rec.GetFilter(Type) of
             Format(Rec.Type::Sales):
                 begin
@@ -112,16 +110,16 @@ page 5272727 "lbt Source Setup"
                     end;
                 end;
         end;
-        Rec.FILTERGROUP := 0;
+        Rec.FilterGroup := 0;
     end;
 
     var
-        SalesReportTypeOption: Option General,"Sales Quote","Sales Order","Sales Pro Forma Inv","Blanket Sales Order";
-        PurchReportTypeOption: Option General,"Purchase Quote","Purchase Order","Blanket Purchase Order";
+        PurchVisible: Boolean;
+        SalesVisible: Boolean;
         SalesSourceTypeOption: Option Default,"Bill-to Customer","Sell-to Customer";
         PurchSourceTypeOption: Option Default,"Pay-to Vendor","Buy-from Vendor";
-        SalesVisible: Boolean;
-        PurchVisible: Boolean;
+        PurchReportTypeOption: Option General,"Purchase Quote","Purchase Order","Blanket Purchase Order";
+        SalesReportTypeOption: Option General,"Sales Quote","Sales Order","Sales Pro Forma Inv","Blanket Sales Order";
 
     local procedure SetReportType()
     begin
@@ -145,30 +143,6 @@ page 5272727 "lbt Source Setup"
                         Rec."Report Type" := Rec."Report Type"::"Purchase Order";
                     PurchReportTypeOption::"Blanket Purchase Order":
                         Rec."Report Type" := Rec."Report Type"::"Blanket Purchase Order";
-                end;
-        end;
-    end;
-
-    local procedure SetSourceType()
-    begin
-        case Rec.Type of
-            Rec.Type::Sales:
-                case SalesSourceTypeOption of
-                    SalesSourceTypeOption::Default:
-                        Rec."Source Type" := Rec."Source Type"::Default;
-                    SalesSourceTypeOption::"Bill-to Customer":
-                        Rec."Source Type" := Rec."Source Type"::"Bill-to Customer";
-                    SalesSourceTypeOption::"Sell-to Customer":
-                        Rec."Source Type" := Rec."Source Type"::"Sell-to Customer";
-                end;
-            Rec.Type::Purchase:
-                case PurchSourceTypeOption of
-                    PurchSourceTypeOption::Default:
-                        Rec."Source Type" := Rec."Source Type"::Default;
-                    PurchSourceTypeOption::"Buy-from Vendor":
-                        Rec."Source Type" := Rec."Source Type"::"Buy-from Vendor";
-                    PurchSourceTypeOption::"Pay-to Vendor":
-                        Rec."Source Type" := Rec."Source Type"::"Pay-to Vendor";
                 end;
         end;
     end;
@@ -198,6 +172,30 @@ page 5272727 "lbt Source Setup"
         end;
     end;
 
+    local procedure SetSourceType()
+    begin
+        case Rec.Type of
+            Rec.Type::Sales:
+                case SalesSourceTypeOption of
+                    SalesSourceTypeOption::Default:
+                        Rec."Source Type" := Rec."Source Type"::Default;
+                    SalesSourceTypeOption::"Bill-to Customer":
+                        Rec."Source Type" := Rec."Source Type"::"Bill-to Customer";
+                    SalesSourceTypeOption::"Sell-to Customer":
+                        Rec."Source Type" := Rec."Source Type"::"Sell-to Customer";
+                end;
+            Rec.Type::Purchase:
+                case PurchSourceTypeOption of
+                    PurchSourceTypeOption::Default:
+                        Rec."Source Type" := Rec."Source Type"::Default;
+                    PurchSourceTypeOption::"Buy-from Vendor":
+                        Rec."Source Type" := Rec."Source Type"::"Buy-from Vendor";
+                    PurchSourceTypeOption::"Pay-to Vendor":
+                        Rec."Source Type" := Rec."Source Type"::"Pay-to Vendor";
+                end;
+        end;
+    end;
+
     local procedure SetSourceVar()
     begin
         case Rec."Source Type" of
@@ -217,4 +215,3 @@ page 5272727 "lbt Source Setup"
         end;
     end;
 }
-

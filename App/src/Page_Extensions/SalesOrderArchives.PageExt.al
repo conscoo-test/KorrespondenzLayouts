@@ -41,4 +41,3 @@ pageextension 5272802 "lbt Sales Order Archives" extends "Sales Order Archives"
         }
     }
 }
-

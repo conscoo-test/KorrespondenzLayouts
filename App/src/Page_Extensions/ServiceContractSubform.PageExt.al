@@ -4,18 +4,17 @@ pageextension 5272824 "lbt cl ServiceContractSubform" extends "Service Contract 
     {
         addafter(Description)
         {
-            field("lbt Editor"; rec.lbtHasEditorValue(rec."Contract Type"))
+            field("lbt Editor"; Rec.lbtHasEditorValue(Rec."Contract Type"))
             {
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
-                caption = 'Editor';
+                Caption = 'Editor';
                 trigger OnAssistEdit()
                 begin
-                    rec.lbtEditData(rec."Contract Type");
+                    Rec.lbtEditData(Rec."Contract Type");
                 end;
             }
-
         }
     }
 }

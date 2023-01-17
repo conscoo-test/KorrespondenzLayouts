@@ -2,18 +2,24 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
 {
     fields
     {
+        modify("Direct Unit Cost")
+        {
+            trigger OnAfterValidate()
+            begin
+                lbtclSetUnitPrice(FieldNo("Direct Unit Cost"));
+            end;
+        }
         modify("No.")
         {
             trigger OnAfterValidate()
             begin
-                VALIDATE("lbt Printoption", xRec."lbt Printoption");
+                Validate("lbt Printoption", xRec."lbt Printoption");
                 "lbt Pos. No." := xRec."lbt Pos. No.";
             end;
         }
-
         field(5272720; "lbt Long Text"; Boolean)
         {
-            CalcFormula = Exist("lbt PS Longtext Line" where("Table ID" = const(39),
+            CalcFormula = exist("lbt PS Longtext Line" where("Table ID" = const(39),
                                                                 "Document Type" = field("Document Type"),
                                                                 "Document No." = field("Document No."),
                                                                 Position = const(Longtext),
@@ -32,14 +38,14 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
             trigger OnValidate()
             begin
                 if ("lbt Printoption" = "lbt Printoption"::Alternative) or ("lbt Printoption" = "lbt Printoption"::Optional) then begin
-                    VALIDATE(Quantity, 0);
-                    VALIDATE("Direct Unit Cost");
+                    Validate(Quantity, 0);
+                    Validate("Direct Unit Cost");
                 end;
 
                 if "lbt Printoption" = "lbt Printoption"::"New Page" then begin
                     if "No." <> '' then
                         Error(NewPageErr);
-                    VALIDATE(Type, Type::" ");
+                    Validate(Type, Type::" ");
                     Description := NewPageLbl;
                 end;
             end;
@@ -55,14 +61,14 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
             trigger OnValidate()
             begin
                 if "lbt Printoption" <> "lbt Printoption"::"End Total" then
-                    FIELDERROR("lbt Printoption");
+                    FieldError("lbt Printoption");
                 CalcFields("lbt Balance");
             end;
         }
         field(5272723; "lbt Balance"; Decimal)
         {
             AutoFormatType = 1;
-            CalcFormula = Sum("Purchase Line"."Line Amount" where("Document Type" = field("Document Type"),
+            CalcFormula = sum("Purchase Line"."Line Amount" where("Document Type" = field("Document Type"),
                                                                     "Document No." = field("Document No."),
                                                                     "Line No." = field(filter("lbt Summation")),
                                                                     "lbt Printoption" = filter(<> Alternative & <> Optional)));
@@ -90,14 +96,12 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
             Caption = 'Source Document Line No.';
             DataClassification = CustomerContent;
         }
-
         field(5272727; "lbt Printoption StyleExpr"; Text[30])
         {
             ObsoleteState = Removed;
             ObsoleteReason = 'Removed';
             Caption = 'Printoption StyleExpr';
             DataClassification = CustomerContent;
-
         }
         field(5272730; "lbt cl Price Factor"; Enum "lbt cl Price Factor")
         {
@@ -119,14 +123,6 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
             begin
                 lbtclSetUnitPrice(FieldNo("lbt cl Price in Price Factor"));
             end;
-
-        }
-        modify("Direct Unit Cost")
-        {
-            trigger OnAfterValidate()
-            begin
-                lbtclSetUnitPrice(FieldNo("Direct Unit Cost"));
-            end;
         }
     }
 
@@ -143,25 +139,6 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
         NewPageLbl: Label '--- New Page ---';
         PrintOptionTypeMismatchErr: Label 'If Type is %1 then you can only use printoptions "%2" and "%3"', Comment = '%1 - Type, %2 - Printoption, %3 - Printoption';
 
-    procedure lbtHasEditorValue(docType: Integer) Result: Boolean
-    var
-
-    begin
-        exit(EditorHelper.hasEditorValue(rec, Enum::"lbt Position"::EditorLine, doctype));
-    end;
-
-    procedure lbtEditData(doctype: Integer)
-    var
-
-    begin
-        EditorHelper.editData(rec, Enum::"lbt Position"::EditorLine, doctype);
-    end;
-
-    procedure lbtGetPrintData(Position: enum "lbt Position"; docType: Integer): Text
-    begin
-        exit(EditorHelper.getPrintData(rec, Position, docType));
-    end;
-
     procedure lbtclSetUnitPrice(CurrentFieldNo: Integer)
     var
         CorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
@@ -175,5 +152,22 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
         end;
     end;
 
-}
+    procedure lbtEditData(doctype: Integer)
+    var
 
+    begin
+        EditorHelper.editData(Rec, Enum::"lbt Position"::EditorLine, doctype);
+    end;
+
+    procedure lbtGetPrintData(Position: Enum "lbt Position"; docType: Integer): Text
+    begin
+        exit(EditorHelper.getPrintData(Rec, Position, docType));
+    end;
+
+    procedure lbtHasEditorValue(docType: Integer) Result: Boolean
+    var
+
+    begin
+        exit(EditorHelper.hasEditorValue(Rec, Enum::"lbt Position"::EditorLine, docType));
+    end;
+}

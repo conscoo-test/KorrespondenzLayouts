@@ -6,16 +6,15 @@ pageextension 5272814 "lbt cl Pstd Service Inv Subf" extends "Posted Service Inv
         {
             field("lbt Editor"; Rec.lbtHasEditorValue())
             {
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
-                caption = 'Editor';
+                Caption = 'Editor';
                 trigger OnAssistEdit()
                 begin
                     Rec.lbtEditData();
                 end;
             }
-
         }
     }
 }

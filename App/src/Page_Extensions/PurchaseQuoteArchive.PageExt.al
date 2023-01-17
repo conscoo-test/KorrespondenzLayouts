@@ -6,13 +6,13 @@ pageextension 5272761 "lbt Purchase Quote Archive" extends "Purchase Quote Archi
         {
             group(lbtEditor)
             {
-                caption = 'LeBit Extended Layout Options';
+                Caption = 'LeBit Extended Layout Options';
                 field("lbt Editor Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger()))
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Editor Header';
-                    caption = 'Editor Header';
+                    Caption = 'Editor Header';
                     trigger OnAssistEdit()
                     begin
                         Rec.lbtEditData(Enum::"lbt Position"::EditorHeader, Rec."Document Type".AsInteger());
@@ -20,13 +20,13 @@ pageextension 5272761 "lbt Purchase Quote Archive" extends "Purchase Quote Archi
                 }
                 field("lbt Editor Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter, Rec."Document Type".AsInteger()))
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Editor Footer';
-                    caption = 'Editor Footer';
+                    Caption = 'Editor Footer';
                     trigger OnAssistEdit()
                     begin
-                        Rec.lbtEditData(Enum::"lbt Position"::Editorfooter, Rec."Document Type".AsInteger());
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorFooter, Rec."Document Type".AsInteger());
                     end;
                 }
             }
@@ -53,7 +53,6 @@ pageextension 5272761 "lbt Purchase Quote Archive" extends "Purchase Quote Archi
                     begin
                         LongtextMgt.ShowLongtextLines(Rec, Position::Header);
                     end;
-
                 }
                 action("lbt Footer Text")
                 {
@@ -74,4 +73,3 @@ pageextension 5272761 "lbt Purchase Quote Archive" extends "Purchase Quote Archi
         }
     }
 }
-

@@ -36,7 +36,6 @@ table 5272727 "lbt clPSLongtextSystemId"
             OptionCaption = 'Text,New Page,Text + Line break';
             OptionMembers = Text,"New Page","Text + Line break";
             DataClassification = CustomerContent;
-
         }
         field(11; "No."; Code[20])
         {
@@ -76,25 +75,13 @@ table 5272727 "lbt clPSLongtextSystemId"
             WriteContentData(data);
             Modify();
         end;
-
     end;
-
-    procedure ShowData()
-    var
-        EditorHelper: Codeunit "lbt cl EditorHelper";
-        data: Text;
-    begin
-        data := ReadContentData(false);
-        editorhelper.ShowTextEditor(data, true);
-
-    end;
-
 
     procedure ReadContentData(show: Boolean) Result: Text
     var
         EditorPreview: Page "lbt cl Editor Preview";
-        Buffer: Text;
         is: InStream;
+        Buffer: Text;
     begin
         CalcFields("Editor Content");
         "Editor Content".CreateInStream(is, TextEncoding::UTF8);
@@ -108,6 +95,15 @@ table 5272727 "lbt clPSLongtextSystemId"
         end;
     end;
 
+    procedure ShowData()
+    var
+        EditorHelper: Codeunit "lbt cl EditorHelper";
+        data: Text;
+    begin
+        data := ReadContentData(false);
+        EditorHelper.ShowTextEditor(data, true);
+    end;
+
     procedure WriteContentData(content: Text)
     var
         os: OutStream;
@@ -116,5 +112,4 @@ table 5272727 "lbt clPSLongtextSystemId"
         "Editor Content".CreateOutStream(os, TextEncoding::UTF8);
         os.Write(content);
     end;
-
 }

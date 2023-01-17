@@ -25,14 +25,18 @@ tableextension 5272756 "lbt cl Sales Invoice Header" extends "Sales Invoice Head
         EditorHelper.deleteLongText(Rec);
     end;
 
-    procedure lbtHasEditorValue(Position: Enum "lbt Position") Result: Text
-    begin
-        exit(Format(EditorHelper.hasEditorValue(Rec, Position)));
-    end;
-
     procedure lbtEditData(Position: Enum "lbt Position")
     begin
         EditorHelper.ShowData(Rec, Position);
     end;
-}
 
+    procedure lbtGetPrintData(Position: Enum "lbt Position"): Text
+    begin
+        exit(EditorHelper.getPrintData(Rec, Position, 0));
+    end;
+
+    procedure lbtHasEditorValue(Position: Enum "lbt Position") Result: Text
+    begin
+        exit(Format(EditorHelper.hasEditorValue(Rec, Position)));
+    end;
+}

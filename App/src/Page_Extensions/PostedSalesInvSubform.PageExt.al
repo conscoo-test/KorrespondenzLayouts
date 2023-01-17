@@ -31,7 +31,7 @@ pageextension 5272724 "lbt Posted Sales Inv. Subform" extends "Posted Sales Invo
             }
             field("Lbt Editor"; Rec.lbtHasEditorValue())
             {
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Here you can insert Editor texts.';
                 Caption = 'Editor';
@@ -40,8 +40,6 @@ pageextension 5272724 "lbt Posted Sales Inv. Subform" extends "Posted Sales Invo
                     Rec.lbtEditData();
                 end;
             }
-
-
         }
         ///H22/0437
         addafter("Unit Price")
@@ -90,4 +88,3 @@ pageextension 5272724 "lbt Posted Sales Inv. Subform" extends "Posted Sales Invo
     var
         lbtStyle: Text;
 }
-

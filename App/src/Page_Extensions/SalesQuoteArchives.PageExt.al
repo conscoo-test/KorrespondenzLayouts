@@ -41,4 +41,3 @@ pageextension 5272801 "lbt Sales Quote Archives" extends "Sales Quote Archives"
         }
     }
 }
-

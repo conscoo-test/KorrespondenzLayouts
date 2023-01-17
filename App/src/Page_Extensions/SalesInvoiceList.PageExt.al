@@ -36,10 +36,8 @@ pageextension 5272788 "lbt Sales Invoice List" extends "Sales Invoice List"
                     begin
                         LongtextMgt.ShowLongtextLines(Rec, Position::Footer);
                     end;
-
                 }
             }
         }
     }
 }
-

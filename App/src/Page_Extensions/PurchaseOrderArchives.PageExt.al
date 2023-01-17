@@ -21,7 +21,6 @@ pageextension 5272800 "lbt Purchase Order Archives" extends "Purchase Order Arch
                     begin
                         LongtextMgt.ShowLongtextLines(Rec, Position::Header);
                     end;
-
                 }
                 action("lbt Footer Text")
                 {
@@ -42,4 +41,3 @@ pageextension 5272800 "lbt Purchase Order Archives" extends "Purchase Order Arch
         }
     }
 }
-

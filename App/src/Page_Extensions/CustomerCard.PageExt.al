@@ -4,7 +4,6 @@ pageextension 5272840 "lbt cl CustomerCard" extends "Customer Card"
     {
         addlast(Shipping)
         {
-
             field("lbt cl Delivery Date Type"; Rec."lbt cl Delivery Date Type")
             {
                 ApplicationArea = All;

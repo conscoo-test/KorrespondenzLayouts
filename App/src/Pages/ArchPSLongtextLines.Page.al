@@ -12,7 +12,7 @@ page 5272722 "lbt Arch. PS Longtext Lines"
 
     layout
     {
-        area(content)
+        area(Content)
         {
             repeater(Control5272723)
             {
@@ -40,4 +40,3 @@ page 5272722 "lbt Arch. PS Longtext Lines"
     {
     }
 }
-

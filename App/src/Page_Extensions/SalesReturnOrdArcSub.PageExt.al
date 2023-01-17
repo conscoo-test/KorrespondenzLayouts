@@ -12,7 +12,6 @@ pageextension 5272769 "lbt Sales Return Ord. Arc Sub." extends "Sales Return Ord
         }
         addafter(Type)
         {
-
             field("lbt Printoption"; Rec."lbt Printoption")
             {
                 ToolTip = 'Here you can choose the Printoptions.';
@@ -29,7 +28,7 @@ pageextension 5272769 "lbt Sales Return Ord. Arc Sub." extends "Sales Return Ord
             field("Lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
                 Caption = 'Editor';
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
                 trigger OnAssistEdit()
@@ -76,4 +75,3 @@ pageextension 5272769 "lbt Sales Return Ord. Arc Sub." extends "Sales Return Ord
         }
     }
 }
-

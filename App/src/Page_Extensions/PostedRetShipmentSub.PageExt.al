@@ -32,7 +32,7 @@ pageextension 5272781 "lbt Posted Ret. Shipment Sub." extends "Posted Return Shi
             field("Lbt Editor"; Rec.lbtHasEditorValue())
             {
                 Caption = 'Editor';
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
                 trigger OnAssistEdit()
@@ -74,4 +74,3 @@ pageextension 5272781 "lbt Posted Ret. Shipment Sub." extends "Posted Return Shi
     var
         lbtStyle: Text;
 }
-

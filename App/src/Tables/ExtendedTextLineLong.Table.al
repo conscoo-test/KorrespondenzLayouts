@@ -3,12 +3,12 @@ table 5272723 "lbt Extended Text Line Long"
     // version LBCOR1.00
 
     Caption = 'Extended Text Line Long';
-    DrillDownPageID = "lbt Ext. Text Lines Long";
-    LookupPageID = "lbt Ext. Text Lines Long";
+    DrillDownPageId = "lbt Ext. Text Lines Long";
+    LookupPageId = "lbt Ext. Text Lines Long";
 
     fields
     {
-        field(1; "Table_ID"; Enum "Extended Text Table Name")
+        field(1; Table_ID; Enum "Extended Text Table Name")
         {
             Caption = 'Table ID';
             DataClassification = CustomerContent;
@@ -47,7 +47,6 @@ table 5272723 "lbt Extended Text Line Long"
             Caption = 'Description';
             DataClassification = CustomerContent;
         }
-
     }
 
     keys
@@ -60,7 +59,4 @@ table 5272723 "lbt Extended Text Line Long"
     fieldgroups
     {
     }
-
-
 }
-

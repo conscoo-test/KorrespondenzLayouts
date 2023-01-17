@@ -4,7 +4,6 @@ pageextension 5272847 "lbtcl PurchasePriceListLines" extends "Purchase Price Lis
     {
         addafter(DirectUnitCost)
         {
-
             field("lbt cl Price Factor"; Rec."lbt cl Price Factor")
             {
                 ApplicationArea = All;

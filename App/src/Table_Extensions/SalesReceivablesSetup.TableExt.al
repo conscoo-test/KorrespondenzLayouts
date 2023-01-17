@@ -13,7 +13,5 @@ tableextension 5272741 "lbt Sales & Receivables Setup" extends "Sales & Receivab
         //     Caption = 'Arch. Orders and Ret. Orders';
         //     DataClassification = CustomerContent;
         // }
-
     }
-
 }

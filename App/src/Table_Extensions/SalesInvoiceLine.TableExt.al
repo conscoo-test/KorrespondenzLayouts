@@ -1,11 +1,10 @@
 tableextension 5272721 "lbt Sales Invoice Line" extends "Sales Invoice Line"
 {
-
     fields
     {
         field(5272720; "lbt Long Text"; Boolean)
         {
-            CalcFormula = Exist("lbt Posted PS Longtext Line" where("Table ID" = const(113),
+            CalcFormula = exist("lbt Posted PS Longtext Line" where("Table ID" = const(113),
                                                                        "Document No." = field("Document No."),
                                                                        Position = const(Longtext),
                                                                        "Document Line No." = field("Line No.")));
@@ -30,7 +29,7 @@ tableextension 5272721 "lbt Sales Invoice Line" extends "Sales Invoice Line"
         field(5272723; "lbt Balance"; Decimal)
         {
             AutoFormatType = 1;
-            CalcFormula = Sum("Sales Invoice Line"."Line Amount" where("Document No." = field("Document No."),
+            CalcFormula = sum("Sales Invoice Line"."Line Amount" where("Document No." = field("Document No."),
                                                                         "Line No." = field(filter("lbt Summation"))));
             Caption = 'Balance';
             Editable = false;
@@ -78,25 +77,27 @@ tableextension 5272721 "lbt Sales Invoice Line" extends "Sales Invoice Line"
             AutoFormatType = 2;
             CaptionClass = GetCaptionClass(FieldNo("lbt cl Price in Price Factor"));
         }
-
     }
 
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";
 
-    procedure lbtHasEditorValue() Result: Boolean
-    var
-
-    begin
-        exit(EditorHelper.hasEditorValue(rec, Enum::"lbt Position"::EditorLine, 0));
-    end;
-
     procedure lbtEditData()
     var
 
     begin
-        EditorHelper.ShowData(rec, Enum::"lbt Position"::EditorLine, 0);
+        EditorHelper.ShowData(Rec, Enum::"lbt Position"::EditorLine, 0);
     end;
 
-}
+    procedure lbtGetPrintData(Position: Enum "lbt Position"): Text
+    begin
+        exit(EditorHelper.getPrintData(Rec, Position, 0));
+    end;
 
+    procedure lbtHasEditorValue() Result: Boolean
+    var
+
+    begin
+        exit(EditorHelper.hasEditorValue(Rec, Enum::"lbt Position"::EditorLine, 0));
+    end;
+}

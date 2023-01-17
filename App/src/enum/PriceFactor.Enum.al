@@ -18,5 +18,4 @@ enum 5272722 "lbt cl Price Factor"
     {
         Caption = '1000', locked = true;
     }
-
 }

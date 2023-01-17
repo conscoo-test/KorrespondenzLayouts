@@ -39,4 +39,3 @@ pageextension 5272793 "lbt Purchase Quotes" extends "Purchase Quotes"
         }
     }
 }
-

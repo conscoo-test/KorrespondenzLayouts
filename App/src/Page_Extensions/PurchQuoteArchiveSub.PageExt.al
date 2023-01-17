@@ -16,7 +16,6 @@ pageextension 5272762 "lbt Purch. Quote Archive Sub." extends "Purchase Quote Ar
         }
         addafter(Type)
         {
-
             field("lbt Printoption"; Rec."lbt Printoption")
             {
                 ToolTip = 'Here you can choose the Printoptions.';
@@ -33,7 +32,7 @@ pageextension 5272762 "lbt Purch. Quote Archive Sub." extends "Purchase Quote Ar
             field("Lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
                 Caption = 'Editor';
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
                 trigger OnAssistEdit()
@@ -89,4 +88,3 @@ pageextension 5272762 "lbt Purch. Quote Archive Sub." extends "Purchase Quote Ar
     var
         lbtStyle: Text;
 }
-

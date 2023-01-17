@@ -32,7 +32,7 @@ pageextension 5272728 "lbt Posted Purch. Rcpt. Sub." extends "Posted Purchase Rc
             field("lbt Editor"; Rec.lbtHasEditorValue())
             {
                 Caption = 'Editor';
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
                 trigger OnAssistEdit()
@@ -41,7 +41,6 @@ pageextension 5272728 "lbt Posted Purch. Rcpt. Sub." extends "Posted Purchase Rc
                 end;
             }
         }
-
     }
     actions
     {
@@ -75,4 +74,3 @@ pageextension 5272728 "lbt Posted Purch. Rcpt. Sub." extends "Posted Purchase Rc
     var
         lbtStyle: Text;
 }
-

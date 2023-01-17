@@ -5,17 +5,15 @@ page 5272733 "lbt cl Editor Preview"
     UsageCategory = Administration;
     Caption = 'Editor Preview';
 
-
     layout
     {
         area(Content)
         {
-
             group(EditData)
             {
                 usercontrol(showdata; "Microsoft.Dynamics.Nav.Client.WebPageViewer")
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                     trigger ControlAddInReady(callbackUrl: Text)
                     begin
                         isReady := true;
@@ -30,13 +28,11 @@ page 5272733 "lbt cl Editor Preview"
                 }
             }
 
-
             group(PreviewData)
             {
-
                 usercontrol(showdata2; "Microsoft.Dynamics.Nav.Client.WebPageViewer")
                 {
-                    ApplicationArea = all;
+                    ApplicationArea = All;
                     trigger ControlAddInReady(callbackUrl: Text)
                     begin
                         isReady := true;
@@ -52,6 +48,22 @@ page 5272733 "lbt cl Editor Preview"
             FillAddin();
     end;
 
+    var
+        isReady: Boolean;
+
+    var
+        Data: Text;
+
+    procedure GetData(): Text
+    begin
+        exit(Data);
+    end;
+
+    procedure SetData(v_Data: Text)
+    begin
+        Data := v_Data;
+    end;
+
     local procedure FillAddin()
     var
         TextAreaHtmlTxt: Label '<textarea Id="TextArea" maxlength="%2" style="width:100%;height:100%;resize: none; font-family:"Segoe UI", "Segoe WP", Segoe, device-segoe, Tahoma, Helvetica, Arial, sans-serif !important; font-size: 10.5pt !important;" OnChange="window.parent.WebPageViewerHelper.TriggerCallback(document.getElementById(''TextArea'').Value)">%1</textarea>', Locked = true;
@@ -59,21 +71,4 @@ page 5272733 "lbt cl Editor Preview"
         CurrPage.showdata.SetContent(StrSubstNo(TextAreaHtmlTxt, Data, MaxStrLen(Data)));
         CurrPage.showdata2.SetContent(Data);
     end;
-
-    var
-        isReady: Boolean;
-
-    procedure SetData(v_Data: Text)
-    begin
-        Data := v_Data;
-    end;
-
-    procedure GetData(): Text
-    begin
-        exit(Data);
-    end;
-
-
-    var
-        Data: Text;
 }

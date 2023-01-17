@@ -11,7 +11,7 @@ report 5272732 "lbt cl htmlreport"
     {
         dataitem(Integer; Integer)
         {
-            DataItemTableView = where(number = const(1));
+            DataItemTableView = where(Number = const(1));
             column(htmltext; htmltext) { }
         }
     }
@@ -22,5 +22,4 @@ report 5272732 "lbt cl htmlreport"
     begin
         htmltext := text;
     end;
-
 }

@@ -43,4 +43,3 @@ table 5272726 "lbt Source Setup"
     {
     }
 }
-

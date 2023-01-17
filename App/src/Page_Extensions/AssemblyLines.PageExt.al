@@ -6,10 +6,10 @@ pageextension 5272834 "lbt cl AssemblyOrderSubform" extends "Assembly Order Subf
         {
             field("lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
-                caption = 'Editor';
+                Caption = 'Editor';
                 trigger OnAssistEdit()
                 begin
                     Rec.lbtEditData(Rec."Document Type".AsInteger());

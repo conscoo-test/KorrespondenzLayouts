@@ -2,7 +2,6 @@ pageextension 5272787 "lbt Sales Quotes" extends "Sales Quotes"
 {
     actions
     {
-
         addafter("&View")
         {
             group("lbt correspondence documents")
@@ -40,4 +39,3 @@ pageextension 5272787 "lbt Sales Quotes" extends "Sales Quotes"
         }
     }
 }
-

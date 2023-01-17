@@ -41,4 +41,3 @@ pageextension 5272737 "lbt Posted Purchase Invoices" extends "Posted Purchase In
         }
     }
 }
-

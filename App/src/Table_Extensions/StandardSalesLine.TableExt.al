@@ -3,11 +3,9 @@ tableextension 5272763 "lbt cl StandardSalesLine" extends "Standard Sales Line"
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";
 
-    procedure lbtHasEditorValue() Result: Boolean
-    var
-
+    trigger OnAfterDelete()
     begin
-        exit(EditorHelper.hasEditorValueSysid(Rec, Enum::"lbt Position"::EditorLine, 0));
+        EditorHelper.deleteLongText(Rec, 0);
     end;
 
     procedure lbtEditData()
@@ -17,14 +15,15 @@ tableextension 5272763 "lbt cl StandardSalesLine" extends "Standard Sales Line"
         EditorHelper.editDataSysId(Rec, Enum::"lbt Position"::EditorLine, 0);
     end;
 
-    procedure lbtGetPrintData(Position: enum "lbt Position"): Text
+    procedure lbtGetPrintData(Position: Enum "lbt Position"): Text
     begin
         exit(EditorHelper.getPrintData(Rec, Position, 0));
     end;
 
-    trigger OnAfterDelete()
+    procedure lbtHasEditorValue() Result: Boolean
+    var
+
     begin
-        EditorHelper.deleteLongText(Rec, 0);
+        exit(EditorHelper.hasEditorValueSysId(Rec, Enum::"lbt Position"::EditorLine, 0));
     end;
 }
-

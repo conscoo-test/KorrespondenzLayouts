@@ -7,7 +7,6 @@ tableextension 5272757 "lbt cl Sales Cr.Memo Header" extends "Sales Cr.Memo Head
             Caption = 'Delivery Date Type';
             DataClassification = CustomerContent;
         }
-
         field(5272722; "lbt cl Destination"; Code[10])
         {
             Caption = 'Destination';
@@ -26,13 +25,18 @@ tableextension 5272757 "lbt cl Sales Cr.Memo Header" extends "Sales Cr.Memo Head
         EditorHelper.deleteLongText(Rec);
     end;
 
-    procedure lbtHasEditorValue(Position: Enum "lbt Position") Result: Text
-    begin
-        exit(Format(EditorHelper.hasEditorValue(Rec, Position)));
-    end;
-
     procedure lbtEditData(Position: Enum "lbt Position")
     begin
         EditorHelper.ShowData(Rec, Position);
+    end;
+
+    procedure lbtGetPrintData(Position: Enum "lbt Position"): Text
+    begin
+        exit(EditorHelper.getPrintData(Rec, Position, 0));
+    end;
+
+    procedure lbtHasEditorValue(Position: Enum "lbt Position") Result: Text
+    begin
+        exit(Format(EditorHelper.hasEditorValue(Rec, Position)));
     end;
 }

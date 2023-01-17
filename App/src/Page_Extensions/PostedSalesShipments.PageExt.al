@@ -41,4 +41,3 @@ pageextension 5272733 "lbt Posted Sales Shipments" extends "Posted Sales Shipmen
         }
     }
 }
-

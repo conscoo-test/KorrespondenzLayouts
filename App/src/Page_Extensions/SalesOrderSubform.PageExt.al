@@ -7,7 +7,6 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
             StyleExpr = lbtStyle;
         }
 
-
         addfirst(Control1)
         {
             field("lbt Pos. No."; Rec."lbt Pos. No.")
@@ -35,7 +34,7 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
             field("Lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
                 Caption = 'Editor';
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
                 trigger OnAssistEdit()
@@ -66,8 +65,6 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
                 ToolTip = 'Here can you enter the Unit Price in Price Factor.';
             }
         }
-
-
     }
     actions
     {
@@ -100,6 +97,4 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
 
     var
         lbtStyle: Text;
-
-
 }

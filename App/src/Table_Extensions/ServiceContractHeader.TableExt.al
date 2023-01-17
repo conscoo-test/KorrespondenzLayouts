@@ -3,9 +3,9 @@ tableextension 5272754 "lbt cl ServiceContractHeader" extends "Service Contract 
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";
 
-    procedure lbtHasEditorValue(Position: Enum "lbt Position"; docType: Integer) Result: Text
+    trigger OnAfterDelete()
     begin
-        exit(Format(EditorHelper.hasEditorValue(Rec, Position, docType)));
+        EditorHelper.deleteLongText(Rec, Rec."Contract Type");
     end;
 
     procedure lbtEditData(Position: Enum "lbt Position"; docType: Integer)
@@ -18,8 +18,8 @@ tableextension 5272754 "lbt cl ServiceContractHeader" extends "Service Contract 
         exit(EditorHelper.getPrintData(Rec, Position, docType));
     end;
 
-    trigger OnAfterDelete()
+    procedure lbtHasEditorValue(Position: Enum "lbt Position"; docType: Integer) Result: Text
     begin
-        EditorHelper.deleteLongText(Rec, Rec."Contract Type");
+        exit(Format(EditorHelper.hasEditorValue(Rec, Position, docType)));
     end;
 }

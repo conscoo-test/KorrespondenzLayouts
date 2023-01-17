@@ -1,12 +1,23 @@
 codeunit 5272728 "lbt Format Document"
 {
-    procedure SetTotalLabels(CurrencyCode: Code[10]; var TotalText: Text[50]; var TotalInclVATText: Text[50]; var TotalExclVATText: Text[50])
     var
-        FormatDocument: Codeunit "Format Document";
-    begin
-        FormatDocument.SetTotalLabels(CurrencyCode, TotalText, TotalInclVATText, TotalExclVATText);
-        TotalText := CopyStr(TotalText.Replace(StandardTotalLbl, TranslatedTotalLbl), 1, MaxStrLen(TotalText));
-    end;
+        CompanyInformation: Record "Company Information";
+        CompanyInformationRef: RecordRef;
+        BankCaptionLbl: Label 'Bank';
+        BoldLbl: Label '<b>%1</b>', Locked = true;
+        CEOCaptionLbl: Label 'Chief Executive Officer';
+        FaxCaptionLbl: Label 'Fax';
+        FieldLbl: Label '<b>%1</b> %2', Locked = true;
+
+        //         ="<b>" & Fields!CompanyInfo__LeBit_Trade_Register_Name_Caption.Value & "</b>" & " " & Fields!CompanyInfo__LeBit_Trade_Register_Name.Value & " " & Fields!NoCaption.Value &
+        //  " " & Fields!CompanyInfo__LeBit_Commercial_Register_No.Value & " | " & "<b>" & Fields!CompanyInfo__LeBit_CEO_Caption.Value & "</b>" & " " & Fields!CompanyInfo__LeBit_CEO1.Value &
+        //  IIF(Fields!CompanyInfo__LeBit_CEO2.Value = "","",", " & Fields!CompanyInfo__LeBit_CEO2.Value) & IIF(Fields!CompanyInfo__LeBit_CEO3.Value = "","",", " & Fields!CompanyInfo__LeBit_CEO3.Value) &
+        //  " | " & "<b>" & Fields!CompanyInfo__VAT_Registration_No__Caption.Value & "</b>" & " " & Fields!CompanyInfo__VAT_Registration_No__.Value
+        PhoneCaptionLbl: Label 'Phone';
+        RegNoCaptionLbl: Label 'Registered in';
+        StandardTotalLbl: Label 'Total', Locked = true;
+        TranslatedTotalLbl: Label 'Total';
+        VatRegNoCaptionLbl: Label 'VAT Reg. No.';
 
     procedure SetReportFooter(var Footer: Text)
     var
@@ -24,11 +35,39 @@ codeunit 5272728 "lbt Format Document"
         Footer := GetListText(Lines, '<br/>');
     end;
 
+    procedure SetTotalLabels(CurrencyCode: Code[10]; var TotalText: Text[50]; var TotalInclVATText: Text[50]; var TotalExclVATText: Text[50])
+    var
+        FormatDocument: Codeunit "Format Document";
+    begin
+        FormatDocument.SetTotalLabels(CurrencyCode, TotalText, TotalInclVATText, TotalExclVATText);
+        TotalText := CopyStr(TotalText.Replace(StandardTotalLbl, TranslatedTotalLbl), 1, MaxStrLen(TotalText));
+    end;
+
     local procedure AddToList(var list: List of [Text]; Element: Text)
     begin
         if Element = '' then
             exit;
         list.Add(Element);
+    end;
+
+    local procedure GetBankLine(BankName: Text[100]; IBAN: Code[50]; SWIFTCode: Code[20]): Text
+    var
+        Fields: List of [Text];
+    begin
+        if BankName = '' then
+            exit;
+        AddToList(Fields, StrSubstNo(FieldLbl, BankCaptionLbl, BankName));
+        AddToList(Fields, StrSubstNo(FieldLbl, CompanyInformation.FieldCaption(IBAN), IBAN));
+        AddToList(Fields, StrSubstNo(FieldLbl, CompanyInformation.FieldCaption("SWIFT Code"), SWIFTCode));
+        exit(GetListText(Fields, ' | '));
+    end;
+
+    local procedure GetFieldCaptionAndValue(FieldNo: Integer): Text
+    var
+        FRef: FieldRef;
+    begin
+        FRef := CompanyInformationRef.Field(FieldNo);
+        exit(StrSubstNo(FieldLbl, FRef.Caption, Format(FRef.Value)))
     end;
 
     local procedure GetListText(list: List of [Text]; Seperator: Text): Text
@@ -41,14 +80,6 @@ codeunit 5272728 "lbt Format Document"
         if Result.Length > 0 then
             Result.Remove(Result.Length - StrLen(Seperator) + 1, StrLen(Seperator));
         exit(Result.ToText())
-    end;
-
-    local procedure GetFieldCaptionAndValue(FieldNo: Integer): Text
-    var
-        FRef: FieldRef;
-    begin
-        FRef := CompanyInformationRef.Field(FieldNo);
-        exit(StrSubstNo(FieldLbl, FRef.Caption, Format(FRef.Value)))
     end;
 
     local procedure GetSecondLine(): Text
@@ -79,37 +110,4 @@ codeunit 5272728 "lbt Format Document"
         AddToList(Fields, StrSubstNo(FieldLbl, VatRegNoCaptionLbl, CompanyInformation."VAT Registration No."));
         exit(GetListText(Fields, ' | '));
     end;
-
-    local procedure GetBankLine(BankName: Text[100]; IBAN: Code[50]; SWIFTCode: Code[20]): Text
-    var
-        Fields: List of [Text];
-    begin
-        if BankName = '' then
-            exit;
-        AddToList(Fields, StrSubstNo(FieldLbl, BankCaptionLbl, BankName));
-        AddToList(Fields, StrSubstNo(FieldLbl, CompanyInformation.FieldCaption(IBAN), IBAN));
-        AddToList(Fields, StrSubstNo(FieldLbl, CompanyInformation.FieldCaption("SWIFT Code"), SWIFTCode));
-        exit(GetListText(Fields, ' | '));
-    end;
-
-
-
-    var
-        CompanyInformation: Record "Company Information";
-        CompanyInformationRef: RecordRef;
-        StandardTotalLbl: Label 'Total', Locked = true;
-        TranslatedTotalLbl: Label 'Total';
-        FieldLbl: Label '<b>%1</b> %2', Locked = true;
-        BoldLbl: Label '<b>%1</b>', Locked = true;
-
-        //         ="<b>" & Fields!CompanyInfo__LeBit_Trade_Register_Name_Caption.Value & "</b>" & " " & Fields!CompanyInfo__LeBit_Trade_Register_Name.Value & " " & Fields!NoCaption.Value &
-        //  " " & Fields!CompanyInfo__LeBit_Commercial_Register_No.Value & " | " & "<b>" & Fields!CompanyInfo__LeBit_CEO_Caption.Value & "</b>" & " " & Fields!CompanyInfo__LeBit_CEO1.Value &
-        //  IIF(Fields!CompanyInfo__LeBit_CEO2.Value = "","",", " & Fields!CompanyInfo__LeBit_CEO2.Value) & IIF(Fields!CompanyInfo__LeBit_CEO3.Value = "","",", " & Fields!CompanyInfo__LeBit_CEO3.Value) &
-        //  " | " & "<b>" & Fields!CompanyInfo__VAT_Registration_No__Caption.Value & "</b>" & " " & Fields!CompanyInfo__VAT_Registration_No__.Value
-        PhoneCaptionLbl: Label 'Phone';
-        FaxCaptionLbl: Label 'Fax';
-        CEOCaptionLbl: Label 'Chief Executive Officer';
-        VatRegNoCaptionLbl: Label 'VAT Reg. No.';
-        BankCaptionLbl: Label 'Bank';
-        RegNoCaptionLbl: Label 'Registered in';
 }

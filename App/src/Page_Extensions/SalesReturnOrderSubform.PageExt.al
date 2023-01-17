@@ -21,14 +21,13 @@ pageextension 5272772 "lbt Sales Return Order Subform" extends "Sales Return Ord
         }
         addafter(Type)
         {
-
             field("lbt Printoption"; Rec."lbt Printoption")
             {
                 ToolTip = 'Here you can choose the Printoptions.';
                 ApplicationArea = All;
             }
         }
-        addafter("ShortcutDimCode8")
+        addafter(ShortcutDimCode8)
         {
             field("lbt Long Text"; Rec."lbt Long Text")
             {
@@ -38,7 +37,7 @@ pageextension 5272772 "lbt Sales Return Order Subform" extends "Sales Return Ord
             field("Lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
                 Caption = 'Editor';
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
                 trigger OnAssistEdit()
@@ -81,4 +80,3 @@ pageextension 5272772 "lbt Sales Return Order Subform" extends "Sales Return Ord
     var
         lbtStyle: Text;
 }
-

@@ -39,4 +39,3 @@ pageextension 5272795 "lbt Purchase Invoices" extends "Purchase Invoices"
         }
     }
 }
-

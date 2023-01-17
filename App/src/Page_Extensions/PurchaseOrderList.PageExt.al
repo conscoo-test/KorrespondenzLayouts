@@ -39,4 +39,3 @@ pageextension 5272794 "lbt Purchase Order List" extends "Purchase Order List"
         }
     }
 }
-

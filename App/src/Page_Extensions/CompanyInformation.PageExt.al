@@ -92,4 +92,3 @@ pageextension 5272720 "lbt Company Information" extends "Company Information"
         }
     }
 }
-

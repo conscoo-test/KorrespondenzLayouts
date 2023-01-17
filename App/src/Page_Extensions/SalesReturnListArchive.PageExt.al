@@ -23,7 +23,6 @@ pageextension 5272770 "lbt Sales Return List Archive" extends "Sales Return List
                     begin
                         LongtextMgt.ShowLongtextLines(Rec, Position::Header);
                     end;
-
                 }
                 action("lbt &Footer Text")
                 {
@@ -39,10 +38,8 @@ pageextension 5272770 "lbt Sales Return List Archive" extends "Sales Return List
                     begin
                         LongtextMgt.ShowLongtextLines(Rec, Position::Footer);
                     end;
-
                 }
             }
         }
     }
 }
-

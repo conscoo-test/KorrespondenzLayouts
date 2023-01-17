@@ -4,18 +4,17 @@ pageextension 5272827 "lbt cl PstdServiceInvLines" extends "Posted Service Invoi
     {
         addafter(Description)
         {
-            field("lbt Editor"; rec.lbtHasEditorValue())
+            field("lbt Editor"; Rec.lbtHasEditorValue())
             {
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
-                caption = 'Editor';
+                Caption = 'Editor';
                 trigger OnAssistEdit()
                 begin
-                    rec.lbtEditData();
+                    Rec.lbtEditData();
                 end;
             }
-
         }
     }
 }

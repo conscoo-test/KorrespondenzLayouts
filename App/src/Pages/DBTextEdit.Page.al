@@ -5,7 +5,7 @@ page 5272726 "lbt DBTextEdit"
 
     layout
     {
-        area(content)
+        area(Content)
         {
             grid(Control50002)
             {
@@ -29,14 +29,13 @@ page 5272726 "lbt DBTextEdit"
     var
         Txt: Text;
 
-    procedure SetText(Inputtext: Text)
-    begin
-        Txt := Inputtext;
-    end;
-
     procedure GetText(): Text
     begin
         exit(Txt);
     end;
-}
 
+    procedure SetText(Inputtext: Text)
+    begin
+        Txt := Inputtext;
+    end;
+}

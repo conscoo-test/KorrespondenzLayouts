@@ -32,7 +32,7 @@ pageextension 5272784 "lbt Post. Return Receipt Sub." extends "Posted Return Rec
             field("Lbt Editor"; Rec.lbtHasEditorValue())
             {
                 Caption = 'Editor';
-                ApplicationArea = all;
+                ApplicationArea = All;
                 Editable = false;
                 ToolTip = 'Editor';
                 trigger OnAssistEdit()
@@ -82,4 +82,3 @@ pageextension 5272784 "lbt Post. Return Receipt Sub." extends "Posted Return Rec
     var
         lbtStyle: Text;
 }
-
