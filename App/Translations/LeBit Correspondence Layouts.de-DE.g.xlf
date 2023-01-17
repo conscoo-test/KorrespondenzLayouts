@@ -1462,8 +1462,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl Cust. Report Selections - Control lbt Editor Header - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2745127271 - Action 980363147 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
-          <source>Long Texts</source>
-          <target>Langtexte</target>
+          <source>Header and footer</source>
+          <target>Kopf- und Fußtexte</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl CustomerCard - Action lbt cl LongTexts - Property Caption</note>
         </trans-unit>
@@ -2266,8 +2266,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl StandardSalesCodeSub - Control lbt Editor - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 769182495 - Action 980363147 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
-          <source>Long Texts</source>
-          <target>Langtexte</target>
+          <source>Header and footer</source>
+          <target>Kopf- und Fußtexte</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl VendorCard - Action lbt cl LongTexts - Property Caption</note>
         </trans-unit>
@@ -7430,6 +7430,30 @@
           <target>Langtext</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension lbt cl Option Lookup Type - EnumValue lbt cl Longtext - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="ReportExtension 4253063855 - Control 4214450725 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Report 1034648739">
+          <source>Decide wether to copy headers and footers to the new document.</source>
+          <target>Bestimmt, ob beim Kopieren des Belegs die Kopf- und Fußtexte mit kopiert werden sollen.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">ReportExtension lbt cl Copy Purch. Document - Control lbt cl IncludeHeaderFooter - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="ReportExtension 4253063855 - Control 4214450725 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Report 1034648739">
+          <source>Copy Header and Footer</source>
+          <target>Kopf- und Fußtexte kopieren</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">ReportExtension lbt cl Copy Purch. Document - Control lbt cl IncludeHeaderFooter - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="ReportExtension 3184819105 - Control 4214450725 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Report 310571118">
+          <source>Decide wether to copy headers and footers to the new document.</source>
+          <target>Bestimmt, ob beim Kopieren des Belegs die Kopf- und Fußtexte mit kopiert werden sollen.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">ReportExtension lbt cl Copy Sales Document - Control lbt cl IncludeHeaderFooter - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="ReportExtension 3184819105 - Control 4214450725 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Report 310571118">
+          <source>Copy Header and Footer</source>
+          <target>Kopf- und Fußtexte kopieren</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">ReportExtension lbt cl Copy Sales Document - Control lbt cl IncludeHeaderFooter - Property Caption</note>
         </trans-unit>
       </group>
     </body>

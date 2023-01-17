@@ -1,6 +1,7 @@
 table 5272720 "lbt PS Longtext Line"
 {
     // version LBCOR1.00
+    ObsoleteState = Pending;
 
     Caption = 'Purch/Sales Longtext Line';
     DrillDownPageId = "lbt PS Longtext Lines";

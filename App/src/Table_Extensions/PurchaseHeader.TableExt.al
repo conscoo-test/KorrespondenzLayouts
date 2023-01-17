@@ -1,7 +1,22 @@
 tableextension 5272730 "lbt Purchase Header" extends "Purchase Header"
 {
+    fields
+    {
+        modify("Buy-from Vendor No.")
+        {
+            trigger OnAfterValidate()
+            begin
+                CopyLongTextFromVendor();
+            end;
+        }
+    }
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";
+
+    trigger OnAfterInsert()
+    begin
+        CopyLongTextFromVendor();
+    end;
 
     trigger OnDelete()
     var
@@ -40,6 +55,18 @@ tableextension 5272730 "lbt Purchase Header" extends "Purchase Header"
                 TempLeBitPSLongtextLine.Insert();
             until LeBitPSLongtextLine.Next() = 0;
         LeBitPSLongtextLine.DeleteAll();
+    end;
+
+    local procedure CopyLongTextFromVendor()
+    var
+        Vendor: Record Vendor;
+        LongtextMgt: Codeunit "lbt Longtext Mgt.";
+    begin
+        if Rec."No." = '' then
+            exit;
+        if Rec."Buy-from Vendor No." <> '' then
+            if Vendor.Get(Rec."Buy-from Vendor No.") then
+                LongtextMgt.CopyLongtext(Vendor, Rec);
     end;
 
     [IntegrationEvent(false, false)]

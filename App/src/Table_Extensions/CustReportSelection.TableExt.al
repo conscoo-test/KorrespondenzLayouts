@@ -1,3 +1,4 @@
+#if CLEAN1_8
 tableextension 5272766 "lbt cl Cust. Report Selection" extends "Custom Report Selection"
 {
     procedure lbtEditData(Position: Enum "lbt Position")
@@ -55,13 +56,16 @@ tableextension 5272766 "lbt cl Cust. Report Selection" extends "Custom Report Se
         end;
     end;
 
+    [Obsolete('Moved Texts to Vendor/Customer', '1.8')]
     [IntegrationEvent(true, false)]
     local procedure lbtclGetRecRef(Rec: Record "Custom Report Selection"; var RecordRef: RecordRef)
     begin
     end;
 
+    [Obsolete('Moved Texts to Vendor/Customer', '1.8')]
     [IntegrationEvent(true, false)]
     local procedure lbtclOnElseGetDocType(Rec: Record "Custom Report Selection"; var DocType: Enum "Sales Document Type")
     begin
     end;
 }
+#endif

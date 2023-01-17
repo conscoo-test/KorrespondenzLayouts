@@ -1,3 +1,4 @@
+#if CLEAN1_8
 pageextension 5272838 "lbt cl Cust. Report Selections" extends "Customer Report Selections"
 {
     layout
@@ -31,3 +32,4 @@ pageextension 5272838 "lbt cl Cust. Report Selections" extends "Customer Report 
         }
     }
 }
+#endif

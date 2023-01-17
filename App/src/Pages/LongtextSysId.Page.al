@@ -100,6 +100,7 @@ page 5272730 "lbt cl Longtext SysId"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
+        Rec.Position := Rec.Position::EditorHeader;
         UpdatePositionText();
     end;
 

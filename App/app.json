@@ -28,5 +28,6 @@
   "showMyCode": false,
   "suppressWarnings": [
     "AA0072"
-  ]
+  ],
+  "preprocessorSymbols": ["CLEAN1_8"]
 }

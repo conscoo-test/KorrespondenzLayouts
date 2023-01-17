@@ -569,6 +569,7 @@ codeunit 5272729 "lbt cl EditorHelper"
                 Result := 3; ///archived
 
             Database::Customer,
+            Database::Vendor,
             Database::Job,
             Database::"Job Planning Line",
             Database::"Standard Sales Code",
@@ -629,7 +630,7 @@ codeunit 5272729 "lbt cl EditorHelper"
         FRef: FieldRef;
         DocType: Enum "Sales Document Type";
     begin
-        if Sourcerecref.Number = Database::Customer then
+        if Sourcerecref.Number in [Database::Customer, Database::Vendor] then
             exit(true);
         if not (Sourcerecref.Number in [Database::"Sales Header", Database::"Purchase Header"]) then
             exit(false);
