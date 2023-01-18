@@ -1,4 +1,3 @@
-#if CLEAN1_8
 tableextension 5272766 "lbt cl Cust. Report Selection" extends "Custom Report Selection"
 {
     procedure lbtEditData(Position: Enum "lbt Position")
@@ -68,4 +67,3 @@ tableextension 5272766 "lbt cl Cust. Report Selection" extends "Custom Report Se
     begin
     end;
 }
-#endif

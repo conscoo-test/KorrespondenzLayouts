@@ -528,6 +528,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt cl Editor Preview Sub - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3307056346 - Method 1281643657 - NamedType 859441709" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Headers and Footers</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt cl Longtext SysId - Method GetCaptionFromSourceRec - NamedType HeadersAndFootersLbl</note>
+        </trans-unit>
         <trans-unit id="Page 3307056346 - Control 359429454 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Position</source>
           <note from="Developer" annotates="general" priority="2"></note>

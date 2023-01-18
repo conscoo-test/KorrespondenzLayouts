@@ -68,6 +68,8 @@ page 5272730 "lbt cl Longtext SysId"
     var
         RecRef: RecordRef;
         FRef: FieldRef;
+        HeadersAndFootersLbl: Label 'Headers and Footers';
+        SeperatorLbl: Label ' - ', Locked = true;
         KeyRef: KeyRef;
         i: Integer;
         TableId: Integer;
@@ -75,11 +77,12 @@ page 5272730 "lbt cl Longtext SysId"
         Evaluate(TableId, Rec.GetFilter("Table Id"));
         RecRef.Open(TableId);
         RecRef.GetBySystemId(Rec.GetFilter("Source System Id"));
-        Caption := RecRef.Caption;
+        Caption := HeadersAndFootersLbl;
+        Caption += SeperatorLbl + RecRef.Caption;
         KeyRef := RecRef.KeyIndex(1);
         for i := 1 to KeyRef.FieldCount do begin
             FRef := KeyRef.FieldIndex(i);
-            Caption += ' - ' + Format(FRef.Value());
+            Caption += SeperatorLbl + Format(FRef.Value());
         end;
     end;
 
