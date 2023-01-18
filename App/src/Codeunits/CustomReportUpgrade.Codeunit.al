@@ -19,7 +19,6 @@ codeunit 5272733 "lbt cl CustomReport Upgrade"
         CustomReportSelection: Record "Custom Report Selection";
         Customer: Record Customer;
         Vendor: Record Vendor;
-        ShiptoAddress: Record "Ship-to Address";
     begin
         LongtextSystemId.SetRange("Table Id", Database::"Custom Report Selection");
         if LongtextSystemId.FindSet() then
@@ -32,9 +31,6 @@ codeunit 5272733 "lbt cl CustomReport Upgrade"
                     database::Vendor:
                         if Vendor.Get(CustomReportSelection."Source No.") then
                             LongtextSystemId.Rename(Database::Vendor, Vendor.SystemId, LongtextSystemId."Document Type", LongtextSystemId.Position);
-                    database::"Ship-to Address":
-                        if ShiptoAddress.Get(CustomReportSelection."Source No.") then
-                            LongtextSystemId.Rename(Database::"Ship-to Address", ShiptoAddress.SystemId, LongtextSystemId."Document Type", LongtextSystemId.Position);
                 end;
             until LongtextSystemId.Next() = 0;
     end;
