@@ -35,5 +35,9 @@ pageextension 5272840 "lbt cl CustomerCard" extends "Customer Card"
                 RunPageLink = "Source System Id" = field(SystemId), "Table Id" = const(18);
             }
         }
+        addafter(CustomerReportSelections_Promoted)
+        {
+            actionref("lbt cl LongTexts_Promoted"; "lbt cl LongTexts") { }
+        }
     }
 }

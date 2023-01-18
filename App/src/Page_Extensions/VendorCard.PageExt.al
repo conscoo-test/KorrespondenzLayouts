@@ -14,5 +14,9 @@ pageextension 5272849 "lbt cl VendorCard" extends "Vendor Card"
                 RunPageLink = "Source System Id" = field(SystemId), "Table Id" = const(23);
             }
         }
+        addafter(VendorReportSelections_Promoted)
+        {
+            actionref("lbt cl LongTexts_Promoted"; "lbt cl LongTexts") { }
+        }
     }
 }
