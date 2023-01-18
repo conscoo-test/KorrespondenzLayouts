@@ -11,23 +11,22 @@
   "url": "https://www.lebit.net/#kontakt",
   "logo": "..\\Appendix\\Logo\\LB18.jpg",
   "screenshots": [],
-  "platform": "17.0.0.0",
-  "application": "17.0.0.0",
+  "platform": "1.0.0.0",
+  "application": "21.0.0.0",
   "idRanges": [
     {
       "from": 5272720,
       "to": 5272849
     }
   ],
-  "runtime": "7.0",
+  "runtime": "10.0",
   "features": [
     "TranslationFile"
   ],
   "target": "Cloud",
-  "contextSensitiveHelpUrl": "https://ALProject11.com/help/",
-  "showMyCode": false,
+  "contextSensitiveHelpUrl": "https://www.lebit.net/#support",
   "suppressWarnings": [
     "AA0072"
   ],
-  "preprocessorSymbols": ["CLEAN1_8"]
+  "applicationInsightsConnectionString": "InstrumentationKey=18c42e7b-8d3d-426d-a667-15303864951d;IngestionEndpoint=https://germanywestcentral-0.in.applicationinsights.azure.com/;LiveEndpoint=https://germanywestcentral.livediagnostics.monitor.azure.com/"
 }
