@@ -6198,6 +6198,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension lbt cl Option Lookup Type - EnumValue lbt cl Longtext - Property Caption</note>
         </trans-unit>
+        <trans-unit id="EnumExtension 387248199 - EnumValue 301608474 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3710813537">
+          <source>Shipment/Receipt</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension lbt Sales Document Type - EnumValue lbt cl Shipment/Receipt - Property Caption</note>
+        </trans-unit>
         <trans-unit id="ReportExtension 4253063855 - Control 4214450725 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Report 1034648739">
           <source>Decide wether to copy headers and footers to the new document.</source>
           <note from="Developer" annotates="general" priority="2"></note>

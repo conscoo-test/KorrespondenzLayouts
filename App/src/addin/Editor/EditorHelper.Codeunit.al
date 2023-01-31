@@ -862,6 +862,10 @@ codeunit 5272729 "lbt cl EditorHelper"
                 SourceMemoField.SetRange(Enum::"Sales Document Type"::Quote);
             IsDocType(TargetRecRef, Enum::"Sales Document Type"::"Credit Memo"):
                 SourceMemoField.SetRange(Enum::"Sales Document Type"::"Credit Memo");
+            IsDocType(TargetRecRef, Enum::"Sales Document Type"::"Blanket Order"):
+                SourceMemoField.SetRange(Enum::"Sales Document Type"::"Blanket Order");
+            IsDocType(TargetRecRef, Enum::"Sales Document Type"::"Return Order"):
+                SourceMemoField.SetRange(Enum::"Sales Document Type"::"Return Order");
             else
                 SourceMemoField.SetRange();
         end;
