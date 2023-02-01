@@ -21,4 +21,23 @@ pageextension 5272840 "lbt cl CustomerCard" extends "Customer Card"
             }
         }
     }
+
+    actions
+    {
+        addafter(CustomerReportSelections)
+        {
+            action("lbt cl LongTexts")
+            {
+                Caption = 'Header and footer';
+                Image = BeginningText;
+                ApplicationArea = All;
+                RunObject = page "lbt cl Longtext SysId";
+                RunPageLink = "Source System Id" = field(SystemId), "Table Id" = const(18);
+            }
+        }
+        addafter(CustomerReportSelections_Promoted)
+        {
+            actionref("lbt cl LongTexts_Promoted"; "lbt cl LongTexts") { }
+        }
+    }
 }

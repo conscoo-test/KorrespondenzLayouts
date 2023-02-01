@@ -10,6 +10,8 @@ pageextension 5272838 "lbt cl Cust. Report Selections" extends "Customer Report 
                 Editable = false;
                 ToolTip = 'Header Text';
                 Caption = 'Header Text';
+                Visible = false;
+
                 trigger OnAssistEdit()
                 begin
                     Rec.lbtEditData(Enum::"lbt Position"::EditorHeader);
@@ -22,6 +24,8 @@ pageextension 5272838 "lbt cl Cust. Report Selections" extends "Customer Report 
                 Editable = false;
                 ToolTip = 'Footer Text';
                 Caption = 'Footer Text';
+                Visible = false;
+
                 trigger OnAssistEdit()
                 begin
                     Rec.lbtEditData(Enum::"lbt Position"::EditorFooter);

@@ -1,6 +1,8 @@
 table 5272721 "lbt Posted PS Longtext Line"
 {
     // version LBCOR1.00
+    ObsoleteState = Pending;
+    ObsoleteReason = 'Aggregate PS Longtexts in one table';
 
     Caption = 'Posted Purch/Sales Longtext Line';
     DrillDownPageId = "lbt Posted PS Longtext Lines";
