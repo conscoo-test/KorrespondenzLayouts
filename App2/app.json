@@ -27,13 +27,17 @@
       "to": 5272849
     }
   ],
-  "runtime": "7.0",
+  "runtime": "10.0",
   "features": [
     "TranslationFile"
   ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "includeSourceInSymbolFile": true,
+    "applyToDevExtension": true
+  },
   "target": "Cloud",
   "contextSensitiveHelpUrl": "https://ALProject11.com/help/",
-  "showMyCode": false,
   "suppressWarnings": [
     "AA0072"
   ]
