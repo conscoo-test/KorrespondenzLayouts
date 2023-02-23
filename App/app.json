@@ -19,6 +19,11 @@
       "to": 5272849
     }
   ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "includeSourceInSymbolFile": true,
+    "applyToDevExtension": true
+  },
   "runtime": "10.0",
   "features": [
     "TranslationFile"
