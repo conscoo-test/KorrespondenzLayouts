@@ -569,6 +569,7 @@ codeunit 5272729 "lbt cl EditorHelper"
                 Result := 3; ///archived
 
             Database::Customer,
+            database::"Ship-to Address",
             Database::Vendor,
             Database::Job,
             Database::"Job Planning Line",
@@ -882,6 +883,7 @@ codeunit 5272729 "lbt cl EditorHelper"
         SourceType: Integer;
         target_fields: array[10] of Integer;
         TargetType: Integer;
+        TableId: Integer;
 
     begin
         if handled then
@@ -914,7 +916,12 @@ codeunit 5272729 "lbt cl EditorHelper"
                     else
                         TargetMemo.Field(2).Value := SourceMemo.Field(2).Value;
                 CopyMemoFields(TargetMemo, SourceMemo);
-                if TargetMemo.Insert() then;
+                if not TargetMemo.Insert() then begin
+                    ///Überschreiben ermöglichen
+                    TableId := SourceMemo.Field(1).Value;
+                    if TableId in [database::Customer, database::"Ship-to Address"] then
+                        TargetMemo.Modify();
+                end;
             until SourceMemo.Next() = 0;
 
         handled := true;

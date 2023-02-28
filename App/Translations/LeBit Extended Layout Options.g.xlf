@@ -1848,6 +1848,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl ServItemWorksheet Subf - Control lbt Editor - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1446067974 - Action 980363147 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1187003046">
+          <source>Header and footer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl Ship-to-Address - Action lbt cl LongTexts - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1446067974 - Control 3178038303 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1187003046">
           <source>Here can you enter the Delivery Date Type.</source>
           <note from="Developer" annotates="general" priority="2"></note>

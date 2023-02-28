@@ -9,6 +9,13 @@ tableextension 5272728 "lbt Sales Header" extends "Sales Header"
                 CopyLongTextFromCustomer();
             end;
         }
+        modify("Ship-to Code")
+        {
+            trigger OnAfterValidate()
+            begin
+                CopyLongTextFromCustomer();
+            end;
+        }
         field(5272720; "lbt cl Delivery Date Type"; Enum "lbt cl DeliveryDateType")
         {
             Caption = 'Delivery Date Type';
@@ -105,12 +112,19 @@ tableextension 5272728 "lbt Sales Header" extends "Sales Header"
     local procedure CopyLongTextFromCustomer()
     var
         Customer: Record Customer;
+        ShiptoAddr: Record "Ship-to Address";
         LongtextMgt: Codeunit "lbt Longtext Mgt.";
     begin
         if Rec."No." = '' then
             exit;
+
+        LongtextMgt.DelLongtext(Rec);
         if Rec."Sell-to Customer No." <> '' then
             if Customer.Get(Rec."Sell-to Customer No.") then
                 LongtextMgt.CopyLongtext(Customer, Rec);
+        if Rec."Ship-to Code" <> '' then
+            if ShiptoAddr.Get(rec."Sell-to Customer No.", "Ship-to Code") then
+                LongtextMgt.CopyLongtext(ShiptoAddr, Rec);
+
     end;
 }
