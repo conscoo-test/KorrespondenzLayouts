@@ -7,13 +7,19 @@ table 5272724 "lbt Corr Setup"
         field(1; "Primary Key"; Code[10])
         {
             Caption = 'Primary Key';
-            DataClassification = SystemMetadata;
             NotBlank = false;
         }
         field(2; "Always print VAT"; Boolean)
         {
             Caption = 'Always print VAT';
-            DataClassification = SystemMetadata;
+        }
+        field(3; "Copy Quote Texts"; Boolean)
+        {
+            Caption = 'Copy Quote Texts';
+        }
+        field(4; "Copy Blanket Order Texts"; Boolean)
+        {
+            Caption = 'Copy Blanket Order Texts';
         }
     }
 

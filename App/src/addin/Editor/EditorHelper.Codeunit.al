@@ -640,6 +640,21 @@ codeunit 5272729 "lbt cl EditorHelper"
             exit(true);
     end;
 
+    local procedure IsQuote(var RecRef: RecordRef): Boolean
+    var
+        FRef: FieldRef;
+        DocType: Enum "Sales Document Type";
+    begin
+        if not (RecRef.Number in [Database::"Sales Header", Database::"Purchase Header"]) then
+            exit(false);
+        FRef := RecRef.Field(1);
+        DocType := FRef.Value();
+        if DocType = DocType::Quote then
+            exit(true);
+        if DocType = DocType::"Blanket Order" then
+            exit(true);
+    end;
+
     local procedure IsShipment(var RecRef: RecordRef): Boolean
     begin
         if (RecRef.Number in [Database::"Sales Shipment Header", Database::"Purch. Rcpt. Header"]) then
@@ -912,7 +927,8 @@ codeunit 5272729 "lbt cl EditorHelper"
                     if SourceType = 5 then
                         TargetMemo.Field(2).Value := SourceMemo.Field(3).Value
                     else
-                        TargetMemo.Field(2).Value := SourceMemo.Field(2).Value;
+                        if not IsQuote(SourceRecRef) then
+                            TargetMemo.Field(2).Value := SourceMemo.Field(2).Value;
                 CopyMemoFields(TargetMemo, SourceMemo);
                 if TargetMemo.Insert() then;
             until SourceMemo.Next() = 0;

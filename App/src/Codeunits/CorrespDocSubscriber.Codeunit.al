@@ -56,8 +56,12 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Quote to Order", 'OnAfterOnRun', '', false, false)]
     local procedure OnAfterOnRun_Codeunit86(SalesHeader: Record "Sales Header"; SalesOrderHeader: Record "Sales Header")
+    var
+        CorrSetup: Record "lbt Corr Setup";
     begin
-        LongtextMgt.CopyLongtext(SalesHeader, SalesOrderHeader);
+        CorrSetup.Get();
+        if CorrSetup."Copy Quote Texts" then
+            LongtextMgt.CopyLongtext(SalesHeader, SalesOrderHeader);
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterPostPurchaseDoc', '', false, false)]
@@ -174,10 +178,14 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LongtextMgt.CopyLongtext(BlanketOrderPurchLine, PurchOrderLine);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Blanket Sales Order to Order", 'OnBeforeInsertSalesOrderHeader', '', false, false)]
-    local procedure OnBeforeInsertSalesOrderHeader_Codeunit87(SalesOrderHeader: Record "Sales Header"; BlanketOrderSalesHeader: Record "Sales Header")
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Blanket Sales Order to Order", 'OnCreateSalesHeaderOnAfterSalesOrderHeaderInsert', '', false, false)]
+    local procedure OnBeforeInsertSalesOrderHeader_Codeunit87(SalesOrderHeader: Record "Sales Header"; SalesHeader: Record "Sales Header")
+    var
+        CorrSetup: Record "lbt Corr Setup";
     begin
-        LongtextMgt.CopyLongtext(BlanketOrderSalesHeader, SalesOrderHeader);
+        CorrSetup.Get();
+        if CorrSetup."Copy Blanket Order Texts" then
+            LongtextMgt.CopyLongtext(SalesHeader, SalesOrderHeader);
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Quote to Order", 'OnBeforeInsertSalesOrderLine', '', false, false)]
