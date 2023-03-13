@@ -2,7 +2,7 @@
     "name": "LeBit365 Korrespondenz Layouts",
     "appFolders": "app,App2",
     "testFolders": "test",
-    "previousApps": "\\\\lbserver20\\Software_Business\\apps\\LeBit365_KorrespondenzLayouts\\latest.zip",
+    "previousApps": "\\\\192.168.244.16\\Software_Business\\apps\\product\\KorrespondenzLayouts\\latest.zip",
     "installTestRunner": true,
     "installTestFramework": true,
     "installTestLibraries": true,
@@ -13,16 +13,16 @@
     "versions": [
         {
             "version": "current",
-            "artifact": "///us/Current",
+            "artifact": "///de/Current",
             "CreateRuntimePackages": true
         },
         {
             "version": "nextmajor",
-            "artifact": "///us/NextMajor/{INSIDERSASTOKEN}"
+            "artifact": "///de/NextMajor/{INSIDERSASTOKEN}"
         },
         {
             "version": "nextminor",
-            "artifact": "///us/NextMinor/{INSIDERSASTOKEN}"
+            "artifact": "///de/NextMinor/{INSIDERSASTOKEN}"
         }
     ]
 }
