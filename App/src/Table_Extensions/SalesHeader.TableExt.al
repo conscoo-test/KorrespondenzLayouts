@@ -123,7 +123,7 @@ tableextension 5272728 "lbt Sales Header" extends "Sales Header"
             if Customer.Get(Rec."Sell-to Customer No.") then
                 LongtextMgt.CopyLongtext(Customer, Rec);
         if Rec."Ship-to Code" <> '' then
-            if ShiptoAddr.Get(rec."Sell-to Customer No.", "Ship-to Code") then
+            if ShiptoAddr.Get(Rec."Sell-to Customer No.", "Ship-to Code") then
                 LongtextMgt.CopyLongtext(ShiptoAddr, Rec);
 
     end;

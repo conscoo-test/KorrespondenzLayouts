@@ -631,7 +631,7 @@ codeunit 5272729 "lbt cl EditorHelper"
         FRef: FieldRef;
         DocType: Enum "Sales Document Type";
     begin
-        if Sourcerecref.Number in [Database::Customer, Database::Vendor] then
+        if Sourcerecref.Number in [Database::Customer, Database::Vendor, database::"Ship-to Address"] then
             exit(true);
         if not (Sourcerecref.Number in [Database::"Sales Header", Database::"Purchase Header"]) then
             exit(false);
