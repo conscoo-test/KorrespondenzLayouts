@@ -7,7 +7,11 @@
     "installTestFramework": true,
     "installTestLibraries": true,
     "enableCodeCop": true,
-    "enableAppSourceCop": false,
+    "enableAppSourceCop": true,
+    "appSourceCopMandatoryAffixes": [
+        "lbt cl",
+        "lbt"
+    ],
     "enablePerTenantExtensionCop": false,
     "enableUICop": true,
     "versions": [
