@@ -14,4 +14,12 @@ tableextension 5272768 "lbt cl Ship-To-Address" extends "Ship-to Address"
             TableRelation = "Entry/Exit Point";
         }
     }
+    trigger OnAfterDelete()
+    var
+        PSLongtextSystemId: Record "lbt clPSLongtextSystemId";
+    begin
+        PSLongtextSystemId.SetRange("Table Id", Database::"Ship-to Address");
+        PSLongtextSystemId.SetRange("Source System Id", Rec.SystemId);
+        PSLongtextSystemId.DeleteAll();
+    end;
 }

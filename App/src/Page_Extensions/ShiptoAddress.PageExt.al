@@ -16,4 +16,19 @@ pageextension 5272839 "lbt cl Ship-to-Address" extends "Ship-to Address"
             }
         }
     }
+    actions
+    {
+        addafter("&Address")
+        {
+            action("lbt cl LongTexts")
+            {
+                Caption = 'Header and footer';
+                Image = BeginningText;
+                ApplicationArea = All;
+                RunObject = page "lbt cl Longtext SysId";
+                RunPageLink = "Source System Id" = field(SystemId), "Table Id" = const(222);
+            }
+        }
+
+    }
 }
