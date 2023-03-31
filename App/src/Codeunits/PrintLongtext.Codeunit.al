@@ -10,6 +10,7 @@ codeunit 5272731 "lbt cl Print Longtext"
             Position::Longtext:
                 exit(Position::EditorLine);
         end;
+        exit(Position);
     end;
 
     procedure GetPrintText(vari: Variant; Position: Enum "lbt Position"; var TempBlobList: Codeunit "Temp Blob List"; OtherDocType: Integer)

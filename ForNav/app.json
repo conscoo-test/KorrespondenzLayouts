@@ -12,6 +12,12 @@
 	"logo": "..\\Appendix\\Logo\\LB18.jpg",
 	"dependencies": [
 		{
+			"id": "ae7eef02-bb60-436c-856d-d815600787b0",
+			"name": "LeBit Extended Layout Options",
+			"publisher": "LeBit Software & Consult GmbH",
+			"version": "1.10.0.0"
+		},
+		{
 			"id": "83326d6d-11f8-49fd-981a-6f266a7c8d81",
 			"publisher": "ForNAV",
 			"name": "Customizable Report Pack",
