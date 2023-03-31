@@ -8,3 +8,4 @@ test/*.app
 app/permissionsAnalyzer.json
 rad.json
 *.flf
+!dependencies/*.app
