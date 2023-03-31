@@ -1,0 +1,47 @@
+{
+	"id": "c54a1b00-7330-4d8f-911f-e921fcd95b53",
+	"name": "ForNav",
+	"publisher": "LeBit Software & Consult GmbH",
+	"brief": "Komfort Belegset und Komfort Funktionen für Korrespondenzbelege",
+	"description": "Komfort Belegset und Komfort Funktionen für Korrespondenzbelege",
+	"version": "1.10.0.0",
+	"privacyStatement": "https://www.lebit.net/impressum#datenschutz",
+	"EULA": "https://www.lebit.net/impressum#datenschutz",
+	"help": "https://www.lebit.net/#support",
+	"url": "https://www.lebit.net/#kontakt",
+	"logo": "..\\Appendix\\Logo\\LB18.jpg",
+	"dependencies": [
+		{
+			"id": "83326d6d-11f8-49fd-981a-6f266a7c8d81",
+			"publisher": "ForNAV",
+			"name": "Customizable Report Pack",
+			"version": "0.0.0.0"
+		},
+		{
+			"id": "6f0293d3-86fc-4ff8-9632-54a580be6546",
+			"publisher": "ForNAV",
+			"name": "ForNAV Core",
+			"version": "0.0.0.0"
+		}
+	],
+	"screenshots": [],
+	"resourceExposurePolicy": {
+		"allowDebugging": true,
+		"allowDownloadingSource": true,
+		"includeSourceInSymbolFile": true
+	},
+	"target": "Cloud",
+	"platform": "1.0.0.0",
+	"application": "20.0.0.0",
+	"runtime": "10.0",
+	"idRanges": [
+		{
+			"from": 5272750,
+			"to": 5272849
+		}
+	],
+	"contextSensitiveHelpUrl": "https://ALProject11.com/help/",
+	"features": [
+		"TranslationFile"
+	]
+}
