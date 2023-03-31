@@ -35,8 +35,6 @@ reportextension 5272750 "lbt Order Confirmation" extends "ForNAV VAT Order Confi
         modify(Line)
         {
             trigger OnAfterAfterGetRecord()
-            var
-                PrintLongtext: Codeunit "lbt cl Print Longtext";
             begin
                 LineText := Line.lbtGetPrintData("lbt Position"::EditorLine, Line."Document Type".AsInteger());
             end;

@@ -35,10 +35,6 @@ reportextension 5272751 "lbt Pro Forma Invoice" extends "ForNAV VAT Pro Forma In
         modify(Line)
         {
             trigger OnAfterAfterGetRecord()
-            var
-                PrintLongtext: Codeunit "lbt cl Print Longtext";
-                ForNAVSetup: Codeunit "ForNAV Backup Import";
-                is: InStream;
             begin
                 LineText := Line.lbtGetPrintData("lbt Position"::EditorLine, Line."Document Type".AsInteger());
             end;

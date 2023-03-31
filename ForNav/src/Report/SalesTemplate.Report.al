@@ -1,6 +1,6 @@
 Report 5272751 "lbt Sales Template"
 {
-    Caption = 'Sales Template';
+    Caption = 'LeBit Sales Template';
     WordLayout = '.\Layouts\lbtSalesTemplate.docx';
     DefaultLayout = Word;
 
