@@ -75,8 +75,9 @@ reportextension 5272721 "lbt cl Copy Sales Document" extends "Copy Sales Documen
 
         if Handled then
             exit;
-        if SalesHeader."Sell-to Customer No." <> '' then
-            SalesHeader.Validate("Sell-to Customer No.");
+        SalesHeader.CopyLongTextFromCustomer();    
+        //if SalesHeader."Sell-to Customer No." <> '' then
+        //    SalesHeader.Validate("Sell-to Customer No.");
     end;
 
     [IntegrationEvent(false, false)]
