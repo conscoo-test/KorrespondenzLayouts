@@ -7,6 +7,9 @@
 			"path": "App2"
 		},
 		{
+			"path": "ForNav"
+		},
+		{
 			"path": "Test"
 		},
 		{
@@ -16,7 +19,7 @@
 			"path": "Appendix"
 		},
 		{
-			"path": "Dependencies"
+			"path": "dependencies"
 		}
 	],
 	"settings": {

@@ -283,6 +283,8 @@ codeunit 5272729 "lbt cl EditorHelper"
         TextLine: Text;
         tb: TextBuilder;
     begin
+        if content = '' then
+            exit;
         tab := 5;
         text := content;
 

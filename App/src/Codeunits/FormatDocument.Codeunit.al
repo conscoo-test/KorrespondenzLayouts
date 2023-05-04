@@ -43,6 +43,22 @@ codeunit 5272728 "lbt Format Document"
         TotalText := CopyStr(TotalText.Replace(StandardTotalLbl, TranslatedTotalLbl), 1, MaxStrLen(TotalText));
     end;
 
+    procedure CompanyAddressLine() CompanyAddressLine: Text
+    var
+        FormatAddress: Codeunit "Format Address";
+        CompanyAddr: array[8] of Text[100];
+        i: Integer;
+    begin
+        CompanyInformation.Get();
+        FormatAddress.Company(CompanyAddr, CompanyInformation);
+        for i := 1 to 6 do
+            if CompanyAddr[i] <> '' then begin
+                if CompanyAddressLine <> '' then
+                    CompanyAddressLine := CompanyAddressLine + ', ';
+                CompanyAddressLine := CompanyAddressLine + CompanyAddr[i];
+            end;
+    end;
+
     local procedure AddToList(var list: List of [Text]; Element: Text)
     begin
         if Element = '' then

@@ -1,8 +1,13 @@
 {
     "name": "LeBit365 Korrespondenz Layouts",
-    "appFolders": "app,App2",
+    "appFolders": "app,App2,ForNav",
     "testFolders": "test",
     "previousApps": "\\\\192.168.244.16\\Software_Business\\apps\\product\\KorrespondenzLayouts\\latest.zip",
+    "installApps":[
+        "dependencies/ForNAV Language Module 7.0.0.8.app",
+        "dependencies/ForNAV Core 7.0.0.8.app",
+        "dependencies/ForNAV Customizable Report Pack 7.0.0.8.app"
+    ],
     "installTestRunner": true,
     "installTestFramework": true,
     "installTestLibraries": true,
