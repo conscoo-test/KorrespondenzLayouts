@@ -109,7 +109,7 @@ tableextension 5272728 "lbt Sales Header" extends "Sales Header"
         PSLongtextLine.DeleteAll();
     end;
 
-    local procedure CopyLongTextFromCustomer()
+    procedure CopyLongTextFromCustomer()
     var
         Customer: Record Customer;
         ShiptoAddr: Record "Ship-to Address";
