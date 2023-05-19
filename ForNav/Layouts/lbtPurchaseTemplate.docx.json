@@ -171,7 +171,7 @@
               "@Font": "Segoe UI, 8pt",
               "@ForeColor": "Black",
               "@HorzAlign": "Right",
-              "@SourceExpression": "Header.No"
+              "@SourceExpression": "Vendor.OurAccountNo"
             },
             "TextBox1": {
               "@Name": "TextBox1",
@@ -182,7 +182,7 @@
               "@ForeColor": "Black",
               "@VertAlign": "Top",
               "@HorzAlign": "Left",
-              "@SourceExpression": "Header.FieldCaptions.No"
+              "@SourceExpression": "Vendor.FieldCaptions.OurAccountNo"
             },
             "TextBox8": {
               "@Name": "TextBox8",
@@ -1391,6 +1391,10 @@
         }
       },
       "Fields": {
+        "Buy_fromVendorNo": {
+          "@FieldName": "Buy-from Vendor No.",
+          "@FieldNo": "2"
+        },
         "No": {
           "@FieldName": "No.",
           "@FieldNo": "3"
@@ -1567,6 +1571,23 @@
         "No": {
           "@FieldName": "No.",
           "@FieldNo": "1"
+        }
+      }
+    },
+    "Vendor": {
+      "@Table": "Vendor",
+      "@No": "23",
+      "@Name": "Vendor",
+      "@DataItemLinkReference": "Header",
+      "@DataItemLink": "\"No.\" = FIELD(\"Buy-from Vendor No.\")",
+      "Fields": {
+        "No": {
+          "@FieldName": "No.",
+          "@FieldNo": "1"
+        },
+        "OurAccountNo": {
+          "@FieldName": "Our Account No.",
+          "@FieldNo": "14"
         }
       }
     }
