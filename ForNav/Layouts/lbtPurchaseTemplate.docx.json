@@ -8,7 +8,7 @@
       "@ControlType": "DataItem",
       "@Name": "Header",
       "@TotalFields": "60,61",
-      "@CalcFields": "Amount,\"Amount Including VAT\"",
+      "@CalcFields": "Amount, \"Amount Including VAT\"",
       "@ResetPageNumber": "true",
       "@NewPagePerRecord": "true",
       "@Id": "2",
@@ -319,7 +319,7 @@
           "@Name": "HeaderText",
           "@Signature": "abc",
           "@CanGrow": "true",
-          "@ShowOutput": "DynamicsNavDataSet.lbtHeaderText && DynamicsNavDataSet.lbtHeaderText != ''",
+          "@ShowOutput": "DynamicsNavDataSet.lbtHeaderText != null && DynamicsNavDataSet.lbtHeaderText != ''",
           "@AllowScriptErrors": "true",
           "@Height": "58.2083359",
           "Controls": {
@@ -343,7 +343,7 @@
           "@TotalFields": "29",
           "@CalcFields": "\"lbt Balance\"",
           "@Id": "3",
-          "@DataItemTableView": "SORTING(\"Document No.\",\"Line No.\")",
+          "@DataItemTableView": "SORTING(\"Document No.\", \"Line No.\")",
           "@DataItemTable": "Table123",
           "@DataItemVarName": "Line",
           "@DataItemLink": "\"Document No.\" = FIELD(\"No.\")",
@@ -430,7 +430,7 @@
                           "@Font": "Segoe UI, 8pt, style=Bold",
                           "@Weight": "6.8042905046477546",
                           "@MultiLine": "true",
-                          "@SourceExpression": "Line.FieldCaptions.UnitPrice",
+                          "@SourceExpression": "Line.FieldCaptions.UnitCost",
                           "@VertAlign": "Bottom",
                           "@CanShrink": "true",
                           "@HorzAlign": "Right"
@@ -530,7 +530,7 @@
                           "@Font": "Segoe UI, 8pt, style=Bold",
                           "@Weight": "6.8042905046477546",
                           "@MultiLine": "true",
-                          "@SourceExpression": "Line.FieldCaptions.UnitPrice",
+                          "@SourceExpression": "Line.FieldCaptions.UnitCost",
                           "@VertAlign": "Bottom",
                           "@CanShrink": "true",
                           "@HorzAlign": "Right"
@@ -922,7 +922,7 @@
                           "@Font": "Segoe UI, 8pt",
                           "@Weight": "0.59682747770915978",
                           "@BlankZero": "true",
-                          "@SourceExpression": "Line.UnitPrice",
+                          "@SourceExpression": "Line.UnitCost",
                           "@VertAlign": "Top",
                           "@HorzAlign": "Right"
                         },
@@ -947,7 +947,7 @@
               "@Name": "LineText",
               "@Signature": "abc",
               "@CanGrow": "true",
-              "@ShowOutput": "DynamicsNavDataSet.lbtLineText && DynamicsNavDataSet.lbtLineText !=''",
+              "@ShowOutput": "DynamicsNavDataSet.lbtLineText != null && DynamicsNavDataSet.lbtLineText !=''",
               "@Height": "58.20834",
               "Controls": {
                 "TextBox5": {
@@ -1000,6 +1000,10 @@
             "Amount": {
               "@FieldName": "Amount",
               "@FieldNo": "29"
+            },
+            "UnitCost": {
+              "@FieldName": "Unit Cost",
+              "@FieldNo": "100"
             },
             "lbtPrintoption": {
               "@FieldName": "lbt Printoption",
@@ -1367,7 +1371,7 @@
               "@Name": "Body2",
               "@Signature": "abc",
               "@CanGrow": "true",
-              "@ShowOutput": "DynamicsNavDataSet.lbtFooterText && DynamicsNavDataSet.lbtFooterText !=''",
+              "@ShowOutput": "DynamicsNavDataSet.lbtFooterText != null && DynamicsNavDataSet.lbtFooterText !=''",
               "@Height": "108.479164",
               "Controls": {
                 "TextBox14": {
