@@ -3,6 +3,21 @@
   <file datatype="xml" source-language="en-US" target-language="en-US" original="ForNav">
     <body>
       <group id="body">
+        <trans-unit id="Report 193717307 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LeBit Purchase Template</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report lbt Purchase Template - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 193717307 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report lbt Purchase Template - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 193717307 - Control 2578066365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No. of Copies</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report lbt Purchase Template - Control NoOfCopies - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 3614260654 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>LeBit Sales Template</source>
           <note from="Developer" annotates="general" priority="2"></note>
