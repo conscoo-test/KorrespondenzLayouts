@@ -1,4 +1,4 @@
-reportextension 5272751 "lbt Pro Forma Invoice" extends "ForNAV VAT Pro Forma Invoice"
+reportextension 52751 "lbt Pro Forma Invoice" extends "ForNAV VAT Pro Forma Invoice"
 {
     dataset
     {

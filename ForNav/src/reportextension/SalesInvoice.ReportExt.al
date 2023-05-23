@@ -1,4 +1,4 @@
-reportextension 5272752 "lbt Sales Invoice" extends "ForNAV VAT Sales Invoice"
+reportextension 52752 "lbt Sales Invoice" extends "ForNAV VAT Sales Invoice"
 {
     dataset
     {

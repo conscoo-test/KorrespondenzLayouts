@@ -1,4 +1,4 @@
-reportextension 5272755 "lbt Purchase Order" extends "ForNAV VAT Purchase Order"
+reportextension 52755 "lbt Purchase Order" extends "ForNAV VAT Purchase Order"
 {
     dataset
     {

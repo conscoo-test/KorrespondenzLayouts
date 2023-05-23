@@ -1,10 +1,10 @@
 {
 	"id": "c54a1b00-7330-4d8f-911f-e921fcd95b53",
-	"name": "ForNav",
+	"name": "ForNav (Customer Range)",
 	"publisher": "LeBit Software & Consult GmbH",
 	"brief": "Komfort Belegset und Komfort Funktionen für Korrespondenzbelege",
 	"description": "Komfort Belegset und Komfort Funktionen für Korrespondenzbelege",
-	"version": "1.13.0.0",
+	"version": "1.14.0.0",
 	"privacyStatement": "https://www.lebit.net/impressum#datenschutz",
 	"EULA": "https://www.lebit.net/impressum#datenschutz",
 	"help": "https://www.lebit.net/#support",
@@ -42,8 +42,8 @@
 	"runtime": "10.0",
 	"idRanges": [
 		{
-			"from": 5272750,
-			"to": 5272849
+			"from": 52750,
+			"to": 52849
 		}
 	],
 	"contextSensitiveHelpUrl": "https://ALProject11.com/help/",

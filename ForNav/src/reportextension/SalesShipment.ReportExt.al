@@ -1,4 +1,4 @@
-reportextension 5272754 "lbt Sales Shipment" extends "ForNAV Sales Shipment"
+reportextension 52754 "lbt Sales Shipment" extends "ForNAV Sales Shipment"
 {
     dataset
     {

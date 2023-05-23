@@ -1,4 +1,4 @@
-reportextension 5272753 "lbt Sales Credit Memo" extends "ForNAV VAT Credit Memo"
+reportextension 52753 "lbt Sales Credit Memo" extends "ForNAV VAT Credit Memo"
 {
     dataset
     {
