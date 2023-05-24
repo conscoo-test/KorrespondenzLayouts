@@ -12,6 +12,7 @@
     "installTestFramework": true,
     "installTestLibraries": true,
     "enableCodeCop": true,
+    "rulesetFile": "scripts/lebit.ruleset.json",
     "enableAppSourceCop": true,
     "appSourceCopMandatoryAffixes": [
         "lbt cl",
