@@ -1,31 +1,26 @@
 codeunit 50727 "lbt AssistedSetup"
 {
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Assisted Setup", 'OnRegister', '', true, true)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Guided Experience", 'OnRegisterAssistedSetup', '', true, true)]
     local procedure AggregatedSetup_OnRegisterAssistedSetup()
-    begin
-        RegisterAssistedSetup();
-    end;
-
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Assisted Setup", 'OnRegister', '', true, true)]
-    local procedure AssistedSetup_OnRegister()
     begin
         RegisterAssistedSetup();
     end;
 
     local procedure RegisterAssistedSetup()
     var
-        AssistedSetup: Codeunit "Assisted Setup";
-        AssistedSetupGroup: Enum "Assisted Setup Group";
+        GuidedExperience: Codeunit "Guided Experience";
     begin
-        AssistedSetup.Add(GetAppId(), Page::"lbt Wizard", SetupLbl, AssistedSetupGroup::Extensions);
+        GuidedExperience.InsertAssistedSetup(
+            SetupLbl, SetupLbl, SetupLbl, 0, ObjectType::Page, Page::"lbt Wizard", "Assisted Setup Group"::Extensions, '', "Video Category"::Uncategorized, '', true
+        );
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Role Center Notification Mgt.", 'OnBeforeShowNotifications', '', true, true)]
     local procedure MyProcedure()
     var
-        AssistedSetup: Codeunit "Assisted Setup";
+        GuidedExperience: Codeunit "Guided Experience";
     begin
-        if not AssistedSetup.IsComplete(Page::"lbt Wizard") then
+        if not GuidedExperience.IsAssistedSetupComplete(ObjectType::Page, Page::"lbt Wizard") then
             CreateNotification();
     end;
 
@@ -42,11 +37,13 @@ codeunit 50727 "lbt AssistedSetup"
 
     procedure HandleNotification(Note: Notification)
     var
-        AssistedSetup: Codeunit "Assisted Setup";
+        GuidedExperience: Codeunit "Guided Experience";
     begin
         RegisterAssistedSetup();
         Commit();
-        AssistedSetup.Run(Page::"lbt Wizard");
+
+        if GuidedExperience.SetupForExtensionExists(ExtensionGuidTxt) then
+            GuidedExperience.RunExtensionSetup(ExtensionGuidTxt);
     end;
 
     local procedure GetNotificationId(): Guid
