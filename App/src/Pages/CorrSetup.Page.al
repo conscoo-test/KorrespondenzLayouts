@@ -4,7 +4,7 @@ page 5272728 "lbt Corr Setup"
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "lbt Corr Setup";
-    Caption = 'Correspondence Setup';
+    Caption = 'LeBit Extended Layout Setup';
     DeleteAllowed = false;
     InsertAllowed = false;
     layout
@@ -16,8 +16,19 @@ page 5272728 "lbt Corr Setup"
                 Caption = 'General';
                 field("Always print VAT"; Rec."Always print VAT")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'If selected VAT will be printed in reports even if it is 0.';
+                }
+                group(Sales)
+                {
+                    Caption = 'Sales';
+                    field("Copy Quote Texts"; Rec."Copy Quote Texts")
+                    {
+                        ToolTip = 'This option affects the copying of header and footer texts from the quotation to the sales order.';
+                    }
+                    field("Copy Blanket Order Texts"; Rec."Copy Blanket Order Texts")
+                    {
+                        ToolTip = 'This option affects the copying of header and footer texts from the blanket order to the sales order.';
+                    }
                 }
             }
         }

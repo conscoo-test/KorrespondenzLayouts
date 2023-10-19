@@ -165,6 +165,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field Always print VAT - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 214935587 - Field 140183914 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Copy Blanket Order Texts</source>
+          <target>Rahmenauftragstexte kopieren</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field Copy Blanket Order Texts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 214935587 - Field 4040641683 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Copy Quote Texts</source>
+          <target>Angebotstexte kopieren</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field Copy Quote Texts - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 214935587 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Primary Key</source>
           <target>Primärschlüssel</target>
@@ -670,8 +682,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt cl WebViewer - Control Editor - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Correspondence Setup</source>
-          <target>Korrespondenz Einrichtung</target>
+          <source>LeBit Extended Layout Setup</source>
+          <target>LeBit Erweiterte Layoutoptionen Einrichtung</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Property Caption</note>
         </trans-unit>
@@ -686,6 +698,24 @@
           <target>MwSt. wird auch gedruckt, wenn sie 0 ist.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control Always print VAT - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 1406942772 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales</source>
+          <target>Verkauf</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control Sales - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 140183914 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>This option affects the copying of header and footer texts from the blanket order to the sales order.</source>
+          <target>Diese Option beeinflusst das Kopieren von Kopf- und Fußtexten aus dem Rahmenauftrag in den Verkaufsauftrag.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control Copy Blanket Order Texts - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 4040641683 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>This option affects the copying of header and footer texts from the quotation to the sales order.</source>
+          <target>Diese Option beeinflusst das Kopieren von Kopf- und Fußtexten aus dem Angebot in den Verkaufsauftrag.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control Copy Quote Texts - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 435237695 - Control 1821279055 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Here you can enter the text.</source>
@@ -1472,6 +1502,18 @@
           <target>Kopf- und Fußtexte</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl CustomerCard - Action lbt cl LongTexts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2745127271 - Control 1456936212 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
+          <source>LeBit Extended Layout Options</source>
+          <target>LeBit Erweiterte Layoutoptionen</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl CustomerCard - Control lbt cl Extended Layout Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2745127271 - Control 1696778017 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
+          <source>Shipping</source>
+          <target>Lieferung</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl CustomerCard - Control lbt cl Shipping - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2745127271 - Control 3178038303 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>Here can you define the Delivery Date Type.</source>
