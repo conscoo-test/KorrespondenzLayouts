@@ -599,6 +599,7 @@ report 5272729 "lbt Blanket Purchase Order"
                 CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
                 FormatAddressFields("Purchase Header");
                 FormatDocumentFields("Purchase Header");
+                CompanyInfo."lbt SetReportFooter"(Footer);
 
                 DimSetEntry1.SetRange("Dimension Set ID", "Dimension Set ID");
 
@@ -701,7 +702,6 @@ report 5272729 "lbt Blanket Purchase Order"
     begin
         CompanyInfo.Get();
         PurchSetup.Get();
-        CompanyInfo."lbt SetReportFooter"(Footer);
         FormatDocument.SetLogoPosition(PurchSetup."lbt Logo Position on Documents", CompanyInfo1, CompanyInfo2, CompanyInfo3);
     end;
 

@@ -863,6 +863,7 @@ report 5272725 "lbt Blanket Sales Order"
                 CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
                 FormatAddressFields("Sales Header");
                 FormatDocumentFields("Sales Header");
+                CompanyInfo."lbt SetReportFooter"(Footer);
 
                 DimSetEntry1.SetRange("Dimension Set ID", "Dimension Set ID");
 
@@ -973,7 +974,6 @@ report 5272725 "lbt Blanket Sales Order"
         GLSetup.Get();
         CompanyInfo.Get();
         SalesSetup.Get();
-        CompanyInfo."lbt SetReportFooter"(Footer);
 
         case SalesSetup."Logo Position on Documents" of
             SalesSetup."Logo Position on Documents"::"No Logo":
