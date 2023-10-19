@@ -9,7 +9,11 @@
             "id": "AA0218",
             "action": "Hidden",
             "justification": "no tooltips for now"
+        },
+        {
+            "id": "LC0015",
+            "action": "Error",
+            "justification": "Permissions are necessary"
         }
-        
     ]
 }
