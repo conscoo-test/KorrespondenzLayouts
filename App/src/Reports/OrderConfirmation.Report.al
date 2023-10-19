@@ -1199,6 +1199,7 @@ report 50721 "lbt Order Confirmation"
                 CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
                 FormatAddressFields("Sales Header");
                 FormatDocumentFields("Sales Header");
+                CompanyInfo."lbt SetReportFooter"(Footer);
 
                 DimSetEntry1.SetRange("Dimension Set ID", "Dimension Set ID");
 
@@ -1324,7 +1325,6 @@ report 50721 "lbt Order Confirmation"
         CompanyInfo.Get();
         SalesSetup.Get();
         CorrSetup.Get();
-        CompanyInfo."lbt SetReportFooter"(Footer);
 
         case SalesSetup."Logo Position on Documents" of
             SalesSetup."Logo Position on Documents"::"No Logo":
