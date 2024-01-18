@@ -3305,6 +3305,7 @@
                                               <PaddingRight>2pt</PaddingRight>
                                             </Style>
                                           </Textbox>
+                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell>
@@ -3853,15 +3854,6 @@
                                               <PageBreak>
                                                 <BreakLocation>Between</BreakLocation>
                                               </PageBreak>
-                                              <Filters>
-                                                <Filter>
-                                                  <FilterExpression>=Fields!RowNumber.Value</FilterExpression>
-                                                  <Operator>GreaterThan</Operator>
-                                                  <FilterValues>
-                                                    <FilterValue DataType="Integer">0</FilterValue>
-                                                  </FilterValues>
-                                                </Filter>
-                                              </Filters>
                                             </Group>
                                             <SortExpressions>
                                               <SortExpression>
