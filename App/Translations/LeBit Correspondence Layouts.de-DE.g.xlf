@@ -2045,7 +2045,7 @@
         </trans-unit>
         <trans-unit id="Report 3114178208 - NamedType 3026899720" size-unit="char" translate="yes" xml:space="preserve">
           <source>Carry-forward %1</source>
-          <target>Carry-forward %1</target>
+          <target>Übertrag %1</target>
           <note from="Developer" annotates="general" priority="2">%1 - Amount</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Order - NamedType CarryForwardCaptionLbl</note>
         </trans-unit>
