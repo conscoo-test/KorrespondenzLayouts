@@ -706,6 +706,12 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LongtextMgt.CopyLongtext(FromPurchLine, ToPurchLine);
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Requisition Line", 'OnAfterGetDirectCost', '', false, false)]
+    local procedure RequisitionLine_OnAfterGetDirectCost(var RequisitionLine: Record "Requisition Line"; CalledByFieldNo: Integer)
+    begin
+        RequisitionLine.lbtclSetUnitPrice(RequisitionLine.FieldNo("Direct Unit Cost"));
+    end;
+
     #endregion
     #endregion
 }
