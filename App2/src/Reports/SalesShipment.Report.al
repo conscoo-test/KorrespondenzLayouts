@@ -658,8 +658,8 @@ report 5272724 "lbt Sales - Shipment"
                             if TrackingSpecCount = 0 then
                                 CurrReport.Break();
                             SetRange(Number, 1, TrackingSpecCount);
-                            TempTrackingSpecBuffer.SetCurrentKey("Source ID", "Source Type", "Source Subtype", "Source Batch Name",
-                              "Source Prod. Order Line", "Source Ref. No.");
+                            TempTrackingSpecBuffer.SetCurrentKey("Lot No.", "Serial No.");
+                            OnAfterSetCurrentKeyOnTempTrackingSpecBuffer(TempTrackingSpecBuffer);
                         end;
                         #endregion OnPreDataItem
                     }
@@ -1051,6 +1051,11 @@ report 5272724 "lbt Sales - Shipment"
     begin
     end;
     #endregion OnBeforeGetDocumentCaption
+
+    [IntegrationEvent(false, false)]
+    local procedure OnAfterSetCurrentKeyOnTempTrackingSpecBuffer(var TempTrackingSpecBuffer: Record "Tracking Specification" temporary)
+    begin
+    end;
 }
 
 
