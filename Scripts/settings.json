@@ -13,16 +13,16 @@
     "versions": [
         {
             "version": "current",
-            "artifact": "///us/Current",
+            "artifact": "//18/de/",
             "CreateRuntimePackages": true
         },
         {
             "version": "nextmajor",
-            "artifact": "///us/NextMajor/{INSIDERSASTOKEN}"
+            "artifact": "///de/NextMajor/{INSIDERSASTOKEN}"
         },
         {
             "version": "nextminor",
-            "artifact": "///us/NextMinor/{INSIDERSASTOKEN}"
+            "artifact": "///de/NextMinor/{INSIDERSASTOKEN}"
         }
     ]
 }
