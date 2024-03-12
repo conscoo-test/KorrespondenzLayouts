@@ -433,6 +433,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table lbt Source Setup - Field Type - Property OptionCaption</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2455767630 - Method 1287674469 - NamedType 809006720" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The editor cannot be opened because the line has not yet been inserted. Please save the line first.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt cl EditorHelper - Method EditLongtext - NamedType LineNotInsertedMsg</note>
+        </trans-unit>
         <trans-unit id="Codeunit 4073882909 - Method 3109373962 - NamedType 3847532890" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unsupported Table %1 for Longtext</source>
           <note from="Developer" annotates="general" priority="2">%1 - TableId</note>

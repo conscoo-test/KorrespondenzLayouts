@@ -377,8 +377,12 @@ codeunit 5272729 "lbt cl EditorHelper"
     local procedure EditLongtext(var RecRef: RecordRef; Position: Enum "lbt Position"; OtherDocType: Integer)
     var
         PSLongtextLn: Record "lbt PS Longtext Line";
+        LineNotInsertedMsg: Label 'The editor cannot be opened because the line has not yet been inserted. Please save the line first.';
     begin
-        SetPsLongtextLineFilter(PSLongtextLn, Position, OtherDocType, RecRef, true);
+        if not SetPsLongtextLineFilter(PSLongtextLn, Position, OtherDocType, RecRef, true) then begin
+            Message(LineNotInsertedMsg);
+            exit;
+        end;
         PSLongtextLn.EditData();
         if not PSLongtextLn."Editor Content".HasValue() then
             if PSLongtextLn.Delete(true) then;
@@ -779,13 +783,14 @@ codeunit 5272729 "lbt cl EditorHelper"
     end;
 
     local procedure SetPsLongtextLineFilter(var PSLongtextLn: Record "lbt PS Longtext Line"; Position: Enum "lbt Position"; OtherDocType: Integer;
-                                                                                                           RecRef: RecordRef;
-                                                                                                           InsertIfEmpty: Boolean)
+                                             RecRef: RecordRef; InsertIfEmpty: Boolean) SourceRecRefExists: Boolean
     var
         DocNo_FieldNo: Integer;
         DocType_FieldNo: Integer;
         LineNo_FieldNo: Integer;
+        LineNo: Integer;
     begin
+        SourceRecRefExists := true;
         AssignFieldNos(RecRef, DocNo_FieldNo, DocType_FieldNo, LineNo_FieldNo);
         PSLongtextLn.SetRange("Table ID", RecRef.Number);
         if OtherDocType = 0 then begin
@@ -796,8 +801,12 @@ codeunit 5272729 "lbt cl EditorHelper"
 
         PSLongtextLn.SetRange("Document No.", RecRef.Field(DocNo_FieldNo).Value);
         PSLongtextLn.SetRange(Position, Position);
-        if LineNo_FieldNo <> 0 then
-            PSLongtextLn.SetRange("Document Line No.", RecRef.Field(LineNo_FieldNo).Value);
+        if LineNo_FieldNo <> 0 then begin
+            LineNo := RecRef.Field(LineNo_FieldNo).Value;
+            if LineNo = 0 then
+                exit(false);
+            PSLongtextLn.SetRange("Document Line No.", LineNo);
+        end;
         if PSLongtextLn.FindFirst() then
             exit;
         if not InsertIfEmpty then

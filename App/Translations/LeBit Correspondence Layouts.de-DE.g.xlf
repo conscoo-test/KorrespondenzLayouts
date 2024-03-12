@@ -519,6 +519,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table lbt Source Setup - Field Type - Property OptionCaption</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2455767630 - Method 1287674469 - NamedType 809006720" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The editor cannot be opened because the line has not yet been inserted. Please save the line first.</source>
+          <target>Der Editor kann nicht geöffnet werden, da die Zeile noch nicht eingfügt wurde. Bitte speichern Sie die Zeile zuerst.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt cl EditorHelper - Method EditLongtext - NamedType LineNotInsertedMsg</note>
+        </trans-unit>
         <trans-unit id="Codeunit 4073882909 - Method 3109373962 - NamedType 3847532890" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unsupported Table %1 for Longtext</source>
           <target>Tabelle %1 wird für Langtexte nicht unterstützt</target>
@@ -2263,7 +2269,6 @@
           <source>Header and footer</source>
           <target>Kopf- und Fußtexte</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl Ship-to-Address - Action lbt cl LongTexts - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1446067974 - Control 3178038303 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1187003046">
