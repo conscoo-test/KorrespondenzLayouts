@@ -1,4 +1,4 @@
-reportextension 5272750 "lbt Order Confirmation" extends "ForNAV VAT Order Confirmation"
+reportextension 5266400 "lbt Order Confirmation" extends "ForNAV VAT Order Confirmation"
 {
     dataset
     {
