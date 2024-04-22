@@ -439,30 +439,16 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
                 SalesLine.Validate("lbt cl Price Factor", PriceListLine."lbt cl Price Factor");
     end;
 
-    [EventSubscriber(ObjectType::Table, Database::"Standard Customer Sales Code", 'OnAfterApplyStdCodesToSalesLinesLoop', '', false, false)]
-    local procedure StandardCustomerSalesCode_OnAfterApplyStdCodesToSalesLinesLoop(var SalesLine: Record "Sales Line"; StdSalesCode: Record "Standard Sales Code")
-    var
-        StdSalesLn: Record "Standard Sales Line";
+    [EventSubscriber(ObjectType::Table, Database::"Standard Customer Sales Code", 'OnAfterSalesLineInsert', '', false, false)]
+    local procedure "Standard Customer Sales Code_OnAfterSalesLineInsert"(var StdSalesLine: Record "Standard Sales Line"; var SalesLine: Record "Sales Line")
     begin
-        if SalesLine.FindSet() then
-            repeat
-                if not SalesLine.lbtHasEditorValue(SalesLine."Document Type".AsInteger()) then begin
-                    StdSalesLn.GetBySystemId(SalesLine."lbt from Standard Sales Line");
-                    LongtextMgt.CopyLongtext(StdSalesLn, SalesLine);
-                end;
-            until SalesLine.Next() = 0;
+        LongtextMgt.CopyLongtext(StdSalesLine, SalesLine);
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Standard Customer Sales Code", 'OnAfterCreateSalesInvoice', '', false, false)]
     local procedure StandardCustomerSalesCode_OnAfterCreateSalesInvoice(StandardCustomerSalesCode: Record "Standard Customer Sales Code"; var SalesHeader: Record "Sales Header")
     begin
         LongtextMgt.CopyLongtext(StandardCustomerSalesCode, SalesHeader);
-    end;
-
-    [EventSubscriber(ObjectType::Table, Database::"Standard Customer Sales Code", 'OnBeforeApplyStdCodesToSalesLines', '', false, false)]
-    local procedure StandardCustomerSalesCode_OnBeforeApplyStdCodesToSalesLines(var SalesLine: Record "Sales Line"; StdSalesLine: Record "Standard Sales Line")
-    begin
-        SalesLine."lbt from Standard Sales Line" := StdSalesLine.SystemId;
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Purch. Rcpt. Line", 'OnBeforeInsertInvLineFromRcptLine', '', false, false)]

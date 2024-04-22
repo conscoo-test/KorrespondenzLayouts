@@ -113,6 +113,9 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
         }
         field(5272728; "lbt from Standard Sales Line"; Guid)
         {
+            ObsoleteReason = 'Removed, no longer needed.';
+            ObsoleteState = Pending;
+            ObsoleteTag = '2024-04-22';
             Caption = 'From Standard Sales Line';
             DataClassification = CustomerContent;
         }
