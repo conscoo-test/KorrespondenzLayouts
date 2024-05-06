@@ -258,6 +258,7 @@ report 5272731 "lbt Reminder"
 
                     trigger OnAfterGetRecord()
                     begin
+                        ReminderInterestAmount := 0;
                         TempVATAmountLine.Init();
                         TempVATAmountLine."VAT Identifier" := "VAT Identifier";
                         TempVATAmountLine."VAT Calculation Type" := "VAT Calculation Type";
