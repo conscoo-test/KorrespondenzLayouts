@@ -15,6 +15,18 @@ page 5272730 "lbt cl Longtext SysId"
                 field("Document Type"; Rec."Document Type")
                 {
                     ApplicationArea = All;
+                    Visible = not PurchDocTypeVisible;
+                }
+                field(PurchDocType; PurchDocType)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Document Type';
+                    Visible = PurchDocTypeVisible;
+
+                    trigger OnValidate()
+                    begin
+                        Rec."Document Type" := Enum::"Sales Document Type".FromInteger(PurchDocType.AsInteger());
+                    end;
                 }
                 field(FilteredPositionField; PositionAsText)
                 {
@@ -50,10 +62,14 @@ page 5272730 "lbt cl Longtext SysId"
     }
 
     trigger OnOpenPage()
+    var
+        TableId: Integer;
     begin
         if CaptionText = '' then
             CaptionText := GetCaptionFromSourceRec();
         CurrPage.Caption := CaptionText;
+        if Evaluate(TableId, Rec.GetFilter("Table Id")) then
+            PurchDocTypeVisible := TableId = Database::Vendor;
     end;
 
     local procedure UpdatePositionText()
@@ -99,6 +115,7 @@ page 5272730 "lbt cl Longtext SysId"
     trigger OnAfterGetRecord()
     begin
         UpdatePositionText();
+        PurchDocType := Enum::"Purchase Document Type".FromInteger(Rec."Document Type".AsInteger());
     end;
 
     trigger OnNewRecord(BelowxRec: Boolean)
@@ -111,5 +128,7 @@ page 5272730 "lbt cl Longtext SysId"
         TempOptionLookupBuffer: Record "Option Lookup Buffer" temporary;
         PositionAsText: Text[30];
         CaptionText: Text;
+        PurchDocType: Enum "Purchase Document Type";
+        PurchDocTypeVisible: Boolean;
 }
 

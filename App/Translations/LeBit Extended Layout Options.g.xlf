@@ -563,6 +563,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt cl Longtext SysId - Control lbt Editor - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3307056346 - Control 1793822400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt cl Longtext SysId - Control PurchDocType - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3747984497 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Viewer</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6242,6 +6247,11 @@
           <source>LongText</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension lbt cl Option Lookup Type - EnumValue lbt cl Longtext - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 1249064770 - EnumValue 301608474 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 1117131368">
+          <source>Shipment/Receipt</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension lbt Purchase Document Type - EnumValue lbt cl Shipment/Receipt - Property Caption</note>
         </trans-unit>
         <trans-unit id="EnumExtension 387248199 - EnumValue 301608474 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3710813537">
           <source>Shipment/Receipt</source>
