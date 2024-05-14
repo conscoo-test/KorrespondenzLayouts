@@ -599,7 +599,7 @@ report 5272733 "lbt cl Service Quote"
 
         trigger OnOpenPage()
         begin
-            LogInteraction := SegManagement.FindInteractTmplCode(25) <> '';
+            LogInteraction := SegManagement.FindInteractionTemplateCode("Interaction Log Entry Document Type"::"Service Quote") <> '';
             LogInteractionEnable := LogInteraction;
         end;
     }

@@ -688,7 +688,7 @@ report 5272729 "lbt Blanket Purchase Order"
         trigger OnOpenPage()
         begin
             ArchiveDocument := PurchSetup."Archive Blanket Orders";
-            LogInteraction := SegManagement.FindInteractTmplCode(11) <> '';
+            LogInteraction := SegManagement.FindInteractionTemplateCode("Interaction Log Entry Document Type"::"Purch. Blnkt. Ord.") <> '';
 
             LogInteractionEnable := LogInteraction;
         end;

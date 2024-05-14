@@ -1309,7 +1309,7 @@ report 5272721 "lbt Order Confirmation"
         trigger OnOpenPage()
         begin
             ArchiveDocument := SalesSetup."Archive Orders";
-            LogInteraction := SegManagement.FindInteractTmplCode(3) <> '';
+            LogInteraction := SegManagement.FindInteractionTemplateCode("Interaction Log Entry Document Type"::"Sales Ord. Cnfrmn.") <> '';
 
             LogInteractionEnable := LogInteraction;
         end;

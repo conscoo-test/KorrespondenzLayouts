@@ -1247,7 +1247,7 @@ report 5272728 "lbt Order"
         trigger OnOpenPage()
         begin
             ArchiveDocument := PurchSetup."Archive Orders";
-            LogInteraction := SegManagement.FindInteractTmplCode(13) <> '';
+            LogInteraction := SegManagement.FindInteractionTemplateCode("Interaction Log Entry Document Type"::"Purch. Ord.") <> '';
 
             LogInteractionEnable := LogInteraction;
         end;

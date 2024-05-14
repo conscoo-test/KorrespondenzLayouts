@@ -971,7 +971,7 @@ report 5272724 "lbt Sales - Shipment"
     #region InitLogInteraction
     procedure InitLogInteraction()
     begin
-        LogInteraction := SegManagement.FindInteractTmplCode(5) <> '';
+        LogInteraction := SegManagement.FindInteractionTemplateCode("Interaction Log Entry Document Type"::"Sales Shpt. Note") <> '';
     end;
     #endregion InitLogInteraction
 
