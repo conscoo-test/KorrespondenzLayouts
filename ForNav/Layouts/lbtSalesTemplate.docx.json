@@ -4,7 +4,7 @@
   "@Font": "Segoe UI, 8pt",
   "@Margins": "300, 100, 200, 200",
   "@ReportsForNavVersion": "7.2.0.2496",
-  "@ObjectName": "lbt Purchase Template",
+  "@ObjectName": "lbt Sales Template",
   "@OnPreReportScript": [
     "function LineMaster() {",
     "    // put stuff here, that should run in all reports",
@@ -25,7 +25,7 @@
       "@MaxIteration": "10",
       "@DataItemTableView": "SORTING(\"No.\")",
       "@DataItemVarName": "Header",
-      "@DataItemTable": "Table122",
+      "@DataItemTable": "Table112",
       "Bands": {
         "DocumentHeader": {
           "@ControlType": "Header",
@@ -69,7 +69,7 @@
               "@Font": "Segoe UI, 8pt",
               "@ForeColor": "Black",
               "@HorzAlign": "Right",
-              "@SourceExpression": "Header.Pay_toVendorNo"
+              "@SourceExpression": "Header.Bill_toCustomerNo"
             },
             "CurrReport_Page": {
               "@Name": "CurrReport_Page",
@@ -104,7 +104,7 @@
               "@MultiLine": "true",
               "@VertAlign": "Top",
               "@HorzAlign": "Left",
-              "@SourceExpression": "Header.FieldGroups.Pay_toAddress",
+              "@SourceExpression": "Header.FieldGroups.Bill_toAddress",
               "@CanGrow": "true"
             },
             "Header_FieldLookups_CustomerCaption": {
@@ -117,7 +117,7 @@
               "@ForeColor": "Black",
               "@VertAlign": "Top",
               "@HorzAlign": "Left",
-              "@SourceExpression": "Header.FieldLookups.VendorCaption"
+              "@SourceExpression": "Header.FieldLookups.CustomerCaption"
             },
             "Header_FieldCaptions_VATRegistrationNo": {
               "@Name": "Header_FieldCaptions_VATRegistrationNo",
@@ -195,7 +195,7 @@
               "@Font": "Segoe UI, 8pt",
               "@ForeColor": "Black",
               "@HorzAlign": "Right",
-              "@SourceExpression": "Vendor.OurAccountNo"
+              "@SourceExpression": "Header.No"
             },
             "TextBox1": {
               "@Name": "TextBox1",
@@ -207,7 +207,7 @@
               "@ForeColor": "Black",
               "@VertAlign": "Top",
               "@HorzAlign": "Left",
-              "@SourceExpression": "Vendor.FieldCaptions.OurAccountNo"
+              "@SourceExpression": "Header.FieldCaptions.No"
             },
             "TextBox8": {
               "@Name": "TextBox8",
@@ -226,9 +226,8 @@
               "@Size": "447.666138,40",
               "@Location": "1257.33313,557.4999",
               "@Dpi": "254",
-              "@Font": "Segoe UI, 8pt",
               "@HorzAlign": "Right",
-              "@SourceExpression": "Header.FieldLookups.PurchaserName"
+              "@SourceExpression": "Header.FieldLookups.SalespersonName"
             },
             "TextBox13": {
               "@Name": "TextBox13",
@@ -385,7 +384,7 @@
           "@DataItemLink": "\"Document No.\" = FIELD(\"No.\")",
           "@DataItemTableView": "SORTING(\"Document No.\", \"Line No.\")",
           "@DataItemVarName": "Line",
-          "@DataItemTable": "Table123",
+          "@DataItemTable": "Table113",
           "Bands": {
             "LinesHeader": {
               "@ControlType": "Header",
@@ -478,7 +477,7 @@
                           "@Font": "Segoe UI, 8pt, style=Bold",
                           "@Weight": "6.8042905046477546",
                           "@MultiLine": "true",
-                          "@SourceExpression": "Line.FieldCaptions.UnitCost",
+                          "@SourceExpression": "Line.FieldCaptions.UnitPrice",
                           "@VertAlign": "Bottom",
                           "@CanShrink": "true",
                           "@HorzAlign": "Right"
@@ -588,7 +587,7 @@
                           "@Font": "Segoe UI, 8pt, style=Bold",
                           "@Weight": "6.8042905046477546",
                           "@MultiLine": "true",
-                          "@SourceExpression": "Line.FieldCaptions.UnitCost",
+                          "@SourceExpression": "Line.FieldCaptions.UnitPrice",
                           "@VertAlign": "Bottom",
                           "@CanShrink": "true",
                           "@HorzAlign": "Right"
@@ -1023,7 +1022,7 @@
                           "@Font": "Segoe UI, 8pt",
                           "@Weight": "0.59682747770915978",
                           "@BlankZero": "true",
-                          "@SourceExpression": "Line.UnitCost",
+                          "@SourceExpression": "Line.UnitPrice",
                           "@VertAlign": "Top",
                           "@HorzAlign": "Right"
                         },
@@ -1097,6 +1096,10 @@
               "@FieldName": "Quantity",
               "@FieldNo": "15"
             },
+            "UnitPrice": {
+              "@FieldName": "Unit Price",
+              "@FieldNo": "22"
+            },
             "LineDiscountPct": {
               "@FieldName": "Line Discount %",
               "@FieldNo": "27"
@@ -1104,10 +1107,6 @@
             "Amount": {
               "@FieldName": "Amount",
               "@FieldNo": "29"
-            },
-            "UnitCost": {
-              "@FieldName": "Unit Cost",
-              "@FieldNo": "100"
             },
             "lbtPrintoption": {
               "@FieldName": "lbt Printoption",
@@ -1441,8 +1440,28 @@
               "@Dpi": "254",
               "@Signature": "abc",
               "@CanGrow": "true",
-              "@Height": "127",
+              "@Height": "243.839767",
               "Controls": {
+                "TextBox15": {
+                  "@Name": "TextBox15",
+                  "@ControlType": "TextBox",
+                  "@Size": "847.666748,58.4198761",
+                  "@Location": "2.333191,185.419891",
+                  "@Dpi": "254",
+                  "@VertAlign": "Top",
+                  "@HorzAlign": "Left",
+                  "@SourceExpression": "Header.FieldGroups.Ship_toAddress",
+                  "@CanGrow": "true"
+                },
+                "TextBox11": {
+                  "@Name": "TextBox11",
+                  "@ControlType": "TextBox",
+                  "@Size": "849.999939,58.41989",
+                  "@Location": "0,127",
+                  "@Dpi": "254",
+                  "@Font": "Segoe UI, 8pt, style=Bold",
+                  "@SourceExpression": "Header.FieldCaptions.Ship_toAddress"
+                },
                 "table4": {
                   "@Name": "table4",
                   "@ControlType": "Table",
@@ -1534,16 +1553,12 @@
         }
       },
       "Fields": {
-        "Buy_fromVendorNo": {
-          "@FieldName": "Buy-from Vendor No.",
-          "@FieldNo": "2"
-        },
         "No": {
           "@FieldName": "No.",
           "@FieldNo": "3"
         },
-        "Pay_toVendorNo": {
-          "@FieldName": "Pay-to Vendor No.",
+        "Bill_toCustomerNo": {
+          "@FieldName": "Bill-to Customer No.",
           "@FieldNo": "4"
         },
         "YourReference": {
@@ -1720,27 +1735,6 @@
         "No": {
           "@FieldName": "No.",
           "@FieldNo": "1"
-        }
-      }
-    },
-    "Vendor": {
-      "@Table": "Vendor",
-      "@No": "23",
-      "@Name": "Vendor",
-      "@DataItemLinkReference": "Header",
-      "@DataItemLink": "\"No.\" = FIELD(\"Buy-from Vendor No.\")",
-      "Fields": {
-        "No": {
-          "@FieldName": "No.",
-          "@FieldNo": "1"
-        },
-        "OurAccountNo": {
-          "@FieldName": "Our Account No.",
-          "@FieldNo": "14"
-        },
-        "FormatRegion": {
-          "@FieldName": "Format Region",
-          "@FieldNo": "48"
         }
       }
     }
