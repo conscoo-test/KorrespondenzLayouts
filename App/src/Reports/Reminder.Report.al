@@ -634,7 +634,7 @@ report 50731 "lbt Reminder"
 
         trigger OnOpenPage()
         begin
-            LogInteraction := SegManagement.FindInteractTmplCode(8) <> '';
+            LogInteraction := SegManagement.FindInteractionTemplateCode("Interaction Log Entry Document Type"::"Sales Rmdr.") <> '';
             LogInteractionEnable := LogInteraction;
         end;
     }

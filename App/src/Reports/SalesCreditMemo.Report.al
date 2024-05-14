@@ -926,7 +926,7 @@ report 50723 "lbt Sales - Credit Memo"
 
         trigger OnOpenPage()
         begin
-            LogInteraction := SegManagement.FindInteractTmplCode(6) <> '';
+            LogInteraction := SegManagement.FindInteractionTemplateCode("Interaction Log Entry Document Type"::"Sales Cr. Memo") <> '';
             LogInteractionEnable := LogInteraction;
         end;
     }
@@ -1077,7 +1077,7 @@ report 50723 "lbt Sales - Credit Memo"
 
     procedure InitLogInteraction()
     begin
-        LogInteraction := SegManagement.FindInteractTmplCode(6) <> '';
+        LogInteraction := SegManagement.FindInteractionTemplateCode("Interaction Log Entry Document Type"::"Sales Cr. Memo") <> '';
     end;
 
     local procedure FindPostedShipmentDate(): Date

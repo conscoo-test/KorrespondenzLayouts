@@ -959,7 +959,7 @@ report 50725 "lbt Blanket Sales Order"
         trigger OnOpenPage()
         begin
             ArchiveDocument := SalesSetup."Archive Blanket Orders";
-            LogInteraction := SegManagement.FindInteractTmplCode(3) <> '';
+            LogInteraction := SegManagement.FindInteractionTemplateCode("Interaction Log Entry Document Type"::"Sales Blnkt. Ord") <> '';
 
             LogInteractionEnable := LogInteraction;
         end;

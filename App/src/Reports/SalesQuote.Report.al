@@ -967,7 +967,7 @@ report 50720 "lbt Sales - Quote"
                 SalesSetup."Archive Quotes"::Always:
                     ArchiveDocument := true;
             end;
-            LogInteraction := SegManagement.FindInteractTmplCode(1) <> '';
+            LogInteraction := SegManagement.FindInteractionTemplateCode("Interaction Log Entry Document Type"::"Sales Qte.") <> '';
 
             LogInteractionEnable := LogInteraction;
         end;

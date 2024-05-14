@@ -691,7 +691,7 @@ report 50727 "lbt Purchase - Quote"
                 PurchSetup."Archive Quotes"::Always:
                     ArchiveDocument := true;
             end;
-            LogInteraction := SegManagement.FindInteractTmplCode(11) <> '';
+            LogInteraction := SegManagement.FindInteractionTemplateCode("Interaction Log Entry Document Type"::"Purch.Qte.") <> '';
 
             LogInteractionEnable := LogInteraction;
         end;

@@ -1385,7 +1385,7 @@ report 50726 "lbt Sales pro forma Invoice"
         trigger OnOpenPage()
         begin
             ArchiveDocument := SalesSetup."Archive Orders";
-            LogInteraction := SegManagement.FindInteractTmplCode(3) <> '';
+            LogInteraction := SegManagement.FindInteractionTemplateCode("Interaction Log Entry Document Type"::"Sales Draft Invoice") <> '';
 
             LogInteractionEnable := LogInteraction;
         end;

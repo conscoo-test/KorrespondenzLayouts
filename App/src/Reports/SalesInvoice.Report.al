@@ -1233,7 +1233,7 @@ report 50722 "lbt Sales - Invoice"
 
     procedure InitLogInteraction()
     begin
-        LogInteraction := SegManagement.FindInteractTmplCode(4) <> '';
+        LogInteraction := SegManagement.FindInteractionTemplateCode("Interaction Log Entry Document Type"::"Sales Inv.") <> '';
     end;
 
     procedure FindPostedShipmentDate(): Date
