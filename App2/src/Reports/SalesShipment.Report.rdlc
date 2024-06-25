@@ -1974,7 +1974,7 @@
                                           <TablixMember />
                                           <TablixMember>
                                             <Visibility>
-                                              <Hidden>=IIF(Fields!ShowGroup.Value = "True",False,True)</Hidden>
+                                              <Hidden>=IIF(Fields!ShowTotal.Value = "True",False,True)</Hidden>
                                             </Visibility>
                                           </TablixMember>
                                           <TablixMember>
@@ -3305,7 +3305,6 @@
                                               <PaddingRight>2pt</PaddingRight>
                                             </Style>
                                           </Textbox>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell>
@@ -4361,10 +4360,10 @@
                               <TablixBody>
                                 <TablixColumns>
                                   <TablixColumn>
-                                    <Width>2.47674cm</Width>
+                                    <Width>1.47674cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>2.77326cm</Width>
+                                    <Width>3.77326cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
                                     <Width>3.36326cm</Width>

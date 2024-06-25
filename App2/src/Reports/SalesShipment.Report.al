@@ -636,7 +636,7 @@ report 5272724 "lbt Sales - Shipment"
                                 TempTrackingSpecBuffer."Quantity (Base)" := -TempTrackingSpecBuffer."Quantity (Base)";
 
                             ShowTotal := false;
-                            if ItemTrackingAppendix.IsStartNewGroup(TempTrackingSpecBuffer) then
+                            if IsStartNewGroup(TempTrackingSpecBuffer) then
                                 ShowTotal := true;
 
                             ShowGroup := false;
@@ -1044,6 +1044,25 @@ report 5272724 "lbt Sales - Shipment"
         exit(TitleLbl);
     end;
     #endregion DocumentCaption
+
+    procedure IsStartNewGroup(var TrackingSpecBuffer: Record "Tracking Specification" temporary): Boolean
+    var
+        TrackingSpecBuffer2: Record "Tracking Specification" temporary;
+        SourceRef: Integer;
+    begin
+        TrackingSpecBuffer2 := TrackingSpecBuffer;
+        SourceRef := TrackingSpecBuffer2."Source Ref. No.";
+        if TrackingSpecBuffer.Next() = 0 then begin
+            TrackingSpecBuffer := TrackingSpecBuffer2;
+            exit(true);
+        end;
+        if SourceRef <> TrackingSpecBuffer."Source Ref. No." then begin
+            TrackingSpecBuffer := TrackingSpecBuffer2;
+            exit(true);
+        end;
+        TrackingSpecBuffer := TrackingSpecBuffer2;
+        exit(false);
+    end;
 
     #region OnBeforeGetDocumentCaption
     [IntegrationEvent(false, false)]
