@@ -939,9 +939,15 @@ codeunit 5272729 "lbt cl EditorHelper"
                 if IsOrderOrCustomer(TargetRecRef) then
                     if SourceType = 5 then
                         TargetMemo.Field(2).Value := SourceMemo.Field(3).Value
-                    else
-                        if not IsQuote(SourceRecRef) then
+                    else begin
+
+                        if (not IsQuote(SourceRecRef)) and (SourceType = 1) then
                             TargetMemo.Field(2).Value := SourceMemo.Field(2).Value;
+                        if IsInvoice(SourceRecRef) then
+                            TargetMemo.Field(2).Value := Enum::"Sales Document Type"::Invoice;
+                        if IsShipment(SourceRecRef) then
+                            TargetMemo.Field(2).Value := Enum::"Sales Document Type"::"lbt cl Shipment/Receipt";
+                    end;
                 CopyMemoFields(TargetMemo, SourceMemo);
                 if not TargetMemo.Insert() then begin
                     ///Überschreiben ermöglichen

@@ -34,6 +34,29 @@ page 5272728 "lbt Corr Setup"
         }
     }
 
+    actions
+    {
+        area(Processing)
+        {
+            action("Delete Empty Textheaders")
+            {
+                Caption = 'Delete Empty Textheaders';
+                Image = Delete;
+
+                trigger OnAction()
+                var
+                    ExtendedTextHeader: Record "Extended Text Header";
+                    DeleteQst: Label 'Are you sure you want to delete all empty textheaders?';
+                begin
+                    if not Confirm(DeleteQst) then
+                        exit;
+                    ExtendedTextHeader.SetRange("Table Name", ExtendedTextHeader."Table Name"::"Standard Text");
+                    ExtendedTextHeader.SetRange("No.", '');
+                    ExtendedTextHeader.DeleteAll(true);
+                end;
+            }
+        }
+    }
     trigger OnOpenPage()
     begin
         Rec.Reset();
