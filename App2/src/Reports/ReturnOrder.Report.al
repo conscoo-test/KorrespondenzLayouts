@@ -960,7 +960,7 @@ report 5272730 "lbt Return Order"
         trigger OnOpenPage()
         begin
             ArchiveDocument := PurchSetup."Archive Return Orders";
-            LogInteraction := SegManagement.FindInteractTmplCode(13) <> '';
+            LogInteraction := SegManagement.FindInteractionTemplateCode("Interaction Log Entry Document Type"::"Purch. Return Ord. Cnfrmn.") <> '';
 
             LogInteractionEnable := LogInteraction;
         end;
