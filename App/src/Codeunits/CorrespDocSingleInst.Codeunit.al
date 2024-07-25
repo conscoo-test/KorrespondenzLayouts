@@ -30,14 +30,16 @@ codeunit 5272722 "lbt Corresp. Doc. SingleInst"
                     case Type of
                         Type::Header:
                             begin
-                                SalesOrderHeader.Get(SalesOrderHeader."Document Type"::Order, SalesShipmentHeader."Order No.");
+                                if not SalesOrderHeader.Get(SalesOrderHeader."Document Type"::Order, SalesShipmentHeader."Order No.") then
+                                    exit;
                                 SourceRecRef.GetTable(SalesOrderHeader);
                                 TargetRecRef.GetTable(SalesShipmentHeader);
                                 LongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
                             end;
                         Type::Lines:
                             begin
-                                SalesOrderLine.Get(SalesOrderLine."Document Type"::Order, SalesShipmentLine."Order No.", SalesShipmentLine."Order Line No.");
+                                if not SalesOrderLine.Get(SalesOrderLine."Document Type"::Order, SalesShipmentLine."Order No.", SalesShipmentLine."Order Line No.") then
+                                    exit;
                                 SourceRecRef.GetTable(SalesOrderLine);
                                 TargetRecRef.GetTable(SalesShipmentLine);
                                 LongtextMgt.CopyLongtext(SourceRecRef, TargetRecRef);
