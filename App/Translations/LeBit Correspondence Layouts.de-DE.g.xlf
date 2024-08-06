@@ -825,6 +825,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Action Delete Empty Textheaders - Method OnAction - NamedType DeleteQst</note>
         </trans-unit>
+        <trans-unit id="Page 214935587 - Action 2384739207 - Method 1377591017 - NamedType 1556380518" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Deleted %1 empty textheaders.</source>
+          <target>Es wurden %1 leere Textbausteine gelöscht.</target>
+          <note from="Developer" annotates="general" priority="2">%1=Count</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Action Delete Empty Textheaders - Method OnAction - NamedType SuccessMsg</note>
+        </trans-unit>
         <trans-unit id="Page 435237695 - Control 1821279055 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Here you can enter the text.</source>
           <target>Hier ist die Texteingabe möglich.</target>
