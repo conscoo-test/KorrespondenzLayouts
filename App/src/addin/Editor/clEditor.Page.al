@@ -53,7 +53,7 @@ page 5272731 "lbt cl Editor"
                 trigger OnAction()
                 var
                     ExtTxtHdr: Record "Extended Text Header";
-                    ExtendedTextList: Page "Extended Text List";
+                    ExtendedTextList: Page "lbt cl Extended Text List";
                     seperatorLbl: Label '%1<p>###### %2 ######</p>%3', Locked = true;
                     content: Text;
                 begin

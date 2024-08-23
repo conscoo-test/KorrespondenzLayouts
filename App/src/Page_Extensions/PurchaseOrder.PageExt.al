@@ -31,6 +31,50 @@ pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
                         Rec.lbtEditData(Enum::"lbt Position"::EditorFooter, Rec."Document Type".AsInteger());
                     end;
                 }
+                field("lbt Editor Shipment Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, Rec."Document Type"::"lbt cl Shipment/Receipt".AsInteger()))
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                    ToolTip = 'Editor Shipment Header';
+                    Caption = 'Editor Shipment Header';
+                    trigger OnAssistEdit()
+                    begin
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorHeader, Rec."Document Type"::"lbt cl Shipment/Receipt".AsInteger());
+                    end;
+                }
+                field("lbt Editor Shipment Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter, Rec."Document Type"::"lbt cl Shipment/Receipt".AsInteger()))
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                    ToolTip = 'Editor Shipment Footer';
+                    Caption = 'Editor Shipment Footer';
+                    trigger OnAssistEdit()
+                    begin
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorFooter, Rec."Document Type"::"lbt cl Shipment/Receipt".AsInteger());
+                    end;
+                }
+                field("lbt Editor Invoice Header"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorHeader, Rec."Document Type"::Invoice.AsInteger()))
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                    ToolTip = 'Editor Invoice Header';
+                    Caption = 'Editor Invoice Header';
+                    trigger OnAssistEdit()
+                    begin
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorHeader, Rec."Document Type"::Invoice.AsInteger());
+                    end;
+                }
+                field("lbt Editor Invoice Footer"; Rec.lbtHasEditorValue(Enum::"lbt Position"::EditorFooter, Rec."Document Type"::Invoice.AsInteger()))
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                    ToolTip = 'Editor Invoice Footer';
+                    Caption = 'Editor Invoice Footer';
+                    trigger OnAssistEdit()
+                    begin
+                        Rec.lbtEditData(Enum::"lbt Position"::EditorFooter, Rec."Document Type"::Invoice.AsInteger());
+                    end;
+                }
             }
         }
     }

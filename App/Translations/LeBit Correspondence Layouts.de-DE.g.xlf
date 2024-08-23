@@ -651,6 +651,90 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt cl Editor Preview Sub - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 395829319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Extended Text List</source>
+          <target>Textbausteinübersicht</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt cl Extended Text List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 395829319 - Control 3871730279 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the text should be used for all language codes. If a language code has been chosen in the Language Code field, it will be overruled by this function.</source>
+          <target>Legt fest, dass der Text für alle Sprachcodes verwendet werden soll. Wenn im Feld „Sprachcode“ ein Sprachcode ausgewählt wurde, wird er durch diese Funktion überschrieben.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt cl Extended Text List - Control All Language Codes - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 395829319 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the content of the extended item description.</source>
+          <target>Legt den Inhalt der erweiterten Artikelbeschreibung fest.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt cl Extended Text List - Control Description - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 395829319 - Control 458406397 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies a date on which the text will no longer be used on the item, account, resource or standard text.</source>
+          <target>Legt ein Datum fest, an dem der Text für den Artikel, das Konto, die Ressource oder den Standardtext nicht mehr verwendet wird.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt cl Extended Text List - Control Ending Date - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 395829319 - Control 2273653569 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the language that is used when translating specified text on documents to foreign business partner, such as an item description on an order confirmation.</source>
+          <target>Gibt die Sprache an, die verwendet wird, wenn der angegebene Text auf Belegen für ausländische Geschäftspartner übersetzt wird, z. B. eine Beschreibung des Artikels auf einer Auftragsbestätigung.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt cl Extended Text List - Control Language Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 395829319 - Control 4042331808 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the text will be available on purchase credit memos.</source>
+          <target>Gibt an, ob der Text auf Einkaufsgutschriften verfügbar sein soll.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt cl Extended Text List - Control Purchase Credit Memo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 395829319 - Control 2437096118 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the text will be available on purchase invoices.</source>
+          <target>Gibt an, ob der Text auf Einkaufsrechnungen verfügbar sein soll.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt cl Extended Text List - Control Purchase Invoice - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 395829319 - Control 387971303 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the text will be available on purchase orders.</source>
+          <target>Gibt an, ob der Text auf Bestellungen verfügbar sein soll.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt cl Extended Text List - Control Purchase Order - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 395829319 - Control 3321822267 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the text will be available on purchase quotes.</source>
+          <target>Gibt an, ob der Text auf Einkaufsangeboten verfügbar sein soll.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt cl Extended Text List - Control Purchase Quote - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 395829319 - Control 1708100201 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the text will be available on sales credit memos.</source>
+          <target>Gibt an, ob der Text auf Verkaufsgutschriften verfügbar sein soll.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt cl Extended Text List - Control Sales Credit Memo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 395829319 - Control 4034894651 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the text will be available on sales invoices.</source>
+          <target>Gibt an, ob der Text auf Verkaufsrechnungen verfügbar sein soll.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt cl Extended Text List - Control Sales Invoice - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 395829319 - Control 1673401186 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the text will be available on sales orders.</source>
+          <target>Gibt an, ob der Text auf Verkaufsaufträgen verfügbar sein soll.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt cl Extended Text List - Control Sales Order - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 395829319 - Control 280137910 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the text will be available on sales quotes.</source>
+          <target>Gibt an, ob der Text auf Verkaufsangeboten verfügbar sein soll.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt cl Extended Text List - Control Sales Quote - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 395829319 - Control 460889064 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies a date from which the text will be used on the item, account, resource or standard text.</source>
+          <target>Legt ein Datum fest, ab dem der Text für den Artikel, das Konto, die Ressource oder den Standardtext verwendet wird.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt cl Extended Text List - Control Starting Date - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 3307056346 - Method 1281643657 - NamedType 859441709" size-unit="char" translate="yes" xml:space="preserve">
           <source>Headers and Footers</source>
           <target>Kopf- und Fußtexte</target>
@@ -728,6 +812,24 @@
           <target>Diese Option beeinflusst das Kopieren von Kopf- und Fußtexten aus dem Angebot in den Verkaufsauftrag.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control Copy Quote Texts - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Action 2384739207 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete Empty Textheaders</source>
+          <target>Leere Standardtexte löschen</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Action Delete Empty Textheaders - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Action 2384739207 - Method 1377591017 - NamedType 2367821945" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Are you sure you want to delete all empty textheaders?</source>
+          <target>Sind Sie sicher, dass Sie alle leeren Textbausteine zu Standardtexten löschen wollen?</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Action Delete Empty Textheaders - Method OnAction - NamedType DeleteQst</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Action 2384739207 - Method 1377591017 - NamedType 1556380518" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Deleted %1 empty textheaders.</source>
+          <target>Es wurden %1 leere Textbausteine gelöscht.</target>
+          <note from="Developer" annotates="general" priority="2">%1=Count</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Action Delete Empty Textheaders - Method OnAction - NamedType SuccessMsg</note>
         </trans-unit>
         <trans-unit id="Page 435237695 - Control 1821279055 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Here you can enter the text.</source>
@@ -4335,6 +4437,54 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purchase Order - Control lbt Editor Header - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 856131825 - Control 985919857 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Editor Invoice Footer</source>
+          <target>Editor Rechnung Fuss</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purchase Order - Control lbt Editor Invoice Footer - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 856131825 - Control 985919857 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Editor Invoice Footer</source>
+          <target>Editor Rechnung Fuss</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purchase Order - Control lbt Editor Invoice Footer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 856131825 - Control 3693876391 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Editor Invoice Header</source>
+          <target>Editor Rechnung Kopf</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purchase Order - Control lbt Editor Invoice Header - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 856131825 - Control 3693876391 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Editor Invoice Header</source>
+          <target>Editor Rechnung Kopf</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purchase Order - Control lbt Editor Invoice Header - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 856131825 - Control 3816522682 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Editor Shipment Footer</source>
+          <target>Editor Lieferung Fuss</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purchase Order - Control lbt Editor Shipment Footer - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 856131825 - Control 3816522682 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Editor Shipment Footer</source>
+          <target>Editor Lieferung Fuss</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purchase Order - Control lbt Editor Shipment Footer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 856131825 - Control 311801328 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Editor Shipment Header</source>
+          <target>Editor Lieferung Kopf</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purchase Order - Control lbt Editor Shipment Header - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 856131825 - Control 311801328 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Editor Shipment Header</source>
+          <target>Editor Lieferung Kopf</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purchase Order - Control lbt Editor Shipment Header - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 556488479 - Action 2738780584 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4198988281">
           <source>LeBit Extended Layout Options</source>
           <target>LeBit Erweiterte Layoutoptionen</target>
@@ -5477,7 +5627,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 27098008 - Control 3693876391 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
           <source>Editor Invoice Header</source>
-          <target>Editor rechnung Kopf</target>
+          <target>Editor Rechnung Kopf</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Sales Order - Control lbt Editor Invoice Header - Property ToolTip</note>
         </trans-unit>
@@ -5489,7 +5639,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 27098008 - Control 3816522682 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
           <source>Editor Shipment Footer</source>
-          <target>Editor Lieferung Kopf</target>
+          <target>Editor Lieferung Fuss</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Sales Order - Control lbt Editor Shipment Footer - Property ToolTip</note>
         </trans-unit>
