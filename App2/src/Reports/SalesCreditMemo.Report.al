@@ -848,7 +848,7 @@ report 5272723 "lbt Sales - Credit Memo"
 
             trigger OnAfterGetRecord()
             begin
-                CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
+                CurrReport.Language := LanguageCU.GetLanguageIdOrDefault("Language Code");
                 FormatAddressFields("Sales Cr.Memo Header");
                 FormatDocumentFields("Sales Cr.Memo Header");
                 CompanyInfo."lbt SetReportFooter"(Footer);
@@ -972,7 +972,7 @@ report 5272723 "lbt Sales - Credit Memo"
         PaymentMethod: Record "Payment Method";
         ShipmentMethod: Record "Shipment Method";
         CorrSetup: Record "lbt Corr Setup";
-        Language: Codeunit Language;
+        LanguageCU: Codeunit Language;
         LeBitReportFunctions: Codeunit "lbt Report Functions";
         PrintLongText: Codeunit "lbt cl Print Longtext";
         TempBlobList: Codeunit "Temp Blob List";

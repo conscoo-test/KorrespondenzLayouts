@@ -1256,7 +1256,7 @@ report 5272726 "lbt Sales pro forma Invoice"
 
             trigger OnAfterGetRecord()
             begin
-                CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
+                CurrReport.Language := LanguageCU.GetLanguageIdOrDefault("Language Code");
                 CompanyInfo."lbt SetReportFooter"(Footer);
                 OrderNo := '';
                 Counter := 0;
@@ -1449,7 +1449,7 @@ report 5272726 "lbt Sales pro forma Invoice"
         Item: Record Item;
         SalesLineRec: Record "Sales Line";
         CorrSetup: Record "lbt Corr Setup";
-        Language: Codeunit Language;
+        LanguageCU: Codeunit Language;
         LeBitReportFunctions: Codeunit "lbt Report Functions";
         PrintLongText: Codeunit "lbt cl Print Longtext";
         TempBlobList: Codeunit "Temp Blob List";

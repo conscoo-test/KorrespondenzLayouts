@@ -752,7 +752,7 @@ report 5272724 "lbt Sales - Shipment"
             #region OnAfterGetRecord
             trigger OnAfterGetRecord()
             begin
-                CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
+                CurrReport.Language := LanguageCU.GetLanguageIdOrDefault("Language Code");
                 FormatAddressFields("Sales Shipment Header");
                 FormatDocumentFields("Sales Shipment Header");
                 CompanyInfo."lbt SetReportFooter"(Footer);
@@ -892,8 +892,7 @@ report 5272724 "lbt Sales - Shipment"
         PostedAsmHeader: Record "Posted Assembly Header";
         PostedAsmLine: Record "Posted Assembly Line";
         RespCenter: Record "Responsibility Center";
-        ItemTrackingAppendix: Report "Item Tracking Appendix";
-        Language: Codeunit Language;
+        LanguageCU: Codeunit Language;
         LeBitReportFunctions: Codeunit "lbt Report Functions";
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";

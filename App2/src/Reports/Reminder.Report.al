@@ -505,7 +505,7 @@ report 5272731 "lbt Reminder"
                 CustPostingGroup: Record "Customer Posting Group";
                 VATPostingSetup: Record "VAT Posting Setup";
             begin
-                CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
+                CurrReport.Language := LanguageCU.GetLanguageIdOrDefault("Language Code");
                 CompanyInfo."lbt SetReportFooter"(Footer);
                 DimSetEntry.SetRange("Dimension Set ID", "Dimension Set ID");
 
@@ -683,7 +683,7 @@ report 5272731 "lbt Reminder"
         VATClause: Record "VAT Clause";
         DimSetEntry: Record "Dimension Set Entry";
         CurrExchRate: Record "Currency Exchange Rate";
-        Language: Codeunit Language;
+        LanguageCU: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         SegManagement: Codeunit SegManagement;
         CustAddr: array[8] of Text[50];

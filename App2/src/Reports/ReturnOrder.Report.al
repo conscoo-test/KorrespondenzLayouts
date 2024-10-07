@@ -865,7 +865,7 @@ report 5272730 "lbt Return Order"
 
             trigger OnAfterGetRecord()
             begin
-                CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
+                CurrReport.Language := LanguageCU.GetLanguageIdOrDefault("Language Code");
                 FormatAddressFields("Purchase Header");
                 FormatDocumentFields("Purchase Header");
                 CompanyInfo."lbt SetReportFooter"(Footer);
@@ -1002,7 +1002,7 @@ report 5272730 "lbt Return Order"
         CompanyInfo3: Record "Company Information";
         Vendor: Record Vendor;
         CorrSetup: Record "lbt Corr Setup";
-        Language: Codeunit Language;
+        LanguageCU: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         PrintLongText: Codeunit "lbt cl Print Longtext";
         TempBlobList: Codeunit "Temp Blob List";
