@@ -596,7 +596,7 @@ report 50729 "lbt Blanket Purchase Order"
 
             trigger OnAfterGetRecord()
             begin
-                CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
+                CurrReport.Language := LanguageCU.GetLanguageIdOrDefault("Language Code");
                 FormatAddressFields("Purchase Header");
                 FormatDocumentFields("Purchase Header");
                 CompanyInfo."lbt SetReportFooter"(Footer);
@@ -719,7 +719,7 @@ report 50729 "lbt Blanket Purchase Order"
         CompanyInfo2: Record "Company Information";
         CompanyInfo3: Record "Company Information";
         Vendor: Record Vendor;
-        Language: Codeunit Language;
+        LanguageCU: Codeunit Language;
         PurchPost: Codeunit "Purch.-Post";
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
