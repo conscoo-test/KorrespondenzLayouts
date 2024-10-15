@@ -860,7 +860,7 @@ report 5272725 "lbt Blanket Sales Order"
 
             trigger OnAfterGetRecord()
             begin
-                CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
+                CurrReport.Language := LanguageCU.GetLanguageIdOrDefault("Language Code");
                 FormatAddressFields("Sales Header");
                 FormatDocumentFields("Sales Header");
                 CompanyInfo."lbt SetReportFooter"(Footer);
@@ -1009,7 +1009,7 @@ report 5272725 "lbt Blanket Sales Order"
         CurrExchRate: Record "Currency Exchange Rate";
         SalesSetup: Record "Sales & Receivables Setup";
         Item: Record Item;
-        Language: Codeunit Language;
+        LanguageCU: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
         SegManagement: Codeunit SegManagement;

@@ -1051,7 +1051,7 @@ report 5272722 "lbt Sales - Invoice"
             #region OnAfterGetRecord
             trigger OnAfterGetRecord()
             begin
-                CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
+                CurrReport.Language := LanguageCU.GetLanguageIdOrDefault("Language Code");
                 FormatAddressFields("Sales Invoice Header");
                 FormatDocumentFields("Sales Invoice Header");
                 CompanyInfo."lbt SetReportFooter"(Footer);
@@ -1231,7 +1231,7 @@ report 5272722 "lbt Sales - Invoice"
         CorrSetup: Record "lbt Corr Setup";
         PaymentMethod: Record "Payment Method";
         LeBitReportFunctions: Codeunit "lbt Report Functions";
-        Language: Codeunit Language;
+        LanguageCU: Codeunit Language;
         PrintLongText: Codeunit "lbt cl Print Longtext";
         TempBlobList: Codeunit "Temp Blob List";
         FormatAddr: Codeunit "Format Address";
@@ -1686,7 +1686,7 @@ report 5272722 "lbt Sales - Invoice"
                 TempLineFeeNoteOnReportHist.Insert();
             until LineFeeNoteOnReportHist.Next() = 0
         else begin
-            LineFeeNoteOnReportHist.SetRange("Language Code", Language.GetUserLanguageCode());
+            LineFeeNoteOnReportHist.SetRange("Language Code", LanguageCU.GetUserLanguageCode());
             if LineFeeNoteOnReportHist.FindSet() then
                 repeat
                     TempLineFeeNoteOnReportHist.Init();

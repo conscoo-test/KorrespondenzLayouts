@@ -545,7 +545,7 @@ report 5272733 "lbt cl Service Quote"
 
             trigger OnAfterGetRecord()
             begin
-                CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
+                CurrReport.Language := LanguageCU.GetLanguageIdOrDefault("Language Code");
 
                 FormatAddressFields("Service Header");
 
@@ -640,7 +640,7 @@ report 5272733 "lbt cl Service Quote"
         RespCenter: Record "Responsibility Center";
         DimSetEntry1: Record "Dimension Set Entry";
         DimSetEntry2: Record "Dimension Set Entry";
-        Language: Codeunit Language;
+        LanguageCU: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
         SegManagement: Codeunit SegManagement;
