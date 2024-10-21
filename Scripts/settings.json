@@ -4,9 +4,9 @@
     "testFolders": "test",
     "previousApps": "\\\\192.168.244.16\\Software_Business\\apps\\product\\KorrespondenzLayouts\\latest.zip",
     "installApps":[
-        "dependencies/ForNAV Language Module 7.0.0.8.app",
-        "dependencies/ForNAV Core 7.0.0.8.app",
-        "dependencies/ForNAV Customizable Report Pack 7.0.0.8.app"
+                "\\\\192.168.244.16\\Software_Business\\apps\\ForNAV\\BC24.0_7_3_0_10\\ForNAV Core 7.3.2400.10.app",
+                "\\\\192.168.244.16\\Software_Business\\apps\\ForNAV\\BC24.0_7_3_0_10\\ForNAV Customizable Report Pack 7.3.2400.10.app",
+                "\\\\192.168.244.16\\Software_Business\\apps\\ForNAV\\BC24.0_7_3_0_10\\ForNAV Language Module 7.3.2400.10.app"
     ],
     "installTestRunner": true,
     "installTestFramework": true,
