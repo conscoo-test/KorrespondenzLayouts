@@ -158,7 +158,7 @@ pageextension 50743 "lbt Sales Order" extends "Sales Order"
                         SalesHeaderLRec.TransferFields(Rec);
                         SalesHeaderLRec."Document Type" := SalesHeaderLRec."Document Type"::Invoice;
                         SourceRecRef.GetTable(SalesHeaderLRec);
-                        LongtextMgt.ShowLongtextLines(Rec, Position::Header);
+                        LongtextMgt.ShowLongtextLines(SourceRecRef, Position::Header);
                     end;
                 }
                 action("lbt Invoice Footer Text")
@@ -178,7 +178,7 @@ pageextension 50743 "lbt Sales Order" extends "Sales Order"
                         SalesHeaderLRec.TransferFields(Rec);
                         SalesHeaderLRec."Document Type" := SalesHeaderLRec."Document Type"::Invoice;
                         SourceRecRef.GetTable(SalesHeaderLRec);
-                        LongtextMgt.ShowLongtextLines(Rec, Position::Footer);
+                        LongtextMgt.ShowLongtextLines(SourceRecRef, Position::Footer);
                     end;
                 }
                 action("lbt Shipment Header Text")
@@ -199,7 +199,7 @@ pageextension 50743 "lbt Sales Order" extends "Sales Order"
                         SalesHeaderLRec.TransferFields(Rec);
                         SalesHeaderLRec."Document Type" := DocType::"lbt cl Shipment/Receipt";
                         SourceRecRef.GetTable(SalesHeaderLRec);
-                        LongtextMgt.ShowLongtextLines(Rec, Position::Header);
+                        LongtextMgt.ShowLongtextLines(SourceRecRef, Position::Header);
                     end;
                 }
                 action("lbt Shipment Footer Text")
@@ -220,7 +220,7 @@ pageextension 50743 "lbt Sales Order" extends "Sales Order"
                         SalesHeaderLRec.TransferFields(Rec);
                         SalesHeaderLRec."Document Type" := DocType::"lbt cl Shipment/Receipt";
                         SourceRecRef.GetTable(SalesHeaderLRec);
-                        LongtextMgt.ShowLongtextLines(Rec, Position::Footer);
+                        LongtextMgt.ShowLongtextLines(SourceRecRef, Position::Footer);
                     end;
                 }
             }
