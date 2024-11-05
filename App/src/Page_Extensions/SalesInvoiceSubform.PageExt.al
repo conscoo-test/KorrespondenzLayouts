@@ -21,6 +21,7 @@ pageextension 5272749 "lbt Sales Invoice Subform" extends "Sales Invoice Subform
             {
                 ApplicationArea = All;
                 ToolTip = 'Specified the Printoption';
+                OptionCaption = 'Standard,Title,Total,Price Invisible,Line Invisible,,,New Page,Begin Total,End Total';
             }
         }
         addafter("Line No.")
