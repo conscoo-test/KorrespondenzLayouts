@@ -21,6 +21,46 @@ table 5272724 "lbt Corr Setup"
         {
             Caption = 'Copy Blanket Order Texts';
         }
+        field(10; "S.Quote Automatic Numbering"; Boolean)
+        {
+            Caption = 'S.Quote Automatic Numbering', Comment = 'de-DE=Autom.Nummerierung VK-Angebot';
+        }
+        field(11; "S.Order Automatic Numbering"; Boolean)
+        {
+            Caption = 'S.Order Automatic Numbering', Comment = 'de-DE=Autom.Nummerierung VK-Auftrag';
+        }
+        field(12; "S.Invoice Automatic Numbering"; Boolean)
+        {
+            Caption = 'S.Invoice Automatic Numbering', Comment = 'de-DE=Autom.Nummerierung VK-Rechnung';
+        }
+        field(13; "S.Credit Memo Automatic Numbering"; Boolean)
+        {
+            Caption = 'S.Credit Memo Automatic Numbering', Comment = 'de-DE=Autom.Nummerierung VK-Gutschrift';
+        }
+        field(14; "S.Return Order Automatic Numbering"; Boolean)
+        {
+            Caption = 'S.Return Order Automatic Numbering', Comment = 'de-DE=Autom.Nummerierung VK-Reklamation';
+        }
+        field(15; "P.Quote Automatic Numbering"; Boolean)
+        {
+            Caption = 'P.Quote Automatic Numbering', Comment = 'de-DE=Autom.Nummerierung EK-Anfrage';
+        }
+        field(16; "P.Order Automatic Numbering"; Boolean)
+        {
+            Caption = 'P.Order Automatic Numbering', Comment = 'de-DE=Autom.Nummerierung EK-Bestellung';
+        }
+        field(17; "P.Invoice Automatic Numbering"; Boolean)
+        {
+            Caption = 'P.Invoice Automatic Numbering', Comment = 'de-DE=Autom.Nummerierung EK-Rechnung';
+        }
+        field(18; "P.Credit Memo Automatic Numbering"; Boolean)
+        {
+            Caption = 'P.Credit Memo Automatic Numbering', Comment = 'de-DE=Autom.Nummerierung EK-Gutschrift';
+        }
+        field(19; "P.Return Order Automatic Numbering"; Boolean)
+        {
+            Caption = 'P.Return Order Automatic Numbering', Comment = 'de-DE=Autom.Nummerierung EK-Rücksendung';
+        }
     }
 
     keys

@@ -148,10 +148,60 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field Copy Quote Texts - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 214935587 - Field 2040663305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>P.Credit Memo Automatic Numbering</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Autom.Nummerierung EK-Gutschrift</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field P.Credit Memo Automatic Numbering - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 214935587 - Field 4173339483 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>P.Invoice Automatic Numbering</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Autom.Nummerierung EK-Rechnung</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field P.Invoice Automatic Numbering - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 214935587 - Field 1995714146 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>P.Order Automatic Numbering</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Autom.Nummerierung EK-Bestellung</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field P.Order Automatic Numbering - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 214935587 - Field 3220591670 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>P.Quote Automatic Numbering</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Autom.Nummerierung EK-Anfrage</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field P.Quote Automatic Numbering - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 214935587 - Field 3381568080 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>P.Return Order Automatic Numbering</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Autom.Nummerierung EK-Rücksendung</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field P.Return Order Automatic Numbering - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 214935587 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Primary Key</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field Primary Key - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 214935587 - Field 1048620400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>S.Credit Memo Automatic Numbering</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Autom.Nummerierung VK-Gutschrift</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field S.Credit Memo Automatic Numbering - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 214935587 - Field 2006740710 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>S.Invoice Automatic Numbering</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Autom.Nummerierung VK-Rechnung</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field S.Invoice Automatic Numbering - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 214935587 - Field 1848316311 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>S.Order Automatic Numbering</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Autom.Nummerierung VK-Auftrag</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field S.Order Automatic Numbering - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 214935587 - Field 3401295947 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>S.Quote Automatic Numbering</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Autom.Nummerierung VK-Angebot</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field S.Quote Automatic Numbering - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 214935587 - Field 551462897 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>S.Return Order Automatic Numbering</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Autom.Nummerierung VK-Reklamation</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field S.Return Order Automatic Numbering - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 359883904 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Extended Text Line Long</source>
@@ -652,6 +702,121 @@
           <source>LeBit Extended Layout Setup</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 4103593289 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Automatic Numbering and Totaling</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Automatische Nummerierung und Summierung</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control Automatic Numbering and Totaling - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 3563265803 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Einkauf</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control PurchaseTotaling - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 2040663305 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>If selected, the system will automatically number the purchase credit memo before printing.</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System die Einkaufsgutschrift beim Drucken automatisch nummerieren.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control P.Credit Memo Automatic Numbering - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 2040663305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Credit Memo</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Gutschrift</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control P.Credit Memo Automatic Numbering - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 4173339483 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>If selected, the system will automatically number the purchase invoice before printing.</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System die Einkaufsrechnung beim Drucken automatisch nummerieren.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control P.Invoice Automatic Numbering - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 4173339483 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoice</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Rechnung</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control P.Invoice Automatic Numbering - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 1995714146 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>If selected, the system will automatically number the purchase order before printing.</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System die Einkaufsbestellung beim Drucken automatisch nummerieren.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control P.Order Automatic Numbering - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 1995714146 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Bestellung</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control P.Order Automatic Numbering - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 3220591670 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>If selected, the system will automatically number the purchase quote before printing.</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System die Einkaufsanfrage beim Drucken automatisch nummerieren.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control P.Quote Automatic Numbering - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 3220591670 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quote</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Anfrage</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control P.Quote Automatic Numbering - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 3381568080 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>If selected, the system will automatically number the purchase return order before printing.</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System die Einkaufsreklamation beim Drucken automatisch nummerieren.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control P.Return Order Automatic Numbering - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 3381568080 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Return Order</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Reklamation</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control P.Return Order Automatic Numbering - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 1093312038 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Verkauf</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control SalesTotaling - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 1048620400 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>If selected, the system will automatically number the sales credit memo before printing.</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System die Verkaufsgutschrift beim Drucken automatisch nummerieren.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Credit Memo Automatic Numbering - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 1048620400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Credit Memo</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Gutschrift</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Credit Memo Automatic Numbering - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 2006740710 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>If selected, the system will automatically number the sales invoice before printing.</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System die Verkaufsrechnung beim Drucken automatisch nummerieren.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Invoice Automatic Numbering - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 2006740710 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoice</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Rechnung</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Invoice Automatic Numbering - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 1848316311 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>If selected, the system will automatically number the sales order before printing.</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System den Verkaufsauftrag beim Drucken automatisch nummerieren.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Order Automatic Numbering - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 1848316311 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Auftrag</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Order Automatic Numbering - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 3401295947 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>If selected, the system will automatically number the sales quote before printing.</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System das Verkaufsangebot beim Drucken automatisch nummerieren.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Quote Automatic Numbering - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 3401295947 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quote</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Angebot</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Quote Automatic Numbering - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 551462897 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>If selected, the system will automatically number the sales return order before printing.</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System die Verkaufsreklamation beim Drucken automatisch nummerieren.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Return Order Automatic Numbering - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 551462897 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Return Order</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Reklamation</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Return Order Automatic Numbering - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>General</source>

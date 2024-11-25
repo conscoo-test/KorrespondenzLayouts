@@ -31,6 +31,79 @@ page 5272728 "lbt Corr Setup"
                     }
                 }
             }
+            group("Automatic Numbering and Totaling")
+            {
+                Caption = 'Automatic Numbering and Totaling', Comment = 'de-DE=Automatische Nummerierung und Summierung';
+                group(SalesTotaling)
+                {
+                    Caption = 'Sales', Comment = 'de-DE=Verkauf';
+                    field("S.Quote Automatic Numbering"; Rec."S.Quote Automatic Numbering")
+                    {
+                        Caption = 'Quote', Comment = 'de-DE=Angebot';
+                        ToolTip = 'If selected, the system will automatically number the sales quote before printing.',
+                        Comment = 'de-DE=Wenn ausgewählt, wird das System das Verkaufsangebot beim Drucken automatisch nummerieren.';
+                    }
+                    field("S.Order Automatic Numbering"; Rec."S.Order Automatic Numbering")
+                    {
+                        Caption = 'Order', Comment = 'de-DE=Auftrag';
+                        ToolTip = 'If selected, the system will automatically number the sales order before printing.',
+                        Comment = 'de-DE=Wenn ausgewählt, wird das System den Verkaufsauftrag beim Drucken automatisch nummerieren.';
+                    }
+                    field("S.Invoice Automatic Numbering"; Rec."S.Invoice Automatic Numbering")
+                    {
+                        Caption = 'Invoice', Comment = 'de-DE=Rechnung';
+                        ToolTip = 'If selected, the system will automatically number the sales invoice before printing.',
+                        Comment = 'de-DE=Wenn ausgewählt, wird das System die Verkaufsrechnung beim Drucken automatisch nummerieren.';
+                    }
+                    field("S.Credit Memo Automatic Numbering"; Rec."S.Credit Memo Automatic Numbering")
+                    {
+                        Caption = 'Credit Memo', Comment = 'de-DE=Gutschrift';
+                        ToolTip = 'If selected, the system will automatically number the sales credit memo before printing.',
+                        Comment = 'de-DE=Wenn ausgewählt, wird das System die Verkaufsgutschrift beim Drucken automatisch nummerieren.';
+
+                    }
+                    field("S.Return Order Automatic Numbering"; Rec."S.Return Order Automatic Numbering")
+                    {
+                        Caption = 'Return Order', Comment = 'de-DE=Reklamation';
+                        ToolTip = 'If selected, the system will automatically number the sales return order before printing.',
+                        Comment = 'de-DE=Wenn ausgewählt, wird das System die Verkaufsreklamation beim Drucken automatisch nummerieren.';
+                    }
+                }
+                group(PurchaseTotaling)
+                {
+                    Caption = 'Purchase', Comment = 'de-DE=Einkauf';
+                    field("P.Quote Automatic Numbering"; Rec."P.Quote Automatic Numbering")
+                    {
+                        Caption = 'Quote', Comment = 'de-DE=Anfrage';
+                        ToolTip = 'If selected, the system will automatically number the purchase quote before printing.',
+                        Comment = 'de-DE=Wenn ausgewählt, wird das System die Einkaufsanfrage beim Drucken automatisch nummerieren.';
+                    }
+                    field("P.Order Automatic Numbering"; Rec."P.Order Automatic Numbering")
+                    {
+                        Caption = 'Order', Comment = 'de-DE=Bestellung';
+                        ToolTip = 'If selected, the system will automatically number the purchase order before printing.',
+                        Comment = 'de-DE=Wenn ausgewählt, wird das System die Einkaufsbestellung beim Drucken automatisch nummerieren.';
+                    }
+                    field("P.Invoice Automatic Numbering"; Rec."P.Invoice Automatic Numbering")
+                    {
+                        Caption = 'Invoice', Comment = 'de-DE=Rechnung';
+                        ToolTip = 'If selected, the system will automatically number the purchase invoice before printing.',
+                        Comment = 'de-DE=Wenn ausgewählt, wird das System die Einkaufsrechnung beim Drucken automatisch nummerieren.';
+                    }
+                    field("P.Credit Memo Automatic Numbering"; Rec."P.Credit Memo Automatic Numbering")
+                    {
+                        Caption = 'Credit Memo', Comment = 'de-DE=Gutschrift';
+                        ToolTip = 'If selected, the system will automatically number the purchase credit memo before printing.',
+                        Comment = 'de-DE=Wenn ausgewählt, wird das System die Einkaufsgutschrift beim Drucken automatisch nummerieren.';
+                    }
+                    field("P.Return Order Automatic Numbering"; Rec."P.Return Order Automatic Numbering")
+                    {
+                        Caption = 'Return Order', Comment = 'de-DE=Reklamation';
+                        ToolTip = 'If selected, the system will automatically number the purchase return order before printing.',
+                        Comment = 'de-DE=Wenn ausgewählt, wird das System die Einkaufsreklamation beim Drucken automatisch nummerieren.';
+                    }
+                }
+            }
         }
     }
 
