@@ -11,7 +11,7 @@ pageextension 5272805 "lbt Purchase Quote Subform" extends "Purchase Quote Subfo
             field("lbt Pos. No."; Rec."lbt Pos. No.")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specified the Position No.';
+                ToolTip = 'Specifies the Position No.';
             }
         }
         addafter(FilteredTypeField)
@@ -19,7 +19,7 @@ pageextension 5272805 "lbt Purchase Quote Subform" extends "Purchase Quote Subfo
             field("lbt Printoption"; Rec."lbt Printoption")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specified the Printoption';
+                ToolTip = 'Specifies the Printoption';
             }
         }
         addafter(ShortcutDimCode8)

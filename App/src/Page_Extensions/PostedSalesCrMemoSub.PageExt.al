@@ -11,7 +11,7 @@ pageextension 5272726 "lbt Posted Sales Cr. Memo Sub." extends "Posted Sales Cr.
             field("lbt Pos. No."; Rec."lbt Pos. No.")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specified the Position No.';
+                ToolTip = 'Specifies the Position No.';
             }
         }
         addafter(Type)
@@ -19,7 +19,7 @@ pageextension 5272726 "lbt Posted Sales Cr. Memo Sub." extends "Posted Sales Cr.
             field("lbt Printoption"; Rec."lbt Printoption")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specified the Printoption';
+                ToolTip = 'Specifies the Printoption';
             }
         }
         addafter("Shortcut Dimension 2 Code")

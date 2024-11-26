@@ -11,7 +11,7 @@ pageextension 5272806 "lbt Purch. Cr. Memo Subform" extends "Purch. Cr. Memo Sub
             field("lbt Pos. No."; Rec."lbt Pos. No.")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specified the Position No.';
+                ToolTip = 'Specifies the Position No.';
             }
         }
         addafter(FilteredTypeField)
@@ -19,7 +19,7 @@ pageextension 5272806 "lbt Purch. Cr. Memo Subform" extends "Purch. Cr. Memo Sub
             field("lbt Printoption"; Rec."lbt Printoption")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specified the Printoption';
+                ToolTip = 'Specifies the Printoption';
             }
         }
         addafter(ShortcutDimCode8)

@@ -29,7 +29,7 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
         end;
     end;
 
-    procedure GetStyleExpr(Printoption: Option Standard,Title,,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total") StyleExprText: Text[30]
+    procedure GetStyleExpr(Printoption: Enum "lbt cl Printoption") StyleExprText: Text[30]
     var
         StyleExpr: Option Standard,StandardAccent,Strong,StrongAccent,Attention,AttentionAccent,Favorable,Unfavorable,Ambiguous,Subordinate;
     begin
@@ -43,8 +43,8 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
             Printoption::Optional:
                 StyleExprText := Format(StyleExpr::Favorable);
             Printoption::Title,
-          Printoption::"Begin Total",
-          Printoption::"End Total":
+            Printoption::"Begin Total",
+            Printoption::"End Total":
                 StyleExprText := Format(StyleExpr::Strong);
             else
                 StyleExprText := Format(StyleExpr::Standard);

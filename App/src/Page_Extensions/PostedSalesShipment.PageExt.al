@@ -43,7 +43,7 @@ pageextension 5272721 "lbt Posted Sales Shipment" extends "Posted Sales Shipment
                 {
                     ApplicationArea = All;
                     Caption = 'Header Text';
-                    ToolTip = 'Specified the Header Text';
+                    ToolTip = 'Specifies the Header Text';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -58,7 +58,7 @@ pageextension 5272721 "lbt Posted Sales Shipment" extends "Posted Sales Shipment
                 {
                     ApplicationArea = All;
                     Caption = 'Footer Text';
-                    ToolTip = 'Specified the Footer Text';
+                    ToolTip = 'Specifies the Footer Text';
                     Image = EndingText;
 
                     trigger OnAction()

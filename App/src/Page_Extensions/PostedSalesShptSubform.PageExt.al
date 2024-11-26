@@ -11,7 +11,7 @@ pageextension 5272722 "lbt Posted Sales Shpt. Subform" extends "Posted Sales Shp
             field("lbt Pos. No."; Rec."lbt Pos. No.")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specified the Position No.';
+                ToolTip = 'Specifies the Position No.';
             }
         }
         addafter(Type)
@@ -19,7 +19,7 @@ pageextension 5272722 "lbt Posted Sales Shpt. Subform" extends "Posted Sales Shp
             field("lbt Printoption"; Rec."lbt Printoption")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specified the Printoption';
+                ToolTip = 'Specifies the Printoption';
             }
         }
         addafter(Correction)

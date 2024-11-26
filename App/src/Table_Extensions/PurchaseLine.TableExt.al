@@ -28,11 +28,9 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
             Editable = false;
             FieldClass = FlowField;
         }
-        field(5272721; "lbt Printoption"; Option)
+        field(5272721; "lbt Printoption"; Enum "lbt cl Printoption")
         {
             Caption = 'Printoption';
-            OptionCaption = 'Standard,Title,Total,Price Invisible,Line Invisible,Alternative,Optional,New Page,Begin Total,End Total';
-            OptionMembers = Standard,Title,Total,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total";
             DataClassification = CustomerContent;
 
             trigger OnValidate()

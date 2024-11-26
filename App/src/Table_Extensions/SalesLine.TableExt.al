@@ -20,41 +20,37 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
             Editable = false;
             FieldClass = FlowField;
         }
-        field(5272721; "lbt Printoption"; Option)
+        field(5272721; "lbt Printoption"; Enum "lbt cl Printoption")
         {
             Caption = 'Printoption';
-            OptionCaption = 'Standard,Title,Total,Price Invisible,Line Invisible,Alternative,Optional,New Page,Begin Total,End Total';
-            OptionMembers = Standard,Title,Total,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total";
             DataClassification = CustomerContent;
 
             trigger OnValidate()
-            var
-                Printoption: Option Standard,Title,Total,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total";
-                EndTime: Time;
             begin
-                if (Printoption = Printoption::Alternative) or
-                  (Printoption = Printoption::Optional)
+                if (Rec."lbt Printoption" = Rec."lbt Printoption"::Alternative) or
+                  (Rec."lbt Printoption" = Rec."lbt Printoption"::Optional)
                 then begin
                     Validate(Quantity, 0);
                     Validate("Unit Price");
                 end;
 
-                if Printoption = Printoption::"New Page" then begin
+                if Rec."lbt Printoption" = Rec."lbt Printoption"::"New Page" then begin
                     if "No." <> '' then
                         Error(NewPageErr);
-                    Printoption := Printoption;
+                    // PrintOption := Rec."lbt Printoption";
                     Validate(Type, Type::" ");
                     Description := NewPageLbl;
-                    Printoption := Printoption;
+                    // Rec."lbt Printoption" := PrintOption;
                 end;
 
-                if Printoption in [Printoption::"Begin Total",
-                                           Printoption::"End Total",
-                                           Printoption::Title]
+                if Rec."lbt Printoption" in [Rec."lbt Printoption"::"Begin Total",
+                                           Rec."lbt Printoption"::"End Total",
+                                           Rec."lbt Printoption"::Title]
                 then begin
-                    Printoption := Printoption;
+                    // Rec."lbt Printoption" := Rec."lbt Printoption";
                     Validate(Type, Type::" ");
-                    Printoption := Printoption;
+                    ;
+                    // Rec."lbt Printoption" := Rec."lbt Printoption";
                 end;
             end;
         }

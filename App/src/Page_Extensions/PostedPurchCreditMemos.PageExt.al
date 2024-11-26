@@ -11,7 +11,7 @@ pageextension 5272738 "lbt Posted Purch. Credit Memos" extends "Posted Purchase 
                 {
                     ApplicationArea = All;
                     Caption = 'Header Text';
-                    ToolTip = 'Specified the Header Text';
+                    ToolTip = 'Specifies the Header Text';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -26,7 +26,7 @@ pageextension 5272738 "lbt Posted Purch. Credit Memos" extends "Posted Purchase 
                 {
                     ApplicationArea = All;
                     Caption = 'Footer Text';
-                    ToolTip = 'Specified the Footer Text';
+                    ToolTip = 'Specifies the Footer Text';
                     Image = EndingText;
 
                     trigger OnAction()

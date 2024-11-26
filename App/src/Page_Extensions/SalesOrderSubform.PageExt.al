@@ -12,7 +12,7 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
             field("lbt Pos. No."; Rec."lbt Pos. No.")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specified the Position No.';
+                ToolTip = 'Specifies the Position No.';
             }
         }
         addafter(FilteredTypeField)
@@ -20,8 +20,8 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
             field("lbt Printoption"; Rec."lbt Printoption")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specified the Printoption';
-                OptionCaption = 'Standard,Title,Total,Price Invisible,Line Invisible,,,New Page,Begin Total,End Total';
+                ToolTip = 'Specifies the Printoption';
+                ValuesAllowed = Standard, Title, "Price Invisible", "Line Invisible", "New Page", "Begin Total", "End Total";
             }
         }
         addafter("Line No.")

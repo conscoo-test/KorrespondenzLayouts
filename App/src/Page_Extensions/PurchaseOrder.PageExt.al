@@ -115,7 +115,7 @@ pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
                 {
                     ApplicationArea = All;
                     Caption = 'Header Text';
-                    ToolTip = 'Specified the Header Text';
+                    ToolTip = 'Specifies the Header Text';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -130,7 +130,7 @@ pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
                 {
                     ApplicationArea = All;
                     Caption = 'Footer Text';
-                    ToolTip = 'Specified the Footer Text';
+                    ToolTip = 'Specifies the Footer Text';
                     Image = EndingText;
 
                     trigger OnAction()
@@ -145,7 +145,7 @@ pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
                 {
                     ApplicationArea = All;
                     Caption = 'Invoice Header Text';
-                    ToolTip = 'Specified the Invoice Header Text';
+                    ToolTip = 'Specifies the Invoice Header Text';
                     Image = Import;
 
                     trigger OnAction()
@@ -166,7 +166,7 @@ pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
                 {
                     ApplicationArea = All;
                     Caption = 'Invoice Footer Text';
-                    ToolTip = 'Specified the Invoice Footer Text';
+                    ToolTip = 'Specifies the Invoice Footer Text';
                     Image = Export;
 
                     trigger OnAction()
@@ -187,7 +187,7 @@ pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
                 {
                     ApplicationArea = All;
                     Caption = 'Shipment Header Text';
-                    ToolTip = 'Specified the Shipment Header Text';
+                    ToolTip = 'Specifies the Shipment Header Text';
                     Image = Import;
 
                     trigger OnAction()
@@ -208,7 +208,7 @@ pageextension 5272751 "lbt Purchase Order" extends "Purchase Order"
                 {
                     ApplicationArea = All;
                     Caption = 'Shipment Footer Text';
-                    ToolTip = 'Specified the Shipment Footer Text';
+                    ToolTip = 'Specifies the Shipment Footer Text';
                     Image = Export;
 
                     trigger OnAction()
