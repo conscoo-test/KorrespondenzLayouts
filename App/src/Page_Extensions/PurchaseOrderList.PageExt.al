@@ -1,11 +1,16 @@
 pageextension 5272794 "lbt Purchase Order List" extends "Purchase Order List"
 {
+    ObsoleteState = Pending;
+    ObsoleteReason = 'Old action';
+    ObsoleteTag = '2024-11-26';
+
     actions
     {
         addafter("O&rder")
         {
             group("lbt correspondence documents")
             {
+                Visible = false;
                 Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {

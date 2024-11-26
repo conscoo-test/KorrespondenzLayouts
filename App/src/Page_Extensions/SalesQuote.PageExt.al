@@ -92,6 +92,10 @@ pageextension 5272742 "lbt Sales Quote" extends "Sales Quote"
                     Caption = 'Header Text';
                     ToolTip = 'Specifies the Header Text';
                     Image = BeginningText;
+                    Visible = false;
+                    ObsoleteState = Pending;
+                    ObsoleteReason = 'Old action';
+                    ObsoleteTag = '2024-11-26';
 
                     trigger OnAction()
                     var
@@ -107,6 +111,10 @@ pageextension 5272742 "lbt Sales Quote" extends "Sales Quote"
                     Caption = 'Footer Text';
                     ToolTip = 'Specifies the Footer Text';
                     Image = EndingText;
+                    Visible = false;
+                    ObsoleteState = Pending;
+                    ObsoleteReason = 'Old field';
+                    ObsoleteTag = '2024-11-26';
 
                     trigger OnAction()
                     var

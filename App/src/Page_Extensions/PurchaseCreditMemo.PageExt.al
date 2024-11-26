@@ -69,6 +69,11 @@ pageextension 5272765 "lbt Purchase Credit Memo" extends "Purchase Credit Memo"
                 }
                 action("lbt Header Text")
                 {
+                    Visible = false;
+                    ObsoleteState = Pending;
+                    ObsoleteReason = 'Old action';
+                    ObsoleteTag = '2024-11-26';
+
                     ApplicationArea = All;
                     Caption = 'Header Text';
                     ToolTip = 'Specifies the Header Text';
@@ -84,6 +89,11 @@ pageextension 5272765 "lbt Purchase Credit Memo" extends "Purchase Credit Memo"
                 }
                 action("lbt Footer Text")
                 {
+                    Visible = false;
+                    ObsoleteState = Pending;
+                    ObsoleteReason = 'Old action';
+                    ObsoleteTag = '2024-11-26';
+
                     ApplicationArea = All;
                     Caption = 'Footer Text';
                     ToolTip = 'Specifies the Footer Text';

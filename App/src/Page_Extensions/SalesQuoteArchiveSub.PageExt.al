@@ -26,6 +26,11 @@ pageextension 5272760 "lbt Sales Quote Archive Sub." extends "Sales Quote Archiv
         {
             field("lbt Long Text"; Rec."lbt Long Text")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old field';
+                ObsoleteTag = '2024-11-26';
+
                 ToolTip = 'Here you can insert long texts. ';
                 ApplicationArea = All;
             }
@@ -62,6 +67,11 @@ pageextension 5272760 "lbt Sales Quote Archive Sub." extends "Sales Quote Archiv
         {
             action("lbt LongText")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old action';
+                ObsoleteTag = '2024-11-26';
+
                 ToolTip = 'Here you can insert the long text for the line.';
                 ApplicationArea = Suite;
                 Caption = 'Long Text';

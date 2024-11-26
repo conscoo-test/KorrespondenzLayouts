@@ -38,6 +38,11 @@ pageextension 5272721 "lbt Posted Sales Shipment" extends "Posted Sales Shipment
         {
             group("lbt correspondence documents")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old action';
+                ObsoleteTag = '2024-11-26';
+
                 Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {

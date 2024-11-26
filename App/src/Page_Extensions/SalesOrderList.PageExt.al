@@ -1,5 +1,9 @@
 pageextension 5272792 "lbt Sales Order List" extends "Sales Order List"
 {
+    ObsoleteState = Pending;
+    ObsoleteReason = 'Old page extension';
+    ObsoleteTag = '2024-11-26';
+
     actions
     {
         addafter("O&rder")

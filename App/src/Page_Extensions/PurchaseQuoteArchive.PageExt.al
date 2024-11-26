@@ -38,6 +38,11 @@ pageextension 5272761 "lbt Purchase Quote Archive" extends "Purchase Quote Archi
         {
             group("lbt correspondence documents")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old actions';
+                ObsoleteTag = '2024-11-26';
+
                 Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {

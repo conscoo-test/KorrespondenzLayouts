@@ -1,5 +1,9 @@
 pageextension 5272770 "lbt Sales Return List Archive" extends "Sales Return List Archive"
 {
+    ObsoleteState = Pending;
+    ObsoleteReason = 'Old action';
+    ObsoleteTag = '2024-11-26';
+
     // version NAVW111.00.00.19846,LBCOR1.00
 
     actions
@@ -8,6 +12,7 @@ pageextension 5272770 "lbt Sales Return List Archive" extends "Sales Return List
         {
             group("lbt correspondence documents")
             {
+                Visible = false;
                 Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {

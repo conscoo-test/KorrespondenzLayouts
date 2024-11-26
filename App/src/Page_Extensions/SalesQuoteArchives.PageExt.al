@@ -1,11 +1,16 @@
 pageextension 5272801 "lbt Sales Quote Archives" extends "Sales Quote Archives"
 {
+    ObsoleteState = Pending;
+    ObsoleteReason = 'Old field';
+    ObsoleteTag = '2024-11-26';
+
     actions
     {
         addafter("Ver&sion")
         {
             group("lbt correspondence documents")
             {
+                Visible = false;
                 Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {

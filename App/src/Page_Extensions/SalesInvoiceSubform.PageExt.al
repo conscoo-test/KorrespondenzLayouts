@@ -21,13 +21,17 @@ pageextension 5272749 "lbt Sales Invoice Subform" extends "Sales Invoice Subform
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the Printoption';
-                OptionCaption = 'Standard,Title,Total,Price Invisible,Line Invisible,,,New Page,Begin Total,End Total';
             }
         }
         addafter("Line No.")
         {
             field("lbt Long Text"; Rec."lbt Long Text")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old field';
+                ObsoleteTag = '2024-11-26';
+
                 ApplicationArea = All;
                 ToolTip = 'Long Text';
             }
@@ -72,6 +76,11 @@ pageextension 5272749 "lbt Sales Invoice Subform" extends "Sales Invoice Subform
         {
             action("lbt LongText") //TODO: OnAfterAction
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old action';
+                ObsoleteTag = '2024-11-26';
+
                 ApplicationArea = Suite;
                 Caption = 'Long Text';
                 ToolTip = 'Long Text';

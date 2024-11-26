@@ -26,6 +26,11 @@ pageextension 5272775 "lbt Purch. Return Order Sub." extends "Purchase Return Or
         {
             field("lbt Long Text"; Rec."lbt Long Text")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old field';
+                ObsoleteTag = '2024-11-26';
+
                 ToolTip = 'Here you can insert long texts. ';
                 ApplicationArea = All;
             }
@@ -48,6 +53,11 @@ pageextension 5272775 "lbt Purch. Return Order Sub." extends "Purchase Return Or
         {
             action("lbt LongText")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old action';
+                ObsoleteTag = '2024-11-26';
+
                 ApplicationArea = Suite;
                 Caption = 'Long Text';
                 ToolTip = 'Here you can insert the long text for the line.';

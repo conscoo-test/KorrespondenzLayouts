@@ -1,11 +1,16 @@
 pageextension 5272736 "lbt Posted Purchase Receipts" extends "Posted Purchase Receipts"
 {
+    ObsoleteState = Pending;
+    ObsoleteReason = 'Old actions';
+    ObsoleteTag = '2024-11-26';
+
     actions
     {
         addafter("&Receipt")
         {
             group("lbt correspondence documents")
             {
+                Visible = false;
                 Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {

@@ -38,6 +38,11 @@ pageextension 5272725 "lbt Posted Sales Credit Memo" extends "Posted Sales Credi
         {
             group("lbt correspondence documents")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old action';
+                ObsoleteTag = '2024-11-26';
+
                 Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {

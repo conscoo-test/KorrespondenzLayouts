@@ -38,6 +38,11 @@ pageextension 5272729 "lbt Posted Purchase Invoice" extends "Posted Purchase Inv
         {
             group("lbt correspondence documents")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old actions';
+                ObsoleteTag = '2024-11-26';
+
                 Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {

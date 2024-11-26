@@ -69,6 +69,11 @@ pageextension 5272771 "lbt Sales Return Order" extends "Sales Return Order"
                 }
                 action("lbt Header Text")
                 {
+                    Visible = false;
+                    ObsoleteState = Pending;
+                    ObsoleteReason = 'Old action';
+                    ObsoleteTag = '2024-11-26';
+
                     ToolTip = 'Here you can define the Header Text.';
                     ApplicationArea = All;
                     Caption = 'Header Text';
@@ -84,6 +89,11 @@ pageextension 5272771 "lbt Sales Return Order" extends "Sales Return Order"
                 }
                 action("lbt &Footer Text")
                 {
+                    Visible = false;
+                    ObsoleteState = Pending;
+                    ObsoleteReason = 'Old action';
+                    ObsoleteTag = '2024-11-26';
+
                     ToolTip = 'Here you can define the Footer Text.';
                     ApplicationArea = All;
                     Caption = '&Footer Text';

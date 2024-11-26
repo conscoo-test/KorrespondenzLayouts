@@ -1,5 +1,8 @@
 pageextension 5272734 "lbt Posted Sales Invoices" extends "Posted Sales Invoices"
 {
+    ObsoleteState = Pending;
+    ObsoleteReason = 'Old actions';
+    ObsoleteTag = '2024-11-26';
     // version NAVW111.00.00.19846,LBCOR1.00
 
     actions
@@ -8,6 +11,7 @@ pageextension 5272734 "lbt Posted Sales Invoices" extends "Posted Sales Invoices
         {
             group("lbt correspondence documents")
             {
+                Visible = false;
                 Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {

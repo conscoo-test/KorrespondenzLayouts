@@ -84,6 +84,11 @@ pageextension 5272752 "lbt Blanket Sales Order" extends "Blanket Sales Order"
                 }
                 action("lbt Header Text")
                 {
+                    Visible = false;
+                    ObsoleteState = Pending;
+                    ObsoleteReason = 'Old action';
+                    ObsoleteTag = '2024-11-26';
+
                     ApplicationArea = All;
                     Caption = 'Header Text';
                     ToolTip = 'Specifies the Header Text';
@@ -99,6 +104,11 @@ pageextension 5272752 "lbt Blanket Sales Order" extends "Blanket Sales Order"
                 }
                 action("lbt Footer Text")
                 {
+                    Visible = false;
+                    ObsoleteState = Pending;
+                    ObsoleteReason = 'Old action';
+                    ObsoleteTag = '2024-11-26';
+
                     ApplicationArea = All;
                     Caption = 'Footer Text';
                     ToolTip = 'Specifies the Footer Text';

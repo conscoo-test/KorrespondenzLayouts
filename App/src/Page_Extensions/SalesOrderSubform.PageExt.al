@@ -28,8 +28,11 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
         {
             field("lbt Long Text"; Rec."lbt Long Text")
             {
+                ObsoleteState = Pending;
+                ObsoleteReason = '2024-11-26 Old field';
                 ApplicationArea = All;
                 ToolTip = 'Long Text';
+                Visible = false;
             }
             field("Lbt Editor"; Rec.lbtHasEditorValue(Rec."Document Type".AsInteger()))
             {
@@ -72,6 +75,11 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
         {
             action("lbt LongText")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old field';
+                ObsoleteTag = '2024-11-26';
+
                 ApplicationArea = Suite;
                 Caption = 'Long Text';
                 ToolTip = 'Long Text';

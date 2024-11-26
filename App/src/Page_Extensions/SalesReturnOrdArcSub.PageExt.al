@@ -14,6 +14,11 @@ pageextension 5272769 "lbt Sales Return Ord. Arc Sub." extends "Sales Return Ord
         {
             field("lbt Printoption"; Rec."lbt Printoption")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old field';
+                ObsoleteTag = '2024-11-26';
+
                 ToolTip = 'Here you can choose the Printoptions.';
                 ApplicationArea = All;
             }
@@ -58,6 +63,11 @@ pageextension 5272769 "lbt Sales Return Ord. Arc Sub." extends "Sales Return Ord
         {
             action("lbt LongText")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old action';
+                ObsoleteTag = '2024-11-26';
+
                 ToolTip = 'Here you can insert the long text for the line.';
                 ApplicationArea = Suite;
                 Caption = 'Long Text';

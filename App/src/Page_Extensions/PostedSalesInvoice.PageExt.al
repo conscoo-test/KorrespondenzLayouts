@@ -38,6 +38,11 @@ pageextension 5272723 "lbt Posted Sales Invoice" extends "Posted Sales Invoice"
         {
             group("lbt correspondence documents")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old actions';
+                ObsoleteTag = '2024-11-26';
+
                 Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {
