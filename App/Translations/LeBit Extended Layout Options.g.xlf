@@ -4023,11 +4023,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purchase Order Subform - Control lbt Printoption - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2413440263 - Control 2971227444 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 526152577">
-          <source>Standard,Title,Total,Price Invisible,Line Invisible,,,New Page,Begin Total,End Total</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purchase Order Subform - Control lbt Printoption - Property OptionCaption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 2413440263 - Control 1040839181 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 526152577">
           <source>Editor</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4692,11 +4687,6 @@
           <source>Specifies the Printoption</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Sales Invoice Subform - Control lbt Printoption - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 418953275 - Control 2971227444 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3689007477">
-          <source>Standard,Title,Total,Price Invisible,Line Invisible,,,New Page,Begin Total,End Total</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Sales Invoice Subform - Control lbt Printoption - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="PageExtension 418953275 - Control 1040839181 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3689007477">
           <source>Editor</source>
@@ -6453,6 +6443,11 @@
           <note from="Developer" annotates="general" priority="2">de-DE=Von Summe</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum lbt cl Printoption - EnumValue Begin Total - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Enum 1207963057 - EnumValue 442768151 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bold</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Fett</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum lbt cl Printoption - EnumValue Bold - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Enum 1207963057 - EnumValue 2406352535 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>End Total</source>
           <note from="Developer" annotates="general" priority="2">de-DE=Bis Summe</note>
@@ -6485,7 +6480,7 @@
         </trans-unit>
         <trans-unit id="Enum 1207963057 - EnumValue 329424276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Title</source>
-          <note from="Developer" annotates="general" priority="2">de-DE=Überschrif</note>
+          <note from="Developer" annotates="general" priority="2">de-DE=Überschrift</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum lbt cl Printoption - EnumValue Title - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 1938697053 - EnumValue 2662738920 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">

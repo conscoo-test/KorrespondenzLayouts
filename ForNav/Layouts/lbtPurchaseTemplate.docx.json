@@ -3,7 +3,7 @@
   "@Dpi": "254",
   "@Font": "Segoe UI, 8pt",
   "@Margins": "300, 100, 200, 200",
-  "@ReportsForNavVersion": "7.2.0.2496",
+  "@ReportsForNavVersion": "7.4.0.2580",
   "@ObjectName": "lbt Purchase Template",
   "@OnPreReportScript": [
     "function LineMaster() {",
@@ -21,9 +21,9 @@
       "@ResetPageNumber": "true",
       "@NewPagePerRecord": "true",
       "@Id": "2",
+      "@DataItemTableView": "SORTING(\"No.\")",
       "@ReqFilterFields": "\"No.\"",
       "@MaxIteration": "10",
-      "@DataItemTableView": "SORTING(\"No.\")",
       "@DataItemVarName": "Header",
       "@DataItemTable": "Table122",
       "Bands": {
@@ -936,6 +936,45 @@
                 }
               }
             },
+            "Bold": {
+              "@ControlType": "Body",
+              "@Name": "Bold",
+              "@Dpi": "254",
+              "@Signature": "abc",
+              "@ShowOutput": "Line.lbtPrintoption == Line.FieldOptions.lbtPrintoption.Bold",
+              "@Height": "60.0000534",
+              "Controls": {
+                "table10": {
+                  "@Name": "table10",
+                  "@ControlType": "Table",
+                  "@Size": "1547.66614,60.0000534",
+                  "@Location": "152.33316,0",
+                  "@Dpi": "254",
+                  "Rows": {
+                    "tableRow10": {
+                      "@Name": "tableRow10",
+                      "@ControlType": "TableRow",
+                      "@Dpi": "254",
+                      "@Weight": "0.5679012345679012",
+                      "Cells": {
+                        "tableCell8": {
+                          "@Name": "tableCell8",
+                          "@ControlType": "TableCell",
+                          "@Dpi": "254",
+                          "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Weight": "2.586252311689746",
+                          "@MultiLine": "true",
+                          "@SourceExpression": "Line.Description",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Left",
+                          "@CanGrow": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
             "LinesBody": {
               "@ControlType": "Body",
               "@Name": "LinesBody",
@@ -1128,8 +1167,8 @@
           "@Name": "VATAmountLine",
           "@Dpi": "254",
           "@TotalFields": "1,6,3,2",
-          "@Id": "1000000001",
           "@Temporary": "true",
+          "@Id": "1000000001",
           "@DataItemTableView": "SORTING(\"VAT Identifier\", \"VAT Calculation Type\", \"Tax Group Code\", \"Use Tax\", Positive)",
           "@DataItemVarName": "VATAmountLine",
           "@DataItemTable": "Table290",
@@ -1383,8 +1422,8 @@
           "@ControlType": "DataItem",
           "@Name": "VATClause",
           "@Dpi": "254",
-          "@Id": "1000000002",
           "@Temporary": "true",
+          "@Id": "1000000002",
           "@DataItemTableView": "SORTING(Code)",
           "@DataItemVarName": "VATClause",
           "@DataItemTable": "Table560",
@@ -1737,10 +1776,6 @@
         "OurAccountNo": {
           "@FieldName": "Our Account No.",
           "@FieldNo": "14"
-        },
-        "FormatRegion": {
-          "@FieldName": "Format Region",
-          "@FieldNo": "48"
         }
       }
     }

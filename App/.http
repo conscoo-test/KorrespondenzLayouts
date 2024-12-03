@@ -1,0 +1,14 @@
+@baseUrl = http://corr:7048/bc/api/v1.0
+@user=ataeschner   
+# @pw=biFN7qZTswIhvUTCsqW97DqasmSLKx6YrFKmDIjU8CE=
+
+@pw=paule
+
+get {{baseUrl}} 
+Authorization: Basic {{user}} {{pw}}
+###
+get {{baseUrl}}/companies
+Authorization: Basic {{user}} {{pw}}
+###
+get http://corr:7048/BC/api/ForNav/AppManagement/v1.0/
+Authorization: Basic {{user}} {{pw}}

@@ -8,7 +8,7 @@ enum 5272723 "lbt cl Printoption"
     }
     value(1; Title)
     {
-        Caption = 'Title', Comment = 'de-DE=Überschrif';
+        Caption = 'Title', Comment = 'de-DE=Überschrift';
     }
     value(3; "Price Invisible")
     {
@@ -37,5 +37,9 @@ enum 5272723 "lbt cl Printoption"
     value(9; "End Total")
     {
         Caption = 'End Total', Comment = 'de-DE=Bis Summe';
+    }
+    value(10; Bold)
+    {
+        Caption = 'Bold', Comment = 'de-DE=Fett';
     }
 }
