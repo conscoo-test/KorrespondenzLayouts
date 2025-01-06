@@ -6483,6 +6483,11 @@
           <note from="Developer" annotates="general" priority="2">de-DE=Überschrift</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum lbt cl Printoption - EnumValue Title - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Enum 1207963057 - EnumValue 245426702 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Summe</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum lbt cl Printoption - EnumValue Total - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Enum 1938697053 - EnumValue 2662738920 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>EditorFooter</source>
           <note from="Developer" annotates="general" priority="2"></note>

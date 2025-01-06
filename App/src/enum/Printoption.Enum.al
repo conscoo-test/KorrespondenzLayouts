@@ -10,6 +10,13 @@ enum 5272723 "lbt cl Printoption"
     {
         Caption = 'Title', Comment = 'de-DE=Überschrift';
     }
+    value(2; Total)
+    {
+        ObsoleteState = Pending;
+        ObsoleteReason = 'Old value';
+        ObsoleteTag = '2024-12-06';
+        Caption = 'Total', Comment = 'de-DE=Summe';
+    }
     value(3; "Price Invisible")
     {
         Caption = 'Price Invisible', Comment = 'de-DE=Preis unsichtbar';
