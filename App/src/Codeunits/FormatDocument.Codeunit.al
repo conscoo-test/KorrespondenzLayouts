@@ -50,6 +50,7 @@ codeunit 5272728 "lbt Format Document"
         i: Integer;
     begin
         CompanyInformation.Get();
+        CompanyInformation."Country/Region Code" := '';
         FormatAddress.Company(CompanyAddr, CompanyInformation);
         for i := 1 to 6 do
             if CompanyAddr[i] <> '' then begin
