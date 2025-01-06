@@ -45,7 +45,6 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
 
                 if Rec."lbt Printoption" in [Rec."lbt Printoption"::"Begin Total",
                                            Rec."lbt Printoption"::"End Total",
-                                           Rec."lbt Printoption"::Bold,
                                            Rec."lbt Printoption"::Title]
                 then begin
                     // Rec."lbt Printoption" := Rec."lbt Printoption";
