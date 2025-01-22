@@ -1,11 +1,16 @@
 pageextension 5272796 "lbt Purchase Credit Memos" extends "Purchase Credit Memos"
 {
+    ObsoleteState = Pending;
+    ObsoleteReason = 'Old actions';
+    ObsoleteTag = '2024-11-26';
+
     actions
     {
         addafter("&Credit Memo")
         {
             group("lbt correspondence documents")
             {
+                Visible = false;
                 Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {

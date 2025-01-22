@@ -15,11 +15,9 @@ tableextension 5272733 "lbt Purchase Line Archive" extends "Purchase Line Archiv
             Editable = false;
             FieldClass = FlowField;
         }
-        field(5272721; "lbt Printoption"; Option)
+        field(5272721; "lbt Printoption"; Enum "lbt cl Printoption")
         {
             Caption = 'Printoption';
-            OptionCaption = 'Standard,Title,,Price Invisible,Line Invisible,Alternative,Optional,New Page,Begin Total,End Total';
-            OptionMembers = Standard,Title,,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total";
             DataClassification = CustomerContent;
         }
         field(5272722; "lbt Summation"; Text[250])

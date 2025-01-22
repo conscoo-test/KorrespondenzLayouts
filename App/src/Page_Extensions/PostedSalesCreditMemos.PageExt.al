@@ -1,17 +1,22 @@
 pageextension 5272735 "lbt Posted Sales Credit Memos" extends "Posted Sales Credit Memos"
 {
+    ObsoleteState = Pending;
+    ObsoleteReason = 'Old action';
+    ObsoleteTag = '2024-11-26';
+
     actions
     {
         addafter("&Credit Memo")
         {
             group("lbt correspondence documents")
             {
+                Visible = false;
                 Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {
                     ApplicationArea = All;
                     Caption = 'Header Text';
-                    ToolTip = 'Specified the Header Text';
+                    ToolTip = 'Specifies the Header Text';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -26,7 +31,7 @@ pageextension 5272735 "lbt Posted Sales Credit Memos" extends "Posted Sales Cred
                 {
                     ApplicationArea = All;
                     Caption = 'Footer Text';
-                    ToolTip = 'Specified the Footer Text';
+                    ToolTip = 'Specifies the Footer Text';
                     Image = EndingText;
 
                     trigger OnAction()

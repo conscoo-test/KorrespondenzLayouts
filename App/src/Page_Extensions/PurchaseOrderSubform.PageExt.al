@@ -11,7 +11,7 @@ pageextension 5272766 "lbt Purchase Order Subform" extends "Purchase Order Subfo
             field("lbt Pos. No."; Rec."lbt Pos. No.")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specified the Position No.';
+                ToolTip = 'Specifies the Position No.';
             }
         }
         addafter(FilteredTypeField)
@@ -19,14 +19,18 @@ pageextension 5272766 "lbt Purchase Order Subform" extends "Purchase Order Subfo
             field("lbt Printoption"; Rec."lbt Printoption")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specified the Printoption';
-                OptionCaption = 'Standard,Title,Total,Price Invisible,Line Invisible,,,New Page,Begin Total,End Total';
+                ToolTip = 'Specifies the Printoption';
             }
         }
         addafter("Line No.")
         {
             field("lbt Long Text"; Rec."lbt Long Text")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old field';
+                ObsoleteTag = '2024-11-26';
+
                 ApplicationArea = All;
                 ToolTip = 'Here you can insert long texts.';
             }
@@ -63,6 +67,11 @@ pageextension 5272766 "lbt Purchase Order Subform" extends "Purchase Order Subfo
         {
             action("lbt LongText")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old action';
+                ObsoleteTag = '2024-11-26';
+
                 ApplicationArea = Suite;
                 Caption = 'Long Text';
                 ToolTip = 'Here you can insert the long text for the line.';

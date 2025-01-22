@@ -1,11 +1,16 @@
 pageextension 5272779 "lbt Purch. Return List Archive" extends "Purchase Return List Archive"
 {
+    ObsoleteState = Pending;
+    ObsoleteReason = 'Old actions';
+    ObsoleteTag = '2024-11-26';
+
     actions
     {
         addafter("<Action1102601000>")
         {
             group("lbt correspondence documents")
             {
+                Visible = false;
                 Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {

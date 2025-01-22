@@ -52,6 +52,11 @@ pageextension 5272757 "lbt Sales Order Archive" extends "Sales Order Archive"
         {
             group("lbt correspondence documents")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old actions';
+                ObsoleteTag = '2024-11-26';
+
                 Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {

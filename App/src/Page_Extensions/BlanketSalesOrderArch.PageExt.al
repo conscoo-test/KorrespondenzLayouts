@@ -1,11 +1,16 @@
 pageextension 5272739 "lbt Blanket Sales Order Arch." extends "Blanket Sales Order Archives"
 {
+    ObsoleteState = Pending;
+    ObsoleteReason = 'Old actions';
+    ObsoleteTag = '2024-11-26';
+
     actions
     {
         addafter(Comments)
         {
             group("lbt correspondence documents")
             {
+                Visible = false;
                 Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {

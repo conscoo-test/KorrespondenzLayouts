@@ -83,9 +83,14 @@ pageextension 5272745 "lbt Sales Credit Memo" extends "Sales Credit Memo"
                 }
                 action("lbt Header Text")
                 {
+                    Visible = false;
+                    ObsoleteState = Pending;
+                    ObsoleteReason = 'Old action';
+                    ObsoleteTag = '2024-11-26';
+
                     ApplicationArea = All;
                     Caption = 'Header Text';
-                    ToolTip = 'Specified the Header Text';
+                    ToolTip = 'Specifies the Header Text';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -98,9 +103,14 @@ pageextension 5272745 "lbt Sales Credit Memo" extends "Sales Credit Memo"
                 }
                 action("lbt Footer Text")
                 {
+                    Visible = false;
+                    ObsoleteState = Pending;
+                    ObsoleteReason = 'Old action';
+                    ObsoleteTag = '2024-11-26';
+
                     ApplicationArea = All;
                     Caption = 'Footer Text';
-                    ToolTip = 'Specified the Footer Text';
+                    ToolTip = 'Specifies the Footer Text';
                     Image = EndingText;
 
                     trigger OnAction()

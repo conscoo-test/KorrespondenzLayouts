@@ -18,6 +18,11 @@ pageextension 5272756 "lbt Blanket Purch. Order Sub." extends "Blanket Purchase 
         {
             field("lbt Printoption"; Rec."lbt Printoption")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old field';
+                ObsoleteTag = '2024-11-26';
+
                 ToolTip = 'Here you can choose the Printoptions.';
                 ApplicationArea = All;
             }
@@ -62,6 +67,11 @@ pageextension 5272756 "lbt Blanket Purch. Order Sub." extends "Blanket Purchase 
         {
             action("lbt LongText")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old action';
+                ObsoleteTag = '2024-11-26';
+
                 ToolTip = 'Here you can insert the long text for the line.';
                 ApplicationArea = Suite;
                 Caption = 'Long Text';

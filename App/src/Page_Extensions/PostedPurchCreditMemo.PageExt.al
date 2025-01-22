@@ -38,12 +38,17 @@ pageextension 5272731 "lbt Posted Purch. Credit Memo" extends "Posted Purchase C
         {
             group("lbt correspondence documents")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old actions';
+                ObsoleteTag = '2024-11-26';
+
                 Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {
                     ApplicationArea = All;
                     Caption = 'Header Text';
-                    ToolTip = 'Specified the Header Text';
+                    ToolTip = 'Specifies the Header Text';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -58,7 +63,7 @@ pageextension 5272731 "lbt Posted Purch. Credit Memo" extends "Posted Purchase C
                 {
                     ApplicationArea = All;
                     Caption = 'Footer Text';
-                    ToolTip = 'Specified the Footer Text';
+                    ToolTip = 'Specifies the Footer Text';
                     Image = EndingText;
 
                     trigger OnAction()

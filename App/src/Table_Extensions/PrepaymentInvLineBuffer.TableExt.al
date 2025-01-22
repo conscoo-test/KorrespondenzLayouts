@@ -2,9 +2,8 @@ tableextension 5272742 "lbt Prepayment Inv.Line Buffer" extends "Prepayment Inv.
 {
     fields
     {
-        field(5272721; "lbt Printoption"; Option)
+        field(5272721; "lbt Printoption"; Enum "lbt cl Printoption")
         {
-            OptionMembers = Standard,Title,,"Price Invisible","Line Invisible",Alternative,Optional,"New Page","Begin Total","End Total";
             DataClassification = CustomerContent;
         }
         field(5272722; "lbt Summation"; Text[250])

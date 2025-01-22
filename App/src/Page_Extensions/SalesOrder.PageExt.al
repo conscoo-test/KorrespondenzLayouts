@@ -131,8 +131,12 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                 {
                     ApplicationArea = All;
                     Caption = 'Header Text';
-                    ToolTip = 'Specified the Header Text';
+                    ToolTip = 'Specifies the Header Text';
                     Image = BeginningText;
+                    Visible = false;
+                    ObsoleteState = Pending;
+                    ObsoleteReason = 'Old action';
+                    ObsoleteTag = '2024-11-26';
 
                     trigger OnAction()
                     var
@@ -146,8 +150,12 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                 {
                     ApplicationArea = All;
                     Caption = 'Footer Text';
-                    ToolTip = 'Specified the Footer Text';
+                    ToolTip = 'Specifies the Footer Text';
                     Image = EndingText;
+                    Visible = false;
+                    ObsoleteState = Pending;
+                    ObsoleteReason = 'Old action';
+                    ObsoleteTag = '2024-11-26';
 
                     trigger OnAction()
                     var
@@ -161,8 +169,12 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                 {
                     ApplicationArea = All;
                     Caption = 'Invoice Header Text';
-                    ToolTip = 'Specified the Invoice Header Text';
+                    ToolTip = 'Specifies the Invoice Header Text';
                     Image = BeginningText;
+                    Visible = false;
+                    ObsoleteState = Pending;
+                    ObsoleteReason = 'Old action';
+                    ObsoleteTag = '2024-11-26';
 
                     trigger OnAction()
                     var
@@ -181,8 +193,12 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                 {
                     ApplicationArea = All;
                     Caption = 'Invoice Footer Text';
-                    ToolTip = 'Specified the Invoice Footer Text';
+                    ToolTip = 'Specifies the Invoice Footer Text';
                     Image = EndingText;
+                    Visible = false;
+                    ObsoleteState = Pending;
+                    ObsoleteReason = 'Old action';
+                    ObsoleteTag = '2024-11-26';
 
                     trigger OnAction()
                     var
@@ -201,8 +217,12 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                 {
                     ApplicationArea = All;
                     Caption = 'Shipment Header Text';
-                    ToolTip = 'Specified the Invoice Footer Text';
+                    ToolTip = 'Specifies the Invoice Footer Text';
                     Image = BeginningText;
+                    Visible = false;
+                    ObsoleteState = Pending;
+                    ObsoleteReason = 'Old action';
+                    ObsoleteTag = '2024-11-26';
 
                     trigger OnAction()
                     var
@@ -222,8 +242,12 @@ pageextension 5272743 "lbt Sales Order" extends "Sales Order"
                 {
                     ApplicationArea = All;
                     Caption = 'Shipment Footer Text';
-                    ToolTip = 'Specified the Shipment Footer Text';
+                    ToolTip = 'Specifies the Shipment Footer Text';
                     Image = EndingText;
+                    Visible = false;
+                    ObsoleteState = Pending;
+                    ObsoleteReason = 'Old action';
+                    ObsoleteTag = '2024-11-26';
 
                     trigger OnAction()
                     var

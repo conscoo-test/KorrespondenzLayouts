@@ -38,6 +38,11 @@ pageextension 5272783 "lbt Posted Return Receipt" extends "Posted Return Receipt
         {
             group("lbt correspondence documents")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old actions';
+                ObsoleteTag = '2024-11-26';
+
                 Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {

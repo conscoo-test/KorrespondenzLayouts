@@ -1,11 +1,16 @@
 pageextension 5272795 "lbt Purchase Invoices" extends "Purchase Invoices"
 {
+    ObsoleteState = Pending;
+    ObsoleteReason = 'Old actions';
+    ObsoleteTag = '2024-11-26';
+
     actions
     {
         addafter("&Invoice")
         {
             group("lbt correspondence documents")
             {
+                Visible = false;
                 Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {

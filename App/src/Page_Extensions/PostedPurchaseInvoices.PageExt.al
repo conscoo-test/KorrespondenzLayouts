@@ -1,17 +1,22 @@
 pageextension 5272737 "lbt Posted Purchase Invoices" extends "Posted Purchase Invoices"
 {
+    ObsoleteState = Pending;
+    ObsoleteReason = 'Old actions';
+    ObsoleteTag = '2024-11-26';
+
     actions
     {
         addafter("&Invoice")
         {
             group("lbt correspondence documents")
             {
+                Visible = false;
                 Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {
                     ApplicationArea = All;
                     Caption = 'Header Text';
-                    ToolTip = 'Specified the Header Text';
+                    ToolTip = 'Specifies the Header Text';
                     Image = BeginningText;
 
                     trigger OnAction()
@@ -26,7 +31,7 @@ pageextension 5272737 "lbt Posted Purchase Invoices" extends "Posted Purchase In
                 {
                     ApplicationArea = All;
                     Caption = 'Footer Text';
-                    ToolTip = 'Specified the Footer Text';
+                    ToolTip = 'Specifies the Footer Text';
                     Image = EndingText;
 
                     trigger OnAction()

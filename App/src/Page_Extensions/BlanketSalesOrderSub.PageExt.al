@@ -11,15 +11,20 @@ pageextension 5272753 "lbt Blanket Sales Order Sub." extends "Blanket Sales Orde
             field("lbt Pos. No."; Rec."lbt Pos. No.")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specified the Position No.';
+                ToolTip = 'Specifies the Position No.';
             }
         }
         addafter(Type)
         {
             field("lbt Printoption"; Rec."lbt Printoption")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old field';
+                ObsoleteTag = '2024-11-26';
+
                 ApplicationArea = All;
-                ToolTip = 'Specified the Printoption';
+                ToolTip = 'Specifies the Printoption';
             }
         }
         addafter("ShortcutDimCode[8]")
@@ -70,6 +75,11 @@ pageextension 5272753 "lbt Blanket Sales Order Sub." extends "Blanket Sales Orde
         {
             action("lbt LongText")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old action';
+                ObsoleteTag = '2024-11-26';
+
                 ApplicationArea = Suite;
                 Caption = 'Long Text';
                 ToolTip = 'Here you can insert the long text for the line.';

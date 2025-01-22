@@ -11,7 +11,7 @@ pageextension 5272730 "lbt Posted Purch. Invoice Sub." extends "Posted Purch. In
             field("lbt Pos. No."; Rec."lbt Pos. No.")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specified the Position No.';
+                ToolTip = 'Specifies the Position No.';
             }
         }
         addafter(Type)
@@ -19,13 +19,18 @@ pageextension 5272730 "lbt Posted Purch. Invoice Sub." extends "Posted Purch. In
             field("lbt Printoption"; Rec."lbt Printoption")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specified the Printoption';
+                ToolTip = 'Specifies the Printoption';
             }
         }
         addafter("Shortcut Dimension 2 Code")
         {
             field("lbt Long Text"; Rec."lbt Long Text")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old field';
+                ObsoleteTag = '2024-11-26';
+
                 ApplicationArea = All;
                 ToolTip = 'Here you can insert long texts.';
             }
@@ -62,6 +67,11 @@ pageextension 5272730 "lbt Posted Purch. Invoice Sub." extends "Posted Purch. In
         {
             action("lbt LongText")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old action';
+                ObsoleteTag = '2024-11-26';
+
                 ApplicationArea = Suite;
                 Caption = 'Long Text';
                 ToolTip = 'Here you can insert the long text for the line.';

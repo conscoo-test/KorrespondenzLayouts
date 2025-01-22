@@ -38,6 +38,11 @@ pageextension 5272763 "lbt Purchase Order Archive" extends "Purchase Order Archi
         {
             group("lbt correspondence documents")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old actions';
+                ObsoleteTag = '2024-11-26';
+
                 Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {

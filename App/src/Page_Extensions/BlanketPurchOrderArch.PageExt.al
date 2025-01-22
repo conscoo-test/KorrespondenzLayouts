@@ -1,11 +1,16 @@
 pageextension 5272740 "lbt Blanket Purch. Order Arch." extends "Blanket Purch. Order Archives"
 {
+    ObsoleteState = Pending;
+    ObsoleteReason = 'Old action';
+    ObsoleteTag = '2024-11-26';
+
     actions
     {
         addafter(Comments)
         {
             group("lbt correspondence documents")
             {
+                Visible = false;
                 Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {

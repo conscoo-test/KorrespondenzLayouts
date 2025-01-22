@@ -40,6 +40,11 @@ pageextension 5272768 "lbt Sales Return Order Archive" extends "Sales Return Ord
         {
             group("lbt correspondence documents")
             {
+                Visible = false;
+                ObsoleteState = Pending;
+                ObsoleteReason = 'Old actions';
+                ObsoleteTag = '2024-11-26';
+
                 Caption = 'LeBit Extended Layout Options';
                 action("lbt Header Text")
                 {
