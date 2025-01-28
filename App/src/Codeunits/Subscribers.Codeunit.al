@@ -1,4 +1,4 @@
-codeunit 5272733 "lbt Subscribers"
+codeunit 5272733 "lbt cl Subscribers"
 {
 
     local procedure ShouldRunAutomaticNumbering(DocumentType: Enum "Purchase Document Type"): Boolean
