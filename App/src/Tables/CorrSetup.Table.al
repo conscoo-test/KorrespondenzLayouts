@@ -61,6 +61,10 @@ table 5272724 "lbt Corr Setup"
         {
             Caption = 'P.Return Order Automatic Numbering', Comment = 'de-DE=Autom.Nummerierung EK-Rücksendung';
         }
+        field(20; "S.Print select Copy order"; Boolean)
+        {
+            Caption = 'S. Print selection Copy offer to order', Comment = 'de-DE=Druckauswahl Angebot in Auftrag kopieren';
+        }
     }
 
     keys

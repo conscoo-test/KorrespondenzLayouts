@@ -10,7 +10,9 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         tabledata "Purch. Inv. Line" = m,
         tabledata "Purch. Cr. Memo Line" = m,
         tabledata "Return Shipment Line" = m,
-        tabledata "Purchase Line Archive" = m;
+        tabledata "Purchase Line Archive" = m,
+        tabledata "Sales Line" = m,
+        tabledata "Sales Header" = m;
 
     trigger OnRun()
     begin
@@ -700,4 +702,71 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
 
     #endregion
     #endregion
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Quote to Order", 'OnBeforeTransferQuoteLineToOrderLineLoop', '', false, false)]
+    local procedure SalesQuotetoOrder_OnBeforeTransferQuoteLineToOrderLineLoop(var SalesQuoteLine: Record "Sales Line"; var SalesQuoteHeader: Record "Sales Header"; var SalesOrderHeader: Record "Sales Header"; var IsHandled: Boolean)
+    var
+        lbtCorrSetup: Record "lbt Corr Setup";
+        CopytoOrderLbl: Label 'The sales quote still contains alternative items, which will be deleted during the transfer. Existing demand lines will be transferred as regular item lines with their special quantity. Do you want to proceed?',
+        Comment = 'de-DE In dem Angebot befinden sich noch Alternativpositionen, welche beim Übertragen gelöscht werden. Vorhandene Bedarfszeilen werden mit ihrer Sondermenge als normale Artikelzeile übernommen. Wollen Sie fortfahren?';
+
+    begin
+        lbtCorrSetup.Get();
+        if lbtCorrSetup."S.Print select Copy order" = false then
+            if (SalesQuoteLine."lbt Printoption" = SalesQuoteLine."lbt Printoption"::Alternative) or
+            (SalesQuoteLine."lbt Printoption" = SalesQuoteLine."lbt Printoption"::Optional) then
+                IsHandled := true;
+
+        if lbtCorrSetup."S.Print select Copy order" = true then begin
+            if SalesQuoteLine."lbt Printoption" = SalesQuoteLine."lbt Printoption"::Alternative then
+                if Confirm(CopytoOrderLbl, true) then
+                    IsHandled := true;
+            // else
+            // vielleicht eine Error Meldung ?
+
+            if SalesQuoteLine."lbt Printoption" = SalesQuoteLine."lbt Printoption"::Optional then
+                if Confirm(CopytoOrderLbl, true) then begin
+                    SalesQuoteLine."lbt Printoption" := SalesQuoteLine."lbt Printoption"::Standard;
+                    SalesQuoteLine.Quantity := SalesQuoteLine."lbt Special Qty";
+                end else
+                    IsHandled := true
+            // vielleicht eine Error Meldung ?
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnCopySalesDocSalesLineOnAfterCalcShouldRunIteration', '', false, false)]
+    local procedure CopyDocumentMgt_OnCopySalesDocSalesLineOnAfterCalcShouldRunIteration(FromSalesHeader: Record "Sales Header"; FromSalesLine: Record "Sales Line"; var ToSalesHeader: Record "Sales Header"; var ShouldRunIteration: Boolean)
+    var
+        AltOptLöschenLbl: Label 'There are still alternative and/or requirement lines in the data record. These will be deleted when you continue. Do you want to continue?',
+        Comment = 'de-DE In dem Datensatz befinden sich noch Alternativ- und/oder Bedarfszeilen. Diese werden beim Fortfahren gelöscht. Wollen Sie fortfahren?';
+    begin
+        if (ToSalesHeader."Document Type" = "Sales Document Type"::Quote) or
+        (ToSalesHeader."Document Type" = "Sales Document Type"::Order) then
+            ShouldRunIteration := true
+        else
+            if (FromSalesLine."lbt Printoption" = FromSalesLine."lbt Printoption"::Alternative) or
+            (FromSalesLine."lbt Printoption" = FromSalesLine."lbt Printoption"::Optional) then
+                if Confirm(AltOptLöschenLbl, true) then
+                    ShouldRunIteration := false
+                else
+                    // vielleicht eine Error Message ?
+                    ShouldRunIteration := true;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnBeforeCopyPurchLine', '', false, false)]
+    local procedure CopyDocumentMgt_OnBeforeCopyPurchLine(var ToPurchHeader: Record "Purchase Header"; FromPurchHeader: Record "Purchase Header"; FromPurchLine: Record "Purchase Line"; var IsHandled: Boolean; FromPurchDocType: Enum "Purchase Document Type From")
+    var
+        AltOptLöschenLbl: Label 'There are still alternative and/or requirement lines in the data record. These will be deleted when you continue. Do you want to continue?',
+        Comment = 'de-DE In dem Datensatz befinden sich noch Alternativ- und/oder Bedarfszeilen. Diese werden beim Fortfahren gelöscht. Wollen Sie fortfahren?';
+    begin
+        if not (ToPurchHeader."Document Type" = "Purchase Document Type From"::Quote) or
+        (ToPurchHeader."Document Type" = "Purchase Document Type From"::Order) then
+            if (FromPurchLine."lbt Printoption" = FromPurchLine."lbt Printoption"::Alternative) or
+            (FromPurchLine."lbt Printoption" = FromPurchLine."lbt Printoption"::Optional) then
+                if Confirm(AltOptLöschenLbl, true) then
+                    IsHandled := true;
+        // else
+        // vielleicht eine Error Message ?
+    end;
+
 }

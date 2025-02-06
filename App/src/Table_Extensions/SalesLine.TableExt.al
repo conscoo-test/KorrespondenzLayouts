@@ -24,14 +24,21 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
         {
             Caption = 'Printoption';
             DataClassification = CustomerContent;
-
             trigger OnValidate()
             begin
                 if (Rec."lbt Printoption" = Rec."lbt Printoption"::Alternative) or
                   (Rec."lbt Printoption" = Rec."lbt Printoption"::Optional)
                 then begin
                     Validate(Quantity, 0);
-                    Validate("Unit Price");
+                    // Validate("Unit Price");
+
+                    // Rec.Modify(true);
+
+                    // Validate("VAT Base Amount");
+                    // Validate(Amount);
+                    // Validate("Amount Including VAT");
+                    // Commit();
+                    ;
                 end;
 
                 if Rec."lbt Printoption" = Rec."lbt Printoption"::"New Page" then begin
@@ -52,6 +59,11 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
                     ;
                     // Rec."lbt Printoption" := Rec."lbt Printoption";
                 end;
+
+                // if Rec."lbt Printoption" = Rec."lbt Printoption"::Alternative then
+                //     Quantity := 0;
+                // if Rec."lbt Printoption" = Rec."lbt Printoption"::Optional then
+                //     Quantity := 0;
             end;
         }
         field(5272722; "lbt Summation"; Text[250])
@@ -140,6 +152,11 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
             begin
                 lbtclSetUnitPrice(FieldNo("lbt cl Price in Price Factor"));
             end;
+        }
+        field(5272732; "lbt Special Qty"; Integer)
+        {
+            Caption = 'Special Quantity';
+            DataClassification = CustomerContent;
         }
     }
 
