@@ -6,6 +6,7 @@ pageextension 5272741 "lbt Extended Text" extends "Extended Text"
         {
             field("lbt Textchoice"; Rec."lbt Textchoice")
             {
+                OptionCaption = 'Standard,,Blob';
                 ApplicationArea = All;
                 ToolTip = 'Specified a Textchoice';
             }
