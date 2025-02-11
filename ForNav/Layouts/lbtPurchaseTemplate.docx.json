@@ -947,9 +947,10 @@
                 "table10": {
                   "@Name": "table10",
                   "@ControlType": "Table",
-                  "@Size": "1547.66614,60.0000534",
-                  "@Location": "152.33316,0",
+                  "@Size": "1700,60",
+                  "@Location": "2.33317566,0",
                   "@Dpi": "254",
+                  "@Borders": "None",
                   "Rows": {
                     "tableRow10": {
                       "@Name": "tableRow10",
@@ -962,12 +963,77 @@
                           "@ControlType": "TableCell",
                           "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Weight": "0.59682747602293285",
+                          "@SourceExpression": "Line.lbtPosNo",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Left"
+                        },
+                        "tableCell10": {
+                          "@Name": "tableCell10",
+                          "@ControlType": "TableCell",
+                          "@Dpi": "254",
+                          "@Font": "Segoe UI, 8pt, style=Bold",
                           "@Weight": "2.586252311689746",
                           "@MultiLine": "true",
                           "@SourceExpression": "Line.Description",
                           "@VertAlign": "Top",
                           "@HorzAlign": "Left",
                           "@CanGrow": "true"
+                        },
+                        "tableCell11": {
+                          "@Name": "tableCell11",
+                          "@ControlType": "TableCell",
+                          "@Dpi": "254",
+                          "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Weight": "0.59682747434681971",
+                          "@BlankZero": "true",
+                          "@SourceExpression": "Line.Quantity",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Right"
+                        },
+                        "tableCell12": {
+                          "@Name": "tableCell12",
+                          "@ControlType": "TableCell",
+                          "@Dpi": "254",
+                          "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Weight": "0.59682750369681714",
+                          "@SourceExpression": "Line.UnitofMeasure",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Right"
+                        },
+                        "tableCell18": {
+                          "@Name": "tableCell18",
+                          "@ControlType": "TableCell",
+                          "@Dpi": "254",
+                          "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Weight": "0.59682747368855438",
+                          "@BlankZero": "true",
+                          "@SourceExpression": "Line.LineDiscountPct",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Right",
+                          "@ShowOutput": "DynamicsNavDataSet.HasDiscount==true"
+                        },
+                        "tableCell19": {
+                          "@Name": "tableCell19",
+                          "@ControlType": "TableCell",
+                          "@Dpi": "254",
+                          "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Weight": "0.59682747770915978",
+                          "@BlankZero": "true",
+                          "@SourceExpression": "Line.UnitCost",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Right"
+                        },
+                        "tableCell20": {
+                          "@Name": "tableCell20",
+                          "@ControlType": "TableCell",
+                          "@Dpi": "254",
+                          "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Weight": "1.1936550824200196",
+                          "@BlankZero": "true",
+                          "@SourceExpression": "Line.Amount",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Right"
                         }
                       }
                     }
