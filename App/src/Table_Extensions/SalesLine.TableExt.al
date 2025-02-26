@@ -140,7 +140,7 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
                 lbtclSetUnitPrice(FieldNo("lbt cl Price in Price Factor"));
             end;
         }
-        field(5272732; "lbt Special Qty"; Integer)
+        field(5272732; "lbt Special Qty"; Decimal)
         {
             Caption = 'Special Quantity';
             DataClassification = CustomerContent;

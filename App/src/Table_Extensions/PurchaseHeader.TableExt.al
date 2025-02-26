@@ -9,6 +9,11 @@ tableextension 5272730 "lbt Purchase Header" extends "Purchase Header"
                 CopyLongTextFromVendor();
             end;
         }
+        field(5272720; "lbt Asked Once"; Boolean)
+        {
+            Caption = 'Asked Once';
+            DataClassification = CustomerContent;
+        }
     }
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";

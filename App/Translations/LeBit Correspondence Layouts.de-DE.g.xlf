@@ -233,7 +233,7 @@
         </trans-unit>
         <trans-unit id="Table 214935587 - Field 468238441 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>S. Print selection Copy offer to order</source>
-          <target state="needs-translation">Druckauswahl Angebot in Auftr. kop.</target>
+          <target state="translated" state-qualifier="exact-match">Druckauswahl Angebot in Auftrag kopieren</target>
           <note from="Developer" annotates="general" priority="2">de-DE=Druckauswahl Angebot in Auftrag kopieren</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field S.Print select Copy order - Property Caption</note>
         </trans-unit>
@@ -615,23 +615,65 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt Corresp. Doc. Mgt - NamedType TotalTxt</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1577574366 - Method 3537122320 - NamedType 2979163907" size-unit="char" translate="yes" xml:space="preserve">
+          <source>There are still alternative and/or requirement lines in the data record. These will be deleted when you continue. Do you want to continue?</source>
+          <target state="translated" state-qualifier="exact-match">In dem Datensatz befinden sich noch Alternativ- und/oder Bedarfszeilen. Diese werden beim Fortfahren gelöscht. Wollen Sie fortfahren?</target>
+          <note from="Developer" annotates="general" priority="2">de-DE In dem Datensatz befinden sich noch Alternativ- und/oder Bedarfszeilen. Diese werden beim Fortfahren gelöscht. Wollen Sie fortfahren?</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt Corresp. Doc. Subscriber - Method CopyDocumentMgt_OnBeforeCopyArchPurchLine - NamedType AltOptLöschenLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1577574366 - Method 3537122320 - NamedType 3245148629" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Program was canceled.</source>
+          <target state="translated" state-qualifier="exact-match">Programm wurde abgebrochen.</target>
+          <note from="Developer" annotates="general" priority="2">de-DE Programm wurde abgebrochen.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt Corresp. Doc. Subscriber - Method CopyDocumentMgt_OnBeforeCopyArchPurchLine - NamedType cancelErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1577574366 - Method 1195640740 - NamedType 2979163907" size-unit="char" translate="yes" xml:space="preserve">
+          <source>There are still alternative and/or requirement lines in the data record. These will be deleted when you continue. Do you want to continue?</source>
+          <target state="translated" state-qualifier="exact-match">In dem Datensatz befinden sich noch Alternativ- und/oder Bedarfszeilen. Diese werden beim Fortfahren gelöscht. Wollen Sie fortfahren?</target>
+          <note from="Developer" annotates="general" priority="2">de-DE In dem Datensatz befinden sich noch Alternativ- und/oder Bedarfszeilen. Diese werden beim Fortfahren gelöscht. Wollen Sie fortfahren?</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt Corresp. Doc. Subscriber - Method CopyDocumentMgt_OnBeforeCopyArchSalesLine - NamedType AltOptLöschenLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1577574366 - Method 1195640740 - NamedType 3245148629" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Program was canceled.</source>
+          <target state="translated" state-qualifier="exact-match">Programm wurde abgebrochen.</target>
+          <note from="Developer" annotates="general" priority="2">de-DE Programm wurde abgebrochen.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt Corresp. Doc. Subscriber - Method CopyDocumentMgt_OnBeforeCopyArchSalesLine - NamedType cancelErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1577574366 - Method 3014527592 - NamedType 2979163907" size-unit="char" translate="yes" xml:space="preserve">
           <source>There are still alternative and/or requirement lines in the data record. These will be deleted when you continue. Do you want to continue?</source>
-          <target state="needs-translation">In dem Datensatz befinden sich noch Alternativ- und/oder Bedarfszeilen. Diese werden beim Fortfahren gelöscht. Wollen Sie fortfahren?</target>
+          <target state="translated" state-qualifier="exact-match">In dem Datensatz befinden sich noch Alternativ- und/oder Bedarfszeilen. Diese werden beim Fortfahren gelöscht. Wollen Sie fortfahren?</target>
           <note from="Developer" annotates="general" priority="2">de-DE In dem Datensatz befinden sich noch Alternativ- und/oder Bedarfszeilen. Diese werden beim Fortfahren gelöscht. Wollen Sie fortfahren?</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt Corresp. Doc. Subscriber - Method CopyDocumentMgt_OnBeforeCopyPurchLine - NamedType AltOptLöschenLbl</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1577574366 - Method 3014527592 - NamedType 3245148629" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Program was canceled.</source>
+          <target state="translated" state-qualifier="exact-match">Programm wurde abgebrochen.</target>
+          <note from="Developer" annotates="general" priority="2">de-DE Programm wurde abgebrochen.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt Corresp. Doc. Subscriber - Method CopyDocumentMgt_OnBeforeCopyPurchLine - NamedType cancelErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1577574366 - Method 3336210626 - NamedType 2979163907" size-unit="char" translate="yes" xml:space="preserve">
           <source>There are still alternative and/or requirement lines in the data record. These will be deleted when you continue. Do you want to continue?</source>
-          <target state="needs-translation">In dem Datensatz befinden sich noch Alternativ- und/oder Bedarfszeilen. Diese werden beim Fortfahren gelöscht. Wollen Sie fortfahren?</target>
+          <target state="translated" state-qualifier="exact-match">In dem Datensatz befinden sich noch Alternativ- und/oder Bedarfszeilen. Diese werden beim Fortfahren gelöscht. Wollen Sie fortfahren?</target>
           <note from="Developer" annotates="general" priority="2">de-DE In dem Datensatz befinden sich noch Alternativ- und/oder Bedarfszeilen. Diese werden beim Fortfahren gelöscht. Wollen Sie fortfahren?</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt Corresp. Doc. Subscriber - Method CopyDocumentMgt_OnCopySalesDocSalesLineOnAfterCalcShouldRunIteration - NamedType AltOptLöschenLbl</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1577574366 - Method 3336210626 - NamedType 3245148629" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Program was canceled.</source>
+          <target state="translated" state-qualifier="exact-match">Programm wurde abgebrochen.</target>
+          <note from="Developer" annotates="general" priority="2">de-DE Programm wurde abgebrochen.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt Corresp. Doc. Subscriber - Method CopyDocumentMgt_OnCopySalesDocSalesLineOnAfterCalcShouldRunIteration - NamedType cancelErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1577574366 - Method 1131830492 - NamedType 1621131414" size-unit="char" translate="yes" xml:space="preserve">
           <source>The sales quote still contains alternative items, which will be deleted during the transfer. Existing demand lines will be transferred as regular item lines with their special quantity. Do you want to proceed?</source>
-          <target state="needs-translation">In dem Angebot befinden sich noch Alternativpositionen, welche beim Übertragen gelöscht werden. Vorhandene Bedarfszeilen werden mit ihrer Sondermenge als normale Artikelzeile übernommen. Wollen Sie fortfahren?</target>
+          <target state="translated" state-qualifier="exact-match">In dem Angebot befinden sich noch Alternativpositionen, welche beim Übertragen gelöscht werden. Vorhandene Bedarfszeilen werden mit ihrer Sondermenge als normale Artikelzeile übernommen. Wollen Sie fortfahren?</target>
           <note from="Developer" annotates="general" priority="2">de-DE In dem Angebot befinden sich noch Alternativpositionen, welche beim Übertragen gelöscht werden. Vorhandene Bedarfszeilen werden mit ihrer Sondermenge als normale Artikelzeile übernommen. Wollen Sie fortfahren?</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt Corresp. Doc. Subscriber - Method SalesQuotetoOrder_OnBeforeTransferQuoteLineToOrderLineLoop - NamedType CopytoOrderLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1577574366 - Method 1131830492 - NamedType 3245148629" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Program was canceled.</source>
+          <target state="translated" state-qualifier="exact-match">Programm wurde abgebrochen.</target>
+          <note from="Developer" annotates="general" priority="2">de-DE Programm wurde abgebrochen.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt Corresp. Doc. Subscriber - Method SalesQuotetoOrder_OnBeforeTransferQuoteLineToOrderLineLoop - NamedType cancelErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 951705066 - NamedType 3618206462" size-unit="char" translate="yes" xml:space="preserve">
           <source>Bank</source>
@@ -983,7 +1025,7 @@
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 468238441 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>The configured option controls how "print option," "Optional" are handled when converting the sales quote into a sales order.Hint: Positions of type „Alternative“ won´t ever be transfered.</source>
-          <target state="needs-translation">Die eingerichtete Option steuert den Umgang mit „Druckauswahl“ „Bedarfsposition“ beim Überführen des Angebots in einen Verkaufsauftrag.Hinweis: Alternativpositionen können nicht mit in einen Auftrag überführt werden</target>
+          <target state="translated" state-qualifier="exact-match">Die eingerichtete Option steuert den Umgang mit „Druckauswahl“ „Bedarfsposition“ beim Überführen des Angebots in einen Verkaufsauftrag.Hinweis: Alternativpositionen können nicht mit in einen Auftrag überführt werden</target>
           <note from="Developer" annotates="general" priority="2">%de-DE=Die eingerichtete Option steuert den Umgang mit „Druckauswahl“ „Bedarfsposition“ beim Überführen des Angebots in einen Verkaufsauftrag.Hinweis: Alternativpositionen können nicht mit in einen Auftrag überführt werden</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Print select Copy order - Property ToolTip</note>
         </trans-unit>
@@ -4173,6 +4215,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purch. Quote Archive Sub. - Control lbt cl Price in Price Factor - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2583416182 - Control 2635393249 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2354201699">
+          <source>Specifies the value of the Special Quantity field.</source>
+          <target state="translated" state-qualifier="exact-match">Definiert das Feld Sondermenge</target>
+          <note from="Developer" annotates="general" priority="2">%</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purch. Quote Archive Sub. - Control lbt Special Qty - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 148319283 - Action 2738780584 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1367327215">
           <source>LeBit Extended Layout Options</source>
           <target state="translated">LeBit Erweiterte Layoutoptionen</target>
@@ -5114,6 +5162,12 @@
           <target state="translated">Hier kann der Preis in Preisfaktor eingetragen werden.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purchase Quote Subform - Control lbt cl Price in Price Factor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1693215451 - Control 2635393249 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 997943925">
+          <source>Specifies the value of the Special Quantity field.</source>
+          <target state="translated" state-qualifier="exact-match">Definiert das Feld Sondermenge</target>
+          <note from="Developer" annotates="general" priority="2">%</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Purchase Quote Subform - Control lbt Special Qty - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 2040509596 - Action 2738780584 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1819353702">
           <source>LeBit Extended Layout Options</source>
@@ -6351,6 +6405,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Sales Quote Archive Sub. - Control lbt cl Price in Price Factor - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 851634388 - Control 2635393249 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1893889982">
+          <source>Specifies the value of the Special Quantity field.</source>
+          <target state="translated" state-qualifier="exact-match">Definiert das Feld Sondermenge</target>
+          <note from="Developer" annotates="general" priority="2">%</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Sales Quote Archive Sub. - Control lbt Special Qty - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1152242363 - Action 2738780584 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 561889749">
           <source>LeBit Extended Layout Options</source>
           <target state="translated">LeBit Erweiterte Layoutoptionen</target>
@@ -6431,7 +6491,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 2051501526 - Control 2635393249 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 416138076">
           <source>Specifies the value of the Special Quantity field.</source>
-          <target state="needs-translation">Definiert das Feld Sondermenge</target>
+          <target state="translated" state-qualifier="exact-match">Definiert das Feld Sondermenge</target>
           <note from="Developer" annotates="general" priority="2">%</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Sales Quote Subform - Control lbt Special Qty - Property ToolTip</note>
         </trans-unit>
@@ -7197,6 +7257,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purch. Rcpt. Line - Field lbt Summation - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1933835730 - Field 2745193063 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>Asked Once</source>
+          <target state="translated">Einmal gefragt</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purchase Header - Field lbt Asked Once - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2301185401 - NamedType 2473355334" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 2301185401">
           <source>New Pages can only be set in blank lines.</source>
           <target state="translated">Seitenwechsel können nur in leeren Zeilen vereinbart werden.</target>
@@ -7257,6 +7323,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purchase Line - Field lbt Printoption - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2301185401 - Field 2635393249 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
+          <source>Special Quantity</source>
+          <target state="translated" state-qualifier="exact-match">Sondermenge</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purchase Line - Field lbt Special Qty - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2301185401 - Field 3967709435 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
           <source>Summation</source>
           <target state="translated">Zusammenzählung</target>
@@ -7304,6 +7376,12 @@
           <target state="translated">Druckauswahl</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purchase Line Archive - Field lbt Printoption - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1167243623 - Field 2635393249 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2809873457">
+          <source>Special Quantity</source>
+          <target state="translated" state-qualifier="exact-match">Sondermenge</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Purchase Line Archive - Field lbt Special Qty - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1167243623 - Field 3967709435 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2809873457">
           <source>Summation</source>
@@ -7455,6 +7533,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Cr.Memo Line - Field lbt Summation - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3315263919 - Field 2745193063 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source>Asked Once</source>
+          <target state="translated">Einmal gefragt</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Header - Field lbt Asked Once - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3315263919 - Field 3178038303 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Delivery Date Type</source>
           <target state="translated">Lieferterminart</target>
@@ -7601,7 +7685,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 962502568 - Field 2635393249 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
           <source>Special Quantity</source>
-          <target state="needs-translation">Sondermenge</target>
+          <target state="translated" state-qualifier="exact-match">Sondermenge</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Line - Field lbt Special Qty - Property Caption</note>
         </trans-unit>
@@ -7658,6 +7742,12 @@
           <target state="translated">Druckauswahl</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Line Archive - Field lbt Printoption - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4262640906 - Field 2635393249 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2903552224">
+          <source>Special Quantity</source>
+          <target state="translated" state-qualifier="exact-match">Sondermenge</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt Sales Line Archive - Field lbt Special Qty - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4262640906 - Field 3967709435 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2903552224">
           <source>Summation</source>

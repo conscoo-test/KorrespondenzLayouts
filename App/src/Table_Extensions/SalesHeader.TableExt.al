@@ -32,6 +32,11 @@ tableextension 5272728 "lbt Sales Header" extends "Sales Header"
             DataClassification = CustomerContent;
             TableRelation = "Entry/Exit Point";
         }
+        field(5272723; "lbt Asked Once"; Boolean)
+        {
+            Caption = 'Asked Once';
+            DataClassification = CustomerContent;
+        }
     }
 
     trigger OnAfterInsert()
