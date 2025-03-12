@@ -120,6 +120,9 @@ page 5272730 "lbt cl Longtext SysId"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
+        if BelowxRec then
+            Rec."Document Type" := xRec."Document Type";
+        PurchDocType := Enum::"Purchase Document Type".FromInteger(Rec."Document Type".AsInteger());
         Rec.Position := Rec.Position::EditorHeader;
         UpdatePositionText();
     end;
