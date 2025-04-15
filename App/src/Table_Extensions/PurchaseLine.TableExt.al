@@ -122,6 +122,11 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
                 lbtclSetUnitPrice(FieldNo("lbt cl Price in Price Factor"));
             end;
         }
+        field(5272732; "lbt Special Qty"; Decimal)
+        {
+            Caption = 'Special Quantity';
+            DataClassification = CustomerContent;
+        }
     }
 
     trigger OnDelete()

@@ -53,6 +53,11 @@ pageextension 5272803 "lbt Sales Quote Subform" extends "Sales Quote Subform"
                 ApplicationArea = All;
                 ToolTip = 'Here can you define the Delivery Date Type';
             }
+            field("lbt Special Qty"; Rec."lbt Special Qty")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Special Quantity field.', Comment = '%';
+            }
         }
         ///H22/0437
         addafter("Unit Price")

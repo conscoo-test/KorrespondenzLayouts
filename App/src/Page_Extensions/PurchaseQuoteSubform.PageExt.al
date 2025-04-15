@@ -60,6 +60,14 @@ pageextension 5272805 "lbt Purchase Quote Subform" extends "Purchase Quote Subfo
                 ToolTip = 'Here can you enter the Unit Price in Price Factor.';
             }
         }
+        addafter(Quantity)
+        {
+            field("lbt Special Qty"; Rec."lbt Special Qty")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Special Quantity field.', Comment = '%';
+            }
+        }
     }
     actions
     {

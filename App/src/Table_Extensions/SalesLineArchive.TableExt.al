@@ -84,6 +84,11 @@ tableextension 5272732 "lbt Sales Line Archive" extends "Sales Line Archive"
             AutoFormatType = 2;
             CaptionClass = GetCaptionClass(FieldNo("lbt cl Price in Price Factor"));
         }
+        field(5272732; "lbt Special Qty"; Decimal)
+        {
+            Caption = 'Special Quantity';
+            DataClassification = CustomerContent;
+        }
     }
     var
         EditorHelper: Codeunit "lbt cl EditorHelper";

@@ -10,7 +10,9 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         tabledata "Purch. Inv. Line" = m,
         tabledata "Purch. Cr. Memo Line" = m,
         tabledata "Return Shipment Line" = m,
-        tabledata "Purchase Line Archive" = m;
+        tabledata "Purchase Line Archive" = m,
+        tabledata "Sales Line" = m,
+        tabledata "Sales Header" = m;
 
     trigger OnRun()
     begin
@@ -700,4 +702,236 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
 
     #endregion
     #endregion
+
+    #region
+    //H24-0857
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Quote to Order", 'OnBeforeTransferQuoteLineToOrderLineLoop', '', false, false)]
+    local procedure SalesQuotetoOrder_OnBeforeTransferQuoteLineToOrderLineLoop(var SalesQuoteLine: Record "Sales Line"; var SalesQuoteHeader: Record "Sales Header"; var SalesOrderHeader: Record "Sales Header"; var IsHandled: Boolean)
+    var
+        lbtCorrSetup: Record "lbt Corr Setup";
+        ConfirmMgt: Codeunit "Confirm Management";
+        CopytoOrderLbl: Label 'The sales quote still contains alternative items, which will be deleted during the transfer. Existing demand lines will be transferred as regular item lines with their special quantity. Do you want to proceed?',
+        Comment = 'de-DE In dem Angebot befinden sich noch Alternativpositionen, welche beim Übertragen gelöscht werden. Vorhandene Bedarfszeilen werden mit ihrer Sondermenge als normale Artikelzeile übernommen. Wollen Sie fortfahren?';
+        cancelErr: Label 'Program was canceled.', Comment = 'de-DE Programm wurde abgebrochen.';
+
+    begin
+        lbtCorrSetup.Get();
+        if lbtCorrSetup."S.Print select Copy order" = false then
+            if (SalesQuoteLine."lbt Printoption" = SalesQuoteLine."lbt Printoption"::Alternative) or
+            (SalesQuoteLine."lbt Printoption" = SalesQuoteLine."lbt Printoption"::Optional) then
+                IsHandled := true;
+
+        if lbtCorrSetup."S.Print select Copy order" = true then begin
+            if not SalesQuoteHeader."lbt Asked Once" then
+                if ConfirmMgt.GetResponse(CopytoOrderLbl, false) then begin
+                    SalesQuoteHeader."lbt Asked Once" := true;
+                    if SalesQuoteLine."lbt Printoption" = SalesQuoteLine."lbt Printoption"::Optional then begin
+                        // SalesQuoteLine."lbt Printoption" := SalesQuoteLine."lbt Printoption"::Standard;
+                        SalesQuoteLine.Validate("lbt Printoption", SalesQuoteLine."lbt Printoption"::Standard);
+                        // SalesQuoteLine.Quantity := SalesQuoteLine."lbt Special Qty";
+                        SalesQuoteLine.Validate("Quantity", SalesQuoteLine."lbt Special Qty");
+                    end;
+                    if SalesQuoteLine."lbt Printoption" = SalesQuoteLine."lbt Printoption"::Alternative then
+                        IsHandled := true;
+                end else
+                    Error(cancelErr);
+
+            if SalesQuoteHeader."lbt Asked Once" then begin
+                if SalesQuoteLine."lbt Printoption" = SalesQuoteLine."lbt Printoption"::Optional then begin
+                    // SalesQuoteLine."lbt Printoption" := SalesQuoteLine."lbt Printoption"::Standard;
+                    SalesQuoteLine.Validate("lbt Printoption", SalesQuoteLine."lbt Printoption"::Standard);
+                    // SalesQuoteLine.Quantity := SalesQuoteLine."lbt Special Qty";
+                    SalesQuoteLine.Validate("Quantity", SalesQuoteLine."lbt Special Qty");
+                end;
+                if SalesQuoteLine."lbt Printoption" = SalesQuoteLine."lbt Printoption"::Alternative then
+                    IsHandled := true;
+            end;
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnCopySalesDocSalesLineOnAfterCalcShouldRunIteration', '', false, false)]
+    local procedure CopyDocumentMgt_OnCopySalesDocSalesLineOnAfterCalcShouldRunIteration(FromSalesHeader: Record "Sales Header"; FromSalesLine: Record "Sales Line"; var ToSalesHeader: Record "Sales Header"; var ShouldRunIteration: Boolean)
+    var
+        lbtCorrSetup: Record "lbt Corr Setup";
+        ConfirmMgt: Codeunit "Confirm Management";
+        AltOptLöschenLbl: Label 'There are still alternative and/or requirement lines in the data record. These will be deleted when you continue. Do you want to continue?',
+        Comment = 'de-DE In dem Datensatz befinden sich noch Alternativ- und/oder Bedarfszeilen. Diese werden beim Fortfahren gelöscht. Wollen Sie fortfahren?';
+        cancelErr: Label 'Program was canceled.', Comment = 'de-DE Programm wurde abgebrochen.';
+    begin
+        lbtCorrSetup.Get();
+        if lbtCorrSetup."S.Print select Copy order" = false then
+            if (FromSalesLine."lbt Printoption" = FromSalesLine."lbt Printoption"::Alternative) or
+            (FromSalesLine."lbt Printoption" = FromSalesLine."lbt Printoption"::Optional) then begin
+                ShouldRunIteration := false;
+                exit;
+            end;
+
+        if lbtCorrSetup."S.Print select Copy order" = true then begin
+            if ToSalesHeader."Document Type" = "Sales Document Type"::Quote then begin
+                ShouldRunIteration := true;
+                exit;
+            end
+
+            else
+                if (FromSalesLine."lbt Printoption" = FromSalesLine."lbt Printoption"::Alternative) or
+                    (FromSalesLine."lbt Printoption" = FromSalesLine."lbt Printoption"::Optional) then
+                    if not ToSalesHeader."lbt Asked Once" then
+                        if ConfirmMgt.GetResponse(AltOptLöschenLbl, false) then begin
+                            ToSalesHeader."lbt Asked Once" := true;
+                            ShouldRunIteration := false
+                        end else
+                            Error(cancelErr);
+
+            if (FromSalesLine."lbt Printoption" = FromSalesLine."lbt Printoption"::Alternative) or
+            (FromSalesLine."lbt Printoption" = FromSalesLine."lbt Printoption"::Optional) and
+            (ToSalesHeader."lbt Asked Once" = true) then
+                ShouldRunIteration := false;
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnBeforeInsertToSalesLine', '', false, false)]
+    local procedure CopyDocumentMgt_OnBeforeInsertToSalesLine(var ToSalesLine: Record "Sales Line"; var FromSalesLine: Record "Sales Line"; FromDocType: Option; RecalcLines: Boolean; var ToSalesHeader: Record "Sales Header"; DocLineNo: Integer; var NextLineNo: Integer; RecalculateAmount: Boolean; var IsHandled: Boolean)
+    begin
+        if (FromSalesLine."lbt Printoption" = FromSalesLine."lbt Printoption"::Optional) or
+        (FromSalesLine."lbt Printoption" = FromSalesLine."lbt Printoption"::Alternative) then
+            ToSalesLine.Validate("lbt Printoption", FromSalesLine."lbt Printoption");
+        ToSalesLine.Validate("lbt Special Qty", FromSalesLine."lbt Special Qty");
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnBeforeCopyPurchLine', '', false, false)]
+    local procedure CopyDocumentMgt_OnBeforeCopyPurchLine(var ToPurchHeader: Record "Purchase Header"; FromPurchHeader: Record "Purchase Header"; FromPurchLine: Record "Purchase Line"; var IsHandled: Boolean; FromPurchDocType: Enum "Purchase Document Type From")
+    var
+        lbtCorrSetup: Record "lbt Corr Setup";
+        ConfirmMgt: Codeunit "Confirm Management";
+        AltOptLöschenLbl: Label 'There are still alternative and/or requirement lines in the data record. These will be deleted when you continue. Do you want to continue?',
+        Comment = 'de-DE In dem Datensatz befinden sich noch Alternativ- und/oder Bedarfszeilen. Diese werden beim Fortfahren gelöscht. Wollen Sie fortfahren?';
+        cancelErr: Label 'Program was canceled.', Comment = 'de-DE Programm wurde abgebrochen.';
+    begin
+
+        lbtCorrSetup.Get();
+        if lbtCorrSetup."S.Print select Copy order" = false then
+            if (FromPurchLine."lbt Printoption" = FromPurchLine."lbt Printoption"::Alternative) or
+            (FromPurchLine."lbt Printoption" = FromPurchLine."lbt Printoption"::Optional) then
+                IsHandled := true;
+
+        if lbtCorrSetup."S.Print select Copy order" = true then begin
+            if ToPurchHeader."Document Type" = "Purchase Document Type From"::Quote then
+                exit
+
+            else
+                if (FromPurchLine."lbt Printoption" = FromPurchLine."lbt Printoption"::Alternative) or
+                    (FromPurchLine."lbt Printoption" = FromPurchLine."lbt Printoption"::Optional) then
+                    if not ToPurchHeader."lbt Asked Once" then
+                        if ConfirmMgt.GetResponse(AltOptLöschenLbl, false) then begin
+                            ToPurchHeader."lbt Asked Once" := true;
+                            IsHandled := true;
+                        end else
+                            Error(cancelErr);
+
+            if (FromPurchLine."lbt Printoption" = FromPurchLine."lbt Printoption"::Alternative) or
+            (FromPurchLine."lbt Printoption" = FromPurchLine."lbt Printoption"::Optional) and
+            (ToPurchHeader."lbt Asked Once" = true) then
+                IsHandled := true;
+
+        end
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnBeforeInsertToPurchLine', '', false, false)]
+    local procedure CopyDocumentMgt_OnBeforeInsertToPurchLine(var ToPurchLine: Record "Purchase Line"; FromPurchLine: Record "Purchase Line"; FromDocType: Option; RecalcLines: Boolean; var ToPurchHeader: Record "Purchase Header"; DocLineNo: Integer; var NexLineNo: Integer)
+    begin
+        if (FromPurchLine."lbt Printoption" = FromPurchLine."lbt Printoption"::Optional) or
+        (FromPurchLine."lbt Printoption" = FromPurchLine."lbt Printoption"::Alternative) then
+            ToPurchLine.Validate("lbt Printoption", FromPurchLine."lbt Printoption");
+        ToPurchLine.Validate("lbt Special Qty", FromPurchLine."lbt Special Qty");
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnBeforeCopyArchSalesLine', '', false, false)]
+    local procedure CopyDocumentMgt_OnBeforeCopyArchSalesLine(var ToSalesHeader: Record "Sales Header"; FromSalesHeaderArchive: Record "Sales Header Archive"; FromSalesLineArchive: Record "Sales Line Archive"; RecalculateAmount: Boolean; var CopyThisLine: Boolean)
+    var
+        lbtCorrSetup: Record "lbt Corr Setup";
+        ConfirmMgt: Codeunit "Confirm Management";
+        AltOptLöschenLbl: Label 'There are still alternative and/or requirement lines in the data record. These will be deleted when you continue. Do you want to continue?',
+        Comment = 'de-DE In dem Datensatz befinden sich noch Alternativ- und/oder Bedarfszeilen. Diese werden beim Fortfahren gelöscht. Wollen Sie fortfahren?';
+        cancelErr: Label 'Program was canceled.', Comment = 'de-DE Programm wurde abgebrochen.';
+    begin
+
+        lbtCorrSetup.Get();
+        if lbtCorrSetup."S.Print select Copy order" = false then
+            if (FromSalesLineArchive."lbt Printoption" = FromSalesLineArchive."lbt Printoption"::Alternative) or
+            (FromSalesLineArchive."lbt Printoption" = FromSalesLineArchive."lbt Printoption"::Optional) then
+                CopyThisLine := false;
+
+        if lbtCorrSetup."S.Print select Copy order" = true then
+            if ToSalesHeader."Document Type" = "Sales Document Type"::Quote then
+                exit
+
+            else
+                if (FromSalesLineArchive."lbt Printoption" = FromSalesLineArchive."lbt Printoption"::Alternative) or
+                    (FromSalesLineArchive."lbt Printoption" = FromSalesLineArchive."lbt Printoption"::Optional) then
+                    if not ToSalesHeader."lbt Asked Once" then
+                        if ConfirmMgt.GetResponse(AltOptLöschenLbl, false) then begin
+                            ToSalesHeader."lbt Asked Once" := true;
+                            CopyThisLine := false;
+                        end else
+                            Error(cancelErr)
+                    else
+                        if (FromSalesLineArchive."lbt Printoption" = FromSalesLineArchive."lbt Printoption"::Alternative) or
+                        (FromSalesLineArchive."lbt Printoption" = FromSalesLineArchive."lbt Printoption"::Optional) then
+                            CopyThisLine := false;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnCopyArchSalesLineOnBeforeToSalesLineInsert', '', false, false)]
+    local procedure CopyDocumentMgt_OnCopyArchSalesLineOnBeforeToSalesLineInsert(var ToSalesLine: Record "Sales Line"; FromSalesLineArchive: Record "Sales Line Archive"; RecalculateLines: Boolean; var NextLineNo: Integer; var TransferOldExtLines: Codeunit "Transfer Old Ext. Text Lines"; ToSalesHeader: Record "Sales Header")
+    begin
+        if (FromSalesLineArchive."lbt Printoption" = FromSalesLineArchive."lbt Printoption"::Optional) or
+        (FromSalesLineArchive."lbt Printoption" = FromSalesLineArchive."lbt Printoption"::Alternative) then
+            ToSalesLine.Validate("lbt Printoption", FromSalesLineArchive."lbt Printoption");
+        ToSalesLine.Validate("lbt Special Qty", FromSalesLineArchive."lbt Special Qty");
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnBeforeCopyArchPurchLine', '', false, false)]
+    local procedure CopyDocumentMgt_OnBeforeCopyArchPurchLine(var ToPurchHeader: Record "Purchase Header"; FromPurchHeaderArchive: Record "Purchase Header Archive"; FromPurchLineArchive: Record "Purchase Line Archive"; RecalculateAmount: Boolean; var CopyThisLine: Boolean)
+    var
+        lbtCorrSetup: Record "lbt Corr Setup";
+        ConfirmMgt: Codeunit "Confirm Management";
+        AltOptLöschenLbl: Label 'There are still alternative and/or requirement lines in the data record. These will be deleted when you continue. Do you want to continue?',
+        Comment = 'de-DE In dem Datensatz befinden sich noch Alternativ- und/oder Bedarfszeilen. Diese werden beim Fortfahren gelöscht. Wollen Sie fortfahren?';
+        cancelErr: Label 'Program was canceled.', Comment = 'de-DE Programm wurde abgebrochen.';
+    begin
+
+        lbtCorrSetup.Get();
+        if lbtCorrSetup."S.Print select Copy order" = false then
+            if (FromPurchLineArchive."lbt Printoption" = FromPurchLineArchive."lbt Printoption"::Alternative) or
+            (FromPurchLineArchive."lbt Printoption" = FromPurchLineArchive."lbt Printoption"::Optional) then
+                CopyThisLine := false;
+
+        if lbtCorrSetup."S.Print select Copy order" = true then
+            if ToPurchHeader."Document Type" = "Purchase Document Type From"::Quote then
+                exit
+
+            else
+                if (FromPurchLineArchive."lbt Printoption" = FromPurchLineArchive."lbt Printoption"::Alternative) or
+                    (FromPurchLineArchive."lbt Printoption" = FromPurchLineArchive."lbt Printoption"::Optional) then
+                    if not ToPurchHeader."lbt Asked Once" then
+                        if ConfirmMgt.GetResponse(AltOptLöschenLbl, false) then begin
+                            ToPurchHeader."lbt Asked Once" := true;
+                            CopyThisLine := false;
+                        end else
+                            Error(cancelErr)
+                    else
+                        if (FromPurchLineArchive."lbt Printoption" = FromPurchLineArchive."lbt Printoption"::Alternative) or
+                        (FromPurchLineArchive."lbt Printoption" = FromPurchLineArchive."lbt Printoption"::Optional) then
+                            CopyThisLine := false;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnCopyArchPurchLineOnBeforeToPurchLineInsert', '', false, false)]
+    local procedure CopyDocumentMgt_OnCopyArchPurchLineOnBeforeToPurchLineInsert(var ToPurchLine: Record "Purchase Line"; FromPurchLineArchive: Record "Purchase Line Archive"; RecalculateLines: Boolean; var NextLineNo: Integer; var TransferOldExtLines: Codeunit "Transfer Old Ext. Text Lines")
+    begin
+        if (FromPurchLineArchive."lbt Printoption" = FromPurchLineArchive."lbt Printoption"::Optional) or
+        (FromPurchLineArchive."lbt Printoption" = FromPurchLineArchive."lbt Printoption"::Alternative) then
+            ToPurchLine.Validate("lbt Printoption", FromPurchLineArchive."lbt Printoption");
+        ToPurchLine.Validate("lbt Special Qty", FromPurchLineArchive."lbt Special Qty");
+    end;
+    #endregion
+
 }
