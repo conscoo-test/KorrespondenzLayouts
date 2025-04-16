@@ -25,6 +25,8 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
             Caption = 'Printoption';
             DataClassification = CustomerContent;
             trigger OnValidate()
+            var
+                _Description: Text[100];
             begin
                 if (Rec."lbt Printoption" = Rec."lbt Printoption"::Alternative) or
                   (Rec."lbt Printoption" = Rec."lbt Printoption"::Optional)
@@ -47,8 +49,9 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
                                            Rec."lbt Printoption"::Title]
                 then begin
                     // Rec."lbt Printoption" := Rec."lbt Printoption";
+                    _Description := Rec.Description;
                     Validate(Type, Type::" ");
-                    ;
+                    Validate(Description, _Description);
                     // Rec."lbt Printoption" := Rec."lbt Printoption";
                 end;
             end;
