@@ -2348,6 +2348,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Extended Text - Control lbt Textchoice - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 135027988 - Control 2848641488 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1997869518">
+          <source>Standard,,Blob</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Extended Text - Control lbt Textchoice - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 135027988 - Control 3850195103 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1997869518">
           <source>Editor</source>
           <note from="Developer" annotates="general" priority="2"></note>
