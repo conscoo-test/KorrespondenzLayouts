@@ -617,7 +617,7 @@ codeunit 5272729 "lbt cl EditorHelper"
         FRef: FieldRef;
         DocType: Enum "Sales Document Type";
     begin
-        if not (RecRef.Number in [Database::"Sales Header", Database::"Purchase Header"]) then
+        if not (RecRef.Number in [Database::"Sales Header", Database::"Purchase Header", Database::"Service Header"]) then
             exit(false);
         FRef := RecRef.Field(1);
         DocType := FRef.Value();
@@ -627,7 +627,7 @@ codeunit 5272729 "lbt cl EditorHelper"
 
     local procedure IsInvoice(var RecRef: RecordRef): Boolean
     begin
-        if (RecRef.Number in [Database::"Sales Invoice Header", Database::"Purch. Inv. Header"]) then
+        if (RecRef.Number in [Database::"Sales Invoice Header", Database::"Purch. Inv. Header", Database::"Service Invoice Header"]) then
             exit(true);
         exit(IsDocType(RecRef, Enum::"Sales Document Type"::Invoice));
     end;
@@ -639,7 +639,7 @@ codeunit 5272729 "lbt cl EditorHelper"
     begin
         if Sourcerecref.Number in [Database::Customer, Database::Vendor, database::"Ship-to Address"] then
             exit(true);
-        if not (Sourcerecref.Number in [Database::"Sales Header", Database::"Purchase Header"]) then
+        if not (Sourcerecref.Number in [Database::"Sales Header", Database::"Purchase Header", Database::"Service Header"]) then
             exit(false);
         FRef := Sourcerecref.Field(1);
         DocType := FRef.Value();
@@ -664,7 +664,7 @@ codeunit 5272729 "lbt cl EditorHelper"
 
     local procedure IsShipment(var RecRef: RecordRef): Boolean
     begin
-        if (RecRef.Number in [Database::"Sales Shipment Header", Database::"Purch. Rcpt. Header"]) then
+        if (RecRef.Number in [Database::"Sales Shipment Header", Database::"Purch. Rcpt. Header", Database::"Service Shipment Header"]) then
             exit(true);
         exit(IsDocType(RecRef, Enum::"Sales Document Type"::Invoice));
     end;
@@ -880,22 +880,38 @@ codeunit 5272729 "lbt cl EditorHelper"
         if IsHandled then
             exit;
 
-        case true of
-            IsInvoice(TargetRecRef):
-                SourceMemoField.SetRange(Enum::"Sales Document Type"::Invoice);
-            IsShipment(TargetRecRef):
-                SourceMemoField.SetRange(Enum::"Sales Document Type"::"lbt cl Shipment/Receipt");
-            IsDocType(TargetRecRef, Enum::"Sales Document Type"::Quote):
-                SourceMemoField.SetRange(Enum::"Sales Document Type"::Quote);
-            IsDocType(TargetRecRef, Enum::"Sales Document Type"::"Credit Memo"):
-                SourceMemoField.SetRange(Enum::"Sales Document Type"::"Credit Memo");
-            IsDocType(TargetRecRef, Enum::"Sales Document Type"::"Blanket Order"):
-                SourceMemoField.SetRange(Enum::"Sales Document Type"::"Blanket Order");
-            IsDocType(TargetRecRef, Enum::"Sales Document Type"::"Return Order"):
-                SourceMemoField.SetRange(Enum::"Sales Document Type"::"Return Order");
-            else
-                SourceMemoField.SetRange();
-        end;
+        if IsInvoice(TargetRecRef) then
+            SourceMemoField.SetRange(Enum::"Sales Document Type"::Invoice)
+        else if IsShipment(TargetRecRef) then
+            SourceMemoField.SetRange(Enum::"Sales Document Type"::"lbt cl Shipment/Receipt")
+        else if IsDocType(TargetRecRef, Enum::"Sales Document Type"::Quote) then
+            SourceMemoField.SetRange(Enum::"Sales Document Type"::Quote)
+        else if IsDocType(TargetRecRef, Enum::"Sales Document Type"::"Credit Memo") then
+            SourceMemoField.SetRange(Enum::"Sales Document Type"::"Credit Memo")
+        else if IsDocType(TargetRecRef, Enum::"Sales Document Type"::"Blanket Order") then
+            SourceMemoField.SetRange(Enum::"Sales Document Type"::"Blanket Order")
+        else if IsDocType(TargetRecRef, Enum::"Sales Document Type"::"Return Order") then
+            SourceMemoField.SetRange(Enum::"Sales Document Type"::"Return Order")
+        else
+            SourceMemoField.SetRange();
+    end;
+
+    local procedure CopyNonSpecificTextsFromOrder(var SourceRecRef: RecordRef; var TargetRecRef: RecordRef; var SourceMemo: RecordRef)
+    var
+        CorrSetup: Record "lbt Corr Setup";
+    begin
+        CorrSetup.Get();
+        if not CorrSetup."Copy General Text From Order" then
+            exit;
+
+        if not IsOrderOrCustomer(SourceRecRef) then
+            exit;
+
+        if not (IsInvoice(TargetRecRef) or IsShipment(TargetRecRef)) then
+            exit;
+
+        if SourceMemo.IsEmpty() then
+            SourceMemo.Field(2).SetRange("Sales Document Type"::Order);
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"lbt Longtext Mgt.", 'onbeforeCopyLongText', '', true, true)]
@@ -927,6 +943,8 @@ codeunit 5272729 "lbt cl EditorHelper"
         OpenMemo(TargetMemo, TargetType);
 
         SetMemoFilters(SourceRecRef, TargetRecRef, SourceMemo, source_Fields, SourceType);
+
+        CopyNonSpecificTextsFromOrder(SourceRecRef, TargetRecRef, SourceMemo);
 
         if SourceRecRef.Number = Database::Job then begin
             SourceMemoField := SourceMemo.Field(3);
