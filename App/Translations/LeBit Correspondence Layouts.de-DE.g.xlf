@@ -3791,7 +3791,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 15442846 - Control 2936602837 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
           <source>LeBit Extended Layout Options</source>
-          <target state="translated">Langtext</target>
+          <target state="translated">LeBit Erweiterte Layoutoptionen</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Posted Sales Invoice - Control lbtEditor - Property Caption</note>
         </trans-unit>
