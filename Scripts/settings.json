@@ -4,7 +4,7 @@
     "testFolders": "test",
     "previousApps": "\\\\192.168.244.16\\Software_Business\\apps\\product\\KorrespondenzLayouts\\latest.zip",
     "installApps":[
-                "https://cdn.fornav.com/products/rep/runtime/CustomizableReportPack_BC27.0_8_1_2700_0.zip"
+                "https://www.fornav.com/products/rep/runtime?bcversion=latest"
     ],
     "installTestRunner": true,
     "installTestFramework": true,
