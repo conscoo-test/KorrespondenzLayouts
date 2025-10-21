@@ -930,6 +930,9 @@ codeunit 5272729 "lbt cl EditorHelper"
     begin
         if handled then
             exit;
+        OnBeforeCopyEditor(SourceRecRef, TargetRecRef, handled);
+        if handled then
+            exit;
         SourceType := GetType(SourceRecRef.Number);
         TargetType := GetType(TargetRecRef.Number);
 
@@ -976,6 +979,11 @@ codeunit 5272729 "lbt cl EditorHelper"
             until SourceMemo.Next() = 0;
 
         handled := true;
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeCopyEditor(SourceRecRef: RecordRef; TargetRecRef: RecordRef; var Handled2: Boolean)
+    begin
     end;
 
     [IntegrationEvent(true, false)]
