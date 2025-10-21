@@ -61,4 +61,16 @@ codeunit 5272733 "lbt cl Subscribers"
         Commit(); // commit changes before showing the request page
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnBeforePrintRecords', '', false, false)]
+    local procedure "Purchase Header_OnBeforePrintRecords"(var PurchaseHeader: Record "Purchase Header"; ShowRequestForm: Boolean; var IsHandled: Boolean)
+    var
+        LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
+    begin
+        if not ShouldRunAutomaticNumbering(PurchaseHeader."Document Type") then
+            exit;
+        LeBitCorrespDocMgt.PurchLinePosNumber(PurchaseHeader);
+        Commit(); // commit changes before showing the request page
+    end;
+
+
 }
