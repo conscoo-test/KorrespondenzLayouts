@@ -143,6 +143,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field Copy Blanket Order Texts - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 214935587 - Field 3016807722 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Copy Non-Specific Text From Order</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Nicht spezifische Texte aus Auftrag kopieren</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field Copy General Text From Order - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 214935587 - Field 4040641683 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Copy Quote Texts</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -902,6 +907,16 @@
           <source>This option affects the copying of header and footer texts from the quotation to the sales order.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control Copy Quote Texts - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 2839050074 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Texts</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Texte</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control Texts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 3016807722 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>If selected, the normal header and footer texts from the order will be copied to the invoice and shipment documents if the invoice or shipment header and footer texts are empty.</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, werden die normalen Kopf- und Fußzeilentexte aus dem Auftrag in die Rechnungs- und Lieferscheindokumente kopiert, wenn die Rechnungs- oder Liefer- Kopf- und Fußzeilentexte leer sind.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control Copy General Text From Order - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Action 2384739207 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Delete Empty Textheaders</source>
@@ -2347,6 +2362,11 @@
           <source>Specified a Textchoice</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Extended Text - Control lbt Textchoice - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 135027988 - Control 2848641488 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1997869518">
+          <source>Standard,,Blob</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Extended Text - Control lbt Textchoice - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="PageExtension 135027988 - Control 3850195103 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1997869518">
           <source>Editor</source>

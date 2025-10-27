@@ -110,6 +110,15 @@ page 5272728 "lbt Corr Setup"
                     }
                 }
             }
+            group(Texts)
+            {
+                Caption = 'Texts', Comment = 'de-DE=Texte';
+                field("Copy General Text From Order"; Rec."Copy General Text From Order")
+                {
+                    ToolTip = 'If selected, the normal header and footer texts from the order will be copied to the invoice and shipment documents if the invoice or shipment header and footer texts are empty.',
+                    Comment = 'de-DE=Wenn ausgewählt, werden die normalen Kopf- und Fußzeilentexte aus dem Auftrag in die Rechnungs- und Lieferscheindokumente kopiert, wenn die Rechnungs- oder Liefer- Kopf- und Fußzeilentexte leer sind.';
+                }
+            }
         }
     }
 

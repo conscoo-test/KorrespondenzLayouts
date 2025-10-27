@@ -65,6 +65,10 @@ table 5272724 "lbt Corr Setup"
         {
             Caption = 'S. Print selection Copy offer to order', Comment = 'de-DE=Druckauswahl Angebot in Auftrag kopieren';
         }
+        field(21; "Copy General Text From Order"; Boolean)
+        {
+            Caption = 'Copy Non-Specific Text From Order', Comment = 'de-DE=Nicht spezifische Texte aus Auftrag kopieren';
+        }
     }
 
     keys

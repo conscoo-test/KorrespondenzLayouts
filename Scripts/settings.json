@@ -4,9 +4,9 @@
     "testFolders": "test",
     "previousApps": "\\\\192.168.244.16\\Software_Business\\apps\\product\\KorrespondenzLayouts\\latest.zip",
     "installApps":[
-                "\\\\192.168.244.16\\Software_Business\\Business_Software\\Navision\\ForNAV\\ForNAV Report Pack_universal code_onprem\\CustomizableReportPack_BC24.0_8_0_2400_0\\BC24.0\\ForNAV Core 8.0.2400.0.app",
-                "\\\\192.168.244.16\\Software_Business\\Business_Software\\Navision\\ForNAV\\ForNAV Report Pack_universal code_onprem\\CustomizableReportPack_BC24.0_8_0_2400_0\\BC24.0\\ForNAV Customizable Report Pack 8.0.2400.0.app",
-                "\\\\192.168.244.16\\Software_Business\\Business_Software\\Navision\\ForNAV\\ForNAV Report Pack_universal code_onprem\\CustomizableReportPack_BC24.0_8_0_2400_0\\BC24.0\\ForNAV Language Module 8.0.2400.0.app"
+                "\\\\192.168.244.16\\Software_Business\\Business_Software\\Navision\\ForNAV\\ForNAV Report Pack_universal code_onprem\\CustomizableReportPack_BC26.0_8_0_2600_10\\BC26.0\\ForNAV Core 8.0.2600.10.app",
+                "\\\\192.168.244.16\\Software_Business\\Business_Software\\Navision\\ForNAV\\ForNAV Report Pack_universal code_onprem\\CustomizableReportPack_BC26.0_8_0_2600_10\\BC26.0\\ForNAV Language Module 8.0.2600.10.app",
+                "\\\\192.168.244.16\\Software_Business\\Business_Software\\Navision\\ForNAV\\ForNAV Report Pack_universal code_onprem\\CustomizableReportPack_BC26.0_8_0_2600_10\\BC26.0\\ForNAV Customizable Report Pack 8.0.2600.10.app"
     ],
     "installTestRunner": true,
     "installTestFramework": true,

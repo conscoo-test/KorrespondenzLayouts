@@ -2,63 +2,58 @@ codeunit 5272726 "lbt Upgrade"
 {
     Subtype = Upgrade;
 
-    trigger OnCheckPreconditionsPerCompany()
-    var
-        lbtModuleInfo: ModuleInfo;
-    begin
-        if not NavApp.GetCurrentModuleInfo(lbtModuleInfo) then
-            Clear(lbtModuleInfo);
-        // case lbtModuleInfo.DataVersion() of
-        // end;
-    end;
-
-    trigger OnCheckPreconditionsPerDatabase()
-    var
-        lbtModuleInfo: ModuleInfo;
-    begin
-        if not NavApp.GetCurrentModuleInfo(lbtModuleInfo) then
-            Clear(lbtModuleInfo);
-        // case lbtModuleInfo.DataVersion() of
-        // end;
-    end;
-
     trigger OnUpgradePerCompany()
-    var
-        lbtModuleInfo: ModuleInfo;
     begin
-        if not NavApp.GetCurrentModuleInfo(lbtModuleInfo) then
-            Clear(lbtModuleInfo);
-        // case lbtModuleInfo.DataVersion() of
-        // end;
+        ServiceOrderDocType();
     end;
 
-    trigger OnUpgradePerDatabase()
+    local procedure ServiceOrderDocType()
     var
-        lbtModuleInfo: ModuleInfo;
+        PSLongtextLine: Record "lbt PS Longtext Line";
+        PSLongtextLine2: Record "lbt PS Longtext Line";
+        UpgradeTag: Codeunit "Upgrade Tag";
+
     begin
-        if not NavApp.GetCurrentModuleInfo(lbtModuleInfo) then
-            Clear(lbtModuleInfo);
-        // case lbtModuleInfo.DataVersion() of
-        // end;
+        if UpgradeTag.HasUpgradeTag(ServiceOrderDocTypeLbl) then
+            exit;
+
+        PSLongtextLine.SetRange("Table ID", Database::"Service Header");
+        PSLongtextLine.SetRange("Document Type", 11);
+        if PSLongtextLine.FindSet() then
+            repeat
+                PSLongtextLine2.GetBySystemId(PSLongtextLine.SystemId);
+                PSLongtextLine2.Rename(
+                    PSLongtextLine."Table ID",
+                    PSLongtextLine."Document Type"::"lbt cl Shipment/Receipt",
+                    PSLongtextLine."Document No.",
+                    PSLongtextLine.Position,
+                    PSLongtextLine."Document Line No.",
+                    PSLongtextLine."Line No.");
+            until PSLongtextLine.Next() = 0;
+
+        PSLongtextLine.SetRange("Document Type", 12);
+        if PSLongtextLine.FindSet() then
+            repeat
+                PSLongtextLine2.GetBySystemId(PSLongtextLine.SystemId);
+                PSLongtextLine2.Rename(
+                    PSLongtextLine."Table ID",
+                    PSLongtextLine."Document Type"::Invoice,
+                    PSLongtextLine."Document No.",
+                    PSLongtextLine.Position,
+                    PSLongtextLine."Document Line No.",
+                    PSLongtextLine."Line No.");
+            until PSLongtextLine.Next() = 0;
+
+        UpgradeTag.SetUpgradeTag(ServiceOrderDocTypeLbl);
     end;
 
-    trigger OnValidateUpgradePerCompany()
-    var
-        lbtModuleInfo: ModuleInfo;
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Upgrade Tag", 'OnGetPerCompanyUpgradeTags', '', false, false)]
+    local procedure OnGetPerCompanyUpgradeTags(var PerCompanyUpgradeTags: List of [Code[250]])
     begin
-        if not NavApp.GetCurrentModuleInfo(lbtModuleInfo) then
-            Clear(lbtModuleInfo);
-        // case lbtModuleInfo.DataVersion() of
-        // end;
+        PerCompanyUpgradeTags.Add(ServiceOrderDocTypeLbl);
     end;
 
-    trigger OnValidateUpgradePerDatabase()
+
     var
-        lbtModuleInfo: ModuleInfo;
-    begin
-        if not NavApp.GetCurrentModuleInfo(lbtModuleInfo) then
-            Clear(lbtModuleInfo);
-        // case lbtModuleInfo.DataVersion() of
-        // end;
-    end;
+        ServiceOrderDocTypeLbl: Label 'lbt-ServiceOrderDocType-20251014', Locked = true;
 }
