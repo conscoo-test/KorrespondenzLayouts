@@ -11,7 +11,7 @@ page 5272733 "lbt cl Editor Preview"
         {
             group(EditData)
             {
-                usercontrol(showdata; "Microsoft.Dynamics.Nav.Client.WebPageViewer")
+                usercontrol(showdata; WebPageViewer)
                 {
                     ApplicationArea = All;
                     trigger ControlAddInReady(callbackUrl: Text)
@@ -30,7 +30,7 @@ page 5272733 "lbt cl Editor Preview"
 
             group(PreviewData)
             {
-                usercontrol(showdata2; "Microsoft.Dynamics.Nav.Client.WebPageViewer")
+                usercontrol(showdata2; WebPageViewer)
                 {
                     ApplicationArea = All;
                     trigger ControlAddInReady(callbackUrl: Text)
