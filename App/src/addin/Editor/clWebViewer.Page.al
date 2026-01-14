@@ -9,7 +9,7 @@ page 5272729 "lbt cl WebViewer"
             group(Editor)
             {
                 Caption = 'Editor';
-                usercontrol(Viewer; "Microsoft.Dynamics.Nav.Client.WebPageViewer")
+                usercontrol(Viewer; "WebPageViewer")
                 {
                     ApplicationArea = All;
                     trigger ControlAddInReady(callbackUrl: Text)
