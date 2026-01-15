@@ -21,6 +21,7 @@ pageextension 5272766 "lbt Purchase Order Subform" extends "Purchase Order Subfo
                 ApplicationArea = All;
                 ToolTip = 'Specifies the Printoption';
                 StyleExpr = lbtStyle;
+                ValuesAllowed = Standard, Title, "Price Invisible", "Line Invisible", "New Page", "Begin Total", "End Total", Bold;
 
                 trigger OnValidate()
                 begin

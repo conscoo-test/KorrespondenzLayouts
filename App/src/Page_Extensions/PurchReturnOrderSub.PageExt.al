@@ -21,6 +21,7 @@ pageextension 5272775 "lbt Purch. Return Order Sub." extends "Purchase Return Or
                 ToolTip = 'Here you can choose the Printoptions.';
                 ApplicationArea = All;
                 StyleExpr = lbtStyle;
+                ValuesAllowed = Standard, Title, "Price Invisible", "Line Invisible", "New Page", "Begin Total", "End Total", Bold;
 
                 trigger OnValidate()
                 begin
