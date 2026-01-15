@@ -22,7 +22,12 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
                 ApplicationArea = All;
                 ToolTip = 'Specifies the Printoption';
                 ValuesAllowed = Standard, Title, "Price Invisible", "Line Invisible", "New Page", "Begin Total", "End Total", Bold;
-                StyleExpr = lbtStyleBold;
+                StyleExpr = lbtStyle;
+
+                trigger OnValidate()
+                begin
+                    SetStyle();
+                end;
             }
         }
         addafter("Line No.")
@@ -98,14 +103,22 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
         }
     }
     trigger OnAfterGetRecord()
+    begin
+        SetStyle();
+    end;
+
+    trigger OnNewRecord(BelowxRec: Boolean)
+    begin
+        SetStyle();
+    end;
+
+    local procedure SetStyle()
     var
         LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
     begin
         lbtStyle := LeBitCorrespDocMgt.GetStyleExpr(Rec."lbt Printoption");
-        lbtStyleBold := LeBitCorrespDocMgt.GetStyleExprBold(Rec."lbt Printoption");
     end;
 
     var
         lbtStyle: Text;
-        lbtStyleBold: Text;
 }

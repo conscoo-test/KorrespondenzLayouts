@@ -25,7 +25,7 @@ pageextension 5272753 "lbt Blanket Sales Order Sub." extends "Blanket Sales Orde
 
                 ApplicationArea = All;
                 ToolTip = 'Specifies the Printoption';
-                StyleExpr = lbtStyleBold;
+                StyleExpr = lbtStyle;
             }
         }
         addafter("ShortcutDimCode[8]")
@@ -102,10 +102,8 @@ pageextension 5272753 "lbt Blanket Sales Order Sub." extends "Blanket Sales Orde
         LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
     begin
         lbtStyle := LeBitCorrespDocMgt.GetStyleExpr(Rec."lbt Printoption");
-        lbtStyleBold := LeBitCorrespDocMgt.GetStyleExprBold(Rec."lbt Printoption");
     end;
 
     var
         lbtStyle: Text;
-        lbtStyleBold: Text;
 }

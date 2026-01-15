@@ -20,7 +20,7 @@ pageextension 5272730 "lbt Posted Purch. Invoice Sub." extends "Posted Purch. In
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the Printoption';
-                StyleExpr = lbtStyleBold;
+                StyleExpr = lbtStyle;
             }
         }
         addafter("Shortcut Dimension 2 Code")
@@ -94,10 +94,8 @@ pageextension 5272730 "lbt Posted Purch. Invoice Sub." extends "Posted Purch. In
         LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
     begin
         lbtStyle := LeBitCorrespDocMgt.GetStyleExpr(Rec."lbt Printoption");
-        lbtStyleBold := LeBitCorrespDocMgt.GetStyleExprBold(Rec."lbt Printoption");
     end;
 
     var
         lbtStyle: Text;
-        lbtStyleBold: Text;
 }
