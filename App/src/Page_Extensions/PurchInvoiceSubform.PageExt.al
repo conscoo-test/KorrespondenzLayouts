@@ -2,6 +2,10 @@ pageextension 5272767 "lbt Purch. Invoice Subform" extends "Purch. Invoice Subfo
 {
     layout
     {
+        modify(Description)
+        {
+            StyleExpr = lbtStyle;
+        }
         addfirst(PurchDetailLine)
         {
             field("lbt Pos. No."; Rec."lbt Pos. No.")
