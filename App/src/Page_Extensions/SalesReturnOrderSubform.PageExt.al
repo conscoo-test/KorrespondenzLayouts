@@ -26,6 +26,7 @@ pageextension 5272772 "lbt Sales Return Order Subform" extends "Sales Return Ord
                 ToolTip = 'Here you can choose the Printoptions.';
                 ApplicationArea = All;
                 StyleExpr = lbtStyle;
+                ValuesAllowed = Standard, Title, "Price Invisible", "Line Invisible", "New Page", "Begin Total", "End Total", Bold;
 
                 trigger OnValidate()
                 begin

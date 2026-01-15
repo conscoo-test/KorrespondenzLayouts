@@ -32,6 +32,7 @@ tableextension 5272731 "lbt Purchase Line" extends "Purchase Line"
         {
             Caption = 'Printoption';
             DataClassification = CustomerContent;
+            ValuesAllowed = Standard, Title, "Price Invisible", "Line Invisible", Alternative, Optional, "New Page", "Begin Total", "End Total", Bold;
 
             trigger OnValidate()
             begin
