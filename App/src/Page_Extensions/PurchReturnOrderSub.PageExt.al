@@ -20,6 +20,7 @@ pageextension 5272775 "lbt Purch. Return Order Sub." extends "Purchase Return Or
             {
                 ToolTip = 'Here you can choose the Printoptions.';
                 ApplicationArea = All;
+                StyleExpr = lbtStyleBold;
             }
         }
         addafter(ShortcutDimCode8)
@@ -79,8 +80,10 @@ pageextension 5272775 "lbt Purch. Return Order Sub." extends "Purchase Return Or
         LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
     begin
         lbtStyle := LeBitCorrespDocMgt.GetStyleExpr(Rec."lbt Printoption");
+        lbtStyleBold := LeBitCorrespDocMgt.GetStyleExprBold(Rec."lbt Printoption");
     end;
 
     var
         lbtStyle: Text;
+        lbtStyleBold: Text;
 }
