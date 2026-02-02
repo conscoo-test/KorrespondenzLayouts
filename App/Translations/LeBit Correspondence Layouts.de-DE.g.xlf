@@ -5457,6 +5457,24 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Sales Cr. Memo Subform - Control lbt cl Price in Price Factor - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1753211343 - Action 411481648 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1708100201">
+          <source>View or print the sales credit memo as a draft before you perform the actual posting.</source>
+          <target state="translated">Zeigt den Gutschriftsentwurf an oder druckt ihn, bevor die eigentliche Buchung durchgeführt wird.</target>
+          <note from="Developer" annotates="general" priority="2">de-DE=Zeigt den Gutschriftsentwurf an oder druckt ihn, bevor die eigentliche Buchung durchgeführt wird.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Sales Credit Memo - Action lbt DraftCrMemo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1753211343 - Action 411481648 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1708100201">
+          <source>Draft Credit Memo</source>
+          <target state="translated">Gutschriftsentwurf</target>
+          <note from="Developer" annotates="general" priority="2">de-DE=Gutschriftsentwurf</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Sales Credit Memo - Action lbt DraftCrMemo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1753211343 - Action 501507620 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1708100201">
+          <source>Print/Send</source>
+          <target state="translated">Drucken/Senden</target>
+          <note from="Developer" annotates="general" priority="2">de-DE=Drucken/Senden</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt Sales Credit Memo - Action lbtCategory_PrintSend - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1753211343 - Action 2738780584 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1708100201">
           <source>LeBit Extended Layout Options</source>
           <target state="translated">LeBit Erweiterte Layoutoptionen</target>
@@ -7988,6 +8006,18 @@
           <target state="translated">Lieferung</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension lbt Purchase Document Type - EnumValue lbt cl Shipment/Receipt - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 4168629473 - EnumValue 699203700 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 1788069285">
+          <source>Draft Credit Memo</source>
+          <target state="translated">Gutschriftsentwurf</target>
+          <note from="Developer" annotates="general" priority="2">de-DE=Gutschriftsentwurf</note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension lbt Report Select. Usage Sales - EnumValue lbt Draft Credit Memo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 1690956419 - EnumValue 3919548385 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
+          <source>Sales Credit Memo Draft</source>
+          <target state="translated">Gutschriftsentwurf</target>
+          <note from="Developer" annotates="general" priority="2">de-DE=Gutschriftsentwurf</note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension lbt Report Selection Usage - EnumValue lbt S.Cr.Memo Draft - Property Caption</note>
         </trans-unit>
         <trans-unit id="EnumExtension 387248199 - EnumValue 301608474 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3710813537">
           <source>Shipment/Receipt</source>

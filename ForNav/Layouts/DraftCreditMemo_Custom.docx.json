@@ -1,0 +1,2014 @@
+{
+  "@ReportUnit": "TenthsOfAMillimeter",
+  "@Margins": "201, 101, 100, 50",
+  "@Dpi": "254",
+  "@Font": "Verdana, 9pt",
+  "@ReqSaveValues": "true",
+  "@UsageCategory": "ReportsAndAnalysis",
+  "@ObjectName": "ForNAV 0",
+  "@OnPreReportMasterScript": "lbt Sales Template",
+  "Bands": {
+    "Header": {
+      "@ControlType": "DataItem",
+      "@Name": "Header",
+      "@Dpi": "254",
+      "@CalcFields": "\"Amount Including VAT\", Amount",
+      "@NewPagePerRecord": "true",
+      "@Id": "2",
+      "@TotalFields": "60,61",
+      "@ResetPageNumber": "true",
+      "@TotalColumns": "Header$Amount,Header$AmountIncludingVAT",
+      "@ReqFilterFields": "\"No.\",\"Posting Date\"",
+      "@DataItemTableView": "SORTING(\"No.\") WHERE(\"Document Type\" = const(Invoice))",
+      "@DataItemTable": "Table36",
+      "@DataItemVarName": "Header",
+      "@GroupTotalFieldNames": "\"No.\"",
+      "@GroupTotalFields": "\"3\"",
+      "Bands": {
+        "DocumentHeader": {
+          "@ControlType": "Header",
+          "@Name": "DocumentHeader",
+          "@Font": "Verdana, 7pt",
+          "@BackColor": "Beige",
+          "@Dpi": "254",
+          "@Signature": "abc",
+          "@MasterSection": "lbt Sales Template,DocumentHeader",
+          "@AllowScriptErrors": "true",
+          "@PrintOnEveryPage": "true",
+          "@ShowOutput": "CurrReport.PageNo == 1",
+          "@Height": "950",
+          "Controls": {
+            "CreditMemo_Caption": {
+              "@Name": "CreditMemo_Caption",
+              "@ControlType": "TextBox",
+              "@Size": "851.833069,53.02014",
+              "@Location": "0,761.584",
+              "@Dpi": "254",
+              "@Font": "Verdana, 9pt, style=Bold",
+              "@ForeColor": "Black",
+              "@HorzAlign": "Left",
+              "@ShowOutput": "CurrReport.Caption == 'Gutschrift'",
+              "@SourceExpression": "CurrReport.Caption + ' ' + Header.No"
+            },
+            "TextBox3": {
+              "@Name": "TextBox3",
+              "@ControlType": "TextBox",
+              "@Size": "550.3333,58.41992",
+              "@Location": "0,814.6041",
+              "@Dpi": "254",
+              "@Font": "Verdana, 8pt",
+              "@ShowOutput": "CurrReport.Caption == 'Rechnungsentwurf'",
+              "@SourceExpression": "'(' + CurrReport.Caption + ')'"
+            },
+            "TextBox2": {
+              "@Name": "TextBox2",
+              "@ControlType": "TextBox",
+              "@Size": "629.1073,42.1199951",
+              "@Location": "1073.229,434.14",
+              "@Dpi": "254",
+              "@Font": "Verdana, 7pt",
+              "@SourceExpression": "CompanyInformation.HomePage"
+            },
+            "Header_DocumentDate": {
+              "@Name": "Header_DocumentDate",
+              "@ControlType": "TextBox",
+              "@Size": "629.107544,42.1200562",
+              "@Location": "1073.229,712.529968",
+              "@Dpi": "254",
+              "@Font": "Verdana, 9pt",
+              "@ForeColor": "Black",
+              "@BackColor": "Transparent",
+              "@HorzAlign": "Left",
+              "@SourceExpression": "Header.DocumentDate",
+              "@FormatString": "dd. MMMM yyy"
+            },
+            "CompanyInformation_FieldGroups_Address": {
+              "@Name": "CompanyInformation_FieldGroups_Address",
+              "@ControlType": "TextBox",
+              "@Size": "629.1074,42.12082",
+              "@Location": "1073.2262,334.408356",
+              "@Dpi": "254",
+              "@Font": "Verdana, 7pt",
+              "@ForeColor": "Black",
+              "@SourceExpression": "CompanyInformation.Address"
+            },
+            "TextBox22": {
+              "@Name": "TextBox22",
+              "@ControlType": "TextBox",
+              "@Size": "629.107544,42.1199951",
+              "@Location": "1073.229,292.289978",
+              "@Dpi": "254",
+              "@Font": "Verdana, 7pt, style=Bold",
+              "@SourceExpression": "CompanyInformation.Name"
+            },
+            "Label4": {
+              "@Name": "Label4",
+              "@ControlType": "Label",
+              "@Size": "629.1073,42.1200867",
+              "@Location": "1073.229,504.159943",
+              "@Dpi": "254",
+              "@Font": "Verdana, 7pt, style=Bold",
+              "@CaptionML": "ENU=Your Contact Person;DEU=Ihre Ansprechperson"
+            },
+            "TextBox23": {
+              "@Name": "TextBox23",
+              "@ControlType": "TextBox",
+              "@Size": "629.1074,42.1200256",
+              "@Location": "1073.2262,376.529175",
+              "@Dpi": "254",
+              "@Font": "Verdana, 7pt",
+              "@SourceExpression": "CompanyInformation.PostCode + ' ' + CompanyInformation.City"
+            },
+            "TextBox24": {
+              "@Name": "TextBox24",
+              "@ControlType": "TextBox",
+              "@Size": "629.107544,42.1199951",
+              "@Location": "1073.229,630.519958",
+              "@Dpi": "254",
+              "@Font": "Verdana, 7pt",
+              "@SourceExpression": "lbtBSWSetup.SalesE_MailPrint"
+            },
+            "TextBox25": {
+              "@Name": "TextBox25",
+              "@ControlType": "TextBox",
+              "@Size": "625.770752,42.1199951",
+              "@Location": "1073.229,588.399963",
+              "@Dpi": "254",
+              "@Font": "Verdana, 7pt",
+              "@SourceExpression": "'Telefon: ' + Salesperson_Purchaser.PhoneNo"
+            },
+            "TextBox26": {
+              "@Name": "TextBox26",
+              "@ControlType": "TextBox",
+              "@Size": "629.107544,42.1199341",
+              "@Location": "1073.229,546.279968",
+              "@Dpi": "254",
+              "@Font": "Verdana, 7pt",
+              "@SourceExpression": "Salesperson_Purchaser.Name"
+            },
+            "TextBox19": {
+              "@Name": "TextBox19",
+              "@ControlType": "TextBox",
+              "@Size": "950,42.1199951",
+              "@Location": "0,292.289978",
+              "@Dpi": "254",
+              "@Font": "Verdana, 5.5pt",
+              "@SourceExpression": [
+                "CurrReport.JoinStrings(' | ',",
+                "CompanyInformation.Name,",
+                "CompanyInformation.Address,",
+                "CompanyInformation.PostCode + ' ' + CompanyInformation.City",
+                ")"
+              ]
+            },
+            "CurrReport_Caption": {
+              "@Name": "CurrReport_Caption",
+              "@ControlType": "TextBox",
+              "@Size": "851.833069,53.02014",
+              "@Location": "0,761.584",
+              "@Dpi": "254",
+              "@Font": "Verdana, 9pt, style=Bold",
+              "@ForeColor": "Black",
+              "@HorzAlign": "Left",
+              "@ShowOutput": "CurrReport.Caption != 'Gutschrift'",
+              "@SourceExpression": [
+                "(Header.lbtBillingType == 'Schlussrechnung' ||",
+                " Header.lbtBillingType == 'Teilrechnung' ||",
+                " Header.lbtBillingType == 'Abschlagsrechnung')",
+                "    ? Header.lbtBillingType + ' ' + Header.No",
+                "    : 'Rechnung' + ' ' + Header.No",
+                ""
+              ]
+            },
+            "Header_FieldGroups_Bill_toAddress": {
+              "@Name": "Header_FieldGroups_Bill_toAddress",
+              "@ControlType": "TextBox",
+              "@Size": "1035.87512,220.003326",
+              "@Location": "0,334.408356",
+              "@Dpi": "254",
+              "@Font": "Verdana, 9pt",
+              "@ForeColor": "Black",
+              "@VertAlign": "Top",
+              "@HorzAlign": "Left",
+              "@MultiLine": "true",
+              "@SourceExpression": "Header.FieldGroups.Bill_toAddress"
+            },
+            "PictureBox1": {
+              "@Name": "PictureBox1",
+              "@ControlType": "PictureBox",
+              "@Dpi": "254",
+              "@Size": "572,188",
+              "@ShowOutput": "Sales_ReceivablesSetup.LogoPositiononDocuments == Sales_ReceivablesSetup.FieldOptions.LogoPositiononDocuments.Left",
+              "@SourceExpression": "CompanyInformation.Picture",
+              "@HorzAlign": "Left",
+              "@Font": "Verdana, 7pt",
+              "@Sizing": "ZoomImage",
+              "@Location": "2.333191,0"
+            },
+            "PictureBox2": {
+              "@Name": "PictureBox2",
+              "@ControlType": "PictureBox",
+              "@Dpi": "254",
+              "@Size": "503.0982,231.435776",
+              "@ShowOutput": "Sales_ReceivablesSetup.LogoPositiononDocuments == Sales_ReceivablesSetup.FieldOptions.LogoPositiononDocuments.Right",
+              "@SourceExpression": "CompanyInformation.Picture",
+              "@HorzAlign": "Right",
+              "@Font": "Verdana, 7pt",
+              "@Sizing": "ZoomImage",
+              "@Location": "1035.87512,60.8541679"
+            },
+            "PictureBox3": {
+              "@Name": "PictureBox3",
+              "@ControlType": "PictureBox",
+              "@Dpi": "254",
+              "@Size": "572,188",
+              "@ShowOutput": "Sales_ReceivablesSetup.LogoPositiononDocuments == Sales_ReceivablesSetup.FieldOptions.LogoPositiononDocuments.Center",
+              "@SourceExpression": "CompanyInformation.Picture",
+              "@HorzAlign": "Center",
+              "@Font": "Verdana, 7pt",
+              "@Sizing": "ZoomImage",
+              "@Location": "574.3331,0"
+            }
+          }
+        },
+        "Footer1": {
+          "@ControlType": "Footer",
+          "@Name": "Footer1",
+          "@Dpi": "254",
+          "@Font": "Verdana, 8pt",
+          "@BackColor": "Beige",
+          "@MasterSection": "lbt Sales Template,Footer1",
+          "@PrintOnEveryPage": "true",
+          "@PlaceInBottom": "true",
+          "@AllowScriptErrors": "true",
+          "@Signature": "abc",
+          "@Height": "98.77086",
+          "Controls": {
+            "TextBox1": {
+              "@Name": "TextBox1",
+              "@ControlType": "TextBox",
+              "@Size": "200,60",
+              "@Location": "1502.333,0",
+              "@Dpi": "254",
+              "@Font": "Verdana, 7pt",
+              "@ForeColor": "Black",
+              "@HorzAlign": "Right",
+              "@SourceExpression": "CurrReport.Page"
+            }
+          }
+        },
+        "Footer": {
+          "@ControlType": "Footer",
+          "@Name": "Footer",
+          "@Dpi": "254",
+          "@Font": "Verdana, 7pt",
+          "@BackColor": "Beige",
+          "@Padding": "0,0,0,0,254",
+          "@MasterSection": "lbt Sales Template,Footer",
+          "@PrintOnEveryPage": "true",
+          "@PlaceInBottom": "true",
+          "@Signature": "abc",
+          "@Height": "250.000031",
+          "Controls": {
+            "Image1": {
+              "@Name": "Image1",
+              "@ControlType": "Image",
+              "@Dpi": "254",
+              "@Size": "1697.66626,70.01285",
+              "@Font": "Verdana, 7pt",
+              "@Image": "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",
+              "@Sizing": "StretchImage",
+              "@Location": "2.333191,0"
+            },
+            "CompanyInformationBank": {
+              "@Name": "CompanyInformationBank",
+              "@ControlType": "TextBox",
+              "@Size": "1700,36",
+              "@Location": "0,168.471252",
+              "@Dpi": "254",
+              "@Font": "Verdana, 7pt",
+              "@HorzAlign": "Center",
+              "@SourceExpression": [
+                "CurrReport.JoinStrings(' | ',",
+                "'Bankverbindung: '+ CompanyInformation.BankName,",
+                "'SWIFT-BIC ' + CompanyInformation.SWIFTCode,",
+                "CompanyInformation.FieldCaptions.IBAN + ' ' + CompanyInformation.IBAN ",
+                ")",
+                ""
+              ]
+            },
+            "TextBox16": {
+              "@Name": "TextBox16",
+              "@ControlType": "TextBox",
+              "@Size": "1700,36",
+              "@Location": "0,96.47133",
+              "@Dpi": "254",
+              "@Font": "Verdana, 7pt",
+              "@HorzAlign": "Center",
+              "@SourceExpression": [
+                "CurrReport.JoinStrings(' | ',",
+                "CompanyInformation.Name,",
+                "CompanyInformation.Address + ', ' + CompanyInformation.PostCode + ' ' + CompanyInformation.City,",
+                "'Geschäftsführung: ' + CompanyInformation.lbtCEO1 + ' ' + CompanyInformation.lbtCEO2",
+                ")",
+                ""
+              ]
+            },
+            "TextBox17": {
+              "@Name": "TextBox17",
+              "@ControlType": "TextBox",
+              "@Size": "1700,36",
+              "@Location": "2.33674359,132.471237",
+              "@Dpi": "254",
+              "@Font": "Verdana, 7pt",
+              "@HorzAlign": "Center",
+              "@SourceExpression": [
+                "CurrReport.JoinStrings(' | ',",
+                "'Registergericht: '+ CompanyInformation.lbtDistrictCourt,",
+                "'Registernummer ' + CompanyInformation.lbtCommercialRegisterNo,",
+                "'Ust Id. ' + CompanyInformation.VATRegistrationNo",
+                ")",
+                ""
+              ]
+            }
+          }
+        },
+        "Header2": {
+          "@ControlType": "Header",
+          "@Name": "Header2",
+          "@Font": "Verdana, 8pt",
+          "@BackColor": "Beige",
+          "@Dpi": "254",
+          "@Signature": "abc",
+          "@MasterSection": "lbt Sales Template,Header2",
+          "@CanGrow": "true",
+          "@ShowOutput": "CurrReport.PageNo == 1",
+          "@Height": "95.46155",
+          "Controls": {
+            "Table4": {
+              "@Name": "Table4",
+              "@ControlType": "Table",
+              "@Size": "1698.99768,63.5",
+              "@Dpi": "254",
+              "@Font": "Verdana, 9pt, style=Bold",
+              "@Location": "0,0",
+              "Rows": {
+                "tableRow1": {
+                  "@Name": "tableRow1",
+                  "@ControlType": "TableRow",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 9pt, style=Bold",
+                  "@Weight": "1",
+                  "Cells": {
+                    "tableCell6": {
+                      "@Name": "tableCell6",
+                      "@ControlType": "TableCell",
+                      "@Font": "Verdana, 9pt, style=Bold",
+                      "@Dpi": "254",
+                      "@Weight": "0.78740157480314987",
+                      "@SourceExpression": "SalesInvoiceLine.lbtpjProjectNo",
+                      "@VertAlign": "Top",
+                      "@HorzAlign": "Left",
+                      "@CanShrink": "true",
+                      "@CanGrow": "true"
+                    },
+                    "tableCell5": {
+                      "@Name": "tableCell5",
+                      "@ControlType": "TableCell",
+                      "@Font": "Verdana, 9pt, style=Bold",
+                      "@Dpi": "254",
+                      "@Weight": "5.9015656719057583",
+                      "@MultiLine": "true",
+                      "@SourceExpression": "Job.Description",
+                      "@VertAlign": "Top",
+                      "@HorzAlign": "Left",
+                      "@CanGrow": "true"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "HeaderPerfPeriod": {
+          "@ControlType": "Header",
+          "@Name": "HeaderPerfPeriod",
+          "@Font": "Verdana, 8pt",
+          "@BackColor": "Beige",
+          "@Dpi": "254",
+          "@Signature": "abc",
+          "@MasterSection": "lbt Sales Template,HeaderPerfPeriod",
+          "@ShowOutput": "Header.lbtPerformancePeriodEnd != null && Header.lbtPerformancePeriodStart != null",
+          "@Height": "60",
+          "Controls": {
+            "TextBox33": {
+              "@Name": "TextBox33",
+              "@ControlType": "TextBox",
+              "@Size": "342.8122,58.4200439",
+              "@Location": "662.822937,0",
+              "@Dpi": "254",
+              "@Font": "Verdana, 9pt",
+              "@HorzAlign": "Left",
+              "@SourceExpression": "Header.lbtPerformancePeriodEnd",
+              "@FormatString": "dd/MM/yyyy"
+            },
+            "TextBox34": {
+              "@Name": "TextBox34",
+              "@ControlType": "TextBox",
+              "@Size": "194.829117,58.4200439",
+              "@Location": "417.6666,0",
+              "@Dpi": "254",
+              "@Font": "Verdana, 9pt",
+              "@HorzAlign": "Left",
+              "@SourceExpression": "Header.lbtPerformancePeriodStart",
+              "@FormatString": "dd/MM/yyyy"
+            },
+            "TextBox35": {
+              "@Name": "TextBox35",
+              "@ControlType": "TextBox",
+              "@Size": "37.041687,58.4200439",
+              "@Location": "625.781067,0",
+              "@Dpi": "254",
+              "@Font": "Verdana, 9pt",
+              "@HorzAlign": "Left",
+              "@SourceExpression": "'-'"
+            },
+            "Label2": {
+              "@Name": "Label2",
+              "@ControlType": "Label",
+              "@Size": "420.31,58.42",
+              "@Location": "0,0",
+              "@Dpi": "254",
+              "@Font": "Verdana, 9pt",
+              "@HorzAlign": "Left",
+              "@CaptionML": "DEU=Leistungszeitraum:"
+            }
+          }
+        },
+        "HeaderExt": {
+          "@ControlType": "Header",
+          "@Name": "HeaderExt",
+          "@Font": "Verdana, 8pt",
+          "@BackColor": "Beige",
+          "@Dpi": "254",
+          "@Signature": "abc",
+          "@MasterSection": "lbt Sales Template,HeaderExt",
+          "@ShowOutput": "Job.ExternalDocumentNo != ''",
+          "@Height": "60",
+          "Controls": {
+            "TextBox9": {
+              "@Name": "TextBox9",
+              "@ControlType": "TextBox",
+              "@Size": "1278.68542,58.4200439",
+              "@Location": "420.3143,0",
+              "@Dpi": "254",
+              "@Font": "Verdana, 9pt",
+              "@HorzAlign": "Left",
+              "@SourceExpression": "Job.ExternalDocumentNo"
+            },
+            "Label3": {
+              "@Name": "Label3",
+              "@ControlType": "Label",
+              "@Size": "420.31,58.42",
+              "@Location": "0,0",
+              "@Dpi": "254",
+              "@Font": "Verdana, 9pt",
+              "@HorzAlign": "Left",
+              "@CaptionML": "DEU=Vertrag:;ENU=Contract:"
+            }
+          }
+        },
+        "HeaderReference": {
+          "@ControlType": "Header",
+          "@Name": "HeaderReference",
+          "@Font": "Verdana, 8pt",
+          "@BackColor": "Beige",
+          "@Dpi": "254",
+          "@Signature": "abc",
+          "@MasterSection": "lbt Sales Template,HeaderReference",
+          "@ShowOutput": "Job.YourReference != ''",
+          "@Height": "60.0000534",
+          "Controls": {
+            "TextBox13": {
+              "@Name": "TextBox13",
+              "@ControlType": "TextBox",
+              "@Size": "420.31,60",
+              "@Location": "0,0",
+              "@Dpi": "254",
+              "@Font": "Verdana, 9pt",
+              "@HorzAlign": "Left",
+              "@SourceExpression": "Header.FieldCaptions.YourReference + ':'"
+            },
+            "TextBox11": {
+              "@Name": "TextBox11",
+              "@ControlType": "TextBox",
+              "@Size": "1278.68311,60.0000534",
+              "@Location": "420.3143,0",
+              "@Dpi": "254",
+              "@Font": "Verdana, 9pt",
+              "@HorzAlign": "Left",
+              "@SourceExpression": "Job.YourReference"
+            }
+          }
+        },
+        "Header1": {
+          "@ControlType": "Header",
+          "@Name": "Header1",
+          "@Font": "Verdana, 7pt",
+          "@BackColor": "Transparent",
+          "@Dpi": "254",
+          "@Signature": "abc",
+          "@PrintOnEveryPage": "true",
+          "@ShowOutput": "CurrReport.PageNo > 1",
+          "@Height": "142.875",
+          "Controls": {
+            "Rechnungsentwurf_HeaderText": {
+              "@Name": "Rechnungsentwurf_HeaderText",
+              "@ControlType": "TextBox",
+              "@Size": "500,60",
+              "@Location": "2.333191,45.7275047",
+              "@Dpi": "254",
+              "@Font": "Verdana, 7pt",
+              "@ForeColor": "Black",
+              "@HorzAlign": "Left",
+              "@ShowOutput": "CurrReport.Caption == 'Rechnungsentwurf'",
+              "@SourceExpression": "CurrReport.Caption"
+            },
+            "TextBox7": {
+              "@Name": "TextBox7",
+              "@ControlType": "TextBox",
+              "@Size": "254,58.42",
+              "@Location": "860.5833,45.7275047",
+              "@Dpi": "254",
+              "@Font": "Verdana, 7pt",
+              "@HorzAlign": "Left",
+              "@SourceExpression": "Header.DocumentDate",
+              "@FormatString": "dd. MMMM yyy"
+            },
+            "TextBox6": {
+              "@Name": "TextBox6",
+              "@ControlType": "TextBox",
+              "@Size": "349.999939,59.9999733",
+              "@Location": "500,45.7275047",
+              "@Dpi": "254",
+              "@Font": "Verdana, 7pt",
+              "@ForeColor": "Black",
+              "@HorzAlign": "Right",
+              "@SourceExpression": "Header.FieldCaptions.No + \" \" + Header.No + \" vom \""
+            }
+          }
+        },
+        "HeaderText": {
+          "@ControlType": "Body",
+          "@Name": "HeaderText",
+          "@Font": "Verdana, 7pt",
+          "@BackColor": "Beige",
+          "@Dpi": "254",
+          "@Signature": "abc",
+          "@MasterSection": "lbt Sales Template,HeaderText",
+          "@CanGrow": "true",
+          "@ShowOutput": "DynamicsNavDataSet.lbtHeaderText != null && DynamicsNavDataSet.lbtHeaderText != ''",
+          "@AllowScriptErrors": "true",
+          "@Height": "83.47924",
+          "Controls": {
+            "TextBox10": {
+              "@Name": "TextBox10",
+              "@ControlType": "TextBox",
+              "@Size": "1704.60413,58.2083359",
+              "@Location": "0,25.2709064",
+              "@Dpi": "254",
+              "@Font": "Verdana, 9pt",
+              "@BackColor": "Transparent",
+              "@Padding": "0,0,0,0,254",
+              "@VertAlign": "Top",
+              "@HorzAlign": "Left",
+              "@SourceExpression": [
+                "'<!DOCTYPE><html><head><style>p { margin:0 42px 0 0;} br { content:\"\"; margin:1em;display:block;font-size:24%;}</style></head><body><div style=\"font-family: Verdana; font-size: 9pt; Padding: 0 1em 0 0 \">'+ ",
+                "DynamicsNavDataSet.lbtHeaderText +",
+                "'</div></body></html>'"
+              ],
+              "@CanGrow": "true"
+            }
+          }
+        },
+        "Line": {
+          "@ControlType": "DataItem",
+          "@Name": "Line",
+          "@Dpi": "254",
+          "@Id": "3",
+          "@TotalFields": "29",
+          "@TotalColumns": "Line$Amount",
+          "@DataItemLink": "\"Document Type\" = FIELD(\"Document Type\"), \"Document No.\" = FIELD(\"No.\")",
+          "@DataItemLinkReference": "Header",
+          "@DataItemTableView": "SORTING(\"Document No.\", \"Line No.\")",
+          "@DataItemTable": "Table37",
+          "@DataItemVarName": "Line",
+          "Bands": {
+            "LinesHeader": {
+              "@ControlType": "Header",
+              "@Name": "LinesHeader",
+              "@Font": "Verdana, 7pt",
+              "@BackColor": "Beige",
+              "@Dpi": "254",
+              "@Signature": "abc",
+              "@MasterSection": "lbt Sales Template,LinesHeader",
+              "@Height": "105.2917",
+              "Controls": {
+                "LinesHeaderTable": {
+                  "@Name": "LinesHeaderTable",
+                  "@ControlType": "Table",
+                  "@Size": "1699.99976,100",
+                  "@Location": "0,0",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 7pt",
+                  "@Borders": "Bottom",
+                  "Rows": {
+                    "LinesHeaderRow": {
+                      "@Name": "LinesHeaderRow",
+                      "@ControlType": "TableRow",
+                      "@Dpi": "254",
+                      "@Font": "Verdana, 7pt",
+                      "@Weight": "0.5679012345679012",
+                      "@AutoFit": "true",
+                      "Cells": {
+                        "Line_FieldCaptions_No_LinesHeader": {
+                          "@Name": "Line_FieldCaptions_No_LinesHeader",
+                          "@ControlType": "TableCell",
+                          "@Borders": "Bottom",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "3.6289548610375038",
+                          "@MultiLine": "true",
+                          "@SourceExpression": "Line.FieldCaptions.lbtPosNo",
+                          "@VertAlign": "Bottom",
+                          "@HorzAlign": "Left"
+                        },
+                        "Line_FieldCaptions_Description_LinesHeader": {
+                          "@Name": "Line_FieldCaptions_Description_LinesHeader",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "33.056607083679012",
+                          "@MultiLine": "true",
+                          "@SourceExpression": "Line.FieldCaptions.Description",
+                          "@VertAlign": "Bottom",
+                          "@HorzAlign": "Left"
+                        },
+                        "Line_FieldCaptions_Quantity_LinesHeader": {
+                          "@Name": "Line_FieldCaptions_Quantity_LinesHeader",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "8.4335415350161966",
+                          "@SourceExpression": "Line.FieldCaptions.Quantity",
+                          "@VertAlign": "Bottom",
+                          "@HorzAlign": "Left",
+                          "@CanShrink": "true"
+                        },
+                        "Line_FieldCaptions_UnitOfMeasure_LinesHeader": {
+                          "@Name": "Line_FieldCaptions_UnitOfMeasure_LinesHeader",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "6.6152847771460346",
+                          "@SourceExpression": "Line.FieldCaptions.UnitofMeasure",
+                          "@VertAlign": "Bottom",
+                          "@HorzAlign": "Left",
+                          "@CanShrink": "true"
+                        },
+                        "Line_FieldCaptions_UnitPrice_LinesHeader": {
+                          "@Name": "Line_FieldCaptions_UnitPrice_LinesHeader",
+                          "@ControlType": "TableCell",
+                          "@ForeColor": "Black",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "14.460877952036002",
+                          "@SourceExpression": "Line.FieldCaptions.UnitPrice + ' (' + Header.FieldLookups.CurrencyCode + ')'",
+                          "@VertAlign": "Bottom",
+                          "@HorzAlign": "Center"
+                        },
+                        "Line_FieldCaptions_Amount_LinesHeader_LinesHeader": {
+                          "@Name": "Line_FieldCaptions_Amount_LinesHeader_LinesHeader",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "10.920021779472863",
+                          "@SourceExpression": "Line.FieldCaptions.Amount + ' (' + Header.FieldLookups.CurrencyCode + ')'",
+                          "@VertAlign": "Bottom",
+                          "@HorzAlign": "Right"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "TransHeader": {
+              "@ControlType": "TransHeader",
+              "@Name": "TransHeader",
+              "@Dpi": "254",
+              "@Font": "Verdana, 7pt",
+              "@BackColor": "Beige",
+              "@MasterSection": "lbt Sales Template,TransHeader",
+              "@Signature": "abc",
+              "@Height": "160.000092",
+              "Controls": {
+                "TransHeaderTable": {
+                  "@Name": "TransHeaderTable",
+                  "@ControlType": "Table",
+                  "@Size": "1700,100",
+                  "@Location": "0,0",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 7pt",
+                  "@Borders": "Bottom",
+                  "Rows": {
+                    "TransHeaderRow": {
+                      "@Name": "TransHeaderRow",
+                      "@ControlType": "TableRow",
+                      "@Dpi": "254",
+                      "@Font": "Verdana, 7pt",
+                      "@Weight": "0.5679012345679012",
+                      "@AutoFit": "true",
+                      "Cells": {
+                        "Line_FieldCaptions_No_TransHeader": {
+                          "@Name": "Line_FieldCaptions_No_TransHeader",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "3.6289548610375024",
+                          "@MultiLine": "true",
+                          "@SourceExpression": "Line.FieldCaptions.lbtPosNo",
+                          "@VertAlign": "Bottom",
+                          "@HorzAlign": "Left"
+                        },
+                        "Line_FieldCaptions_Description_TransHeader": {
+                          "@Name": "Line_FieldCaptions_Description_TransHeader",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "33.056603622837592",
+                          "@MultiLine": "true",
+                          "@SourceExpression": "Line.FieldCaptions.Description",
+                          "@VertAlign": "Bottom",
+                          "@HorzAlign": "Left"
+                        },
+                        "Line_FieldCaptions_Quantity_TransHeader": {
+                          "@Name": "Line_FieldCaptions_Quantity_TransHeader",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "8.43354088381122",
+                          "@MultiLine": "true",
+                          "@SourceExpression": "Line.FieldCaptions.Quantity",
+                          "@VertAlign": "Bottom",
+                          "@HorzAlign": "Left"
+                        },
+                        "Line_FieldCaptions_UnitofMeasure_TransHeader": {
+                          "@Name": "Line_FieldCaptions_UnitofMeasure_TransHeader",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "6.615281621425452",
+                          "@MultiLine": "true",
+                          "@SourceExpression": "Line.FieldCaptions.UnitofMeasure",
+                          "@VertAlign": "Bottom",
+                          "@HorzAlign": "Left"
+                        },
+                        "Line_FieldCaptions_UnitPrice_TransHeader": {
+                          "@Name": "Line_FieldCaptions_UnitPrice_TransHeader",
+                          "@ControlType": "TableCell",
+                          "@ForeColor": "Black",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "14.460883817531027",
+                          "@SourceExpression": "Line.FieldCaptions.UnitPrice + ' (' + Header.FieldLookups.CurrencyCode + ')'",
+                          "@VertAlign": "Bottom",
+                          "@HorzAlign": "Center",
+                          "@CanShrink": "true"
+                        },
+                        "Line_No0": {
+                          "@Name": "Line_No0",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "10.92002805722799",
+                          "@SourceExpression": "Line.FieldCaptions.Amount + ' (' + Header.FieldLookups.CurrencyCode + ')'",
+                          "@VertAlign": "Bottom",
+                          "@HorzAlign": "Center"
+                        }
+                      }
+                    }
+                  }
+                },
+                "Continued_Header_Amount": {
+                  "@Name": "Continued_Header_Amount",
+                  "@ControlType": "TextBox",
+                  "@Size": "299.999878,60",
+                  "@Location": "1400.00012,100",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 9pt, style=Italic",
+                  "@HorzAlign": "Right",
+                  "@SourceExpression": "Line.Amount"
+                },
+                "Continued_Header_Caption": {
+                  "@Name": "Continued_Header_Caption",
+                  "@ControlType": "TextBox",
+                  "@Size": "184.39563,60.00006",
+                  "@Location": "1215.60413,100.000031",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 9pt, style=Bold, Italic",
+                  "@SourceExpression": "CurrReport.StandardCaptions.Continued"
+                }
+              }
+            },
+            "TransFooter": {
+              "@ControlType": "TransFooter",
+              "@Name": "TransFooter",
+              "@Dpi": "254",
+              "@Font": "Verdana, 7pt",
+              "@BackColor": "Beige",
+              "@MasterSection": "lbt Sales Template,TransFooter",
+              "@Signature": "abc",
+              "@Height": "90.06427",
+              "Controls": {
+                "CompanyInformation_FieldGroups_Address4": {
+                  "@Name": "CompanyInformation_FieldGroups_Address4",
+                  "@ControlType": "TextBox",
+                  "@Size": "184.39563,60",
+                  "@Location": "1215.60413,0",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 9pt, style=Bold, Italic",
+                  "@SourceExpression": "CurrReport.StandardCaptions.Continued"
+                },
+                "CompanyInformation_FieldGroups_Address3": {
+                  "@Name": "CompanyInformation_FieldGroups_Address3",
+                  "@ControlType": "TextBox",
+                  "@Size": "300,60",
+                  "@Location": "1400,0",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 9pt, style=Italic",
+                  "@HorzAlign": "Right",
+                  "@SourceExpression": "Line.Amount"
+                }
+              }
+            },
+            "LinesFooter": {
+              "@ControlType": "Footer",
+              "@Name": "LinesFooter",
+              "@Dpi": "254",
+              "@Font": "Verdana, 7pt",
+              "@BackColor": "Beige",
+              "@MasterSection": "lbt Sales Template,LinesFooter",
+              "@Signature": "abc",
+              "@Height": "205.0002",
+              "Controls": {
+                "Shape2": {
+                  "@Name": "Shape2",
+                  "@ControlType": "Shape",
+                  "@Size": "1700,5",
+                  "@Location": "0,10",
+                  "@ShapeType": "HorzLine",
+                  "@Angle": "90",
+                  "@Stretch": "true",
+                  "@Font": "Verdana, 7pt",
+                  "@Dpi": "254",
+                  "Shape": {
+                    "@ShapeName": "Line"
+                  }
+                },
+                "CurrReport_Caption6": {
+                  "@Name": "CurrReport_Caption6",
+                  "@ControlType": "TextBox",
+                  "@Size": "299.999878,60",
+                  "@Location": "1399.99976,24.9999275",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 9pt, style=Bold",
+                  "@SourceExpression": "Header.Amount"
+                },
+                "CurrReport_Caption8": {
+                  "@Name": "CurrReport_Caption8",
+                  "@ControlType": "TextBox",
+                  "@Size": "300,60",
+                  "@Location": "1399.99976,84.99982",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 9pt",
+                  "@SourceExpression": "Header.AmountIncludingVAT-Header.Amount"
+                },
+                "CurrReport_Caption7": {
+                  "@Name": "CurrReport_Caption7",
+                  "@ControlType": "TextBox",
+                  "@Size": "1397.6665,60.00005",
+                  "@Location": "2.333191,24.9999275",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 9pt, style=Bold",
+                  "@SourceExpression": "CurrReport.StandardCaptions.SubTotal"
+                },
+                "CurrReport_Caption9": {
+                  "@Name": "CurrReport_Caption9",
+                  "@ControlType": "TextBox",
+                  "@Size": "1397.6665,59.9998932",
+                  "@Location": "2.333191,145.0002",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 9pt, style=Bold",
+                  "@Borders": "Bottom",
+                  "@SourceExpression": "CurrReport.StandardCaptions.Total + ' (' + Header.FieldLookups.CurrencyCode + ')'"
+                },
+                "CompanyInformation_FieldGroups_Address0": {
+                  "@Name": "CompanyInformation_FieldGroups_Address0",
+                  "@ControlType": "TextBox",
+                  "@Size": "300,60",
+                  "@Location": "1399.99976,145.000031",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 9pt, style=Bold",
+                  "@Borders": "Bottom",
+                  "@SourceExpression": "Header.AmountIncludingVAT"
+                },
+                "CompanyInformation_FieldGroups_Address1": {
+                  "@Name": "CompanyInformation_FieldGroups_Address1",
+                  "@ControlType": "TextBox",
+                  "@Size": "1397.66675,60.00006",
+                  "@Location": "2.333191,84.99982",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 9pt",
+                  "@SourceExpression": [
+                    "CurrReport.StandardCaptions.TaxAmount +",
+                    "    ((Line.VATCalculationType == 'Erwerbsbesteuerung' || Line.UnitPrice == 0)",
+                    "        ? ' 0%' ",
+                    "        : ' ' + DynamicsNavDataSet.SingleVATPct + '%')",
+                    ""
+                  ]
+                }
+              }
+            },
+            "Body1": {
+              "@ControlType": "Body",
+              "@Name": "Body1",
+              "@Font": "Verdana, 7pt",
+              "@BackColor": "Beige",
+              "@Dpi": "254",
+              "@Signature": "abc",
+              "@MasterSection": "lbt Sales Template,Body1",
+              "@CanGrow": "true",
+              "@ShowOutput": "Line.Type == Line.FieldOptions.Type.Blank && Line.lbtPrintoption == Line.FieldOptions.lbtPrintoption.Standard",
+              "@Height": "60.0000534",
+              "Controls": {
+                "table1": {
+                  "@Name": "table1",
+                  "@ControlType": "Table",
+                  "@Size": "1699.99939,60.0000534",
+                  "@Location": "0,0",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 7pt",
+                  "Rows": {
+                    "tableRow6": {
+                      "@Name": "tableRow6",
+                      "@ControlType": "TableRow",
+                      "@Dpi": "254",
+                      "@Font": "Verdana, 7pt",
+                      "@Weight": "0.5679012345679012",
+                      "Cells": {
+                        "tableCell15": {
+                          "@Name": "tableCell15",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt",
+                          "@Dpi": "254",
+                          "@Weight": "0.1336852825657103",
+                          "@SourceExpression": "Line.lbtPosNo",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Left"
+                        },
+                        "tableCell3": {
+                          "@Name": "tableCell3",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt",
+                          "@Dpi": "254",
+                          "@Weight": "2.7071259520178743",
+                          "@MultiLine": "true",
+                          "@SourceExpression": "Line.Description",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Left",
+                          "@CanGrow": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "BeginTotal": {
+              "@ControlType": "Body",
+              "@Name": "BeginTotal",
+              "@Font": "Verdana, 7pt",
+              "@BackColor": "Beige",
+              "@Dpi": "254",
+              "@Signature": "abc",
+              "@MasterSection": "lbt Sales Template,BeginTotal",
+              "@ShowOutput": "Line.Type == Line.FieldOptions.Type.Blank && Line.lbtPrintoption == Line.FieldOptions.lbtPrintoption.BeginTotal",
+              "@Height": "60.0000534",
+              "Controls": {
+                "table7": {
+                  "@Name": "table7",
+                  "@ControlType": "Table",
+                  "@Size": "1699.99939,60.0000534",
+                  "@Location": "0,0",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 7pt",
+                  "Rows": {
+                    "tableRow2": {
+                      "@Name": "tableRow2",
+                      "@ControlType": "TableRow",
+                      "@Dpi": "254",
+                      "@Font": "Verdana, 7pt",
+                      "@Weight": "0.5679012345679012",
+                      "Cells": {
+                        "tableCell16": {
+                          "@Name": "tableCell16",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "0.1336852825657103",
+                          "@SourceExpression": "Line.lbtPosNo",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Left"
+                        },
+                        "tableCell9": {
+                          "@Name": "tableCell9",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "2.7071259520178743",
+                          "@MultiLine": "true",
+                          "@SourceExpression": "Line.Description",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Left",
+                          "@CanGrow": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "EndTotal": {
+              "@ControlType": "Body",
+              "@Name": "EndTotal",
+              "@Font": "Verdana, 7pt",
+              "@BackColor": "Beige",
+              "@Dpi": "254",
+              "@Signature": "abc",
+              "@MasterSection": "lbt Sales Template,EndTotal",
+              "@CanGrow": "true",
+              "@ShowOutput": "Line.Type == Line.FieldOptions.Type.Blank && Line.lbtPrintoption == Line.FieldOptions.lbtPrintoption.EndTotal",
+              "@Height": "60.0000534",
+              "Controls": {
+                "table8": {
+                  "@Name": "table8",
+                  "@ControlType": "Table",
+                  "@Size": "1699.99927,60.0000534",
+                  "@Location": "0,0",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 7pt",
+                  "@Borders": "None",
+                  "Rows": {
+                    "tableRow8": {
+                      "@Name": "tableRow8",
+                      "@ControlType": "TableRow",
+                      "@Dpi": "254",
+                      "@Font": "Verdana, 7pt",
+                      "@Weight": "0.5679012345679012",
+                      "Cells": {
+                        "tableCell17": {
+                          "@Name": "tableCell17",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "0.03903048505779038",
+                          "@SourceExpression": "Line.lbtPosNo",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Left",
+                          "@CanGrow": "true"
+                        },
+                        "tableCell2": {
+                          "@Name": "tableCell2",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "0.69392946629996566",
+                          "@SourceExpression": "Line.Description",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Left",
+                          "@CanGrow": "true"
+                        },
+                        "tableCell13": {
+                          "@Name": "tableCell13",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "0.09643751718073261",
+                          "@SourceExpression": "Line.lbtBalance",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Right",
+                          "@CanGrow": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "Title": {
+              "@ControlType": "Body",
+              "@Name": "Title",
+              "@Font": "Verdana, 7pt",
+              "@BackColor": "Beige",
+              "@Dpi": "254",
+              "@Signature": "abc",
+              "@MasterSection": "lbt Sales Template,Title",
+              "@ShowOutput": "Line.Type == Line.FieldOptions.Type.Blank && Line.lbtPrintoption == Line.FieldOptions.lbtPrintoption.Title",
+              "@Height": "60.0000534",
+              "Controls": {
+                "table9": {
+                  "@Name": "table9",
+                  "@ControlType": "Table",
+                  "@Size": "1547.66614,60.0000534",
+                  "@Location": "152.33316,0",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 7pt",
+                  "Rows": {
+                    "tableRow9": {
+                      "@Name": "tableRow9",
+                      "@ControlType": "TableRow",
+                      "@Dpi": "254",
+                      "@Font": "Verdana, 7pt",
+                      "@Weight": "0.5679012345679012",
+                      "Cells": {
+                        "tableCell14": {
+                          "@Name": "tableCell14",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt, style=Bold, Underline",
+                          "@Dpi": "254",
+                          "@Weight": "2.586252311689746",
+                          "@MultiLine": "true",
+                          "@SourceExpression": "Line.Description",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Left",
+                          "@CanGrow": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "Bold": {
+              "@ControlType": "Body",
+              "@Name": "Bold",
+              "@Font": "Verdana, 7pt",
+              "@BackColor": "Beige",
+              "@Dpi": "254",
+              "@Signature": "abc",
+              "@MasterSection": "lbt Sales Template,Bold",
+              "@ShowOutput": "Line.lbtPrintoption == Line.FieldOptions.lbtPrintoption.Bold",
+              "@Height": "78.52091",
+              "Controls": {
+                "table11": {
+                  "@Name": "table11",
+                  "@ControlType": "Table",
+                  "@Size": "1700,60",
+                  "@Location": "2.33302951,18.5209141",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 9.75pt",
+                  "@Borders": "None",
+                  "Rows": {
+                    "tableRow11": {
+                      "@Name": "tableRow11",
+                      "@ControlType": "TableRow",
+                      "@Dpi": "254",
+                      "@Font": "Verdana, 9.75pt",
+                      "@Weight": "0.5679012345679012",
+                      "Cells": {
+                        "tableCell21": {
+                          "@Name": "tableCell21",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "0.31830798427576606",
+                          "@SourceExpression": "Line.lbtPosNo",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Left"
+                        },
+                        "tableCell22": {
+                          "@Name": "tableCell22",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "2.8902236687868736",
+                          "@MultiLine": "true",
+                          "@SourceExpression": "Line.Description",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Left",
+                          "@CanGrow": "true"
+                        },
+                        "tableCell23": {
+                          "@Name": "tableCell23",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "0.73973458022890526",
+                          "@BlankZero": "true",
+                          "@SourceExpression": "Line.Quantity",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Left",
+                          "@FormatString": "#,0.00###"
+                        },
+                        "tableCell24": {
+                          "@Name": "tableCell24",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "0.60353768442755273",
+                          "@SourceExpression": "Line.UnitofMeasure",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Left",
+                          "@FormatString": "#.#####"
+                        },
+                        "tableCell26": {
+                          "@Name": "tableCell26",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "1.150377309163537",
+                          "@BlankZero": "true",
+                          "@SourceExpression": "Line.UnitPrice",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Center",
+                          "@FormatString": "#,0.00###"
+                        },
+                        "tableCell27": {
+                          "@Name": "tableCell27",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "1.0618635726914163",
+                          "@BlankZero": "true",
+                          "@SourceExpression": "Line.Amount",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Right"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "LinesBody": {
+              "@ControlType": "Body",
+              "@Name": "LinesBody",
+              "@Font": "Verdana, 7pt",
+              "@BackColor": "Beige",
+              "@Dpi": "254",
+              "@Signature": "abc",
+              "@MasterSection": "lbt Sales Template,LinesBody",
+              "@CanShrink": "true",
+              "@CanGrow": "true",
+              "@ShowOutput": "Line.Type != Line.FieldOptions.Type.Blank && Line.lbtPrintoption == Line.FieldOptions.lbtPrintoption.Standard",
+              "@Height": "78.52089",
+              "Controls": {
+                "LinesTable": {
+                  "@Name": "LinesTable",
+                  "@ControlType": "Table",
+                  "@Size": "1700,60",
+                  "@Location": "2.33302951,18.520834",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 9.75pt",
+                  "@Borders": "None",
+                  "Rows": {
+                    "LinesRow": {
+                      "@Name": "LinesRow",
+                      "@ControlType": "TableRow",
+                      "@Dpi": "254",
+                      "@Font": "Verdana, 9.75pt",
+                      "@Weight": "0.5679012345679012",
+                      "Cells": {
+                        "Line_No": {
+                          "@Name": "Line_No",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt",
+                          "@Dpi": "254",
+                          "@Weight": "0.31830798427576612",
+                          "@SourceExpression": "Line.lbtPosNo",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Left"
+                        },
+                        "Line_Description": {
+                          "@Name": "Line_Description",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt",
+                          "@Dpi": "254",
+                          "@Weight": "2.8902236991430885",
+                          "@MultiLine": "true",
+                          "@SourceExpression": "Line.Description",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Left",
+                          "@CanGrow": "true"
+                        },
+                        "Line_Quantity": {
+                          "@Name": "Line_Quantity",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt",
+                          "@Dpi": "254",
+                          "@Weight": "0.7397343373791806",
+                          "@BlankZero": "true",
+                          "@SourceExpression": "Line.Quantity",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Left",
+                          "@CanGrow": "true",
+                          "@FormatString": "#,0.00###"
+                        },
+                        "Line_UnitofMeasure": {
+                          "@Name": "Line_UnitofMeasure",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt",
+                          "@Dpi": "254",
+                          "@Weight": "0.6035376540713373",
+                          "@SourceExpression": "Line.UnitofMeasure",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Left",
+                          "@FormatString": "#,0.00###"
+                        },
+                        "Line_UnitPrice": {
+                          "@Name": "Line_UnitPrice",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt",
+                          "@Dpi": "254",
+                          "@Weight": "1.1503782805624339",
+                          "@BlankZero": "true",
+                          "@SourceExpression": "Line.UnitPrice",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Right",
+                          "@ShowOutput": "Line.lbtPrintoption != Line.FieldOptions.lbtPrintoption.PriceInvisible",
+                          "@FormatString": "#,0.00###"
+                        },
+                        "Line_Amount": {
+                          "@Name": "Line_Amount",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt",
+                          "@Dpi": "254",
+                          "@Weight": "1.0618628441422435",
+                          "@BlankZero": "true",
+                          "@SourceExpression": "Line.Amount",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Right",
+                          "@ShowOutput": "Line.lbtPrintoption != Line.FieldOptions.lbtPrintoption.PriceInvisible"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "LineText": {
+              "@ControlType": "Body",
+              "@Name": "LineText",
+              "@Font": "Verdana, 7pt",
+              "@BackColor": "Beige",
+              "@Dpi": "254",
+              "@Signature": "abc",
+              "@MasterSection": "lbt Sales Template,LineText",
+              "@CanGrow": "true",
+              "@ShowOutput": "DynamicsNavDataSet.lbtLineText != null && DynamicsNavDataSet.lbtLineText !=''",
+              "@Height": "58.20834",
+              "Controls": {
+                "TextBox5": {
+                  "@Name": "TextBox5",
+                  "@ControlType": "TextBox",
+                  "@Size": "712.855,58.2083321",
+                  "@Location": "82.33315,0",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 9pt",
+                  "@VertAlign": "Top",
+                  "@HorzAlign": "Left",
+                  "@SourceExpression": [
+                    "'<!DOCTYPE><html><head><style>p, li { margin:0 375px 0 0;} br { content:\"\"; margin:1em;display:block;font-size:24%;}</style></head><body><div style=\"font-family: Verdana; font-size: 9pt;padding:0 1em 0 0; \">'+ ",
+                    "DynamicsNavDataSet.lbtLineText +",
+                    "'</div></body></html>'"
+                  ],
+                  "@CanGrow": "true"
+                }
+              }
+            }
+          },
+          "Fields": {
+            "DocumentNo": {
+              "@FieldName": "Document No.",
+              "@FieldNo": "3"
+            },
+            "LineNo": {
+              "@FieldName": "Line No.",
+              "@FieldNo": "4"
+            },
+            "Type": {
+              "@FieldName": "Type",
+              "@FieldNo": "5"
+            },
+            "Amount": {
+              "@FieldName": "Amount",
+              "@FieldNo": "29"
+            },
+            "lbtPrintoption": {
+              "@FieldName": "lbt Printoption",
+              "@FieldNo": "5272721"
+            }
+          }
+        },
+        "VATAmountLine": {
+          "@ControlType": "DataItem",
+          "@Name": "VATAmountLine",
+          "@Dpi": "254",
+          "@Temporary": "true",
+          "@Id": "1000000001",
+          "@TotalFields": "1,6,3,2",
+          "@TotalColumns": "VATAmountLine$VATPct,VATAmountLine$LineAmount,VATAmountLine$VATAmount,VATAmountLine$VATBase",
+          "@DataItemTableView": "SORTING(\"VAT Identifier\", \"VAT Calculation Type\", \"Tax Group Code\", \"Use Tax\", Positive)",
+          "@DataItemTable": "Table290",
+          "@DataItemVarName": "VATAmountLine",
+          "Bands": {
+            "VATBody": {
+              "@ControlType": "Body",
+              "@Name": "VATBody",
+              "@Font": "Verdana, 7pt",
+              "@BackColor": "Beige",
+              "@Dpi": "254",
+              "@Signature": "abc",
+              "@MasterSection": "lbt Sales Template,VATBody",
+              "@ShowOutput": "false",
+              "@Height": "60",
+              "Controls": {
+                "table5": {
+                  "@Name": "table5",
+                  "@ControlType": "Table",
+                  "@Size": "1700,60",
+                  "@Location": "0,0",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 7pt",
+                  "Rows": {
+                    "tableRow5": {
+                      "@Name": "tableRow5",
+                      "@ControlType": "TableRow",
+                      "@Dpi": "254",
+                      "@Font": "Verdana, 7pt",
+                      "@Weight": "0.5679012345679012",
+                      "Cells": {
+                        "Line_No5": {
+                          "@Name": "Line_No5",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt",
+                          "@Dpi": "254",
+                          "@Weight": "0.47388059701492535",
+                          "@SourceExpression": "VATAmountLine.VATIdentifier"
+                        },
+                        "Line_No6": {
+                          "@Name": "Line_No6",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt",
+                          "@Dpi": "254",
+                          "@Weight": "0.47388059701492535",
+                          "@SourceExpression": "VATAmountLine.VATPct"
+                        },
+                        "Line_No7": {
+                          "@Name": "Line_No7",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt",
+                          "@Dpi": "254",
+                          "@Weight": "0.47388059701492535",
+                          "@SourceExpression": "VATAmountLine.LineAmount"
+                        },
+                        "Line_No8": {
+                          "@Name": "Line_No8",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt",
+                          "@Dpi": "254",
+                          "@Weight": "0.47388059701492535",
+                          "@SourceExpression": "VATAmountLine.VATAmount"
+                        },
+                        "Line_No9": {
+                          "@Name": "Line_No9",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt",
+                          "@Dpi": "254",
+                          "@Weight": "0.47388059701492535",
+                          "@SourceExpression": "VATAmountLine.VATBase"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "VATHeader": {
+              "@ControlType": "Header",
+              "@Name": "VATHeader",
+              "@Font": "Verdana, 7pt",
+              "@BackColor": "Beige",
+              "@Dpi": "254",
+              "@Signature": "abc",
+              "@MasterSection": "lbt Sales Template,VATHeader",
+              "@ShowOutput": "false",
+              "@Height": "70",
+              "Controls": {
+                "table6": {
+                  "@Name": "table6",
+                  "@ControlType": "Table",
+                  "@Size": "1700,60",
+                  "@Location": "0,10",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 7pt",
+                  "Rows": {
+                    "tableRow13": {
+                      "@Name": "tableRow13",
+                      "@ControlType": "TableRow",
+                      "@Dpi": "254",
+                      "@Font": "Verdana, 7pt",
+                      "@Weight": "0.5679012345679012",
+                      "Cells": {
+                        "Line_Description0": {
+                          "@Name": "Line_Description0",
+                          "@ControlType": "TableCell",
+                          "@Borders": "Bottom",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "0.47388059701492535",
+                          "@SourceExpression": "VATAmountLine.FieldCaptions.VATIdentifier"
+                        },
+                        "Line_Description1": {
+                          "@Name": "Line_Description1",
+                          "@ControlType": "TableCell",
+                          "@Borders": "Bottom",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "0.47388059701492535",
+                          "@SourceExpression": "VATAmountLine.FieldCaptions.VATPct",
+                          "@HorzAlign": "Right"
+                        },
+                        "Line_Description2": {
+                          "@Name": "Line_Description2",
+                          "@ControlType": "TableCell",
+                          "@Borders": "Bottom",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "0.47388059701492535",
+                          "@SourceExpression": "VATAmountLine.FieldCaptions.LineAmount",
+                          "@HorzAlign": "Right"
+                        },
+                        "Line_Description3": {
+                          "@Name": "Line_Description3",
+                          "@ControlType": "TableCell",
+                          "@Borders": "Bottom",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "0.47388059701492535",
+                          "@SourceExpression": "VATAmountLine.FieldCaptions.VATAmount",
+                          "@HorzAlign": "Right"
+                        },
+                        "Line_Description4": {
+                          "@Name": "Line_Description4",
+                          "@ControlType": "TableCell",
+                          "@Borders": "Bottom",
+                          "@Font": "Verdana, 9pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "0.47388059701492535",
+                          "@SourceExpression": "VATAmountLine.FieldCaptions.VATBase",
+                          "@HorzAlign": "Right"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "VATFooter": {
+              "@ControlType": "Footer",
+              "@Name": "VATFooter",
+              "@Dpi": "254",
+              "@Font": "Verdana, 7pt",
+              "@BackColor": "Beige",
+              "@MasterSection": "lbt Sales Template,VATFooter",
+              "@Signature": "abc",
+              "@ShowOutput": "false",
+              "@Height": "60",
+              "Controls": {
+                "table12": {
+                  "@Name": "table12",
+                  "@ControlType": "Table",
+                  "@Size": "1700,60",
+                  "@Location": "0,0",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 7pt",
+                  "Rows": {
+                    "tableRow7": {
+                      "@Name": "tableRow7",
+                      "@ControlType": "TableRow",
+                      "@Dpi": "254",
+                      "@Font": "Verdana, 7pt",
+                      "@Weight": "0.5679012345679012",
+                      "Cells": {
+                        "tableCell1": {
+                          "@Name": "tableCell1",
+                          "@ControlType": "TableCell",
+                          "@Borders": "Top",
+                          "@Font": "Verdana, 8pt",
+                          "@Dpi": "254",
+                          "@Weight": "0.94653669740502477"
+                        },
+                        "Line_Description7": {
+                          "@Name": "Line_Description7",
+                          "@ControlType": "TableCell",
+                          "@Borders": "Top, Bottom",
+                          "@Font": "Verdana, 9pt",
+                          "@Dpi": "254",
+                          "@Weight": "0.47326838354421652",
+                          "@SourceExpression": "VATAmountLine.LineAmount"
+                        },
+                        "Line_Description8": {
+                          "@Name": "Line_Description8",
+                          "@ControlType": "TableCell",
+                          "@Borders": "Top, Bottom",
+                          "@Font": "Verdana, 9pt",
+                          "@Dpi": "254",
+                          "@Weight": "0.47326838354421646",
+                          "@SourceExpression": "VATAmountLine.VATAmount"
+                        },
+                        "Line_Description9": {
+                          "@Name": "Line_Description9",
+                          "@ControlType": "TableCell",
+                          "@Borders": "Top, Bottom",
+                          "@Font": "Verdana, 9pt",
+                          "@Dpi": "254",
+                          "@Weight": "0.47326838354421652",
+                          "@SourceExpression": "VATAmountLine.VATBase"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Fields": {
+            "VATPct": {
+              "@FieldName": "VAT %",
+              "@FieldNo": "1"
+            },
+            "VATBase": {
+              "@FieldName": "VAT Base",
+              "@FieldNo": "2"
+            },
+            "VATAmount": {
+              "@FieldName": "VAT Amount",
+              "@FieldNo": "3"
+            },
+            "VATIdentifier": {
+              "@FieldName": "VAT Identifier",
+              "@FieldNo": "5"
+            },
+            "LineAmount": {
+              "@FieldName": "Line Amount",
+              "@FieldNo": "6"
+            },
+            "VATCalculationType": {
+              "@FieldName": "VAT Calculation Type",
+              "@FieldNo": "9"
+            },
+            "TaxGroupCode": {
+              "@FieldName": "Tax Group Code",
+              "@FieldNo": "10"
+            },
+            "UseTax": {
+              "@FieldName": "Use Tax",
+              "@FieldNo": "13"
+            },
+            "Positive": {
+              "@FieldName": "Positive",
+              "@FieldNo": "16"
+            }
+          }
+        },
+        "VATClause": {
+          "@ControlType": "DataItem",
+          "@Name": "VATClause",
+          "@Dpi": "254",
+          "@Temporary": "true",
+          "@Id": "1000000002",
+          "@DataItemTableView": "SORTING(Code)",
+          "@DataItemTable": "Table560",
+          "@DataItemVarName": "VATClause",
+          "Bands": {
+            "VATClauseBody": {
+              "@ControlType": "Body",
+              "@Name": "VATClauseBody",
+              "@Font": "Verdana, 7pt",
+              "@BackColor": "Beige",
+              "@Dpi": "254",
+              "@Signature": "abc",
+              "@MasterSection": "lbt Sales Template,VATClauseBody",
+              "@ShowOutput": "ExtendedTextLine.Text != ''",
+              "@Height": "100.75322",
+              "Controls": {
+                "TextBox30": {
+                  "@Name": "TextBox30",
+                  "@ControlType": "TextBox",
+                  "@Size": "1702.337,58.4198837",
+                  "@Location": "0,42.3333321",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 9pt",
+                  "@MultiLine": "true",
+                  "@SourceExpression": "ExtendedTextLine.Text"
+                }
+              }
+            }
+          },
+          "Fields": {
+            "Code": {
+              "@FieldName": "Code",
+              "@FieldNo": "1"
+            }
+          }
+        },
+        "Integer": {
+          "@ControlType": "DataItem",
+          "@Name": "Integer",
+          "@Dpi": "254",
+          "@Predeccessor": "VATClause",
+          "@Id": "1000000003",
+          "@IsVirtual": "true",
+          "@DataItemTableView": "SORTING(Number) WHERE(Number=CONST(1))",
+          "@CustomDataItem": "CalcFieldsTableView",
+          "@DataItemTable": "Table2000000026",
+          "Bands": {
+            "Body3": {
+              "@ControlType": "Body",
+              "@Name": "Body3",
+              "@Font": "Verdana, 7pt",
+              "@BackColor": "Transparent",
+              "@Dpi": "254",
+              "@Signature": "abc",
+              "@CanGrow": "true",
+              "@ShowOutput": "false",
+              "@Height": "102.000061",
+              "Controls": {
+                "table3": {
+                  "@Name": "table3",
+                  "@ControlType": "Table",
+                  "@Size": "1700,50",
+                  "@Location": "0,0",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 9pt",
+                  "Rows": {
+                    "tableRow3": {
+                      "@Name": "tableRow3",
+                      "@ControlType": "TableRow",
+                      "@Dpi": "254",
+                      "@Font": "Verdana, 9pt",
+                      "@ShowOutput": "Header.FieldLookups.PaymentTermsDescription != \"\"",
+                      "@Weight": "0.44716632643141829",
+                      "Cells": {
+                        "tableCell4": {
+                          "@Name": "tableCell4",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt",
+                          "@Dpi": "254",
+                          "@Weight": "0.13161271219897355",
+                          "@SourceExpression": "Header.FieldLookups.PaymentTermsCaption"
+                        },
+                        "tableCell7": {
+                          "@Name": "tableCell7",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt",
+                          "@Dpi": "254",
+                          "@Weight": "0.29456178444532177",
+                          "@SourceExpression": "Header.FieldLookups.PaymentTermsDescription"
+                        }
+                      }
+                    }
+                  }
+                },
+                "table10": {
+                  "@Name": "table10",
+                  "@ControlType": "Table",
+                  "@Size": "1700,50",
+                  "@Location": "0,52.0000572",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 9pt",
+                  "Rows": {
+                    "tableRow4": {
+                      "@Name": "tableRow4",
+                      "@ControlType": "TableRow",
+                      "@Dpi": "254",
+                      "@Font": "Verdana, 9pt",
+                      "@ShowOutput": "Header.FieldLookups.ShipmentMethodDescription != \"\"",
+                      "@Weight": "0.44716632643141829",
+                      "Cells": {
+                        "tableCell8": {
+                          "@Name": "tableCell8",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt",
+                          "@Dpi": "254",
+                          "@Weight": "0.13161271219897355",
+                          "@SourceExpression": "Header.FieldLookups.ShipmentMethodCaption"
+                        },
+                        "tableCell10": {
+                          "@Name": "tableCell10",
+                          "@ControlType": "TableCell",
+                          "@Font": "Verdana, 9pt",
+                          "@Dpi": "254",
+                          "@Weight": "0.29456178444532177",
+                          "@SourceExpression": "Header.FieldLookups.ShipmentMethodDescription"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "Body2": {
+              "@ControlType": "Body",
+              "@Name": "Body2",
+              "@Font": "Verdana, 7pt",
+              "@BackColor": "Beige",
+              "@Dpi": "254",
+              "@Signature": "abc",
+              "@MasterSection": "lbt Sales Template,Body2",
+              "@CanGrow": "true",
+              "@ShowOutput": "DynamicsNavDataSet.lbtFooterText != null && DynamicsNavDataSet.lbtFooterText !=''",
+              "@Height": "96.43726",
+              "Controls": {
+                "TextBox14": {
+                  "@Name": "TextBox14",
+                  "@ControlType": "TextBox",
+                  "@Size": "1658.9375,58.2083359",
+                  "@Location": "0.000161488846,11.7705994",
+                  "@Dpi": "254",
+                  "@Font": "Verdana, 9pt",
+                  "@Padding": "0,0,0,0,254",
+                  "@VertAlign": "Top",
+                  "@HorzAlign": "Left",
+                  "@SourceExpression": [
+                    "'<!DOCTYPE><html><head><style>p { margin:0 42px 0 0;} br { content:\"\"; margin:1em;display:block;font-size:24%;}</style></head><body><div style=\"font-family: Verdana; font-size: 9pt; \">'+ ",
+                    "DynamicsNavDataSet.lbtFooterText +",
+                    "'</div></body></html>'",
+                    "",
+                    ""
+                  ],
+                  "@CanGrow": "true"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Fields": {
+        "DocumentType": {
+          "@FieldName": "Document Type",
+          "@FieldNo": "1"
+        },
+        "No": {
+          "@FieldName": "No.",
+          "@FieldNo": "3"
+        },
+        "FormatRegion": {
+          "@FieldName": "Format Region",
+          "@FieldNo": "42"
+        },
+        "Amount": {
+          "@FieldName": "Amount",
+          "@FieldNo": "60"
+        },
+        "AmountIncludingVAT": {
+          "@FieldName": "Amount Including VAT",
+          "@FieldNo": "61"
+        },
+        "DocumentDate": {
+          "@FieldName": "Document Date",
+          "@FieldNo": "99"
+        },
+        "lbtPerformancePeriodStart": {
+          "@FieldName": "lbt Performance Period Start",
+          "@FieldNo": "51001"
+        },
+        "lbtPerformancePeriodEnd": {
+          "@FieldName": "lbt Performance Period End",
+          "@FieldNo": "51002"
+        },
+        "lbtBankAccountPrint": {
+          "@FieldName": "lbt Bank Account Print",
+          "@FieldNo": "51003"
+        }
+      }
+    },
+    "topMarginBand1": {
+      "@Name": "topMarginBand1",
+      "@ControlType": "TopMargin",
+      "@Dpi": "254",
+      "@Height": "100"
+    },
+    "bottomMarginBand1": {
+      "@Name": "bottomMarginBand1",
+      "@ControlType": "BottomMargin",
+      "@Dpi": "254",
+      "@Height": "50"
+    }
+  },
+  "Watermark": {
+    "@Font": "Verdana, 60pt, style=Bold",
+    "@TextTransparency": "100"
+  },
+  "DesignerOptions": {
+    "@ShowExportWarnings": "false"
+  },
+  "Records": {
+    "CompanyInformation": {
+      "@Table": "Company Information",
+      "@No": "79",
+      "@Name": "CompanyInformation"
+    },
+    "ForNAVSetup": {
+      "@Table": "ForNAV Setup",
+      "@No": "6188471",
+      "@Name": "ForNAVSetup",
+      "@CalcFields": "Logo"
+    },
+    "SalesInvoiceLine": {
+      "@Table": "Sales Line",
+      "@No": "37",
+      "@Name": "SalesInvoiceLine",
+      "@DataItemLinkReference": "Header",
+      "@DataItemLink": "\"Document Type\"=FIELD(\"Document Type\"),\"Document No.\"=FIELD(\"No.\")",
+      "@Where": "\"lbtpj Project No.\"=FILTER(<>'')",
+      "Fields": {
+        "DocumentType": {
+          "@FieldName": "Document Type",
+          "@FieldNo": "1"
+        },
+        "DocumentNo": {
+          "@FieldName": "Document No.",
+          "@FieldNo": "3"
+        },
+        "lbtpjProjectNo": {
+          "@FieldName": "lbtpj Project No.",
+          "@FieldNo": "5159152"
+        }
+      }
+    },
+    "Job": {
+      "@Table": "Job",
+      "@No": "167",
+      "@Name": "Job",
+      "@DataItemLinkReference": "SalesInvoiceLine",
+      "@DataItemLink": "\"No.\"=FIELD(\"lbtpj Project No.\")",
+      "Fields": {
+        "No": {
+          "@FieldName": "No.",
+          "@FieldNo": "1"
+        },
+        "ExternalDocumentNo": {
+          "@FieldName": "External Document No.",
+          "@FieldNo": "4000"
+        },
+        "YourReference": {
+          "@FieldName": "Your Reference",
+          "@FieldNo": "4003"
+        }
+      }
+    },
+    "BankAccount": {
+      "@Table": "Bank Account",
+      "@No": "270",
+      "@Name": "BankAccount",
+      "@DataItemLinkReference": "Header",
+      "@DataItemLink": "\"No.\"=FIELD(\"lbt Bank Account Print\")",
+      "Fields": {
+        "No": {
+          "@FieldName": "No.",
+          "@FieldNo": "1"
+        }
+      }
+    },
+    "CTS_CFIInstallmentPlan": {
+      "@Table": "CTS-CFI Installment Plan",
+      "@No": "71565950",
+      "@Name": "CTS_CFIInstallmentPlan",
+      "@DataItemLinkReference": "Header",
+      "@DataItemLink": "\"Document No.\"=FIELD(\"No.\"),\"Document Type\"=FIELD(\"Document Type\")",
+      "Fields": {
+        "DocumentType": {
+          "@FieldName": "Document Type",
+          "@FieldNo": "1"
+        },
+        "DocumentNo": {
+          "@FieldName": "Document No.",
+          "@FieldNo": "2"
+        }
+      }
+    }
+  }
+}
