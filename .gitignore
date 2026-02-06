@@ -9,3 +9,4 @@ app/permissionsAnalyzer.json
 rad.json
 *.flf
 !dependencies/*.app
+*/_Doc/*.pdf

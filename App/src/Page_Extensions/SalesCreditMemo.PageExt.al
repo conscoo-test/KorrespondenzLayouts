@@ -50,6 +50,38 @@ pageextension 5272745 "lbt Sales Credit Memo" extends "Sales Credit Memo"
 
     actions
     {
+        addlast("P&osting")
+        {
+            action("lbt DraftCrMemo")
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Draft Credit Memo', Comment = 'de-DE=Gutschriftsentwurf';
+                Ellipsis = true;
+                Image = ViewPostedOrder;
+                //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
+                //PromotedCategory = Category5;
+                ToolTip = 'View or print the sales credit memo as a draft before you perform the actual posting.',
+                    Comment = 'de-DE=Zeigt den Gutschriftsentwurf an oder druckt ihn, bevor die eigentliche Buchung durchgeführt wird.';
+
+                trigger OnAction()
+                var
+                    DocumentPrint: Codeunit "Document-Print";
+                begin
+                    DocumentPrint.PrintSalesHeader(Rec);
+                end;
+            }
+        }
+        addafter(Category_Category6)
+        {
+            group(lbtCategory_PrintSend)
+            {
+                Caption = 'Print/Send', Comment = 'de-DE=Drucken/Senden';
+
+                actionref(lbtDraftCreditMemo_Promoted; "lbt DraftCrMemo")
+                {
+                }
+            }
+        }
         addafter("&Credit Memo")
         {
             group("lbt correspondence documents")
