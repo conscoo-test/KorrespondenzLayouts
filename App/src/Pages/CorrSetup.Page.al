@@ -30,6 +30,14 @@ page 5272728 "lbt Corr Setup"
                         ToolTip = 'This option affects the copying of header and footer texts from the blanket order to the sales order.';
                     }
                 }
+                group(Service)
+                {
+                    Caption = 'Service';
+                    field("Copy ServiceQuote Texts"; Rec."Copy ServiceQuote Texts")
+                    {
+                        ToolTip = 'This option affects the copying of header and footer texts from the service quotation to the service order.';
+                    }
+                }
             }
             group("Automatic Numbering and Totaling")
             {
