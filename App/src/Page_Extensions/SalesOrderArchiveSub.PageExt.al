@@ -20,6 +20,7 @@ pageextension 5272758 "lbt Sales Order Archive Sub." extends "Sales Order Archiv
             {
                 ToolTip = 'Here you can choose the Printoptions.';
                 ApplicationArea = All;
+                StyleExpr = lbtStyle;
             }
         }
         addafter("Shortcut Dimension 2 Code")

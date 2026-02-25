@@ -20,6 +20,7 @@ pageextension 5272784 "lbt Post. Return Receipt Sub." extends "Posted Return Rec
             {
                 ApplicationArea = All;
                 ToolTip = 'Here you can choose the Printoptions.';
+                StyleExpr = lbtStyle;
             }
         }
         addafter("Shortcut Dimension 2 Code")

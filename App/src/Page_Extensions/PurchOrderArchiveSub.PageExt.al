@@ -20,6 +20,7 @@ pageextension 5272764 "lbt Purch. Order Archive Sub." extends "Purchase Order Ar
             {
                 ToolTip = 'Here you can choose the Printoptions.';
                 ApplicationArea = All;
+                StyleExpr = lbtStyle;
             }
         }
         addafter("Shortcut Dimension 2 Code")

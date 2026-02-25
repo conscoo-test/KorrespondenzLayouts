@@ -4851,7 +4851,7 @@
                                           <TablixMember>
                                             <Visibility>
                                               <Hidden>=Iif((Fields!PurchaseLineType.Value = "0") and
-     (Fields!PurchaseLineLeBitPrintoption.Value = "8"),false, true)</Hidden>
+     ((Fields!PurchaseLineLeBitPrintoption.Value = "8") or (Fields!PurchaseLineLeBitPrintoption.Value = "10")),false, true)</Hidden>
                                             </Visibility>
                                           </TablixMember>
                                           <TablixMember>

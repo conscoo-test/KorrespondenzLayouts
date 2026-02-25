@@ -44,6 +44,7 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
                 StyleExprText := Format(StyleExpr::Favorable);
             Printoption::Bold,
             Printoption::Title,
+            Printoption::Total,
             Printoption::"Begin Total",
             Printoption::"End Total":
                 StyleExprText := Format(StyleExpr::Strong);

@@ -20,6 +20,7 @@ pageextension 5272760 "lbt Sales Quote Archive Sub." extends "Sales Quote Archiv
             {
                 ToolTip = 'Here you can choose the Printoptions.';
                 ApplicationArea = All;
+                StyleExpr = lbtStyle;
             }
         }
         addafter("Shortcut Dimension 2 Code")

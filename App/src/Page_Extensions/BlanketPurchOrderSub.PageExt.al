@@ -25,6 +25,7 @@ pageextension 5272756 "lbt Blanket Purch. Order Sub." extends "Blanket Purchase 
 
                 ToolTip = 'Here you can choose the Printoptions.';
                 ApplicationArea = All;
+                StyleExpr = lbtStyle;
             }
         }
         addafter("ShortcutDimCode[8]")
