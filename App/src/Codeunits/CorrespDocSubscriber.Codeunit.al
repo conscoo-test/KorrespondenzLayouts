@@ -71,20 +71,12 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
     var
         CorrSetup: Record "lbt Corr Setup";
 
-        LBTPSLongtextLn: Record "lbt PS Longtext Line";
-        RecrefFrom: RecordRef;
-        RecRefTo: RecordRef;
 
     begin
         CorrSetup.get();
         if CorrSetup."Copy ServiceQuote Texts" then
             LongtextMgt.CopyLongtext(ServiceHeaderQuote, ServiceHeaderOrder);
-        // RecRefTo.GetTable(ServiceHeaderOrder);
-        // RecrefFrom.GetTable(ServiceHeaderQuote);
-        // if LebitSetup."lbt Copy Quote Footer Text to Serv" <> LebitSetup."lbt Copy Quote Footer Text to Serv"::None then
-        //     LBTPSLongtextLn."lbt CopyLines"(RecrefFrom, RecRefTo, 1, LebitSetup."lbt Copy Quote Footer Text to Serv" - 1);
-        // if LebitSetup."lbt Copy Quote Header Text to Serv" <> LebitSetup."lbt Copy Quote Header Text to Serv"::None then
-        //     LBTPSLongtextLn."lbt CopyLines"(RecrefFrom, RecRefTo, 0, LebitSetup."lbt Copy Quote Header Text to Serv" - 1);
+
     end;
 
 
