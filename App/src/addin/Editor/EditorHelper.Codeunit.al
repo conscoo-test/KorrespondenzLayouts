@@ -514,6 +514,7 @@ codeunit 5272729 "lbt cl EditorHelper"
                     field_No[2] := 1;
                     field_No[3] := 0;
                 end;
+
         end;
         onAfterGetKeyFields(TableId, field_No, handled)
     end;
@@ -926,6 +927,7 @@ codeunit 5272729 "lbt cl EditorHelper"
         target_fields: array[10] of Integer;
         TargetType: Integer;
         TableId: Integer;
+        CopyDocType: boolean;
 
     begin
         if handled then
@@ -949,10 +951,12 @@ codeunit 5272729 "lbt cl EditorHelper"
 
         CopyNonSpecificTextsFromOrder(SourceRecRef, TargetRecRef, SourceMemo);
 
-        if SourceRecRef.Number = Database::Job then begin
+        if (SourceRecRef.Number = Database::Job) and (TargetRecRef.number <> database::Job) then begin
             SourceMemoField := SourceMemo.Field(3);
             SourceMemoField.SetRange(Enum::"Sales Document Type"::Invoice);
         end;
+        if (SourceRecRef.Number = Database::Job) and (TargetRecRef.number = database::Job) then
+            copyDocType := true;
 
         if SourceMemo.FindSet() then
             repeat
@@ -968,7 +972,12 @@ codeunit 5272729 "lbt cl EditorHelper"
                             TargetMemo.Field(2).Value := Enum::"Sales Document Type"::Invoice;
                         if IsShipment(SourceRecRef) then
                             TargetMemo.Field(2).Value := Enum::"Sales Document Type"::"lbt cl Shipment/Receipt";
+
                     end;
+                if copydoctype then
+                    if SourceType = 5 then
+                        TargetMemo.Field(3).Value := SourceMemo.Field(3).Value;
+
                 CopyMemoFields(TargetMemo, SourceMemo);
                 if not TargetMemo.Insert() then begin
                     ///Überschreiben ermöglichen

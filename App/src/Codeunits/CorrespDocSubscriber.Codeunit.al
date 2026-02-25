@@ -89,6 +89,12 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
 
 
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Job", 'OnAfterCopyJob', '', false, false)]
+    local procedure CopyJob_OnAfterCopyJob(SourceJob: Record Job; var TargetJob: Record Job)
+    begin
+        LongtextMgt.CopyLongtext(SourceJob, TargetJob);
+    end;
+
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterPostPurchaseDoc', '', false, false)]
     local procedure OnAfterPostPurchaseDoc_Codeunit90(var PurchaseHeader: Record "Purchase Header"; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; PurchRcpHdrNo: Code[20]; RetShptHdrNo: Code[20]; PurchInvHdrNo: Code[20]; PurchCrMemoHdrNo: Code[20])
     var
