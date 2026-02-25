@@ -15,11 +15,11 @@ table 5272724 "lbt Corr Setup"
         }
         field(3; "Copy Quote Texts"; Boolean)
         {
-            Caption = 'Copy Quote Texts';
+            Caption = 'Copy Sales Quote Texts';
         }
         field(4; "Copy Blanket Order Texts"; Boolean)
         {
-            Caption = 'Copy Blanket Order Texts';
+            Caption = 'Copy Sales Blanket Order Texts';
         }
         field(10; "S.Quote Automatic Numbering"; Boolean)
         {
@@ -68,6 +68,10 @@ table 5272724 "lbt Corr Setup"
         field(21; "Copy General Text From Order"; Boolean)
         {
             Caption = 'Copy Non-Specific Text From Order', Comment = 'de-DE=Nicht spezifische Texte aus Auftrag kopieren';
+        }
+        field(22; "Copy ServiceQuote Texts"; Boolean)
+        {
+            Caption = 'Copy Service Quote Texts', Comment = 'de-DE=Serviceangebotstexte kopieren';
         }
     }
 

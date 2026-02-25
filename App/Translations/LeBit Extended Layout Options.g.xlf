@@ -139,7 +139,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field Always print VAT - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 214935587 - Field 140183914 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Copy Blanket Order Texts</source>
+          <source>Copy Sales Blanket Order Texts</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field Copy Blanket Order Texts - Property Caption</note>
         </trans-unit>
@@ -149,9 +149,14 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field Copy General Text From Order - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 214935587 - Field 4040641683 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Copy Quote Texts</source>
+          <source>Copy Sales Quote Texts</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field Copy Quote Texts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 214935587 - Field 183822984 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Copy Service Quote Texts</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Serviceangebotstexte kopieren</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field Copy ServiceQuote Texts - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 214935587 - Field 2040663305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>P.Credit Memo Automatic Numbering</source>
@@ -907,6 +912,16 @@
           <source>This option affects the copying of header and footer texts from the quotation to the sales order.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control Copy Quote Texts - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 2187938695 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Service</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control Service - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 183822984 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>This option affects the copying of header and footer texts from the service quotation to the service order.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control Copy ServiceQuote Texts - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 2839050074 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Texts</source>

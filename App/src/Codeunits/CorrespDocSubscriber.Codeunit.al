@@ -66,6 +66,29 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
             LongtextMgt.CopyLongtext(SalesHeader, SalesOrderHeader);
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Service-Quote to Order", 'OnAfterInsertServHeader', '', false, false)]
+    local procedure ServiceHeaderOrder_OnAfterOnRun(var ServiceHeaderOrder: Record "Service Header"; ServiceHeaderQuote: Record "Service Header")
+    var
+        CorrSetup: Record "lbt Corr Setup";
+
+        LBTPSLongtextLn: Record "lbt PS Longtext Line";
+        RecrefFrom: RecordRef;
+        RecRefTo: RecordRef;
+
+    begin
+        CorrSetup.get();
+        if CorrSetup."Copy ServiceQuote Texts" then
+            LongtextMgt.CopyLongtext(ServiceHeaderQuote, ServiceHeaderOrder);
+        // RecRefTo.GetTable(ServiceHeaderOrder);
+        // RecrefFrom.GetTable(ServiceHeaderQuote);
+        // if LebitSetup."lbt Copy Quote Footer Text to Serv" <> LebitSetup."lbt Copy Quote Footer Text to Serv"::None then
+        //     LBTPSLongtextLn."lbt CopyLines"(RecrefFrom, RecRefTo, 1, LebitSetup."lbt Copy Quote Footer Text to Serv" - 1);
+        // if LebitSetup."lbt Copy Quote Header Text to Serv" <> LebitSetup."lbt Copy Quote Header Text to Serv"::None then
+        //     LBTPSLongtextLn."lbt CopyLines"(RecrefFrom, RecRefTo, 0, LebitSetup."lbt Copy Quote Header Text to Serv" - 1);
+    end;
+
+
+
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterPostPurchaseDoc', '', false, false)]
     local procedure OnAfterPostPurchaseDoc_Codeunit90(var PurchaseHeader: Record "Purchase Header"; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; PurchRcpHdrNo: Code[20]; RetShptHdrNo: Code[20]; PurchInvHdrNo: Code[20]; PurchCrMemoHdrNo: Code[20])
     var
