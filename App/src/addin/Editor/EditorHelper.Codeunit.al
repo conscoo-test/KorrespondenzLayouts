@@ -653,7 +653,7 @@ codeunit 5272729 "lbt cl EditorHelper"
         FRef: FieldRef;
         DocType: Enum "Sales Document Type";
     begin
-        if not (RecRef.Number in [Database::"Sales Header", Database::"Purchase Header"]) then
+        if not (RecRef.Number in [Database::"Sales Header", Database::"Purchase Header", database::"Service Header"]) then
             exit(false);
         FRef := RecRef.Field(1);
         DocType := FRef.Value();
