@@ -1669,7 +1669,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value />
+                                                    <Value>==Code.BlankZero(Fields!Sales_Line__Special_Quantity.Value)</Value>
                                                     <Style>
                                                       <FontStyle>Italic</FontStyle>
                                                       <FontSize>9pt</FontSize>
@@ -2062,7 +2062,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value />
+                                                    <Value>=Code.BlankZero(Fields!Sales_Line__Special_Quantity.Value)</Value>
                                                     <Style>
                                                       <FontStyle>Italic</FontStyle>
                                                       <FontSize>9pt</FontSize>
@@ -2080,6 +2080,7 @@
                                               <PaddingRight>2pt</PaddingRight>
                                             </Style>
                                           </Textbox>
+                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell>
@@ -12130,6 +12131,12 @@ End Function
         </Field>
         <Field Name="Sales_Line__QuantityFormat">
           <DataField>Sales_Line__QuantityFormat</DataField>
+        </Field>
+        <Field Name="Sales_Line__Special_Quantity">
+          <DataField>Sales_Line__Special_Quantity</DataField>
+        </Field>
+        <Field Name="Sales_Line__Special_QuantityFormat">
+          <DataField>Sales_Line__Special_QuantityFormat</DataField>
         </Field>
         <Field Name="Sales_Line___Unit_of_Measure_">
           <DataField>Sales_Line___Unit_of_Measure_</DataField>
