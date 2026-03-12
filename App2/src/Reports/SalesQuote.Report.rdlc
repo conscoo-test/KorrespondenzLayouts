@@ -1452,6 +1452,7 @@
                                                     <Value>=Code.BlankZero(Fields!Sales_Line__Quantity.Value)</Value>
                                                     <Style>
                                                       <FontSize>9pt</FontSize>
+                                                      <Format>=Fields!Sales_Line__QuantityFormat.Value</Format>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -1669,10 +1670,11 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>==Code.BlankZero(Fields!Sales_Line__Special_Quantity.Value)</Value>
+                                                    <Value>=Code.BlankZero(Fields!Sales_Line__Special_Quantity.Value)</Value>
                                                     <Style>
                                                       <FontStyle>Italic</FontStyle>
                                                       <FontSize>9pt</FontSize>
+                                                      <Format>=Fields!Sales_Line__QuantityFormat.Value</Format>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -2066,6 +2068,7 @@
                                                     <Style>
                                                       <FontStyle>Italic</FontStyle>
                                                       <FontSize>9pt</FontSize>
+                                                      <Format>=Fields!Sales_Line__QuantityFormat.Value</Format>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -2080,7 +2083,6 @@
                                               <PaddingRight>2pt</PaddingRight>
                                             </Style>
                                           </Textbox>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell>
