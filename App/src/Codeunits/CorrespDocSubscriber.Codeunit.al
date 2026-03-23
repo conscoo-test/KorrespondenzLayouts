@@ -66,14 +66,6 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
             LongtextMgt.CopyLongtext(SalesHeader, SalesOrderHeader);
     end;
 
-<<<<<<<<< Temporary merge branch 1
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Job", 'OnAfterCopyJob', '', false, false)]
-    local procedure CopyJob_OnAfterCopyJob(SourceJob: Record Job; var TargetJob: Record Job)
-    begin
-        LongtextMgt.CopyLongtext(SourceJob, TargetJob);
-    end;
-
-=========
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Service-Quote to Order", 'OnAfterInsertServHeader', '', false, false)]
     local procedure ServiceHeaderOrder_OnAfterOnRun(var ServiceHeaderOrder: Record "Service Header"; ServiceHeaderQuote: Record "Service Header")
     var

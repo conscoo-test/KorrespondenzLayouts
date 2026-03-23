@@ -167,9 +167,8 @@
         </trans-unit>
         <trans-unit id="Table 214935587 - Field 140183914 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Copy Sales Blanket Order Texts</source>
-          <target state="needs-adaptation">Rahmenauftragstexte kopieren</target>
+          <target state="translated">Rahmenauftragstexte kopieren</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field Copy Blanket Order Texts - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 214935587 - Field 3016807722 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -180,16 +179,14 @@
         </trans-unit>
         <trans-unit id="Table 214935587 - Field 4040641683 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Copy Sales Quote Texts</source>
-          <target state="needs-adaptation">Angebotstexte kopieren</target>
+          <target state="translated">Angebotstexte kopieren</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field Copy Quote Texts - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 214935587 - Field 183822984 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Copy Service Quote Texts</source>
-          <target state="needs-translation">Serviceangebotstexte kopieren</target>
+          <target state="translated" state-qualifier="exact-match">Serviceangebotstexte kopieren</target>
           <note from="Developer" annotates="general" priority="2">de-DE=Serviceangebotstexte kopieren</note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field Copy ServiceQuote Texts - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 214935587 - Field 2040663305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -1038,12 +1035,6 @@
           <note from="Developer" annotates="general" priority="2">de-DE=Auftrag</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Order Automatic Numbering - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 214935587 - Control 468238441 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The configured option controls how "print option," "Optional" are handled when converting the sales quote into a sales order.Hint: Positions of type „Alternative“ won´t ever be transfered.</source>
-          <target state="translated" state-qualifier="exact-match">Die eingerichtete Option steuert den Umgang mit „Druckauswahl“ „Bedarfsposition“ beim Überführen des Angebots in einen Verkaufsauftrag.Hinweis: Alternativpositionen können nicht mit in einen Auftrag überführt werden</target>
-          <note from="Developer" annotates="general" priority="2">%de-DE=Die eingerichtete Option steuert den Umgang mit „Druckauswahl“ „Bedarfsposition“ beim Überführen des Angebots in einen Verkaufsauftrag.Hinweis: Alternativpositionen können nicht mit in einen Auftrag überführt werden</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Print select Copy order - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="Page 214935587 - Control 3401295947 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>If selected, the system will automatically number the sales quote before printing.</source>
           <target state="translated">Wenn ausgewählt, wird das System das Verkaufsangebot beim Drucken automatisch nummerieren.</target>
@@ -1098,6 +1089,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control Copy Quote Texts - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 214935587 - Control 468238441 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The configured option controls how "print option," "Optional" are handled when converting the sales quote into a sales order.Hint: Positions of type „Alternative“ won´t ever be transfered.</source>
+          <target state="translated" state-qualifier="exact-match">Die eingerichtete Option steuert den Umgang mit „Druckauswahl“ „Bedarfsposition“ beim Überführen des Angebots in einen Verkaufsauftrag.Hinweis: Alternativpositionen können nicht mit in einen Auftrag überführt werden</target>
+          <note from="Developer" annotates="general" priority="2">%de-DE=Die eingerichtete Option steuert den Umgang mit „Druckauswahl“ „Bedarfsposition“ beim Überführen des Angebots in einen Verkaufsauftrag.Hinweis: Alternativpositionen können nicht mit in einen Auftrag überführt werden</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Print select Copy order - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 214935587 - Control 2187938695 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Service</source>
           <target state="translated" state-qualifier="exact-match">Service</target>
@@ -1108,7 +1105,6 @@
           <source>This option affects the copying of header and footer texts from the service quotation to the service order.</source>
           <target state="translated">Diese Option beeinflusst das Kopieren von Kopf- und Fußtexten aus dem Serviceangebot in den Serviceauftrag.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control Copy ServiceQuote Texts - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 2839050074 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
