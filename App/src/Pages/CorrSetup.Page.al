@@ -29,6 +29,11 @@ page 5272728 "lbt Corr Setup"
                     {
                         ToolTip = 'This option affects the copying of header and footer texts from the blanket order to the sales order.';
                     }
+                    field("S.Print select Copy order"; Rec."S.Print select Copy order")
+                    {
+                        ToolTip = 'The configured option controls how "print option," "Optional" are handled when converting the sales quote into a sales order.Hint: Positions of type „Alternative“ won´t ever be transfered.',
+                        Comment = '%de-DE=Die eingerichtete Option steuert den Umgang mit „Druckauswahl“ „Bedarfsposition“ beim Überführen des Angebots in einen Verkaufsauftrag.Hinweis: Alternativpositionen können nicht mit in einen Auftrag überführt werden';
+                    }
                 }
             }
             group("Automatic Numbering and Totaling")
@@ -68,12 +73,6 @@ page 5272728 "lbt Corr Setup"
                         ToolTip = 'If selected, the system will automatically number the sales return order before printing.',
                         Comment = 'de-DE=Wenn ausgewählt, wird das System die Verkaufsreklamation beim Drucken automatisch nummerieren.';
                     }
-                    field("S.Print select Copy order"; Rec."S.Print select Copy order")
-                    {
-                        ToolTip = 'The configured option controls how "print option," "Optional" are handled when converting the sales quote into a sales order.Hint: Positions of type „Alternative“ won´t ever be transfered.',
-                        Comment = '%de-DE=Die eingerichtete Option steuert den Umgang mit „Druckauswahl“ „Bedarfsposition“ beim Überführen des Angebots in einen Verkaufsauftrag.Hinweis: Alternativpositionen können nicht mit in einen Auftrag überführt werden';
-                    }
-
                 }
                 group(PurchaseTotaling)
                 {
