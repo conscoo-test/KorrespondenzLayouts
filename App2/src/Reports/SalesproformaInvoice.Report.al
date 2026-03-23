@@ -527,22 +527,28 @@ report 5272726 "lbt Sales pro forma Invoice"
                             if (TempSalesLine.Type = TempSalesLine.Type::"G/L Account") and (not ShowInternalInfo) then
                                 "Sales Line"."No." := '';
 
-                            NNC_SalesLineLineAmt += TempSalesLine."Line Amount";
-                            NNC_SalesLineInvDiscAmt += TempSalesLine."Inv. Discount Amount";
+                            if not (TempSalesLine."lbt Printoption" in [
+                                TempSalesLine."lbt Printoption"::"Line Invisible",
+                                TempSalesLine."lbt Printoption"::"Price Invisible",
+                                TempSalesLine."lbt Printoption"::Alternative,
+                                TempSalesLine."lbt Printoption"::Optional
+                            ]) then begin
+                                NNC_SalesLineLineAmt += TempSalesLine."Line Amount";
+                                NNC_SalesLineInvDiscAmt += TempSalesLine."Inv. Discount Amount";
 
-                            NNC_TotalLCY := NNC_SalesLineLineAmt - NNC_SalesLineInvDiscAmt;
+                                NNC_TotalLCY := NNC_SalesLineLineAmt - NNC_SalesLineInvDiscAmt;
 
-                            NNC_TotalExclVAT := NNC_TotalLCY;
-                            NNC_VATAmt := VATAmount;
-                            NNC_TotalInclVAT := NNC_TotalLCY - NNC_VATAmt;
+                                NNC_TotalExclVAT := NNC_TotalLCY;
+                                NNC_VATAmt := VATAmount;
+                                NNC_TotalInclVAT := NNC_TotalLCY - NNC_VATAmt;
 
-                            NNC_PmtDiscOnVAT := -VATDiscountAmount;
+                                NNC_PmtDiscOnVAT := -VATDiscountAmount;
 
-                            NNC_TotalInclVAT2 := TotalAmountInclVAT;
+                                NNC_TotalInclVAT2 := TotalAmountInclVAT;
 
-                            NNC_VatAmt2 := VATAmount;
-                            NNC_TotalExclVAT2 := VATBaseAmount;
-
+                                NNC_VatAmt2 := VATAmount;
+                                NNC_TotalExclVAT2 := VATBaseAmount;
+                            end;
                             if TempSalesLine."lbt Printoption" = TempSalesLine."lbt Printoption"::"New Page" then
                                 NewPageGroup += 1;
 
