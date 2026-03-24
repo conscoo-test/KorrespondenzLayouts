@@ -690,12 +690,14 @@ report 5272733 "lbt cl Service Quote"
     end;
 
     local procedure FormatAddressFields(var ServiceHeader: Record "Service Header")
+    var
+        ServiceFormatAddr: Codeunit "Service Format Address";
     begin
         FormatAddr.GetCompanyAddr(ServiceHeader."Responsibility Center", RespCenter, CompanyInfo, CompanyAddr);
-        FormatAddr.ServiceOrderSellto(CustAddr, ServiceHeader);
+        ServiceFormatAddr.ServiceOrderSellto(CustAddr, ServiceHeader);
         ShowShippingAddr := ServiceHeader."Ship-to Code" <> '';
         if ShowShippingAddr then
-            FormatAddr.ServiceOrderShipto(ShipToAddr, ServiceHeader);
+            ServiceFormatAddr.ServiceOrderShipto(ShipToAddr, ServiceHeader);
     end;
 }
 
