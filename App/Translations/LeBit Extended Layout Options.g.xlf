@@ -863,11 +863,6 @@
           <note from="Developer" annotates="general" priority="2">de-DE=Auftrag</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Order Automatic Numbering - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 214935587 - Control 468238441 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The configured option controls how "print option," "Optional" are handled when converting the sales quote into a sales order.Hint: Positions of type „Alternative“ won´t ever be transfered.</source>
-          <note from="Developer" annotates="general" priority="2">%de-DE=Die eingerichtete Option steuert den Umgang mit „Druckauswahl“ „Bedarfsposition“ beim Überführen des Angebots in einen Verkaufsauftrag.Hinweis: Alternativpositionen können nicht mit in einen Auftrag überführt werden</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Print select Copy order - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="Page 214935587 - Control 3401295947 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>If selected, the system will automatically number the sales quote before printing.</source>
           <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System das Verkaufsangebot beim Drucken automatisch nummerieren.</note>
@@ -922,6 +917,11 @@
           <source>This option affects the copying of header and footer texts from the service quotation to the service order.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control Copy ServiceQuote Texts - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 468238441 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The configured option controls how "print option," "Optional" are handled when converting the sales quote into a sales order.Hint: Positions of type „Alternative“ won´t ever be transfered.</source>
+          <note from="Developer" annotates="general" priority="2">%de-DE=Die eingerichtete Option steuert den Umgang mit „Druckauswahl“ „Bedarfsposition“ beim Überführen des Angebots in einen Verkaufsauftrag.Hinweis: Alternativpositionen können nicht mit in einen Auftrag überführt werden</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Print select Copy order - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 2839050074 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Texts</source>
