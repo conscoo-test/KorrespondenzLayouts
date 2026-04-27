@@ -5299,7 +5299,7 @@
                                           <TablixMember>
                                             <Visibility>
                                               <Hidden>=Iif((Fields!SalesLineType.Value = "0") and
-     (Fields!SalesLineLeBitPrintoption.Value = "8"),false, true)</Hidden>
+     ((Fields!SalesLineLeBitPrintoption.Value = "8") or (Fields!SalesLineLeBitPrintoption.Value = "10")),false, true)</Hidden>
                                             </Visibility>
                                             <KeepTogether>true</KeepTogether>
                                           </TablixMember>
