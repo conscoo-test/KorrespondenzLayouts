@@ -233,6 +233,9 @@ report 5272720 "lbt Sales - Quote"
                         column(Sales_Line__Quantity; "Sales Line".Quantity)
                         {
                         }
+                        column(Sales_Line__Special_Quantity; "Sales Line"."lbt Special Qty")
+                        {
+                        }
                         column(Sales_Line___Unit_of_Measure_; "Sales Line"."Unit of Measure")
                         {
                         }
