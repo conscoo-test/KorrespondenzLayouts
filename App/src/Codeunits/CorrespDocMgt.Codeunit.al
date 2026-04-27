@@ -44,6 +44,7 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
                 StyleExprText := Format(StyleExpr::Favorable);
             Printoption::Bold,
             Printoption::Title,
+            Printoption::Total,
             Printoption::"Begin Total",
             Printoption::"End Total":
                 StyleExprText := Format(StyleExpr::Strong);
@@ -207,21 +208,6 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
         SalesLine.SetRange("Document No.", SalesHeader."No.");
         if SalesLine.FindSet() then
             Number(0, '', SalesLine);
-    end;
-
-    procedure GetStyleExprBold(Printoption: Enum "lbt cl Printoption") StyleExprText: Text[30]
-    var
-        StyleExpr: Option Standard,StandardAccent,Strong,StrongAccent,Attention,AttentionAccent,Favorable,Unfavorable,Ambiguous,Subordinate;
-    begin
-        case Printoption of
-            Printoption::Bold,
-            Printoption::Title,
-            Printoption::"Begin Total",
-            Printoption::"End Total":
-                StyleExprText := Format(StyleExpr::Strong);
-            else
-                StyleExprText := Format(StyleExpr::Standard);
-        end;
     end;
 
     [IntegrationEvent(false, false)]

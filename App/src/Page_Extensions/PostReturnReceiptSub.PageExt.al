@@ -20,7 +20,7 @@ pageextension 5272784 "lbt Post. Return Receipt Sub." extends "Posted Return Rec
             {
                 ApplicationArea = All;
                 ToolTip = 'Here you can choose the Printoptions.';
-                StyleExpr = lbtStyleBold;
+                StyleExpr = lbtStyle;
             }
         }
         addafter("Shortcut Dimension 2 Code")
@@ -88,10 +88,8 @@ pageextension 5272784 "lbt Post. Return Receipt Sub." extends "Posted Return Rec
         LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
     begin
         lbtStyle := LeBitCorrespDocMgt.GetStyleExpr(Rec."lbt Printoption");
-        lbtStyleBold := LeBitCorrespDocMgt.GetStyleExprBold(Rec."lbt Printoption");
     end;
 
     var
         lbtStyle: Text;
-        lbtStyleBold: Text;
 }

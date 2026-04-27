@@ -20,7 +20,7 @@ pageextension 5272760 "lbt Sales Quote Archive Sub." extends "Sales Quote Archiv
             {
                 ToolTip = 'Here you can choose the Printoptions.';
                 ApplicationArea = All;
-                StyleExpr = lbtStyleBold;
+                StyleExpr = lbtStyle;
             }
         }
         addafter("Shortcut Dimension 2 Code")
@@ -102,10 +102,8 @@ pageextension 5272760 "lbt Sales Quote Archive Sub." extends "Sales Quote Archiv
         LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
     begin
         lbtStyle := LeBitCorrespDocMgt.GetStyleExpr(Rec."lbt Printoption");
-        lbtStyleBold := LeBitCorrespDocMgt.GetStyleExprBold(Rec."lbt Printoption");
     end;
 
     var
         lbtStyle: Text;
-        lbtStyleBold: Text;
 }

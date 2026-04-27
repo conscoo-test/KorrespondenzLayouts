@@ -20,7 +20,7 @@ pageextension 5272722 "lbt Posted Sales Shpt. Subform" extends "Posted Sales Shp
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the Printoption';
-                StyleExpr = lbtStyleBold;
+                StyleExpr = lbtStyle;
             }
         }
         addafter(Correction)
@@ -80,10 +80,8 @@ pageextension 5272722 "lbt Posted Sales Shpt. Subform" extends "Posted Sales Shp
         LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
     begin
         lbtStyle := LeBitCorrespDocMgt.GetStyleExpr(Rec."lbt Printoption");
-        lbtStyleBold := LeBitCorrespDocMgt.GetStyleExprBold(Rec."lbt Printoption");
     end;
 
     var
         lbtStyle: Text;
-        lbtStyleBold: Text;
 }
