@@ -1190,6 +1190,11 @@ report 5272726 "lbt Sales pro forma Invoice"
                     TempVATAmountLine.DeleteAll();
                     TempSalesLine.DeleteAll();
                     SalesPost.GetSalesLines("Sales Header", TempSalesLine, 0);
+                    TempSalesLine.SetFilter("lbt Printoption", '<>%1&<>%2&<>%3&<>%4',
+                        TempSalesLine."lbt Printoption"::Alternative,
+                        TempSalesLine."lbt Printoption"::Optional,
+                        TempSalesLine."lbt Printoption"::"Line Invisible",
+                        TempSalesLine."lbt Printoption"::"Price Invisible");
                     TempSalesLine.CalcVATAmountLines(0, "Sales Header", TempSalesLine, TempVATAmountLine);
                     TempSalesLine.UpdateVATOnLines(0, "Sales Header", TempSalesLine, TempVATAmountLine);
                     VATAmount := TempVATAmountLine.GetTotalVATAmount();
@@ -1203,6 +1208,11 @@ report 5272726 "lbt Sales pro forma Invoice"
 
                     if not TempPrepmtSalesLine.IsEmpty() then begin
                         SalesPostPrepmt.GetSalesLinesToDeduct("Sales Header", TempSalesLine2);
+                        TempSalesLine2.SetFilter("lbt Printoption", '<>%1&<>%2&<>%3&<>%4',
+                            TempSalesLine."lbt Printoption"::Alternative,
+                            TempSalesLine."lbt Printoption"::Optional,
+                            TempSalesLine."lbt Printoption"::"Line Invisible",
+                            TempSalesLine."lbt Printoption"::"Price Invisible");
                         if not TempSalesLine2.IsEmpty() then
                             SalesPostPrepmt.CalcVATAmountLines("Sales Header", TempSalesLine2, TempPrepmtVATAmountLineDeduct, 1);
                     end;
@@ -1214,6 +1224,7 @@ report 5272726 "lbt Sales pro forma Invoice"
                     PrepmtVATBaseAmount := TempPrepmtVATAmountLine.GetTotalVATBase();
                     PrepmtTotalAmountInclVAT := TempPrepmtVATAmountLine.GetTotalAmountInclVAT();
 
+                    TempSalesLine.SetRange("lbt Printoption");
                     if Number > 1 then begin
                         CopyText := FormatDocument.GetCOPYText();
                         OutputNo += 1;
