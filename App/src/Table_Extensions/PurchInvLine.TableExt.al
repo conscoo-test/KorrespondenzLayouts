@@ -28,7 +28,8 @@ tableextension 5272724 "lbt Purch. Inv. Line" extends "Purch. Inv. Line"
         {
             AutoFormatType = 1;
             CalcFormula = sum("Purch. Inv. Line"."Line Amount" where("Document No." = field("Document No."),
-                                                                      "Line No." = field(filter("lbt Summation"))));
+                                                                      "Line No." = field(filter("lbt Summation")),
+                                                                      "lbt Printoption" = filter(<> Alternative & <> Optional & <> "Price Invisible" & <> "Line Invisible")));
             Caption = 'Balance';
             Editable = false;
             FieldClass = FlowField;

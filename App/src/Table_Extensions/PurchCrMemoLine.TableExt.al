@@ -28,7 +28,8 @@ tableextension 5272725 "lbt Purch. Cr. Memo Line" extends "Purch. Cr. Memo Line"
         {
             AutoFormatType = 1;
             CalcFormula = sum("Purch. Cr. Memo Line"."Line Amount" where("Document No." = field("Document No."),
-                                                                          "Line No." = field(filter("lbt Summation"))));
+                                                                          "Line No." = field(filter("lbt Summation")),
+                                                                          "lbt Printoption" = filter(<> Alternative & <> Optional & <> "Price Invisible" & <> "Line Invisible")));
             Caption = 'Balance';
             Editable = false;
             FieldClass = FlowField;
