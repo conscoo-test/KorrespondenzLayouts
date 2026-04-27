@@ -722,50 +722,67 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
     #endregion
     #endregion
 
-    #region
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Quote to Order", 'OnBeforeTransferQuoteLineToOrderLineLoop', '', false, false)]
+    local procedure "Purch.-Quote to Order_OnBeforeTransferQuoteLineToOrderLineLoop"(var PurchQuoteLine: Record "Purchase Line"; var PurchQuoteHeader: Record "Purchase Header"; var PurchOrderHeader: Record "Purchase Header"; var IsHandled: Boolean)
+    var
+        CorrSetup: Record "lbt Corr Setup";
+        ConfirmMgt: Codeunit "Confirm Management";
+        CopytoOrderLbl: Label 'The purchase quote still contains alternative items, which will be deleted during the transfer. Existing demand lines will be transferred as regular item lines with their special quantity. Do you want to proceed?',
+            Comment = 'de-DE=In der Anfrage befinden sich noch Alternativpositionen, welche beim Übertragen gelöscht werden. Vorhandene Bedarfszeilen werden mit ihrer Sondermenge als normale Artikelzeile übernommen. Wollen Sie fortfahren?';
+        cancelErr: Label 'Program was canceled.', Comment = 'de-DE=Programm wurde abgebrochen.';
+    begin
+        CorrSetup.Get();
+        if not CorrSetup."P.Print select Copy order" then begin
+            if (PurchQuoteLine."lbt Printoption" = PurchQuoteLine."lbt Printoption"::Alternative) or
+                (PurchQuoteLine."lbt Printoption" = PurchQuoteLine."lbt Printoption"::Optional)
+            then
+                IsHandled := true;
+            exit;
+        end;
+        if not PurchQuoteHeader."lbt Asked Once" then
+            if ConfirmMgt.GetResponse(CopytoOrderLbl, false) then
+                PurchQuoteHeader."lbt Asked Once" := true
+            else
+                Error(cancelErr);
+
+        if PurchQuoteLine."lbt Printoption" = PurchQuoteLine."lbt Printoption"::Optional then begin
+            PurchQuoteLine.Validate("lbt Printoption", PurchQuoteLine."lbt Printoption"::Standard);
+            PurchQuoteLine.Validate("Quantity", PurchQuoteLine."lbt Special Qty");
+        end;
+        if PurchQuoteLine."lbt Printoption" = PurchQuoteLine."lbt Printoption"::Alternative then
+            IsHandled := true;
+    end;
+
+
     //H24-0857
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Quote to Order", 'OnBeforeTransferQuoteLineToOrderLineLoop', '', false, false)]
     local procedure SalesQuotetoOrder_OnBeforeTransferQuoteLineToOrderLineLoop(var SalesQuoteLine: Record "Sales Line"; var SalesQuoteHeader: Record "Sales Header"; var SalesOrderHeader: Record "Sales Header"; var IsHandled: Boolean)
     var
-        lbtCorrSetup: Record "lbt Corr Setup";
+        CorrSetup: Record "lbt Corr Setup";
         ConfirmMgt: Codeunit "Confirm Management";
         CopytoOrderLbl: Label 'The sales quote still contains alternative items, which will be deleted during the transfer. Existing demand lines will be transferred as regular item lines with their special quantity. Do you want to proceed?',
         Comment = 'de-DE In dem Angebot befinden sich noch Alternativpositionen, welche beim Übertragen gelöscht werden. Vorhandene Bedarfszeilen werden mit ihrer Sondermenge als normale Artikelzeile übernommen. Wollen Sie fortfahren?';
         cancelErr: Label 'Program was canceled.', Comment = 'de-DE Programm wurde abgebrochen.';
-
     begin
-        lbtCorrSetup.Get();
-        if lbtCorrSetup."S.Print select Copy order" = false then
+        CorrSetup.Get();
+        if not CorrSetup."S.Print select Copy order" then begin
             if (SalesQuoteLine."lbt Printoption" = SalesQuoteLine."lbt Printoption"::Alternative) or
             (SalesQuoteLine."lbt Printoption" = SalesQuoteLine."lbt Printoption"::Optional) then
                 IsHandled := true;
-
-        if lbtCorrSetup."S.Print select Copy order" = true then begin
-            if not SalesQuoteHeader."lbt Asked Once" then
-                if ConfirmMgt.GetResponse(CopytoOrderLbl, false) then begin
-                    SalesQuoteHeader."lbt Asked Once" := true;
-                    if SalesQuoteLine."lbt Printoption" = SalesQuoteLine."lbt Printoption"::Optional then begin
-                        // SalesQuoteLine."lbt Printoption" := SalesQuoteLine."lbt Printoption"::Standard;
-                        SalesQuoteLine.Validate("lbt Printoption", SalesQuoteLine."lbt Printoption"::Standard);
-                        // SalesQuoteLine.Quantity := SalesQuoteLine."lbt Special Qty";
-                        SalesQuoteLine.Validate("Quantity", SalesQuoteLine."lbt Special Qty");
-                    end;
-                    if SalesQuoteLine."lbt Printoption" = SalesQuoteLine."lbt Printoption"::Alternative then
-                        IsHandled := true;
-                end else
-                    Error(cancelErr);
-
-            if SalesQuoteHeader."lbt Asked Once" then begin
-                if SalesQuoteLine."lbt Printoption" = SalesQuoteLine."lbt Printoption"::Optional then begin
-                    // SalesQuoteLine."lbt Printoption" := SalesQuoteLine."lbt Printoption"::Standard;
-                    SalesQuoteLine.Validate("lbt Printoption", SalesQuoteLine."lbt Printoption"::Standard);
-                    // SalesQuoteLine.Quantity := SalesQuoteLine."lbt Special Qty";
-                    SalesQuoteLine.Validate("Quantity", SalesQuoteLine."lbt Special Qty");
-                end;
-                if SalesQuoteLine."lbt Printoption" = SalesQuoteLine."lbt Printoption"::Alternative then
-                    IsHandled := true;
-            end;
+            exit;
         end;
+        if not SalesQuoteHeader."lbt Asked Once" then
+            if ConfirmMgt.GetResponse(CopytoOrderLbl, false) then
+                SalesQuoteHeader."lbt Asked Once" := true
+            else
+                Error(cancelErr);
+
+        if SalesQuoteLine."lbt Printoption" = SalesQuoteLine."lbt Printoption"::Optional then begin
+            SalesQuoteLine.Validate("lbt Printoption", SalesQuoteLine."lbt Printoption"::Standard);
+            SalesQuoteLine.Validate("Quantity", SalesQuoteLine."lbt Special Qty");
+        end;
+        if SalesQuoteLine."lbt Printoption" = SalesQuoteLine."lbt Printoption"::Alternative then
+            IsHandled := true;
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnCopySalesDocSalesLineOnAfterCalcShouldRunIteration', '', false, false)]
@@ -828,12 +845,12 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
     begin
 
         lbtCorrSetup.Get();
-        if lbtCorrSetup."S.Print select Copy order" = false then
+        if lbtCorrSetup."P.Print select Copy order" = false then
             if (FromPurchLine."lbt Printoption" = FromPurchLine."lbt Printoption"::Alternative) or
             (FromPurchLine."lbt Printoption" = FromPurchLine."lbt Printoption"::Optional) then
                 IsHandled := true;
 
-        if lbtCorrSetup."S.Print select Copy order" = true then begin
+        if lbtCorrSetup."P.Print select Copy order" = true then begin
             if ToPurchHeader."Document Type" = "Purchase Document Type From"::Quote then
                 exit
 
@@ -919,12 +936,12 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
     begin
 
         lbtCorrSetup.Get();
-        if lbtCorrSetup."S.Print select Copy order" = false then
+        if lbtCorrSetup."P.Print select Copy order" = false then
             if (FromPurchLineArchive."lbt Printoption" = FromPurchLineArchive."lbt Printoption"::Alternative) or
             (FromPurchLineArchive."lbt Printoption" = FromPurchLineArchive."lbt Printoption"::Optional) then
                 CopyThisLine := false;
 
-        if lbtCorrSetup."S.Print select Copy order" = true then
+        if lbtCorrSetup."P.Print select Copy order" = true then
             if ToPurchHeader."Document Type" = "Purchase Document Type From"::Quote then
                 exit
 
@@ -951,6 +968,5 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
             ToPurchLine.Validate("lbt Printoption", FromPurchLineArchive."lbt Printoption");
         ToPurchLine.Validate("lbt Special Qty", FromPurchLineArchive."lbt Special Qty");
     end;
-    #endregion
 
 }

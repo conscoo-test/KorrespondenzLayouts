@@ -31,8 +31,17 @@ page 5272728 "lbt Corr Setup"
                     }
                     field("S.Print select Copy order"; Rec."S.Print select Copy order")
                     {
-                        ToolTip = 'The configured option controls how "print option," "Optional" are handled when converting the sales quote into a sales order.Hint: Positions of type „Alternative“ won´t ever be transfered.',
-                        Comment = '%de-DE=Die eingerichtete Option steuert den Umgang mit „Druckauswahl“ „Bedarfsposition“ beim Überführen des Angebots in einen Verkaufsauftrag.Hinweis: Alternativpositionen können nicht mit in einen Auftrag überführt werden';
+                        ToolTip = 'The configured option controls how "print option," "Optional" are handled when converting the sales quote into a sales order.Hint: Positions of type "Alternative" won''t ever be transfered.',
+                        Comment = 'de-DE=Die eingerichtete Option steuert den Umgang mit "Druckauswahl" "Bedarfsposition" beim Überführen des Angebots in einen Verkaufsauftrag.Hinweis: Alternativpositionen können nicht mit in einen Auftrag überführt werden';
+                    }
+                }
+                group(Purchase)
+                {
+                    Caption = 'Purchase', Comment = 'de-DE=Einkauf';
+                    field("P.Print select Copy order"; Rec."P.Print select Copy order")
+                    {
+                        ToolTip = 'The configured option controls how "print option," "Optional" are handled when converting the purchase quote into a purchase order.Hint: Positions of type "Alternative" won''t ever be transfered.',
+                        Comment = 'de-DE=Die eingerichtete Option steuert den Umgang mit "Druckauswahl" "Bedarfsposition" beim Überführen der Anfrage in eine Einkaufsbestellung.Hinweis: Alternativpositionen können nicht mit in eine Bestellung überführt werden';
                     }
                 }
                 group(Service)
@@ -55,6 +64,12 @@ page 5272728 "lbt Corr Setup"
                         Caption = 'Quote', Comment = 'de-DE=Angebot';
                         ToolTip = 'If selected, the system will automatically number the sales quote before printing.',
                         Comment = 'de-DE=Wenn ausgewählt, wird das System das Verkaufsangebot beim Drucken automatisch nummerieren.';
+                    }
+                    field("S.Blanket Order Automatic Numbering"; Rec."S.Blanket Order Aut. Numbering")
+                    {
+                        Caption = 'Blanket Order', Comment = 'de-DE=Rahmenauftrag';
+                        ToolTip = 'If selected, the system will automatically number the sales blanket order before printing.',
+                        Comment = 'de-DE=Wenn ausgewählt, wird das System den Verkaufsrahmenauftrag beim Drucken automatisch nummerieren.';
                     }
                     field("S.Order Automatic Numbering"; Rec."S.Order Automatic Numbering")
                     {
@@ -90,6 +105,12 @@ page 5272728 "lbt Corr Setup"
                         Caption = 'Quote', Comment = 'de-DE=Anfrage';
                         ToolTip = 'If selected, the system will automatically number the purchase quote before printing.',
                         Comment = 'de-DE=Wenn ausgewählt, wird das System die Einkaufsanfrage beim Drucken automatisch nummerieren.';
+                    }
+                    field("P.Blanket Order Automatic Numbering"; Rec."P.Blanket Order Aut. Numbering")
+                    {
+                        Caption = 'Blanket Order', Comment = 'de-DE=Rahmenbestellung';
+                        ToolTip = 'If selected, the system will automatically number the purchase blanket order before printing.',
+                        Comment = 'de-DE=Wenn ausgewählt, wird das System den Einkaufsrahmenauftrag beim Drucken automatisch nummerieren.';
                     }
                     field("P.Order Automatic Numbering"; Rec."P.Order Automatic Numbering")
                     {

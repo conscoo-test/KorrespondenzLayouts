@@ -158,6 +158,11 @@
           <note from="Developer" annotates="general" priority="2">de-DE=Serviceangebotstexte kopieren</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field Copy ServiceQuote Texts - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 214935587 - Field 1082351962 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>P.Blanket Order Automatic Numbering</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Autom.Nummerierung EK-Rahmenauftrag</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field P.Blanket Order Aut. Numbering - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 214935587 - Field 2040663305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>P.Credit Memo Automatic Numbering</source>
           <note from="Developer" annotates="general" priority="2">de-DE=Autom.Nummerierung EK-Gutschrift</note>
@@ -173,6 +178,11 @@
           <note from="Developer" annotates="general" priority="2">de-DE=Autom.Nummerierung EK-Bestellung</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field P.Order Automatic Numbering - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 214935587 - Field 1118623552 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>P. Print selection Copy offer to order</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Druckauswahl Anfrage in Bestellung kopieren</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field P.Print select Copy order - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 214935587 - Field 3220591670 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>P.Quote Automatic Numbering</source>
           <note from="Developer" annotates="general" priority="2">de-DE=Autom.Nummerierung EK-Anfrage</note>
@@ -187,6 +197,11 @@
           <source>Primary Key</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field Primary Key - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 214935587 - Field 2066876775 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>S.Blanket Order Automatic Numbering</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Autom.Nummerierung VK-Rahmenauftrag</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field S.Blanket Order Aut. Numbering - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 214935587 - Field 1048620400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>S.Credit Memo Automatic Numbering</source>
@@ -563,6 +578,16 @@
           <note from="Developer" annotates="general" priority="2">de-DE Programm wurde abgebrochen.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt Corresp. Doc. Subscriber - Method CopyDocumentMgt_OnCopySalesDocSalesLineOnAfterCalcShouldRunIteration - NamedType cancelErr</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1577574366 - Method 33115217 - NamedType 1621131414" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The purchase quote still contains alternative items, which will be deleted during the transfer. Existing demand lines will be transferred as regular item lines with their special quantity. Do you want to proceed?</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=In der Anfrage befinden sich noch Alternativpositionen, welche beim Übertragen gelöscht werden. Vorhandene Bedarfszeilen werden mit ihrer Sondermenge als normale Artikelzeile übernommen. Wollen Sie fortfahren?</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt Corresp. Doc. Subscriber - Method Purch.-Quote to Order_OnBeforeTransferQuoteLineToOrderLineLoop - NamedType CopytoOrderLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1577574366 - Method 33115217 - NamedType 3245148629" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Program was canceled.</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Programm wurde abgebrochen.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt Corresp. Doc. Subscriber - Method Purch.-Quote to Order_OnBeforeTransferQuoteLineToOrderLineLoop - NamedType cancelErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1577574366 - Method 1131830492 - NamedType 1621131414" size-unit="char" translate="yes" xml:space="preserve">
           <source>The sales quote still contains alternative items, which will be deleted during the transfer. Existing demand lines will be transferred as regular item lines with their special quantity. Do you want to proceed?</source>
           <note from="Developer" annotates="general" priority="2">de-DE In dem Angebot befinden sich noch Alternativpositionen, welche beim Übertragen gelöscht werden. Vorhandene Bedarfszeilen werden mit ihrer Sondermenge als normale Artikelzeile übernommen. Wollen Sie fortfahren?</note>
@@ -778,6 +803,16 @@
           <note from="Developer" annotates="general" priority="2">de-DE=Einkauf</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control PurchaseTotaling - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 214935587 - Control 2330538839 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>If selected, the system will automatically number the purchase blanket order before printing.</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System den Einkaufsrahmenauftrag beim Drucken automatisch nummerieren.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control P.Blanket Order Automatic Numbering - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 2330538839 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Blanket Order</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Rahmenbestellung</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control P.Blanket Order Automatic Numbering - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 214935587 - Control 2040663305 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>If selected, the system will automatically number the purchase credit memo before printing.</source>
           <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System die Einkaufsgutschrift beim Drucken automatisch nummerieren.</note>
@@ -832,6 +867,16 @@
           <source>Sales</source>
           <note from="Developer" annotates="general" priority="2">de-DE=Verkauf</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control SalesTotaling - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 3812078546 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>If selected, the system will automatically number the sales blanket order before printing.</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System den Verkaufsrahmenauftrag beim Drucken automatisch nummerieren.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Blanket Order Automatic Numbering - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 3812078546 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Blanket Order</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Rahmenauftrag</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Blanket Order Automatic Numbering - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 1048620400 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>If selected, the system will automatically number the sales credit memo before printing.</source>
@@ -893,6 +938,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control Always print VAT - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 214935587 - Control 395510365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Einkauf</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control Purchase - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 214935587 - Control 1118623552 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The configured option controls how "print option," "Optional" are handled when converting the purchase quote into a purchase order.Hint: Positions of type "Alternative" won't ever be transfered.</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Die eingerichtete Option steuert den Umgang mit "Druckauswahl" "Bedarfsposition" beim Überführen der Anfrage in eine Einkaufsbestellung.Hinweis: Alternativpositionen können nicht mit in eine Bestellung überführt werden</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control P.Print select Copy order - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 214935587 - Control 1406942772 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sales</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -919,8 +974,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control Copy ServiceQuote Texts - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 468238441 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The configured option controls how "print option," "Optional" are handled when converting the sales quote into a sales order.Hint: Positions of type „Alternative“ won´t ever be transfered.</source>
-          <note from="Developer" annotates="general" priority="2">%de-DE=Die eingerichtete Option steuert den Umgang mit „Druckauswahl“ „Bedarfsposition“ beim Überführen des Angebots in einen Verkaufsauftrag.Hinweis: Alternativpositionen können nicht mit in einen Auftrag überführt werden</note>
+          <source>The configured option controls how "print option," "Optional" are handled when converting the sales quote into a sales order.Hint: Positions of type "Alternative" won't ever be transfered.</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Die eingerichtete Option steuert den Umgang mit "Druckauswahl" "Bedarfsposition" beim Überführen des Angebots in einen Verkaufsauftrag.Hinweis: Alternativpositionen können nicht mit in einen Auftrag überführt werden</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Print select Copy order - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 2839050074 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">

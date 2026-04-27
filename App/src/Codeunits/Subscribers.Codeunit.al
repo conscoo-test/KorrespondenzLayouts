@@ -11,6 +11,8 @@ codeunit 5272733 "lbt cl Subscribers"
                 exit(CorrSetup."P.Quote Automatic Numbering");
             "Purchase Document Type"::Order:
                 exit(CorrSetup."P.Order Automatic Numbering");
+            "Purchase Document Type"::"Blanket Order":
+                exit(CorrSetup."P.Blanket Order Aut. Numbering");
             "Purchase Document Type"::Invoice:
                 exit(CorrSetup."P.Invoice Automatic Numbering");
             "Purchase Document Type"::"Credit Memo":
@@ -30,6 +32,8 @@ codeunit 5272733 "lbt cl Subscribers"
                 exit(CorrSetup."S.Quote Automatic Numbering");
             "Sales Document Type"::Order:
                 exit(CorrSetup."S.Order Automatic Numbering");
+            "Sales Document Type"::"Blanket Order":
+                exit(CorrSetup."S.Blanket Order Aut. Numbering");
             "Sales Document Type"::Invoice:
                 exit(CorrSetup."S.Invoice Automatic Numbering");
             "Sales Document Type"::"Credit Memo":
