@@ -169,7 +169,6 @@
           <source>Copy Sales Blanket Order Texts</source>
           <target state="translated">Rahmenauftragstexte kopieren</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table lbt Corr Setup - Field Copy Blanket Order Texts - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 214935587 - Field 3016807722 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -965,9 +964,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control PurchaseTotaling - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 2330538839 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>If selected, the system will automatically number the purchase blanket order before printing.</source>
-          <target state="translated">Wenn ausgewählt, wird das System den Einkaufsrahmenauftrag beim Drucken automatisch nummerieren.</target>
-          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System den Einkaufsrahmenauftrag beim Drucken automatisch nummerieren.</note>
+          <source>If selected, the system will automatically number and total the purchase blanket order before printing.</source>
+          <target state="translated">Wenn ausgewählt, wird das System den Einkaufsrahmenauftrag beim Drucken automatisch nummerieren und summieren.</target>
+          <note from="XLIFF Sync" annotates="general" priority="1">Source text has changed. Please review the translation.</note>
+          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System den Einkaufsrahmenauftrag beim Drucken automatisch nummerieren und summieren.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control P.Blanket Order Automatic Numbering - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 2330538839 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -977,9 +977,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control P.Blanket Order Automatic Numbering - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 2040663305 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>If selected, the system will automatically number the purchase credit memo before printing.</source>
-          <target state="translated">Wenn ausgewählt, wird das System die Einkaufsgutschrift beim Drucken automatisch nummerieren.</target>
-          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System die Einkaufsgutschrift beim Drucken automatisch nummerieren.</note>
+          <source>If selected, the system will automatically number and total the purchase credit memo before printing.</source>
+          <target state="translated">Wenn ausgewählt, wird das System die Einkaufsgutschrift beim Drucken automatisch nummerieren und summieren.</target>
+          <note from="XLIFF Sync" annotates="general" priority="1">Source text has changed. Please review the translation.</note>
+          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System die Einkaufsgutschrift beim Drucken automatisch nummerieren und summieren.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control P.Credit Memo Automatic Numbering - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 2040663305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -989,9 +990,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control P.Credit Memo Automatic Numbering - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 4173339483 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>If selected, the system will automatically number the purchase invoice before printing.</source>
-          <target state="translated">Wenn ausgewählt, wird das System die Einkaufsrechnung beim Drucken automatisch nummerieren.</target>
-          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System die Einkaufsrechnung beim Drucken automatisch nummerieren.</note>
+          <source>If selected, the system will automatically number and total the purchase invoice before printing.</source>
+          <target state="translated">Wenn ausgewählt, wird das System die Einkaufsrechnung beim Drucken automatisch nummerieren und summieren.</target>
+          <note from="XLIFF Sync" annotates="general" priority="1">Source text has changed. Please review the translation.</note>
+          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System die Einkaufsrechnung beim Drucken automatisch nummerieren und summieren.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control P.Invoice Automatic Numbering - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 4173339483 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -1001,9 +1003,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control P.Invoice Automatic Numbering - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 1995714146 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>If selected, the system will automatically number the purchase order before printing.</source>
-          <target state="translated">Wenn ausgewählt, wird das System die Einkaufsbestellung beim Drucken automatisch nummerieren.</target>
-          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System die Einkaufsbestellung beim Drucken automatisch nummerieren.</note>
+          <source>If selected, the system will automatically number and total the purchase order before printing.</source>
+          <target state="translated">Wenn ausgewählt, wird das System die Einkaufsbestellung beim Drucken automatisch nummerieren und summieren.</target>
+          <note from="XLIFF Sync" annotates="general" priority="1">Source text has changed. Please review the translation.</note>
+          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System die Einkaufsbestellung beim Drucken automatisch nummerieren und summieren.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control P.Order Automatic Numbering - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 1995714146 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -1013,9 +1016,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control P.Order Automatic Numbering - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 3220591670 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>If selected, the system will automatically number the purchase quote before printing.</source>
-          <target state="translated">Wenn ausgewählt, wird das System die Einkaufsanfrage beim Drucken automatisch nummerieren.</target>
-          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System die Einkaufsanfrage beim Drucken automatisch nummerieren.</note>
+          <source>If selected, the system will automatically number and total the purchase quote before printing.</source>
+          <target state="translated">Wenn ausgewählt, wird das System die Einkaufsanfrage beim Drucken automatisch nummerieren und summieren.</target>
+          <note from="XLIFF Sync" annotates="general" priority="1">Source text has changed. Please review the translation.</note>
+          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System die Einkaufsanfrage beim Drucken automatisch nummerieren und summieren.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control P.Quote Automatic Numbering - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 3220591670 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -1025,9 +1029,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control P.Quote Automatic Numbering - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 3381568080 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>If selected, the system will automatically number the purchase return order before printing.</source>
-          <target state="translated">Wenn ausgewählt, wird das System die Einkaufsreklamation beim Drucken automatisch nummerieren.</target>
-          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System die Einkaufsreklamation beim Drucken automatisch nummerieren.</note>
+          <source>If selected, the system will automatically number and total the purchase return order before printing.</source>
+          <target state="translated">Wenn ausgewählt, wird das System die Einkaufsreklamation beim Drucken automatisch nummerieren und summieren.</target>
+          <note from="XLIFF Sync" annotates="general" priority="1">Source text has changed. Please review the translation.</note>
+          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System die Einkaufsreklamation beim Drucken automatisch nummerieren und summieren.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control P.Return Order Automatic Numbering - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 3381568080 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -1043,9 +1048,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control SalesTotaling - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 3812078546 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>If selected, the system will automatically number the sales blanket order before printing.</source>
-          <target state="translated">Wenn ausgewählt, wird das System den Verkaufsrahmenauftrag beim Drucken automatisch nummerieren.</target>
-          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System den Verkaufsrahmenauftrag beim Drucken automatisch nummerieren.</note>
+          <source>If selected, the system will automatically number and total the sales blanket order before printing.</source>
+          <target state="translated">Wenn ausgewählt, wird das System den Verkaufsrahmenauftrag beim Drucken automatisch nummerieren und summieren.</target>
+          <note from="XLIFF Sync" annotates="general" priority="1">Source text has changed. Please review the translation.</note>
+          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System den Verkaufsrahmenauftrag beim Drucken automatisch nummerieren und summieren.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Blanket Order Automatic Numbering - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 3812078546 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -1055,9 +1061,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Blanket Order Automatic Numbering - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 1048620400 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>If selected, the system will automatically number the sales credit memo before printing.</source>
-          <target state="translated">Wenn ausgewählt, wird das System die Verkaufsgutschrift beim Drucken automatisch nummerieren.</target>
-          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System die Verkaufsgutschrift beim Drucken automatisch nummerieren.</note>
+          <source>If selected, the system will automatically number and total the sales credit memo before printing.</source>
+          <target state="translated">Wenn ausgewählt, wird das System die Verkaufsgutschrift beim Drucken automatisch nummerieren und summieren.</target>
+          <note from="XLIFF Sync" annotates="general" priority="1">Source text has changed. Please review the translation.</note>
+          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System die Verkaufsgutschrift beim Drucken automatisch nummerieren und summieren.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Credit Memo Automatic Numbering - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 1048620400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -1067,9 +1074,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Credit Memo Automatic Numbering - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 2006740710 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>If selected, the system will automatically number the sales invoice before printing.</source>
-          <target state="translated">Wenn ausgewählt, wird das System die Verkaufsrechnung beim Drucken automatisch nummerieren.</target>
-          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System die Verkaufsrechnung beim Drucken automatisch nummerieren.</note>
+          <source>If selected, the system will automatically number and total the sales invoice before printing.</source>
+          <target state="translated">Wenn ausgewählt, wird das System die Verkaufsrechnung beim Drucken automatisch nummerieren und summieren.</target>
+          <note from="XLIFF Sync" annotates="general" priority="1">Source text has changed. Please review the translation.</note>
+          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System die Verkaufsrechnung beim Drucken automatisch nummerieren und summieren.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Invoice Automatic Numbering - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 2006740710 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -1079,9 +1087,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Invoice Automatic Numbering - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 1848316311 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>If selected, the system will automatically number the sales order before printing.</source>
-          <target state="translated">Wenn ausgewählt, wird das System den Verkaufsauftrag beim Drucken automatisch nummerieren.</target>
-          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System den Verkaufsauftrag beim Drucken automatisch nummerieren.</note>
+          <source>If selected, the system will automatically number and total the sales order before printing.</source>
+          <target state="translated">Wenn ausgewählt, wird das System den Verkaufsauftrag beim Drucken automatisch nummerieren und summieren.</target>
+          <note from="XLIFF Sync" annotates="general" priority="1">Source text has changed. Please review the translation.</note>
+          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System den Verkaufsauftrag beim Drucken automatisch nummerieren und summieren.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Order Automatic Numbering - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 1848316311 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -1091,9 +1100,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Order Automatic Numbering - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 3401295947 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>If selected, the system will automatically number the sales quote before printing.</source>
-          <target state="translated">Wenn ausgewählt, wird das System das Verkaufsangebot beim Drucken automatisch nummerieren.</target>
-          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System das Verkaufsangebot beim Drucken automatisch nummerieren.</note>
+          <source>If selected, the system will automatically number and total the sales quote before printing.</source>
+          <target state="translated">Wenn ausgewählt, wird das System das Verkaufsangebot beim Drucken automatisch nummerieren und summieren.</target>
+          <note from="XLIFF Sync" annotates="general" priority="1">Source text has changed. Please review the translation.</note>
+          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System das Verkaufsangebot beim Drucken automatisch nummerieren und summieren.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Quote Automatic Numbering - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 3401295947 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -1103,9 +1113,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Quote Automatic Numbering - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 551462897 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>If selected, the system will automatically number the sales return order before printing.</source>
-          <target state="translated">Wenn ausgewählt, wird das System die Verkaufsreklamation beim Drucken automatisch nummerieren.</target>
-          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System die Verkaufsreklamation beim Drucken automatisch nummerieren.</note>
+          <source>If selected, the system will automatically number and total the sales return order before printing.</source>
+          <target state="translated">Wenn ausgewählt, wird das System die Verkaufsreklamation beim Drucken automatisch nummerieren und summieren.</target>
+          <note from="XLIFF Sync" annotates="general" priority="1">Source text has changed. Please review the translation.</note>
+          <note from="Developer" annotates="general" priority="2">de-DE=Wenn ausgewählt, wird das System die Verkaufsreklamation beim Drucken automatisch nummerieren und summieren.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Return Order Automatic Numbering - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 214935587 - Control 551462897 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -1156,23 +1167,9 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control Copy Quote Texts - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 214935587 - Control 2187938695 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Service</source>
-          <target state="translated" state-qualifier="exact-match">Service</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control Service - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 214935587 - Control 183822984 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>This option affects the copying of header and footer texts from the service quotation to the service order.</source>
-          <target state="translated">Diese Option beeinflusst das Kopieren von Kopf- und Fußtexten aus dem Serviceangebot in den Serviceauftrag.</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control Copy ServiceQuote Texts - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="Page 214935587 - Control 468238441 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>The configured option controls how "print option," "Optional" are handled when converting the sales quote into a sales order.Hint: Positions of type "Alternative" won't ever be transfered.</source>
           <target state="translated">Die eingerichtete Option steuert den Umgang mit "Druckauswahl" "Bedarfsposition" beim Überführen des Angebots in einen Verkaufsauftrag.Hinweis: Alternativpositionen können nicht mit in einen Auftrag überführt werden</target>
-          <note from="XLIFF Sync" annotates="general" priority="1">Source text has changed. Please review the translation.</note>
           <note from="Developer" annotates="general" priority="2">de-DE=Die eingerichtete Option steuert den Umgang mit "Druckauswahl" "Bedarfsposition" beim Überführen des Angebots in einen Verkaufsauftrag.Hinweis: Alternativpositionen können nicht mit in einen Auftrag überführt werden</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page lbt Corr Setup - Control S.Print select Copy order - Property ToolTip</note>
         </trans-unit>
