@@ -50,6 +50,18 @@ codeunit 5272733 "lbt cl Subscribers"
         Commit(); // commit changes before showing the request page
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Document-Print", 'OnBeforePrintProformaSalesInvoice', '', false, false)]
+    local procedure "Document-Print_OnBeforePrintProformaSalesInvoice"(var SalesHeader: Record "Sales Header"; ReportUsage: Integer; var IsPrinted: Boolean)
+    var
+        LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
+    begin
+        if not ShouldRunAutomaticNumbering(SalesHeader."Document Type") then
+            exit;
+        LeBitCorrespDocMgt.SalesLinePosNumber(SalesHeader);
+        Commit(); // commit changes before showing the request page
+    end;
+
+
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Document-Print", 'OnBeforeDoPrintPurchHeader', '', false, false)]
     local procedure "Document-Print_OnBeforeDoPrintPurchHeader"(var PurchHeader: Record "Purchase Header"; ReportUsage: Integer; var IsPrinted: Boolean)
     var
