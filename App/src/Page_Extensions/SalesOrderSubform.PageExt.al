@@ -21,8 +21,8 @@ pageextension 5272747 "lbt Sales Order Subform" extends "Sales Order Subform"
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the Printoption';
-                ValuesAllowed = Standard, Title, "Price Invisible", "Line Invisible", "New Page", "Begin Total", "End Total", Bold;
                 StyleExpr = lbtStyle;
+                ValuesAllowed = Standard, Title, "Price Invisible", "Line Invisible", "New Page", "Begin Total", "End Total", Bold;
 
                 trigger OnValidate()
                 begin

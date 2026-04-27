@@ -24,6 +24,7 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
         {
             Caption = 'Printoption';
             DataClassification = CustomerContent;
+            ValuesAllowed = Standard, Title, "Price Invisible", "Line Invisible", Alternative, Optional, "New Page", "Begin Total", "End Total", Bold;
             trigger OnValidate()
             var
                 _Description: Text[100];
