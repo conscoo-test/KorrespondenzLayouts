@@ -6034,6 +6034,12 @@
                                             </Paragraphs>
                                             <rd:DefaultName>Textbox137</rd:DefaultName>
                                             <Style>
+                                              <Border>
+                                                <Style>None</Style>
+                                              </Border>
+                                              <TopBorder>
+                                                <Style>Solid</Style>
+                                              </TopBorder>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                               <PaddingRight>0.0625in</PaddingRight>
                                             </Style>
