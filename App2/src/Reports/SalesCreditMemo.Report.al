@@ -427,32 +427,38 @@ report 5272723 "lbt Sales - Credit Memo"
                             TxtVar: Text;
                             Counter: Integer;
                         begin
-                            NNC_TotalLineAmount += "Line Amount";
-                            NNC_TotalAmountInclVat += "Amount Including VAT";
-                            NNC_TotalInvDiscAmount += "Inv. Discount Amount";
-                            NNC_TotalAmount += Amount;
+                            if not ("lbt Printoption" in [
+                                "lbt Printoption"::"Line Invisible",
+                                "lbt Printoption"::"Price Invisible",
+                                "lbt Printoption"::Alternative,
+                                "lbt Printoption"::Optional
+                            ]) then begin
+                                NNC_TotalLineAmount += "Line Amount";
+                                NNC_TotalAmountInclVat += "Amount Including VAT";
+                                NNC_TotalInvDiscAmount += "Inv. Discount Amount";
+                                NNC_TotalAmount += Amount;
+                                TempSalesShipmentBuffer.DeleteAll();
+                                PostedReceiptDate := 0D;
+                                if Quantity <> 0 then
+                                    PostedReceiptDate := FindPostedShipmentDate();
 
-                            TempSalesShipmentBuffer.DeleteAll();
-                            PostedReceiptDate := 0D;
-                            if Quantity <> 0 then
-                                PostedReceiptDate := FindPostedShipmentDate();
+                                if (Type = Type::"G/L Account") and (not ShowInternalInfo) then
+                                    "No." := '';
 
-                            if (Type = Type::"G/L Account") and (not ShowInternalInfo) then
-                                "No." := '';
-
-                            TempVATAmountLine.Init();
-                            TempVATAmountLine."VAT Identifier" := "VAT Identifier";
-                            TempVATAmountLine."VAT Calculation Type" := "VAT Calculation Type";
-                            TempVATAmountLine."Tax Group Code" := "Tax Group Code";
-                            TempVATAmountLine."VAT %" := "VAT %";
-                            TempVATAmountLine."VAT Base" := Amount;
-                            TempVATAmountLine."Amount Including VAT" := "Amount Including VAT";
-                            TempVATAmountLine."Line Amount" := "Line Amount";
-                            if "Allow Invoice Disc." then
-                                TempVATAmountLine."Inv. Disc. Base Amount" := "Line Amount";
-                            TempVATAmountLine."Invoice Discount Amount" := "Inv. Discount Amount";
-                            TempVATAmountLine."VAT Clause Code" := "VAT Clause Code";
-                            TempVATAmountLine.InsertLine();
+                                TempVATAmountLine.Init();
+                                TempVATAmountLine."VAT Identifier" := "VAT Identifier";
+                                TempVATAmountLine."VAT Calculation Type" := "VAT Calculation Type";
+                                TempVATAmountLine."Tax Group Code" := "Tax Group Code";
+                                TempVATAmountLine."VAT %" := "VAT %";
+                                TempVATAmountLine."VAT Base" := Amount;
+                                TempVATAmountLine."Amount Including VAT" := "Amount Including VAT";
+                                TempVATAmountLine."Line Amount" := "Line Amount";
+                                if "Allow Invoice Disc." then
+                                    TempVATAmountLine."Inv. Disc. Base Amount" := "Line Amount";
+                                TempVATAmountLine."Invoice Discount Amount" := "Inv. Discount Amount";
+                                TempVATAmountLine."VAT Clause Code" := "VAT Clause Code";
+                                TempVATAmountLine.InsertLine();
+                            end;
 
                             if "lbt Printoption" = "lbt Printoption"::"New Page" then
                                 NewPageGroup += 1;

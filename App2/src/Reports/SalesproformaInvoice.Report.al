@@ -1222,6 +1222,11 @@ report 5272726 "lbt Sales pro forma Invoice"
                         if not TempSalesLine2.IsEmpty() then
                             SalesPostPrepmt.CalcVATAmountLines("Sales Header", TempSalesLine2, TempPrepmtVATAmountLineDeduct, 1);
                     end;
+                    TempPrepmtSalesLine.SetFilter("lbt Printoption", '<>%1&<>%2&<>%3&<>%4',
+                        TempSalesLine."lbt Printoption"::Alternative,
+                        TempSalesLine."lbt Printoption"::Optional,
+                        TempSalesLine."lbt Printoption"::"Line Invisible",
+                        TempSalesLine."lbt Printoption"::"Price Invisible");
                     SalesPostPrepmt.CalcVATAmountLines("Sales Header", TempPrepmtSalesLine, TempPrepmtVATAmountLine, 0);
                     TempPrepmtVATAmountLine.DeductVATAmountLine(TempPrepmtVATAmountLineDeduct);
                     SalesPostPrepmt.UpdateVATOnLines("Sales Header", TempPrepmtSalesLine, TempPrepmtVATAmountLine, 0);

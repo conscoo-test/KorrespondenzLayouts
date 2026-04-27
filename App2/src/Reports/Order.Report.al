@@ -472,10 +472,16 @@ report 5272728 "lbt Order"
                             if (TempPurchLine.Type = TempPurchLine.Type::"G/L Account") and (not ShowInternalInfo) then
                                 "Purchase Line"."No." := '';
                             AllowInvDisctxt := Format("Purchase Line"."Allow Invoice Disc.");
-                            TotalSubTotal += "Purchase Line"."Line Amount";
-                            TotalInvoiceDiscountAmount -= "Purchase Line"."Inv. Discount Amount";
-                            TotalAmount += "Purchase Line".Amount;
-
+                            if not (TempPurchLine."lbt Printoption" in [
+                                TempPurchLine."lbt Printoption"::"Line Invisible",
+                                TempPurchLine."lbt Printoption"::"Price Invisible",
+                                TempPurchLine."lbt Printoption"::Alternative,
+                                TempPurchLine."lbt Printoption"::Optional
+                            ]) then begin
+                                TotalSubTotal += "Purchase Line"."Line Amount";
+                                TotalInvoiceDiscountAmount -= "Purchase Line"."Inv. Discount Amount";
+                                TotalAmount += "Purchase Line".Amount;
+                            end;
                             if TempPurchLine."lbt Printoption" = TempPurchLine."lbt Printoption"::"New Page" then
                                 NewPageGroup += 1;
 
@@ -1107,6 +1113,11 @@ report 5272728 "lbt Order"
                     TempPurchLine.DeleteAll();
                     TempVATAmountLine.DeleteAll();
                     PurchPost.GetPurchLines("Purchase Header", TempPurchLine, 0);
+                    TempPurchLine.SetFilter("lbt Printoption", '<>%1&<>%2&<>%3&<>%4',
+                        TempPurchLine."lbt Printoption"::Alternative,
+                        TempPurchLine."lbt Printoption"::Optional,
+                        TempPurchLine."lbt Printoption"::"Line Invisible",
+                        TempPurchLine."lbt Printoption"::"Price Invisible");
                     TempPurchLine.CalcVATAmountLines(0, "Purchase Header", TempPurchLine, TempVATAmountLine);
                     TempPurchLine.UpdateVATOnLines(0, "Purchase Header", TempPurchLine, TempVATAmountLine);
                     VATAmount := TempVATAmountLine.GetTotalVATAmount();
@@ -1119,6 +1130,11 @@ report 5272728 "lbt Order"
                     PurchPostPrepmt.GetPurchLines("Purchase Header", 0, TempPrepmtPurchLine);
                     if not TempPrepmtPurchLine.IsEmpty() then begin
                         PurchPostPrepmt.GetPurchLinesToDeduct("Purchase Header", TempPurchLine2);
+                        TempPurchLine2.SetFilter("lbt Printoption", '<>%1&<>%2&<>%3&<>%4',
+                        TempPurchLine2."lbt Printoption"::Alternative,
+                        TempPurchLine2."lbt Printoption"::Optional,
+                        TempPurchLine2."lbt Printoption"::"Line Invisible",
+                        TempPurchLine2."lbt Printoption"::"Price Invisible");
                         if not TempPurchLine2.IsEmpty() then
                             PurchPostPrepmt.CalcVATAmountLines("Purchase Header", TempPurchLine2, TempPrePmtVATAmountLineDeduct, 1);
                     end;
@@ -1134,6 +1150,7 @@ report 5272728 "lbt Order"
 
                     TotalSubTotal := 0;
                     TotalAmount := 0;
+                    TempPurchLine.SetRange("lbt Printoption");
                 end;
 
                 trigger OnPostDataItem()

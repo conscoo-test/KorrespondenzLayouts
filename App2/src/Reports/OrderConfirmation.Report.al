@@ -1155,6 +1155,11 @@ report 5272721 "lbt Order Confirmation"
 
                     if not TempPrepmtSalesLine.IsEmpty() then begin
                         SalesPostPrepmt.GetSalesLinesToDeduct("Sales Header", TempSalesLine2);
+                        TempSalesLine2.SetFilter("lbt Printoption", '<>%1&<>%2&<>%3&<>%4',
+                        TempSalesLine2."lbt Printoption"::Alternative,
+                        TempSalesLine2."lbt Printoption"::Optional,
+                        TempSalesLine2."lbt Printoption"::"Line Invisible",
+                        TempSalesLine2."lbt Printoption"::"Price Invisible");
                         if not TempSalesLine2.IsEmpty() then
                             SalesPostPrepmt.CalcVATAmountLines("Sales Header", TempSalesLine2, TempPrepmtVATAmountLineDeduct, 1);
                     end;

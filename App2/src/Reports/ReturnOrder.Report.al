@@ -478,10 +478,16 @@ report 5272730 "lbt Return Order"
                             if (TempPurchLine.Type = TempPurchLine.Type::"G/L Account") and (not ShowInternalInfo) then
                                 "Purchase Line"."No." := '';
                             AllowInvDisctxt := Format("Purchase Line"."Allow Invoice Disc.");
-                            TotalSubTotal += "Purchase Line"."Line Amount";
-                            TotalInvoiceDiscountAmount -= "Purchase Line"."Inv. Discount Amount";
-                            TotalAmount += "Purchase Line".Amount;
-
+                            if not (TempPurchLine."lbt Printoption" in [
+                                TempPurchLine."lbt Printoption"::"Line Invisible",
+                                TempPurchLine."lbt Printoption"::"Price Invisible",
+                                TempPurchLine."lbt Printoption"::Alternative,
+                                TempPurchLine."lbt Printoption"::Optional
+                            ]) then begin
+                                TotalSubTotal += "Purchase Line"."Line Amount";
+                                TotalInvoiceDiscountAmount -= "Purchase Line"."Inv. Discount Amount";
+                                TotalAmount += "Purchase Line".Amount;
+                            end;
                             if TempPurchLine."lbt Printoption" = TempPurchLine."lbt Printoption"::"New Page" then
                                 NewPageGroup += 1;
 
@@ -819,6 +825,11 @@ report 5272730 "lbt Return Order"
                     TempPurchLine.DeleteAll();
                     TempVATAmountLine.DeleteAll();
                     PurchPost.GetPurchLines("Purchase Header", TempPurchLine, 0);
+                    TempPurchLine.SetFilter("lbt Printoption", '<>%1&<>%2&<>%3&<>%4',
+                        TempPurchLine."lbt Printoption"::Alternative,
+                        TempPurchLine."lbt Printoption"::Optional,
+                        TempPurchLine."lbt Printoption"::"Line Invisible",
+                        TempPurchLine."lbt Printoption"::"Price Invisible");
                     TempPurchLine.CalcVATAmountLines(0, "Purchase Header", TempPurchLine, TempVATAmountLine);
                     TempPurchLine.UpdateVATOnLines(0, "Purchase Header", TempPurchLine, TempVATAmountLine);
                     VATAmount := TempVATAmountLine.GetTotalVATAmount();
@@ -831,9 +842,19 @@ report 5272730 "lbt Return Order"
                     PurchPostPrepmt.GetPurchLines("Purchase Header", 0, TempPrepmtPurchLine);
                     if not TempPrepmtPurchLine.IsEmpty() then begin
                         PurchPostPrepmt.GetPurchLinesToDeduct("Purchase Header", TempPurchLine2);
+                        TempPurchLine2.SetFilter("lbt Printoption", '<>%1&<>%2&<>%3&<>%4',
+                            TempPurchLine2."lbt Printoption"::Alternative,
+                            TempPurchLine2."lbt Printoption"::Optional,
+                            TempPurchLine2."lbt Printoption"::"Line Invisible",
+                            TempPurchLine2."lbt Printoption"::"Price Invisible");
                         if not TempPurchLine2.IsEmpty() then
                             PurchPostPrepmt.CalcVATAmountLines("Purchase Header", TempPurchLine2, TempPrePmtVATAmountLineDeduct, 1);
                     end;
+                    TempPrepmtPurchLine.SetFilter("lbt Printoption", '<>%1&<>%2&<>%3&<>%4',
+                        TempPrepmtPurchLine."lbt Printoption"::Alternative,
+                        TempPrepmtPurchLine."lbt Printoption"::Optional,
+                        TempPrepmtPurchLine."lbt Printoption"::"Line Invisible",
+                        TempPrepmtPurchLine."lbt Printoption"::"Price Invisible");
                     PurchPostPrepmt.CalcVATAmountLines("Purchase Header", TempPrepmtPurchLine, TempPrepmtVATAmountLine, 0);
                     TempPrepmtVATAmountLine.DeductVATAmountLine(TempPrePmtVATAmountLineDeduct);
                     PurchPostPrepmt.UpdateVATOnLines("Purchase Header", TempPrepmtPurchLine, TempPrepmtVATAmountLine, 0);
@@ -845,6 +866,7 @@ report 5272730 "lbt Return Order"
 
                     TotalSubTotal := 0;
                     TotalAmount := 0;
+                    TempPurchLine.SetRange("lbt Printoption");
                 end;
 
                 trigger OnPostDataItem()
