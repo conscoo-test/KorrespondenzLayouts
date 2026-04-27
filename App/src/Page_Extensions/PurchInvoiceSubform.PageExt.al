@@ -21,6 +21,7 @@ pageextension 5272767 "lbt Purch. Invoice Subform" extends "Purch. Invoice Subfo
                 ApplicationArea = All;
                 ToolTip = 'Specifies the Printoption';
                 StyleExpr = lbtStyle;
+                ValuesAllowed = Standard, Title, "Price Invisible", "Line Invisible", "New Page", "Begin Total", "End Total", Bold;
 
                 trigger OnValidate()
                 begin
