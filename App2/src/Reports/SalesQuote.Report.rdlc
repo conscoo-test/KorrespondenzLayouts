@@ -5450,13 +5450,13 @@
                                             <Value>=Fields!OutputNo.Value</Value>
                                           </SortExpression>
                                           <SortExpression>
-                                            <Value>=Fields!SalesLineNo.Value</Value>
+                                            <Value>=CInt(Fields!SalesLineNo.Value)</Value>
                                           </SortExpression>
                                         </SortExpressions>
                                         <TablixMembers>
                                           <TablixMember>
                                             <Visibility>
-                                              <Hidden>=Fields!SkipLineDistance.Value</Hidden>
+                                              <Hidden>=CBool(Fields!SkipLineDistance.Value)</Hidden>
                                             </Visibility>
                                             <KeepTogether>true</KeepTogether>
                                           </TablixMember>
@@ -5547,7 +5547,7 @@
                                               </GroupExpressions>
                                               <Filters>
                                                 <Filter>
-                                                  <FilterExpression>=Fields!RowNumber.Value</FilterExpression>
+                                                  <FilterExpression>=CInt(Fields!RowNumber.Value)</FilterExpression>
                                                   <Operator>GreaterThan</Operator>
                                                   <FilterValues>
                                                     <FilterValue DataType="Integer">0</FilterValue>
