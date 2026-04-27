@@ -78,7 +78,7 @@ tableextension 5272729 "lbt Sales Line" extends "Sales Line"
             CalcFormula = sum("Sales Line"."Line Amount" where("Document Type" = field("Document Type"),
                                                                 "Document No." = field("Document No."),
                                                                 "Line No." = field(filter("lbt Summation")),
-                                                                "lbt Printoption" = filter(<> Alternative & <> Optional)));
+                                                                "lbt Printoption" = filter(<> Alternative & <> Optional & <> "Price Invisible" & <> "Line Invisible")));
             Caption = 'Balance';
             Editable = false;
             FieldClass = FlowField;
