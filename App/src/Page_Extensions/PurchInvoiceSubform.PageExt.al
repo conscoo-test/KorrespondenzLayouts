@@ -16,6 +16,7 @@ pageextension 5272767 "lbt Purch. Invoice Subform" extends "Purch. Invoice Subfo
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the Printoption';
+                StyleExpr = lbtStyleBold;
             }
         }
         addafter("Line No.")
@@ -84,4 +85,16 @@ pageextension 5272767 "lbt Purch. Invoice Subform" extends "Purch. Invoice Subfo
             }
         }
     }
+
+    trigger OnAfterGetRecord()
+    var
+        LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
+    begin
+        lbtStyle := LeBitCorrespDocMgt.GetStyleExpr(Rec."lbt Printoption");
+        lbtStyleBold := LeBitCorrespDocMgt.GetStyleExprBold(Rec."lbt Printoption");
+    end;
+
+    var
+        lbtstyle: Text;
+        lbtStyleBold: Text;
 }

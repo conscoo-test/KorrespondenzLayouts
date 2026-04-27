@@ -20,6 +20,7 @@ pageextension 5272766 "lbt Purchase Order Subform" extends "Purchase Order Subfo
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the Printoption';
+                StyleExpr = lbtStyleBold;
             }
         }
         addafter("Line No.")
@@ -93,8 +94,10 @@ pageextension 5272766 "lbt Purchase Order Subform" extends "Purchase Order Subfo
         LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
     begin
         lbtStyle := LeBitCorrespDocMgt.GetStyleExpr(Rec."lbt Printoption");
+        lbtStyleBold := LeBitCorrespDocMgt.GetStyleExprBold(Rec."lbt Printoption");
     end;
 
     var
         lbtStyle: Text;
+        lbtStyleBold: Text;
 }

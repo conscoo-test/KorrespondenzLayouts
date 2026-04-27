@@ -209,6 +209,21 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
             Number(0, '', SalesLine);
     end;
 
+    procedure GetStyleExprBold(Printoption: Enum "lbt cl Printoption") StyleExprText: Text[30]
+    var
+        StyleExpr: Option Standard,StandardAccent,Strong,StrongAccent,Attention,AttentionAccent,Favorable,Unfavorable,Ambiguous,Subordinate;
+    begin
+        case Printoption of
+            Printoption::Bold,
+            Printoption::Title,
+            Printoption::"Begin Total",
+            Printoption::"End Total":
+                StyleExprText := Format(StyleExpr::Strong);
+            else
+                StyleExprText := Format(StyleExpr::Standard);
+        end;
+    end;
+
     [IntegrationEvent(false, false)]
     local procedure OnBeforeGetPriceFactor(PriceFactor: Enum "lbt cl Price Factor"; var Ishandled: Boolean; var Result: Decimal)
     begin

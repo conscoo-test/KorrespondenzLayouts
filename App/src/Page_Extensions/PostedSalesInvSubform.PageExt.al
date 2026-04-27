@@ -20,6 +20,7 @@ pageextension 5272724 "lbt Posted Sales Inv. Subform" extends "Posted Sales Invo
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the Printoption';
+                StyleExpr = lbtStyleBold;
             }
         }
         addafter("Shortcut Dimension 2 Code")
@@ -93,8 +94,10 @@ pageextension 5272724 "lbt Posted Sales Inv. Subform" extends "Posted Sales Invo
         LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
     begin
         lbtStyle := LeBitCorrespDocMgt.GetStyleExpr(Rec."lbt Printoption");
+        lbtStyleBold := LeBitCorrespDocMgt.GetStyleExprBold(Rec."lbt Printoption");
     end;
 
     var
         lbtStyle: Text;
+        lbtStyleBold: Text;
 }

@@ -21,6 +21,7 @@ pageextension 5272749 "lbt Sales Invoice Subform" extends "Sales Invoice Subform
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the Printoption';
+                StyleExpr = lbtStyleBold;
             }
         }
         addafter("Line No.")
@@ -98,8 +99,10 @@ pageextension 5272749 "lbt Sales Invoice Subform" extends "Sales Invoice Subform
         LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
     begin
         lbtStyle := LeBitCorrespDocMgt.GetStyleExpr(Rec."lbt Printoption");
+        lbtStyleBold := LeBitCorrespDocMgt.GetStyleExprBold(Rec."lbt Printoption");
     end;
 
     var
         lbtStyle: Text;
+        lbtStyleBold: Text;
 }
