@@ -972,7 +972,6 @@
                                               <PaddingRight>2pt</PaddingRight>
                                             </Style>
                                           </Textbox>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell>
@@ -2305,8 +2304,7 @@
                                           </TablixMember>
                                           <TablixMember>
                                             <Visibility>
-                                              <Hidden>=Iif((Fields!PurchaseLineType.Value &lt;&gt; "0") and
-         (Fields!PurchaseLineLeBitPrintoption.Value = "5"), false, true)</Hidden>
+                                              <Hidden>true</Hidden>
                                             </Visibility>
                                             <KeepWithGroup>After</KeepWithGroup>
                                             <KeepTogether>true</KeepTogether>
@@ -2321,8 +2319,7 @@
                                           </TablixMember>
                                           <TablixMember>
                                             <Visibility>
-                                              <Hidden>=Iif((Fields!PurchaseLineType.Value &lt;&gt; "0") and
-         (Fields!PurchaseLineLeBitPrintoption.Value = "6"), false, true)</Hidden>
+                                              <Hidden>true</Hidden>
                                             </Visibility>
                                             <KeepWithGroup>After</KeepWithGroup>
                                             <KeepTogether>true</KeepTogether>
