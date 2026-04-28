@@ -6887,7 +6887,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -6923,7 +6922,6 @@
                                                     <Value>=Fields!ShiptoAddressCaption.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -6959,7 +6957,6 @@
                                                     <Value>=Fields!SelltoCustNo_PurchHdrCaption.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -6987,7 +6984,6 @@
                                                     <Value>=Fields!SelltoCustNo_PurchHdr.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7020,7 +7016,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7049,7 +7044,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7083,7 +7077,6 @@
                                                     <Value>=Fields!ShipToAddr1.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7112,7 +7105,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7146,7 +7138,6 @@
                                                     <Value>=Fields!ShipToAddr2.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7174,7 +7165,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7208,7 +7198,6 @@
                                                     <Value>=Fields!ShipToAddr3.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7236,7 +7225,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7270,7 +7258,6 @@
                                                     <Value>=Fields!ShipToAddr4.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7298,7 +7285,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7332,7 +7318,6 @@
                                                     <Value>=Fields!ShipToAddr5.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7360,7 +7345,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7394,7 +7378,6 @@
                                                     <Value>=Fields!ShipToAddr6.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7422,7 +7405,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7456,7 +7438,6 @@
                                                     <Value>=Fields!ShipToAddr7.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7484,7 +7465,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7518,7 +7498,6 @@
                                                     <Value>=Fields!ShipToAddr8.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7546,7 +7525,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -7697,7 +7675,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -7738,7 +7715,6 @@
                                                     <Value>=Fields!VATAmtSpecCaption.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -7769,7 +7745,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -7798,7 +7773,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -7828,7 +7802,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -7858,7 +7831,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -7893,7 +7865,6 @@
                                                     <Value>=Fields!VATIdentifierCaption.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -7924,7 +7895,6 @@
                                                     <Value>=Fields!VATPercentCaption.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -7956,7 +7926,6 @@
                                                     <Value>=Fields!LineAmtCaption.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -7988,7 +7957,6 @@
                                                     <Value>=Fields!InvDiscBaseAmtCaption.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8020,7 +7988,6 @@
                                                     <Value>=Fields!InvDisAmtCaption.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8053,7 +8020,6 @@
                                                     <Value>=Fields!VATBaseCaption.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8086,7 +8052,6 @@
                                                     <Value>=Fields!VATAmtCaption.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8123,7 +8088,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8172,7 +8136,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8214,7 +8177,6 @@
                                                     <Value>=Fields!VATAmtLineVATIdentifier.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -8242,7 +8204,6 @@
                                                     <Value>=Fields!VATAmtLineVAT.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VATAmtLineVATFormat.Value</Format>
                                                     </Style>
@@ -8274,7 +8235,6 @@
                                                     <Value>=Fields!VATAmtLineLineAmt.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VATAmtLineLineAmtFormat.Value</Format>
                                                     </Style>
@@ -8306,7 +8266,6 @@
                                                     <Value>=Fields!VATAmtLineInvDiscBaseAmt.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VATAmtLineInvDiscBaseAmtFormat.Value</Format>
                                                     </Style>
@@ -8338,7 +8297,6 @@
                                                     <Value>=Fields!VATAmtLineInvDiscAmt.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VATAmtLineInvDiscAmtFormat.Value</Format>
                                                     </Style>
@@ -8371,7 +8329,6 @@
                                                     <Value>=Fields!VATAmtLineVATBase.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VATAmtLineVATBaseFormat.Value</Format>
                                                     </Style>
@@ -8404,7 +8361,6 @@
                                                     <Value>=Fields!VATAmtLineVATAmt.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VATAmtLineVATAmtFormat.Value</Format>
                                                     </Style>
@@ -8440,7 +8396,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8471,7 +8426,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8501,7 +8455,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8533,7 +8486,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8565,7 +8517,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8597,7 +8548,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8629,7 +8579,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8665,7 +8614,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8678,6 +8626,12 @@
                                             </Paragraphs>
                                             <rd:DefaultName>Textbox164</rd:DefaultName>
                                             <Style>
+                                              <Border>
+                                                <Style>None</Style>
+                                              </Border>
+                                              <TopBorder>
+                                                <Style>Solid</Style>
+                                              </TopBorder>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingRight>5pt</PaddingRight>
                                             </Style>
@@ -8696,7 +8650,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8707,6 +8660,12 @@
                                             </Paragraphs>
                                             <rd:DefaultName>Textbox165</rd:DefaultName>
                                             <Style>
+                                              <Border>
+                                                <Style>None</Style>
+                                              </Border>
+                                              <TopBorder>
+                                                <Style>Solid</Style>
+                                              </TopBorder>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
                                               <PaddingRight>5pt</PaddingRight>
@@ -8726,7 +8685,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8750,6 +8708,7 @@
                                               <PaddingRight>5pt</PaddingRight>
                                             </Style>
                                           </Textbox>
+                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell>
@@ -8764,7 +8723,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8802,7 +8760,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8840,7 +8797,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8878,7 +8834,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8920,7 +8875,6 @@
                                                     <Value>=Fields!VATBaseCaption1.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -8953,7 +8907,6 @@
                                                     <Value>=Sum(Fields!VATAmtLineLineAmt.Value)</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                       <Format>=Fields!VATAmtLineLineAmtFormat.Value</Format>
@@ -8986,7 +8939,6 @@
                                                     <Value>=Sum(Fields!VATAmtLineInvDiscBaseAmt.Value)</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                       <Format>=Fields!VATAmtLineInvDiscBaseAmtFormat.Value</Format>
@@ -9019,7 +8971,6 @@
                                                     <Value>=Sum(Fields!VATAmtLineInvDiscAmt.Value)</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                       <Format>=Fields!VATAmtLineInvDiscAmtFormat.Value</Format>
@@ -9053,7 +9004,6 @@
                                                     <Value>=Sum(Fields!VATAmtLineVATBase.Value)</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                       <Format>=Fields!VATAmtLineVATBaseFormat.Value</Format>
@@ -9087,7 +9037,6 @@
                                                     <Value>=Sum(Fields!VATAmtLineVATAmt.Value)</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                       <Format>=Fields!VATAmtLineVATAmtFormat.Value</Format>
@@ -9191,7 +9140,7 @@
                               <Top>21.68258cm</Top>
                               <Left>2.5584cm</Left>
                               <Height>2.75164cm</Height>
-                              <Width>6.65354in</Width>
+                              <Width>6.65353in</Width>
                               <ZIndex>9</ZIndex>
                               <Visibility>
                                 <Hidden>=Microsoft.VisualBasic.Interaction.IIF(Fields!VATIdentifierCaption.Value = "", True, False)</Hidden>
@@ -9231,7 +9180,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -9268,7 +9216,6 @@
                                                     <Value>=Fields!VALSpecLCYHdr.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -9305,7 +9252,6 @@
                                                     <Value>=Fields!VALExchRate.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -9342,7 +9288,6 @@
                                                     <Value>=Fields!VATIdentifierCaption1.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -9371,7 +9316,6 @@
                                                     <Value>=Fields!VATPctCaption.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -9403,7 +9347,6 @@
                                                     <Value>=Fields!VATBaseCaption2.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -9435,7 +9378,6 @@
                                                     <Value>=Fields!VATAmountCaption.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -9471,7 +9413,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -9509,7 +9450,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -9553,7 +9493,6 @@
                                                     <Value>=Fields!VATAmtLineVATIdentifier1.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>#,##0.00</Format>
                                                     </Style>
@@ -9582,7 +9521,6 @@
                                                     <Value>=Fields!VATAmtLineVAT1.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VATAmtLineVAT1Format.Value</Format>
                                                     </Style>
@@ -9614,7 +9552,6 @@
                                                     <Value>=Fields!VALVATBaseLCY.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VALVATBaseLCYFormat.Value</Format>
                                                     </Style>
@@ -9646,7 +9583,6 @@
                                                     <Value>=Fields!VALVATAmtLCY.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VALVATAmtLCYFormat.Value</Format>
                                                     </Style>
@@ -9681,7 +9617,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -9737,7 +9672,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -9768,7 +9702,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -9803,7 +9736,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -9859,7 +9791,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -9896,7 +9827,6 @@
                                                     <Value />
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -9937,7 +9867,6 @@
                                                     <Value>=Fields!TotalCaption1.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
@@ -9970,7 +9899,6 @@
                                                     <Value>=Sum(Fields!VALVATBaseLCY.Value)</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VALVATBaseLCYFormat.Value</Format>
                                                     </Style>
@@ -10002,7 +9930,6 @@
                                                     <Value>=Sum(Fields!VALVATAmtLCY.Value)</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
-                                                      <FontFamily>Arial</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <Format>=Fields!VALVATAmtLCYFormat.Value</Format>
                                                     </Style>
