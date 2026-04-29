@@ -2,6 +2,10 @@ pageextension 5272767 "lbt Purch. Invoice Subform" extends "Purch. Invoice Subfo
 {
     layout
     {
+        modify(Description)
+        {
+            StyleExpr = lbtStyle;
+        }
         addfirst(PurchDetailLine)
         {
             field("lbt Pos. No."; Rec."lbt Pos. No.")
@@ -16,6 +20,13 @@ pageextension 5272767 "lbt Purch. Invoice Subform" extends "Purch. Invoice Subfo
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the Printoption';
+                StyleExpr = lbtStyle;
+                ValuesAllowed = Standard, Title, "Price Invisible", "Line Invisible", "New Page", "Begin Total", "End Total", Bold;
+
+                trigger OnValidate()
+                begin
+                    SetStyle();
+                end;
             }
         }
         addafter("Line No.")
@@ -84,4 +95,24 @@ pageextension 5272767 "lbt Purch. Invoice Subform" extends "Purch. Invoice Subfo
             }
         }
     }
+
+    trigger OnAfterGetRecord()
+    begin
+        SetStyle();
+    end;
+
+    trigger OnNewRecord(BelowxRec: Boolean)
+    begin
+        SetStyle();
+    end;
+
+    local procedure SetStyle()
+    var
+        LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
+    begin
+        lbtStyle := LeBitCorrespDocMgt.GetStyleExpr(Rec."lbt Printoption");
+    end;
+
+    var
+        lbtStyle: Text;
 }

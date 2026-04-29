@@ -1013,7 +1013,9 @@
                                                 <TextRuns>
                                                   <TextRun>
                                                     <Value>=Fields!UnitOfMeasure_PurchaseLine.Value</Value>
-                                                    <Style />
+                                                    <Style>
+                                                      <FontSize>9pt</FontSize>
+                                                    </Style>
                                                   </TextRun>
                                                 </TextRuns>
                                                 <Style />
@@ -1077,6 +1079,7 @@
                                                   <TextRun>
                                                     <Value>=Fields!LeBitPosNo_PurchaseLine.Value</Value>
                                                     <Style>
+                                                      <FontStyle>Italic</FontStyle>
                                                       <FontSize>9pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -1110,6 +1113,7 @@
                                                   <TextRun>
                                                     <Value>=Fields!Description_PurchaseLine.Value</Value>
                                                     <Style>
+                                                      <FontStyle>Italic</FontStyle>
                                                       <FontSize>9pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -1128,6 +1132,62 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
+                                          <Textbox Name="Textbox53">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=Code.BlankZero(Fields!Special_Quantity_PurchaseLine.Value)</Value>
+                                                    <Style>
+                                                      <FontStyle>Italic</FontStyle>
+                                                      <FontSize>9pt</FontSize>
+                                                      <Format>=Fields!Quantity_PurchaseLineFormat.Value</Format>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Right</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox53</rd:DefaultName>
+                                            <Style>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="textbox45">
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=Fields!UnitOfMeasure_PurchaseLine.Value</Value>
+                                                    <Style>
+                                                      <FontStyle>Italic</FontStyle>
+                                                      <FontSize>9pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <ZIndex>6</ZIndex>
+                                            <Style>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
                                           <Textbox Name="Textbox105">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
@@ -1137,6 +1197,7 @@
                                                   <TextRun>
                                                     <Value>=Fields!Alternativposition_Caption.Value</Value>
                                                     <Style>
+                                                      <FontStyle>Italic</FontStyle>
                                                       <FontSize>9pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -1152,11 +1213,8 @@
                                               <PaddingRight>2pt</PaddingRight>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>3</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
-                                      <TablixCell />
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
@@ -1267,6 +1325,7 @@
                                                   <TextRun>
                                                     <Value>=Fields!LeBitPosNo_PurchaseLine.Value</Value>
                                                     <Style>
+                                                      <FontStyle>Italic</FontStyle>
                                                       <FontSize>9pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -1300,6 +1359,7 @@
                                                   <TextRun>
                                                     <Value>=Fields!Description_PurchaseLine.Value</Value>
                                                     <Style>
+                                                      <FontStyle>Italic</FontStyle>
                                                       <FontSize>9pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -1318,6 +1378,62 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
+                                          <Textbox Name="Textbox54">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=Code.BlankZero(Fields!Special_Quantity_PurchaseLine.Value)</Value>
+                                                    <Style>
+                                                      <FontStyle>Italic</FontStyle>
+                                                      <FontSize>9pt</FontSize>
+                                                      <Format>=Fields!Quantity_PurchaseLineFormat.Value</Format>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Right</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox53</rd:DefaultName>
+                                            <Style>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="textbox46">
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=Fields!UnitOfMeasure_PurchaseLine.Value</Value>
+                                                    <Style>
+                                                      <FontStyle>Italic</FontStyle>
+                                                      <FontSize>9pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <ZIndex>6</ZIndex>
+                                            <Style>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
                                           <Textbox Name="Textbox164">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
@@ -1327,6 +1443,7 @@
                                                   <TextRun>
                                                     <Value>=Fields!Bedarfposition_Caption.Value</Value>
                                                     <Style>
+                                                      <FontStyle>Italic</FontStyle>
                                                       <FontSize>9pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -1342,11 +1459,8 @@
                                               <PaddingRight>2pt</PaddingRight>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>3</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
-                                      <TablixCell />
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
@@ -2157,7 +2271,7 @@
                                           <TablixMember>
                                             <Visibility>
                                               <Hidden>=Iif((Fields!PurchaseLineType.Value = "0") and
-     (Fields!PurchaseLineLeBitPrintoption.Value = "8"),false, true)</Hidden>
+     ((Fields!PurchaseLineLeBitPrintoption.Value = "8") or (Fields!PurchaseLineLeBitPrintoption.Value = "10")),false, true)</Hidden>
                                             </Visibility>
                                             <KeepWithGroup>After</KeepWithGroup>
                                             <KeepTogether>true</KeepTogether>
@@ -2190,8 +2304,7 @@
                                           </TablixMember>
                                           <TablixMember>
                                             <Visibility>
-                                              <Hidden>=Iif((Fields!PurchaseLineType.Value &lt;&gt; "0") and
-         (Fields!PurchaseLineLeBitPrintoption.Value = "5"), false, true)</Hidden>
+                                              <Hidden>true</Hidden>
                                             </Visibility>
                                             <KeepWithGroup>After</KeepWithGroup>
                                             <KeepTogether>true</KeepTogether>
@@ -2206,8 +2319,7 @@
                                           </TablixMember>
                                           <TablixMember>
                                             <Visibility>
-                                              <Hidden>=Iif((Fields!PurchaseLineType.Value &lt;&gt; "0") and
-         (Fields!PurchaseLineLeBitPrintoption.Value = "6"), false, true)</Hidden>
+                                              <Hidden>true</Hidden>
                                             </Visibility>
                                             <KeepWithGroup>After</KeepWithGroup>
                                             <KeepTogether>true</KeepTogether>
@@ -4261,7 +4373,6 @@
                                               <VerticalAlign>Middle</VerticalAlign>
                                             </Style>
                                           </Textbox>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                     </TablixCells>
@@ -5547,6 +5658,12 @@ End Function
         </Field>
         <Field Name="Quantity_PurchaseLineFormat">
           <DataField>Quantity_PurchaseLineFormat</DataField>
+        </Field>
+        <Field Name="Special_Quantity_PurchaseLine">
+          <DataField>Special_Quantity_PurchaseLine</DataField>
+        </Field>
+        <Field Name="Special_Quantity_PurchaseLineFormat">
+          <DataField>Special_Quantity_PurchaseLineFormat</DataField>
         </Field>
         <Field Name="UnitOfMeasure_PurchaseLine">
           <DataField>UnitOfMeasure_PurchaseLine</DataField>

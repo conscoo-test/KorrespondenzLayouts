@@ -35,7 +35,8 @@ tableextension 5272732 "lbt Sales Line Archive" extends "Sales Line Archive"
                                                                         "Document No." = field("Document No."),
                                                                         "Doc. No. Occurrence" = field("Doc. No. Occurrence"),
                                                                         "Version No." = field("Version No."),
-                                                                        "Line No." = field(filter("lbt Summation"))));
+                                                                        "Line No." = field(filter("lbt Summation")),
+                                                                        "lbt Printoption" = filter(<> Alternative & <> Optional & <> "Price Invisible" & <> "Line Invisible")));
             Caption = 'Balance';
             Editable = false;
             FieldClass = FlowField;

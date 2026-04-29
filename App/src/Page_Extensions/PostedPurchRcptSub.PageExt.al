@@ -20,6 +20,7 @@ pageextension 5272728 "lbt Posted Purch. Rcpt. Sub." extends "Posted Purchase Rc
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the Printoption';
+                StyleExpr = lbtStyle;
             }
         }
         addafter(Correction)

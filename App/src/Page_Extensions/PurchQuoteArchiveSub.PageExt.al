@@ -20,6 +20,7 @@ pageextension 5272762 "lbt Purch. Quote Archive Sub." extends "Purchase Quote Ar
             {
                 ToolTip = 'Here you can choose the Printoptions.';
                 ApplicationArea = All;
+                StyleExpr = lbtStyle;
             }
         }
         addafter("Shortcut Dimension 2 Code")

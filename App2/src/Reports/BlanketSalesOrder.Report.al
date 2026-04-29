@@ -442,9 +442,15 @@ report 5272725 "lbt Blanket Sales Order"
                             if (TempSalesLine.Type = TempSalesLine.Type::"G/L Account") and (not ShowInternalInfo) then
                                 "Sales Line"."No." := '';
 
-                            TotalSalesLineAmount += TempSalesLine."Line Amount";
-                            TotalSalesInvDiscAmount += TempSalesLine."Inv. Discount Amount";
-
+                            if not (TempSalesLine."lbt Printoption" in [
+                                TempSalesLine."lbt Printoption"::"Line Invisible",
+                                TempSalesLine."lbt Printoption"::"Price Invisible",
+                                TempSalesLine."lbt Printoption"::Alternative,
+                                TempSalesLine."lbt Printoption"::Optional
+                            ]) then begin
+                                TotalSalesLineAmount += TempSalesLine."Line Amount";
+                                TotalSalesInvDiscAmount += TempSalesLine."Inv. Discount Amount";
+                            end;
                             if ((TempSalesLine."lbt Printoption" = TempSalesLine."lbt Printoption"::Alternative) or
                                 (TempSalesLine."lbt Printoption" = TempSalesLine."lbt Printoption"::Optional))
                             then
@@ -827,7 +833,13 @@ report 5272725 "lbt Blanket Sales Order"
                     Clear(SalesPost);
                     TempSalesLine.DeleteAll();
                     TempVATAmountLine.DeleteAll();
+
                     SalesPost.GetSalesLines("Sales Header", TempSalesLine, 0);
+                    TempSalesLine.SetFilter("lbt Printoption", '<>%1&<>%2&<>%3&<>%4',
+                        TempSalesLine."lbt Printoption"::Alternative,
+                        TempSalesLine."lbt Printoption"::Optional,
+                        TempSalesLine."lbt Printoption"::"Line Invisible",
+                        TempSalesLine."lbt Printoption"::"Price Invisible");
                     TempSalesLine.CalcVATAmountLines(0, "Sales Header", TempSalesLine, TempVATAmountLine);
                     TempSalesLine.UpdateVATOnLines(0, "Sales Header", TempSalesLine, TempVATAmountLine);
                     VATAmount := TempVATAmountLine.GetTotalVATAmount();
@@ -840,6 +852,7 @@ report 5272725 "lbt Blanket Sales Order"
                         CopyText := FormatDocument.GetCOPYText();
                         OutputNo += 1;
                     end;
+                    TempSalesLine.SetRange("lbt Printoption");
                 end;
 
                 trigger OnPostDataItem()

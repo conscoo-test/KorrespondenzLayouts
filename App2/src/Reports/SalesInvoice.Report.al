@@ -577,29 +577,34 @@ report 5272722 "lbt Sales - Invoice"
 
                             if (Type = Type::"G/L Account") and (not ShowInternalInfo) then
                                 "No." := '';
+                            if not ("lbt Printoption" in [
+                                 "lbt Printoption"::"Line Invisible",
+                                 "lbt Printoption"::"Price Invisible",
+                                 "lbt Printoption"::Alternative,
+                                 "lbt Printoption"::Optional
+                             ]) then begin
+                                TempVATAmountLine.Init();
+                                ;
+                                TempVATAmountLine."VAT Identifier" := "VAT Identifier";
+                                TempVATAmountLine."VAT Calculation Type" := "VAT Calculation Type";
+                                TempVATAmountLine."Tax Group Code" := "Tax Group Code";
+                                TempVATAmountLine."VAT %" := "VAT %";
+                                TempVATAmountLine."VAT Base" := Amount;
+                                TempVATAmountLine."Amount Including VAT" := "Amount Including VAT";
+                                TempVATAmountLine."Line Amount" := "Line Amount";
+                                if "Allow Invoice Disc." then
+                                    TempVATAmountLine."Inv. Disc. Base Amount" := "Line Amount";
+                                TempVATAmountLine."Invoice Discount Amount" := "Inv. Discount Amount";
+                                TempVATAmountLine."VAT Clause Code" := "VAT Clause Code";
+                                TempVATAmountLine.InsertLine();
 
-                            TempVATAmountLine.Init();
-                            ;
-                            TempVATAmountLine."VAT Identifier" := "VAT Identifier";
-                            TempVATAmountLine."VAT Calculation Type" := "VAT Calculation Type";
-                            TempVATAmountLine."Tax Group Code" := "Tax Group Code";
-                            TempVATAmountLine."VAT %" := "VAT %";
-                            TempVATAmountLine."VAT Base" := Amount;
-                            TempVATAmountLine."Amount Including VAT" := "Amount Including VAT";
-                            TempVATAmountLine."Line Amount" := "Line Amount";
-                            if "Allow Invoice Disc." then
-                                TempVATAmountLine."Inv. Disc. Base Amount" := "Line Amount";
-                            TempVATAmountLine."Invoice Discount Amount" := "Inv. Discount Amount";
-                            TempVATAmountLine."VAT Clause Code" := "VAT Clause Code";
-                            TempVATAmountLine.InsertLine();
-
-                            TotalSubTotal += "Line Amount";
-                            TotalInvoiceDiscountAmt -= "Inv. Discount Amount";
-                            TotalAmount += Amount;
-                            TotalAmountVAT += "Amount Including VAT" - Amount;
-                            TotalAmountInclVAT += "Amount Including VAT";
-                            TotalPaymentDiscountOnVAT += -("Line Amount" - "Inv. Discount Amount" - "Amount Including VAT");
-
+                                TotalSubTotal += "Line Amount";
+                                TotalInvoiceDiscountAmt -= "Inv. Discount Amount";
+                                TotalAmount += Amount;
+                                TotalAmountVAT += "Amount Including VAT" - Amount;
+                                TotalAmountInclVAT += "Amount Including VAT";
+                                TotalPaymentDiscountOnVAT += -("Line Amount" - "Inv. Discount Amount" - "Amount Including VAT");
+                            end;
                             if "lbt Printoption" = "lbt Printoption"::"New Page" then
                                 NewPageGroup += 1;
 

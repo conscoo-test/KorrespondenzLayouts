@@ -25,6 +25,13 @@ pageextension 5272772 "lbt Sales Return Order Subform" extends "Sales Return Ord
             {
                 ToolTip = 'Here you can choose the Printoptions.';
                 ApplicationArea = All;
+                StyleExpr = lbtStyle;
+                ValuesAllowed = Standard, Title, "Price Invisible", "Line Invisible", "New Page", "Begin Total", "End Total", Bold;
+
+                trigger OnValidate()
+                begin
+                    SetStyle();
+                end;
             }
         }
         addafter(ShortcutDimCode8)
@@ -81,6 +88,16 @@ pageextension 5272772 "lbt Sales Return Order Subform" extends "Sales Return Ord
     }
 
     trigger OnAfterGetRecord()
+    begin
+        SetStyle();
+    end;
+
+    trigger OnNewRecord(BelowxRec: Boolean)
+    begin
+        SetStyle();
+    end;
+
+    local procedure SetStyle()
     var
         LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
     begin

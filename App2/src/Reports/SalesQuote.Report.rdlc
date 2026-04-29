@@ -18,7 +18,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>19.57935cm</Width>
+                  <Width>19.69821cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -39,7 +39,7 @@
                                     <Width>2.5cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>5.7cm</Width>
+                                    <Width>5.44127cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
                                     <Width>1.5cm</Width>
@@ -48,10 +48,10 @@
                                     <Width>1.6cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>2cm</Width>
+                                    <Width>1.6cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>2cm</Width>
+                                    <Width>2.77759cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
                                     <Width>0.07938cm</Width>
@@ -1452,6 +1452,7 @@
                                                     <Value>=Code.BlankZero(Fields!Sales_Line__Quantity.Value)</Value>
                                                     <Style>
                                                       <FontSize>9pt</FontSize>
+                                                      <Format>=Fields!Sales_Line__QuantityFormat.Value</Format>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -1614,6 +1615,7 @@
                                                   <TextRun>
                                                     <Value>=Fields!Sales_Line___LeBit_Pos_No.Value</Value>
                                                     <Style>
+                                                      <FontStyle>Italic</FontStyle>
                                                       <FontSize>9pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -1641,6 +1643,7 @@
                                                   <TextRun>
                                                     <Value>=Fields!Sales_Line__Description.Value</Value>
                                                     <Style>
+                                                      <FontStyle>Italic</FontStyle>
                                                       <FontSize>9pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -1660,6 +1663,97 @@
                                       <TablixCell />
                                       <TablixCell>
                                         <CellContents>
+                                          <Textbox Name="Textbox177">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=Code.BlankZero(Fields!Sales_Line__Special_Quantity.Value)</Value>
+                                                    <Style>
+                                                      <FontStyle>Italic</FontStyle>
+                                                      <FontSize>9pt</FontSize>
+                                                      <Format>=Fields!Sales_Line__QuantityFormat.Value</Format>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Right</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox177</rd:DefaultName>
+                                            <Style>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Sales_Line___Unit_of_Measure_2">
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=Fields!Sales_Line___Unit_of_Measure_.Value</Value>
+                                                    <Style>
+                                                      <FontStyle>Italic</FontStyle>
+                                                      <FontSize>9pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Sales_Line___Unit_of_Measure_</rd:DefaultName>
+                                            <ZIndex>104</ZIndex>
+                                            <Style>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Sales_Line___Unit_Price_2">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=Code.BlankZero(Fields!UnitPrice.Value)</Value>
+                                                    <Style>
+                                                      <FontStyle>Italic</FontStyle>
+                                                      <FontSize>9pt</FontSize>
+                                                      <Format>=Fields!Sales_Line___Unit_Price_Format.Value</Format>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Right</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Sales_Line___Unit_Price_</rd:DefaultName>
+                                            <ZIndex>103</ZIndex>
+                                            <Style>
+                                              <Border>
+                                                <Style>None</Style>
+                                              </Border>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
                                           <Textbox Name="Textbox105">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
@@ -1669,6 +1763,7 @@
                                                   <TextRun>
                                                     <Value>=Fields!Alternativposition_Caption.Value</Value>
                                                     <Style>
+                                                      <FontStyle>Italic</FontStyle>
                                                       <FontSize>9pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -1684,12 +1779,8 @@
                                               <PaddingRight>2pt</PaddingRight>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>4</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
-                                      <TablixCell />
-                                      <TablixCell />
                                       <TablixCell>
                                         <CellContents>
                                           <Textbox Name="Textbox170">
@@ -1917,6 +2008,7 @@
                                                   <TextRun>
                                                     <Value>=Fields!Sales_Line___LeBit_Pos_No.Value</Value>
                                                     <Style>
+                                                      <FontStyle>Italic</FontStyle>
                                                       <FontSize>9pt</FontSize>
                                                       <FontWeight>Normal</FontWeight>
                                                     </Style>
@@ -1945,6 +2037,7 @@
                                                   <TextRun>
                                                     <Value>=Fields!Sales_Line__Description.Value</Value>
                                                     <Style>
+                                                      <FontStyle>Italic</FontStyle>
                                                       <FontSize>9pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -1964,6 +2057,97 @@
                                       <TablixCell />
                                       <TablixCell>
                                         <CellContents>
+                                          <Textbox Name="Textbox195">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=Code.BlankZero(Fields!Sales_Line__Special_Quantity.Value)</Value>
+                                                    <Style>
+                                                      <FontStyle>Italic</FontStyle>
+                                                      <FontSize>9pt</FontSize>
+                                                      <Format>=Fields!Sales_Line__QuantityFormat.Value</Format>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Right</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox195</rd:DefaultName>
+                                            <Style>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Sales_Line___Unit_of_Measure_3">
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=Fields!Sales_Line___Unit_of_Measure_.Value</Value>
+                                                    <Style>
+                                                      <FontStyle>Italic</FontStyle>
+                                                      <FontSize>9pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Sales_Line___Unit_of_Measure_</rd:DefaultName>
+                                            <ZIndex>104</ZIndex>
+                                            <Style>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Sales_Line___Unit_Price_3">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=Code.BlankZero(Fields!UnitPrice.Value)</Value>
+                                                    <Style>
+                                                      <FontStyle>Italic</FontStyle>
+                                                      <FontSize>9pt</FontSize>
+                                                      <Format>=Fields!Sales_Line___Unit_Price_Format.Value</Format>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Right</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Sales_Line___Unit_Price_</rd:DefaultName>
+                                            <ZIndex>103</ZIndex>
+                                            <Style>
+                                              <Border>
+                                                <Style>None</Style>
+                                              </Border>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
                                           <Textbox Name="Textbox164">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
@@ -1973,6 +2157,7 @@
                                                   <TextRun>
                                                     <Value>=Fields!Bedarfposition_Caption.Value</Value>
                                                     <Style>
+                                                      <FontStyle>Italic</FontStyle>
                                                       <FontSize>9pt</FontSize>
                                                     </Style>
                                                   </TextRun>
@@ -1988,12 +2173,8 @@
                                               <PaddingRight>2pt</PaddingRight>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>4</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
-                                      <TablixCell />
-                                      <TablixCell />
                                       <TablixCell>
                                         <CellContents>
                                           <Textbox Name="Textbox200">
@@ -5272,20 +5453,13 @@
                                             <Value>=Fields!OutputNo.Value</Value>
                                           </SortExpression>
                                           <SortExpression>
-                                            <Value>=Fields!SalesLineNo.Value</Value>
+                                            <Value>=CInt(Fields!SalesLineNo.Value)</Value>
                                           </SortExpression>
                                         </SortExpressions>
                                         <TablixMembers>
                                           <TablixMember>
                                             <Visibility>
-                                              <Hidden>=Iif((Fields!SalesLineType.Value &lt;&gt; "0") or
-     ((Fields!SalesLineType.Value = "0") and
-          ((Fields!SalesLineLeBitPrintoption.Value = "1") or
-           (Fields!SalesLineLeBitPrintoption.Value = "3") or
-           (Fields!SalesLineLeBitPrintoption.Value = "5") or
-           (Fields!SalesLineLeBitPrintoption.Value = "6") or
-           (Fields!SalesLineLeBitPrintoption.Value = "8") or
-           (Fields!SalesLineLeBitPrintoption.Value = "9"))), false, true)</Hidden>
+                                              <Hidden>=CBool(Fields!SkipLineDistance.Value)</Hidden>
                                             </Visibility>
                                             <KeepTogether>true</KeepTogether>
                                           </TablixMember>
@@ -5299,7 +5473,7 @@
                                           <TablixMember>
                                             <Visibility>
                                               <Hidden>=Iif((Fields!SalesLineType.Value = "0") and
-     (Fields!SalesLineLeBitPrintoption.Value = "8"),false, true)</Hidden>
+     ((Fields!SalesLineLeBitPrintoption.Value = "8") or (Fields!SalesLineLeBitPrintoption.Value = "10")),false, true)</Hidden>
                                             </Visibility>
                                             <KeepTogether>true</KeepTogether>
                                           </TablixMember>
@@ -5376,7 +5550,7 @@
                                               </GroupExpressions>
                                               <Filters>
                                                 <Filter>
-                                                  <FilterExpression>=Fields!RowNumber.Value</FilterExpression>
+                                                  <FilterExpression>=CInt(Fields!RowNumber.Value)</FilterExpression>
                                                   <Operator>GreaterThan</Operator>
                                                   <FilterValues>
                                                     <FilterValue DataType="Integer">0</FilterValue>
@@ -5558,7 +5732,7 @@
                               <Top>6.62384cm</Top>
                               <Left>2.52059cm</Left>
                               <Height>15.2918cm</Height>
-                              <Width>17.05876cm</Width>
+                              <Width>17.17762cm</Width>
                               <Style />
                             </Tablix>
                             <Textbox Name="textbox9">
@@ -10680,7 +10854,7 @@
               <Disabled>true</Disabled>
             </PageBreak>
             <Height>35.87472cm</Height>
-            <Width>19.57935cm</Width>
+            <Width>19.69821cm</Width>
             <Style>
               <FontSize>9pt</FontSize>
             </Style>
@@ -11942,6 +12116,9 @@ End Function
         <Field Name="NewPageLBKopf">
           <DataField>NewPageLBKopf</DataField>
         </Field>
+        <Field Name="SkipLineDistance">
+          <DataField>SkipLineDistance</DataField>
+        </Field>
         <Field Name="Item_Picture">
           <DataField>Item_Picture</DataField>
         </Field>
@@ -11956,6 +12133,12 @@ End Function
         </Field>
         <Field Name="Sales_Line__QuantityFormat">
           <DataField>Sales_Line__QuantityFormat</DataField>
+        </Field>
+        <Field Name="Sales_Line__Special_Quantity">
+          <DataField>Sales_Line__Special_Quantity</DataField>
+        </Field>
+        <Field Name="Sales_Line__Special_QuantityFormat">
+          <DataField>Sales_Line__Special_QuantityFormat</DataField>
         </Field>
         <Field Name="Sales_Line___Unit_of_Measure_">
           <DataField>Sales_Line___Unit_of_Measure_</DataField>

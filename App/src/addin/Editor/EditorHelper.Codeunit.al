@@ -905,7 +905,7 @@ codeunit 5272729 "lbt cl EditorHelper"
         if not CorrSetup."Copy General Text From Order" then
             exit;
 
-        if not IsOrderOrCustomer(SourceRecRef) then
+        if not IsDocType(SourceRecRef, Enum::"Sales Document Type"::Order) then
             exit;
 
         if not (IsInvoice(TargetRecRef) or IsShipment(TargetRecRef)) then

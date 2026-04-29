@@ -224,6 +224,9 @@ report 5272727 "lbt Purchase - Quote"
                         column(Quantity_PurchaseLine; "Purchase Line".Quantity)
                         {
                         }
+                        column(Special_Quantity_PurchaseLine; "Purchase Line"."lbt Special Qty")
+                        {
+                        }
                         column(UnitOfMeasure_PurchaseLine; "Purchase Line"."Unit of Measure")
                         {
                         }

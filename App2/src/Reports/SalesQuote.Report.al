@@ -220,6 +220,7 @@ report 5272720 "lbt Sales - Quote"
                     dataitem(RoundLoop; "Integer")
                     {
                         DataItemTableView = sorting(Number);
+                        column(SkipLineDistance; SkipLineDistance) { }
                         column(Item_Picture; Item.Picture)
                         {
                         }
@@ -230,6 +231,9 @@ report 5272720 "lbt Sales - Quote"
                         {
                         }
                         column(Sales_Line__Quantity; "Sales Line".Quantity)
+                        {
+                        }
+                        column(Sales_Line__Special_Quantity; "Sales Line"."lbt Special Qty")
                         {
                         }
                         column(Sales_Line___Unit_of_Measure_; "Sales Line"."Unit of Measure")
@@ -493,6 +497,9 @@ report 5272720 "lbt Sales - Quote"
                                   (ItemUnitDescriptionArry[Counter] = '');
                                 InfoRowNo := Counter - 1;
                             end;
+                            SkipLineDistance := LastLineWasComment and IsLineNormalComment();
+                            LastLineWasComment := IsLineNormalComment();
+
                         end;
 
                         trigger OnPostDataItem()
@@ -808,6 +815,11 @@ report 5272720 "lbt Sales - Quote"
                     TempSalesLine.DeleteAll();
                     TempVATAmountLine.DeleteAll();
                     SalesPost.GetSalesLines("Sales Header", TempSalesLine, 0);
+                    TempSalesLine.SetFilter("lbt Printoption", '<>%1&<>%2&<>%3&<>%4',
+                        TempSalesLine."lbt Printoption"::Alternative,
+                        TempSalesLine."lbt Printoption"::Optional,
+                        TempSalesLine."lbt Printoption"::"Line Invisible",
+                        TempSalesLine."lbt Printoption"::"Price Invisible");
                     TempSalesLine.CalcVATAmountLines(0, "Sales Header", TempSalesLine, TempVATAmountLine);
                     TempSalesLine.UpdateVATOnLines(0, "Sales Header", TempSalesLine, TempVATAmountLine);
                     VATAmount := TempVATAmountLine.GetTotalVATAmount();
@@ -815,7 +827,7 @@ report 5272720 "lbt Sales - Quote"
                     VATDiscountAmount :=
                       TempVATAmountLine.GetTotalVATDiscount("Sales Header"."Currency Code", "Sales Header"."Prices Including VAT");
                     TotalAmountInclVAT := TempVATAmountLine.GetTotalAmountInclVAT();
-
+                    TempSalesLine.SetRange("lbt Printoption");
                     if Number > 1 then begin
                         CopyText := FormatDocument.GetCOPYText();
                         OutputNo += 1;
@@ -1037,6 +1049,7 @@ report 5272720 "lbt Sales - Quote"
         TotalText: Text[50];
         TotalExclVATText: Text[50];
         TotalInclVATText: Text[50];
+        LastLineWasComment: Boolean;
         MoreLines: Boolean;
         NoOfCopies: Integer;
         NoOfLoops: Integer;
@@ -1126,6 +1139,7 @@ report 5272720 "lbt Sales - Quote"
         VAT_Registration_No__CaptionLbl: Label 'VAT Reg. No.';
         Footer: Text;
         CustSource: Option Default,"Bill-to Customer","Sell-to Customer";
+        SkipLineDistance: Boolean;
 
     procedure InitializeRequest(NoOfCopiesFrom: Integer; ShowInternalInfoFrom: Boolean; ArchiveDocumentFrom: Boolean; LogInteractionFrom: Boolean; PrintFrom: Boolean)
     begin
@@ -1191,6 +1205,11 @@ report 5272720 "lbt Sales - Quote"
         if DocCaption <> '' then
             exit(DocCaption);
         exit(DocCaptionLbl);
+    end;
+
+    local procedure IsLineNormalComment(): Boolean
+    begin
+        exit(("Sales Line".Type = "Sales Line".Type::" ") and ("Sales Line"."lbt Printoption" = "Sales Line"."lbt Printoption"::Standard));
     end;
 
     [IntegrationEvent(false, false)]

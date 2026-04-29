@@ -28,7 +28,8 @@ tableextension 5272721 "lbt Sales Invoice Line" extends "Sales Invoice Line"
         {
             AutoFormatType = 1;
             CalcFormula = sum("Sales Invoice Line"."Line Amount" where("Document No." = field("Document No."),
-                                                                        "Line No." = field(filter("lbt Summation"))));
+                                                                        "Line No." = field(filter("lbt Summation")),
+                                                                        "lbt Printoption" = filter(<> Alternative & <> Optional & <> "Price Invisible" & <> "Line Invisible")));
             Caption = 'Balance';
             Editable = false;
             FieldClass = FlowField;

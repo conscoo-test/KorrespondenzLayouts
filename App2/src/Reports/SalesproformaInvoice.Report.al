@@ -527,22 +527,28 @@ report 5272726 "lbt Sales pro forma Invoice"
                             if (TempSalesLine.Type = TempSalesLine.Type::"G/L Account") and (not ShowInternalInfo) then
                                 "Sales Line"."No." := '';
 
-                            NNC_SalesLineLineAmt += TempSalesLine."Line Amount";
-                            NNC_SalesLineInvDiscAmt += TempSalesLine."Inv. Discount Amount";
+                            if not (TempSalesLine."lbt Printoption" in [
+                                TempSalesLine."lbt Printoption"::"Line Invisible",
+                                TempSalesLine."lbt Printoption"::"Price Invisible",
+                                TempSalesLine."lbt Printoption"::Alternative,
+                                TempSalesLine."lbt Printoption"::Optional
+                            ]) then begin
+                                NNC_SalesLineLineAmt += TempSalesLine."Line Amount";
+                                NNC_SalesLineInvDiscAmt += TempSalesLine."Inv. Discount Amount";
 
-                            NNC_TotalLCY := NNC_SalesLineLineAmt - NNC_SalesLineInvDiscAmt;
+                                NNC_TotalLCY := NNC_SalesLineLineAmt - NNC_SalesLineInvDiscAmt;
 
-                            NNC_TotalExclVAT := NNC_TotalLCY;
-                            NNC_VATAmt := VATAmount;
-                            NNC_TotalInclVAT := NNC_TotalLCY - NNC_VATAmt;
+                                NNC_TotalExclVAT := NNC_TotalLCY;
+                                NNC_VATAmt := VATAmount;
+                                NNC_TotalInclVAT := NNC_TotalLCY - NNC_VATAmt;
 
-                            NNC_PmtDiscOnVAT := -VATDiscountAmount;
+                                NNC_PmtDiscOnVAT := -VATDiscountAmount;
 
-                            NNC_TotalInclVAT2 := TotalAmountInclVAT;
+                                NNC_TotalInclVAT2 := TotalAmountInclVAT;
 
-                            NNC_VatAmt2 := VATAmount;
-                            NNC_TotalExclVAT2 := VATBaseAmount;
-
+                                NNC_VatAmt2 := VATAmount;
+                                NNC_TotalExclVAT2 := VATBaseAmount;
+                            end;
                             if TempSalesLine."lbt Printoption" = TempSalesLine."lbt Printoption"::"New Page" then
                                 NewPageGroup += 1;
 
@@ -1190,6 +1196,11 @@ report 5272726 "lbt Sales pro forma Invoice"
                     TempVATAmountLine.DeleteAll();
                     TempSalesLine.DeleteAll();
                     SalesPost.GetSalesLines("Sales Header", TempSalesLine, 0);
+                    TempSalesLine.SetFilter("lbt Printoption", '<>%1&<>%2&<>%3&<>%4',
+                        TempSalesLine."lbt Printoption"::Alternative,
+                        TempSalesLine."lbt Printoption"::Optional,
+                        TempSalesLine."lbt Printoption"::"Line Invisible",
+                        TempSalesLine."lbt Printoption"::"Price Invisible");
                     TempSalesLine.CalcVATAmountLines(0, "Sales Header", TempSalesLine, TempVATAmountLine);
                     TempSalesLine.UpdateVATOnLines(0, "Sales Header", TempSalesLine, TempVATAmountLine);
                     VATAmount := TempVATAmountLine.GetTotalVATAmount();
@@ -1203,9 +1214,19 @@ report 5272726 "lbt Sales pro forma Invoice"
 
                     if not TempPrepmtSalesLine.IsEmpty() then begin
                         SalesPostPrepmt.GetSalesLinesToDeduct("Sales Header", TempSalesLine2);
+                        TempSalesLine2.SetFilter("lbt Printoption", '<>%1&<>%2&<>%3&<>%4',
+                            TempSalesLine."lbt Printoption"::Alternative,
+                            TempSalesLine."lbt Printoption"::Optional,
+                            TempSalesLine."lbt Printoption"::"Line Invisible",
+                            TempSalesLine."lbt Printoption"::"Price Invisible");
                         if not TempSalesLine2.IsEmpty() then
                             SalesPostPrepmt.CalcVATAmountLines("Sales Header", TempSalesLine2, TempPrepmtVATAmountLineDeduct, 1);
                     end;
+                    TempPrepmtSalesLine.SetFilter("lbt Printoption", '<>%1&<>%2&<>%3&<>%4',
+                        TempSalesLine."lbt Printoption"::Alternative,
+                        TempSalesLine."lbt Printoption"::Optional,
+                        TempSalesLine."lbt Printoption"::"Line Invisible",
+                        TempSalesLine."lbt Printoption"::"Price Invisible");
                     SalesPostPrepmt.CalcVATAmountLines("Sales Header", TempPrepmtSalesLine, TempPrepmtVATAmountLine, 0);
                     TempPrepmtVATAmountLine.DeductVATAmountLine(TempPrepmtVATAmountLineDeduct);
                     SalesPostPrepmt.UpdateVATOnLines("Sales Header", TempPrepmtSalesLine, TempPrepmtVATAmountLine, 0);
@@ -1214,6 +1235,7 @@ report 5272726 "lbt Sales pro forma Invoice"
                     PrepmtVATBaseAmount := TempPrepmtVATAmountLine.GetTotalVATBase();
                     PrepmtTotalAmountInclVAT := TempPrepmtVATAmountLine.GetTotalAmountInclVAT();
 
+                    TempSalesLine.SetRange("lbt Printoption");
                     if Number > 1 then begin
                         CopyText := FormatDocument.GetCOPYText();
                         OutputNo += 1;

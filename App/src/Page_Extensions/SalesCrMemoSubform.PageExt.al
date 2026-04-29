@@ -20,6 +20,13 @@ pageextension 5272804 "lbt Sales Cr. Memo Subform" extends "Sales Cr. Memo Subfo
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the Printoption';
+                StyleExpr = lbtStyle;
+                ValuesAllowed = Standard, Title, "Price Invisible", "Line Invisible", "New Page", "Begin Total", "End Total", Bold;
+
+                trigger OnValidate()
+                begin
+                    SetStyle();
+                end;
             }
         }
         addafter(ShortcutDimCode8)
@@ -97,6 +104,16 @@ pageextension 5272804 "lbt Sales Cr. Memo Subform" extends "Sales Cr. Memo Subfo
         }
     }
     trigger OnAfterGetRecord()
+    begin
+        SetStyle();
+    end;
+
+    trigger OnNewRecord(BelowxRec: Boolean)
+    begin
+        SetStyle();
+    end;
+
+    local procedure SetStyle()
     var
         LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
     begin

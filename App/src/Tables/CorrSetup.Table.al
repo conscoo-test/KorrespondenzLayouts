@@ -73,8 +73,19 @@ table 5272724 "lbt Corr Setup"
         {
             Caption = 'Copy Service Quote Texts', Comment = 'de-DE=Serviceangebotstexte kopieren';
         }
+        field(23; "P.Print select Copy order"; Boolean)
+        {
+            Caption = 'P. Print selection Copy offer to order', Comment = 'de-DE=Druckauswahl Anfrage in Bestellung kopieren';
+        }
+        field(24; "S.Blanket Order Aut. Numbering"; Boolean)
+        {
+            Caption = 'S.Blanket Order Automatic Numbering', Comment = 'de-DE=Autom.Nummerierung VK-Rahmenauftrag';
+        }
+        field(25; "P.Blanket Order Aut. Numbering"; Boolean)
+        {
+            Caption = 'P.Blanket Order Automatic Numbering', Comment = 'de-DE=Autom.Nummerierung EK-Rahmenauftrag';
+        }
     }
-
     keys
     {
         key(PK; "Primary Key")

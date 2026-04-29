@@ -20,6 +20,12 @@ pageextension 5272805 "lbt Purchase Quote Subform" extends "Purchase Quote Subfo
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the Printoption';
+                StyleExpr = lbtStyle;
+
+                trigger OnValidate()
+                begin
+                    SetStyle();
+                end;
             }
         }
         addafter(ShortcutDimCode8)
@@ -97,6 +103,16 @@ pageextension 5272805 "lbt Purchase Quote Subform" extends "Purchase Quote Subfo
         }
     }
     trigger OnAfterGetRecord()
+    begin
+        SetStyle();
+    end;
+
+    trigger OnNewRecord(BelowxRec: Boolean)
+    begin
+        SetStyle();
+    end;
+
+    local procedure SetStyle()
     var
         LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
     begin

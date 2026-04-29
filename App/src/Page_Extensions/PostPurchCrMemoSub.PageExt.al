@@ -20,6 +20,7 @@ pageextension 5272732 "lbt Post. Purch. Cr. Memo Sub." extends "Posted Purch. Cr
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the Printoption';
+                StyleExpr = lbtStyle;
             }
         }
         addafter("Shortcut Dimension 2 Code")

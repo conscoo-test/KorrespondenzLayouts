@@ -20,6 +20,7 @@ pageextension 5272781 "lbt Posted Ret. Shipment Sub." extends "Posted Return Shi
             {
                 ToolTip = 'Here you can choose the Printoptions.';
                 ApplicationArea = All;
+                StyleExpr = lbtStyle;
             }
         }
         addafter(Correction)

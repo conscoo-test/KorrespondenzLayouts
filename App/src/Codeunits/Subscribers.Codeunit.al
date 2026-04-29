@@ -11,6 +11,8 @@ codeunit 5272733 "lbt cl Subscribers"
                 exit(CorrSetup."P.Quote Automatic Numbering");
             "Purchase Document Type"::Order:
                 exit(CorrSetup."P.Order Automatic Numbering");
+            "Purchase Document Type"::"Blanket Order":
+                exit(CorrSetup."P.Blanket Order Aut. Numbering");
             "Purchase Document Type"::Invoice:
                 exit(CorrSetup."P.Invoice Automatic Numbering");
             "Purchase Document Type"::"Credit Memo":
@@ -30,6 +32,8 @@ codeunit 5272733 "lbt cl Subscribers"
                 exit(CorrSetup."S.Quote Automatic Numbering");
             "Sales Document Type"::Order:
                 exit(CorrSetup."S.Order Automatic Numbering");
+            "Sales Document Type"::"Blanket Order":
+                exit(CorrSetup."S.Blanket Order Aut. Numbering");
             "Sales Document Type"::Invoice:
                 exit(CorrSetup."S.Invoice Automatic Numbering");
             "Sales Document Type"::"Credit Memo":
@@ -49,6 +53,18 @@ codeunit 5272733 "lbt cl Subscribers"
         LeBitCorrespDocMgt.SalesLinePosNumber(SalesHeader);
         Commit(); // commit changes before showing the request page
     end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Document-Print", 'OnBeforePrintProformaSalesInvoice', '', false, false)]
+    local procedure "Document-Print_OnBeforePrintProformaSalesInvoice"(var SalesHeader: Record "Sales Header"; ReportUsage: Integer; var IsPrinted: Boolean)
+    var
+        LeBitCorrespDocMgt: Codeunit "lbt Corresp. Doc. Mgt";
+    begin
+        if not ShouldRunAutomaticNumbering(SalesHeader."Document Type") then
+            exit;
+        LeBitCorrespDocMgt.SalesLinePosNumber(SalesHeader);
+        Commit(); // commit changes before showing the request page
+    end;
+
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Document-Print", 'OnBeforeDoPrintPurchHeader', '', false, false)]
     local procedure "Document-Print_OnBeforeDoPrintPurchHeader"(var PurchHeader: Record "Purchase Header"; ReportUsage: Integer; var IsPrinted: Boolean)
