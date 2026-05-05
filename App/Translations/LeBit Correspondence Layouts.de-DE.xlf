@@ -2109,6 +2109,48 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl JobCard - Control lbt Editor Shipment Header - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 435127150 - Action 2738780584 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2097003905">
+          <source>LeBit Extended Layout Options</source>
+          <target state="translated" state-qualifier="exact-match">LeBit Erweiterte Layoutoptionen</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl JobPlanningLines - Action lbt correspondence documents - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 435127150 - Action 3754499801 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2097003905">
+          <source>Specified a numbering of the line positions"</source>
+          <target state="translated" state-qualifier="exact-match">Legt eine Nummerierung der Zeilenpositionen fest</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl JobPlanningLines - Action lbt Num&amp;bering - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 435127150 - Action 3754499801 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2097003905">
+          <source>Numbering</source>
+          <target state="translated" state-qualifier="exact-match">Nummerieren</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl JobPlanningLines - Action lbt Num&amp;bering - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 435127150 - Action 145991802 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2097003905">
+          <source>Creates a total of the line items "From total" / "To total"</source>
+          <target state="translated" state-qualifier="exact-match">Legt eine Summierung der Zeilenpositionen "Von Summe" / "Bis Summe fest"</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl JobPlanningLines - Action lbt Tot&amp;aling - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 435127150 - Action 145991802 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2097003905">
+          <source>Totaling</source>
+          <target state="translated" state-qualifier="exact-match">Summieren</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl JobPlanningLines - Action lbt Tot&amp;aling - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 435127150 - Control 1169954937 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2097003905">
+          <source>Specifies the Position No.</source>
+          <target state="translated" state-qualifier="exact-match">Legt die Positionsnr. fest</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl JobPlanningLines - Control lbt Pos. No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 435127150 - Control 2971227444 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2097003905">
+          <source>Specifies the Printoption</source>
+          <target state="translated" state-qualifier="exact-match">Legt die Druckauswahl fest</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt cl JobPlanningLines - Control lbt Printoption - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 435127150 - Control 246903213 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2097003905">
           <source>Editor</source>
           <target state="translated">Editor</target>
@@ -7046,6 +7088,36 @@
           <target state="translated">Anzahl Lieferscheinkopien</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt cl Customer - Field lbt cl No. Shipm. Note Copies - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 621405283 - NamedType 2473355334" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 621405283">
+          <source>New Pages can only be set in blank lines.</source>
+          <target state="translated" state-qualifier="exact-match">Seitenwechsel können nur in leeren Zeilen vereinbart werden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt cl JobPlanningLine - NamedType NewPageErr</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 621405283 - NamedType 3360582807" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 621405283">
+          <source>--- New Page ---</source>
+          <target state="translated" state-qualifier="exact-match">Seitenwechsel</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt cl JobPlanningLine - NamedType NewPageLbl</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 621405283 - Field 3380591293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1537641792">
+          <source>Indentation</source>
+          <target state="translated" state-qualifier="exact-match">Einrückung</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt cl JobPlanningLine - Field lbt Indentation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 621405283 - Field 1169954937 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1537641792">
+          <source>Pos.No.</source>
+          <target state="translated" state-qualifier="exact-match">Positionsnummer</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt cl JobPlanningLine - Field lbt Pos. No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 621405283 - Field 2971227444 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1537641792">
+          <source>Printoption</source>
+          <target state="translated" state-qualifier="exact-match">Printoption</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension lbt cl JobPlanningLine - Field lbt Printoption - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2187817816 - Field 3517179999 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2964960979">
           <source>Price Factor</source>

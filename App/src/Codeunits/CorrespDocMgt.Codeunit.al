@@ -53,6 +53,31 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
         end;
     end;
 
+    internal procedure Number(Indent: Integer; Prefix: Text[30]; var JobPlanningLine: Record "Job Planning Line"): Boolean
+    var
+        Counter: Integer;
+        PosNo: Text[30];
+    begin
+        Counter := 1;
+        repeat
+            if JobPlanningLine."lbt Printoption" = JobPlanningLine."lbt Printoption"::"End Total" then begin
+                JobPlanningLine."lbt Pos. No." := Prefix;
+                JobPlanningLine.Modify();
+                exit;
+            end;
+            if (JobPlanningLine.Type <> JobPlanningLine.Type::Text) or (JobPlanningLine."lbt Printoption" = JobPlanningLine."lbt Printoption"::"Begin Total") then begin
+                PosNo := StrSubstNo(PosNoTemplateLbl, Prefix, Counter);
+                Counter += 1;
+                JobPlanningLine."lbt Pos. No." := PosNo;
+                JobPlanningLine.Modify();
+            end;
+            if JobPlanningLine."lbt Printoption" = JobPlanningLine."lbt Printoption"::"Begin Total" then begin
+                JobPlanningLine.Next();
+                Number(Indent + 1, PosNo, JobPlanningLine);
+            end;
+        until JobPlanningLine.Next() = 0;
+    end;
+
     procedure Number(Indent: Integer; Prefix: Text[30]; var SalesLine: Record "Sales Line"): Boolean
     var
         Counter: Integer;
@@ -155,6 +180,58 @@ codeunit 5272720 "lbt Corresp. Doc. Mgt"
         PurchaseLine.SetRange("Document No.", PurchaseHeader."No.");
         if PurchaseLine.FindSet() then
             Number(0, '', PurchaseLine);
+    end;
+
+    internal procedure JobPlanningLinePosNumber(var Job: Record Job)
+    var
+        JobPlanningLine: Record "Job Planning Line";
+    begin
+        JobPlanningLineIndentTotaling(Job);
+
+        JobPlanningLine.SetRange("Job No.", Job."No.");
+        JobPlanningLine.SetRange("Contract Line", true);
+        if JobPlanningLine.FindSet() then
+            Number(0, '', JobPlanningLine);
+    end;
+
+    internal procedure JobPlanningLineIndentTotaling(var Job: Record Job)
+    var
+        JobPlanningLine: Record "Job Planning Line";
+        AccNo: array[10] of Code[20];
+        WindowDialog: Dialog;
+        Indentation: Integer;
+        Header: array[10] of Text;
+        SummText: Text;
+    begin
+        Indentation := 0;
+        SummText := TotalTxt;
+        if not SummText.EndsWith(' ') then
+            SummText := SummText + ' ';
+        WindowDialog.Open(IndentTxt);
+
+        JobPlanningLine.SetRange("Job No.", Job."No.");
+        JobPlanningLine.SetRange("Contract Line", true);
+        if JobPlanningLine.FindSet(true) then
+            repeat
+                WindowDialog.Update(1, JobPlanningLine."Line No.");
+
+                if JobPlanningLine."lbt Printoption" = JobPlanningLine."lbt Printoption"::"End Total" then begin
+                    if Indentation < 1 then
+                        Error(MissingBeginTotalTxt, JobPlanningLine."Line No.");
+                    JobPlanningLine.Description := CopyStr(SummText + Header[Indentation], 1, MaxStrLen(JobPlanningLine.Description));
+                    Indentation -= 1;
+                end;
+
+                JobPlanningLine."lbt Indentation" := Indentation;
+                JobPlanningLine.Modify();
+
+                if (JobPlanningLine."lbt Printoption" = JobPlanningLine."lbt Printoption"::"Begin Total") then begin
+                    Indentation += 1;
+                    AccNo[Indentation] := Format(JobPlanningLine."Line No.");
+                    Header[Indentation] := JobPlanningLine.Description;
+                end;
+            until JobPlanningLine.Next() = 0;
+        WindowDialog.Close();
     end;
 
     procedure SalesLineIndentTotaling(var SalesHeader: Record "Sales Header")
