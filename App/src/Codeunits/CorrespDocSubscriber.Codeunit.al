@@ -39,6 +39,10 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
     local procedure JobCreateInvoice_OnAfterCreateSalesLine(SalesHeader: Record "Sales Header"; Job: Record Job; var JobPlanningLine: Record "Job Planning Line"; var SalesLine: Record "Sales Line")
     begin
         LongtextMgt.CopyLongtext(JobPlanningLine, SalesLine);
+        SalesLine."lbt Pos. No." := JobPlanningLine."lbt Pos. No.";
+        SalesLine."lbt Printoption" := JobPlanningLine."lbt Printoption";
+        SalesLine."lbt Indentation" := JobPlanningLine."lbt Indentation";
+        SalesLine.Modify();
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterCalcVATAmountLines', '', false, false)]

@@ -34,7 +34,7 @@
 			"${AppSourceCop}",
 			"${analyzerFolder}BusinessCentral.LinterCop.dll"
 		],
-		"NAB.UseExternalTranslationTool": true,
+		"NAB.UseTargetStates": true,
 		"xliffSync.parseFromDeveloperNote": true,
 		"xliffSync.parseFromDeveloperNoteOverwrite": true
 	}
