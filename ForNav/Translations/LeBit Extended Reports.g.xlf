@@ -3,6 +3,16 @@
   <file datatype="xml" source-language="en-US" target-language="en-US" original="LeBit Extended Reports">
     <body>
       <group id="body">
+        <trans-unit id="Codeunit 630221951 - Method 2011773969 - NamedType 1235310197" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 (Current)</source>
+          <note from="Developer" annotates="general" priority="2">%1 = company name</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt Init Reports - Method InitReports - NamedType CurrentLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 630221951 - Method 2011773969 - NamedType 563229157" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Report initialization finished. Please check the report layout selection and language setup for the selected companies.</source>
+          <note from="Developer" annotates="general" priority="2">de-DE=Die Initialisierung der Berichte ist abgeschlossen. Bitte überprüfen Sie die Auswahl der Berichtslayouts und die Spracheinstellungen für die ausgewählten Unternehmen.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit lbt Init Reports - Method InitReports - NamedType FinishedMsg</note>
+        </trans-unit>
         <trans-unit id="Report 699203700 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Draft Credit Memo</source>
           <note from="Developer" annotates="general" priority="2">de-DE=Gutschriftsentwurf</note>
@@ -57,6 +67,11 @@
           <source>No. of Copies</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales Template - Control NoOfCopies - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1126033695 - Action 3747663052 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 700933449">
+          <source>Init conscoo Reports</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension lbt ForNAV Reports - Action lbtLayoutSelection - Property Caption</note>
         </trans-unit>
       </group>
     </body>
