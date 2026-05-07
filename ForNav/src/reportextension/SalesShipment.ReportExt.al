@@ -40,6 +40,16 @@ reportextension 5266405 "lbt Sales Shipment" extends "ForNAV Sales Shipment"
             end;
         }
     }
+    rendering
+    {
+        layout("lbtconscoo")
+        {
+            Caption = 'conscoo', Locked = true;
+            Type = Custom;
+            MimeType = 'FORNAV';
+            LayoutFile = 'Layouts\S. Shipment.docx';
+        }
+    }
 
     trigger OnPreReport()
     var

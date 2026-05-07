@@ -128,8 +128,9 @@ report 5266402 "lbt Draft Credit Memo"
             MimeType = 'FORNAV';
             LayoutFile = '.\Layouts\DraftCreditMemo.docx';
         }
-        layout("LeBit Custom Layout")
+        layout("Custom Layout")
         {
+            Caption = 'conscoo', Locked = true;
             Type = Custom;
             MimeType = 'FORNAV';
             LayoutFile = '.\Layouts\DraftCreditMemo_Custom.docx';

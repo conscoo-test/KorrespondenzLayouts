@@ -41,6 +41,17 @@ reportextension 5266400 "lbt Order Confirmation" extends "ForNAV VAT Order Confi
         }
     }
 
+    rendering
+    {
+        layout("lbtconscoo")
+        {
+            Caption = 'conscoo', Locked = true;
+            Type = Custom;
+            MimeType = 'FORNAV';
+            LayoutFile = 'Layouts\S. Order Confirmation.docx';
+        }
+    }
+
     trigger OnPreReport()
     var
         lbtFormatDocument: Codeunit "lbt Format Document";

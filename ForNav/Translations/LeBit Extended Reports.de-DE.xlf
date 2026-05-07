@@ -45,6 +45,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales Template - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3614260654 - ReportLabel 3692424305" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Alternative</source>
+          <target state="translated" state-qualifier="exact-match">Alternativ</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales Template - ReportLabel Alternative</note>
+        </trans-unit>
+        <trans-unit id="Report 3614260654 - ReportLabel 2049744306" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Optional</source>
+          <target state="translated" state-qualifier="exact-match">Bedarf</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report lbt Sales Template - ReportLabel Optional</note>
+        </trans-unit>
         <trans-unit id="Report 3614260654 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Options</source>
           <target state="translated">Optionen</target>
