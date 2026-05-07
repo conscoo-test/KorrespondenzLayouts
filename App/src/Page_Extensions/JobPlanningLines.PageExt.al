@@ -86,7 +86,7 @@ pageextension 5272833 "lbt cl JobPlanningLines" extends "Job Planning Lines"
                 }
             }
         }
-        addafter("Category_Item Availability by")
+        addbefore(Category_Category4)
         {
             actionref("lbtNum&bering_Promoted"; "lbt Num&bering") { }
         }
