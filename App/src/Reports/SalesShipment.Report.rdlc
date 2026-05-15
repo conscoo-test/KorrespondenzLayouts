@@ -3794,7 +3794,7 @@
                                           <TablixMember>
                                             <Visibility>
                                               <Hidden>=Iif((Fields!SalesLineType.Value &lt;&gt; "0") and
-         (Fields!SalesLineLeBitPrintoption.Value = "0"), false, true)</Hidden>
+         ((Fields!SalesLineLeBitPrintoption.Value = "0") or (Fields!SalesLineLeBitPrintoption.Value = "3")), false, true)</Hidden>
                                             </Visibility>
                                             <KeepWithGroup>After</KeepWithGroup>
                                             <KeepTogether>true</KeepTogether>
