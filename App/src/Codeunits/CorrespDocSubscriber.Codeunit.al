@@ -76,6 +76,13 @@ codeunit 5272721 "lbt Corresp. Doc. Subscriber"
         LongtextMgt.CopyLongtext(SourceJob, TargetJob);
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Job", 'OnCopyJobPlanningLinesOnAfterCopyTargetJobPlanningLine', '', false, false)]
+    local procedure "Copy Job_OnCopyJobPlanningLinesOnAfterCopyTargetJobPlanningLine"(var TargetJobPlanningLine: Record "Job Planning Line"; SourceJobPlanningLine: Record "Job Planning Line")
+    begin
+        LongtextMgt.CopyLongtext(SourceJobPlanningLine, TargetJobPlanningLine);
+    end;
+
+
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Service-Quote to Order", 'OnAfterInsertServHeader', '', false, false)]
     local procedure ServiceHeaderOrder_OnAfterOnRun(var ServiceHeaderOrder: Record "Service Header"; ServiceHeaderQuote: Record "Service Header")
     var
