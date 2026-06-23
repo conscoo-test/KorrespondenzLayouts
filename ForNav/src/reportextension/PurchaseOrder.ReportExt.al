@@ -41,6 +41,18 @@ reportextension 5266402 "lbt Purchase Order" extends "ForNAV VAT Purchase Order"
         }
     }
 
+    rendering
+    {
+        layout("lbtconscoo")
+        {
+            Caption = 'conscoo', Locked = true;
+            Type = Custom;
+            MimeType = 'FORNAV';
+            LayoutFile = 'Layouts\P. Order.docx';
+        }
+    }
+
+
     trigger OnPreReport()
     var
         lbtFormatDocument: Codeunit "lbt Format Document";

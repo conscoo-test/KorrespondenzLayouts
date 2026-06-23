@@ -46,6 +46,17 @@ reportextension 5266403 "lbt Sales Credit Memo" extends "ForNAV VAT Credit Memo"
         }
     }
 
+    rendering
+    {
+        layout("lbtconscoo")
+        {
+            Caption = 'conscoo', Locked = true;
+            Type = Custom;
+            MimeType = 'FORNAV';
+            LayoutFile = 'Layouts\S. Credit Memo.docx';
+        }
+    }
+
     trigger OnPreReport()
     var
         lbtFormatDocument: Codeunit "lbt Format Document";

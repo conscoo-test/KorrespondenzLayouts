@@ -41,6 +41,18 @@ reportextension 5266401 "lbt Pro Forma Invoice" extends "ForNAV VAT Pro Forma In
         }
     }
 
+    rendering
+    {
+        layout("lbtconscoo")
+        {
+            Caption = 'conscoo', Locked = true;
+            Type = Custom;
+            MimeType = 'FORNAV';
+            LayoutFile = 'Layouts\S. Pro Forma Invoice.docx';
+        }
+    }
+
+
     trigger OnPreReport()
     var
         lbtFormatDocument: Codeunit "lbt Format Document";

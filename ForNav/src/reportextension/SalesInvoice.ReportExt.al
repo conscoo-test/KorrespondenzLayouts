@@ -41,6 +41,17 @@ reportextension 5266404 "lbt Sales Invoice" extends "ForNAV VAT Sales Invoice"
         }
     }
 
+    rendering
+    {
+        layout("lbtconscoo")
+        {
+            Caption = 'conscoo', Locked = true;
+            Type = Custom;
+            MimeType = 'FORNAV';
+            LayoutFile = 'Layouts\S. Invoice.docx';
+        }
+    }
+
     trigger OnPreReport()
     var
         lbtFormatDocument: Codeunit "lbt Format Document";

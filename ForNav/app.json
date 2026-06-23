@@ -28,6 +28,12 @@
 			"publisher": "ForNAV",
 			"name": "ForNAV Core",
 			"version": "0.0.0.0"
+		},
+		{
+			"id": "f94c6dff-0118-4c1d-a7d4-382033529ed3",
+			"publisher": "ForNAV",
+			"name": "ForNAV Language Module",
+			"version": "0.0.0.0"
 		}
 	],
 	"screenshots": [],
