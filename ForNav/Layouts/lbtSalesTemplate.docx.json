@@ -558,7 +558,6 @@
           "@TotalFields": "29",
           "@DataItemTableView": "SORTING(\"Document No.\", \"Line No.\") ORDER(Descending)",
           "@DataItemLink": "\"Document No.\" = FIELD(\"No.\")",
-          "@CustomDataItem": "TableView",
           "@DataItemTable": "Table113",
           "@DataItemVarName": "Line",
           "Bands": {
@@ -1843,7 +1842,7 @@
                   "@Dpi": "254",
                   "@Font": "Segoe UI, 8pt, style=Italic",
                   "@HorzAlign": "Center",
-                  "@SourceExpression": "VATClause.Description + ' ' + VATClause.Description2"
+                  "@SourceExpression": "DynamicsNavDataSet.lbtVATClauseDescriptionText"
                 }
               }
             }
@@ -1852,14 +1851,6 @@
             "Code": {
               "@FieldName": "Code",
               "@FieldNo": "1"
-            },
-            "Description": {
-              "@FieldName": "Description",
-              "@FieldNo": "2"
-            },
-            "Description2": {
-              "@FieldName": "Description 2",
-              "@FieldNo": "3"
             }
           }
         },
@@ -2071,11 +2062,9 @@
   },
   "Labels": {
     "Alternative": {
-      "@Id": "1000000010",
       "@Name": "Alternative"
     },
     "Optional": {
-      "@Id": "1000000011",
       "@Name": "Optional"
     }
   },

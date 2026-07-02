@@ -1552,7 +1552,7 @@
                   "@Dpi": "254",
                   "@Font": "Segoe UI, 8pt, style=Italic",
                   "@HorzAlign": "Center",
-                  "@SourceExpression": "VATClause.Description + ' ' + VATClause.Description2"
+                  "@SourceExpression": "DynamicsNavDataSet.lbtVATClauseDescriptionText"
                 }
               }
             }
@@ -1561,14 +1561,6 @@
             "Code": {
               "@FieldName": "Code",
               "@FieldNo": "1"
-            },
-            "Description": {
-              "@FieldName": "Description",
-              "@FieldNo": "2"
-            },
-            "Description2": {
-              "@FieldName": "Description 2",
-              "@FieldNo": "3"
             }
           }
         },

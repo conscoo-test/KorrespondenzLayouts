@@ -39,6 +39,13 @@ reportextension 5266404 "lbt Sales Invoice" extends "ForNAV VAT Sales Invoice"
                 LineText := Line.lbtGetPrintData("lbt Position"::EditorLine);
             end;
         }
+        add(VATClause)
+        {
+            column(lbtVATClauseDescriptionText; VATClause.GetDescriptionText(Header))
+            {
+                IncludeCaption = false;
+            }
+        }
     }
 
     rendering

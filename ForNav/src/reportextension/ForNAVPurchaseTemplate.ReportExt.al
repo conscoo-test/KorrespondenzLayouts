@@ -35,6 +35,13 @@ reportextension 5266412 "lbt ForNAV Purchase Template" extends "ForNAV Purchase 
                 LineText := Line.lbtGetPrintData("lbt Position"::EditorLine);
             end;
         }
+        add(VATClause)
+        {
+            column(lbtVATClauseDescriptionText; VATClause.GetDescriptionText(Header))
+            {
+                IncludeCaption = false;
+            }
+        }
     }
 
     var

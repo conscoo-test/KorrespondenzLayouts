@@ -39,6 +39,13 @@ reportextension 5266401 "lbt Pro Forma Invoice" extends "ForNAV VAT Pro Forma In
                 LineText := Line.lbtGetPrintData("lbt Position"::EditorLine, Line."Document Type".AsInteger());
             end;
         }
+        add(VATClause)
+        {
+            column(lbtVATClauseDescriptionText; VATClause.GetDescriptionText(Header))
+            {
+                IncludeCaption = false;
+            }
+        }
     }
 
     rendering

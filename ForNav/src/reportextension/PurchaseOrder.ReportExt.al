@@ -39,6 +39,13 @@ reportextension 5266402 "lbt Purchase Order" extends "ForNAV VAT Purchase Order"
                 LineText := Line.lbtGetPrintData("lbt Position"::EditorLine, Line."Document Type".AsInteger());
             end;
         }
+        add(VATClause)
+        {
+            column(lbtVATClauseDescriptionText; VATClause.GetDescriptionText(Header))
+            {
+                IncludeCaption = false;
+            }
+        }
     }
 
     rendering

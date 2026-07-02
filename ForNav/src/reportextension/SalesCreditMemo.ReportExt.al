@@ -44,6 +44,13 @@ reportextension 5266403 "lbt Sales Credit Memo" extends "ForNAV VAT Credit Memo"
                 ShipmentDate := GetShipmentDate();
             end;
         }
+        add(VATClause)
+        {
+            column(lbtVATClauseDescriptionText; VATClause.GetDescriptionText(Header))
+            {
+                IncludeCaption = false;
+            }
+        }
     }
 
     rendering

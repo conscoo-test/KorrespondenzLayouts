@@ -35,6 +35,13 @@ reportextension 5266411 "lbt ForNAV Sales Template" extends "ForNAV Sales Templa
                 LineText := Line.lbtGetPrintData("lbt Position"::EditorLine);
             end;
         }
+        add(VATClause)
+        {
+            column(lbtVATClauseDescriptionText; VATClause.GetDescriptionText(Header))
+            {
+                IncludeCaption = false;
+            }
+        }
     }
 
     var
