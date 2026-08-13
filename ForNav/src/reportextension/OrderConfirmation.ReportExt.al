@@ -31,12 +31,17 @@ reportextension 5266400 "lbt Order Confirmation" extends "ForNAV VAT Order Confi
             {
                 IncludeCaption = false;
             }
+            column(lbtBalance; Line."lbt Balance")
+            {
+                IncludeCaption = false;
+            }
         }
         modify(Line)
         {
             trigger OnAfterAfterGetRecord()
             begin
                 LineText := Line.lbtGetPrintData("lbt Position"::EditorLine, Line."Document Type".AsInteger());
+                Line.CalcFields("lbt Balance");
             end;
         }
     }
