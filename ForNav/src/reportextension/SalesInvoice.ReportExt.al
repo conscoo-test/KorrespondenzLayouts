@@ -31,17 +31,12 @@ reportextension 5266404 "lbt Sales Invoice" extends "ForNAV VAT Sales Invoice"
             {
                 IncludeCaption = false;
             }
-            column(lbtBalance; Line."lbt Balance")
-            {
-                IncludeCaption = false;
-            }
         }
         modify(Line)
         {
             trigger OnAfterAfterGetRecord()
             begin
                 LineText := Line.lbtGetPrintData("lbt Position"::EditorLine);
-                Line.CalcFields("lbt Balance");
             end;
         }
     }

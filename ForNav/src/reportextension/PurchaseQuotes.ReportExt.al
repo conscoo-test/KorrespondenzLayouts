@@ -31,17 +31,12 @@ reportextension 5266409 "lbt Purchase Quotes" extends "ForNAV VAT Purchase Quote
             {
                 IncludeCaption = false;
             }
-            column(lbtBalance; Line."lbt Balance")
-            {
-                IncludeCaption = false;
-            }
         }
         modify(Line)
         {
             trigger OnAfterAfterGetRecord()
             begin
                 LineText := Line.lbtGetPrintData("lbt Position"::EditorLine, Line."Document Type".AsInteger());
-                Line.CalcFields("lbt Balance");
             end;
         }
     }

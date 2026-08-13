@@ -31,17 +31,12 @@ reportextension 5266413 "lbt Blanket Sales Order" extends "ForNAV VAT Blanket Or
             {
                 IncludeCaption = false;
             }
-            column(lbtBalance; Line."lbt Balance")
-            {
-                IncludeCaption = false;
-            }
         }
         modify(Line)
         {
             trigger OnAfterAfterGetRecord()
             begin
                 LineText := Line.lbtGetPrintData("lbt Position"::EditorLine, Line."Document Type".AsInteger());
-                Line.CalcFields("lbt Balance");
             end;
         }
         add(VATClause)

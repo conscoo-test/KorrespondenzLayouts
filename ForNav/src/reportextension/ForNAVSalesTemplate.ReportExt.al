@@ -27,17 +27,12 @@ reportextension 5266411 "lbt ForNAV Sales Template" extends "ForNAV Sales Templa
             {
                 IncludeCaption = false;
             }
-            column(lbtBalance; Line."lbt Balance")
-            {
-                IncludeCaption = false;
-            }
         }
         modify(Line)
         {
             trigger OnAfterAfterGetRecord()
             begin
                 LineText := Line.lbtGetPrintData("lbt Position"::EditorLine);
-                Line.CalcFields("lbt Balance");
             end;
         }
     }
