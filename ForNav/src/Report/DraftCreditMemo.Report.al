@@ -45,6 +45,10 @@ report 5266402 "lbt Draft Credit Memo"
                 {
                     IncludeCaption = false;
                 }
+                column(lbtBalance; Line."lbt Balance")
+                {
+                    IncludeCaption = false;
+                }
                 trigger OnPreDataItem();
                 begin
                     Line.SetView(ReportForNav.OnPreDataItemView('Line', Line));
@@ -53,6 +57,7 @@ report 5266402 "lbt Draft Credit Memo"
                 trigger OnAfterGetRecord()
                 begin
                     LineText := Line.lbtGetPrintData("lbt Position"::EditorLine, Line."Document Type".AsInteger());
+                    Line.CalcFields("lbt Balance");
                 end;
 
             }
