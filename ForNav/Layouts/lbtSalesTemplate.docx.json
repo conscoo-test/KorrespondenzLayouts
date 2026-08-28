@@ -1,9 +1,10 @@
 {
+  "@PaperKind": "A4",
   "@ReportUnit": "TenthsOfAMillimeter",
+  "@Margins": "300, 100, 200, 200",
   "@Dpi": "254",
   "@Font": "Segoe UI, 8pt",
-  "@Margins": "300, 100, 200, 200",
-  "@ReportsForNavVersion": "7.4.0.2580",
+  "@ReportsForNavVersion": "8.2.0.2796",
   "@ObjectName": "lbt Sales Template",
   "@OnPreReportScript": [
     "function LineMaster() {",
@@ -16,71 +17,300 @@
       "@ControlType": "DataItem",
       "@Name": "Header",
       "@Dpi": "254",
-      "@TotalFields": "60,61",
       "@CalcFields": "Amount, \"Amount Including VAT\"",
       "@ResetPageNumber": "true",
       "@NewPagePerRecord": "true",
       "@Id": "2",
+      "@TotalFields": "60,61",
       "@DataItemTableView": "SORTING(\"No.\")",
       "@ReqFilterFields": "\"No.\"",
       "@MaxIteration": "10",
-      "@DataItemVarName": "Header",
       "@DataItemTable": "Table112",
+      "@DataItemVarName": "Header",
       "Bands": {
         "DocumentHeader": {
           "@ControlType": "Header",
           "@Name": "DocumentHeader",
+          "@Font": "Segoe UI, 9.75pt",
           "@BackColor": "Transparent",
           "@Dpi": "254",
           "@Signature": "abc",
+          "@CanShrink": "true",
           "@AllowScriptErrors": "true",
+          "@CanGrow": "true",
           "@PrintOnEveryPage": "true",
           "@ShowOutput": "CurrReport.PageNo == 1",
-          "@Height": "739.062439",
+          "@Height": "799.0627",
           "Controls": {
-            "Header_DocumentDate": {
-              "@Name": "Header_DocumentDate",
-              "@ControlType": "TextBox",
-              "@Size": "449.999756,40",
-              "@Location": "1254.99976,477.499847",
+            "Table12": {
+              "@Name": "Table12",
+              "@ControlType": "Table",
+              "@Size": "774.9992,400",
               "@Dpi": "254",
-              "@Font": "Segoe UI, 8pt",
-              "@ForeColor": "Black",
-              "@HorzAlign": "Right",
-              "@SourceExpression": "Header.DocumentDate"
-            },
-            "Header_FieldGroups_Bill_toAddress4": {
-              "@Name": "Header_FieldGroups_Bill_toAddress4",
-              "@ControlType": "TextBox",
-              "@Size": "450.000061,40",
-              "@Location": "1254.99976,517.4999",
-              "@Dpi": "254",
-              "@Font": "Segoe UI, 8pt",
-              "@ForeColor": "Black",
-              "@HorzAlign": "Right",
-              "@SourceExpression": "Header.VATRegistrationNo"
-            },
-            "Header_Bill_toCustomerNo": {
-              "@Name": "Header_Bill_toCustomerNo",
-              "@ControlType": "TextBox",
-              "@Size": "450,40",
-              "@Location": "1254.99976,397.499847",
-              "@Dpi": "254",
-              "@Font": "Segoe UI, 8pt",
-              "@ForeColor": "Black",
-              "@HorzAlign": "Right",
-              "@SourceExpression": "Header.Bill_toCustomerNo"
-            },
-            "CurrReport_Page": {
-              "@Name": "CurrReport_Page",
-              "@ControlType": "TextBox",
-              "@Size": "200,60",
-              "@Location": "1504.99976,660.541748",
-              "@Dpi": "254",
-              "@Font": "Segoe UI, 8pt",
-              "@ForeColor": "Black",
-              "@HorzAlign": "Right",
-              "@SourceExpression": "CurrReport.Page"
+              "@Location": "927.334045,397.499878",
+              "Rows": {
+                "tableRow13": {
+                  "@Name": "tableRow13",
+                  "@ControlType": "TableRow",
+                  "@Dpi": "254",
+                  "@Weight": "0.62992080574037634",
+                  "Cells": {
+                    "tableCell30": {
+                      "@Name": "tableCell30",
+                      "@ControlType": "TableCell",
+                      "@Font": "Segoe UI, 8pt, style=Bold",
+                      "@Dpi": "254",
+                      "@Weight": "0.82580776961795976",
+                      "@SourceExpression": "Header.FieldLookups.CustomerCaption",
+                      "@HorzAlign": "Left"
+                    },
+                    "tableCell31": {
+                      "@Name": "tableCell31",
+                      "@ControlType": "TableCell",
+                      "@Font": "Segoe UI, 8pt",
+                      "@Dpi": "254",
+                      "@Weight": "1.1741922303820402",
+                      "@SourceExpression": "Header.Bill_toCustomerNo",
+                      "@HorzAlign": "Right"
+                    }
+                  }
+                },
+                "tableRow14": {
+                  "@Name": "tableRow14",
+                  "@ControlType": "TableRow",
+                  "@Dpi": "254",
+                  "@Weight": "0.62992080574037623",
+                  "Cells": {
+                    "tableCell33": {
+                      "@Name": "tableCell33",
+                      "@ControlType": "TableCell",
+                      "@Font": "Segoe UI, 8pt, style=Bold",
+                      "@Dpi": "254",
+                      "@Weight": "0.82580776961795976",
+                      "@SourceExpression": "Header.FieldCaptions.No",
+                      "@HorzAlign": "Left"
+                    },
+                    "tableCell34": {
+                      "@Name": "tableCell34",
+                      "@ControlType": "TableCell",
+                      "@Font": "Segoe UI, 8pt",
+                      "@Dpi": "254",
+                      "@Weight": "1.1741922303820402",
+                      "@SourceExpression": "Header.No",
+                      "@HorzAlign": "Right"
+                    }
+                  }
+                },
+                "tableRow17": {
+                  "@Name": "tableRow17",
+                  "@ControlType": "TableRow",
+                  "@Dpi": "254",
+                  "@Weight": "0.62992080574037623",
+                  "Cells": {
+                    "tableCell45": {
+                      "@Name": "tableCell45",
+                      "@ControlType": "TableCell",
+                      "@Font": "Segoe UI, 8pt, style=Bold",
+                      "@Dpi": "254",
+                      "@Weight": "0.82580776961795976",
+                      "@SourceExpression": "Header.FieldCaptions.DocumentDate",
+                      "@HorzAlign": "Left"
+                    },
+                    "tableCell46": {
+                      "@Name": "tableCell46",
+                      "@ControlType": "TableCell",
+                      "@Font": "Segoe UI, 8pt",
+                      "@Dpi": "254",
+                      "@Weight": "1.1741922303820402",
+                      "@SourceExpression": "Header.DocumentDate",
+                      "@HorzAlign": "Right"
+                    }
+                  }
+                },
+                "tableRow15": {
+                  "@Name": "tableRow15",
+                  "@ControlType": "TableRow",
+                  "@Dpi": "254",
+                  "@ShowOutput": "Header.VATRegistrationNo != ''",
+                  "@Weight": "0.62992080574037623",
+                  "Cells": {
+                    "tableCell37": {
+                      "@Name": "tableCell37",
+                      "@ControlType": "TableCell",
+                      "@Font": "Segoe UI, 8pt, style=Bold",
+                      "@Dpi": "254",
+                      "@Weight": "0.82580776961795976",
+                      "@SourceExpression": "Header.FieldCaptions.VATRegistrationNo",
+                      "@HorzAlign": "Left"
+                    },
+                    "tableCell38": {
+                      "@Name": "tableCell38",
+                      "@ControlType": "TableCell",
+                      "@Font": "Segoe UI, 8pt",
+                      "@Dpi": "254",
+                      "@Weight": "1.1741922303820402",
+                      "@SourceExpression": "Header.VATRegistrationNo",
+                      "@HorzAlign": "Right"
+                    }
+                  }
+                },
+                "tableRow16": {
+                  "@Name": "tableRow16",
+                  "@ControlType": "TableRow",
+                  "@Dpi": "254",
+                  "@ShowOutput": "Header.SalespersonCode != ''",
+                  "@Weight": "0.62992080574037645",
+                  "Cells": {
+                    "tableCell41": {
+                      "@Name": "tableCell41",
+                      "@ControlType": "TableCell",
+                      "@Font": "Segoe UI, 8pt, style=Bold",
+                      "@Dpi": "254",
+                      "@Weight": "0.82580776961795976",
+                      "@SourceExpression": "Header.FieldLookups.Salesperson_PurchaserCaption",
+                      "@HorzAlign": "Left"
+                    },
+                    "tableCell42": {
+                      "@Name": "tableCell42",
+                      "@ControlType": "TableCell",
+                      "@Font": "Segoe UI, 8pt",
+                      "@Dpi": "254",
+                      "@Weight": "1.1741922303820402",
+                      "@SourceExpression": "Header.FieldLookups.SalespersonName",
+                      "@HorzAlign": "Right"
+                    }
+                  }
+                },
+                "tableRow18": {
+                  "@Name": "tableRow18",
+                  "@ControlType": "TableRow",
+                  "@Dpi": "254",
+                  "@ShowOutput": "Header.YourReference != ''",
+                  "@Weight": "0.62992080574037645",
+                  "Cells": {
+                    "tableCell49": {
+                      "@Name": "tableCell49",
+                      "@ControlType": "TableCell",
+                      "@Font": "Segoe UI, 8pt, style=Bold",
+                      "@Dpi": "254",
+                      "@Weight": "0.82580776961795976",
+                      "@SourceExpression": "Header.FieldCaptions.YourReference",
+                      "@HorzAlign": "Left"
+                    },
+                    "tableCell50": {
+                      "@Name": "tableCell50",
+                      "@ControlType": "TableCell",
+                      "@Font": "Segoe UI, 8pt",
+                      "@Dpi": "254",
+                      "@Weight": "1.1741922303820402",
+                      "@SourceExpression": "Header.YourReference",
+                      "@HorzAlign": "Right"
+                    }
+                  }
+                },
+                "tableRow19": {
+                  "@Name": "tableRow19",
+                  "@ControlType": "TableRow",
+                  "@Dpi": "254",
+                  "@ShowOutput": "Header.ExternalDocumentNo != ''",
+                  "@Weight": "0.62992080574037645",
+                  "Cells": {
+                    "tableCell53": {
+                      "@Name": "tableCell53",
+                      "@ControlType": "TableCell",
+                      "@Font": "Segoe UI, 8pt, style=Bold",
+                      "@Dpi": "254",
+                      "@Weight": "0.82580776961795976",
+                      "@SourceExpression": "Header.FieldCaptions.ExternalDocumentNo",
+                      "@HorzAlign": "Left"
+                    },
+                    "tableCell54": {
+                      "@Name": "tableCell54",
+                      "@ControlType": "TableCell",
+                      "@Font": "Segoe UI, 8pt",
+                      "@Dpi": "254",
+                      "@Weight": "1.1741922303820402",
+                      "@SourceExpression": "Header.ExternalDocumentNo",
+                      "@HorzAlign": "Right"
+                    }
+                  }
+                },
+                "tableRow20": {
+                  "@Name": "tableRow20",
+                  "@ControlType": "TableRow",
+                  "@Dpi": "254",
+                  "@BackColor": "Transparent",
+                  "@Weight": "0.62992080574037645",
+                  "Cells": {
+                    "tableCell57": {
+                      "@Name": "tableCell57",
+                      "@ControlType": "TableCell",
+                      "@Font": "Segoe UI, 8pt, style=Bold",
+                      "@Dpi": "254",
+                      "@Weight": "0.82580776961795976",
+                      "@HorzAlign": "Left"
+                    },
+                    "tableCell58": {
+                      "@Name": "tableCell58",
+                      "@ControlType": "TableCell",
+                      "@Font": "Segoe UI, 8pt",
+                      "@Dpi": "254",
+                      "@Weight": "1.1741922303820402",
+                      "@HorzAlign": "Right"
+                    }
+                  }
+                },
+                "tableRow21": {
+                  "@Name": "tableRow21",
+                  "@ControlType": "TableRow",
+                  "@Dpi": "254",
+                  "@Weight": "0.94488120861056457",
+                  "Cells": {
+                    "tableCell61": {
+                      "@Name": "tableCell61",
+                      "@ControlType": "TableCell",
+                      "@Font": "Segoe UI, 8pt, style=Bold",
+                      "@Dpi": "254",
+                      "@Weight": "0.82580776961795976",
+                      "@HorzAlign": "Left"
+                    },
+                    "tableCell62": {
+                      "@Name": "tableCell62",
+                      "@ControlType": "TableCell",
+                      "@Font": "Segoe UI, 8pt",
+                      "@Dpi": "254",
+                      "@Weight": "1.1741922303820402",
+                      "@SourceExpression": "CurrReport.Page",
+                      "@HorzAlign": "Right"
+                    }
+                  }
+                },
+                "tableRow23": {
+                  "@Name": "tableRow23",
+                  "@ControlType": "TableRow",
+                  "@Dpi": "254",
+                  "@BackColor": "Transparent",
+                  "@Weight": "0.31496040287018834",
+                  "Cells": {
+                    "tableCell69": {
+                      "@Name": "tableCell69",
+                      "@ControlType": "TableCell",
+                      "@Font": "Segoe UI, 8pt, style=Bold",
+                      "@Dpi": "254",
+                      "@Weight": "0.82580776961795976",
+                      "@HorzAlign": "Left"
+                    },
+                    "tableCell70": {
+                      "@Name": "tableCell70",
+                      "@ControlType": "TableCell",
+                      "@Font": "Segoe UI, 8pt",
+                      "@Dpi": "254",
+                      "@Weight": "1.1741922303820402",
+                      "@HorzAlign": "Right"
+                    }
+                  }
+                }
+              }
             },
             "CurrReport_Caption": {
               "@Name": "CurrReport_Caption",
@@ -101,48 +331,11 @@
               "@Dpi": "254",
               "@Font": "Segoe UI, 8pt",
               "@ForeColor": "Black",
-              "@MultiLine": "true",
               "@VertAlign": "Top",
               "@HorzAlign": "Left",
+              "@MultiLine": "true",
               "@SourceExpression": "Header.FieldGroups.Bill_toAddress",
               "@CanGrow": "true"
-            },
-            "Header_FieldLookups_CustomerCaption": {
-              "@Name": "Header_FieldLookups_CustomerCaption",
-              "@ControlType": "TextBox",
-              "@Size": "320.000061,40",
-              "@Location": "925.000061,399.999969",
-              "@Dpi": "254",
-              "@Font": "Segoe UI, 8pt, style=Bold",
-              "@ForeColor": "Black",
-              "@VertAlign": "Top",
-              "@HorzAlign": "Left",
-              "@SourceExpression": "Header.FieldLookups.CustomerCaption"
-            },
-            "Header_FieldCaptions_VATRegistrationNo": {
-              "@Name": "Header_FieldCaptions_VATRegistrationNo",
-              "@ControlType": "TextBox",
-              "@Size": "320.000061,40",
-              "@Location": "925.000061,520",
-              "@Dpi": "254",
-              "@Font": "Segoe UI, 8pt, style=Bold",
-              "@ForeColor": "Black",
-              "@VertAlign": "Top",
-              "@ShowOutput": "Header.VATRegistrationNo != ''",
-              "@HorzAlign": "Left",
-              "@SourceExpression": "Header.FieldCaptions.VATRegistrationNo"
-            },
-            "Header_FieldCaptions_DocumentDate": {
-              "@Name": "Header_FieldCaptions_DocumentDate",
-              "@ControlType": "TextBox",
-              "@Size": "320.000061,40",
-              "@Location": "925.000061,479.999969",
-              "@Dpi": "254",
-              "@Font": "Segoe UI, 8pt, style=Bold",
-              "@ForeColor": "Black",
-              "@VertAlign": "Top",
-              "@HorzAlign": "Left",
-              "@SourceExpression": "Header.FieldCaptions.DocumentDate"
             },
             "PictureBox1": {
               "@Name": "PictureBox1",
@@ -152,6 +345,7 @@
               "@ShowOutput": "Sales_ReceivablesSetup.LogoPositiononDocuments == Sales_ReceivablesSetup.FieldOptions.LogoPositiononDocuments.Left",
               "@SourceExpression": "CompanyInformation.Picture",
               "@HorzAlign": "Left",
+              "@Font": "Segoe UI, 9.75pt",
               "@Sizing": "ZoomImage",
               "@Location": "2.333191,0"
             },
@@ -159,12 +353,13 @@
               "@Name": "PictureBox2",
               "@ControlType": "PictureBox",
               "@Dpi": "254",
-              "@Size": "572,188",
+              "@Size": "774.9991,187.999985",
               "@ShowOutput": "Sales_ReceivablesSetup.LogoPositiononDocuments == Sales_ReceivablesSetup.FieldOptions.LogoPositiononDocuments.Right",
               "@SourceExpression": "CompanyInformation.Picture",
               "@HorzAlign": "Right",
+              "@Font": "Segoe UI, 9.75pt",
               "@Sizing": "ZoomImage",
-              "@Location": "1130.33313,0"
+              "@Location": "927.334045,0"
             },
             "PictureBox3": {
               "@Name": "PictureBox3",
@@ -174,6 +369,7 @@
               "@ShowOutput": "Sales_ReceivablesSetup.LogoPositiononDocuments == Sales_ReceivablesSetup.FieldOptions.LogoPositiononDocuments.Center",
               "@SourceExpression": "CompanyInformation.Picture",
               "@HorzAlign": "Center",
+              "@Font": "Segoe UI, 9.75pt",
               "@Sizing": "ZoomImage",
               "@Location": "574.3331,0"
             },
@@ -183,74 +379,8 @@
               "@Size": "788.4583,58.42",
               "@Location": "0,299.0766",
               "@Dpi": "254",
-              "@Font": "Segoe UI, 8pt, style=Underline",
+              "@Font": "Segoe UI, 6.75pt, style=Underline",
               "@SourceExpression": "DynamicsNavDataSet.lbtCompanyAddressLine"
-            },
-            "TextBox2": {
-              "@Name": "TextBox2",
-              "@ControlType": "TextBox",
-              "@Size": "450,40",
-              "@Location": "1254.99976,437.499847",
-              "@Dpi": "254",
-              "@Font": "Segoe UI, 8pt",
-              "@ForeColor": "Black",
-              "@HorzAlign": "Right",
-              "@SourceExpression": "Header.No"
-            },
-            "TextBox1": {
-              "@Name": "TextBox1",
-              "@ControlType": "TextBox",
-              "@Size": "320.000061,40",
-              "@Location": "925.000061,439.999969",
-              "@Dpi": "254",
-              "@Font": "Segoe UI, 8pt, style=Bold",
-              "@ForeColor": "Black",
-              "@VertAlign": "Top",
-              "@HorzAlign": "Left",
-              "@SourceExpression": "Header.FieldCaptions.No"
-            },
-            "TextBox8": {
-              "@Name": "TextBox8",
-              "@ControlType": "TextBox",
-              "@Size": "320.000061,40",
-              "@Location": "925.000061,560",
-              "@Dpi": "254",
-              "@Font": "Segoe UI, 8pt, style=Bold",
-              "@VertAlign": "Top",
-              "@HorzAlign": "Left",
-              "@SourceExpression": "Header.FieldLookups.Salesperson_PurchaserCaption"
-            },
-            "TextBox9": {
-              "@Name": "TextBox9",
-              "@ControlType": "TextBox",
-              "@Size": "447.666138,40",
-              "@Location": "1257.33313,557.4999",
-              "@Dpi": "254",
-              "@HorzAlign": "Right",
-              "@SourceExpression": "Header.FieldLookups.SalespersonName"
-            },
-            "TextBox13": {
-              "@Name": "TextBox13",
-              "@ControlType": "TextBox",
-              "@Size": "450,40",
-              "@Location": "1254.99976,597.4999",
-              "@Dpi": "254",
-              "@Font": "Segoe UI, 8pt",
-              "@ForeColor": "Black",
-              "@HorzAlign": "Right",
-              "@SourceExpression": "Header.YourReference"
-            },
-            "TextBox12": {
-              "@Name": "TextBox12",
-              "@ControlType": "TextBox",
-              "@Size": "320.000061,40",
-              "@Location": "925.000061,600",
-              "@Dpi": "254",
-              "@Font": "Segoe UI, 8pt, style=Bold",
-              "@ForeColor": "Black",
-              "@VertAlign": "Top",
-              "@HorzAlign": "Left",
-              "@SourceExpression": "Header.FieldCaptions.YourReference"
             }
           }
         },
@@ -258,28 +388,31 @@
           "@ControlType": "Footer",
           "@Name": "Footer",
           "@Dpi": "254",
+          "@Font": "Segoe UI, 9.75pt",
           "@BackColor": "Transparent",
           "@Padding": "0,0,0,0,254",
+          "@CanShrink": "true",
           "@PrintOnEveryPage": "true",
           "@PlaceInBottom": "true",
+          "@KeepWithNext": "false",
           "@Signature": "abc",
           "@Height": "250",
           "Controls": {
             "Header_FieldGroups_Bill_toAddress6": {
               "@Name": "Header_FieldGroups_Bill_toAddress6",
               "@ControlType": "TextBox",
-              "@Size": "1700.00012,249.999924",
+              "@Size": "1700,250",
               "@Location": "0,0",
               "@Dpi": "254",
               "@Font": "Segoe UI, 8pt",
               "@BackColor": "White",
-              "@MultiLine": "true",
-              "@ShowOutput": "CurrReport.PrintLogo(ForNAVSetup.UsePreprintedPaper)",
               "@HorzAlign": "Center",
+              "@ShowOutput": "CurrReport.PrintLogo(ForNAVSetup.UsePreprintedPaper)",
+              "@MultiLine": "true",
               "@SourceExpression": [
                 "var joinFormat = ': ';",
                 "",
-                "var Line1 = CompanyInformation.Name + '<br>';",
+                "var Line1 = '<b>' + CompanyInformation.Name + '</b><br>';",
                 "",
                 "var Line2 = CurrReport.JoinStrings(' | ',",
                 "    CompanyInformation.Address, ",
@@ -291,26 +424,63 @@
                 "",
                 "var Line3 = CurrReport.JoinStrings(' | ',",
                 "    `<b>${CompanyInformation.FieldCaptions.lbtTradeRegisterName}:</b> ${CompanyInformation.lbtTradeRegisterName} ${CompanyInformation.lbtCommercialRegisterNo}`,",
-                "    `<b>${CompanyInformation.FieldCaptions.lbtCEO1}:</b> ${CompanyInformation.lbtCEO1}${CompanyInformation.lbtCEO2?\"
+                "    `<b>${CompanyInformation.FieldCaptions.lbtCEO1}:</b> ${CompanyInformation.lbtCEO1}${CompanyInformation.lbtCEO2?\", \"+CompanyInformation.lbtCEO2:\"\"}${CompanyInformation.lbtCEO3?\", \"+CompanyInformation.lbtCEO3:\"\"}`",
+                ") + '<br>';",
+                "",
+                "var Line4 = CompanyInformation.BankName ? (CurrReport.JoinStrings(' | ',",
+                "    `<b>${CompanyInformation.FieldCaptions.BankName}</b> ${CompanyInformation.BankName}`,",
+                "    `<b>${CompanyInformation.FieldCaptions.IBAN}</b> ${CompanyInformation.IBAN}`,",
+                "    (CompanyInformation.SWIFTCode != \"\") ? `<b>${CompanyInformation.FieldCaptions.SWIFTCode}</b> ${CompanyInformation.SWIFTCode}` : \"\"",
+                ") + '<br>') : '';",
+                "",
+                "var Line5 = CompanyInformation.lbtBankName2 ? (CurrReport.JoinStrings(' | ',",
+                "    `<b>${CompanyInformation.FieldCaptions.BankName}</b> ${CompanyInformation.lbtBankName2}`,",
+                "    `<b>${CompanyInformation.FieldCaptions.IBAN}</b> ${CompanyInformation.lbtIBAN2}`,",
+                "    (CompanyInformation.lbtSWIFTCode2 != \"\") ? `<b>${CompanyInformation.FieldCaptions.SWIFTCode}</b> ${CompanyInformation.lbtSWIFTCode2}` : \"\"",
+                ") + '<br>') : '';",
+                "",
+                "var Line6 = CompanyInformation.lbtBankName3 ? (CurrReport.JoinStrings(' | ',",
+                "    `<b>${CompanyInformation.FieldCaptions.BankName}</b> ${CompanyInformation.lbtBankName3}`,",
+                "    `<b>${CompanyInformation.FieldCaptions.IBAN}</b> ${CompanyInformation.lbtIBAN3}`,",
+                "    (CompanyInformation.lbtSWIFTCode3 != \"\") ? `<b>${CompanyInformation.FieldCaptions.SWIFTCode}</b> ${CompanyInformation.lbtSWIFTCode3}`: \"\"",
+                ")) : '';",
+                "",
+                "var Line7 = CurrReport.JoinStrings(' | ',",
+                "    `<b>${CompanyInformation.FieldCaptions.VATRegistrationNo}:</b> ${CompanyInformation.VATRegistrationNo}`",
+                ") + '<br>';",
+                "",
+                "'<!DOCTYPE><div style=\"font-family: Segoe UI; font-size: 8pt;\">'",
+                "+ Line1",
+                "+ Line2",
+                "+ Line3",
+                "+ Line7",
+                "+ Line4",
+                "+ Line5",
+                "+ Line6",
+                ""
               ],
+              "@CanShrink": "true"
             }
           }
         },
         "Header1": {
           "@ControlType": "Header",
           "@Name": "Header1",
+          "@Font": "Segoe UI, 9.75pt",
           "@Dpi": "254",
           "@Signature": "abc",
           "@PrintOnEveryPage": "true",
           "@ShowOutput": "CurrReport.PageNo > 1",
           "@Height": "142.875",
           "Controls": {
-            "TextBox7": {
-              "@Name": "TextBox7",
+            "TextBox20": {
+              "@Name": "TextBox20",
               "@ControlType": "TextBox",
-              "@Size": "254,58.42",
-              "@Location": "862.5417,45.7275047",
+              "@Size": "349.999939,59.9999733",
+              "@Location": "857,45.7275047",
               "@Dpi": "254",
+              "@Font": "Segoe UI, 8pt",
+              "@ForeColor": "Black",
               "@HorzAlign": "Left",
               "@SourceExpression": "Header.DocumentDate"
             },
@@ -345,13 +515,14 @@
               "@Font": "Segoe UI, 8pt",
               "@ForeColor": "Black",
               "@HorzAlign": "Right",
-              "@SourceExpression": "Header.FieldCaptions.No + \" \" + Header.Bill_toCustomerNo + \" vom \" + Header.DocumentDate"
+              "@SourceExpression": "Header.FieldCaptions.No + \" \" + Header.Bill_toCustomerNo + \" vom \""
             }
           }
         },
         "HeaderText": {
           "@ControlType": "Body",
           "@Name": "HeaderText",
+          "@Font": "Segoe UI, 9.75pt",
           "@Dpi": "254",
           "@Signature": "abc",
           "@CanGrow": "true",
@@ -369,7 +540,11 @@
               "@BackColor": "White",
               "@VertAlign": "Top",
               "@HorzAlign": "Left",
-              "@SourceExpression": "'<!DOCTYPE><html><head><style>p { margin:0;} br { content:\"\"; margin:1em;display:block;font-size:24%;}</style></head><body><div style=\"font-family: Segoe UI; font-size: 8pt; \">'+ \r\nDynamicsNavDataSet.lbtHeaderText +\r\n'</div></body></html>'",
+              "@SourceExpression": [
+                "'<!DOCTYPE><html><head><style>p { margin:0;} br { content:\"\"; margin:1em;display:block;font-size:24%;}</style></head><body><div style=\"font-family: Segoe UI; font-size: 8pt; \">'+ ",
+                "DynamicsNavDataSet.lbtHeaderText +",
+                "'</div></body></html>'"
+              ],
               "@CanGrow": "true"
             }
           }
@@ -378,17 +553,19 @@
           "@ControlType": "DataItem",
           "@Name": "Line",
           "@Dpi": "254",
-          "@TotalFields": "29",
           "@CalcFields": "\"lbt Balance\"",
           "@Id": "3",
+          "@TotalFields": "29",
+          "@DataItemTableView": "SORTING(\"Document No.\", \"Line No.\") ORDER(Descending)",
           "@DataItemLink": "\"Document No.\" = FIELD(\"No.\")",
-          "@DataItemTableView": "SORTING(\"Document No.\", \"Line No.\")",
-          "@DataItemVarName": "Line",
+          "@CustomDataItem": "TableView",
           "@DataItemTable": "Table113",
+          "@DataItemVarName": "Line",
           "Bands": {
             "LinesHeader": {
               "@ControlType": "Header",
               "@Name": "LinesHeader",
+              "@Font": "Segoe UI, 9.75pt",
               "@BackColor": "Transparent",
               "@Dpi": "254",
               "@Signature": "abc",
@@ -397,25 +574,27 @@
                 "LinesHeaderTable": {
                   "@Name": "LinesHeaderTable",
                   "@ControlType": "Table",
-                  "@Size": "1700,100",
+                  "@Size": "1699.99915,100.000031",
                   "@Location": "0,0",
                   "@Dpi": "254",
+                  "@Font": "Segoe UI, 9.75pt",
                   "@Borders": "Bottom",
                   "Rows": {
                     "LinesHeaderRow": {
                       "@Name": "LinesHeaderRow",
                       "@ControlType": "TableRow",
                       "@Dpi": "254",
+                      "@Font": "Segoe UI, 9.75pt",
                       "@Weight": "0.5679012345679012",
                       "@AutoFit": "true",
                       "Cells": {
                         "Line_FieldCaptions_No_LinesHeader": {
                           "@Name": "Line_FieldCaptions_No_LinesHeader",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Borders": "Bottom",
                           "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Weight": "6.8042907956339436",
+                          "@Dpi": "254",
+                          "@Weight": "4.3093839157187164",
                           "@MultiLine": "true",
                           "@SourceExpression": "Line.FieldCaptions.lbtPosNo",
                           "@VertAlign": "Bottom",
@@ -424,9 +603,9 @@
                         "Line_FieldCaptions_Description_LinesHeader": {
                           "@Name": "Line_FieldCaptions_Description_LinesHeader",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Weight": "34.021452562266774",
+                          "@Dpi": "254",
+                          "@Weight": "28.785452214088732",
                           "@MultiLine": "true",
                           "@SourceExpression": "Line.FieldCaptions.Description",
                           "@VertAlign": "Bottom",
@@ -435,59 +614,59 @@
                         "Line_FieldCaptions_Quantity_LinesHeader": {
                           "@Name": "Line_FieldCaptions_Quantity_LinesHeader",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Weight": "6.804290391100233",
+                          "@Dpi": "254",
+                          "@Weight": "7.4794008251188373",
                           "@MultiLine": "true",
                           "@SourceExpression": "Line.FieldCaptions.Quantity",
                           "@VertAlign": "Bottom",
-                          "@CanShrink": "true",
-                          "@HorzAlign": "Right"
+                          "@HorzAlign": "Right",
+                          "@CanShrink": "true"
                         },
                         "Line_FieldCaptions_UnitOfMeasure_LinesHeader": {
                           "@Name": "Line_FieldCaptions_UnitOfMeasure_LinesHeader",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Weight": "6.8042906150612019",
+                          "@Dpi": "254",
+                          "@Weight": "9.0723930013444",
                           "@MultiLine": "true",
                           "@SourceExpression": "Line.FieldCaptions.UnitofMeasure",
                           "@VertAlign": "Bottom",
-                          "@CanShrink": "true",
-                          "@HorzAlign": "Right"
+                          "@HorzAlign": "Right",
+                          "@CanShrink": "true"
                         },
                         "Line_FieldCaptions_LineDiscountPct_LinesHeader": {
                           "@Name": "Line_FieldCaptions_LineDiscountPct_LinesHeader",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@ForeColor": "Black",
                           "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Weight": "6.8042905812143442",
+                          "@Dpi": "254",
+                          "@Weight": "7.05579129113106",
                           "@MultiLine": "true",
-                          "@SourceExpression": "Line.FieldCaptions.LineDiscountPct",
+                          "@SourceExpression": "Line.FieldCaptions.UnitPrice",
                           "@VertAlign": "Bottom",
-                          "@HorzAlign": "Right",
-                          "@ShowOutput": "DynamicsNavDataSet.HasDiscount==true"
+                          "@HorzAlign": "Right"
                         },
                         "Line_FieldCaptions_UnitPrice_LinesHeader": {
                           "@Name": "Line_FieldCaptions_UnitPrice_LinesHeader",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@ForeColor": "Black",
                           "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Dpi": "254",
                           "@Weight": "6.8042905046477546",
                           "@MultiLine": "true",
-                          "@SourceExpression": "Line.FieldCaptions.UnitPrice",
+                          "@SourceExpression": "Line.FieldCaptions.LineDiscountPct",
                           "@VertAlign": "Bottom",
+                          "@HorzAlign": "Right",
                           "@CanShrink": "true",
-                          "@HorzAlign": "Right"
+                          "@ShowOutput": "DynamicsNavDataSet.HasDiscount==true"
                         },
                         "Line_FieldCaptions_Amount_LinesHeader_LinesHeader": {
                           "@Name": "Line_FieldCaptions_Amount_LinesHeader_LinesHeader",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Weight": "9.072387413946533",
+                          "@Dpi": "254",
+                          "@Weight": "10.206435838415223",
                           "@MultiLine": "true",
                           "@SourceExpression": "Line.FieldCaptions.Amount + ' (' + Header.FieldLookups.CurrencyCode + ')'",
                           "@VertAlign": "Bottom",
@@ -503,31 +682,34 @@
               "@ControlType": "TransHeader",
               "@Name": "TransHeader",
               "@Dpi": "254",
+              "@Font": "Segoe UI, 9.75pt",
               "@BackColor": "Transparent",
               "@Signature": "abc",
-              "@Height": "160.000031",
+              "@Height": "160.000092",
               "Controls": {
                 "TransHeaderTable": {
                   "@Name": "TransHeaderTable",
                   "@ControlType": "Table",
-                  "@Size": "1700,100",
+                  "@Size": "1699.99915,100.000031",
                   "@Location": "0,0",
                   "@Dpi": "254",
+                  "@Font": "Segoe UI, 9.75pt",
                   "@Borders": "Bottom",
                   "Rows": {
                     "TransHeaderRow": {
                       "@Name": "TransHeaderRow",
                       "@ControlType": "TableRow",
                       "@Dpi": "254",
+                      "@Font": "Segoe UI, 9.75pt",
                       "@Weight": "0.5679012345679012",
                       "@AutoFit": "true",
                       "Cells": {
                         "Line_FieldCaptions_No_TransHeader": {
                           "@Name": "Line_FieldCaptions_No_TransHeader",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Weight": "6.8042901034657159",
+                          "@Dpi": "254",
+                          "@Weight": "4.3093839157187164",
                           "@MultiLine": "true",
                           "@SourceExpression": "Line.FieldCaptions.lbtPosNo",
                           "@VertAlign": "Bottom",
@@ -536,9 +718,9 @@
                         "Line_FieldCaptions_Description_TransHeader": {
                           "@Name": "Line_FieldCaptions_Description_TransHeader",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Weight": "34.021453254435",
+                          "@Dpi": "254",
+                          "@Weight": "28.785452214088735",
                           "@MultiLine": "true",
                           "@SourceExpression": "Line.FieldCaptions.Description",
                           "@VertAlign": "Bottom",
@@ -547,9 +729,9 @@
                         "Line_FieldCaptions_Quantity_TransHeader": {
                           "@Name": "Line_FieldCaptions_Quantity_TransHeader",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Weight": "6.8042903911002348",
+                          "@Dpi": "254",
+                          "@Weight": "7.4794008251188364",
                           "@MultiLine": "true",
                           "@SourceExpression": "Line.FieldCaptions.Quantity",
                           "@VertAlign": "Bottom",
@@ -558,9 +740,9 @@
                         "Line_FieldCaptions_UnitofMeasure_TransHeader": {
                           "@Name": "Line_FieldCaptions_UnitofMeasure_TransHeader",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Weight": "6.804290615061201",
+                          "@Dpi": "254",
+                          "@Weight": "9.0723902326714878",
                           "@MultiLine": "true",
                           "@SourceExpression": "Line.FieldCaptions.UnitofMeasure",
                           "@VertAlign": "Bottom",
@@ -569,35 +751,35 @@
                         "Line_FieldCaptions_LineDiscountPct_TransHeader": {
                           "@Name": "Line_FieldCaptions_LineDiscountPct_TransHeader",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@ForeColor": "Black",
                           "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Weight": "6.804290581214345",
+                          "@Dpi": "254",
+                          "@Weight": "7.05579129113106",
                           "@MultiLine": "true",
-                          "@SourceExpression": "Line.FieldCaptions.LineDiscountPct",
+                          "@SourceExpression": "Line.FieldCaptions.UnitPrice",
                           "@VertAlign": "Bottom",
-                          "@HorzAlign": "Right",
-                          "@ShowOutput": "DynamicsNavDataSet.HasDiscount==true"
+                          "@HorzAlign": "Right"
                         },
                         "Line_FieldCaptions_UnitPrice_TransHeader": {
                           "@Name": "Line_FieldCaptions_UnitPrice_TransHeader",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@ForeColor": "Black",
                           "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Dpi": "254",
                           "@Weight": "6.8042905046477546",
                           "@MultiLine": "true",
-                          "@SourceExpression": "Line.FieldCaptions.UnitPrice",
+                          "@SourceExpression": "Line.FieldCaptions.LineDiscountPct",
                           "@VertAlign": "Bottom",
+                          "@HorzAlign": "Right",
                           "@CanShrink": "true",
-                          "@HorzAlign": "Right"
+                          "@ShowOutput": "DynamicsNavDataSet.HasDiscount==true"
                         },
                         "Line_No0": {
                           "@Name": "Line_No0",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Weight": "9.072387413946533",
+                          "@Dpi": "254",
+                          "@Weight": "10.206433069742308",
                           "@MultiLine": "true",
                           "@SourceExpression": "Line.FieldCaptions.Amount + ' (' + Header.FieldLookups.CurrencyCode + ')'",
                           "@VertAlign": "Bottom",
@@ -610,8 +792,8 @@
                 "Continued_Header_Amount": {
                   "@Name": "Continued_Header_Amount",
                   "@ControlType": "TextBox",
-                  "@Size": "299.999878,60",
-                  "@Location": "1400.00012,100",
+                  "@Size": "235.384521,60.00006",
+                  "@Location": "1464.61462,100.000031",
                   "@Dpi": "254",
                   "@Font": "Segoe UI, 8pt, style=Italic",
                   "@HorzAlign": "Right",
@@ -620,8 +802,8 @@
                 "Continued_Header_Caption": {
                   "@Name": "Continued_Header_Caption",
                   "@ControlType": "TextBox",
-                  "@Size": "150,60",
-                  "@Location": "1250,100",
+                  "@Size": "157.261108,60.00006",
+                  "@Location": "1307.69165,100.000031",
                   "@Dpi": "254",
                   "@Font": "Segoe UI, 8pt, style=Bold, Italic",
                   "@SourceExpression": "CurrReport.StandardCaptions.Continued"
@@ -632,28 +814,32 @@
               "@ControlType": "TransFooter",
               "@Name": "TransFooter",
               "@Dpi": "254",
+              "@Font": "Segoe UI, 9.75pt",
               "@BackColor": "Transparent",
+              "@Padding": "0,0,0,100,254",
               "@Signature": "abc",
               "@Height": "90.06427",
               "Controls": {
                 "CompanyInformation_FieldGroups_Address4": {
                   "@Name": "CompanyInformation_FieldGroups_Address4",
                   "@ControlType": "TextBox",
-                  "@Size": "150,60",
-                  "@Location": "1250,0",
+                  "@Size": "214.952148,59.99989",
+                  "@Location": "1249.99988,0",
                   "@Dpi": "254",
                   "@Font": "Segoe UI, 8pt, style=Bold, Italic",
-                  "@SourceExpression": "CurrReport.StandardCaptions.Continued"
+                  "@SourceExpression": "CurrReport.StandardCaptions.Continued",
+                  "@CanShrink": "true"
                 },
                 "CompanyInformation_FieldGroups_Address3": {
                   "@Name": "CompanyInformation_FieldGroups_Address3",
                   "@ControlType": "TextBox",
-                  "@Size": "300,60",
-                  "@Location": "1400,0",
+                  "@Size": "235.047852,59.99989",
+                  "@Location": "1464.95227,0",
                   "@Dpi": "254",
                   "@Font": "Segoe UI, 8pt, style=Italic",
                   "@HorzAlign": "Right",
-                  "@SourceExpression": "Line.Amount"
+                  "@SourceExpression": "Line.Amount",
+                  "@CanShrink": "true"
                 }
               }
             },
@@ -661,7 +847,9 @@
               "@ControlType": "Footer",
               "@Name": "LinesFooter",
               "@Dpi": "254",
+              "@Font": "Segoe UI, 9.75pt",
               "@BackColor": "Transparent",
+              "@CanShrink": "true",
               "@Signature": "abc",
               "@Height": "205.0002",
               "Controls": {
@@ -673,6 +861,7 @@
                   "@ShapeType": "HorzLine",
                   "@Angle": "90",
                   "@Stretch": "true",
+                  "@Font": "Segoe UI, 9.75pt",
                   "@Dpi": "254",
                   "Shape": {
                     "@ShapeName": "Line"
@@ -681,8 +870,8 @@
                 "CurrReport_Caption6": {
                   "@Name": "CurrReport_Caption6",
                   "@ControlType": "TextBox",
-                  "@Size": "299.999878,60",
-                  "@Location": "1399.99976,24.9999275",
+                  "@Size": "235.384888,59.9998932",
+                  "@Location": "1464.61475,24.9997654",
                   "@Dpi": "254",
                   "@Font": "Segoe UI, 8pt, style=Bold",
                   "@SourceExpression": "Header.Amount"
@@ -690,8 +879,8 @@
                 "CurrReport_Caption8": {
                   "@Name": "CurrReport_Caption8",
                   "@ControlType": "TextBox",
-                  "@Size": "300,60",
-                  "@Location": "1399.99976,84.99982",
+                  "@Size": "235.38501,59.9999",
+                  "@Location": "1464.61475,84.99998",
                   "@Dpi": "254",
                   "@Font": "Segoe UI, 8pt",
                   "@SourceExpression": "Header.AmountIncludingVAT-Header.Amount"
@@ -699,8 +888,8 @@
                 "CurrReport_Caption7": {
                   "@Name": "CurrReport_Caption7",
                   "@ControlType": "TextBox",
-                  "@Size": "1397.6665,60.00005",
-                  "@Location": "2.333191,24.9999275",
+                  "@Size": "1462.61914,60.0002136",
+                  "@Location": "2.333191,24.9997654",
                   "@Dpi": "254",
                   "@Font": "Segoe UI, 8pt, style=Bold",
                   "@SourceExpression": "CurrReport.StandardCaptions.SubTotal"
@@ -708,7 +897,7 @@
                 "CurrReport_Caption9": {
                   "@Name": "CurrReport_Caption9",
                   "@ControlType": "TextBox",
-                  "@Size": "1397.6665,59.9998932",
+                  "@Size": "1462.61914,59.9998932",
                   "@Location": "2.333191,145.0002",
                   "@Dpi": "254",
                   "@Font": "Segoe UI, 8pt, style=Bold",
@@ -718,8 +907,8 @@
                 "CompanyInformation_FieldGroups_Address0": {
                   "@Name": "CompanyInformation_FieldGroups_Address0",
                   "@ControlType": "TextBox",
-                  "@Size": "300,60",
-                  "@Location": "1399.99976,145.000031",
+                  "@Size": "235.38501,59.9998932",
+                  "@Location": "1464.61475,145.0002",
                   "@Dpi": "254",
                   "@Font": "Segoe UI, 8pt, style=Bold",
                   "@Borders": "Bottom",
@@ -728,8 +917,8 @@
                 "CompanyInformation_FieldGroups_Address1": {
                   "@Name": "CompanyInformation_FieldGroups_Address1",
                   "@ControlType": "TextBox",
-                  "@Size": "1397.66675,60.00006",
-                  "@Location": "2.333191,84.99982",
+                  "@Size": "1462.61938,60.00022",
+                  "@Location": "2.333191,84.99998",
                   "@Dpi": "254",
                   "@Font": "Segoe UI, 8pt",
                   "@SourceExpression": "CurrReport.StandardCaptions.TaxAmount + (DynamicsNavDataSet.SingleVATPct == 0 ? '' : ' ' + DynamicsNavDataSet.SingleVATPct + '%')"
@@ -739,8 +928,10 @@
             "Body1": {
               "@ControlType": "Body",
               "@Name": "Body1",
+              "@Font": "Segoe UI, 9.75pt",
               "@Dpi": "254",
               "@Signature": "abc",
+              "@CanShrink": "true",
               "@ShowOutput": "Line.Type == Line.FieldOptions.Type.Blank && Line.lbtPrintoption == Line.FieldOptions.lbtPrintoption.Standard",
               "@Height": "60.0000534",
               "Controls": {
@@ -750,19 +941,21 @@
                   "@Size": "1699.99939,60.0000534",
                   "@Location": "0,0",
                   "@Dpi": "254",
+                  "@Font": "Segoe UI, 9.75pt",
                   "Rows": {
                     "tableRow1": {
                       "@Name": "tableRow1",
                       "@ControlType": "TableRow",
                       "@Dpi": "254",
+                      "@Font": "Segoe UI, 9.75pt",
                       "@Weight": "0.5679012345679012",
                       "Cells": {
                         "tableCell15": {
                           "@Name": "tableCell15",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt",
-                          "@Weight": "0.250659904810707",
+                          "@Dpi": "254",
+                          "@Weight": "0.158751273046781",
                           "@SourceExpression": "Line.lbtPosNo",
                           "@VertAlign": "Top",
                           "@HorzAlign": "Left"
@@ -770,9 +963,9 @@
                         "tableCell3": {
                           "@Name": "tableCell3",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt",
-                          "@Weight": "2.5901513297728775",
+                          "@Dpi": "254",
+                          "@Weight": "2.6820599615368033",
                           "@MultiLine": "true",
                           "@SourceExpression": "Line.Description",
                           "@VertAlign": "Top",
@@ -788,8 +981,10 @@
             "BeginTotal": {
               "@ControlType": "Body",
               "@Name": "BeginTotal",
+              "@Font": "Segoe UI, 9.75pt",
               "@Dpi": "254",
               "@Signature": "abc",
+              "@CanShrink": "true",
               "@ShowOutput": "Line.Type == Line.FieldOptions.Type.Blank && Line.lbtPrintoption == Line.FieldOptions.lbtPrintoption.BeginTotal",
               "@Height": "60.0000534",
               "Controls": {
@@ -799,19 +994,21 @@
                   "@Size": "1699.99939,60.0000534",
                   "@Location": "0,0",
                   "@Dpi": "254",
+                  "@Font": "Segoe UI, 9.75pt",
                   "Rows": {
                     "tableRow2": {
                       "@Name": "tableRow2",
                       "@ControlType": "TableRow",
                       "@Dpi": "254",
+                      "@Font": "Segoe UI, 9.75pt",
                       "@Weight": "0.5679012345679012",
                       "Cells": {
                         "tableCell16": {
                           "@Name": "tableCell16",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Weight": "0.250659904810707",
+                          "@Dpi": "254",
+                          "@Weight": "0.158751273046781",
                           "@SourceExpression": "Line.lbtPosNo",
                           "@VertAlign": "Top",
                           "@HorzAlign": "Left"
@@ -819,9 +1016,9 @@
                         "tableCell9": {
                           "@Name": "tableCell9",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Weight": "2.5901513297728775",
+                          "@Dpi": "254",
+                          "@Weight": "2.6820599615368033",
                           "@MultiLine": "true",
                           "@SourceExpression": "Line.Description",
                           "@VertAlign": "Top",
@@ -837,8 +1034,10 @@
             "EndTotal": {
               "@ControlType": "Body",
               "@Name": "EndTotal",
+              "@Font": "Segoe UI, 9.75pt",
               "@Dpi": "254",
               "@Signature": "abc",
+              "@CanShrink": "true",
               "@CanGrow": "true",
               "@ShowOutput": "Line.Type == Line.FieldOptions.Type.Blank && Line.lbtPrintoption == Line.FieldOptions.lbtPrintoption.EndTotal",
               "@Height": "60.0000534",
@@ -849,20 +1048,22 @@
                   "@Size": "1699.99927,60.0000534",
                   "@Location": "0,0",
                   "@Dpi": "254",
+                  "@Font": "Segoe UI, 9.75pt",
                   "@Borders": "None",
                   "Rows": {
                     "tableRow8": {
                       "@Name": "tableRow8",
                       "@ControlType": "TableRow",
                       "@Dpi": "254",
+                      "@Font": "Segoe UI, 9.75pt",
                       "@Weight": "0.5679012345679012",
                       "Cells": {
                         "tableCell17": {
                           "@Name": "tableCell17",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Weight": "0.074320491098524732",
+                          "@Dpi": "254",
+                          "@Weight": "0.046348701168436784",
                           "@SourceExpression": "Line.lbtPosNo",
                           "@VertAlign": "Top",
                           "@HorzAlign": "Left",
@@ -871,9 +1072,9 @@
                         "tableCell2": {
                           "@Name": "tableCell2",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Weight": "0.65863946025923126",
+                          "@Dpi": "254",
+                          "@Weight": "0.637823202340805",
                           "@SourceExpression": "Line.Description",
                           "@VertAlign": "Top",
                           "@HorzAlign": "Left",
@@ -882,9 +1083,9 @@
                         "tableCell13": {
                           "@Name": "tableCell13",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Weight": "0.09643751718073261",
+                          "@Dpi": "254",
+                          "@Weight": "0.10977325083548475",
                           "@SourceExpression": "Line.lbtBalance",
                           "@VertAlign": "Top",
                           "@HorzAlign": "Right",
@@ -899,29 +1100,33 @@
             "Title": {
               "@ControlType": "Body",
               "@Name": "Title",
+              "@Font": "Segoe UI, 9.75pt",
               "@Dpi": "254",
               "@Signature": "abc",
+              "@CanShrink": "true",
               "@ShowOutput": "Line.Type == Line.FieldOptions.Type.Blank && Line.lbtPrintoption == Line.FieldOptions.lbtPrintoption.Title",
               "@Height": "60.0000534",
               "Controls": {
                 "table9": {
                   "@Name": "table9",
                   "@ControlType": "Table",
-                  "@Size": "1547.66614,60.0000534",
-                  "@Location": "152.33316,0",
+                  "@Size": "1602.666,60.0000534",
+                  "@Location": "97.3332062,0",
                   "@Dpi": "254",
+                  "@Font": "Segoe UI, 9.75pt",
                   "Rows": {
                     "tableRow9": {
                       "@Name": "tableRow9",
                       "@ControlType": "TableRow",
                       "@Dpi": "254",
+                      "@Font": "Segoe UI, 9.75pt",
                       "@Weight": "0.5679012345679012",
                       "Cells": {
                         "tableCell14": {
                           "@Name": "tableCell14",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt, style=Bold, Underline",
+                          "@Dpi": "254",
                           "@Weight": "2.586252311689746",
                           "@MultiLine": "true",
                           "@SourceExpression": "Line.Description",
@@ -940,14 +1145,15 @@
               "@Name": "Bold",
               "@Dpi": "254",
               "@Signature": "abc",
+              "@CanGrow": "true",
               "@ShowOutput": "Line.lbtPrintoption == Line.FieldOptions.lbtPrintoption.Bold",
               "@Height": "60.0000534",
               "Controls": {
                 "table11": {
                   "@Name": "table11",
                   "@ControlType": "Table",
-                  "@Size": "1700,60",
-                  "@Location": "2.33317566,0",
+                  "@Size": "1697.666,60.0000534",
+                  "@Location": "2.333191,0",
                   "@Dpi": "254",
                   "@Font": "Segoe UI, 9.75pt",
                   "@Borders": "None",
@@ -962,8 +1168,8 @@
                         "tableCell21": {
                           "@Name": "tableCell21",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Dpi": "254",
                           "@Weight": "0.37799073250730181",
                           "@SourceExpression": "Line.lbtPosNo",
                           "@VertAlign": "Top",
@@ -972,8 +1178,8 @@
                         "tableCell22": {
                           "@Name": "tableCell22",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Dpi": "254",
                           "@Weight": "2.5155861989795825",
                           "@MultiLine": "true",
                           "@SourceExpression": "Line.Description",
@@ -984,8 +1190,8 @@
                         "tableCell23": {
                           "@Name": "tableCell23",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Dpi": "254",
                           "@Weight": "0.65604443680724511",
                           "@BlankZero": "true",
                           "@SourceExpression": "Line.Quantity",
@@ -995,8 +1201,8 @@
                         "tableCell24": {
                           "@Name": "tableCell24",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Dpi": "254",
                           "@Weight": "0.79576999780193625",
                           "@SourceExpression": "Line.UnitofMeasure",
                           "@VertAlign": "Top",
@@ -1005,32 +1211,32 @@
                         "tableCell25": {
                           "@Name": "tableCell25",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Dpi": "254",
                           "@Weight": "0.62817087334880484",
+                          "@BlankZero": "true",
+                          "@SourceExpression": "Line.UnitPrice",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Right"
+                        },
+                        "tableCell26": {
+                          "@Name": "tableCell26",
+                          "@ControlType": "TableCell",
+                          "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "0.59682747770915978",
                           "@BlankZero": "true",
                           "@SourceExpression": "Line.LineDiscountPct",
                           "@VertAlign": "Top",
                           "@HorzAlign": "Right",
                           "@ShowOutput": "DynamicsNavDataSet.HasDiscount==true"
                         },
-                        "tableCell26": {
-                          "@Name": "tableCell26",
-                          "@ControlType": "TableCell",
-                          "@Dpi": "254",
-                          "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Weight": "0.59682747770915978",
-                          "@BlankZero": "true",
-                          "@SourceExpression": "Line.UnitPrice",
-                          "@VertAlign": "Top",
-                          "@HorzAlign": "Right"
-                        },
                         "tableCell27": {
                           "@Name": "tableCell27",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Weight": "1.1936550824200196",
+                          "@Dpi": "254",
+                          "@Weight": "0.895241341262341",
                           "@BlankZero": "true",
                           "@SourceExpression": "Line.Amount",
                           "@VertAlign": "Top",
@@ -1045,19 +1251,19 @@
             "LinesBody": {
               "@ControlType": "Body",
               "@Name": "LinesBody",
+              "@Font": "Segoe UI, 9.75pt",
               "@BackColor": "Transparent",
               "@Dpi": "254",
               "@Signature": "abc",
-              "@CanShrink": "true",
               "@CanGrow": "true",
-              "@ShowOutput": "Line.Type != Line.FieldOptions.Type.Blank && Line.lbtPrintoption == Line.FieldOptions.lbtPrintoption.Standard",
-              "@Height": "60",
+              "@ShowOutput": "Line.Type != Line.FieldOptions.Type.Blank && (Line.lbtPrintoption == Line.FieldOptions.lbtPrintoption.Standard || Line.lbtPrintoption == Line.FieldOptions.lbtPrintoption.PriceInvisible)",
+              "@Height": "60.0000534",
               "Controls": {
                 "LinesTable": {
                   "@Name": "LinesTable",
                   "@ControlType": "Table",
-                  "@Size": "1700,60",
-                  "@Location": "2.33317566,0",
+                  "@Size": "1697.666,60.0000534",
+                  "@Location": "2.333191,0",
                   "@Dpi": "254",
                   "@Font": "Segoe UI, 9.75pt",
                   "@Borders": "None",
@@ -1072,8 +1278,8 @@
                         "Line_No": {
                           "@Name": "Line_No",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt",
+                          "@Dpi": "254",
                           "@Weight": "0.37799073250730181",
                           "@SourceExpression": "Line.lbtPosNo",
                           "@VertAlign": "Top",
@@ -1082,8 +1288,8 @@
                         "Line_Description": {
                           "@Name": "Line_Description",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt",
+                          "@Dpi": "254",
                           "@Weight": "2.5155861989795825",
                           "@MultiLine": "true",
                           "@SourceExpression": "Line.Description",
@@ -1094,8 +1300,8 @@
                         "Line_Quantity": {
                           "@Name": "Line_Quantity",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt",
+                          "@Dpi": "254",
                           "@Weight": "0.65604443680724511",
                           "@BlankZero": "true",
                           "@SourceExpression": "Line.Quantity",
@@ -1105,8 +1311,8 @@
                         "Line_UnitofMeasure": {
                           "@Name": "Line_UnitofMeasure",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt",
+                          "@Dpi": "254",
                           "@Weight": "0.79576999780193625",
                           "@SourceExpression": "Line.UnitofMeasure",
                           "@VertAlign": "Top",
@@ -1115,33 +1321,33 @@
                         "Line_LineDiscountPct": {
                           "@Name": "Line_LineDiscountPct",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt",
+                          "@Dpi": "254",
                           "@Weight": "0.62817087334880484",
-                          "@BlankZero": "true",
-                          "@SourceExpression": "Line.LineDiscountPct",
-                          "@VertAlign": "Top",
-                          "@HorzAlign": "Right",
-                          "@ShowOutput": "DynamicsNavDataSet.HasDiscount==true"
-                        },
-                        "Line_UnitPrice": {
-                          "@Name": "Line_UnitPrice",
-                          "@ControlType": "TableCell",
-                          "@Dpi": "254",
-                          "@Font": "Segoe UI, 8pt",
-                          "@Weight": "0.59682747770915978",
                           "@BlankZero": "true",
                           "@SourceExpression": "Line.UnitPrice",
                           "@VertAlign": "Top",
                           "@HorzAlign": "Right",
                           "@ShowOutput": "Line.lbtPrintoption != Line.FieldOptions.lbtPrintoption.PriceInvisible"
                         },
+                        "Line_UnitPrice": {
+                          "@Name": "Line_UnitPrice",
+                          "@ControlType": "TableCell",
+                          "@Font": "Segoe UI, 8pt",
+                          "@Dpi": "254",
+                          "@Weight": "0.59682747770915978",
+                          "@BlankZero": "true",
+                          "@SourceExpression": "Line.LineDiscountPct",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Right",
+                          "@ShowOutput": "DynamicsNavDataSet.HasDiscount==true"
+                        },
                         "Line_Amount": {
                           "@Name": "Line_Amount",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt",
-                          "@Weight": "1.1936550824200196",
+                          "@Dpi": "254",
+                          "@Weight": "0.895241341262341",
                           "@BlankZero": "true",
                           "@SourceExpression": "Line.Amount",
                           "@VertAlign": "Top",
@@ -1154,25 +1360,137 @@
                 }
               }
             },
+            "LinesBodyAlt": {
+              "@ControlType": "Body",
+              "@Name": "LinesBodyAlt",
+              "@Dpi": "254",
+              "@Signature": "abc",
+              "@CanGrow": "true",
+              "@ShowOutput": "(Line.lbtPrintoption == Line.FieldOptions.lbtPrintoption.Alternative) || (Line.Type != Line.FieldOptions.Type.Blank && Line.lbtPrintoption == Line.FieldOptions.lbtPrintoption.Optional)",
+              "@Height": "60",
+              "Controls": {
+                "table10": {
+                  "@Name": "table10",
+                  "@ControlType": "Table",
+                  "@Size": "1697.666,59.99989",
+                  "@Location": "2.333191,0",
+                  "@Dpi": "254",
+                  "@Font": "Segoe UI, 9.75pt",
+                  "@Borders": "None",
+                  "Rows": {
+                    "tableRow10": {
+                      "@Name": "tableRow10",
+                      "@ControlType": "TableRow",
+                      "@Dpi": "254",
+                      "@Font": "Segoe UI, 9.75pt",
+                      "@Weight": "0.5679012345679012",
+                      "Cells": {
+                        "tableCell8": {
+                          "@Name": "tableCell8",
+                          "@ControlType": "TableCell",
+                          "@Font": "Segoe UI, 8pt, style=Italic",
+                          "@Dpi": "254",
+                          "@Weight": "0.37799073250730181",
+                          "@SourceExpression": "Line.lbtPosNo",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Left"
+                        },
+                        "tableCell10": {
+                          "@Name": "tableCell10",
+                          "@ControlType": "TableCell",
+                          "@Font": "Segoe UI, 8pt, style=Italic",
+                          "@Dpi": "254",
+                          "@Weight": "2.5155861989795825",
+                          "@MultiLine": "true",
+                          "@SourceExpression": "Line.Description",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Left",
+                          "@CanGrow": "true"
+                        },
+                        "tableCell11": {
+                          "@Name": "tableCell11",
+                          "@ControlType": "TableCell",
+                          "@Font": "Segoe UI, 8pt, style=Italic",
+                          "@Dpi": "254",
+                          "@Weight": "0.65604443680724511",
+                          "@BlankZero": "true",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Right"
+                        },
+                        "tableCell12": {
+                          "@Name": "tableCell12",
+                          "@ControlType": "TableCell",
+                          "@Font": "Segoe UI, 8pt, style=Italic",
+                          "@Dpi": "254",
+                          "@Weight": "0.79576999780193625",
+                          "@SourceExpression": "Line.UnitofMeasure",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Right"
+                        },
+                        "tableCell18": {
+                          "@Name": "tableCell18",
+                          "@ControlType": "TableCell",
+                          "@Font": "Segoe UI, 8pt, style=Italic",
+                          "@Dpi": "254",
+                          "@Weight": "0.62817087334880484",
+                          "@BlankZero": "true",
+                          "@SourceExpression": "Line.UnitPrice",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Right"
+                        },
+                        "tableCell19": {
+                          "@Name": "tableCell19",
+                          "@ControlType": "TableCell",
+                          "@Font": "Segoe UI, 8pt, style=Italic",
+                          "@Dpi": "254",
+                          "@Weight": "0.59682747770915978",
+                          "@BlankZero": "true",
+                          "@SourceExpression": "Line.LineDiscountPct",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Right",
+                          "@ShowOutput": "DynamicsNavDataSet.HasDiscount==true"
+                        },
+                        "tableCell20": {
+                          "@Name": "tableCell20",
+                          "@ControlType": "TableCell",
+                          "@Font": "Segoe UI, 8pt, style=Italic",
+                          "@Dpi": "254",
+                          "@Weight": "0.8952413412623409",
+                          "@BlankZero": "true",
+                          "@SourceExpression": "Line.lbtPrintoption",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Right"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
             "LineText": {
               "@ControlType": "Body",
               "@Name": "LineText",
+              "@Font": "Segoe UI, 9.75pt",
               "@Dpi": "254",
               "@Signature": "abc",
               "@CanGrow": "true",
               "@ShowOutput": "DynamicsNavDataSet.lbtLineText != null && DynamicsNavDataSet.lbtLineText !=''",
-              "@Height": "58.20834",
+              "@Height": "60",
               "Controls": {
                 "TextBox5": {
                   "@Name": "TextBox5",
                   "@ControlType": "TextBox",
-                  "@Size": "1513.41663,58.20834",
-                  "@Location": "186.582611,0",
+                  "@Size": "1602.666,58.2083321",
+                  "@Location": "97.3332062,0",
                   "@Dpi": "254",
                   "@Font": "Segoe UI, 8pt",
                   "@VertAlign": "Top",
                   "@HorzAlign": "Left",
-                  "@SourceExpression": "'<!DOCTYPE><html><head><style>p { margin:0;} br { content:\"\"; margin:1em;display:block;font-size:24%;}</style></head><body><div style=\"font-family: Segoe UI; font-size: 8pt; \">'+ \r\nDynamicsNavDataSet.lbtLineText +\r\n'</div></body></html>'",
+                  "@SourceExpression": [
+                    "'<!DOCTYPE><html><head><style>p { margin:0;} br { content:\"\"; margin:1em;display:block;font-size:24%;}</style></head><body><div style=\"font-family: Segoe UI; font-size: 8pt; \">'+ ",
+                    "DynamicsNavDataSet.lbtLineText +",
+                    "'</div></body></html>'"
+                  ],
                   "@CanGrow": "true"
                 }
               }
@@ -1237,16 +1555,17 @@
           "@ControlType": "DataItem",
           "@Name": "VATAmountLine",
           "@Dpi": "254",
-          "@TotalFields": "1,6,3,2",
           "@Temporary": "true",
           "@Id": "1000000001",
+          "@TotalFields": "1,6,3,2",
           "@DataItemTableView": "SORTING(\"VAT Identifier\", \"VAT Calculation Type\", \"Tax Group Code\", \"Use Tax\", Positive)",
-          "@DataItemVarName": "VATAmountLine",
           "@DataItemTable": "Table290",
+          "@DataItemVarName": "VATAmountLine",
           "Bands": {
             "VATBody": {
               "@ControlType": "Body",
               "@Name": "VATBody",
+              "@Font": "Segoe UI, 9.75pt",
               "@BackColor": "Transparent",
               "@Dpi": "254",
               "@Signature": "abc",
@@ -1258,50 +1577,52 @@
                   "@Size": "1700,60",
                   "@Location": "0,0",
                   "@Dpi": "254",
+                  "@Font": "Segoe UI, 9.75pt",
                   "Rows": {
                     "tableRow5": {
                       "@Name": "tableRow5",
                       "@ControlType": "TableRow",
                       "@Dpi": "254",
+                      "@Font": "Segoe UI, 9.75pt",
                       "@Weight": "0.5679012345679012",
                       "Cells": {
                         "Line_No5": {
                           "@Name": "Line_No5",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt",
+                          "@Dpi": "254",
                           "@Weight": "0.47388059701492535",
                           "@SourceExpression": "VATAmountLine.VATIdentifier"
                         },
                         "Line_No6": {
                           "@Name": "Line_No6",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt",
+                          "@Dpi": "254",
                           "@Weight": "0.47388059701492535",
                           "@SourceExpression": "VATAmountLine.VATPct"
                         },
                         "Line_No7": {
                           "@Name": "Line_No7",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt",
+                          "@Dpi": "254",
                           "@Weight": "0.47388059701492535",
                           "@SourceExpression": "VATAmountLine.LineAmount"
                         },
                         "Line_No8": {
                           "@Name": "Line_No8",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt",
+                          "@Dpi": "254",
                           "@Weight": "0.47388059701492535",
                           "@SourceExpression": "VATAmountLine.VATAmount"
                         },
                         "Line_No9": {
                           "@Name": "Line_No9",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Font": "Segoe UI, 8pt",
+                          "@Dpi": "254",
                           "@Weight": "0.47388059701492535",
                           "@SourceExpression": "VATAmountLine.VATBase"
                         }
@@ -1314,49 +1635,52 @@
             "VATHeader": {
               "@ControlType": "Header",
               "@Name": "VATHeader",
+              "@Font": "Segoe UI, 9.75pt",
               "@BackColor": "Transparent",
               "@Dpi": "254",
               "@Signature": "abc",
-              "@Height": "70",
+              "@Height": "103.208328",
               "Controls": {
                 "table6": {
                   "@Name": "table6",
                   "@ControlType": "Table",
                   "@Size": "1700,60",
-                  "@Location": "0,10",
+                  "@Location": "0,25",
                   "@Dpi": "254",
+                  "@Font": "Segoe UI, 9.75pt",
                   "Rows": {
                     "tableRow6": {
                       "@Name": "tableRow6",
                       "@ControlType": "TableRow",
                       "@Dpi": "254",
+                      "@Font": "Segoe UI, 9.75pt",
                       "@Weight": "0.5679012345679012",
                       "Cells": {
                         "Line_Description0": {
                           "@Name": "Line_Description0",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Borders": "Bottom",
                           "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Dpi": "254",
                           "@Weight": "0.47388059701492535",
                           "@SourceExpression": "VATAmountLine.FieldCaptions.VATIdentifier"
                         },
                         "Line_Description1": {
                           "@Name": "Line_Description1",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Borders": "Bottom",
                           "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Weight": "0.47388059701492535",
+                          "@Dpi": "254",
+                          "@Weight": "0.0069688323090430146",
                           "@SourceExpression": "VATAmountLine.FieldCaptions.VATPct",
                           "@HorzAlign": "Right"
                         },
                         "Line_Description2": {
                           "@Name": "Line_Description2",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Borders": "Bottom",
                           "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Dpi": "254",
                           "@Weight": "0.47388059701492535",
                           "@SourceExpression": "VATAmountLine.FieldCaptions.LineAmount",
                           "@HorzAlign": "Right"
@@ -1364,9 +1688,9 @@
                         "Line_Description3": {
                           "@Name": "Line_Description3",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Borders": "Bottom",
                           "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Dpi": "254",
                           "@Weight": "0.47388059701492535",
                           "@SourceExpression": "VATAmountLine.FieldCaptions.VATAmount",
                           "@HorzAlign": "Right"
@@ -1374,9 +1698,9 @@
                         "Line_Description4": {
                           "@Name": "Line_Description4",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Borders": "Bottom",
                           "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Dpi": "254",
                           "@Weight": "0.47388059701492535",
                           "@SourceExpression": "VATAmountLine.FieldCaptions.VATBase",
                           "@HorzAlign": "Right"
@@ -1391,6 +1715,7 @@
               "@ControlType": "Footer",
               "@Name": "VATFooter",
               "@Dpi": "254",
+              "@Font": "Segoe UI, 9.75pt",
               "@BackColor": "Transparent",
               "@Signature": "abc",
               "@Height": "60",
@@ -1401,45 +1726,47 @@
                   "@Size": "1700,60",
                   "@Location": "0,0",
                   "@Dpi": "254",
+                  "@Font": "Segoe UI, 9.75pt",
                   "Rows": {
                     "tableRow7": {
                       "@Name": "tableRow7",
                       "@ControlType": "TableRow",
                       "@Dpi": "254",
+                      "@Font": "Segoe UI, 9.75pt",
                       "@Weight": "0.5679012345679012",
                       "Cells": {
                         "tableCell1": {
                           "@Name": "tableCell1",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Borders": "Top",
                           "@Font": "Segoe UI, 8pt",
+                          "@Dpi": "254",
                           "@Weight": "0.94653669740502477"
                         },
                         "Line_Description7": {
                           "@Name": "Line_Description7",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Borders": "Top, Bottom",
                           "@Font": "Segoe UI, 8pt",
+                          "@Dpi": "254",
                           "@Weight": "0.47326838354421652",
                           "@SourceExpression": "VATAmountLine.LineAmount"
                         },
                         "Line_Description8": {
                           "@Name": "Line_Description8",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Borders": "Top, Bottom",
                           "@Font": "Segoe UI, 8pt",
+                          "@Dpi": "254",
                           "@Weight": "0.47326838354421646",
                           "@SourceExpression": "VATAmountLine.VATAmount"
                         },
                         "Line_Description9": {
                           "@Name": "Line_Description9",
                           "@ControlType": "TableCell",
-                          "@Dpi": "254",
                           "@Borders": "Top, Bottom",
                           "@Font": "Segoe UI, 8pt",
+                          "@Dpi": "254",
                           "@Weight": "0.47326838354421652",
                           "@SourceExpression": "VATAmountLine.VATBase"
                         }
@@ -1496,12 +1823,13 @@
           "@Temporary": "true",
           "@Id": "1000000002",
           "@DataItemTableView": "SORTING(Code)",
-          "@DataItemVarName": "VATClause",
           "@DataItemTable": "Table560",
+          "@DataItemVarName": "VATClause",
           "Bands": {
             "VATClauseBody": {
               "@ControlType": "Body",
               "@Name": "VATClauseBody",
+              "@Font": "Segoe UI, 9.75pt",
               "@BackColor": "Transparent",
               "@Dpi": "254",
               "@Signature": "abc",
@@ -1542,12 +1870,13 @@
           "@Id": "1000000003",
           "@ShowOutput": "DynamicsNavDataSet.FooterText != ''",
           "@DataItemTableView": "SORTING(Number) WHERE(Number = CONST(1))",
-          "@DataItemVarName": "Integer",
           "@DataItemTable": "Table2000000026",
+          "@DataItemVarName": "Integer",
           "Bands": {
             "Body3": {
               "@ControlType": "Body",
               "@Name": "Body3",
+              "@Font": "Segoe UI, 9.75pt",
               "@Dpi": "254",
               "@Signature": "abc",
               "@CanGrow": "true",
@@ -1559,6 +1888,7 @@
                   "@Size": "847.666748,58.4198761",
                   "@Location": "2.333191,185.419891",
                   "@Dpi": "254",
+                  "@Font": "Segoe UI, 8.25pt",
                   "@VertAlign": "Top",
                   "@HorzAlign": "Left",
                   "@SourceExpression": "Header.FieldGroups.Ship_toAddress",
@@ -1579,16 +1909,19 @@
                   "@Size": "1700,63.5",
                   "@Location": "0,63.5",
                   "@Dpi": "254",
+                  "@Font": "Segoe UI, 9.75pt",
                   "Rows": {
                     "tableRow4": {
                       "@Name": "tableRow4",
                       "@ControlType": "TableRow",
                       "@Dpi": "254",
+                      "@Font": "Segoe UI, 9.75pt",
                       "@Weight": "0.5679012345679012",
                       "Cells": {
                         "tableCell6": {
                           "@Name": "tableCell6",
                           "@ControlType": "TableCell",
+                          "@Font": "Segoe UI, 8pt",
                           "@Dpi": "254",
                           "@Weight": "0.21308724832214765",
                           "@SourceExpression": "Header.FieldLookups.ShipmentMethodCaption"
@@ -1596,6 +1929,7 @@
                         "tableCell7": {
                           "@Name": "tableCell7",
                           "@ControlType": "TableCell",
+                          "@Font": "Segoe UI, 8pt",
                           "@Dpi": "254",
                           "@Weight": "0.21308724832214765",
                           "@SourceExpression": "Header.FieldLookups.ShipmentMethodDescription"
@@ -1610,16 +1944,19 @@
                   "@Size": "1700,63.5",
                   "@Location": "0,0",
                   "@Dpi": "254",
+                  "@Font": "Segoe UI, 9.75pt",
                   "Rows": {
                     "tableRow3": {
                       "@Name": "tableRow3",
                       "@ControlType": "TableRow",
                       "@Dpi": "254",
+                      "@Font": "Segoe UI, 9.75pt",
                       "@Weight": "0.5679012345679012",
                       "Cells": {
                         "tableCell4": {
                           "@Name": "tableCell4",
                           "@ControlType": "TableCell",
+                          "@Font": "Segoe UI, 8pt",
                           "@Dpi": "254",
                           "@Weight": "0.21308724832214765",
                           "@SourceExpression": "Header.FieldLookups.PaymentTermsCaption"
@@ -1627,6 +1964,7 @@
                         "tableCell5": {
                           "@Name": "tableCell5",
                           "@ControlType": "TableCell",
+                          "@Font": "Segoe UI, 8pt",
                           "@Dpi": "254",
                           "@Weight": "0.21308724832214765",
                           "@SourceExpression": "Header.FieldLookups.PaymentTermsDescription"
@@ -1640,8 +1978,10 @@
             "Body2": {
               "@ControlType": "Body",
               "@Name": "Body2",
+              "@Font": "Segoe UI, 9.75pt",
               "@Dpi": "254",
               "@Signature": "abc",
+              "@CanShrink": "true",
               "@CanGrow": "true",
               "@ShowOutput": "DynamicsNavDataSet.lbtFooterText != null && DynamicsNavDataSet.lbtFooterText !=''",
               "@Height": "108.479164",
@@ -1655,8 +1995,15 @@
                   "@Font": "Segoe UI, 8pt",
                   "@VertAlign": "Top",
                   "@HorzAlign": "Left",
-                  "@SourceExpression": "'<!DOCTYPE><html><head><style>p { margin:0;} br { content:\"\"; margin:1em;display:block;font-size:24%;}</style></head><body><div style=\"font-family: Segoe UI; font-size: 8pt; \">'+ \r\nDynamicsNavDataSet.lbtFooterText +\r\n'</div></body></html>'\r\n\r\n",
-                  "@CanGrow": "true"
+                  "@SourceExpression": [
+                    "'<!DOCTYPE><html><head><style>p { margin:0;} br { content:\"\"; margin:1em;display:block;font-size:24%;}</style></head><body><div style=\"font-family: Segoe UI; font-size: 8pt; \">'+ ",
+                    "DynamicsNavDataSet.lbtFooterText +",
+                    "'</div></body></html>'",
+                    "",
+                    ""
+                  ],
+                  "@CanGrow": "true",
+                  "@CanShrink": "true"
                 }
               }
             }
@@ -1680,6 +2027,10 @@
           "@FieldName": "Format Region",
           "@FieldNo": "42"
         },
+        "SalespersonCode": {
+          "@FieldName": "Salesperson Code",
+          "@FieldNo": "43"
+        },
         "Amount": {
           "@FieldName": "Amount",
           "@FieldNo": "60"
@@ -1695,6 +2046,10 @@
         "DocumentDate": {
           "@FieldName": "Document Date",
           "@FieldNo": "99"
+        },
+        "ExternalDocumentNo": {
+          "@FieldName": "External Document No.",
+          "@FieldNo": "100"
         }
       }
     },
@@ -1709,6 +2064,19 @@
       "@ControlType": "BottomMargin",
       "@Dpi": "254",
       "@Height": "200"
+    }
+  },
+  "DesignerOptions": {
+    "@ShowExportWarnings": "false"
+  },
+  "Labels": {
+    "Alternative": {
+      "@Id": "1000000010",
+      "@Name": "Alternative"
+    },
+    "Optional": {
+      "@Id": "1000000011",
+      "@Name": "Optional"
     }
   },
   "Records": {
@@ -1849,8 +2217,5 @@
         }
       }
     }
-  },
-  "DesignerOptions": {
-    "@ShowExportWarnings": "false"
   }
 }

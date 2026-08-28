@@ -41,6 +41,16 @@ reportextension 5266407 "lbt Draft Invoice" extends "ForNAV VAT Draft Invoice"
         }
     }
 
+    rendering
+    {
+        layout(lbtconscoo)
+        {
+            Caption = 'conscoo', Locked = true;
+            Type = Custom;
+            MimeType = 'FORNAV';
+            LayoutFile = 'Layouts\S. Draft Invoice.docx';
+        }
+    }
     trigger OnPreReport()
     var
         lbtFormatDocument: Codeunit "lbt Format Document";

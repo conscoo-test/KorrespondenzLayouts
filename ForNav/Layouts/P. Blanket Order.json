@@ -1,38 +1,37 @@
 {
   "@ReportUnit": "TenthsOfAMillimeter",
-  "@Margins": "300, 100, 200, 200",
+  "@Margins": "201, 101, 100, 50",
   "@Dpi": "254",
-  "@Font": "Segoe UI, 8pt",
-  "@ReportsForNavVersion": "8.2.0.2796",
-  "@ObjectName": "lbt Purchase Template",
-  "@OnPreReportScript": [
-    "function LineMaster() {",
-    "    // put stuff here, that should run in all reports",
-    "    // can be overwritten in layout",
-    "}"
-  ],
+  "@Font": "Verdana, 9pt",
+  "@ReqSaveValues": "true",
+  "@UsageCategory": "ReportsAndAnalysis",
+  "@ObjectName": "Report 6188508",
+  "@OnPreReportMasterScript": "lbt Purchase Template",
   "Bands": {
     "Header": {
       "@ControlType": "DataItem",
       "@Name": "Header",
       "@Dpi": "254",
-      "@CalcFields": "Amount, \"Amount Including VAT\"",
+      "@CalcFields": "\"Amount Including VAT\", Amount",
       "@ResetPageNumber": "true",
       "@NewPagePerRecord": "true",
       "@Id": "2",
       "@TotalFields": "60,61",
-      "@DataItemTableView": "SORTING(\"No.\")",
-      "@ReqFilterFields": "\"No.\"",
-      "@MaxIteration": "10",
-      "@DataItemTable": "Table122",
+      "@TotalColumns": "Header$Amount,Header$AmountIncludingVAT",
+      "@DataItemTableView": "SORTING(\"Document Type\", \"No.\") WHERE(\"Document Type\" = const(Order))",
+      "@ReqFilterFields": "\"No.\",\"Posting Date\"",
+      "@GroupTotalFields": "\"3\"",
+      "@GroupTotalFieldNames": "\"No.\"",
+      "@DataItemTable": "Table38",
       "@DataItemVarName": "Header",
       "Bands": {
         "DocumentHeader": {
           "@ControlType": "Header",
           "@Name": "DocumentHeader",
-          "@BackColor": "Transparent",
+          "@BackColor": "Beige",
           "@Dpi": "254",
           "@Signature": "abc",
+          "@MasterSection": "lbt Purchase Template,DocumentHeader",
           "@PrintOnEveryPage": "true",
           "@ShowOutput": "CurrReport.PageNo == 1",
           "@Height": "739.062439",
@@ -259,8 +258,9 @@
           "@ControlType": "Footer",
           "@Name": "Footer",
           "@Dpi": "254",
-          "@BackColor": "Transparent",
+          "@BackColor": "Beige",
           "@Padding": "0,0,0,0,254",
+          "@MasterSection": "lbt Purchase Template,Footer",
           "@PrintOnEveryPage": "true",
           "@PlaceInBottom": "true",
           "@Signature": "abc",
@@ -333,8 +333,10 @@
         "Header1": {
           "@ControlType": "Header",
           "@Name": "Header1",
+          "@BackColor": "Beige",
           "@Dpi": "254",
           "@Signature": "abc",
+          "@MasterSection": "lbt Purchase Template,Header1",
           "@PrintOnEveryPage": "true",
           "@ShowOutput": "CurrReport.PageNo > 1",
           "@Height": "142.875",
@@ -386,8 +388,10 @@
         "HeaderText": {
           "@ControlType": "Body",
           "@Name": "HeaderText",
+          "@BackColor": "Beige",
           "@Dpi": "254",
           "@Signature": "abc",
+          "@MasterSection": "lbt Purchase Template,HeaderText",
           "@CanGrow": "true",
           "@ShowOutput": "DynamicsNavDataSet.lbtHeaderText != null && DynamicsNavDataSet.lbtHeaderText != ''",
           "@AllowScriptErrors": "true",
@@ -416,20 +420,23 @@
           "@ControlType": "DataItem",
           "@Name": "Line",
           "@Dpi": "254",
-          "@CalcFields": "\"lbt Balance\"",
           "@Id": "3",
+          "@OnAfterGetRecordScript": "LineMaster()",
           "@TotalFields": "29",
+          "@TotalColumns": "Line$Amount",
           "@DataItemTableView": "SORTING(\"Document No.\", \"Line No.\")",
-          "@DataItemLink": "\"Document No.\" = FIELD(\"No.\")",
-          "@DataItemTable": "Table123",
+          "@DataItemLinkReference": "Header",
+          "@DataItemLink": "\"Document No.\" = FIELD(\"No.\"), \"Document Type\" = FIELD(\"Document Type\")",
+          "@DataItemTable": "Table39",
           "@DataItemVarName": "Line",
           "Bands": {
             "LinesHeader": {
               "@ControlType": "Header",
               "@Name": "LinesHeader",
-              "@BackColor": "Transparent",
+              "@BackColor": "Beige",
               "@Dpi": "254",
               "@Signature": "abc",
+              "@MasterSection": "lbt Purchase Template,LinesHeader",
               "@Height": "110",
               "Controls": {
                 "LinesHeaderTable": {
@@ -541,7 +548,8 @@
               "@ControlType": "TransHeader",
               "@Name": "TransHeader",
               "@Dpi": "254",
-              "@BackColor": "Transparent",
+              "@BackColor": "Beige",
+              "@MasterSection": "lbt Purchase Template,TransHeader",
               "@Signature": "abc",
               "@Height": "160",
               "Controls": {
@@ -670,7 +678,8 @@
               "@ControlType": "TransFooter",
               "@Name": "TransFooter",
               "@Dpi": "254",
-              "@BackColor": "Transparent",
+              "@BackColor": "Beige",
+              "@MasterSection": "lbt Purchase Template,TransFooter",
               "@Signature": "abc",
               "@Height": "90.06427",
               "Controls": {
@@ -699,7 +708,8 @@
               "@ControlType": "Footer",
               "@Name": "LinesFooter",
               "@Dpi": "254",
-              "@BackColor": "Transparent",
+              "@BackColor": "Beige",
+              "@MasterSection": "lbt Purchase Template,LinesFooter",
               "@Signature": "abc",
               "@Height": "205.0002",
               "Controls": {
@@ -777,8 +787,10 @@
             "Body1": {
               "@ControlType": "Body",
               "@Name": "Body1",
+              "@BackColor": "Beige",
               "@Dpi": "254",
               "@Signature": "abc",
+              "@MasterSection": "lbt Purchase Template,Body1",
               "@ShowOutput": "Line.Type == Line.FieldOptions.Type.Blank && Line.lbtPrintoption == Line.FieldOptions.lbtPrintoption.Standard",
               "@Height": "60.0000534",
               "Controls": {
@@ -826,8 +838,10 @@
             "BeginTotal": {
               "@ControlType": "Body",
               "@Name": "BeginTotal",
+              "@BackColor": "Beige",
               "@Dpi": "254",
               "@Signature": "abc",
+              "@MasterSection": "lbt Purchase Template,BeginTotal",
               "@ShowOutput": "Line.Type == Line.FieldOptions.Type.Blank && Line.lbtPrintoption == Line.FieldOptions.lbtPrintoption.BeginTotal",
               "@Height": "60.0000534",
               "Controls": {
@@ -875,8 +889,10 @@
             "EndTotal": {
               "@ControlType": "Body",
               "@Name": "EndTotal",
+              "@BackColor": "Beige",
               "@Dpi": "254",
               "@Signature": "abc",
+              "@MasterSection": "lbt Purchase Template,EndTotal",
               "@CanGrow": "true",
               "@ShowOutput": "Line.Type == Line.FieldOptions.Type.Blank && Line.lbtPrintoption == Line.FieldOptions.lbtPrintoption.EndTotal",
               "@Height": "60.0000534",
@@ -937,8 +953,10 @@
             "Title": {
               "@ControlType": "Body",
               "@Name": "Title",
+              "@BackColor": "Beige",
               "@Dpi": "254",
               "@Signature": "abc",
+              "@MasterSection": "lbt Purchase Template,Title",
               "@ShowOutput": "Line.Type == Line.FieldOptions.Type.Blank && Line.lbtPrintoption == Line.FieldOptions.lbtPrintoption.Title",
               "@Height": "60.0000534",
               "Controls": {
@@ -973,12 +991,121 @@
                 }
               }
             },
+            "Bold": {
+              "@ControlType": "Body",
+              "@Name": "Bold",
+              "@BackColor": "Beige",
+              "@Dpi": "254",
+              "@Signature": "abc",
+              "@MasterSection": "lbt Purchase Template,Bold",
+              "@CanGrow": "true",
+              "@ShowOutput": "Line.lbtPrintoption == Line.FieldOptions.lbtPrintoption.Bold",
+              "@Height": "60.0000534",
+              "Controls": {
+                "table10": {
+                  "@Name": "table10",
+                  "@ControlType": "Table",
+                  "@Size": "1700,60",
+                  "@Location": "2.33317566,0",
+                  "@Dpi": "254",
+                  "@Borders": "None",
+                  "Rows": {
+                    "tableRow10": {
+                      "@Name": "tableRow10",
+                      "@ControlType": "TableRow",
+                      "@Dpi": "254",
+                      "@Weight": "0.5679012345679012",
+                      "Cells": {
+                        "tableCell8": {
+                          "@Name": "tableCell8",
+                          "@ControlType": "TableCell",
+                          "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "0.59682747602293285",
+                          "@SourceExpression": "Line.lbtPosNo",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Left"
+                        },
+                        "tableCell10": {
+                          "@Name": "tableCell10",
+                          "@ControlType": "TableCell",
+                          "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "2.586252311689746",
+                          "@MultiLine": "true",
+                          "@SourceExpression": "Line.Description",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Left",
+                          "@CanGrow": "true"
+                        },
+                        "tableCell11": {
+                          "@Name": "tableCell11",
+                          "@ControlType": "TableCell",
+                          "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "0.59682747434681971",
+                          "@BlankZero": "true",
+                          "@SourceExpression": "Line.Quantity",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Right"
+                        },
+                        "tableCell12": {
+                          "@Name": "tableCell12",
+                          "@ControlType": "TableCell",
+                          "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "0.59682750369681714",
+                          "@SourceExpression": "Line.UnitofMeasure",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Right"
+                        },
+                        "tableCell18": {
+                          "@Name": "tableCell18",
+                          "@ControlType": "TableCell",
+                          "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "0.59682747368855438",
+                          "@BlankZero": "true",
+                          "@SourceExpression": "Line.LineDiscountPct",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Right",
+                          "@ShowOutput": "DynamicsNavDataSet.HasDiscount==true"
+                        },
+                        "tableCell19": {
+                          "@Name": "tableCell19",
+                          "@ControlType": "TableCell",
+                          "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "0.59682747770915978",
+                          "@BlankZero": "true",
+                          "@SourceExpression": "Line.UnitCost",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Right"
+                        },
+                        "tableCell20": {
+                          "@Name": "tableCell20",
+                          "@ControlType": "TableCell",
+                          "@Font": "Segoe UI, 8pt, style=Bold",
+                          "@Dpi": "254",
+                          "@Weight": "1.1936550824200196",
+                          "@BlankZero": "true",
+                          "@SourceExpression": "Line.Amount",
+                          "@VertAlign": "Top",
+                          "@HorzAlign": "Right"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
             "LinesBody": {
               "@ControlType": "Body",
               "@Name": "LinesBody",
-              "@BackColor": "Transparent",
+              "@BackColor": "Beige",
               "@Dpi": "254",
               "@Signature": "abc",
+              "@MasterSection": "lbt Purchase Template,LinesBody",
               "@CanShrink": "true",
               "@CanGrow": "true",
               "@ShowOutput": "Line.Type != Line.FieldOptions.Type.Blank && Line.lbtPrintoption == Line.FieldOptions.lbtPrintoption.Standard",
@@ -1084,8 +1211,10 @@
             "LineText": {
               "@ControlType": "Body",
               "@Name": "LineText",
+              "@BackColor": "Beige",
               "@Dpi": "254",
               "@Signature": "abc",
+              "@MasterSection": "lbt Purchase Template,LineText",
               "@CanGrow": "true",
               "@ShowOutput": "DynamicsNavDataSet.lbtLineText != null && DynamicsNavDataSet.lbtLineText !=''",
               "@Height": "58.20834",
@@ -1107,112 +1236,6 @@
                   "@CanGrow": "true"
                 }
               }
-            },
-            "Bold": {
-              "@ControlType": "Body",
-              "@Name": "Bold",
-              "@Dpi": "254",
-              "@Signature": "abc",
-              "@CanGrow": "true",
-              "@ShowOutput": "Line.lbtPrintoption == Line.FieldOptions.lbtPrintoption.Bold",
-              "@Height": "60.0000534",
-              "Controls": {
-                "table10": {
-                  "@Name": "table10",
-                  "@ControlType": "Table",
-                  "@Size": "1700,60",
-                  "@Location": "2.33317566,0",
-                  "@Dpi": "254",
-                  "@Borders": "None",
-                  "Rows": {
-                    "tableRow10": {
-                      "@Name": "tableRow10",
-                      "@ControlType": "TableRow",
-                      "@Dpi": "254",
-                      "@Weight": "0.5679012345679012",
-                      "Cells": {
-                        "tableCell8": {
-                          "@Name": "tableCell8",
-                          "@ControlType": "TableCell",
-                          "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Dpi": "254",
-                          "@Weight": "0.59682747602293285",
-                          "@SourceExpression": "Line.lbtPosNo",
-                          "@VertAlign": "Top",
-                          "@HorzAlign": "Left"
-                        },
-                        "tableCell10": {
-                          "@Name": "tableCell10",
-                          "@ControlType": "TableCell",
-                          "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Dpi": "254",
-                          "@Weight": "2.586252311689746",
-                          "@MultiLine": "true",
-                          "@SourceExpression": "Line.Description",
-                          "@VertAlign": "Top",
-                          "@HorzAlign": "Left",
-                          "@CanGrow": "true"
-                        },
-                        "tableCell11": {
-                          "@Name": "tableCell11",
-                          "@ControlType": "TableCell",
-                          "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Dpi": "254",
-                          "@Weight": "0.59682747434681971",
-                          "@BlankZero": "true",
-                          "@SourceExpression": "Line.Quantity",
-                          "@VertAlign": "Top",
-                          "@HorzAlign": "Right"
-                        },
-                        "tableCell12": {
-                          "@Name": "tableCell12",
-                          "@ControlType": "TableCell",
-                          "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Dpi": "254",
-                          "@Weight": "0.59682750369681714",
-                          "@SourceExpression": "Line.UnitofMeasure",
-                          "@VertAlign": "Top",
-                          "@HorzAlign": "Right"
-                        },
-                        "tableCell18": {
-                          "@Name": "tableCell18",
-                          "@ControlType": "TableCell",
-                          "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Dpi": "254",
-                          "@Weight": "0.59682747368855438",
-                          "@BlankZero": "true",
-                          "@SourceExpression": "Line.LineDiscountPct",
-                          "@VertAlign": "Top",
-                          "@HorzAlign": "Right",
-                          "@ShowOutput": "DynamicsNavDataSet.HasDiscount==true"
-                        },
-                        "tableCell19": {
-                          "@Name": "tableCell19",
-                          "@ControlType": "TableCell",
-                          "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Dpi": "254",
-                          "@Weight": "0.59682747770915978",
-                          "@BlankZero": "true",
-                          "@SourceExpression": "Line.UnitCost",
-                          "@VertAlign": "Top",
-                          "@HorzAlign": "Right"
-                        },
-                        "tableCell20": {
-                          "@Name": "tableCell20",
-                          "@ControlType": "TableCell",
-                          "@Font": "Segoe UI, 8pt, style=Bold",
-                          "@Dpi": "254",
-                          "@Weight": "1.1936550824200196",
-                          "@BlankZero": "true",
-                          "@SourceExpression": "Line.Amount",
-                          "@VertAlign": "Top",
-                          "@HorzAlign": "Right"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
             }
           },
           "Fields": {
@@ -1228,45 +1251,13 @@
               "@FieldName": "Type",
               "@FieldNo": "5"
             },
-            "No": {
-              "@FieldName": "No.",
-              "@FieldNo": "6"
-            },
-            "Description": {
-              "@FieldName": "Description",
-              "@FieldNo": "11"
-            },
-            "UnitofMeasure": {
-              "@FieldName": "Unit of Measure",
-              "@FieldNo": "13"
-            },
-            "Quantity": {
-              "@FieldName": "Quantity",
-              "@FieldNo": "15"
-            },
-            "LineDiscountPct": {
-              "@FieldName": "Line Discount %",
-              "@FieldNo": "27"
-            },
             "Amount": {
               "@FieldName": "Amount",
               "@FieldNo": "29"
             },
-            "UnitCost": {
-              "@FieldName": "Unit Cost",
-              "@FieldNo": "100"
-            },
             "lbtPrintoption": {
               "@FieldName": "lbt Printoption",
               "@FieldNo": "5272721"
-            },
-            "lbtBalance": {
-              "@FieldName": "lbt Balance",
-              "@FieldNo": "5272723"
-            },
-            "lbtPosNo": {
-              "@FieldName": "lbt Pos. No.",
-              "@FieldNo": "5272724"
             }
           }
         },
@@ -1277,6 +1268,7 @@
           "@Temporary": "true",
           "@Id": "1000000001",
           "@TotalFields": "1,6,3,2",
+          "@TotalColumns": "VATAmountLine$VATPct,VATAmountLine$LineAmount,VATAmountLine$VATAmount,VATAmountLine$VATBase",
           "@DataItemTableView": "SORTING(\"VAT Identifier\", \"VAT Calculation Type\", \"Tax Group Code\", \"Use Tax\", Positive)",
           "@DataItemTable": "Table290",
           "@DataItemVarName": "VATAmountLine",
@@ -1284,9 +1276,10 @@
             "VATBody": {
               "@ControlType": "Body",
               "@Name": "VATBody",
-              "@BackColor": "Transparent",
+              "@BackColor": "Beige",
               "@Dpi": "254",
               "@Signature": "abc",
+              "@MasterSection": "lbt Purchase Template,VATBody",
               "@Height": "60",
               "Controls": {
                 "table5": {
@@ -1351,9 +1344,10 @@
             "VATHeader": {
               "@ControlType": "Header",
               "@Name": "VATHeader",
-              "@BackColor": "Transparent",
+              "@BackColor": "Beige",
               "@Dpi": "254",
               "@Signature": "abc",
+              "@MasterSection": "lbt Purchase Template,VATHeader",
               "@Height": "70",
               "Controls": {
                 "table6": {
@@ -1428,7 +1422,8 @@
               "@ControlType": "Footer",
               "@Name": "VATFooter",
               "@Dpi": "254",
-              "@BackColor": "Transparent",
+              "@BackColor": "Beige",
+              "@MasterSection": "lbt Purchase Template,VATFooter",
               "@Signature": "abc",
               "@Height": "60",
               "Controls": {
@@ -1539,9 +1534,10 @@
             "VATClauseBody": {
               "@ControlType": "Body",
               "@Name": "VATClauseBody",
-              "@BackColor": "Transparent",
+              "@BackColor": "Beige",
               "@Dpi": "254",
               "@Signature": "abc",
+              "@MasterSection": "lbt Purchase Template,VATClauseBody",
               "@Height": "60",
               "Controls": {
                 "Header_FieldGroups_Bill_toAddress1": {
@@ -1561,14 +1557,6 @@
             "Code": {
               "@FieldName": "Code",
               "@FieldNo": "1"
-            },
-            "Description": {
-              "@FieldName": "Description",
-              "@FieldNo": "2"
-            },
-            "Description2": {
-              "@FieldName": "Description 2",
-              "@FieldNo": "3"
             }
           }
         },
@@ -1576,17 +1564,20 @@
           "@ControlType": "DataItem",
           "@Name": "Integer",
           "@Dpi": "254",
-          "@Id": "1000000003",
-          "@ShowOutput": "DynamicsNavDataSet.FooterText != ''",
-          "@DataItemTableView": "SORTING(Number) WHERE(Number = CONST(1))",
+          "@Id": "1000000005",
+          "@IsVirtual": "true",
+          "@Predeccessor": "VATClause",
+          "@DataItemTableView": "SORTING(Number) WHERE(Number=Const(1))",
+          "@CustomDataItem": "CalcFieldsTableView",
           "@DataItemTable": "Table2000000026",
-          "@DataItemVarName": "Integer",
           "Bands": {
             "Body3": {
               "@ControlType": "Body",
               "@Name": "Body3",
+              "@BackColor": "Beige",
               "@Dpi": "254",
               "@Signature": "abc",
+              "@MasterSection": "lbt Purchase Template,Body3",
               "@CanGrow": "true",
               "@Height": "127",
               "Controls": {
@@ -1657,8 +1648,10 @@
             "Body2": {
               "@ControlType": "Body",
               "@Name": "Body2",
+              "@BackColor": "Beige",
               "@Dpi": "254",
               "@Signature": "abc",
+              "@MasterSection": "lbt Purchase Template,Body2",
               "@CanGrow": "true",
               "@ShowOutput": "DynamicsNavDataSet.lbtFooterText != null && DynamicsNavDataSet.lbtFooterText !=''",
               "@Height": "108.479164",
@@ -1687,21 +1680,13 @@
         }
       },
       "Fields": {
-        "Buy_fromVendorNo": {
-          "@FieldName": "Buy-from Vendor No.",
-          "@FieldNo": "2"
+        "DocumentType": {
+          "@FieldName": "Document Type",
+          "@FieldNo": "1"
         },
         "No": {
           "@FieldName": "No.",
           "@FieldNo": "3"
-        },
-        "Pay_toVendorNo": {
-          "@FieldName": "Pay-to Vendor No.",
-          "@FieldNo": "4"
-        },
-        "YourReference": {
-          "@FieldName": "Your Reference",
-          "@FieldNo": "11"
         },
         "FormatRegion": {
           "@FieldName": "Format Region",
@@ -1714,14 +1699,6 @@
         "AmountIncludingVAT": {
           "@FieldName": "Amount Including VAT",
           "@FieldNo": "61"
-        },
-        "VATRegistrationNo": {
-          "@FieldName": "VAT Registration No.",
-          "@FieldNo": "70"
-        },
-        "DocumentDate": {
-          "@FieldName": "Document Date",
-          "@FieldNo": "99"
         }
       }
     },
@@ -1729,13 +1706,13 @@
       "@Name": "topMarginBand1",
       "@ControlType": "TopMargin",
       "@Dpi": "254",
-      "@Height": "200"
+      "@Height": "100"
     },
     "bottomMarginBand1": {
       "@Name": "bottomMarginBand1",
       "@ControlType": "BottomMargin",
       "@Dpi": "254",
-      "@Height": "200"
+      "@Height": "50"
     }
   },
   "DesignerOptions": {
@@ -1745,156 +1722,13 @@
     "CompanyInformation": {
       "@Table": "Company Information",
       "@No": "79",
-      "@Name": "CompanyInformation",
-      "@CalcFields": "Picture",
-      "Fields": {
-        "Name": {
-          "@FieldName": "Name",
-          "@FieldNo": "2"
-        },
-        "Address": {
-          "@FieldName": "Address",
-          "@FieldNo": "4"
-        },
-        "City": {
-          "@FieldName": "City",
-          "@FieldNo": "6"
-        },
-        "PhoneNo": {
-          "@FieldName": "Phone No.",
-          "@FieldNo": "7"
-        },
-        "FaxNo": {
-          "@FieldName": "Fax No.",
-          "@FieldNo": "10"
-        },
-        "BankName": {
-          "@FieldName": "Bank Name",
-          "@FieldNo": "12"
-        },
-        "VATRegistrationNo": {
-          "@FieldName": "VAT Registration No.",
-          "@FieldNo": "19"
-        },
-        "Picture": {
-          "@FieldName": "Picture",
-          "@FieldNo": "29"
-        },
-        "PostCode": {
-          "@FieldName": "Post Code",
-          "@FieldNo": "30"
-        },
-        "E_Mail": {
-          "@FieldName": "E-Mail",
-          "@FieldNo": "34"
-        },
-        "IBAN": {
-          "@FieldName": "IBAN",
-          "@FieldNo": "38"
-        },
-        "SWIFTCode": {
-          "@FieldName": "SWIFT Code",
-          "@FieldNo": "39"
-        },
-        "lbtCEO1": {
-          "@FieldName": "lbt CEO1",
-          "@FieldNo": "5272720"
-        },
-        "lbtCEO2": {
-          "@FieldName": "lbt CEO2",
-          "@FieldNo": "5272721"
-        },
-        "lbtCEO3": {
-          "@FieldName": "lbt CEO3",
-          "@FieldNo": "5272722"
-        },
-        "lbtCommercialRegisterNo": {
-          "@FieldName": "lbt Commercial Register No.",
-          "@FieldNo": "5272723"
-        },
-        "lbtTradeRegisterName": {
-          "@FieldName": "lbt Trade Register Name",
-          "@FieldNo": "5272724"
-        },
-        "lbtBankName2": {
-          "@FieldName": "lbt Bank Name 2",
-          "@FieldNo": "5272725"
-        },
-        "lbtIBAN2": {
-          "@FieldName": "lbt IBAN 2",
-          "@FieldNo": "5272728"
-        },
-        "lbtSWIFTCode2": {
-          "@FieldName": "lbt SWIFT Code 2",
-          "@FieldNo": "5272729"
-        },
-        "lbtBankName3": {
-          "@FieldName": "lbt Bank Name 3",
-          "@FieldNo": "5272730"
-        },
-        "lbtIBAN3": {
-          "@FieldName": "lbt IBAN 3",
-          "@FieldNo": "5272733"
-        },
-        "lbtSWIFTCode3": {
-          "@FieldName": "lbt SWIFT Code 3",
-          "@FieldNo": "5272734"
-        }
-      }
+      "@Name": "CompanyInformation"
     },
     "ForNAVSetup": {
       "@Table": "ForNAV Setup",
       "@No": "6188471",
       "@Name": "ForNAVSetup",
-      "@CalcFields": "Logo",
-      "Fields": {
-        "UsePreprintedPaper": {
-          "@FieldName": "Use Preprinted Paper",
-          "@FieldNo": "15"
-        }
-      }
-    },
-    "Sales_ReceivablesSetup": {
-      "@Table": "Sales & Receivables Setup",
-      "@No": "311",
-      "@Name": "Sales_ReceivablesSetup",
-      "Fields": {
-        "LogoPositiononDocuments": {
-          "@FieldName": "Logo Position on Documents",
-          "@FieldNo": "31"
-        }
-      }
-    },
-    "Item": {
-      "@Table": "Item",
-      "@No": "27",
-      "@Name": "Item",
-      "@ParentWhere": "Type=CONST(2)",
-      "@DataItemLinkReference": "Line",
-      "@DataItemLink": "\"No.\"=FIELD(\"No.\")",
-      "Fields": {
-        "No": {
-          "@FieldName": "No.",
-          "@FieldNo": "1"
-        }
-      }
-    },
-    "Vendor": {
-      "@Table": "Vendor",
-      "@No": "23",
-      "@Name": "Vendor",
-      "@DataItemLinkReference": "Header",
-      "@DataItemLink": "\"No.\" = FIELD(\"Buy-from Vendor No.\")",
-      "Fields": {
-        "No": {
-          "@FieldName": "No.",
-          "@FieldNo": "1"
-        },
-        "OurAccountNo": {
-          "@FieldName": "Our Account No.",
-          "@FieldNo": "14"
-        }
-      }
+      "@CalcFields": "Logo"
     }
   }
 }

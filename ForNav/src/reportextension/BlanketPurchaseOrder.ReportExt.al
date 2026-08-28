@@ -41,6 +41,17 @@ reportextension 5266408 "lbt Blanket Purchase Order" extends "ForNAV VAT Purch B
         }
     }
 
+    rendering
+    {
+        layout(lbtconscoo)
+        {
+            Caption = 'conscoo', Locked = true;
+            Type = Custom;
+            MimeType = 'FORNAV';
+            LayoutFile = 'Layouts\P. Blanket Order.docx';
+        }
+    }
+
     trigger OnPreReport()
     var
         lbtFormatDocument: Codeunit "lbt Format Document";
@@ -53,5 +64,5 @@ reportextension 5266408 "lbt Blanket Purchase Order" extends "ForNAV VAT Purch B
         HeaderText: Text;
         FooterText: Text;
         LineText: Text;
-    
+
 }

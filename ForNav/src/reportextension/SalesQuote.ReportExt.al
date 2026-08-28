@@ -41,6 +41,18 @@ reportextension 5266406 "lbt Sales Quote" extends "ForNAV VAT Sales Quote"
         }
     }
 
+    rendering
+    {
+        layout("lbtconscoo")
+        {
+            Caption = 'conscoo', Locked = true;
+            Type = Custom;
+            MimeType = 'FORNAV';
+            LayoutFile = 'Layouts\S. Quote.docx';
+        }
+    }
+
+
     trigger OnPreReport()
     var
         lbtFormatDocument: Codeunit "lbt Format Document";

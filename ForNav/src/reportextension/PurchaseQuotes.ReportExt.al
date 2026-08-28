@@ -41,6 +41,17 @@ reportextension 5266409 "lbt Purchase Quotes" extends "ForNAV VAT Purchase Quote
         }
     }
 
+    rendering
+    {
+        layout("lbtconscoo")
+        {
+            Caption = 'conscoo', Locked = true;
+            Type = Custom;
+            MimeType = 'FORNAV';
+            LayoutFile = 'Layouts\P. Quote.docx';
+        }
+    }
+
     trigger OnPreReport()
     var
         lbtFormatDocument: Codeunit "lbt Format Document";
@@ -53,5 +64,5 @@ reportextension 5266409 "lbt Purchase Quotes" extends "ForNAV VAT Purchase Quote
         HeaderText: Text;
         FooterText: Text;
         LineText: Text;
-    
+
 }
