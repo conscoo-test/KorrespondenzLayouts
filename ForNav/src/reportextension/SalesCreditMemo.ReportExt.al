@@ -35,6 +35,10 @@ reportextension 5266403 "lbt Sales Credit Memo" extends "ForNAV VAT Credit Memo"
             {
                 IncludeCaption = false;
             }
+            column(lbtBalance; Line."lbt Balance")
+            {
+                IncludeCaption = false;
+            }
         }
         modify(Line)
         {
@@ -42,6 +46,7 @@ reportextension 5266403 "lbt Sales Credit Memo" extends "ForNAV VAT Credit Memo"
             begin
                 LineText := Line.lbtGetPrintData("lbt Position"::EditorLine);
                 ShipmentDate := GetShipmentDate();
+                Line.CalcFields("lbt Balance");
             end;
         }
     }

@@ -27,12 +27,17 @@ reportextension 5266412 "lbt ForNAV Purchase Template" extends "ForNAV Purchase 
             {
                 IncludeCaption = false;
             }
+            column(lbtBalance; Line."lbt Balance")
+            {
+                IncludeCaption = false;
+            }
         }
         modify(Line)
         {
             trigger OnAfterAfterGetRecord()
             begin
                 LineText := Line.lbtGetPrintData("lbt Position"::EditorLine);
+                Line.CalcFields("lbt Balance");
             end;
         }
     }
