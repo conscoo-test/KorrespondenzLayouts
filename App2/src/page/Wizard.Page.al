@@ -525,7 +525,7 @@ page 5272724 "lbt Wizard"
     begin
         if not UseLeBit365Report then
             exit;
-        ReportSelections.Get(Usage, 1);
+        ReportSelections.Get(Usage, '1');
         if ReportSelections."Report ID" = ReportId then
             exit;
         ReportSelections."Report ID" := ReportId;

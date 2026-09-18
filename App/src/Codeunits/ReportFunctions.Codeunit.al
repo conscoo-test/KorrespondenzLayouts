@@ -138,13 +138,16 @@ codeunit 5272724 "lbt Report Functions"
         ItemAttribute: Record "Item Attribute";
         UnitofMeasure: Record "Unit of Measure";
         UnitofMeasureTranslation: Record "Unit of Measure Translation";
+        UoMCode: Code[10];
     begin
-        if ItemAttribute.Get(AttributeId) then
-            if UnitofMeasureTranslation.Get(ItemAttribute."Unit of Measure", LanguageCode) then
+        if ItemAttribute.Get(AttributeId) then begin
+            UoMCode := CopyStr(ItemAttribute."Unit of Measure", 1, MaxStrLen(UoMCode));
+            if UnitofMeasureTranslation.Get(UoMCode, LanguageCode) then
                 UnitofMeasureDescription := UnitofMeasureTranslation.Description
             else
-                if UnitofMeasure.Get(ItemAttribute."Unit of Measure") then
+                if UnitofMeasure.Get(UoMCode) then
                     UnitofMeasureDescription := UnitofMeasure.Description;
+        end;
     end;
 
     local procedure GetAttributeValueTranslation(AttributeId: Integer; AttributeValueId: Integer; LanguageCode: Code[10]): Text
