@@ -1,0 +1,34 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/AL-Go-Actions/v9.2/.Modules/settings.schema.json",
+  "country": "de",
+  "appFolders": [
+    "App",
+    "App2",
+    "ForNav"
+  ],
+  "testFolders": [
+    "Test"
+  ],
+  "bcptTestFolders": [],
+  "fullBuildPatterns": [
+    ".AL-Go/settings.json"
+  ],
+  "customCodeCops": [
+    ".alcops/ALCops.ApplicationCop.dll",
+    ".alcops/ALCops.DocumentationCop.dll",
+    ".alcops/ALCops.FormattingCop.dll",
+    ".alcops/ALCops.LinterCop.dll",
+    ".alcops/ALCops.PlatformCop.dll",
+    ".alcops/ALCops.TestAutomationCop.dll",
+    ".alcops/ALCops.Common.dll"
+  ],
+  "fileSharePath": "product",
+  "appSourceCopMandatoryAffixes": [
+    "lbt cl",
+    "lbt"
+  ],
+  "installApps": [
+    "https://www.fornav.com/products/rep/runtime/?bcversion=latest"
+  ],
+  "enableAppSourceCop": true
+}
