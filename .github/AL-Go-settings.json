@@ -9,5 +9,6 @@
   ],
   "NextMajorSchedule": "0 2 * * 0",
   "NextMinorSchedule": "0 2 * * 6",
-  "CurrentSchedule": "0 2 * * 1"
+  "CurrentSchedule": "0 2 * * 1",
+  "templateSha": "2bab92e83f6ab771caddf5be4e8dcb81bace8e3d"
 }
