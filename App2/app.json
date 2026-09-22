@@ -4,7 +4,7 @@
   "publisher": "LeBit Software & Consult GmbH",
   "brief": "Komfort Belegset und Komfort Funktionen für Korrespondenzbelege",
   "description": "Komfort Belegset und Komfort Funktionen für Korrespondenzbelege",
-  "version": "1.46.0.0",
+  "version": "1.47.0.0",
   "privacyStatement": "https://www.lebit.net/impressum#datenschutz",
   "EULA": "https://www.lebit.net/impressum#datenschutz",
   "help": "https://www.lebit.net/#support",
@@ -16,7 +16,7 @@
       "id": "ae7eef02-bb60-436c-856d-d815600787b0",
       "name": "LeBit Extended Layout Options",
       "publisher": "LeBit Software & Consult GmbH",
-      "version": "1.8.0.0"
+      "version": "1.47.0.0"
     }
   ],
   "platform": "17.0.0.0",

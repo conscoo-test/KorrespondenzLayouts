@@ -30,5 +30,6 @@
   "installApps": [
     "https://www.fornav.com/products/rep/runtime/?bcversion=latest"
   ],
-  "enableAppSourceCop": true
+  "enableAppSourceCop": true,
+  "repoVersion": "1.1"
 }
